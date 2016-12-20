@@ -41,10 +41,9 @@ cp ~/graphs/inception5h/* tensorflow/contrib/ios_examples/simple/data/
 
 If you're hitting problems, here's a checklist of common things to investigate:
 
- - Make sure that you've run the `download_dependencies.sh` and
-   `compile_ios_protobuf.sh` scripts before you run `compile_ios_tensorflow`.
-   (These should be called by `build_all_ios.sh` if you are using it, but check
-   if they have run successful.)
+ - Make sure that you've run the `build_all_ios.sh` script 
+   this will run `download_dependencies.sh`,`compile_ios_protobuf.sh` and `compile_ios_tensorflow`.
+   (check each one if they have run successful.)
  
  - Check that you have version 7.3 of Xcode.
  
@@ -137,5 +136,4 @@ executable.
 After that, you can manually look at modifying the list of kernels
 included in tensorflow/contrib/makefile/tf_op_files.txt to reduce the number of
 implementations to the ones you're actually using in your own model. We're
-hoping to automate this step in the future, but for now manually removing them
-is the best approach.
+hoping to automate this step in the future, but for now manually removing them is the best approach.
