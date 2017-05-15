@@ -29,12 +29,17 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
+import argparse
+import sys
+
 import tensorflow as tf
+
 from tensorflow.contrib.session_bundle import exporter
 
+FLAGS = None
 
-def Export():
-  export_path = "/tmp/half_plus_two"
+
+def Export(export_dir, use_checkpoint_v2):
   with tf.Session() as sess:
     # Make model parameters a&b variables instead of constants to
     # exercise the variable reloading mechanisms.
@@ -52,10 +57,17 @@ def Export():
     x = tf.identity(tf_example["x"], name="x")
 
     # Calculate, y = a*x + b
-    y = tf.add(tf.mul(a, x), b, name="y")
+    y = tf.add(tf.multiply(a, x), b, name="y")
 
     # Setup a standard Saver for our variables.
-    save = tf.train.Saver({"a": a, "b": b}, sharded=True)
+    save = tf.train.Saver(
+        {
+            "a": a,
+            "b": b
+        },
+        sharded=True,
+        write_version=tf.train.SaverDef.V2 if use_checkpoint_v2 else
+        tf.train.SaverDef.V1)
 
     # asset_path contains the base directory of assets used in training (e.g.
     # vocabulary files).
@@ -85,7 +97,7 @@ def Export():
     }
 
     # Create two filename assets and corresponding tensors.
-    # TODO(b/26254158) Consider adding validation of file existance as well as
+    # TODO(b/26254158) Consider adding validation of file existence as well as
     # hashes (e.g. sha1) for consistency.
     original_filename1 = tf.constant("hello1.txt")
     tf.add_to_collection(tf.GraphKeys.ASSET_FILEPATHS, original_filename1)
@@ -113,7 +125,7 @@ def Export():
         print("copying asset file: %s" % filepath)
 
     # Run an export.
-    tf.initialize_all_variables().run()
+    tf.global_variables_initializer().run()
     export = exporter.Exporter(save)
     export.init(
         sess.graph.as_graph_def(),
@@ -122,12 +134,29 @@ def Export():
         named_graph_signatures=named_graph_signature,
         assets_collection=tf.get_collection(tf.GraphKeys.ASSET_FILEPATHS),
         assets_callback=CopyAssets)
-    export.export(export_path, global_step_tensor, sess)
+    export.export(export_dir, global_step_tensor, sess)
 
 
 def main(_):
-  Export()
+  Export(FLAGS.export_dir, FLAGS.use_checkpoint_v2)
 
 
 if __name__ == "__main__":
-  tf.app.run()
+  parser = argparse.ArgumentParser()
+  parser.register("type", "bool", lambda v: v.lower() == "true")
+  parser.add_argument(
+      "--export_dir",
+      type=str,
+      default="/tmp/half_plus_two",
+      help="Directory where to export inference model."
+  )
+  parser.add_argument(
+      "--use_checkpoint_v2",
+      "bool",
+      nargs="?",
+      const=True,
+      default=False,
+      help="If true, write v2 checkpoint files."
+  )
+  FLAGS, unparsed = parser.parse_known_args()
+  tf.app.run(main=main, argv=[sys.argv[0]] + unparsed)

@@ -7,22 +7,31 @@ package(
 
 licenses(["notice"])  # Apache 2.0
 
-exports_files(["LICENSE"])
+load("//tensorflow:tensorflow.bzl", "tf_copts")
 
-# To be exported to tensorflow/core:android_srcs.
+# To be exported to tensorflow/core:mobile_srcs.
 filegroup(
-    name = "android_srcs",
+    name = "mobile_srcs",
     srcs = [
+        "naming.cc",
+        "naming.h",
         "tensor_bundle.cc",
         "tensor_bundle.h",
     ],
+)
+
+alias(
+    name = "android_srcs",
+    actual = ":mobile_srcs",
 )
 
 cc_library(
     name = "tensor_bundle",
     srcs = ["tensor_bundle.cc"],
     hdrs = ["tensor_bundle.h"],
+    copts = tf_copts() + ["-Wno-sign-compare"],
     deps = [
+        ":naming",
         "//tensorflow/core:core_cpu_internal",
         "//tensorflow/core:framework",
         "//tensorflow/core:framework_headers_lib",
@@ -32,6 +41,13 @@ cc_library(
         "//tensorflow/core:proto_text",
         "//tensorflow/core:protos_all_cc",
     ],
+)
+
+cc_library(
+    name = "naming",
+    srcs = ["naming.cc"],
+    hdrs = ["naming.h"],
+    deps = ["//tensorflow/core:lib"],
 )
 
 cc_test(

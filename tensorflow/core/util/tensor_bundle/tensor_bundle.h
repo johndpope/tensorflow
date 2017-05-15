@@ -78,6 +78,7 @@ limitations under the License.
 #include "tensorflow/core/platform/file_system.h"
 #include "tensorflow/core/platform/macros.h"
 #include "tensorflow/core/platform/types.h"
+#include "tensorflow/core/util/tensor_bundle/naming.h"
 #include "tensorflow/core/util/tensor_slice_set.h"
 
 namespace tensorflow {
@@ -99,11 +100,14 @@ extern const int kTensorBundleVersion;
 extern const char* const kHeaderEntryKey;
 
 // Builds a string-string table of tensor names to BundleEntryProto (metadata).
+//
+// On construction, attempts to create a directory given by the dirname of
+// "prefix", so "status()" must be checked before calling any member functions.
+//
 // All threads accessing the same BundleWriter must synchronize.
 class BundleWriter {
  public:
   BundleWriter(Env* env, StringPiece prefix);
-  ~BundleWriter();
 
   // Adds the tensor "val" under key "key".
   // Across calls "key" must be unique but can be added in any order.
@@ -137,6 +141,8 @@ class BundleWriter {
  private:
   Env* const env_;  // Not owned.
   const string prefix_;
+  const string tmp_metadata_path_;
+  const string tmp_data_path_;
   std::unique_ptr<FileOutputBuffer> out_;
   int64 size_;  // Number of bytes written into out_.
   std::map<string, BundleEntryProto> entries_;
@@ -179,6 +185,11 @@ class BundleReader {
   // REQUIRES: status().ok()
   bool Contains(StringPiece key);
 
+  // Looks up the dtype and the shape of the tensor keyed by "key".
+  // REQUIRES: status().ok()
+  Status LookupDtypeAndShape(StringPiece key, DataType* dtype,
+                             TensorShape* shape) TF_MUST_USE_RESULT;
+
   // Looks up the shape of the tensor keyed by "key".
   // Clears "shape" if not found.
   // REQUIRES: status().ok()
@@ -188,14 +199,9 @@ class BundleReader {
   // Looks up the tensor keyed by "key".  If "key" refers to a partitioned
   // tensor, attempts to look up the full contents using all stored slices.
   //
-  // Out-tensor "val" can be either empty or initialized with a non-empty shape:
-  //
-  // * If empty, this function allocates an exactly-sized Tensor to hold the
-  //   contents found in this bundle.
-  //
-  // * If non-empty, caller is responsible for making sure "val" has the same
-  //   shape as the corresponding contents. This function directly uses the
-  //   buffer without extra allocation.
+  // Caller must make sure "val" has the same shape and dtype as the
+  // corresponding contents, so that its buffer can be filled without needing
+  // extra allocation.  These can be queried via "LookupDtypeAndShape()".
   //
   // On error, "val" may contain nonsense data.  Returns a NotFound error if
   // tensor keyed by "key" does not exist in this bundle.
@@ -203,6 +209,16 @@ class BundleReader {
   // Validates the stored crc32c checksum against the restored bytes.
   // REQUIRES: status().ok()
   Status Lookup(StringPiece key, Tensor* val) TF_MUST_USE_RESULT;
+
+  // Looks up the slices of the tensor keyed by "key".  On OK, "slices"
+  // is non-empty if and only if the tensor is a partitioned tensor.
+  //
+  // Warning - there is no guaranteed ordering for the returned slices, so
+  // a slice with a larger start index in some dimension could come before
+  // another slice with a smaller start index in the same dimension.
+  // REQUIRES: status().ok()
+  Status LookupTensorSlices(StringPiece key, std::vector<TensorSlice>* slices)
+      TF_MUST_USE_RESULT;
 
   // Looks up a specific slice of a partitioned tensor.
   // It is only required that the stored slices cover the requested slice,
@@ -294,8 +310,8 @@ class FileOutputBuffer {
   Status Close();
 
  private:
-  // Appends the buffered data and flushes.
-  Status Flush();
+  // Appends the buffered data to the underlying file. Does NOT flush the file.
+  Status FlushBuffer();
 
   WritableFile* file_;  // Owned.
 
@@ -308,11 +324,6 @@ class FileOutputBuffer {
   // Checksum of all appended bytes since construction or last clear_crc32c().
   uint32 crc32c_ = 0;
 };
-
-// Pattern: "<prefix>.data-<padded shard_id>-of-<padded num_shards>".
-string DataFilename(StringPiece prefix, int32 shard_id, int32 num_shards);
-// Pattern: "<prefix>.index."
-string MetaFilename(StringPiece prefix);
 
 }  // namespace tensorflow
 

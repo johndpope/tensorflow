@@ -196,6 +196,20 @@ bool CUnescapeInternal(StringPiece source, char* dest,
   return true;
 }
 
+template <typename T>
+bool SplitAndParseAsInts(StringPiece text, char delim,
+                         std::function<bool(StringPiece, T*)> converter,
+                         std::vector<T>* result) {
+  result->clear();
+  std::vector<string> num_strings = Split(text, delim);
+  for (const auto& s : num_strings) {
+    T num;
+    if (!converter(s, &num)) return false;
+    result->push_back(num);
+  }
+  return true;
+}
+
 }  // namespace
 
 bool CUnescape(StringPiece source, string* dest, string* error) {
@@ -242,6 +256,25 @@ void TitlecaseString(string* s, StringPiece delimiters) {
     }
     upper = (delimiters.find(*ss) != StringPiece::npos);
   }
+}
+
+string StringReplace(StringPiece s, StringPiece oldsub, StringPiece newsub,
+                     bool replace_all) {
+  // TODO(jlebar): We could avoid having to shift data around in the string if
+  // we had a StringPiece::find() overload that searched for a StringPiece.
+  string res = s.ToString();
+  size_t pos = 0;
+  while ((pos = res.find(oldsub.data(), pos, oldsub.size())) != string::npos) {
+    res.replace(pos, oldsub.size(), newsub.data(), newsub.size());
+    pos += newsub.size();
+    if (oldsub.empty()) {
+      pos++;  // Match at the beginning of the text and after every byte
+    }
+    if (!replace_all) {
+      break;
+    }
+  }
+  return res;
 }
 
 size_t RemoveLeadingWhitespace(StringPiece* text) {
@@ -333,14 +366,22 @@ bool ConsumeNonWhitespace(StringPiece* s, StringPiece* val) {
 
 bool SplitAndParseAsInts(StringPiece text, char delim,
                          std::vector<int32>* result) {
-  result->clear();
-  std::vector<string> num_strings = Split(text, delim);
-  for (const auto& s : num_strings) {
-    int32 num;
-    if (!strings::safe_strto32(s, &num)) return false;
-    result->push_back(num);
-  }
-  return true;
+  return SplitAndParseAsInts<int32>(text, delim, strings::safe_strto32, result);
+}
+
+bool SplitAndParseAsInts(StringPiece text, char delim,
+                         std::vector<int64>* result) {
+  return SplitAndParseAsInts<int64>(text, delim, strings::safe_strto64, result);
+}
+
+bool SplitAndParseAsFloats(StringPiece text, char delim,
+                           std::vector<float>* result) {
+  return SplitAndParseAsInts<float>(text, delim,
+                                    [](StringPiece str, float* value) {
+                                      return strings::safe_strtof(
+                                          str.ToString().c_str(), value);
+                                    },
+                                    result);
 }
 
 }  // namespace str_util

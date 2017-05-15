@@ -139,8 +139,7 @@ uint8* UncompressLow(const void* srcdata, FewerArgsForCompiler* argball) {
   cinfo.do_fancy_upsampling = boolean(flags.fancy_upscaling);
   cinfo.scale_num = 1;
   cinfo.scale_denom = ratio;
-  // Activating this has a quality/speed trade-off implication:
-  // cinfo.dct_method = JDCT_IFAST;
+  cinfo.dct_method = flags.dct_method;
 
   jpeg_start_decompress(&cinfo);
 
@@ -338,7 +337,8 @@ uint8* UncompressLow(const void* srcdata, FewerArgsForCompiler* argball) {
 uint8* Uncompress(const void* srcdata, int datasize,
                   const UncompressFlags& flags, int64* nwarn,
                   std::function<uint8*(int, int, int)> allocate_output) {
-  FewerArgsForCompiler argball(datasize, flags, nwarn, allocate_output);
+  FewerArgsForCompiler argball(datasize, flags, nwarn,
+                               std::move(allocate_output));
   uint8* const dstdata = UncompressLow(srcdata, &argball);
 
   const float fraction_read =

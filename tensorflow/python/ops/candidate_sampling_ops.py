@@ -13,14 +13,12 @@
 # limitations under the License.
 # ==============================================================================
 
-"""Wrappers for primitive Neural Net (NN) Operations."""
+"""Wrappers for candidate sampling operations."""
 
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-from tensorflow.python.framework import common_shapes
-from tensorflow.python.framework import ops
 from tensorflow.python.framework import random_seed
 from tensorflow.python.ops import array_ops
 from tensorflow.python.ops import gen_candidate_sampling_ops
@@ -55,7 +53,9 @@ def uniform_candidate_sampler(true_classes, num_true, num_sampled, unique,
     true_classes: A `Tensor` of type `int64` and shape `[batch_size,
       num_true]`. The target classes.
     num_true: An `int`.  The number of target classes per training example.
-    num_sampled: An `int`.  The number of classes to randomly sample per batch.
+    num_sampled: An `int`.  The number of classes to randomly sample. The
+      `sampled_candidates` return value will have shape `[num_sampled]`. If
+      `unique=True`, `num_sampled` must be less than or equal to `range_max`.
     unique: A `bool`. Determines whether all sampled classes in a batch are
       unique.
     range_max: An `int`. The number of possible classes.
@@ -63,8 +63,10 @@ def uniform_candidate_sampler(true_classes, num_true, num_sampled, unique,
     name: A name for the operation (optional).
 
   Returns:
-    sampled_candidates: A tensor of type `int64` and shape `[num_sampled]`.
-      The sampled classes.
+    sampled_candidates: A tensor of type `int64` and shape `[num_sampled]`.  The
+      sampled classes, either with possible duplicates (`unique=False`) or all
+      unique (`unique=True`). In either case, `sampled_candidates` is
+      independent of the true classes.
     true_expected_count: A tensor of type `float`.  Same shape as
       `true_classes`. The expected counts under the sampling distribution
       of each of `true_classes`.
@@ -113,7 +115,7 @@ def log_uniform_candidate_sampler(true_classes, num_true, num_sampled, unique,
     true_classes: A `Tensor` of type `int64` and shape `[batch_size,
       num_true]`. The target classes.
     num_true: An `int`.  The number of target classes per training example.
-    num_sampled: An `int`.  The number of classes to randomly sample per batch.
+    num_sampled: An `int`.  The number of classes to randomly sample.
     unique: A `bool`. Determines whether all sampled classes in a batch are
       unique.
     range_max: An `int`. The number of possible classes.
@@ -168,7 +170,7 @@ def learned_unigram_candidate_sampler(true_classes, num_true, num_sampled,
     true_classes: A `Tensor` of type `int64` and shape `[batch_size,
       num_true]`. The target classes.
     num_true: An `int`.  The number of target classes per training example.
-    num_sampled: An `int`.  The number of classes to randomly sample per batch.
+    num_sampled: An `int`.  The number of classes to randomly sample.
     unique: A `bool`. Determines whether all sampled classes in a batch are
       unique.
     range_max: An `int`. The number of possible classes.
@@ -232,7 +234,7 @@ def fixed_unigram_candidate_sampler(true_classes,
     true_classes: A `Tensor` of type `int64` and shape `[batch_size,
       num_true]`. The target classes.
     num_true: An `int`.  The number of target classes per training example.
-    num_sampled: An `int`.  The number of classes to randomly sample per batch.
+    num_sampled: An `int`.  The number of classes to randomly sample.
     unique: A `bool`. Determines whether all sampled classes in a batch are
       unique.
     range_max: An `int`. The number of possible classes.
@@ -364,15 +366,3 @@ def compute_accidental_hits(true_classes, sampled_candidates, num_true,
   return gen_candidate_sampling_ops._compute_accidental_hits(
       true_classes, sampled_candidates, num_true, seed=seed1, seed2=seed2,
       name=name)
-
-
-ops.RegisterShape("AllCandidateSampler")(common_shapes.call_cpp_shape_fn)
-ops.RegisterShape("FixedUnigramCandidateSampler")(
-    common_shapes.call_cpp_shape_fn)
-ops.RegisterShape("LearnedUnigramCandidateSampler")(
-    common_shapes.call_cpp_shape_fn)
-ops.RegisterShape("LogUniformCandidateSampler")(common_shapes.call_cpp_shape_fn)
-ops.RegisterShape("ThreadUnsafeUnigramCandidateSampler")(
-    common_shapes.call_cpp_shape_fn)
-ops.RegisterShape("UniformCandidateSampler")(common_shapes.call_cpp_shape_fn)
-ops.RegisterShape("ComputeAccidentalHits")(common_shapes.call_cpp_shape_fn)

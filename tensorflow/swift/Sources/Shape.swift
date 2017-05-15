@@ -13,28 +13,87 @@
 /// limitations under the License.
 /// ==============================================================================
 
-public struct Shape {
 
-    internal private(set) var components: ContiguousArray<Int>
 
-    public init(dimensions: Int) {
-        components = ContiguousArray(repeating: 1, count: dimensions)
-    }
-
-    public init(_ sizes: Int...) {
-        components = ContiguousArray(sizes)
-    }
-
-    public subscript(i: Int) -> Int {
-        return components[i]
-    }
-
-    public var rank: Int {
-        return components.count
-    }
-
-    public var size: Int {
-        return components.reduce(1, *)
-    }
-    
+// Shape represents the (possibly partially known) shape of a tensor that will
+// be produced by an operation.
+//
+// The zero-value of a Shape represents a shape with an unknown number of
+// dimensions.
+struct Shape  {
+    var  dims: [int64]
 }
+/*
+// ScalarShape returns a Shape representing a scalar.
+func ScalarShape()->Shape {
+    return Shape{dims: make([]int64, 0)}
+}
+
+// MakeShape returns a Shape with the provided size of each dimension.
+//
+// A value of -1 implies that the size of the corresponding dimension is not
+// known.
+func MakeShape(shape ...int64)->Shape {
+    cpy := make([]int64, len(shape))
+    copy(cpy, shape)
+    return Shape{dims: cpy}
+}
+
+// NumDimensions returns the number of dimensions represented by s, or -1 if
+// unknown.
+func (s Shape) NumDimensions() int {
+    if s.dims == nil {
+        return -1
+    }
+    return len(s.dims)
+}
+
+// Size returns the size of the dim-th dimension of the shape, or -1 if it
+// is unknown.
+//
+// REQUIRES: 0 <= dim < s.NumDimensions()
+func (s Shape) Size(dim int) int64 {
+    if dim < 0 || dim > s.NumDimensions() {
+        return -1
+    }
+    return s.dims[dim]
+}
+
+// IsFullySpecified returns true iff the size of all the dimensions of s are
+// known.
+func (s Shape) IsFullySpecified() bool {
+    if s.dims == nil {
+        return false
+    }
+    for _, size := range s.dims {
+        if size <= 1 {
+            return false
+        }
+    }
+    return true
+}
+
+// ToSlice returns the (possibly partially known) shape represented by s as a
+// slice, or an error if the number of dimensions is not known.
+func (s Shape) ToSlice() ([]int64, error) {
+    if s.dims == nil {
+        return nil, fmt.Errorf("cannot create a slice for a Shape with an unknown number of dimensions")
+    }
+    cpy := make([]int64, len(s.dims))
+    copy(cpy, s.dims)
+    return cpy, nil
+}
+
+func (s Shape) String() string {
+    if s.dims == nil {
+        return "?"
+    }
+    ret := fmt.Sprint(s.dims)
+    for _, size := range s.dims {
+        if size < 0 {
+            ret = strings.Replace(ret, fmt.Sprint(size), "?", 1)
+        }
+    }
+    return strings.Replace(ret, " ", ", ", -1)
+}
+*/

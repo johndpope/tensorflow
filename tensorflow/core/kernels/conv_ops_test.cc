@@ -116,8 +116,9 @@ class FusedResizePadConvOpTest : public OpsTestBase {
                                int input_depth, int resize_width,
                                int resize_height, int y_padding, int x_padding,
                                int filter_size, int filter_count,
-                               bool resize_align_corners, string pad_mode,
-                               int stride, string padding) {
+                               bool resize_align_corners,
+                               const string& pad_mode, int stride,
+                               const string& padding) {
     auto root = tensorflow::Scope::NewRootScope();
     using namespace ::tensorflow::ops;  // NOLINT(build/namespaces)
 
@@ -170,8 +171,8 @@ class FusedResizePadConvOpTest : public OpsTestBase {
   void CompareFusedPadOnlyAndSeparate(int input_width, int input_height,
                                       int input_depth, int y_padding,
                                       int x_padding, int filter_size,
-                                      int filter_count, string pad_mode,
-                                      int stride, string padding) {
+                                      int filter_count, const string& pad_mode,
+                                      int stride, const string& padding) {
     auto root = tensorflow::Scope::NewRootScope();
     using namespace ::tensorflow::ops;  // NOLINT(build/namespaces)
 
@@ -296,6 +297,11 @@ TEST_F(FusedResizePadConvOpTest, NoResizePadOnlyWithChannelsComparative) {
 
 TEST_F(FusedResizePadConvOpTest, NoResizePadOnlySymmetricComparative) {
   CompareFusedPadOnlyAndSeparate(4, 4, 1, 2, 2, 1, 1, "SYMMETRIC", 1, "SAME");
+}
+
+TEST_F(FusedResizePadConvOpTest, ResizeAndPadSymmetricComparativeLarge) {
+  CompareFusedAndSeparate(1000, 1000, 3, 1006, 1006, 2, 2, 1, 1, false,
+                          "SYMMETRIC", 1, "SAME");
 }
 
 }  // namespace tensorflow

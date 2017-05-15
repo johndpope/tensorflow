@@ -1,16 +1,18 @@
-// Copyright 2016 The TensorFlow Authors. All Rights Reserved.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
+/*
+Copyright 2016 The TensorFlow Authors. All Rights Reserved.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
 
 package tensorflow
 
@@ -51,19 +53,67 @@ func TestOperationLifetime(t *testing.T) {
 	}
 }
 
-func TestOutputShape(t *testing.T) {
+func TestOperationOutputListSize(t *testing.T) {
+	graph := NewGraph()
+	c1, err := Const(graph, "c1", int64(1))
+	if err != nil {
+		t.Fatal(err)
+	}
+	c2, err := Const(graph, "c2", [][]int64{{1, 2}, {3, 4}})
+	if err != nil {
+		t.Fatal(err)
+	}
+	// The ShapeN op takes a list of tensors as input and a list as output.
+	op, err := graph.AddOperation(OpSpec{
+		Type:  "ShapeN",
+		Input: []Input{OutputList{c1, c2}},
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	n, err := op.OutputListSize("output")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if got, want := n, 2; got != want {
+		t.Errorf("Got %d, want %d", got, want)
+	}
+	if got, want := op.NumOutputs(), 2; got != want {
+		t.Errorf("Got %d, want %d", got, want)
+	}
+}
+
+func TestOperationShapeAttribute(t *testing.T) {
+	g := NewGraph()
+	_, err := g.AddOperation(OpSpec{
+		Type: "Placeholder",
+		Attrs: map[string]interface{}{
+			"dtype": Float,
+			"shape": MakeShape(-1, 3),
+		},
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	// If and when the API to get attributes is added, check that here.
+}
+
+func TestOutputDataTypeAndShape(t *testing.T) {
 	graph := NewGraph()
 	testdata := []struct {
 		Value interface{}
 		Shape []int64
+		dtype DataType
 	}{
 		{ // Scalar
 			int64(0),
 			[]int64{},
+			Int64,
 		},
 		{ // Vector
-			[]int64{1, 2, 3},
+			[]int32{1, 2, 3},
 			[]int64{3},
+			Int32,
 		},
 		{ // Matrix
 			[][]float64{
@@ -71,33 +121,28 @@ func TestOutputShape(t *testing.T) {
 				{4, 5, 6},
 			},
 			[]int64{2, 3},
+			Double,
 		},
 	}
 	for idx, test := range testdata {
-		tensor, err := NewTensor(test.Value)
-		if err != nil {
-			t.Errorf("#%d: NewTensor(%T) failed: %v", idx, test.Value, err)
-			continue
-		}
-		c, err := Const(graph, fmt.Sprintf("test%d", idx), tensor)
-		if err != nil {
-			t.Errorf("#%d: Const(%T) failed: %v", idx, test.Value, err)
-			continue
-		}
-		shape, err := c.Shape()
-		if err != nil {
-			t.Errorf("#%d: Shape() failed for %T: %v", idx, test.Value, err)
-			continue
-		}
-		if got, want := len(shape), len(test.Shape); got != want {
-			t.Errorf("#%d: %T: Got a shape with %d dimensions, want %d", idx, test.Value, got, want)
-			continue
-		}
-		for i := 0; i < len(shape); i++ {
-			if got, want := shape[i], test.Shape[i]; got != want {
-				t.Errorf("#%d: %T: Got %d, want %d for dimension #%d/%d", idx, test.Value, got, want, i, len(shape))
+		t.Run(fmt.Sprintf("#%d Value %T", idx, test.Value), func(t *testing.T) {
+			c, err := Const(graph, fmt.Sprintf("const%d", idx), test.Value)
+			if err != nil {
+				t.Fatal(err)
 			}
-		}
+			if got, want := c.DataType(), test.dtype; got != want {
+				t.Errorf("Got DataType %v, want %v", got, want)
+			}
+			shape := c.Shape()
+			if got, want := shape.NumDimensions(), len(test.Shape); got != want {
+				t.Fatalf("Got a shape with %d dimensions, want %d", got, want)
+			}
+			for i := 0; i < len(test.Shape); i++ {
+				if got, want := shape.Size(i), test.Shape[i]; got != want {
+					t.Errorf("Got %d, want %d for dimension #%d/%d", got, want, i, len(test.Shape))
+				}
+			}
+		})
 	}
 	// Unknown number of dimensions
 	dummyTensor, err := NewTensor(float64(0))
@@ -108,8 +153,8 @@ func TestOutputShape(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if shape, err := placeholder.Shape(); err == nil {
-		t.Errorf("Got shape %v, wanted error", shape)
+	if shape := placeholder.Shape(); shape.NumDimensions() != -1 {
+		t.Errorf("Got shape %v, wanted an unknown number of dimensions", shape)
 	}
 }
 

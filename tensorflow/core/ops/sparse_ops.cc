@@ -128,12 +128,13 @@ pair takes space.
 )doc");
 
 REGISTER_OP("SparseTensorDenseMatMul")
-    .Input("a_indices: int64")
+    .Input("a_indices: Tindices")
     .Input("a_values: T")
     .Input("a_shape: int64")
     .Input("b: T")
     .Output("product: T")
     .Attr("T: type")
+    .Attr("Tindices: {int32,int64} = DT_INT64")
     .Attr("adjoint_a: bool = false")
     .Attr("adjoint_b: bool = false")
     .SetShapeFn([](InferenceContext* c) {
@@ -141,19 +142,24 @@ REGISTER_OP("SparseTensorDenseMatMul")
       ShapeHandle unused;
       ShapeHandle b;
       ShapeHandle a_shape;
+      ShapeHandle a_shape_shape;
       TF_RETURN_IF_ERROR(c->WithRank(c->input(0), 2, &unused));  // a_indices
       TF_RETURN_IF_ERROR(c->WithRank(c->input(1), 1, &unused));  // a_values
-      TF_RETURN_IF_ERROR(c->WithRank(c->input(2), 1, &a_shape));
-      TF_RETURN_IF_ERROR(c->WithValue(c->Dim(a_shape, 0), 2, &unused_dim));
+      TF_RETURN_IF_ERROR(c->MakeShapeFromShapeTensor(2, &a_shape));
+      TF_RETURN_IF_ERROR(c->WithRank(a_shape, 2, &a_shape));
       TF_RETURN_IF_ERROR(c->WithRank(c->input(3), 2, &b));
 
+      bool adjoint_a;
       bool adjoint_b;
+      TF_RETURN_IF_ERROR(c->GetAttr("adjoint_a", &adjoint_a));
       TF_RETURN_IF_ERROR(c->GetAttr("adjoint_b", &adjoint_b));
 
-      // TODO(zongheng): 1) incorporate adjoint_a. 2) When both attrs are
-      // considered, check the inner dimensions match.
       DimensionHandle output_right = c->Dim(b, adjoint_b ? 0 : 1);
-      c->set_output(0, c->Matrix(InferenceContext::kUnknownDim, output_right));
+      DimensionHandle output_left = c->Dim(a_shape, adjoint_a ? 1 : 0);
+      DimensionHandle inner_left = c->Dim(a_shape, adjoint_a ? 0 : 1);
+      DimensionHandle inner_right = c->Dim(b, adjoint_b ? 1 : 0);
+      TF_RETURN_IF_ERROR(c->Merge(inner_left, inner_right, &unused_dim));
+      c->set_output(0, c->Matrix(output_left, output_right));
       return Status::OK();
     })
     .Doc(R"doc(
@@ -448,6 +454,84 @@ output_values: 1-D.  Non-empty values of the concatenated `SparseTensor`.
 output_shape: 1-D.  Shape of the concatenated `SparseTensor`.
 concat_dim: Dimension to concatenate along. Must be in range [-rank, rank),
     where rank is the number of dimensions in each input `SparseTensor`.
+)doc");
+
+REGISTER_OP("SparseCross")
+    .Input("indices: N * int64")
+    .Input("values: sparse_types")
+    .Input("shapes: N * int64")
+    .Input("dense_inputs: dense_types")
+    .Output("output_indices: int64")
+    .Output("output_values: out_type")
+    .Output("output_shape: int64")
+    .Attr("N: int >= 0")
+    .Attr("hashed_output: bool")
+    .Attr("num_buckets: int >= 0")
+    .Attr("hash_key: int")
+    .Attr("sparse_types: list({int64, string}) >= 0")
+    .Attr("dense_types: list({int64, string}) >= 0")
+    .Attr("out_type: {int64, string}")
+    .Attr("internal_type: {int64, string}")
+    .SetShapeFn([](shape_inference::InferenceContext* c) {
+      c->set_output(0, c->Matrix(c->UnknownDim(), 2));
+      c->set_output(1, c->Vector(c->UnknownDim()));
+      c->set_output(2, c->Vector(2));
+      return Status::OK();
+    })
+    .Doc(R"doc(
+Generates sparse cross from a list of sparse and dense tensors.
+
+The op takes two lists, one of 2D `SparseTensor` and one of 2D `Tensor`, each
+representing features of one feature column. It outputs a 2D `SparseTensor` with
+the batchwise crosses of these features.
+
+For example, if the inputs are
+
+    inputs[0]: SparseTensor with shape = [2, 2]
+    [0, 0]: "a"
+    [1, 0]: "b"
+    [1, 1]: "c"
+
+    inputs[1]: SparseTensor with shape = [2, 1]
+    [0, 0]: "d"
+    [1, 0]: "e"
+
+    inputs[2]: Tensor [["f"], ["g"]]
+
+then the output will be
+
+    shape = [2, 2]
+    [0, 0]: "a_X_d_X_f"
+    [1, 0]: "b_X_e_X_g"
+    [1, 1]: "c_X_e_X_g"
+
+if hashed_output=true then the output will be
+
+    shape = [2, 2]
+    [0, 0]: FingerprintCat64(
+                Fingerprint64("f"), FingerprintCat64(
+                    Fingerprint64("d"), Fingerprint64("a")))
+    [1, 0]: FingerprintCat64(
+                Fingerprint64("g"), FingerprintCat64(
+                    Fingerprint64("e"), Fingerprint64("b")))
+    [1, 1]: FingerprintCat64(
+                Fingerprint64("g"), FingerprintCat64(
+                    Fingerprint64("e"), Fingerprint64("c")))
+
+indices: 2-D.  Indices of each input `SparseTensor`.
+values: 1-D.   values of each `SparseTensor`.
+shapes: 1-D.   Shapes of each `SparseTensor`.
+dense_inputs: 2-D.    Columns represented by dense `Tensor`.
+hashed_output: If true, returns the hash of the cross instead of the string.
+  This will allow us avoiding string manipulations.
+num_buckets: It is used if hashed_output is true.
+  output = hashed_value%num_buckets if num_buckets > 0 else hashed_value.
+hash_key: Specify the hash_key that will be used by the `FingerprintCat64`
+  function to combine the crosses fingerprints.
+output_indices: 2-D.  Indices of the concatenated `SparseTensor`.
+output_values: 1-D.  Non-empty values of the concatenated or hashed
+  `SparseTensor`.
+output_shape: 1-D.  Shape of the concatenated `SparseTensor`.
 )doc");
 
 REGISTER_OP("SparseSplit")
@@ -858,6 +942,191 @@ b_shape: counterpart to `a_shape` for the other operand; the two shapes must be 
 
 output_indices: 2-D.  The indices of the output SparseTensor.
 output_values: 1-D.  The values of the output SparseTensor.
+)doc");
+
+REGISTER_OP("AddSparseToTensorsMap")
+    .Input("sparse_indices: int64")
+    .Input("sparse_values: T")
+    .Input("sparse_shape: int64")
+    .Output("sparse_handle: int64")
+    .Attr("T: type")
+    .Attr("container: string = ''")
+    .Attr("shared_name: string = ''")
+    .SetIsStateful()
+    .SetShapeFn([](InferenceContext* c) {
+      ShapeHandle unused;
+      TF_RETURN_IF_ERROR(c->WithRank(c->input(0), 2, &unused));
+      TF_RETURN_IF_ERROR(c->WithRank(c->input(1), 1, &unused));
+      TF_RETURN_IF_ERROR(c->WithRank(c->input(2), 1, &unused));
+      c->set_output(0, c->Scalar());
+      return Status::OK();
+    })
+    .Doc(R"doc(
+Add a `SparseTensor` to a `SparseTensorsMap` return its handle.
+
+A `SparseTensor` is represented by three tensors: `sparse_indices`,
+`sparse_values`, and `sparse_shape`.
+
+This operator takes the given `SparseTensor` and adds it to a container
+object (a `SparseTensorsMap`).  A unique key within this container is generated
+in the form of an `int64`, and this is the value that is returned.
+
+The `SparseTensor` can then be read out as part of a minibatch by passing
+the key as a vector element to `TakeManySparseFromTensorsMap`.  To ensure
+the correct `SparseTensorsMap` is accessed, ensure that the same
+`container` and `shared_name` are passed to that Op.  If no `shared_name`
+is provided here, instead use the *name* of the Operation created by calling
+`AddSparseToTensorsMap` as the `shared_name` passed to
+`TakeManySparseFromTensorsMap`.  Ensure the Operations are colocated.
+
+sparse_indices: 2-D.  The `indices` of the `SparseTensor`.
+sparse_values: 1-D.  The `values` of the `SparseTensor`.
+sparse_shape: 1-D.  The `shape` of the `SparseTensor`.
+sparse_handle: 0-D.  The handle of the `SparseTensor` now stored in the
+  `SparseTensorsMap`.
+container: The container name for the `SparseTensorsMap` created by this op.
+shared_name: The shared name for the `SparseTensorsMap` created by this op.
+  If blank, the new Operation's unique name is used.
+)doc");
+
+REGISTER_OP("AddManySparseToTensorsMap")
+    .Input("sparse_indices: int64")
+    .Input("sparse_values: T")
+    .Input("sparse_shape: int64")
+    .Output("sparse_handles: int64")
+    .Attr("T: type")
+    .Attr("container: string = ''")
+    .Attr("shared_name: string = ''")
+    .SetIsStateful()
+    .SetShapeFn([](InferenceContext* c) {
+      ShapeHandle unused;
+      TF_RETURN_IF_ERROR(c->WithRank(c->input(0), 2, &unused));
+      TF_RETURN_IF_ERROR(c->WithRank(c->input(1), 1, &unused));
+      TF_RETURN_IF_ERROR(c->WithRank(c->input(2), 1, &unused));
+      c->set_output(0, c->Vector(InferenceContext::kUnknownDim));
+      return Status::OK();
+    })
+    .Doc(R"doc(
+Add an `N`-minibatch `SparseTensor` to a `SparseTensorsMap`, return `N` handles.
+
+A `SparseTensor` of rank `R` is represented by three tensors: `sparse_indices`,
+`sparse_values`, and `sparse_shape`, where
+
+```sparse_indices.shape[1] == sparse_shape.shape[0] == R```
+
+An `N`-minibatch of `SparseTensor` objects is represented as a `SparseTensor`
+having a first `sparse_indices` column taking values between `[0, N)`, where
+the minibatch size `N == sparse_shape[0]`.
+
+The input `SparseTensor` must have rank `R` greater than 1, and the first
+dimension is treated as the minibatch dimension.  Elements of the `SparseTensor`
+must be sorted in increasing order of this first dimension.  The stored
+`SparseTensor` objects pointed to by each row of the output `sparse_handles`
+will have rank `R-1`.
+
+The `SparseTensor` values can then be read out as part of a minibatch by passing
+the given keys as vector elements to `TakeManySparseFromTensorsMap`.  To ensure
+the correct `SparseTensorsMap` is accessed, ensure that the same
+`container` and `shared_name` are passed to that Op.  If no `shared_name`
+is provided here, instead use the *name* of the Operation created by calling
+`AddManySparseToTensorsMap` as the `shared_name` passed to
+`TakeManySparseFromTensorsMap`.  Ensure the Operations are colocated.
+
+sparse_indices: 2-D.  The `indices` of the minibatch `SparseTensor`.
+  `sparse_indices[:, 0]` must be ordered values in `[0, N)`.
+sparse_values: 1-D.  The `values` of the minibatch `SparseTensor`.
+sparse_shape: 1-D.  The `shape` of the minibatch `SparseTensor`.
+  The minibatch size `N == sparse_shape[0]`.
+sparse_handles: 1-D.  The handles of the `SparseTensor` now stored in the
+  `SparseTensorsMap`.  Shape: `[N]`.
+container: The container name for the `SparseTensorsMap` created by this op.
+shared_name: The shared name for the `SparseTensorsMap` created by this op.
+  If blank, the new Operation's unique name is used.
+)doc");
+
+REGISTER_OP("TakeManySparseFromTensorsMap")
+    .Input("sparse_handles: int64")
+    .Output("sparse_indices: int64")
+    .Output("sparse_values: dtype")
+    .Output("sparse_shape: int64")
+    .Attr("dtype: type")
+    .Attr("container: string = ''")
+    .Attr("shared_name: string = ''")
+    .SetIsStateful()
+    .SetShapeFn([](InferenceContext* c) {
+      // serialized sparse is [?,1] matrix.
+      ShapeHandle sparse_handles;
+      TF_RETURN_IF_ERROR(c->WithRank(c->input(0), 1, &sparse_handles));
+
+      c->set_output(0, c->Matrix(InferenceContext::kUnknownDim,
+                                 InferenceContext::kUnknownDim));
+      c->set_output(1, c->Vector(InferenceContext::kUnknownDim));
+      c->set_output(2, c->Vector(InferenceContext::kUnknownDim));
+      return Status::OK();
+    })
+    .Doc(R"doc(
+Read `SparseTensors` from a `SparseTensorsMap` and concatenate them.
+
+The input `sparse_handles` must be an `int64` matrix of shape `[N, 1]` where
+`N` is the minibatch size and the rows correspond to the output handles of
+`AddSparseToTensorsMap` or `AddManySparseToTensorsMap`.  The ranks of the
+original `SparseTensor` objects that went into the given input ops must all
+match.  When the final `SparseTensor` is created, it has rank one
+higher than the ranks of the incoming `SparseTensor` objects
+(they have been concatenated along a new row dimension on the left).
+
+The output `SparseTensor` object's shape values for all dimensions but the
+first are the max across the input `SparseTensor` objects' shape values
+for the corresponding dimensions.  Its first shape value is `N`, the minibatch
+size.
+
+The input `SparseTensor` objects' indices are assumed ordered in
+standard lexicographic order.  If this is not the case, after this
+step run `SparseReorder` to restore index ordering.
+
+For example, if the handles represent an input, which is a `[2, 3]` matrix
+representing two original `SparseTensor` objects:
+
+```
+    index = [ 0]
+            [10]
+            [20]
+    values = [1, 2, 3]
+    shape = [50]
+```
+
+and
+
+```
+    index = [ 2]
+            [10]
+    values = [4, 5]
+    shape = [30]
+```
+
+then the final `SparseTensor` will be:
+
+```
+    index = [0  0]
+            [0 10]
+            [0 20]
+            [1  2]
+            [1 10]
+    values = [1, 2, 3, 4, 5]
+    shape = [2 50]
+```
+
+sparse_handles: 1-D, The `N` serialized `SparseTensor` objects.
+  Shape: `[N]`.
+sparse_indices: 2-D.  The `indices` of the minibatch `SparseTensor`.
+sparse_values: 1-D.  The `values` of the minibatch `SparseTensor`.
+sparse_shape: 1-D.  The `shape` of the minibatch `SparseTensor`.
+dtype: The `dtype` of the `SparseTensor` objects stored in the
+  `SparseTensorsMap`.
+container: The container name for the `SparseTensorsMap` read by this op.
+shared_name: The shared name for the `SparseTensorsMap` read by this op.
+  It should not be blank; rather the `shared_name` or unique Operation name
+  of the Op that created the original `SparseTensorsMap` should be used.
 )doc");
 
 }  // namespace tensorflow

@@ -38,11 +38,17 @@ namespace functor {
   DECLARE_GPU_SPECS_INDEX(T, int64)
 
 TF_CALL_GPU_NUMBER_TYPES(DECLARE_GPU_SPECS);
+TF_CALL_complex64(DECLARE_GPU_SPECS);
+TF_CALL_complex128(DECLARE_GPU_SPECS);
 
 #undef DECLARE_GPU_SPECS
 #undef DECLARE_GPU_SPECS_INDEX
 
 }  // namespace functor
 }  // namespace tensorflow
+
+#else
+
+#include "tensorflow/core/kernels/gather_functor.h"
 
 #endif  // GOOGLE_CUDA
