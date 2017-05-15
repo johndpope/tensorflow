@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package tensorflow
+import CTensorFlow
 
 // #cgo LDFLAGS: -ltensorflow
 // #cgo CFLAGS: -I${SRCDIR}/../../
@@ -24,8 +24,8 @@ package tensorflow
 // // the TF_DeletePRunHandle symbol. We work around that by
 // // implementing the equivalent in session.cpp
 // extern void tfDeletePRunHandle(const char*);
-import "C"
 
-func deletePRunHandle(h *C.char) {
+
+func deletePRunHandle(h :char) {
 	C.tfDeletePRunHandle(h)
 }

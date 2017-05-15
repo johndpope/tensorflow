@@ -14,22 +14,15 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package tensorflow
+import CTensorFlow
 
-import (
-	"runtime"
-	"unsafe"
-)
 
-// #include <stdlib.h>
-// #include "tensorflow/c/c_api.h"
-import "C"
 
 // SavedModel represents the contents of loaded SavedModel.
 // TODO(jhseu): Add and document metagraphdef when we pregenerate protobufs.
-type SavedModel struct {
-	Session *Session
-	Graph   *Graph
+struct SavedModel  {
+    var Session:Session
+    var Graph:Graph
 }
 
 // LoadSavedModel creates a new SavedModel from a model previously
@@ -45,7 +38,7 @@ type SavedModel struct {
 // exported in other languages, such as using tf.saved_model.builder in Python.
 // See:
 // https://www.tensorflow.org/code/tensorflow/python/saved_model/
-func LoadSavedModel(exportDir string, tags []string, options *SessionOptions) (*SavedModel, error) {
+/*func LoadSavedModel(exportDir string, tags []string, options *SessionOptions) (*SavedModel, error) {
 	status := newStatus()
 	cOpt, doneOpt, err := options.c()
 	defer doneOpt()
@@ -71,4 +64,4 @@ func LoadSavedModel(exportDir string, tags []string, options *SessionOptions) (*
 	s := &Session{c: cSess}
 	runtime.SetFinalizer(s, func(s *Session) { s.Close() })
 	return &SavedModel{Session: s, Graph: graph}, nil
-}
+}*/

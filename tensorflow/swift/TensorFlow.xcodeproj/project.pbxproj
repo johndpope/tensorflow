@@ -7,10 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		293BECB41DA9C03800B9C31B /* Tensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293BECB31DA9C03800B9C31B /* Tensor.swift */; };
-		293BECB61DA9C10500B9C31B /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293BECB51DA9C10500B9C31B /* Shape.swift */; };
+		8340E9A41EC960250046BAF4 /* atomic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8340E9961EC960250046BAF4 /* atomic.swift */; };
+		8340E9A51EC960250046BAF4 /* chan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8340E9971EC960250046BAF4 /* chan.swift */; };
+		8340E9A61EC960250046BAF4 /* dispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8340E9981EC960250046BAF4 /* dispatch.swift */; };
+		8340E9A81EC960250046BAF4 /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8340E99A1EC960250046BAF4 /* Graph.swift */; };
+		8340E9A91EC960250046BAF4 /* Lib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8340E99B1EC960250046BAF4 /* Lib.swift */; };
+		8340E9AA1EC960250046BAF4 /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8340E99C1EC960250046BAF4 /* Operation.swift */; };
+		8340E9AB1EC960250046BAF4 /* SavedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8340E99D1EC960250046BAF4 /* SavedModel.swift */; };
+		8340E9AC1EC960250046BAF4 /* select.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8340E99E1EC960250046BAF4 /* select.swift */; };
+		8340E9AD1EC960250046BAF4 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8340E99F1EC960250046BAF4 /* Session.swift */; };
+		8340E9AE1EC960250046BAF4 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8340E9A01EC960250046BAF4 /* Shape.swift */; };
+		8340E9AF1EC960250046BAF4 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8340E9A11EC960250046BAF4 /* Status.swift */; };
+		8340E9B01EC960250046BAF4 /* sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8340E9A21EC960250046BAF4 /* sync.swift */; };
+		8340E9B11EC960250046BAF4 /* Tensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8340E9A31EC960250046BAF4 /* Tensor.swift */; };
 		_LinkFileRef_TensorFlow_via_TensorFlowTests /* TensorFlow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_TensorFlow" /* TensorFlow.framework */; };
-		__src_cc_ref_Sources/TensorFlow.swift /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/TensorFlow.swift /* Session.swift */; };
 		__src_cc_ref_Tests/TensorFlowTests/TensorFlowTests.swift /* TensorFlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/TensorFlowTests/TensorFlowTests.swift /* TensorFlowTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -25,14 +35,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		293BECB31DA9C03800B9C31B /* Tensor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tensor.swift; sourceTree = "<group>"; };
-		293BECB51DA9C10500B9C31B /* Shape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
+		8340E9961EC960250046BAF4 /* atomic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = atomic.swift; sourceTree = "<group>"; };
+		8340E9971EC960250046BAF4 /* chan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = chan.swift; sourceTree = "<group>"; };
+		8340E9981EC960250046BAF4 /* dispatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dispatch.swift; sourceTree = "<group>"; };
+		8340E99A1EC960250046BAF4 /* Graph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
+		8340E99B1EC960250046BAF4 /* Lib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lib.swift; sourceTree = "<group>"; };
+		8340E99C1EC960250046BAF4 /* Operation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
+		8340E99D1EC960250046BAF4 /* SavedModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedModel.swift; sourceTree = "<group>"; };
+		8340E99E1EC960250046BAF4 /* select.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = select.swift; sourceTree = "<group>"; };
+		8340E99F1EC960250046BAF4 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		8340E9A01EC960250046BAF4 /* Shape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
+		8340E9A11EC960250046BAF4 /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
+		8340E9A21EC960250046BAF4 /* sync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sync.swift; sourceTree = "<group>"; };
+		8340E9A31EC960250046BAF4 /* Tensor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tensor.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Package.swift /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		__PBXFileRef_Sources/TensorFlow.swift /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		__PBXFileRef_TensorFlow.xcodeproj/Configs/Project.xcconfig /* TensorFlow.xcodeproj/Configs/Project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = TensorFlow.xcodeproj/Configs/Project.xcconfig; sourceTree = "<group>"; };
 		__PBXFileRef_Tests/TensorFlowTests/TensorFlowTests.swift /* TensorFlowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TensorFlowTests.swift; sourceTree = "<group>"; };
 		"_____Product_TensorFlow" /* TensorFlow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TensorFlow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		"_____Product_TensorFlowTests" /* TensorFlowTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = TensorFlowTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		"_____Product_TensorFlowTests" /* TensorFlowTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = TensorFlowTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +74,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8340E9951EC960250046BAF4 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				8340E9961EC960250046BAF4 /* atomic.swift */,
+				8340E9971EC960250046BAF4 /* chan.swift */,
+				8340E9981EC960250046BAF4 /* dispatch.swift */,
+				8340E99A1EC960250046BAF4 /* Graph.swift */,
+				8340E99B1EC960250046BAF4 /* Lib.swift */,
+				8340E99C1EC960250046BAF4 /* Operation.swift */,
+				8340E99D1EC960250046BAF4 /* SavedModel.swift */,
+				8340E99E1EC960250046BAF4 /* select.swift */,
+				8340E99F1EC960250046BAF4 /* Session.swift */,
+				8340E9A01EC960250046BAF4 /* Shape.swift */,
+				8340E9A11EC960250046BAF4 /* Status.swift */,
+				8340E9A21EC960250046BAF4 /* sync.swift */,
+				8340E9A31EC960250046BAF4 /* Tensor.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
 		TestProducts_ /* Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -66,8 +106,8 @@
 			isa = PBXGroup;
 			children = (
 				__PBXFileRef_Package.swift /* Package.swift */,
+				8340E9951EC960250046BAF4 /* Sources */,
 				"_____Configs_" /* Configs */,
-				"_____Sources_" /* Sources */,
 				"_______Tests_" /* Tests */,
 				"____Products_" /* Products */,
 			);
@@ -88,25 +128,6 @@
 				__PBXFileRef_TensorFlow.xcodeproj/Configs/Project.xcconfig /* TensorFlow.xcodeproj/Configs/Project.xcconfig */,
 			);
 			name = Configs;
-			sourceTree = "<group>";
-		};
-		"_____Sources_" /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				"_______Group_TensorFlow" /* TensorFlow */,
-			);
-			name = Sources;
-			sourceTree = "<group>";
-		};
-		"_______Group_TensorFlow" /* TensorFlow */ = {
-			isa = PBXGroup;
-			children = (
-				__PBXFileRef_Sources/TensorFlow.swift /* Session.swift */,
-				293BECB31DA9C03800B9C31B /* Tensor.swift */,
-				293BECB51DA9C10500B9C31B /* Shape.swift */,
-			);
-			name = TensorFlow;
-			path = Sources;
 			sourceTree = "<group>";
 		};
 		"_______Group_TensorFlowTests" /* TensorFlowTests */ = {
@@ -193,9 +214,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				293BECB41DA9C03800B9C31B /* Tensor.swift in Sources */,
-				293BECB61DA9C10500B9C31B /* Shape.swift in Sources */,
-				__src_cc_ref_Sources/TensorFlow.swift /* Session.swift in Sources */,
+				8340E9B11EC960250046BAF4 /* Tensor.swift in Sources */,
+				8340E9AD1EC960250046BAF4 /* Session.swift in Sources */,
+				8340E9A41EC960250046BAF4 /* atomic.swift in Sources */,
+				8340E9AA1EC960250046BAF4 /* Operation.swift in Sources */,
+				8340E9A51EC960250046BAF4 /* chan.swift in Sources */,
+				8340E9A91EC960250046BAF4 /* Lib.swift in Sources */,
+				8340E9B01EC960250046BAF4 /* sync.swift in Sources */,
+				8340E9AE1EC960250046BAF4 /* Shape.swift in Sources */,
+				8340E9AC1EC960250046BAF4 /* select.swift in Sources */,
+				8340E9A61EC960250046BAF4 /* dispatch.swift in Sources */,
+				8340E9A81EC960250046BAF4 /* Graph.swift in Sources */,
+				8340E9AB1EC960250046BAF4 /* SavedModel.swift in Sources */,
+				8340E9AF1EC960250046BAF4 /* Status.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,6 +273,7 @@
 		_ReleaseConf_TensorFlowTests /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
 				HEADER_SEARCH_PATHS = "/Users/rxwei/Development/ML/tensorflow/tensorflow/swift/Packages/CTensorFlow-0.0.0";
@@ -278,6 +310,7 @@
 		"___DebugConf_TensorFlowTests" /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
 				HEADER_SEARCH_PATHS = "/Users/rxwei/Development/ML/tensorflow/tensorflow/swift/Packages/CTensorFlow-0.0.0";
