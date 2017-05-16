@@ -1,0 +1,4 @@
+module BoringSSL {
+    umbrella "/Users/johndpope/Documents/tensorFlowWorkspace/tensorflow/tensorflow/swift/.build/checkouts/grpc-swift.git-1944885664151884802/Sources/BoringSSL/include"
+    export *
+}

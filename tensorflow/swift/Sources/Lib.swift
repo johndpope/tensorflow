@@ -27,5 +27,5 @@ import CTensorFlow
 
 
 func deletePRunHandle(h :char) {
-	C.tfDeletePRunHandle(h)
+	//C.tfDeletePRunHandle(h)
 }

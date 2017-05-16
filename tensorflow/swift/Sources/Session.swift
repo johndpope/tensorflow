@@ -25,7 +25,7 @@ import CTensorFlow
 // perform the computation and potentially fetch outputs as Tensors.
 // A Session allows concurrent calls to Run().
 struct Session  {
-    var c:TF_NewSession
+    var c:TF_Session
     
     // For ensuring that:
     // - Close() blocks on all Run() calls to complete.
@@ -60,12 +60,12 @@ struct SessionOptions  {
     //
     // If the session disconnects from the remote process during its
     // lifetime, session calls may fail immediately.
-    var Target:string
+    var Target:String
     
     // Config is a binary-serialized representation of the
     // tensorflow.ConfigProto protocol message
     // (https://www.tensorflow.org/code/tensorflow/core/protobuf/config.proto).
-    var Config:[byte]
+    var Config:Tensorflow_ConfigProto
 }
 
 
