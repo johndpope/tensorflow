@@ -15,7 +15,7 @@ limitations under the License.
 */
 
 import CTensorFlow
-
+import Foundation
 // #cgo LDFLAGS: -ltensorflow
 // #cgo CFLAGS: -I${SRCDIR}/../../
 //
@@ -26,6 +26,6 @@ import CTensorFlow
 // extern void tfDeletePRunHandle(const char*);
 
 
-func deletePRunHandle(h :char) {
+//func deletePRunHandle(h :Char) {
 	//C.tfDeletePRunHandle(h)
-}
+//}

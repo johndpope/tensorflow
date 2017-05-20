@@ -26,17 +26,17 @@ struct Operation  {
 /*
 // Name returns the name of the operation.
 func (op *Operation) Name() string {
-    return C.GoString(C.TF_OperationName(op.c))
+    return C.GoString(TF_OperationName(op.c))
 }
 
 // Type returns the name of the operator used by this operation.
 func (op *Operation) Type() string {
-    return C.GoString(C.TF_OperationOpType(op.c))
+    return C.GoString(TF_OperationOpType(op.c))
 }
 
 // NumOutputs returns the number of outputs of op.
 func (op *Operation) NumOutputs() int {
-    return int(C.TF_OperationNumOutputs(op.c))
+    return int(TF_OperationNumOutputs(op.c))
 }
 
 // OutputListSize returns the size of the list of Outputs that is produced by a
@@ -47,10 +47,10 @@ func (op *Operation) NumOutputs() int {
 // the list of tensors for a specific output of the operation, identified
 // by its name.
 func (op *Operation) OutputListSize(output string) (int, error) {
-    cname := C.CString(output)
+    cname = C.CString(output)
     defer C.free(unsafe.Pointer(cname))
-    status := newStatus()
-    n := C.TF_OperationOutputListLength(op.c, cname, status.c)
+    status = newStatus()
+    n = TF_OperationOutputListLength(op.c, cname, status.c)
     return int(n), status.Err()
 }
 
@@ -73,15 +73,15 @@ type Output struct {
 
 // DataType returns the type of elements in the tensor produced by p.
 func (p Output) DataType() DataType {
-    return DataType(C.TF_OperationOutputType(p.c()))
+    return DataType(TF_OperationOutputType(p.c()))
 }
 
 // Shape returns the (possibly incomplete) shape of the tensor produced p.
 func (p Output) Shape() Shape {
-    status := newStatus()
-    port := p.c()
-    ndims := C.TF_GraphGetTensorNumDims(p.Op.g.c, port, status.c)
-    if err := status.Err(); err != nil {
+    status = newStatus()
+    port = p.c()
+    ndims = TF_GraphGetTensorNumDims(p.Op.g.c, port, status.c)
+    if err = status.Err(); err != nil {
         // This should not be possible since an error only occurs if
         // the operation does not belong to the graph.  It should not
         // be possible to construct such an Operation object.
@@ -93,21 +93,21 @@ func (p Output) Shape() Shape {
     if ndims == 0 {
         return ScalarShape()
     }
-    dims := make([]C.int64_t, ndims)
-    C.TF_GraphGetTensorShape(p.Op.g.c, port, &dims[0], ndims, status.c)
-    if err := status.Err(); err != nil {
+    dims = make([]C.int64_t, ndims)
+    TF_GraphGetTensorShape(p.Op.g.c, port, &dims[0], ndims, status.c)
+    if err = status.Err(); err != nil {
         // Same as above, should not be possible.
         return Shape{}
     }
-    ret := Shape{dims: make([]int64, ndims)}
-    for i := 0; i < int(ndims); i++ {
+    ret = Shape{dims: make([]int64, ndims)}
+    for i = 0; i < int(ndims); i++ {
         ret.dims[i] = int64(dims[i])
     }
     return ret
 }
 
-func (p Output) c() C.TF_Output {
-    return C.TF_Output{oper: p.Op.c, index: C.int(p.Index)}
+func (p Output) c() TF_Output {
+    return TF_Output{oper: p.Op.c, index: C.int(p.Index)}
 }
 
 func (p Output) canBeAnInput() {}

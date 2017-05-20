@@ -39,29 +39,29 @@ struct SavedModel  {
 // See:
 // https://www.tensorflow.org/code/tensorflow/python/saved_model/
 /*func LoadSavedModel(exportDir string, tags []string, options *SessionOptions) (*SavedModel, error) {
-	status := newStatus()
-	cOpt, doneOpt, err := options.c()
+	status = newStatus()
+	cOpt, doneOpt, err = options.c()
 	defer doneOpt()
 	if err != nil {
 		return nil, err
 	}
-	cExportDir := C.CString(exportDir)
-	cTags := make([]*C.char, len(tags))
-	for i := range tags {
+	cExportDir = C.CString(exportDir)
+	cTags = make([]*C.char, len(tags))
+	for i = range tags {
 		cTags[i] = C.CString(tags[i])
 	}
-	graph := NewGraph()
+	graph = NewGraph()
 	// TODO(jhseu): Add support for run_options and meta_graph_def.
-	cSess := C.TF_LoadSessionFromSavedModel(cOpt, nil, cExportDir, (**C.char)(unsafe.Pointer(&cTags[0])), C.int(len(cTags)), graph.c, nil, status.c)
-	for i := range cTags {
+	cSess = TF_LoadSessionFromSavedModel(cOpt, nil, cExportDir, (**C.char)(unsafe.Pointer(&cTags[0])), C.int(len(cTags)), graph.c, nil, status.c)
+	for i = range cTags {
 		C.free(unsafe.Pointer(cTags[i]))
 	}
 	C.free(unsafe.Pointer(cExportDir))
 
-	if err := status.Err(); err != nil {
+	if err = status.Err(); err != nil {
 		return nil, err
 	}
-	s := &Session{c: cSess}
+	s = &Session{c: cSess}
 	runtime.SetFinalizer(s, func(s *Session) { s.Close() })
 	return &SavedModel{Session: s, Graph: graph}, nil
 }*/

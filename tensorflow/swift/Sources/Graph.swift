@@ -16,33 +16,37 @@
 import CTensorFlow
 
 
+//struct  C{
+ //   struct TF_Graph: OpaquePointer{
+    
+//}
 // Graph represents a computation graph. Graphs may be shared between sessions.
-struct Graph  {
-    var c:TF_Graph
-}
+//struct Graph  {
+  //  var c:UnsafeMutablePointer<TF_Graph>
+//}
 
 
 /*
 // NewGraph returns a new Graph.
 func NewGraph() *Graph {
-    g := &Graph{C.TF_NewGraph()}
+    g = &Graph{TF_NewGraph()}
     runtime.SetFinalizer(g, (*Graph).finalizer)
     return g
 }
 
 func (g *Graph) finalizer() {
-    C.TF_DeleteGraph(g.c)
+    TF_DeleteGraph(g.c)
 }
 
 // WriteTo writes out a serialized representation of g to w.
 //
 // Implements the io.WriterTo interface.
 func (g *Graph) WriteTo(w io.Writer) (int64, error) {
-    buf := C.TF_NewBuffer()
-    defer C.TF_DeleteBuffer(buf)
-    status := newStatus()
-    C.TF_GraphToGraphDef(g.c, buf, status.c)
-    if err := status.Err(); err != nil {
+    buf = TF_NewBuffer()
+    defer TF_DeleteBuffer(buf)
+    status = newStatus()
+    TF_GraphToGraphDef(g.c, buf, status.c)
+    if err = status.Err(); err != nil {
         return 0, err
     }
     if buf.length > (1 << 30) {
@@ -52,9 +56,9 @@ func (g *Graph) WriteTo(w io.Writer) (int64, error) {
     }
     // A []byte slice backed by C memory.
     // See: https://github.com/golang/go/wiki/cgo#turning-c-arrays-into-go-slices
-    length := int(buf.length)
-    slice := (*[1 << 30]byte)(unsafe.Pointer(buf.data))[:length:length]
-    n, err := w.Write(slice)
+    length = int(buf.length)
+    slice = (*[1 << 30]byte)(unsafe.Pointer(buf.data))[:length:length]
+    n, err = w.Write(slice)
     return int64(n), err
 }
 
@@ -63,15 +67,15 @@ func (g *Graph) WriteTo(w io.Writer) (int64, error) {
 //
 // Names of imported nodes will be prefixed with prefix.
 func (g *Graph) Import(def []byte, prefix string) error {
-    cprefix := C.CString(prefix)
+    cprefix = C.CString(prefix)
     defer C.free(unsafe.Pointer(cprefix))
     
-    opts := C.TF_NewImportGraphDefOptions()
-    defer C.TF_DeleteImportGraphDefOptions(opts)
-    C.TF_ImportGraphDefOptionsSetPrefix(opts, cprefix)
+    opts = TF_NewImportGraphDefOptions()
+    defer TF_DeleteImportGraphDefOptions(opts)
+    TF_ImportGraphDefOptionsSetPrefix(opts, cprefix)
     
-    buf := C.TF_NewBuffer()
-    defer C.TF_DeleteBuffer(buf)
+    buf = TF_NewBuffer()
+    defer TF_DeleteBuffer(buf)
     // Would have preferred to use C.CBytes, but that does not play well
     // with "go vet" till https://github.com/golang/go/issues/17201 is
     // resolved.
@@ -83,9 +87,9 @@ func (g *Graph) Import(def []byte, prefix string) error {
     defer C.free(buf.data)
     C.memcpy(buf.data, unsafe.Pointer(&def[0]), buf.length)
     
-    status := newStatus()
-    C.TF_GraphImportGraphDef(g.c, buf, opts, status.c)
-    if err := status.Err(); err != nil {
+    status = newStatus()
+    TF_GraphImportGraphDef(g.c, buf, opts, status.c)
+    if err = status.Err(); err != nil {
         return err
     }
     return nil
@@ -94,9 +98,9 @@ func (g *Graph) Import(def []byte, prefix string) error {
 // Operation returns the Operation named name in the Graph, or nil if no such
 // operation is present.
 func (g *Graph) Operation(name string) *Operation {
-    cname := C.CString(name)
+    cname = C.CString(name)
     defer C.free(unsafe.Pointer(cname))
-    cop := C.TF_GraphOperationByName(g.c, cname)
+    cop = TF_GraphOperationByName(g.c, cname)
     if cop == nil {
         return nil
     }
@@ -137,32 +141,32 @@ func (g *Graph) AddOperation(args OpSpec) (*Operation, error) {
     if args.Name == "" {
         args.Name = args.Type
     }
-    cname := C.CString(args.Name)
-    ctype := C.CString(args.Type)
-    cdesc := C.TF_NewOperation(g.c, ctype, cname)
+    cname = C.CString(args.Name)
+    ctype = C.CString(args.Type)
+    cdesc = TF_NewOperation(g.c, ctype, cname)
     C.free(unsafe.Pointer(cname))
     C.free(unsafe.Pointer(ctype))
     
-    for _, in := range args.Input {
-        switch in := in.(type) {
+    for _, in = range args.Input {
+        switch in = in.(type) {
             case Output:
-            C.TF_AddInput(cdesc, in.c())
+            TF_AddInput(cdesc, in.c())
             case OutputList:
-            size := len(in)
-            list := make([]C.TF_Output, size)
-            for i, v := range in {
+            size = len(in)
+            list = make([]TF_Output, size)
+            for i, v = range in {
             list[i] = v.c()
             }
             if size > 0 {
-            C.TF_AddInputList(cdesc, &list[0], C.int(size))
+            TF_AddInputList(cdesc, &list[0], C.int(size))
             } else {
-            C.TF_AddInputList(cdesc, nil, 0)
+            TF_AddInputList(cdesc, nil, 0)
             }
         }
     }
-    status := newStatus()
-    for name, value := range args.Attrs {
-        if err := setAttr(cdesc, status, name, value); err != nil {
+    status = newStatus()
+    for name, value = range args.Attrs {
+        if err = setAttr(cdesc, status, name, value); err != nil {
             // Memory leak here as the TF_OperationDescription
             // object will not be cleaned up. At the time of this
             // writing, this was next to impossible since it
@@ -174,130 +178,130 @@ func (g *Graph) AddOperation(args OpSpec) (*Operation, error) {
             return nil, fmt.Errorf("%v (memory will be leaked)", err)
         }
     }
-    op := &Operation{
-        c: C.TF_FinishOperation(cdesc, status.c),
+    op = &Operation{
+        c: TF_FinishOperation(cdesc, status.c),
         g: g,
     }
     return op, status.Err()
 }
 
-func setAttr(cdesc *C.TF_OperationDescription, status *status, name string, value interface{}) error {
-    cAttrName := C.CString(name)
+func setAttr(cdesc *TF_OperationDescription, status *status, name string, value interface{}) error {
+    cAttrName = C.CString(name)
     defer C.free(unsafe.Pointer(cAttrName))
-    switch value := value.(type) {
+    switch value = value.(type) {
         case string:
-        cstr := C.CString(value)
-        C.TF_SetAttrString(cdesc, cAttrName, unsafe.Pointer(cstr), C.size_t(len(value)))
+        cstr = C.CString(value)
+        TF_SetAttrString(cdesc, cAttrName, unsafe.Pointer(cstr), C.size_t(len(value)))
         C.free(unsafe.Pointer(cstr))
         case []string:
-        size := len(value)
-        list := make([]unsafe.Pointer, size)
-        lens := make([]C.size_t, size)
-        for i, s := range value {
+        size = len(value)
+        list = make([]unsafe.Pointer, size)
+        lens = make([]C.size_t, size)
+        for i, s = range value {
             list[i] = unsafe.Pointer(C.CString(s))
             lens[i] = C.size_t(len(s))
         }
         if size > 0 {
-            C.TF_SetAttrStringList(cdesc, cAttrName, &list[0], &lens[0], C.int(size))
+            TF_SetAttrStringList(cdesc, cAttrName, &list[0], &lens[0], C.int(size))
         } else {
-            C.TF_SetAttrStringList(cdesc, cAttrName, nil, nil, 0)
+            TF_SetAttrStringList(cdesc, cAttrName, nil, nil, 0)
         }
-        for _, s := range list {
+        for _, s = range list {
             C.free(s)
         }
         case int64:
-        C.TF_SetAttrInt(cdesc, cAttrName, C.int64_t(value))
+        TF_SetAttrInt(cdesc, cAttrName, C.int64_t(value))
         case []int64:
-        size := len(value)
-        list := make([]C.int64_t, size)
-        for i, v := range value {
+        size = len(value)
+        list = make([]C.int64_t, size)
+        for i, v = range value {
             list[i] = C.int64_t(v)
         }
         if size > 0 {
-            C.TF_SetAttrIntList(cdesc, cAttrName, &list[0], C.int(size))
+            TF_SetAttrIntList(cdesc, cAttrName, &list[0], C.int(size))
         } else {
-            C.TF_SetAttrIntList(cdesc, cAttrName, nil, 0)
+            TF_SetAttrIntList(cdesc, cAttrName, nil, 0)
         }
         case float32:
-        C.TF_SetAttrFloat(cdesc, cAttrName, C.float(value))
+        TF_SetAttrFloat(cdesc, cAttrName, C.float(value))
         case []float32:
-        size := len(value)
-        list := make([]C.float, size)
-        for i, v := range value {
+        size = len(value)
+        list = make([]C.float, size)
+        for i, v = range value {
             list[i] = C.float(v)
         }
         if size > 0 {
-            C.TF_SetAttrFloatList(cdesc, cAttrName, &list[0], C.int(size))
+            TF_SetAttrFloatList(cdesc, cAttrName, &list[0], C.int(size))
         } else {
-            C.TF_SetAttrFloatList(cdesc, cAttrName, nil, 0)
+            TF_SetAttrFloatList(cdesc, cAttrName, nil, 0)
         }
         case bool:
-        v := C.uchar(0)
+        v = C.uchar(0)
         if value {
         v = 1
         }
-        C.TF_SetAttrBool(cdesc, cAttrName, v)
+        TF_SetAttrBool(cdesc, cAttrName, v)
         case []bool:
-        size := len(value)
-        list := make([]C.uchar, size)
-        for i, v := range value {
+        size = len(value)
+        list = make([]C.uchar, size)
+        for i, v = range value {
             if v {
                 list[i] = 1
             }
         }
         if size > 0 {
-            C.TF_SetAttrBoolList(cdesc, cAttrName, &list[0], C.int(size))
+            TF_SetAttrBoolList(cdesc, cAttrName, &list[0], C.int(size))
         } else {
-            C.TF_SetAttrBoolList(cdesc, cAttrName, nil, 0)
+            TF_SetAttrBoolList(cdesc, cAttrName, nil, 0)
         }
         case DataType:
-        C.TF_SetAttrType(cdesc, cAttrName, C.TF_DataType(value))
+        TF_SetAttrType(cdesc, cAttrName, TF_DataType(value))
         case []DataType:
-        var list *C.TF_DataType
+        var list *TF_DataType
         if len(value) > 0 {
-            list = (*C.TF_DataType)(&value[0])
+            list = (*TF_DataType)(&value[0])
         }
-        C.TF_SetAttrTypeList(cdesc, cAttrName, list, C.int(len(value)))
+        TF_SetAttrTypeList(cdesc, cAttrName, list, C.int(len(value)))
         case *Tensor:
-        C.TF_SetAttrTensor(cdesc, cAttrName, value.c, status.c)
-        if err := status.Err(); err != nil {
+        TF_SetAttrTensor(cdesc, cAttrName, value.c, status.c)
+        if err = status.Err(); err != nil {
             return fmt.Errorf("bad value for attribute %q: %v", name, err)
         }
         case []*Tensor:
-        size := len(value)
-        list := make([]*C.TF_Tensor, size)
-        for i, v := range value {
+        size = len(value)
+        list = make([]*TF_Tensor, size)
+        for i, v = range value {
             list[i] = v.c
         }
-        var plist **C.TF_Tensor
+        var plist **TF_Tensor
         if size > 0 {
             plist = &list[0]
         }
-        C.TF_SetAttrTensorList(cdesc, cAttrName, plist, C.int(size), status.c)
-        if err := status.Err(); err != nil {
+        TF_SetAttrTensorList(cdesc, cAttrName, plist, C.int(size), status.c)
+        if err = status.Err(); err != nil {
             return fmt.Errorf("bad value for attribute %q: %v", name, err)
         }
         case Shape:
-        ndims, dims := cshape(value)
+        ndims, dims = cshape(value)
         var dimsp *C.int64_t
         if ndims > 0 {
             dimsp = &dims[0]
         }
-        C.TF_SetAttrShape(cdesc, cAttrName, dimsp, ndims)
+        TF_SetAttrShape(cdesc, cAttrName, dimsp, ndims)
         case []Shape:
-        ndims := make([]C.int, len(value))
-        dims := make([][]C.int64_t, len(value))
-        dimsp := make([]*C.int64_t, len(value))
-        for i, s := range value {
+        ndims = make([]C.int, len(value))
+        dims = make([][]C.int64_t, len(value))
+        dimsp = make([]*C.int64_t, len(value))
+        for i, s = range value {
             ndims[i], dims[i] = cshape(s)
             if ndims[i] > 0 {
                 dimsp[i] = &dims[i][0]
             }
         }
         if len(value) > 0 {
-            C.TF_SetAttrShapeList(cdesc, cAttrName, &dimsp[0], &ndims[0], C.int(len(value)))
+            TF_SetAttrShapeList(cdesc, cAttrName, &dimsp[0], &ndims[0], C.int(len(value)))
         } else {
-            C.TF_SetAttrShapeList(cdesc, cAttrName, nil, nil, 0)
+            TF_SetAttrShapeList(cdesc, cAttrName, nil, nil, 0)
         }
         default:
         return fmt.Errorf("attribute %q has a type (%T) which is not valid for operation attributes", name, value)
@@ -306,12 +310,12 @@ func setAttr(cdesc *C.TF_OperationDescription, status *status, name string, valu
 }
 
 func cshape(s Shape) (C.int, []C.int64_t) {
-    ndims := C.int(s.NumDimensions())
+    ndims = C.int(s.NumDimensions())
     if ndims < 0 {
         return -1, nil
     }
-    dims := make([]C.int64_t, ndims)
-    for i, s := range s.dims {
+    dims = make([]C.int64_t, ndims)
+    for i, s = range s.dims {
         dims[i] = C.int64_t(s)
     }
     return ndims, dims

@@ -25,26 +25,38 @@ struct status  {
 }
 /*
 func newStatus() -> status {
-	s := &status{C.TF_NewStatus()}
+	s = &status{TF_NewStatus()}
 	runtime.SetFinalizer(s, (*status).finalizer)
 	return s
 }
+ */
 
+func newStatus() -> status {
+    let s = TF_NewStatus()
+    guard TF_GetCode(status) == TF_OK else {
+        fatalError("Failed to delete TensorFlow session.")
+    }
+        
+    //s = &status{TF_NewStatus()}
+    runtime.SetFinalizer(s, (*status).finalizer)
+    return s
+}
+/*
 func (s *status) finalizer() {
-	C.TF_DeleteStatus(s.c)
+	TF_DeleteStatus(s.c)
 }
 
 func (s *status) Code() code {
-	return code(C.TF_GetCode(s.c))
+	return code(TF_GetCode(s.c))
 }
 
 func (s *status) String() string {
-	return C.GoString(C.TF_Message(s.c))
+	return C.GoString(TF_Message(s.c))
 }
 
 // Err converts the status to a Go error and returns nil if the status is OK.
 func (s *status) Err() error {
-	if s == nil || s.Code() == C.TF_OK {
+	if s == nil || s.Code() == TF_OK {
 		return nil
 	}
 	return (*statusError)(s)

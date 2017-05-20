@@ -23,7 +23,7 @@ var messages = Chan<String>()
 dispatch {
     messages <- "ping"
 }
-if let msg := <-messages {
+if let msg = <-messages {
     println(msg)
 }
 ```

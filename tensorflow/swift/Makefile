@@ -11,7 +11,7 @@ RELLIB=.build/release/TensorFlow.swiftmodule
 all: $(DBGLIB)
 
 $(DBGLIB): Sources/*
-	swift build $(SFLAGS)
+	swift package  $(SFLAGS) generate-xcodeproj
 
 release: $(RELLIB)
 

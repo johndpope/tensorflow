@@ -14,7 +14,66 @@
 /// ==============================================================================
 
 import CTensorFlow
+import gRPCTensorFlow
 
+
+//UnsafeMutablePointer<CChar>.self
+
+
+
+public final class Session {
+    
+    static var pointer: OpaquePointer! = nil
+
+    // For ensuring that:
+    // - Close() blocks on all Run() calls to complete.
+    // - Close() can be called multiple times.
+    var wg:WaitGroup
+    var mu:Mutex
+    
+    public init() {
+        let options = TF_NewSessionOptions()
+        let status = TF_NewSession(options,C,C1)
+        guard TF_GetCode(status) == TF_OK else {
+            fatalError("Failed to initialize TensorFlow session.")
+        }
+    }
+    
+    deinit {
+        let status: OpaquePointer! = nil
+        TF_DeleteSession(C, status)
+//        TF_DeleteSession(C1, status)
+        guard TF_GetCode(status) == TF_OK else {
+//            fatalError("Failed to delete TensorFlow session.")
+//        }
+    }
+    
+}
+
+/*
+ 
+ public final class Session {
+
+    var session: OpaquePointer! = nil
+
+    public init() {
+        let status = TF_NewSession(TF_NewSessionOptions(), session)
+        guard TF_GetCode(status) == TF_OK else {
+            fatalError("Failed to initialize TensorFlow session.")
+        }
+    }
+
+    deinit {
+        let status: OpaquePointer! = nil
+        TF_DeleteSession(session, status)
+        guard TF_GetCode(status) == TF_OK else {
+            fatalError("Failed to delete TensorFlow session.")
+        }
+    }
+
+}
+ 
+ */
 
 // Session drives a TensorFlow graph computation.
 //
@@ -24,7 +83,7 @@ import CTensorFlow
 // After creating the session with a graph, the caller uses the Run() API to
 // perform the computation and potentially fetch outputs as Tensors.
 // A Session allows concurrent calls to Run().
-struct Session  {
+/*struct Session  {
     var c:TF_Session
     
     // For ensuring that:
@@ -32,7 +91,7 @@ struct Session  {
     // - Close() can be called multiple times.
     var wg:WaitGroup
     var mu:Mutex
-}
+}*/
 
 
 // SessionOptions contains configuration information for a session.
@@ -69,29 +128,6 @@ struct SessionOptions  {
 }
 
 
-public final class Session {
-
-    var session: OpaquePointer! = nil
-    var session1: OpaquePointer! = nil
-
-    public init() {
-        let status = TF_NewSession(TF_NewSessionOptions(),session,session1)
-        guard TF_GetCode(status) == TF_OK else {
-            fatalError("Failed to initialize TensorFlow session.")
-        }
-    }
-
-    deinit {
-        let status: OpaquePointer! = nil
-        TF_DeleteSession(session, status)
-        guard TF_GetCode(status) == TF_OK else {
-            fatalError("Failed to delete TensorFlow session.")
-        }
-    }
-    
-}
-
-
 
 
 // NewSession creates a new execution session with the associated graph.
@@ -99,20 +135,20 @@ public final class Session {
 func NewSession(graph:Graph, options:SessionOptions)-> (session:Session, error:Error) {
     
     
-    /*status := newStatus()
-    cOpt, doneOpt, err := options.c()
+    status = newStatus()
+    cOpt, doneOpt, err = options.c()
     defer doneOpt()
     if err != nil {
         return nil, err
     }
-    cSess := C.TF_NewSession(graph.c, cOpt, status.c)
-    if err := status.Err(); err != nil {
+    cSess = TF_NewSession(graph.c, cOpt, status.c)
+    if err = status.Err(); err != nil {
         return nil, err
     }
     
-    s := &Session{c: cSess}
+    s = &Session{c: cSess}
     runtime.SetFinalizer(s, func(s *Session) { s.Close() })
-    return s, nil*/
+    return s, nil
 }
 /*
  
@@ -134,14 +170,14 @@ func (s *Session) Run(feeds map[Output]*Tensor, fetches []Output, targets []*Ope
     s.mu.Unlock()
     defer s.wg.Done()
     
-    c := newCRunArgs(feeds, fetches, targets)
-    status := newStatus()
-    C.TF_SessionRun(s.c, nil,
+    c = newCRunArgs(feeds, fetches, targets)
+    status = newStatus()
+    TF_SessionRun(s.c, nil,
     ptrOutput(c.feeds), ptrTensor(c.feedTensors), C.int(len(feeds)),
     ptrOutput(c.fetches), ptrTensor(c.fetchTensors), C.int(len(fetches)),
     ptrOperation(c.targets), C.int(len(targets)),
     nil, status.c)
-    if err := status.Err(); err != nil {
+    if err = status.Err(); err != nil {
         return nil, err
     }
     return c.toGo(), nil
@@ -184,12 +220,12 @@ func (pr *PartialRun) Run(feeds map[Output]*Tensor, fetches []Output, targets []
     s.mu.Unlock()
     defer s.wg.Done()
     
-    C.TF_SessionPRun(s.c, pr.handle,
+    TF_SessionPRun(s.c, pr.handle,
     ptrOutput(c.feeds), ptrTensor(c.feedTensors), C.int(len(feeds)),
     ptrOutput(c.fetches), ptrTensor(c.fetchTensors), C.int(len(fetches)),
     ptrOperation(c.targets), C.int(len(targets)),
     status.c)
-    if err := status.Err(); err != nil {
+    if err = status.Err(); err != nil {
         return nil, err
     }
     return c.toGo(), nil
@@ -203,31 +239,31 @@ func (pr *PartialRun) Run(feeds map[Output]*Tensor, fetches []Output, targets []
 // See documentation for the PartialRun type.
 func (s *Session) NewPartialRun(feeds, fetches []Output, targets []*Operation) (*PartialRun, error) {
     var (
-    cfeeds   = make([]C.TF_Output, len(feeds))
-    cfetches = make([]C.TF_Output, len(fetches))
-    ctargets = make([]*C.TF_Operation, len(targets))
+    cfeeds   = make([]TF_Output, len(feeds))
+    cfetches = make([]TF_Output, len(fetches))
+    ctargets = make([]*TF_Operation, len(targets))
     
-    pcfeeds   *C.TF_Output
-    pcfetches *C.TF_Output
-    pctargets **C.TF_Operation
+    pcfeeds   *TF_Output
+    pcfetches *TF_Output
+    pctargets **TF_Operation
     
     status = newStatus()
     )
     if len(feeds) > 0 {
         pcfeeds = &cfeeds[0]
-        for i, o := range feeds {
+        for i, o = range feeds {
             cfeeds[i] = o.c()
         }
     }
     if len(fetches) > 0 {
         pcfetches = &cfetches[0]
-        for i, o := range fetches {
+        for i, o = range fetches {
             cfetches[i] = o.c()
         }
     }
     if len(targets) > 0 {
         pctargets = &ctargets[0]
-        for i, o := range targets {
+        for i, o = range targets {
             ctargets[i] = o.c
         }
     }
@@ -241,13 +277,13 @@ func (s *Session) NewPartialRun(feeds, fetches []Output, targets []*Operation) (
     s.mu.Unlock()
     defer s.wg.Done()
     
-    pr := &PartialRun{session: s}
-    C.TF_SessionPRunSetup(s.c,
+    pr = &PartialRun{session: s}
+    TF_SessionPRunSetup(s.c,
                           pcfeeds, C.int(len(feeds)),
                           pcfetches, C.int(len(fetches)),
                           pctargets, C.int(len(targets)),
                           &pr.handle, status.c)
-    if err := status.Err(); err != nil {
+    if err = status.Err(); err != nil {
         return nil, err
     }
     runtime.SetFinalizer(pr, func(pr *PartialRun) {
@@ -265,12 +301,12 @@ func (s *Session) Close() error {
     if s.c == nil {
         return nil
     }
-    status := newStatus()
-    C.TF_CloseSession(s.c, status.c)
-    if err := status.Err(); err != nil {
+    status = newStatus()
+    TF_CloseSession(s.c, status.c)
+    if err = status.Err(); err != nil {
         return err
     }
-    C.TF_DeleteSession(s.c, status.c)
+    TF_DeleteSession(s.c, status.c)
     s.c = nil
     return status.Err()
 }
@@ -310,31 +346,31 @@ type SessionOptions struct {
 
 // c converts the SessionOptions to the C API's TF_SessionOptions. Callers must
 // deallocate by calling the returned done() closure.
-func (o *SessionOptions) c() (ret *C.TF_SessionOptions, done func(), err error) {
-    opt := C.TF_NewSessionOptions()
+func (o *SessionOptions) c() (ret *TF_SessionOptions, done func(), err error) {
+    opt = TF_NewSessionOptions()
     if o == nil {
-        return opt, func() { C.TF_DeleteSessionOptions(opt) }, nil
+        return opt, func() { TF_DeleteSessionOptions(opt) }, nil
     }
-    t := C.CString(o.Target)
-    C.TF_SetTarget(opt, t)
+    t = C.CString(o.Target)
+    TF_SetTarget(opt, t)
     C.free(unsafe.Pointer(t))
     
     var cConfig unsafe.Pointer
-    if sz := len(o.Config); sz > 0 {
-        status := newStatus()
+    if sz = len(o.Config); sz > 0 {
+        status = newStatus()
         // Copying into C-memory is the simplest thing to do in terms
         // of memory safety and cgo rules ("C code may not keep a copy
         // of a Go pointer after the call returns" from
         // https://golang.org/cmd/cgo/#hdr-Passing_pointers).
         cConfig = C.CBytes(o.Config)
-        C.TF_SetConfig(opt, cConfig, C.size_t(sz), status.c)
-        if err := status.Err(); err != nil {
-            C.TF_DeleteSessionOptions(opt)
+        TF_SetConfig(opt, cConfig, C.size_t(sz), status.c)
+        if err = status.Err(); err != nil {
+            TF_DeleteSessionOptions(opt)
             return nil, func() {}, fmt.Errorf("invalid SessionOptions.Config: %v", err)
         }
     }
     return opt, func() {
-        C.TF_DeleteSessionOptions(opt)
+        TF_DeleteSessionOptions(opt)
         C.free(cConfig)
     }, nil
 }
@@ -352,47 +388,47 @@ struct cRunArgs  {
 }
 /*
 func newCRunArgs(feeds map[Output]*Tensor, fetches []Output, targets []*Operation) *cRunArgs {
-    c := &cRunArgs{
-        fetches:      make([]C.TF_Output, len(fetches)),
-        fetchTensors: make([]*C.TF_Tensor, len(fetches)),
-        targets:      make([]*C.TF_Operation, len(targets)),
+    c = &cRunArgs{
+        fetches:      make([]TF_Output, len(fetches)),
+        fetchTensors: make([]*TF_Tensor, len(fetches)),
+        targets:      make([]*TF_Operation, len(targets)),
     }
-    for o, t := range feeds {
+    for o, t = range feeds {
         c.feeds = append(c.feeds, o.c())
         c.feedTensors = append(c.feedTensors, t.c)
     }
-    for i, o := range fetches {
+    for i, o = range fetches {
         c.fetches[i] = o.c()
     }
-    for i, t := range targets {
+    for i, t = range targets {
         c.targets[i] = t.c
     }
     return c
 }
 
 func (c *cRunArgs) toGo() []*Tensor {
-    ret := make([]*Tensor, len(c.fetchTensors))
-    for i, ct := range c.fetchTensors {
+    ret = make([]*Tensor, len(c.fetchTensors))
+    for i, ct = range c.fetchTensors {
         ret[i] = newTensorFromC(ct)
     }
     return ret
 }
 
-func ptrOutput(l []C.TF_Output) *C.TF_Output {
+func ptrOutput(l []TF_Output) *TF_Output {
     if len(l) == 0 {
         return nil
     }
     return &l[0]
 }
 
-func ptrTensor(l []*C.TF_Tensor) **C.TF_Tensor {
+func ptrTensor(l []*TF_Tensor) **TF_Tensor {
     if len(l) == 0 {
         return nil
     }
     return &l[0]
 }
 
-func ptrOperation(l []*C.TF_Operation) **C.TF_Operation {
+func ptrOperation(l []*TF_Operation) **TF_Operation {
     if len(l) == 0 {
         return nil
     }

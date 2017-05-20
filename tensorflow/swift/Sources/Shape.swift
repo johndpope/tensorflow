@@ -21,7 +21,7 @@
 // The zero-value of a Shape represents a shape with an unknown number of
 // dimensions.
 struct Shape  {
-    var  dims: [int64]
+    var  dims: [Int64]
 }
 /*
 // ScalarShape returns a Shape representing a scalar.
@@ -34,7 +34,7 @@ func ScalarShape()->Shape {
 // A value of -1 implies that the size of the corresponding dimension is not
 // known.
 func MakeShape(shape ...int64)->Shape {
-    cpy := make([]int64, len(shape))
+    cpy = make([]int64, len(shape))
     copy(cpy, shape)
     return Shape{dims: cpy}
 }
@@ -65,7 +65,7 @@ func (s Shape) IsFullySpecified() bool {
     if s.dims == nil {
         return false
     }
-    for _, size := range s.dims {
+    for _, size = range s.dims {
         if size <= 1 {
             return false
         }
@@ -79,7 +79,7 @@ func (s Shape) ToSlice() ([]int64, error) {
     if s.dims == nil {
         return nil, fmt.Errorf("cannot create a slice for a Shape with an unknown number of dimensions")
     }
-    cpy := make([]int64, len(s.dims))
+    cpy = make([]int64, len(s.dims))
     copy(cpy, s.dims)
     return cpy, nil
 }
@@ -88,8 +88,8 @@ func (s Shape) String() string {
     if s.dims == nil {
         return "?"
     }
-    ret := fmt.Sprint(s.dims)
-    for _, size := range s.dims {
+    ret = fmt.Sprint(s.dims)
+    for _, size = range s.dims {
         if size < 0 {
             ret = strings.Replace(ret, fmt.Sprint(size), "?", 1)
         }
