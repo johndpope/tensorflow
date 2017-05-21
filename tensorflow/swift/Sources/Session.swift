@@ -14,7 +14,7 @@
 /// ==============================================================================
 
 import CTensorFlow
-import gRPCTensorFlow
+
 
 
 //UnsafeMutablePointer<CChar>.self
@@ -23,46 +23,15 @@ import gRPCTensorFlow
 
 public final class Session {
     
-    static var pointer: OpaquePointer! = nil
-
-    // For ensuring that:
-    // - Close() blocks on all Run() calls to complete.
-    // - Close() can be called multiple times.
-    var wg:WaitGroup
-    var mu:Mutex
-    
-    public init() {
-        let options = TF_NewSessionOptions()
-        let status = TF_NewSession(options,C,C1)
-        guard TF_GetCode(status) == TF_OK else {
-            fatalError("Failed to initialize TensorFlow session.")
-        }
-    }
-    
-    deinit {
-        let status: OpaquePointer! = nil
-        TF_DeleteSession(C, status)
-//        TF_DeleteSession(C1, status)
-        guard TF_GetCode(status) == TF_OK else {
-//            fatalError("Failed to delete TensorFlow session.")
-//        }
-    }
-    
-}
-
-/*
- 
- public final class Session {
-
     var session: OpaquePointer! = nil
-
+    
     public init() {
-        let status = TF_NewSession(TF_NewSessionOptions(), session)
+        let status = TF_NewSession(TF_NewSessionOptions(), session,session)
         guard TF_GetCode(status) == TF_OK else {
             fatalError("Failed to initialize TensorFlow session.")
         }
     }
-
+    
     deinit {
         let status: OpaquePointer! = nil
         TF_DeleteSession(session, status)
@@ -70,8 +39,12 @@ public final class Session {
             fatalError("Failed to delete TensorFlow session.")
         }
     }
-
+    
 }
+
+
+/*
+ 
  
  */
 
@@ -95,7 +68,7 @@ public final class Session {
 
 
 // SessionOptions contains configuration information for a session.
-struct SessionOptions  {
+//struct SessionOptions  {
     // Target indicates the TensorFlow runtime to connect to.
     //
     // If 'target' is empty or unspecified, the local TensorFlow runtime
@@ -119,20 +92,20 @@ struct SessionOptions  {
     //
     // If the session disconnects from the remote process during its
     // lifetime, session calls may fail immediately.
-    var Target:String
+   // var Target:String
     
     // Config is a binary-serialized representation of the
     // tensorflow.ConfigProto protocol message
     // (https://www.tensorflow.org/code/tensorflow/core/protobuf/config.proto).
-    var Config:Tensorflow_ConfigProto
-}
+   // var Config:Tensorflow_ConfigProto
+//s}
 
 
 
 
 // NewSession creates a new execution session with the associated graph.
 // options may be nil to use the default options.
-func NewSession(graph:Graph, options:SessionOptions)-> (session:Session, error:Error) {
+/*func NewSession(graph:Graph, options:SessionOptions)-> (session:Session, error:Error) {
     
     
     status = newStatus()
@@ -149,7 +122,7 @@ func NewSession(graph:Graph, options:SessionOptions)-> (session:Session, error:E
     s = &Session{c: cSess}
     runtime.SetFinalizer(s, func(s *Session) { s.Close() })
     return s, nil
-}
+}*/
 /*
  
 
@@ -379,13 +352,13 @@ func (o *SessionOptions) c() (ret *TF_SessionOptions, done func(), err error) {
 
 // cRunArgs translates the arguments to Session.Run and PartialRun.Run into
 // values suitable for C library calls.
-struct cRunArgs  {
+/*struct cRunArgs  {
     var feeds:TF_Output
     var feedTensors:TF_Tensor
     var fetches:TF_Output
     var fetchTensors:TF_Tensor
     var targets:TF_Operation
-}
+}*/
 /*
 func newCRunArgs(feeds map[Output]*Tensor, fetches []Output, targets []*Operation) *cRunArgs {
     c = &cRunArgs{
