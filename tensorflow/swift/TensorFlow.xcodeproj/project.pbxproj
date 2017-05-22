@@ -135,63 +135,63 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		8378517A1ED27E8F00C7CFB8 /* PBXContainerItemProxy */ = {
+		8378518C1ED2812A00C7CFB8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = OBJ_156;
 			remoteInfo = SwiftProtobuf;
 		};
-		8378517B1ED27E8F00C7CFB8 /* PBXContainerItemProxy */ = {
+		8378518D1ED2812A00C7CFB8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = OBJ_156;
 			remoteInfo = SwiftProtobuf;
 		};
-		8378517C1ED27E8F00C7CFB8 /* PBXContainerItemProxy */ = {
+		8378518E1ED2812A00C7CFB8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = OBJ_156;
 			remoteInfo = SwiftProtobuf;
 		};
-		8378517D1ED27E8F00C7CFB8 /* PBXContainerItemProxy */ = {
+		8378518F1ED2812A00C7CFB8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = OBJ_157;
 			remoteInfo = PluginLibrary;
 		};
-		8378517E1ED27E8F00C7CFB8 /* PBXContainerItemProxy */ = {
+		837851901ED2812A00C7CFB8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = OBJ_156;
 			remoteInfo = SwiftProtobuf;
 		};
-		8378517F1ED27E8F00C7CFB8 /* PBXContainerItemProxy */ = {
+		837851911ED2812A00C7CFB8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = OBJ_157;
 			remoteInfo = PluginLibrary;
 		};
-		837851801ED27E8F00C7CFB8 /* PBXContainerItemProxy */ = {
+		837851921ED2812A00C7CFB8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = OBJ_156;
 			remoteInfo = SwiftProtobuf;
 		};
-		837851811ED27E8F00C7CFB8 /* PBXContainerItemProxy */ = {
+		837851931ED2812A00C7CFB8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = OBJ_157;
 			remoteInfo = PluginLibrary;
 		};
-		837851821ED27E8F00C7CFB8 /* PBXContainerItemProxy */ = {
+		837851941ED2812A00C7CFB8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
@@ -307,7 +307,7 @@
 		OBJ_77 /* duration.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = duration.pb.swift; sourceTree = "<group>"; };
 		OBJ_78 /* empty.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = empty.pb.swift; sourceTree = "<group>"; };
 		OBJ_79 /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
-		OBJ_8 /* settings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = settings.xcconfig; sourceTree = "<group>"; };
+		OBJ_8 /* TensorFlow.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = TensorFlow.xcconfig; sourceTree = "<group>"; };
 		OBJ_80 /* ExtensibleMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensibleMessage.swift; sourceTree = "<group>"; };
 		OBJ_81 /* ExtensionFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionFields.swift; sourceTree = "<group>"; };
 		OBJ_82 /* ExtensionFieldValueSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionFieldValueSet.swift; sourceTree = "<group>"; };
@@ -608,7 +608,7 @@
 		OBJ_7 /* Configs */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_8 /* settings.xcconfig */,
+				OBJ_8 /* TensorFlow.xcconfig */,
 			);
 			name = Configs;
 			sourceTree = "<group>";
@@ -736,12 +736,6 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 9999;
-				TargetAttributes = {
-					OBJ_291 = {
-						DevelopmentTeam = WMDZ2CQA8K;
-						ProvisioningStyle = Automatic;
-					};
-				};
 			};
 			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "TensorFlow" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -930,54 +924,54 @@
 		OBJ_155 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = OBJ_156 /* SwiftProtobuf */;
-			targetProxy = 8378517A1ED27E8F00C7CFB8 /* PBXContainerItemProxy */;
+			targetProxy = 8378518C1ED2812A00C7CFB8 /* PBXContainerItemProxy */;
 		};
 		OBJ_181 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = OBJ_156 /* SwiftProtobuf */;
-			targetProxy = 8378517B1ED27E8F00C7CFB8 /* PBXContainerItemProxy */;
+			targetProxy = 8378518D1ED2812A00C7CFB8 /* PBXContainerItemProxy */;
 		};
 		OBJ_211 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = OBJ_156 /* SwiftProtobuf */;
-			targetProxy = 8378517C1ED27E8F00C7CFB8 /* PBXContainerItemProxy */;
+			targetProxy = 8378518E1ED2812A00C7CFB8 /* PBXContainerItemProxy */;
 		};
 		OBJ_212 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = OBJ_157 /* PluginLibrary */;
-			targetProxy = 8378517D1ED27E8F00C7CFB8 /* PBXContainerItemProxy */;
+			targetProxy = 8378518F1ED2812A00C7CFB8 /* PBXContainerItemProxy */;
 		};
 		OBJ_300 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = OBJ_156 /* SwiftProtobuf */;
-			targetProxy = 8378517E1ED27E8F00C7CFB8 /* PBXContainerItemProxy */;
+			targetProxy = 837851901ED2812A00C7CFB8 /* PBXContainerItemProxy */;
 		};
 		OBJ_301 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = OBJ_157 /* PluginLibrary */;
-			targetProxy = 8378517F1ED27E8F00C7CFB8 /* PBXContainerItemProxy */;
+			targetProxy = 837851911ED2812A00C7CFB8 /* PBXContainerItemProxy */;
 		};
 		OBJ_312 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = OBJ_156 /* SwiftProtobuf */;
-			targetProxy = 837851801ED27E8F00C7CFB8 /* PBXContainerItemProxy */;
+			targetProxy = 837851921ED2812A00C7CFB8 /* PBXContainerItemProxy */;
 		};
 		OBJ_313 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = OBJ_157 /* PluginLibrary */;
-			targetProxy = 837851811ED27E8F00C7CFB8 /* PBXContainerItemProxy */;
+			targetProxy = 837851931ED2812A00C7CFB8 /* PBXContainerItemProxy */;
 		};
 		OBJ_314 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = OBJ_291 /* TensorFlow */;
-			targetProxy = 837851821ED27E8F00C7CFB8 /* PBXContainerItemProxy */;
+			targetProxy = 837851941ED2812A00C7CFB8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		OBJ_147 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = OBJ_8 /* settings.xcconfig */;
+			baseConfigurationReference = OBJ_8 /* TensorFlow.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -996,7 +990,7 @@
 		};
 		OBJ_148 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = OBJ_8 /* settings.xcconfig */;
+			baseConfigurationReference = OBJ_8 /* TensorFlow.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1015,7 +1009,7 @@
 		};
 		OBJ_159 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = OBJ_8 /* settings.xcconfig */;
+			baseConfigurationReference = OBJ_8 /* TensorFlow.xcconfig */;
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1037,7 +1031,7 @@
 		};
 		OBJ_160 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = OBJ_8 /* settings.xcconfig */;
+			baseConfigurationReference = OBJ_8 /* TensorFlow.xcconfig */;
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1059,7 +1053,7 @@
 		};
 		OBJ_184 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = OBJ_8 /* settings.xcconfig */;
+			baseConfigurationReference = OBJ_8 /* TensorFlow.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1078,7 +1072,7 @@
 		};
 		OBJ_185 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = OBJ_8 /* settings.xcconfig */;
+			baseConfigurationReference = OBJ_8 /* TensorFlow.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1097,7 +1091,7 @@
 		};
 		OBJ_214 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = OBJ_8 /* settings.xcconfig */;
+			baseConfigurationReference = OBJ_8 /* TensorFlow.xcconfig */;
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1119,7 +1113,7 @@
 		};
 		OBJ_215 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = OBJ_8 /* settings.xcconfig */;
+			baseConfigurationReference = OBJ_8 /* TensorFlow.xcconfig */;
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1141,10 +1135,9 @@
 		};
 		OBJ_293 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = OBJ_8 /* settings.xcconfig */;
+			baseConfigurationReference = OBJ_8 /* TensorFlow.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				DEVELOPMENT_TEAM = WMDZ2CQA8K;
+				CLANG_ENABLE_MODULES = YES;
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1161,7 +1154,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = TensorFlow;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				TARGET_NAME = TensorFlow;
 			};
@@ -1169,10 +1161,9 @@
 		};
 		OBJ_294 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = OBJ_8 /* settings.xcconfig */;
+			baseConfigurationReference = OBJ_8 /* TensorFlow.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				DEVELOPMENT_TEAM = WMDZ2CQA8K;
+				CLANG_ENABLE_MODULES = YES;
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1189,7 +1180,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = TensorFlow;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				TARGET_NAME = TensorFlow;
 			};
@@ -1209,10 +1199,10 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-I/usr/local/include";
 				OTHER_LDFLAGS = "-L/usr/local/lib";
-				OTHER_SWIFT_FLAGS = "-framework DEBUG -DXcode";
+				OTHER_SWIFT_FLAGS = "-DXcode";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -1222,7 +1212,7 @@
 		};
 		OBJ_304 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = OBJ_8 /* settings.xcconfig */;
+			baseConfigurationReference = OBJ_8 /* TensorFlow.xcconfig */;
 			buildSettings = {
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1243,7 +1233,7 @@
 		};
 		OBJ_305 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = OBJ_8 /* settings.xcconfig */;
+			baseConfigurationReference = OBJ_8 /* TensorFlow.xcconfig */;
 			buildSettings = {
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1272,13 +1262,12 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_OPTIMIZATION_LEVEL = s;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-I/usr/local/include";
 				OTHER_LDFLAGS = "-L/usr/local/lib";
-				OTHER_SWIFT_FLAGS = "-framework DEBUG -DXcode";
+				OTHER_SWIFT_FLAGS = "-DXcode";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;

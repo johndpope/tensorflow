@@ -20,8 +20,8 @@ $(DBGLIB): Sources/*
 # Under the heading "Apple LLVM 6.0 - Language - Modules" enable the setting "Enable Modules (C and Objective-C)". This will create the module file needed for swift to auto-generate the swift headers from C and Objective-C headers.
 # OR 
 # --xcconfig-overrides  TensorFlow.xcconfig  
-	echo -e "import CTensorFlow\n:type lookup CTensorFlow" | swift  $(SFLAGS)  
-	swift package -Xswiftc -framework -Xswiftc "DEBUG" $(SFLAGS) generate-xcodeproj --xcconfig-overrides settings.xcconfig
+	#echo -e "import CTensorFlow\n:type lookup CTensorFlow" | swift  $(SFLAGS)  
+	swift package  $(SFLAGS) generate-xcodeproj --xcconfig-overrides TensorFlow.xcconfig
 # 	xcodebuild -scheme "TensorFlow" -showBuildSettings >> TensorFlow.xcconfig
 # 
 #	swift build $(SFLAGS)
