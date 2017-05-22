@@ -4,26 +4,14 @@
     {
       "package": "CTensorFlow",
       "reason": null,
-      "repositoryURL": "https://github.com/rxwei/CTensorFlow",
+      "repositoryURL": "/Users/johndpope/Documents/tensorFlowWorkspace/CTensorFlow",
       "version": "0.0.0"
-    },
-    {
-      "package": "SwiftGRPC",
-      "reason": null,
-      "repositoryURL": "https://github.com/grpc/grpc-swift.git",
-      "version": "0.1.10"
     },
     {
       "package": "SwiftProtobuf",
       "reason": null,
       "repositoryURL": "https://github.com/apple/swift-protobuf.git",
       "version": "0.9.902"
-    },
-    {
-      "package": "gRPCTensorFlow",
-      "reason": null,
-      "repositoryURL": "https://github.com/johndpope/swift-grpc-tensorflow.git",
-      "version": "1.0.0"
     }
   ],
   "version": 1

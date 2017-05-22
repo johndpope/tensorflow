@@ -7,410 +7,402 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		OBJ_145 /* conformance.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* conformance.pb.swift */; };
-		OBJ_146 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* main.swift */; };
-		OBJ_147 /* test_messages_proto3.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* test_messages_proto3.pb.swift */; };
-		OBJ_149 /* SwiftProtobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_137 /* SwiftProtobuf.framework */; };
-		OBJ_157 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* Array+Extensions.swift */; };
-		OBJ_158 /* CodePrinter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* CodePrinter.swift */; };
-		OBJ_159 /* Descriptor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* Descriptor+Extensions.swift */; };
-		OBJ_160 /* descriptor.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* descriptor.pb.swift */; };
-		OBJ_161 /* Descriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_23 /* Descriptor.swift */; };
-		OBJ_162 /* FieldNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* FieldNumbers.swift */; };
-		OBJ_163 /* Google_Protobuf_Compiler_CodeGeneratorResponse+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* Google_Protobuf_Compiler_CodeGeneratorResponse+Extensions.swift */; };
-		OBJ_164 /* Google_Protobuf_SourceCodeInfo+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_26 /* Google_Protobuf_SourceCodeInfo+Extensions.swift */; };
-		OBJ_165 /* HashableArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_27 /* HashableArray.swift */; };
-		OBJ_166 /* NamingUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_28 /* NamingUtils.swift */; };
-		OBJ_167 /* plugin.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* plugin.pb.swift */; };
-		OBJ_168 /* ProtoLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* ProtoLanguage.swift */; };
-		OBJ_169 /* ProvidesLocationPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_31 /* ProvidesLocationPath.swift */; };
-		OBJ_170 /* ProvidesSourceCodeLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_32 /* ProvidesSourceCodeLocation.swift */; };
-		OBJ_171 /* SwiftLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_33 /* SwiftLanguage.swift */; };
-		OBJ_172 /* SwiftProtobufInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_34 /* SwiftProtobufInfo.swift */; };
-		OBJ_173 /* SwiftProtobufNamer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_35 /* SwiftProtobufNamer.swift */; };
-		OBJ_175 /* SwiftProtobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_137 /* SwiftProtobuf.framework */; };
-		OBJ_182 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_37 /* Context.swift */; };
-		OBJ_183 /* Descriptor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_38 /* Descriptor+Extensions.swift */; };
-		OBJ_184 /* EnumGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_39 /* EnumGenerator.swift */; };
-		OBJ_185 /* ExtensionGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_40 /* ExtensionGenerator.swift */; };
-		OBJ_186 /* FieldGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_41 /* FieldGenerator.swift */; };
-		OBJ_187 /* FileGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_42 /* FileGenerator.swift */; };
-		OBJ_188 /* FileIo.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_43 /* FileIo.swift */; };
-		OBJ_189 /* GenerationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_44 /* GenerationError.swift */; };
-		OBJ_190 /* GeneratorOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_45 /* GeneratorOptions.swift */; };
-		OBJ_191 /* Google_Protobuf_DescriptorProto+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_46 /* Google_Protobuf_DescriptorProto+Extensions.swift */; };
-		OBJ_192 /* Google_Protobuf_EnumDescriptorProto+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_47 /* Google_Protobuf_EnumDescriptorProto+Extensions.swift */; };
-		OBJ_193 /* Google_Protobuf_EnumValueDescriptorProto+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_48 /* Google_Protobuf_EnumValueDescriptorProto+Extensions.swift */; };
-		OBJ_194 /* Google_Protobuf_FileDescriptorProto+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_49 /* Google_Protobuf_FileDescriptorProto+Extensions.swift */; };
-		OBJ_195 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_50 /* main.swift */; };
-		OBJ_196 /* MessageFieldGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_51 /* MessageFieldGenerator.swift */; };
-		OBJ_197 /* MessageGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_52 /* MessageGenerator.swift */; };
-		OBJ_198 /* MessageStorageClassGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_53 /* MessageStorageClassGenerator.swift */; };
-		OBJ_199 /* OneofGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_54 /* OneofGenerator.swift */; };
-		OBJ_200 /* ReservedWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_55 /* ReservedWords.swift */; };
-		OBJ_201 /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_56 /* StringUtils.swift */; };
-		OBJ_202 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_57 /* Version.swift */; };
-		OBJ_204 /* SwiftProtobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_137 /* SwiftProtobuf.framework */; };
-		OBJ_205 /* PluginLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_135 /* PluginLibrary.framework */; };
-		OBJ_212 /* any.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_59 /* any.pb.swift */; };
-		OBJ_213 /* AnyMessageStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_60 /* AnyMessageStorage.swift */; };
-		OBJ_214 /* AnyUnpackError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_61 /* AnyUnpackError.swift */; };
-		OBJ_215 /* api.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_62 /* api.pb.swift */; };
-		OBJ_216 /* BinaryDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_63 /* BinaryDecoder.swift */; };
-		OBJ_217 /* BinaryDecodingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_64 /* BinaryDecodingError.swift */; };
-		OBJ_218 /* BinaryEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_65 /* BinaryEncoder.swift */; };
-		OBJ_219 /* BinaryEncodingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_66 /* BinaryEncodingError.swift */; };
-		OBJ_220 /* BinaryEncodingSizeVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_67 /* BinaryEncodingSizeVisitor.swift */; };
-		OBJ_221 /* BinaryEncodingVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_68 /* BinaryEncodingVisitor.swift */; };
-		OBJ_222 /* CustomJSONCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_69 /* CustomJSONCodable.swift */; };
-		OBJ_223 /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_70 /* Decoder.swift */; };
-		OBJ_224 /* DoubleFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_71 /* DoubleFormatter.swift */; };
-		OBJ_225 /* duration.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_72 /* duration.pb.swift */; };
-		OBJ_226 /* empty.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_73 /* empty.pb.swift */; };
-		OBJ_227 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_74 /* Enum.swift */; };
-		OBJ_228 /* ExtensibleMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_75 /* ExtensibleMessage.swift */; };
-		OBJ_229 /* ExtensionFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_76 /* ExtensionFields.swift */; };
-		OBJ_230 /* ExtensionFieldValueSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_77 /* ExtensionFieldValueSet.swift */; };
-		OBJ_231 /* ExtensionMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_78 /* ExtensionMap.swift */; };
-		OBJ_232 /* field_mask.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_79 /* field_mask.pb.swift */; };
-		OBJ_233 /* FieldTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_80 /* FieldTag.swift */; };
-		OBJ_234 /* FieldTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_81 /* FieldTypes.swift */; };
-		OBJ_235 /* Google_Protobuf_Any+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_82 /* Google_Protobuf_Any+Extensions.swift */; };
-		OBJ_236 /* Google_Protobuf_Any+Registry.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_83 /* Google_Protobuf_Any+Registry.swift */; };
-		OBJ_237 /* Google_Protobuf_Duration+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_84 /* Google_Protobuf_Duration+Extensions.swift */; };
-		OBJ_238 /* Google_Protobuf_FieldMask+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_85 /* Google_Protobuf_FieldMask+Extensions.swift */; };
-		OBJ_239 /* Google_Protobuf_ListValue+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_86 /* Google_Protobuf_ListValue+Extensions.swift */; };
-		OBJ_240 /* Google_Protobuf_Struct+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_87 /* Google_Protobuf_Struct+Extensions.swift */; };
-		OBJ_241 /* Google_Protobuf_Timestamp+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_88 /* Google_Protobuf_Timestamp+Extensions.swift */; };
-		OBJ_242 /* Google_Protobuf_Value+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_89 /* Google_Protobuf_Value+Extensions.swift */; };
-		OBJ_243 /* Google_Protobuf_Wrappers+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_90 /* Google_Protobuf_Wrappers+Extensions.swift */; };
-		OBJ_244 /* HashVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_91 /* HashVisitor.swift */; };
-		OBJ_245 /* Internal.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_92 /* Internal.swift */; };
-		OBJ_246 /* JSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_93 /* JSONDecoder.swift */; };
-		OBJ_247 /* JSONDecodingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_94 /* JSONDecodingError.swift */; };
-		OBJ_248 /* JSONEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_95 /* JSONEncoder.swift */; };
-		OBJ_249 /* JSONEncodingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_96 /* JSONEncodingError.swift */; };
-		OBJ_250 /* JSONEncodingVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_97 /* JSONEncodingVisitor.swift */; };
-		OBJ_251 /* JSONIntegerConverting.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_98 /* JSONIntegerConverting.swift */; };
-		OBJ_252 /* JSONMapEncodingVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_99 /* JSONMapEncodingVisitor.swift */; };
-		OBJ_253 /* JSONScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_100 /* JSONScanner.swift */; };
-		OBJ_254 /* MathUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_101 /* MathUtils.swift */; };
-		OBJ_255 /* Message+AnyAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_102 /* Message+AnyAdditions.swift */; };
-		OBJ_256 /* Message+BinaryAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_103 /* Message+BinaryAdditions.swift */; };
-		OBJ_257 /* Message+JSONAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_104 /* Message+JSONAdditions.swift */; };
-		OBJ_258 /* Message+JSONArrayAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_105 /* Message+JSONArrayAdditions.swift */; };
-		OBJ_259 /* Message+TextFormatAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_106 /* Message+TextFormatAdditions.swift */; };
-		OBJ_260 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_107 /* Message.swift */; };
-		OBJ_261 /* MessageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_108 /* MessageExtension.swift */; };
-		OBJ_262 /* NameMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_109 /* NameMap.swift */; };
-		OBJ_263 /* ProtobufAPIVersionCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_110 /* ProtobufAPIVersionCheck.swift */; };
-		OBJ_264 /* ProtobufMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_111 /* ProtobufMap.swift */; };
-		OBJ_265 /* ProtoNameProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_112 /* ProtoNameProviding.swift */; };
-		OBJ_266 /* SimpleExtensionMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_113 /* SimpleExtensionMap.swift */; };
-		OBJ_267 /* source_context.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_114 /* source_context.pb.swift */; };
-		OBJ_268 /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_115 /* StringUtils.swift */; };
-		OBJ_269 /* struct.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_116 /* struct.pb.swift */; };
-		OBJ_270 /* TextFormatDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_117 /* TextFormatDecoder.swift */; };
-		OBJ_271 /* TextFormatDecodingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_118 /* TextFormatDecodingError.swift */; };
-		OBJ_272 /* TextFormatEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_119 /* TextFormatEncoder.swift */; };
-		OBJ_273 /* TextFormatEncodingVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_120 /* TextFormatEncodingVisitor.swift */; };
-		OBJ_274 /* TextFormatScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_121 /* TextFormatScanner.swift */; };
-		OBJ_275 /* timestamp.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_122 /* timestamp.pb.swift */; };
-		OBJ_276 /* TimeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_123 /* TimeUtils.swift */; };
-		OBJ_277 /* type.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_124 /* type.pb.swift */; };
-		OBJ_278 /* UnknownStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_125 /* UnknownStorage.swift */; };
-		OBJ_279 /* Varint.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_126 /* Varint.swift */; };
-		OBJ_280 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_127 /* Version.swift */; };
-		OBJ_281 /* Visitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_128 /* Visitor.swift */; };
-		OBJ_282 /* WireFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_129 /* WireFormat.swift */; };
-		OBJ_283 /* wrappers.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_130 /* wrappers.pb.swift */; };
-		OBJ_284 /* ZigZag.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_131 /* ZigZag.swift */; };
-		OBJ_291 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_8 /* Session.swift */; };
-		OBJ_293 /* SwiftProtobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_137 /* SwiftProtobuf.framework */; };
-		OBJ_294 /* PluginLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_135 /* PluginLibrary.framework */; };
-		OBJ_302 /* TensorFlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* TensorFlowTests.swift */; };
-		OBJ_304 /* SwiftProtobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_137 /* SwiftProtobuf.framework */; };
-		OBJ_305 /* PluginLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_135 /* PluginLibrary.framework */; };
-		OBJ_306 /* TensorFlow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_138 /* TensorFlow.framework */; };
+		OBJ_150 /* conformance.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* conformance.pb.swift */; };
+		OBJ_151 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* main.swift */; };
+		OBJ_152 /* test_messages_proto3.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* test_messages_proto3.pb.swift */; };
+		OBJ_154 /* SwiftProtobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_142 /* SwiftProtobuf.framework */; };
+		OBJ_162 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* Array+Extensions.swift */; };
+		OBJ_163 /* CodePrinter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* CodePrinter.swift */; };
+		OBJ_164 /* Descriptor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_26 /* Descriptor+Extensions.swift */; };
+		OBJ_165 /* descriptor.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_27 /* descriptor.pb.swift */; };
+		OBJ_166 /* Descriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_28 /* Descriptor.swift */; };
+		OBJ_167 /* FieldNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* FieldNumbers.swift */; };
+		OBJ_168 /* Google_Protobuf_Compiler_CodeGeneratorResponse+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* Google_Protobuf_Compiler_CodeGeneratorResponse+Extensions.swift */; };
+		OBJ_169 /* Google_Protobuf_SourceCodeInfo+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_31 /* Google_Protobuf_SourceCodeInfo+Extensions.swift */; };
+		OBJ_170 /* HashableArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_32 /* HashableArray.swift */; };
+		OBJ_171 /* NamingUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_33 /* NamingUtils.swift */; };
+		OBJ_172 /* plugin.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_34 /* plugin.pb.swift */; };
+		OBJ_173 /* ProtoLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_35 /* ProtoLanguage.swift */; };
+		OBJ_174 /* ProvidesLocationPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_36 /* ProvidesLocationPath.swift */; };
+		OBJ_175 /* ProvidesSourceCodeLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_37 /* ProvidesSourceCodeLocation.swift */; };
+		OBJ_176 /* SwiftLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_38 /* SwiftLanguage.swift */; };
+		OBJ_177 /* SwiftProtobufInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_39 /* SwiftProtobufInfo.swift */; };
+		OBJ_178 /* SwiftProtobufNamer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_40 /* SwiftProtobufNamer.swift */; };
+		OBJ_180 /* SwiftProtobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_142 /* SwiftProtobuf.framework */; };
+		OBJ_187 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_42 /* Context.swift */; };
+		OBJ_188 /* Descriptor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_43 /* Descriptor+Extensions.swift */; };
+		OBJ_189 /* EnumGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_44 /* EnumGenerator.swift */; };
+		OBJ_190 /* ExtensionGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_45 /* ExtensionGenerator.swift */; };
+		OBJ_191 /* FieldGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_46 /* FieldGenerator.swift */; };
+		OBJ_192 /* FileGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_47 /* FileGenerator.swift */; };
+		OBJ_193 /* FileIo.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_48 /* FileIo.swift */; };
+		OBJ_194 /* GenerationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_49 /* GenerationError.swift */; };
+		OBJ_195 /* GeneratorOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_50 /* GeneratorOptions.swift */; };
+		OBJ_196 /* Google_Protobuf_DescriptorProto+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_51 /* Google_Protobuf_DescriptorProto+Extensions.swift */; };
+		OBJ_197 /* Google_Protobuf_EnumDescriptorProto+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_52 /* Google_Protobuf_EnumDescriptorProto+Extensions.swift */; };
+		OBJ_198 /* Google_Protobuf_EnumValueDescriptorProto+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_53 /* Google_Protobuf_EnumValueDescriptorProto+Extensions.swift */; };
+		OBJ_199 /* Google_Protobuf_FileDescriptorProto+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_54 /* Google_Protobuf_FileDescriptorProto+Extensions.swift */; };
+		OBJ_200 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_55 /* main.swift */; };
+		OBJ_201 /* MessageFieldGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_56 /* MessageFieldGenerator.swift */; };
+		OBJ_202 /* MessageGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_57 /* MessageGenerator.swift */; };
+		OBJ_203 /* MessageStorageClassGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_58 /* MessageStorageClassGenerator.swift */; };
+		OBJ_204 /* OneofGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_59 /* OneofGenerator.swift */; };
+		OBJ_205 /* ReservedWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_60 /* ReservedWords.swift */; };
+		OBJ_206 /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_61 /* StringUtils.swift */; };
+		OBJ_207 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_62 /* Version.swift */; };
+		OBJ_209 /* SwiftProtobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_142 /* SwiftProtobuf.framework */; };
+		OBJ_210 /* PluginLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_140 /* PluginLibrary.framework */; };
+		OBJ_217 /* any.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_64 /* any.pb.swift */; };
+		OBJ_218 /* AnyMessageStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_65 /* AnyMessageStorage.swift */; };
+		OBJ_219 /* AnyUnpackError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_66 /* AnyUnpackError.swift */; };
+		OBJ_220 /* api.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_67 /* api.pb.swift */; };
+		OBJ_221 /* BinaryDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_68 /* BinaryDecoder.swift */; };
+		OBJ_222 /* BinaryDecodingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_69 /* BinaryDecodingError.swift */; };
+		OBJ_223 /* BinaryEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_70 /* BinaryEncoder.swift */; };
+		OBJ_224 /* BinaryEncodingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_71 /* BinaryEncodingError.swift */; };
+		OBJ_225 /* BinaryEncodingSizeVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_72 /* BinaryEncodingSizeVisitor.swift */; };
+		OBJ_226 /* BinaryEncodingVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_73 /* BinaryEncodingVisitor.swift */; };
+		OBJ_227 /* CustomJSONCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_74 /* CustomJSONCodable.swift */; };
+		OBJ_228 /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_75 /* Decoder.swift */; };
+		OBJ_229 /* DoubleFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_76 /* DoubleFormatter.swift */; };
+		OBJ_230 /* duration.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_77 /* duration.pb.swift */; };
+		OBJ_231 /* empty.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_78 /* empty.pb.swift */; };
+		OBJ_232 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_79 /* Enum.swift */; };
+		OBJ_233 /* ExtensibleMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_80 /* ExtensibleMessage.swift */; };
+		OBJ_234 /* ExtensionFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_81 /* ExtensionFields.swift */; };
+		OBJ_235 /* ExtensionFieldValueSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_82 /* ExtensionFieldValueSet.swift */; };
+		OBJ_236 /* ExtensionMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_83 /* ExtensionMap.swift */; };
+		OBJ_237 /* field_mask.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_84 /* field_mask.pb.swift */; };
+		OBJ_238 /* FieldTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_85 /* FieldTag.swift */; };
+		OBJ_239 /* FieldTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_86 /* FieldTypes.swift */; };
+		OBJ_240 /* Google_Protobuf_Any+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_87 /* Google_Protobuf_Any+Extensions.swift */; };
+		OBJ_241 /* Google_Protobuf_Any+Registry.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_88 /* Google_Protobuf_Any+Registry.swift */; };
+		OBJ_242 /* Google_Protobuf_Duration+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_89 /* Google_Protobuf_Duration+Extensions.swift */; };
+		OBJ_243 /* Google_Protobuf_FieldMask+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_90 /* Google_Protobuf_FieldMask+Extensions.swift */; };
+		OBJ_244 /* Google_Protobuf_ListValue+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_91 /* Google_Protobuf_ListValue+Extensions.swift */; };
+		OBJ_245 /* Google_Protobuf_Struct+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_92 /* Google_Protobuf_Struct+Extensions.swift */; };
+		OBJ_246 /* Google_Protobuf_Timestamp+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_93 /* Google_Protobuf_Timestamp+Extensions.swift */; };
+		OBJ_247 /* Google_Protobuf_Value+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_94 /* Google_Protobuf_Value+Extensions.swift */; };
+		OBJ_248 /* Google_Protobuf_Wrappers+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_95 /* Google_Protobuf_Wrappers+Extensions.swift */; };
+		OBJ_249 /* HashVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_96 /* HashVisitor.swift */; };
+		OBJ_250 /* Internal.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_97 /* Internal.swift */; };
+		OBJ_251 /* JSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_98 /* JSONDecoder.swift */; };
+		OBJ_252 /* JSONDecodingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_99 /* JSONDecodingError.swift */; };
+		OBJ_253 /* JSONEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_100 /* JSONEncoder.swift */; };
+		OBJ_254 /* JSONEncodingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_101 /* JSONEncodingError.swift */; };
+		OBJ_255 /* JSONEncodingVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_102 /* JSONEncodingVisitor.swift */; };
+		OBJ_256 /* JSONIntegerConverting.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_103 /* JSONIntegerConverting.swift */; };
+		OBJ_257 /* JSONMapEncodingVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_104 /* JSONMapEncodingVisitor.swift */; };
+		OBJ_258 /* JSONScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_105 /* JSONScanner.swift */; };
+		OBJ_259 /* MathUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_106 /* MathUtils.swift */; };
+		OBJ_260 /* Message+AnyAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_107 /* Message+AnyAdditions.swift */; };
+		OBJ_261 /* Message+BinaryAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_108 /* Message+BinaryAdditions.swift */; };
+		OBJ_262 /* Message+JSONAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_109 /* Message+JSONAdditions.swift */; };
+		OBJ_263 /* Message+JSONArrayAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_110 /* Message+JSONArrayAdditions.swift */; };
+		OBJ_264 /* Message+TextFormatAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_111 /* Message+TextFormatAdditions.swift */; };
+		OBJ_265 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_112 /* Message.swift */; };
+		OBJ_266 /* MessageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_113 /* MessageExtension.swift */; };
+		OBJ_267 /* NameMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_114 /* NameMap.swift */; };
+		OBJ_268 /* ProtobufAPIVersionCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_115 /* ProtobufAPIVersionCheck.swift */; };
+		OBJ_269 /* ProtobufMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_116 /* ProtobufMap.swift */; };
+		OBJ_270 /* ProtoNameProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_117 /* ProtoNameProviding.swift */; };
+		OBJ_271 /* SimpleExtensionMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_118 /* SimpleExtensionMap.swift */; };
+		OBJ_272 /* source_context.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_119 /* source_context.pb.swift */; };
+		OBJ_273 /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_120 /* StringUtils.swift */; };
+		OBJ_274 /* struct.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_121 /* struct.pb.swift */; };
+		OBJ_275 /* TextFormatDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_122 /* TextFormatDecoder.swift */; };
+		OBJ_276 /* TextFormatDecodingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_123 /* TextFormatDecodingError.swift */; };
+		OBJ_277 /* TextFormatEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_124 /* TextFormatEncoder.swift */; };
+		OBJ_278 /* TextFormatEncodingVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_125 /* TextFormatEncodingVisitor.swift */; };
+		OBJ_279 /* TextFormatScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_126 /* TextFormatScanner.swift */; };
+		OBJ_280 /* timestamp.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_127 /* timestamp.pb.swift */; };
+		OBJ_281 /* TimeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_128 /* TimeUtils.swift */; };
+		OBJ_282 /* type.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_129 /* type.pb.swift */; };
+		OBJ_283 /* UnknownStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_130 /* UnknownStorage.swift */; };
+		OBJ_284 /* Varint.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_131 /* Varint.swift */; };
+		OBJ_285 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_132 /* Version.swift */; };
+		OBJ_286 /* Visitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_133 /* Visitor.swift */; };
+		OBJ_287 /* WireFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_134 /* WireFormat.swift */; };
+		OBJ_288 /* wrappers.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_135 /* wrappers.pb.swift */; };
+		OBJ_289 /* ZigZag.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_136 /* ZigZag.swift */; };
+		OBJ_296 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* Session.swift */; };
+		OBJ_298 /* SwiftProtobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_142 /* SwiftProtobuf.framework */; };
+		OBJ_299 /* PluginLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_140 /* PluginLibrary.framework */; };
+		OBJ_307 /* TensorFlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* TensorFlowTests.swift */; };
+		OBJ_309 /* SwiftProtobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_142 /* SwiftProtobuf.framework */; };
+		OBJ_310 /* PluginLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_140 /* PluginLibrary.framework */; };
+		OBJ_311 /* TensorFlow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_143 /* TensorFlow.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		837850D01ED1D04E00C7CFB8 /* PBXContainerItemProxy */ = {
+		8378517A1ED27E8F00C7CFB8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = OBJ_151;
+			remoteGlobalIDString = OBJ_156;
 			remoteInfo = SwiftProtobuf;
 		};
-		837850D11ED1D04E00C7CFB8 /* PBXContainerItemProxy */ = {
+		8378517B1ED27E8F00C7CFB8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = OBJ_151;
+			remoteGlobalIDString = OBJ_156;
 			remoteInfo = SwiftProtobuf;
 		};
-		837850D21ED1D04E00C7CFB8 /* PBXContainerItemProxy */ = {
+		8378517C1ED27E8F00C7CFB8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = OBJ_151;
+			remoteGlobalIDString = OBJ_156;
 			remoteInfo = SwiftProtobuf;
 		};
-		837850D31ED1D04E00C7CFB8 /* PBXContainerItemProxy */ = {
+		8378517D1ED27E8F00C7CFB8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = OBJ_152;
+			remoteGlobalIDString = OBJ_157;
 			remoteInfo = PluginLibrary;
 		};
-		837850D41ED1D04E00C7CFB8 /* PBXContainerItemProxy */ = {
+		8378517E1ED27E8F00C7CFB8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = OBJ_151;
+			remoteGlobalIDString = OBJ_156;
 			remoteInfo = SwiftProtobuf;
 		};
-		837850D51ED1D04E00C7CFB8 /* PBXContainerItemProxy */ = {
+		8378517F1ED27E8F00C7CFB8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = OBJ_152;
+			remoteGlobalIDString = OBJ_157;
 			remoteInfo = PluginLibrary;
 		};
-		837850D61ED1D04E00C7CFB8 /* PBXContainerItemProxy */ = {
+		837851801ED27E8F00C7CFB8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = OBJ_151;
+			remoteGlobalIDString = OBJ_156;
 			remoteInfo = SwiftProtobuf;
 		};
-		837850D71ED1D04E00C7CFB8 /* PBXContainerItemProxy */ = {
+		837851811ED27E8F00C7CFB8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = OBJ_152;
+			remoteGlobalIDString = OBJ_157;
 			remoteInfo = PluginLibrary;
 		};
-		837850D81ED1D04E00C7CFB8 /* PBXContainerItemProxy */ = {
+		837851821ED27E8F00C7CFB8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = OBJ_286;
+			remoteGlobalIDString = OBJ_291;
 			remoteInfo = TensorFlow;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		OBJ_100 /* JSONScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONScanner.swift; sourceTree = "<group>"; };
-		OBJ_101 /* MathUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathUtils.swift; sourceTree = "<group>"; };
-		OBJ_102 /* Message+AnyAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+AnyAdditions.swift"; sourceTree = "<group>"; };
-		OBJ_103 /* Message+BinaryAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+BinaryAdditions.swift"; sourceTree = "<group>"; };
-		OBJ_104 /* Message+JSONAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+JSONAdditions.swift"; sourceTree = "<group>"; };
-		OBJ_105 /* Message+JSONArrayAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+JSONArrayAdditions.swift"; sourceTree = "<group>"; };
-		OBJ_106 /* Message+TextFormatAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+TextFormatAdditions.swift"; sourceTree = "<group>"; };
-		OBJ_107 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		OBJ_108 /* MessageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageExtension.swift; sourceTree = "<group>"; };
-		OBJ_109 /* NameMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameMap.swift; sourceTree = "<group>"; };
-		OBJ_11 /* TensorFlowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TensorFlowTests.swift; sourceTree = "<group>"; };
-		OBJ_110 /* ProtobufAPIVersionCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtobufAPIVersionCheck.swift; sourceTree = "<group>"; };
-		OBJ_111 /* ProtobufMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtobufMap.swift; sourceTree = "<group>"; };
-		OBJ_112 /* ProtoNameProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtoNameProviding.swift; sourceTree = "<group>"; };
-		OBJ_113 /* SimpleExtensionMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleExtensionMap.swift; sourceTree = "<group>"; };
-		OBJ_114 /* source_context.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = source_context.pb.swift; sourceTree = "<group>"; };
-		OBJ_115 /* StringUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
-		OBJ_116 /* struct.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = struct.pb.swift; sourceTree = "<group>"; };
-		OBJ_117 /* TextFormatDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFormatDecoder.swift; sourceTree = "<group>"; };
-		OBJ_118 /* TextFormatDecodingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFormatDecodingError.swift; sourceTree = "<group>"; };
-		OBJ_119 /* TextFormatEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFormatEncoder.swift; sourceTree = "<group>"; };
-		OBJ_120 /* TextFormatEncodingVisitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFormatEncodingVisitor.swift; sourceTree = "<group>"; };
-		OBJ_121 /* TextFormatScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFormatScanner.swift; sourceTree = "<group>"; };
-		OBJ_122 /* timestamp.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = timestamp.pb.swift; sourceTree = "<group>"; };
-		OBJ_123 /* TimeUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeUtils.swift; sourceTree = "<group>"; };
-		OBJ_124 /* type.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = type.pb.swift; sourceTree = "<group>"; };
-		OBJ_125 /* UnknownStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnknownStorage.swift; sourceTree = "<group>"; };
-		OBJ_126 /* Varint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Varint.swift; sourceTree = "<group>"; };
-		OBJ_127 /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
-		OBJ_128 /* Visitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Visitor.swift; sourceTree = "<group>"; };
-		OBJ_129 /* WireFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WireFormat.swift; sourceTree = "<group>"; };
-		OBJ_130 /* wrappers.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wrappers.pb.swift; sourceTree = "<group>"; };
-		OBJ_131 /* ZigZag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZigZag.swift; sourceTree = "<group>"; };
-		OBJ_134 /* Conformance */ = {isa = PBXFileReference; lastKnownFileType = text; path = Conformance; sourceTree = BUILT_PRODUCTS_DIR; };
-		OBJ_135 /* PluginLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PluginLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		OBJ_136 /* protoc-gen-swift */ = {isa = PBXFileReference; lastKnownFileType = text; path = "protoc-gen-swift"; sourceTree = BUILT_PRODUCTS_DIR; };
-		OBJ_137 /* SwiftProtobuf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftProtobuf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		OBJ_138 /* TensorFlow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TensorFlow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		OBJ_139 /* TensorFlowTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = TensorFlowTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		OBJ_15 /* conformance.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = conformance.pb.swift; sourceTree = "<group>"; };
-		OBJ_16 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		OBJ_17 /* test_messages_proto3.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test_messages_proto3.pb.swift; sourceTree = "<group>"; };
-		OBJ_19 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
-		OBJ_20 /* CodePrinter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodePrinter.swift; sourceTree = "<group>"; };
-		OBJ_21 /* Descriptor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Descriptor+Extensions.swift"; sourceTree = "<group>"; };
-		OBJ_22 /* descriptor.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = descriptor.pb.swift; sourceTree = "<group>"; };
-		OBJ_23 /* Descriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Descriptor.swift; sourceTree = "<group>"; };
-		OBJ_24 /* FieldNumbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldNumbers.swift; sourceTree = "<group>"; };
-		OBJ_25 /* Google_Protobuf_Compiler_CodeGeneratorResponse+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Google_Protobuf_Compiler_CodeGeneratorResponse+Extensions.swift"; sourceTree = "<group>"; };
-		OBJ_26 /* Google_Protobuf_SourceCodeInfo+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Google_Protobuf_SourceCodeInfo+Extensions.swift"; sourceTree = "<group>"; };
-		OBJ_27 /* HashableArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashableArray.swift; sourceTree = "<group>"; };
-		OBJ_28 /* NamingUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamingUtils.swift; sourceTree = "<group>"; };
-		OBJ_29 /* plugin.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = plugin.pb.swift; sourceTree = "<group>"; };
-		OBJ_30 /* ProtoLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtoLanguage.swift; sourceTree = "<group>"; };
-		OBJ_31 /* ProvidesLocationPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProvidesLocationPath.swift; sourceTree = "<group>"; };
-		OBJ_32 /* ProvidesSourceCodeLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProvidesSourceCodeLocation.swift; sourceTree = "<group>"; };
-		OBJ_33 /* SwiftLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftLanguage.swift; sourceTree = "<group>"; };
-		OBJ_34 /* SwiftProtobufInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftProtobufInfo.swift; sourceTree = "<group>"; };
-		OBJ_35 /* SwiftProtobufNamer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftProtobufNamer.swift; sourceTree = "<group>"; };
-		OBJ_37 /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
-		OBJ_38 /* Descriptor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Descriptor+Extensions.swift"; sourceTree = "<group>"; };
-		OBJ_39 /* EnumGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumGenerator.swift; sourceTree = "<group>"; };
-		OBJ_40 /* ExtensionGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionGenerator.swift; sourceTree = "<group>"; };
-		OBJ_41 /* FieldGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldGenerator.swift; sourceTree = "<group>"; };
-		OBJ_42 /* FileGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileGenerator.swift; sourceTree = "<group>"; };
-		OBJ_43 /* FileIo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileIo.swift; sourceTree = "<group>"; };
-		OBJ_44 /* GenerationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationError.swift; sourceTree = "<group>"; };
-		OBJ_45 /* GeneratorOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratorOptions.swift; sourceTree = "<group>"; };
-		OBJ_46 /* Google_Protobuf_DescriptorProto+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Google_Protobuf_DescriptorProto+Extensions.swift"; sourceTree = "<group>"; };
-		OBJ_47 /* Google_Protobuf_EnumDescriptorProto+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Google_Protobuf_EnumDescriptorProto+Extensions.swift"; sourceTree = "<group>"; };
-		OBJ_48 /* Google_Protobuf_EnumValueDescriptorProto+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Google_Protobuf_EnumValueDescriptorProto+Extensions.swift"; sourceTree = "<group>"; };
-		OBJ_49 /* Google_Protobuf_FileDescriptorProto+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Google_Protobuf_FileDescriptorProto+Extensions.swift"; sourceTree = "<group>"; };
-		OBJ_50 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		OBJ_51 /* MessageFieldGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFieldGenerator.swift; sourceTree = "<group>"; };
-		OBJ_52 /* MessageGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageGenerator.swift; sourceTree = "<group>"; };
-		OBJ_53 /* MessageStorageClassGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageStorageClassGenerator.swift; sourceTree = "<group>"; };
-		OBJ_54 /* OneofGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneofGenerator.swift; sourceTree = "<group>"; };
-		OBJ_55 /* ReservedWords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservedWords.swift; sourceTree = "<group>"; };
-		OBJ_56 /* StringUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
-		OBJ_57 /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
-		OBJ_59 /* any.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = any.pb.swift; sourceTree = "<group>"; };
+		OBJ_10 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		OBJ_100 /* JSONEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONEncoder.swift; sourceTree = "<group>"; };
+		OBJ_101 /* JSONEncodingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONEncodingError.swift; sourceTree = "<group>"; };
+		OBJ_102 /* JSONEncodingVisitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONEncodingVisitor.swift; sourceTree = "<group>"; };
+		OBJ_103 /* JSONIntegerConverting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONIntegerConverting.swift; sourceTree = "<group>"; };
+		OBJ_104 /* JSONMapEncodingVisitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONMapEncodingVisitor.swift; sourceTree = "<group>"; };
+		OBJ_105 /* JSONScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONScanner.swift; sourceTree = "<group>"; };
+		OBJ_106 /* MathUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathUtils.swift; sourceTree = "<group>"; };
+		OBJ_107 /* Message+AnyAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+AnyAdditions.swift"; sourceTree = "<group>"; };
+		OBJ_108 /* Message+BinaryAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+BinaryAdditions.swift"; sourceTree = "<group>"; };
+		OBJ_109 /* Message+JSONAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+JSONAdditions.swift"; sourceTree = "<group>"; };
+		OBJ_110 /* Message+JSONArrayAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+JSONArrayAdditions.swift"; sourceTree = "<group>"; };
+		OBJ_111 /* Message+TextFormatAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+TextFormatAdditions.swift"; sourceTree = "<group>"; };
+		OBJ_112 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		OBJ_113 /* MessageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageExtension.swift; sourceTree = "<group>"; };
+		OBJ_114 /* NameMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameMap.swift; sourceTree = "<group>"; };
+		OBJ_115 /* ProtobufAPIVersionCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtobufAPIVersionCheck.swift; sourceTree = "<group>"; };
+		OBJ_116 /* ProtobufMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtobufMap.swift; sourceTree = "<group>"; };
+		OBJ_117 /* ProtoNameProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtoNameProviding.swift; sourceTree = "<group>"; };
+		OBJ_118 /* SimpleExtensionMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleExtensionMap.swift; sourceTree = "<group>"; };
+		OBJ_119 /* source_context.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = source_context.pb.swift; sourceTree = "<group>"; };
+		OBJ_120 /* StringUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
+		OBJ_121 /* struct.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = struct.pb.swift; sourceTree = "<group>"; };
+		OBJ_122 /* TextFormatDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFormatDecoder.swift; sourceTree = "<group>"; };
+		OBJ_123 /* TextFormatDecodingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFormatDecodingError.swift; sourceTree = "<group>"; };
+		OBJ_124 /* TextFormatEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFormatEncoder.swift; sourceTree = "<group>"; };
+		OBJ_125 /* TextFormatEncodingVisitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFormatEncodingVisitor.swift; sourceTree = "<group>"; };
+		OBJ_126 /* TextFormatScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFormatScanner.swift; sourceTree = "<group>"; };
+		OBJ_127 /* timestamp.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = timestamp.pb.swift; sourceTree = "<group>"; };
+		OBJ_128 /* TimeUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeUtils.swift; sourceTree = "<group>"; };
+		OBJ_129 /* type.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = type.pb.swift; sourceTree = "<group>"; };
+		OBJ_13 /* TensorFlowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TensorFlowTests.swift; sourceTree = "<group>"; };
+		OBJ_130 /* UnknownStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnknownStorage.swift; sourceTree = "<group>"; };
+		OBJ_131 /* Varint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Varint.swift; sourceTree = "<group>"; };
+		OBJ_132 /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
+		OBJ_133 /* Visitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Visitor.swift; sourceTree = "<group>"; };
+		OBJ_134 /* WireFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WireFormat.swift; sourceTree = "<group>"; };
+		OBJ_135 /* wrappers.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wrappers.pb.swift; sourceTree = "<group>"; };
+		OBJ_136 /* ZigZag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZigZag.swift; sourceTree = "<group>"; };
+		OBJ_139 /* Conformance */ = {isa = PBXFileReference; lastKnownFileType = text; path = Conformance; sourceTree = BUILT_PRODUCTS_DIR; };
+		OBJ_14 /* misc */ = {isa = PBXFileReference; lastKnownFileType = folder; path = misc; sourceTree = SOURCE_ROOT; };
+		OBJ_140 /* PluginLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PluginLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		OBJ_141 /* protoc-gen-swift */ = {isa = PBXFileReference; lastKnownFileType = text; path = "protoc-gen-swift"; sourceTree = BUILT_PRODUCTS_DIR; };
+		OBJ_142 /* SwiftProtobuf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftProtobuf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		OBJ_143 /* TensorFlow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TensorFlow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		OBJ_144 /* TensorFlowTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = TensorFlowTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		OBJ_15 /* TensorFlow.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TensorFlow.framework; sourceTree = SOURCE_ROOT; };
+		OBJ_16 /* test */ = {isa = PBXFileReference; lastKnownFileType = folder; path = test; sourceTree = SOURCE_ROOT; };
+		OBJ_20 /* conformance.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = conformance.pb.swift; sourceTree = "<group>"; };
+		OBJ_21 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		OBJ_22 /* test_messages_proto3.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test_messages_proto3.pb.swift; sourceTree = "<group>"; };
+		OBJ_24 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		OBJ_25 /* CodePrinter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodePrinter.swift; sourceTree = "<group>"; };
+		OBJ_26 /* Descriptor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Descriptor+Extensions.swift"; sourceTree = "<group>"; };
+		OBJ_27 /* descriptor.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = descriptor.pb.swift; sourceTree = "<group>"; };
+		OBJ_28 /* Descriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Descriptor.swift; sourceTree = "<group>"; };
+		OBJ_29 /* FieldNumbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldNumbers.swift; sourceTree = "<group>"; };
+		OBJ_30 /* Google_Protobuf_Compiler_CodeGeneratorResponse+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Google_Protobuf_Compiler_CodeGeneratorResponse+Extensions.swift"; sourceTree = "<group>"; };
+		OBJ_31 /* Google_Protobuf_SourceCodeInfo+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Google_Protobuf_SourceCodeInfo+Extensions.swift"; sourceTree = "<group>"; };
+		OBJ_32 /* HashableArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashableArray.swift; sourceTree = "<group>"; };
+		OBJ_33 /* NamingUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamingUtils.swift; sourceTree = "<group>"; };
+		OBJ_34 /* plugin.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = plugin.pb.swift; sourceTree = "<group>"; };
+		OBJ_35 /* ProtoLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtoLanguage.swift; sourceTree = "<group>"; };
+		OBJ_36 /* ProvidesLocationPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProvidesLocationPath.swift; sourceTree = "<group>"; };
+		OBJ_37 /* ProvidesSourceCodeLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProvidesSourceCodeLocation.swift; sourceTree = "<group>"; };
+		OBJ_38 /* SwiftLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftLanguage.swift; sourceTree = "<group>"; };
+		OBJ_39 /* SwiftProtobufInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftProtobufInfo.swift; sourceTree = "<group>"; };
+		OBJ_40 /* SwiftProtobufNamer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftProtobufNamer.swift; sourceTree = "<group>"; };
+		OBJ_42 /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
+		OBJ_43 /* Descriptor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Descriptor+Extensions.swift"; sourceTree = "<group>"; };
+		OBJ_44 /* EnumGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumGenerator.swift; sourceTree = "<group>"; };
+		OBJ_45 /* ExtensionGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionGenerator.swift; sourceTree = "<group>"; };
+		OBJ_46 /* FieldGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldGenerator.swift; sourceTree = "<group>"; };
+		OBJ_47 /* FileGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileGenerator.swift; sourceTree = "<group>"; };
+		OBJ_48 /* FileIo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileIo.swift; sourceTree = "<group>"; };
+		OBJ_49 /* GenerationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationError.swift; sourceTree = "<group>"; };
+		OBJ_50 /* GeneratorOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratorOptions.swift; sourceTree = "<group>"; };
+		OBJ_51 /* Google_Protobuf_DescriptorProto+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Google_Protobuf_DescriptorProto+Extensions.swift"; sourceTree = "<group>"; };
+		OBJ_52 /* Google_Protobuf_EnumDescriptorProto+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Google_Protobuf_EnumDescriptorProto+Extensions.swift"; sourceTree = "<group>"; };
+		OBJ_53 /* Google_Protobuf_EnumValueDescriptorProto+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Google_Protobuf_EnumValueDescriptorProto+Extensions.swift"; sourceTree = "<group>"; };
+		OBJ_54 /* Google_Protobuf_FileDescriptorProto+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Google_Protobuf_FileDescriptorProto+Extensions.swift"; sourceTree = "<group>"; };
+		OBJ_55 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		OBJ_56 /* MessageFieldGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFieldGenerator.swift; sourceTree = "<group>"; };
+		OBJ_57 /* MessageGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageGenerator.swift; sourceTree = "<group>"; };
+		OBJ_58 /* MessageStorageClassGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageStorageClassGenerator.swift; sourceTree = "<group>"; };
+		OBJ_59 /* OneofGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneofGenerator.swift; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		OBJ_60 /* AnyMessageStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyMessageStorage.swift; sourceTree = "<group>"; };
-		OBJ_61 /* AnyUnpackError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyUnpackError.swift; sourceTree = "<group>"; };
-		OBJ_62 /* api.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api.pb.swift; sourceTree = "<group>"; };
-		OBJ_63 /* BinaryDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryDecoder.swift; sourceTree = "<group>"; };
-		OBJ_64 /* BinaryDecodingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryDecodingError.swift; sourceTree = "<group>"; };
-		OBJ_65 /* BinaryEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryEncoder.swift; sourceTree = "<group>"; };
-		OBJ_66 /* BinaryEncodingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryEncodingError.swift; sourceTree = "<group>"; };
-		OBJ_67 /* BinaryEncodingSizeVisitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryEncodingSizeVisitor.swift; sourceTree = "<group>"; };
-		OBJ_68 /* BinaryEncodingVisitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryEncodingVisitor.swift; sourceTree = "<group>"; };
-		OBJ_69 /* CustomJSONCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomJSONCodable.swift; sourceTree = "<group>"; };
-		OBJ_70 /* Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
-		OBJ_71 /* DoubleFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleFormatter.swift; sourceTree = "<group>"; };
-		OBJ_72 /* duration.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = duration.pb.swift; sourceTree = "<group>"; };
-		OBJ_73 /* empty.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = empty.pb.swift; sourceTree = "<group>"; };
-		OBJ_74 /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
-		OBJ_75 /* ExtensibleMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensibleMessage.swift; sourceTree = "<group>"; };
-		OBJ_76 /* ExtensionFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionFields.swift; sourceTree = "<group>"; };
-		OBJ_77 /* ExtensionFieldValueSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionFieldValueSet.swift; sourceTree = "<group>"; };
-		OBJ_78 /* ExtensionMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionMap.swift; sourceTree = "<group>"; };
-		OBJ_79 /* field_mask.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = field_mask.pb.swift; sourceTree = "<group>"; };
-		OBJ_8 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
-		OBJ_80 /* FieldTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldTag.swift; sourceTree = "<group>"; };
-		OBJ_81 /* FieldTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldTypes.swift; sourceTree = "<group>"; };
-		OBJ_82 /* Google_Protobuf_Any+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Google_Protobuf_Any+Extensions.swift"; sourceTree = "<group>"; };
-		OBJ_83 /* Google_Protobuf_Any+Registry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Google_Protobuf_Any+Registry.swift"; sourceTree = "<group>"; };
-		OBJ_84 /* Google_Protobuf_Duration+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Google_Protobuf_Duration+Extensions.swift"; sourceTree = "<group>"; };
-		OBJ_85 /* Google_Protobuf_FieldMask+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Google_Protobuf_FieldMask+Extensions.swift"; sourceTree = "<group>"; };
-		OBJ_86 /* Google_Protobuf_ListValue+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Google_Protobuf_ListValue+Extensions.swift"; sourceTree = "<group>"; };
-		OBJ_87 /* Google_Protobuf_Struct+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Google_Protobuf_Struct+Extensions.swift"; sourceTree = "<group>"; };
-		OBJ_88 /* Google_Protobuf_Timestamp+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Google_Protobuf_Timestamp+Extensions.swift"; sourceTree = "<group>"; };
-		OBJ_89 /* Google_Protobuf_Value+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Google_Protobuf_Value+Extensions.swift"; sourceTree = "<group>"; };
-		OBJ_90 /* Google_Protobuf_Wrappers+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Google_Protobuf_Wrappers+Extensions.swift"; sourceTree = "<group>"; };
-		OBJ_91 /* HashVisitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashVisitor.swift; sourceTree = "<group>"; };
-		OBJ_92 /* Internal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Internal.swift; sourceTree = "<group>"; };
-		OBJ_93 /* JSONDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoder.swift; sourceTree = "<group>"; };
-		OBJ_94 /* JSONDecodingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecodingError.swift; sourceTree = "<group>"; };
-		OBJ_95 /* JSONEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONEncoder.swift; sourceTree = "<group>"; };
-		OBJ_96 /* JSONEncodingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONEncodingError.swift; sourceTree = "<group>"; };
-		OBJ_97 /* JSONEncodingVisitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONEncodingVisitor.swift; sourceTree = "<group>"; };
-		OBJ_98 /* JSONIntegerConverting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONIntegerConverting.swift; sourceTree = "<group>"; };
-		OBJ_99 /* JSONMapEncodingVisitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONMapEncodingVisitor.swift; sourceTree = "<group>"; };
+		OBJ_60 /* ReservedWords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservedWords.swift; sourceTree = "<group>"; };
+		OBJ_61 /* StringUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
+		OBJ_62 /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
+		OBJ_64 /* any.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = any.pb.swift; sourceTree = "<group>"; };
+		OBJ_65 /* AnyMessageStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyMessageStorage.swift; sourceTree = "<group>"; };
+		OBJ_66 /* AnyUnpackError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyUnpackError.swift; sourceTree = "<group>"; };
+		OBJ_67 /* api.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api.pb.swift; sourceTree = "<group>"; };
+		OBJ_68 /* BinaryDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryDecoder.swift; sourceTree = "<group>"; };
+		OBJ_69 /* BinaryDecodingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryDecodingError.swift; sourceTree = "<group>"; };
+		OBJ_70 /* BinaryEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryEncoder.swift; sourceTree = "<group>"; };
+		OBJ_71 /* BinaryEncodingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryEncodingError.swift; sourceTree = "<group>"; };
+		OBJ_72 /* BinaryEncodingSizeVisitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryEncodingSizeVisitor.swift; sourceTree = "<group>"; };
+		OBJ_73 /* BinaryEncodingVisitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryEncodingVisitor.swift; sourceTree = "<group>"; };
+		OBJ_74 /* CustomJSONCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomJSONCodable.swift; sourceTree = "<group>"; };
+		OBJ_75 /* Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
+		OBJ_76 /* DoubleFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleFormatter.swift; sourceTree = "<group>"; };
+		OBJ_77 /* duration.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = duration.pb.swift; sourceTree = "<group>"; };
+		OBJ_78 /* empty.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = empty.pb.swift; sourceTree = "<group>"; };
+		OBJ_79 /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
+		OBJ_8 /* settings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = settings.xcconfig; sourceTree = "<group>"; };
+		OBJ_80 /* ExtensibleMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensibleMessage.swift; sourceTree = "<group>"; };
+		OBJ_81 /* ExtensionFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionFields.swift; sourceTree = "<group>"; };
+		OBJ_82 /* ExtensionFieldValueSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionFieldValueSet.swift; sourceTree = "<group>"; };
+		OBJ_83 /* ExtensionMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionMap.swift; sourceTree = "<group>"; };
+		OBJ_84 /* field_mask.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = field_mask.pb.swift; sourceTree = "<group>"; };
+		OBJ_85 /* FieldTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldTag.swift; sourceTree = "<group>"; };
+		OBJ_86 /* FieldTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldTypes.swift; sourceTree = "<group>"; };
+		OBJ_87 /* Google_Protobuf_Any+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Google_Protobuf_Any+Extensions.swift"; sourceTree = "<group>"; };
+		OBJ_88 /* Google_Protobuf_Any+Registry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Google_Protobuf_Any+Registry.swift"; sourceTree = "<group>"; };
+		OBJ_89 /* Google_Protobuf_Duration+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Google_Protobuf_Duration+Extensions.swift"; sourceTree = "<group>"; };
+		OBJ_90 /* Google_Protobuf_FieldMask+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Google_Protobuf_FieldMask+Extensions.swift"; sourceTree = "<group>"; };
+		OBJ_91 /* Google_Protobuf_ListValue+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Google_Protobuf_ListValue+Extensions.swift"; sourceTree = "<group>"; };
+		OBJ_92 /* Google_Protobuf_Struct+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Google_Protobuf_Struct+Extensions.swift"; sourceTree = "<group>"; };
+		OBJ_93 /* Google_Protobuf_Timestamp+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Google_Protobuf_Timestamp+Extensions.swift"; sourceTree = "<group>"; };
+		OBJ_94 /* Google_Protobuf_Value+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Google_Protobuf_Value+Extensions.swift"; sourceTree = "<group>"; };
+		OBJ_95 /* Google_Protobuf_Wrappers+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Google_Protobuf_Wrappers+Extensions.swift"; sourceTree = "<group>"; };
+		OBJ_96 /* HashVisitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashVisitor.swift; sourceTree = "<group>"; };
+		OBJ_97 /* Internal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Internal.swift; sourceTree = "<group>"; };
+		OBJ_98 /* JSONDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoder.swift; sourceTree = "<group>"; };
+		OBJ_99 /* JSONDecodingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecodingError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		OBJ_148 /* Frameworks */ = {
+		OBJ_153 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_149 /* SwiftProtobuf.framework in Frameworks */,
+				OBJ_154 /* SwiftProtobuf.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_174 /* Frameworks */ = {
+		OBJ_179 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_175 /* SwiftProtobuf.framework in Frameworks */,
+				OBJ_180 /* SwiftProtobuf.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_203 /* Frameworks */ = {
+		OBJ_208 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_204 /* SwiftProtobuf.framework in Frameworks */,
-				OBJ_205 /* PluginLibrary.framework in Frameworks */,
+				OBJ_209 /* SwiftProtobuf.framework in Frameworks */,
+				OBJ_210 /* PluginLibrary.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_285 /* Frameworks */ = {
+		OBJ_290 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_292 /* Frameworks */ = {
+		OBJ_297 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_293 /* SwiftProtobuf.framework in Frameworks */,
-				OBJ_294 /* PluginLibrary.framework in Frameworks */,
+				OBJ_298 /* SwiftProtobuf.framework in Frameworks */,
+				OBJ_299 /* PluginLibrary.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_303 /* Frameworks */ = {
+		OBJ_308 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_304 /* SwiftProtobuf.framework in Frameworks */,
-				OBJ_305 /* PluginLibrary.framework in Frameworks */,
-				OBJ_306 /* TensorFlow.framework in Frameworks */,
+				OBJ_309 /* SwiftProtobuf.framework in Frameworks */,
+				OBJ_310 /* PluginLibrary.framework in Frameworks */,
+				OBJ_311 /* TensorFlow.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		OBJ_10 /* TensorFlowTests */ = {
+		OBJ_11 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_11 /* TensorFlowTests.swift */,
+				OBJ_12 /* TensorFlowTests */,
+			);
+			name = Tests;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_12 /* TensorFlowTests */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_13 /* TensorFlowTests.swift */,
 			);
 			name = TensorFlowTests;
 			path = Tests/TensorFlowTests;
 			sourceTree = SOURCE_ROOT;
 		};
-		OBJ_12 /* Dependencies */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_13 /* SwiftProtobuf 0.9.902 */,
-				OBJ_132 /* CTensorFlow 0.0.0 */,
-			);
-			name = Dependencies;
-			sourceTree = "<group>";
-		};
-		OBJ_13 /* SwiftProtobuf 0.9.902 */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_14 /* Conformance */,
-				OBJ_18 /* PluginLibrary */,
-				OBJ_36 /* protoc-gen-swift */,
-				OBJ_58 /* SwiftProtobuf */,
-			);
-			name = "SwiftProtobuf 0.9.902";
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_132 /* CTensorFlow 0.0.0 */ = {
+		OBJ_137 /* CTensorFlow 0.0.0 */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -418,79 +410,99 @@
 			path = ".build/checkouts/CTensorFlow-8263127439840709059";
 			sourceTree = SOURCE_ROOT;
 		};
-		OBJ_133 /* Products */ = {
+		OBJ_138 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_134 /* Conformance */,
-				OBJ_135 /* PluginLibrary.framework */,
-				OBJ_136 /* protoc-gen-swift */,
-				OBJ_137 /* SwiftProtobuf.framework */,
-				OBJ_138 /* TensorFlow.framework */,
-				OBJ_139 /* TensorFlowTests.xctest */,
+				OBJ_139 /* Conformance */,
+				OBJ_140 /* PluginLibrary.framework */,
+				OBJ_141 /* protoc-gen-swift */,
+				OBJ_142 /* SwiftProtobuf.framework */,
+				OBJ_143 /* TensorFlow.framework */,
+				OBJ_144 /* TensorFlowTests.xctest */,
 			);
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		OBJ_14 /* Conformance */ = {
+		OBJ_17 /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_15 /* conformance.pb.swift */,
-				OBJ_16 /* main.swift */,
-				OBJ_17 /* test_messages_proto3.pb.swift */,
+				OBJ_18 /* SwiftProtobuf 0.9.902 */,
+				OBJ_137 /* CTensorFlow 0.0.0 */,
+			);
+			name = Dependencies;
+			sourceTree = "<group>";
+		};
+		OBJ_18 /* SwiftProtobuf 0.9.902 */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_19 /* Conformance */,
+				OBJ_23 /* PluginLibrary */,
+				OBJ_41 /* protoc-gen-swift */,
+				OBJ_63 /* SwiftProtobuf */,
+			);
+			name = "SwiftProtobuf 0.9.902";
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_19 /* Conformance */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_20 /* conformance.pb.swift */,
+				OBJ_21 /* main.swift */,
+				OBJ_22 /* test_messages_proto3.pb.swift */,
 			);
 			name = Conformance;
 			path = ".build/checkouts/swift-protobuf.git--7219529775138357838/Sources/Conformance";
 			sourceTree = SOURCE_ROOT;
 		};
-		OBJ_18 /* PluginLibrary */ = {
+		OBJ_23 /* PluginLibrary */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_19 /* Array+Extensions.swift */,
-				OBJ_20 /* CodePrinter.swift */,
-				OBJ_21 /* Descriptor+Extensions.swift */,
-				OBJ_22 /* descriptor.pb.swift */,
-				OBJ_23 /* Descriptor.swift */,
-				OBJ_24 /* FieldNumbers.swift */,
-				OBJ_25 /* Google_Protobuf_Compiler_CodeGeneratorResponse+Extensions.swift */,
-				OBJ_26 /* Google_Protobuf_SourceCodeInfo+Extensions.swift */,
-				OBJ_27 /* HashableArray.swift */,
-				OBJ_28 /* NamingUtils.swift */,
-				OBJ_29 /* plugin.pb.swift */,
-				OBJ_30 /* ProtoLanguage.swift */,
-				OBJ_31 /* ProvidesLocationPath.swift */,
-				OBJ_32 /* ProvidesSourceCodeLocation.swift */,
-				OBJ_33 /* SwiftLanguage.swift */,
-				OBJ_34 /* SwiftProtobufInfo.swift */,
-				OBJ_35 /* SwiftProtobufNamer.swift */,
+				OBJ_24 /* Array+Extensions.swift */,
+				OBJ_25 /* CodePrinter.swift */,
+				OBJ_26 /* Descriptor+Extensions.swift */,
+				OBJ_27 /* descriptor.pb.swift */,
+				OBJ_28 /* Descriptor.swift */,
+				OBJ_29 /* FieldNumbers.swift */,
+				OBJ_30 /* Google_Protobuf_Compiler_CodeGeneratorResponse+Extensions.swift */,
+				OBJ_31 /* Google_Protobuf_SourceCodeInfo+Extensions.swift */,
+				OBJ_32 /* HashableArray.swift */,
+				OBJ_33 /* NamingUtils.swift */,
+				OBJ_34 /* plugin.pb.swift */,
+				OBJ_35 /* ProtoLanguage.swift */,
+				OBJ_36 /* ProvidesLocationPath.swift */,
+				OBJ_37 /* ProvidesSourceCodeLocation.swift */,
+				OBJ_38 /* SwiftLanguage.swift */,
+				OBJ_39 /* SwiftProtobufInfo.swift */,
+				OBJ_40 /* SwiftProtobufNamer.swift */,
 			);
 			name = PluginLibrary;
 			path = ".build/checkouts/swift-protobuf.git--7219529775138357838/Sources/PluginLibrary";
 			sourceTree = SOURCE_ROOT;
 		};
-		OBJ_36 /* protoc-gen-swift */ = {
+		OBJ_41 /* protoc-gen-swift */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_37 /* Context.swift */,
-				OBJ_38 /* Descriptor+Extensions.swift */,
-				OBJ_39 /* EnumGenerator.swift */,
-				OBJ_40 /* ExtensionGenerator.swift */,
-				OBJ_41 /* FieldGenerator.swift */,
-				OBJ_42 /* FileGenerator.swift */,
-				OBJ_43 /* FileIo.swift */,
-				OBJ_44 /* GenerationError.swift */,
-				OBJ_45 /* GeneratorOptions.swift */,
-				OBJ_46 /* Google_Protobuf_DescriptorProto+Extensions.swift */,
-				OBJ_47 /* Google_Protobuf_EnumDescriptorProto+Extensions.swift */,
-				OBJ_48 /* Google_Protobuf_EnumValueDescriptorProto+Extensions.swift */,
-				OBJ_49 /* Google_Protobuf_FileDescriptorProto+Extensions.swift */,
-				OBJ_50 /* main.swift */,
-				OBJ_51 /* MessageFieldGenerator.swift */,
-				OBJ_52 /* MessageGenerator.swift */,
-				OBJ_53 /* MessageStorageClassGenerator.swift */,
-				OBJ_54 /* OneofGenerator.swift */,
-				OBJ_55 /* ReservedWords.swift */,
-				OBJ_56 /* StringUtils.swift */,
-				OBJ_57 /* Version.swift */,
+				OBJ_42 /* Context.swift */,
+				OBJ_43 /* Descriptor+Extensions.swift */,
+				OBJ_44 /* EnumGenerator.swift */,
+				OBJ_45 /* ExtensionGenerator.swift */,
+				OBJ_46 /* FieldGenerator.swift */,
+				OBJ_47 /* FileGenerator.swift */,
+				OBJ_48 /* FileIo.swift */,
+				OBJ_49 /* GenerationError.swift */,
+				OBJ_50 /* GeneratorOptions.swift */,
+				OBJ_51 /* Google_Protobuf_DescriptorProto+Extensions.swift */,
+				OBJ_52 /* Google_Protobuf_EnumDescriptorProto+Extensions.swift */,
+				OBJ_53 /* Google_Protobuf_EnumValueDescriptorProto+Extensions.swift */,
+				OBJ_54 /* Google_Protobuf_FileDescriptorProto+Extensions.swift */,
+				OBJ_55 /* main.swift */,
+				OBJ_56 /* MessageFieldGenerator.swift */,
+				OBJ_57 /* MessageGenerator.swift */,
+				OBJ_58 /* MessageStorageClassGenerator.swift */,
+				OBJ_59 /* OneofGenerator.swift */,
+				OBJ_60 /* ReservedWords.swift */,
+				OBJ_61 /* StringUtils.swift */,
+				OBJ_62 /* Version.swift */,
 			);
 			name = "protoc-gen-swift";
 			path = ".build/checkouts/swift-protobuf.git--7219529775138357838/Sources/protoc-gen-swift";
@@ -500,137 +512,141 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
-				OBJ_7 /* Sources */,
-				OBJ_9 /* Tests */,
-				OBJ_12 /* Dependencies */,
-				OBJ_133 /* Products */,
+				OBJ_7 /* Configs */,
+				OBJ_9 /* Sources */,
+				OBJ_11 /* Tests */,
+				OBJ_14 /* misc */,
+				OBJ_15 /* TensorFlow.framework */,
+				OBJ_16 /* test */,
+				OBJ_17 /* Dependencies */,
+				OBJ_138 /* Products */,
 			);
 			name = "";
 			sourceTree = "<group>";
 		};
-		OBJ_58 /* SwiftProtobuf */ = {
+		OBJ_63 /* SwiftProtobuf */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_59 /* any.pb.swift */,
-				OBJ_60 /* AnyMessageStorage.swift */,
-				OBJ_61 /* AnyUnpackError.swift */,
-				OBJ_62 /* api.pb.swift */,
-				OBJ_63 /* BinaryDecoder.swift */,
-				OBJ_64 /* BinaryDecodingError.swift */,
-				OBJ_65 /* BinaryEncoder.swift */,
-				OBJ_66 /* BinaryEncodingError.swift */,
-				OBJ_67 /* BinaryEncodingSizeVisitor.swift */,
-				OBJ_68 /* BinaryEncodingVisitor.swift */,
-				OBJ_69 /* CustomJSONCodable.swift */,
-				OBJ_70 /* Decoder.swift */,
-				OBJ_71 /* DoubleFormatter.swift */,
-				OBJ_72 /* duration.pb.swift */,
-				OBJ_73 /* empty.pb.swift */,
-				OBJ_74 /* Enum.swift */,
-				OBJ_75 /* ExtensibleMessage.swift */,
-				OBJ_76 /* ExtensionFields.swift */,
-				OBJ_77 /* ExtensionFieldValueSet.swift */,
-				OBJ_78 /* ExtensionMap.swift */,
-				OBJ_79 /* field_mask.pb.swift */,
-				OBJ_80 /* FieldTag.swift */,
-				OBJ_81 /* FieldTypes.swift */,
-				OBJ_82 /* Google_Protobuf_Any+Extensions.swift */,
-				OBJ_83 /* Google_Protobuf_Any+Registry.swift */,
-				OBJ_84 /* Google_Protobuf_Duration+Extensions.swift */,
-				OBJ_85 /* Google_Protobuf_FieldMask+Extensions.swift */,
-				OBJ_86 /* Google_Protobuf_ListValue+Extensions.swift */,
-				OBJ_87 /* Google_Protobuf_Struct+Extensions.swift */,
-				OBJ_88 /* Google_Protobuf_Timestamp+Extensions.swift */,
-				OBJ_89 /* Google_Protobuf_Value+Extensions.swift */,
-				OBJ_90 /* Google_Protobuf_Wrappers+Extensions.swift */,
-				OBJ_91 /* HashVisitor.swift */,
-				OBJ_92 /* Internal.swift */,
-				OBJ_93 /* JSONDecoder.swift */,
-				OBJ_94 /* JSONDecodingError.swift */,
-				OBJ_95 /* JSONEncoder.swift */,
-				OBJ_96 /* JSONEncodingError.swift */,
-				OBJ_97 /* JSONEncodingVisitor.swift */,
-				OBJ_98 /* JSONIntegerConverting.swift */,
-				OBJ_99 /* JSONMapEncodingVisitor.swift */,
-				OBJ_100 /* JSONScanner.swift */,
-				OBJ_101 /* MathUtils.swift */,
-				OBJ_102 /* Message+AnyAdditions.swift */,
-				OBJ_103 /* Message+BinaryAdditions.swift */,
-				OBJ_104 /* Message+JSONAdditions.swift */,
-				OBJ_105 /* Message+JSONArrayAdditions.swift */,
-				OBJ_106 /* Message+TextFormatAdditions.swift */,
-				OBJ_107 /* Message.swift */,
-				OBJ_108 /* MessageExtension.swift */,
-				OBJ_109 /* NameMap.swift */,
-				OBJ_110 /* ProtobufAPIVersionCheck.swift */,
-				OBJ_111 /* ProtobufMap.swift */,
-				OBJ_112 /* ProtoNameProviding.swift */,
-				OBJ_113 /* SimpleExtensionMap.swift */,
-				OBJ_114 /* source_context.pb.swift */,
-				OBJ_115 /* StringUtils.swift */,
-				OBJ_116 /* struct.pb.swift */,
-				OBJ_117 /* TextFormatDecoder.swift */,
-				OBJ_118 /* TextFormatDecodingError.swift */,
-				OBJ_119 /* TextFormatEncoder.swift */,
-				OBJ_120 /* TextFormatEncodingVisitor.swift */,
-				OBJ_121 /* TextFormatScanner.swift */,
-				OBJ_122 /* timestamp.pb.swift */,
-				OBJ_123 /* TimeUtils.swift */,
-				OBJ_124 /* type.pb.swift */,
-				OBJ_125 /* UnknownStorage.swift */,
-				OBJ_126 /* Varint.swift */,
-				OBJ_127 /* Version.swift */,
-				OBJ_128 /* Visitor.swift */,
-				OBJ_129 /* WireFormat.swift */,
-				OBJ_130 /* wrappers.pb.swift */,
-				OBJ_131 /* ZigZag.swift */,
+				OBJ_64 /* any.pb.swift */,
+				OBJ_65 /* AnyMessageStorage.swift */,
+				OBJ_66 /* AnyUnpackError.swift */,
+				OBJ_67 /* api.pb.swift */,
+				OBJ_68 /* BinaryDecoder.swift */,
+				OBJ_69 /* BinaryDecodingError.swift */,
+				OBJ_70 /* BinaryEncoder.swift */,
+				OBJ_71 /* BinaryEncodingError.swift */,
+				OBJ_72 /* BinaryEncodingSizeVisitor.swift */,
+				OBJ_73 /* BinaryEncodingVisitor.swift */,
+				OBJ_74 /* CustomJSONCodable.swift */,
+				OBJ_75 /* Decoder.swift */,
+				OBJ_76 /* DoubleFormatter.swift */,
+				OBJ_77 /* duration.pb.swift */,
+				OBJ_78 /* empty.pb.swift */,
+				OBJ_79 /* Enum.swift */,
+				OBJ_80 /* ExtensibleMessage.swift */,
+				OBJ_81 /* ExtensionFields.swift */,
+				OBJ_82 /* ExtensionFieldValueSet.swift */,
+				OBJ_83 /* ExtensionMap.swift */,
+				OBJ_84 /* field_mask.pb.swift */,
+				OBJ_85 /* FieldTag.swift */,
+				OBJ_86 /* FieldTypes.swift */,
+				OBJ_87 /* Google_Protobuf_Any+Extensions.swift */,
+				OBJ_88 /* Google_Protobuf_Any+Registry.swift */,
+				OBJ_89 /* Google_Protobuf_Duration+Extensions.swift */,
+				OBJ_90 /* Google_Protobuf_FieldMask+Extensions.swift */,
+				OBJ_91 /* Google_Protobuf_ListValue+Extensions.swift */,
+				OBJ_92 /* Google_Protobuf_Struct+Extensions.swift */,
+				OBJ_93 /* Google_Protobuf_Timestamp+Extensions.swift */,
+				OBJ_94 /* Google_Protobuf_Value+Extensions.swift */,
+				OBJ_95 /* Google_Protobuf_Wrappers+Extensions.swift */,
+				OBJ_96 /* HashVisitor.swift */,
+				OBJ_97 /* Internal.swift */,
+				OBJ_98 /* JSONDecoder.swift */,
+				OBJ_99 /* JSONDecodingError.swift */,
+				OBJ_100 /* JSONEncoder.swift */,
+				OBJ_101 /* JSONEncodingError.swift */,
+				OBJ_102 /* JSONEncodingVisitor.swift */,
+				OBJ_103 /* JSONIntegerConverting.swift */,
+				OBJ_104 /* JSONMapEncodingVisitor.swift */,
+				OBJ_105 /* JSONScanner.swift */,
+				OBJ_106 /* MathUtils.swift */,
+				OBJ_107 /* Message+AnyAdditions.swift */,
+				OBJ_108 /* Message+BinaryAdditions.swift */,
+				OBJ_109 /* Message+JSONAdditions.swift */,
+				OBJ_110 /* Message+JSONArrayAdditions.swift */,
+				OBJ_111 /* Message+TextFormatAdditions.swift */,
+				OBJ_112 /* Message.swift */,
+				OBJ_113 /* MessageExtension.swift */,
+				OBJ_114 /* NameMap.swift */,
+				OBJ_115 /* ProtobufAPIVersionCheck.swift */,
+				OBJ_116 /* ProtobufMap.swift */,
+				OBJ_117 /* ProtoNameProviding.swift */,
+				OBJ_118 /* SimpleExtensionMap.swift */,
+				OBJ_119 /* source_context.pb.swift */,
+				OBJ_120 /* StringUtils.swift */,
+				OBJ_121 /* struct.pb.swift */,
+				OBJ_122 /* TextFormatDecoder.swift */,
+				OBJ_123 /* TextFormatDecodingError.swift */,
+				OBJ_124 /* TextFormatEncoder.swift */,
+				OBJ_125 /* TextFormatEncodingVisitor.swift */,
+				OBJ_126 /* TextFormatScanner.swift */,
+				OBJ_127 /* timestamp.pb.swift */,
+				OBJ_128 /* TimeUtils.swift */,
+				OBJ_129 /* type.pb.swift */,
+				OBJ_130 /* UnknownStorage.swift */,
+				OBJ_131 /* Varint.swift */,
+				OBJ_132 /* Version.swift */,
+				OBJ_133 /* Visitor.swift */,
+				OBJ_134 /* WireFormat.swift */,
+				OBJ_135 /* wrappers.pb.swift */,
+				OBJ_136 /* ZigZag.swift */,
 			);
 			name = SwiftProtobuf;
 			path = ".build/checkouts/swift-protobuf.git--7219529775138357838/Sources/SwiftProtobuf";
 			sourceTree = SOURCE_ROOT;
 		};
-		OBJ_7 /* Sources */ = {
+		OBJ_7 /* Configs */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_8 /* Session.swift */,
+				OBJ_8 /* settings.xcconfig */,
+			);
+			name = Configs;
+			sourceTree = "<group>";
+		};
+		OBJ_9 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_10 /* Session.swift */,
 			);
 			path = Sources;
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_9 /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_10 /* TensorFlowTests */,
-			);
-			name = Tests;
 			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		OBJ_140 /* Conformance */ = {
+		OBJ_145 /* Conformance */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_141 /* Build configuration list for PBXNativeTarget "Conformance" */;
+			buildConfigurationList = OBJ_146 /* Build configuration list for PBXNativeTarget "Conformance" */;
 			buildPhases = (
-				OBJ_144 /* Sources */,
-				OBJ_148 /* Frameworks */,
+				OBJ_149 /* Sources */,
+				OBJ_153 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				OBJ_150 /* PBXTargetDependency */,
+				OBJ_155 /* PBXTargetDependency */,
 			);
 			name = Conformance;
 			productName = Conformance;
-			productReference = OBJ_134 /* Conformance */;
+			productReference = OBJ_139 /* Conformance */;
 			productType = "com.apple.product-type.tool";
 		};
-		OBJ_151 /* SwiftProtobuf */ = {
+		OBJ_156 /* SwiftProtobuf */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_208 /* Build configuration list for PBXNativeTarget "SwiftProtobuf" */;
+			buildConfigurationList = OBJ_213 /* Build configuration list for PBXNativeTarget "SwiftProtobuf" */;
 			buildPhases = (
-				OBJ_211 /* Sources */,
-				OBJ_285 /* Frameworks */,
+				OBJ_216 /* Sources */,
+				OBJ_290 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -638,79 +654,79 @@
 			);
 			name = SwiftProtobuf;
 			productName = SwiftProtobuf;
-			productReference = OBJ_137 /* SwiftProtobuf.framework */;
+			productReference = OBJ_142 /* SwiftProtobuf.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		OBJ_152 /* PluginLibrary */ = {
+		OBJ_157 /* PluginLibrary */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_153 /* Build configuration list for PBXNativeTarget "PluginLibrary" */;
+			buildConfigurationList = OBJ_158 /* Build configuration list for PBXNativeTarget "PluginLibrary" */;
 			buildPhases = (
-				OBJ_156 /* Sources */,
-				OBJ_174 /* Frameworks */,
+				OBJ_161 /* Sources */,
+				OBJ_179 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				OBJ_176 /* PBXTargetDependency */,
+				OBJ_181 /* PBXTargetDependency */,
 			);
 			name = PluginLibrary;
 			productName = PluginLibrary;
-			productReference = OBJ_135 /* PluginLibrary.framework */;
+			productReference = OBJ_140 /* PluginLibrary.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		OBJ_177 /* protoc-gen-swift */ = {
+		OBJ_182 /* protoc-gen-swift */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_178 /* Build configuration list for PBXNativeTarget "protoc-gen-swift" */;
+			buildConfigurationList = OBJ_183 /* Build configuration list for PBXNativeTarget "protoc-gen-swift" */;
 			buildPhases = (
-				OBJ_181 /* Sources */,
-				OBJ_203 /* Frameworks */,
+				OBJ_186 /* Sources */,
+				OBJ_208 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				OBJ_206 /* PBXTargetDependency */,
-				OBJ_207 /* PBXTargetDependency */,
+				OBJ_211 /* PBXTargetDependency */,
+				OBJ_212 /* PBXTargetDependency */,
 			);
 			name = "protoc-gen-swift";
 			productName = protoc_gen_swift;
-			productReference = OBJ_136 /* protoc-gen-swift */;
+			productReference = OBJ_141 /* protoc-gen-swift */;
 			productType = "com.apple.product-type.tool";
 		};
-		OBJ_286 /* TensorFlow */ = {
+		OBJ_291 /* TensorFlow */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_287 /* Build configuration list for PBXNativeTarget "TensorFlow" */;
+			buildConfigurationList = OBJ_292 /* Build configuration list for PBXNativeTarget "TensorFlow" */;
 			buildPhases = (
-				OBJ_290 /* Sources */,
-				OBJ_292 /* Frameworks */,
+				OBJ_295 /* Sources */,
+				OBJ_297 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				OBJ_295 /* PBXTargetDependency */,
-				OBJ_296 /* PBXTargetDependency */,
+				OBJ_300 /* PBXTargetDependency */,
+				OBJ_301 /* PBXTargetDependency */,
 			);
 			name = TensorFlow;
 			productName = TensorFlow;
-			productReference = OBJ_138 /* TensorFlow.framework */;
+			productReference = OBJ_143 /* TensorFlow.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		OBJ_297 /* TensorFlowTests */ = {
+		OBJ_302 /* TensorFlowTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_298 /* Build configuration list for PBXNativeTarget "TensorFlowTests" */;
+			buildConfigurationList = OBJ_303 /* Build configuration list for PBXNativeTarget "TensorFlowTests" */;
 			buildPhases = (
-				OBJ_301 /* Sources */,
-				OBJ_303 /* Frameworks */,
+				OBJ_306 /* Sources */,
+				OBJ_308 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				OBJ_307 /* PBXTargetDependency */,
-				OBJ_308 /* PBXTargetDependency */,
-				OBJ_309 /* PBXTargetDependency */,
+				OBJ_312 /* PBXTargetDependency */,
+				OBJ_313 /* PBXTargetDependency */,
+				OBJ_314 /* PBXTargetDependency */,
 			);
 			name = TensorFlowTests;
 			productName = TensorFlowTests;
-			productReference = OBJ_139 /* TensorFlowTests.xctest */;
+			productReference = OBJ_144 /* TensorFlowTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -720,6 +736,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 9999;
+				TargetAttributes = {
+					OBJ_291 = {
+						DevelopmentTeam = WMDZ2CQA8K;
+						ProvisioningStyle = Automatic;
+					};
+				};
 			};
 			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "TensorFlow" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -729,232 +751,233 @@
 				en,
 			);
 			mainGroup = OBJ_5 /*  */;
-			productRefGroup = OBJ_133 /* Products */;
+			productRefGroup = OBJ_138 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				OBJ_140 /* Conformance */,
-				OBJ_152 /* PluginLibrary */,
-				OBJ_177 /* protoc-gen-swift */,
-				OBJ_151 /* SwiftProtobuf */,
-				OBJ_286 /* TensorFlow */,
-				OBJ_297 /* TensorFlowTests */,
+				OBJ_145 /* Conformance */,
+				OBJ_157 /* PluginLibrary */,
+				OBJ_182 /* protoc-gen-swift */,
+				OBJ_156 /* SwiftProtobuf */,
+				OBJ_291 /* TensorFlow */,
+				OBJ_302 /* TensorFlowTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		OBJ_144 /* Sources */ = {
+		OBJ_149 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_145 /* conformance.pb.swift in Sources */,
-				OBJ_146 /* main.swift in Sources */,
-				OBJ_147 /* test_messages_proto3.pb.swift in Sources */,
+				OBJ_150 /* conformance.pb.swift in Sources */,
+				OBJ_151 /* main.swift in Sources */,
+				OBJ_152 /* test_messages_proto3.pb.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_156 /* Sources */ = {
+		OBJ_161 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_157 /* Array+Extensions.swift in Sources */,
-				OBJ_158 /* CodePrinter.swift in Sources */,
-				OBJ_159 /* Descriptor+Extensions.swift in Sources */,
-				OBJ_160 /* descriptor.pb.swift in Sources */,
-				OBJ_161 /* Descriptor.swift in Sources */,
-				OBJ_162 /* FieldNumbers.swift in Sources */,
-				OBJ_163 /* Google_Protobuf_Compiler_CodeGeneratorResponse+Extensions.swift in Sources */,
-				OBJ_164 /* Google_Protobuf_SourceCodeInfo+Extensions.swift in Sources */,
-				OBJ_165 /* HashableArray.swift in Sources */,
-				OBJ_166 /* NamingUtils.swift in Sources */,
-				OBJ_167 /* plugin.pb.swift in Sources */,
-				OBJ_168 /* ProtoLanguage.swift in Sources */,
-				OBJ_169 /* ProvidesLocationPath.swift in Sources */,
-				OBJ_170 /* ProvidesSourceCodeLocation.swift in Sources */,
-				OBJ_171 /* SwiftLanguage.swift in Sources */,
-				OBJ_172 /* SwiftProtobufInfo.swift in Sources */,
-				OBJ_173 /* SwiftProtobufNamer.swift in Sources */,
+				OBJ_162 /* Array+Extensions.swift in Sources */,
+				OBJ_163 /* CodePrinter.swift in Sources */,
+				OBJ_164 /* Descriptor+Extensions.swift in Sources */,
+				OBJ_165 /* descriptor.pb.swift in Sources */,
+				OBJ_166 /* Descriptor.swift in Sources */,
+				OBJ_167 /* FieldNumbers.swift in Sources */,
+				OBJ_168 /* Google_Protobuf_Compiler_CodeGeneratorResponse+Extensions.swift in Sources */,
+				OBJ_169 /* Google_Protobuf_SourceCodeInfo+Extensions.swift in Sources */,
+				OBJ_170 /* HashableArray.swift in Sources */,
+				OBJ_171 /* NamingUtils.swift in Sources */,
+				OBJ_172 /* plugin.pb.swift in Sources */,
+				OBJ_173 /* ProtoLanguage.swift in Sources */,
+				OBJ_174 /* ProvidesLocationPath.swift in Sources */,
+				OBJ_175 /* ProvidesSourceCodeLocation.swift in Sources */,
+				OBJ_176 /* SwiftLanguage.swift in Sources */,
+				OBJ_177 /* SwiftProtobufInfo.swift in Sources */,
+				OBJ_178 /* SwiftProtobufNamer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_181 /* Sources */ = {
+		OBJ_186 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_182 /* Context.swift in Sources */,
-				OBJ_183 /* Descriptor+Extensions.swift in Sources */,
-				OBJ_184 /* EnumGenerator.swift in Sources */,
-				OBJ_185 /* ExtensionGenerator.swift in Sources */,
-				OBJ_186 /* FieldGenerator.swift in Sources */,
-				OBJ_187 /* FileGenerator.swift in Sources */,
-				OBJ_188 /* FileIo.swift in Sources */,
-				OBJ_189 /* GenerationError.swift in Sources */,
-				OBJ_190 /* GeneratorOptions.swift in Sources */,
-				OBJ_191 /* Google_Protobuf_DescriptorProto+Extensions.swift in Sources */,
-				OBJ_192 /* Google_Protobuf_EnumDescriptorProto+Extensions.swift in Sources */,
-				OBJ_193 /* Google_Protobuf_EnumValueDescriptorProto+Extensions.swift in Sources */,
-				OBJ_194 /* Google_Protobuf_FileDescriptorProto+Extensions.swift in Sources */,
-				OBJ_195 /* main.swift in Sources */,
-				OBJ_196 /* MessageFieldGenerator.swift in Sources */,
-				OBJ_197 /* MessageGenerator.swift in Sources */,
-				OBJ_198 /* MessageStorageClassGenerator.swift in Sources */,
-				OBJ_199 /* OneofGenerator.swift in Sources */,
-				OBJ_200 /* ReservedWords.swift in Sources */,
-				OBJ_201 /* StringUtils.swift in Sources */,
-				OBJ_202 /* Version.swift in Sources */,
+				OBJ_187 /* Context.swift in Sources */,
+				OBJ_188 /* Descriptor+Extensions.swift in Sources */,
+				OBJ_189 /* EnumGenerator.swift in Sources */,
+				OBJ_190 /* ExtensionGenerator.swift in Sources */,
+				OBJ_191 /* FieldGenerator.swift in Sources */,
+				OBJ_192 /* FileGenerator.swift in Sources */,
+				OBJ_193 /* FileIo.swift in Sources */,
+				OBJ_194 /* GenerationError.swift in Sources */,
+				OBJ_195 /* GeneratorOptions.swift in Sources */,
+				OBJ_196 /* Google_Protobuf_DescriptorProto+Extensions.swift in Sources */,
+				OBJ_197 /* Google_Protobuf_EnumDescriptorProto+Extensions.swift in Sources */,
+				OBJ_198 /* Google_Protobuf_EnumValueDescriptorProto+Extensions.swift in Sources */,
+				OBJ_199 /* Google_Protobuf_FileDescriptorProto+Extensions.swift in Sources */,
+				OBJ_200 /* main.swift in Sources */,
+				OBJ_201 /* MessageFieldGenerator.swift in Sources */,
+				OBJ_202 /* MessageGenerator.swift in Sources */,
+				OBJ_203 /* MessageStorageClassGenerator.swift in Sources */,
+				OBJ_204 /* OneofGenerator.swift in Sources */,
+				OBJ_205 /* ReservedWords.swift in Sources */,
+				OBJ_206 /* StringUtils.swift in Sources */,
+				OBJ_207 /* Version.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_211 /* Sources */ = {
+		OBJ_216 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_212 /* any.pb.swift in Sources */,
-				OBJ_213 /* AnyMessageStorage.swift in Sources */,
-				OBJ_214 /* AnyUnpackError.swift in Sources */,
-				OBJ_215 /* api.pb.swift in Sources */,
-				OBJ_216 /* BinaryDecoder.swift in Sources */,
-				OBJ_217 /* BinaryDecodingError.swift in Sources */,
-				OBJ_218 /* BinaryEncoder.swift in Sources */,
-				OBJ_219 /* BinaryEncodingError.swift in Sources */,
-				OBJ_220 /* BinaryEncodingSizeVisitor.swift in Sources */,
-				OBJ_221 /* BinaryEncodingVisitor.swift in Sources */,
-				OBJ_222 /* CustomJSONCodable.swift in Sources */,
-				OBJ_223 /* Decoder.swift in Sources */,
-				OBJ_224 /* DoubleFormatter.swift in Sources */,
-				OBJ_225 /* duration.pb.swift in Sources */,
-				OBJ_226 /* empty.pb.swift in Sources */,
-				OBJ_227 /* Enum.swift in Sources */,
-				OBJ_228 /* ExtensibleMessage.swift in Sources */,
-				OBJ_229 /* ExtensionFields.swift in Sources */,
-				OBJ_230 /* ExtensionFieldValueSet.swift in Sources */,
-				OBJ_231 /* ExtensionMap.swift in Sources */,
-				OBJ_232 /* field_mask.pb.swift in Sources */,
-				OBJ_233 /* FieldTag.swift in Sources */,
-				OBJ_234 /* FieldTypes.swift in Sources */,
-				OBJ_235 /* Google_Protobuf_Any+Extensions.swift in Sources */,
-				OBJ_236 /* Google_Protobuf_Any+Registry.swift in Sources */,
-				OBJ_237 /* Google_Protobuf_Duration+Extensions.swift in Sources */,
-				OBJ_238 /* Google_Protobuf_FieldMask+Extensions.swift in Sources */,
-				OBJ_239 /* Google_Protobuf_ListValue+Extensions.swift in Sources */,
-				OBJ_240 /* Google_Protobuf_Struct+Extensions.swift in Sources */,
-				OBJ_241 /* Google_Protobuf_Timestamp+Extensions.swift in Sources */,
-				OBJ_242 /* Google_Protobuf_Value+Extensions.swift in Sources */,
-				OBJ_243 /* Google_Protobuf_Wrappers+Extensions.swift in Sources */,
-				OBJ_244 /* HashVisitor.swift in Sources */,
-				OBJ_245 /* Internal.swift in Sources */,
-				OBJ_246 /* JSONDecoder.swift in Sources */,
-				OBJ_247 /* JSONDecodingError.swift in Sources */,
-				OBJ_248 /* JSONEncoder.swift in Sources */,
-				OBJ_249 /* JSONEncodingError.swift in Sources */,
-				OBJ_250 /* JSONEncodingVisitor.swift in Sources */,
-				OBJ_251 /* JSONIntegerConverting.swift in Sources */,
-				OBJ_252 /* JSONMapEncodingVisitor.swift in Sources */,
-				OBJ_253 /* JSONScanner.swift in Sources */,
-				OBJ_254 /* MathUtils.swift in Sources */,
-				OBJ_255 /* Message+AnyAdditions.swift in Sources */,
-				OBJ_256 /* Message+BinaryAdditions.swift in Sources */,
-				OBJ_257 /* Message+JSONAdditions.swift in Sources */,
-				OBJ_258 /* Message+JSONArrayAdditions.swift in Sources */,
-				OBJ_259 /* Message+TextFormatAdditions.swift in Sources */,
-				OBJ_260 /* Message.swift in Sources */,
-				OBJ_261 /* MessageExtension.swift in Sources */,
-				OBJ_262 /* NameMap.swift in Sources */,
-				OBJ_263 /* ProtobufAPIVersionCheck.swift in Sources */,
-				OBJ_264 /* ProtobufMap.swift in Sources */,
-				OBJ_265 /* ProtoNameProviding.swift in Sources */,
-				OBJ_266 /* SimpleExtensionMap.swift in Sources */,
-				OBJ_267 /* source_context.pb.swift in Sources */,
-				OBJ_268 /* StringUtils.swift in Sources */,
-				OBJ_269 /* struct.pb.swift in Sources */,
-				OBJ_270 /* TextFormatDecoder.swift in Sources */,
-				OBJ_271 /* TextFormatDecodingError.swift in Sources */,
-				OBJ_272 /* TextFormatEncoder.swift in Sources */,
-				OBJ_273 /* TextFormatEncodingVisitor.swift in Sources */,
-				OBJ_274 /* TextFormatScanner.swift in Sources */,
-				OBJ_275 /* timestamp.pb.swift in Sources */,
-				OBJ_276 /* TimeUtils.swift in Sources */,
-				OBJ_277 /* type.pb.swift in Sources */,
-				OBJ_278 /* UnknownStorage.swift in Sources */,
-				OBJ_279 /* Varint.swift in Sources */,
-				OBJ_280 /* Version.swift in Sources */,
-				OBJ_281 /* Visitor.swift in Sources */,
-				OBJ_282 /* WireFormat.swift in Sources */,
-				OBJ_283 /* wrappers.pb.swift in Sources */,
-				OBJ_284 /* ZigZag.swift in Sources */,
+				OBJ_217 /* any.pb.swift in Sources */,
+				OBJ_218 /* AnyMessageStorage.swift in Sources */,
+				OBJ_219 /* AnyUnpackError.swift in Sources */,
+				OBJ_220 /* api.pb.swift in Sources */,
+				OBJ_221 /* BinaryDecoder.swift in Sources */,
+				OBJ_222 /* BinaryDecodingError.swift in Sources */,
+				OBJ_223 /* BinaryEncoder.swift in Sources */,
+				OBJ_224 /* BinaryEncodingError.swift in Sources */,
+				OBJ_225 /* BinaryEncodingSizeVisitor.swift in Sources */,
+				OBJ_226 /* BinaryEncodingVisitor.swift in Sources */,
+				OBJ_227 /* CustomJSONCodable.swift in Sources */,
+				OBJ_228 /* Decoder.swift in Sources */,
+				OBJ_229 /* DoubleFormatter.swift in Sources */,
+				OBJ_230 /* duration.pb.swift in Sources */,
+				OBJ_231 /* empty.pb.swift in Sources */,
+				OBJ_232 /* Enum.swift in Sources */,
+				OBJ_233 /* ExtensibleMessage.swift in Sources */,
+				OBJ_234 /* ExtensionFields.swift in Sources */,
+				OBJ_235 /* ExtensionFieldValueSet.swift in Sources */,
+				OBJ_236 /* ExtensionMap.swift in Sources */,
+				OBJ_237 /* field_mask.pb.swift in Sources */,
+				OBJ_238 /* FieldTag.swift in Sources */,
+				OBJ_239 /* FieldTypes.swift in Sources */,
+				OBJ_240 /* Google_Protobuf_Any+Extensions.swift in Sources */,
+				OBJ_241 /* Google_Protobuf_Any+Registry.swift in Sources */,
+				OBJ_242 /* Google_Protobuf_Duration+Extensions.swift in Sources */,
+				OBJ_243 /* Google_Protobuf_FieldMask+Extensions.swift in Sources */,
+				OBJ_244 /* Google_Protobuf_ListValue+Extensions.swift in Sources */,
+				OBJ_245 /* Google_Protobuf_Struct+Extensions.swift in Sources */,
+				OBJ_246 /* Google_Protobuf_Timestamp+Extensions.swift in Sources */,
+				OBJ_247 /* Google_Protobuf_Value+Extensions.swift in Sources */,
+				OBJ_248 /* Google_Protobuf_Wrappers+Extensions.swift in Sources */,
+				OBJ_249 /* HashVisitor.swift in Sources */,
+				OBJ_250 /* Internal.swift in Sources */,
+				OBJ_251 /* JSONDecoder.swift in Sources */,
+				OBJ_252 /* JSONDecodingError.swift in Sources */,
+				OBJ_253 /* JSONEncoder.swift in Sources */,
+				OBJ_254 /* JSONEncodingError.swift in Sources */,
+				OBJ_255 /* JSONEncodingVisitor.swift in Sources */,
+				OBJ_256 /* JSONIntegerConverting.swift in Sources */,
+				OBJ_257 /* JSONMapEncodingVisitor.swift in Sources */,
+				OBJ_258 /* JSONScanner.swift in Sources */,
+				OBJ_259 /* MathUtils.swift in Sources */,
+				OBJ_260 /* Message+AnyAdditions.swift in Sources */,
+				OBJ_261 /* Message+BinaryAdditions.swift in Sources */,
+				OBJ_262 /* Message+JSONAdditions.swift in Sources */,
+				OBJ_263 /* Message+JSONArrayAdditions.swift in Sources */,
+				OBJ_264 /* Message+TextFormatAdditions.swift in Sources */,
+				OBJ_265 /* Message.swift in Sources */,
+				OBJ_266 /* MessageExtension.swift in Sources */,
+				OBJ_267 /* NameMap.swift in Sources */,
+				OBJ_268 /* ProtobufAPIVersionCheck.swift in Sources */,
+				OBJ_269 /* ProtobufMap.swift in Sources */,
+				OBJ_270 /* ProtoNameProviding.swift in Sources */,
+				OBJ_271 /* SimpleExtensionMap.swift in Sources */,
+				OBJ_272 /* source_context.pb.swift in Sources */,
+				OBJ_273 /* StringUtils.swift in Sources */,
+				OBJ_274 /* struct.pb.swift in Sources */,
+				OBJ_275 /* TextFormatDecoder.swift in Sources */,
+				OBJ_276 /* TextFormatDecodingError.swift in Sources */,
+				OBJ_277 /* TextFormatEncoder.swift in Sources */,
+				OBJ_278 /* TextFormatEncodingVisitor.swift in Sources */,
+				OBJ_279 /* TextFormatScanner.swift in Sources */,
+				OBJ_280 /* timestamp.pb.swift in Sources */,
+				OBJ_281 /* TimeUtils.swift in Sources */,
+				OBJ_282 /* type.pb.swift in Sources */,
+				OBJ_283 /* UnknownStorage.swift in Sources */,
+				OBJ_284 /* Varint.swift in Sources */,
+				OBJ_285 /* Version.swift in Sources */,
+				OBJ_286 /* Visitor.swift in Sources */,
+				OBJ_287 /* WireFormat.swift in Sources */,
+				OBJ_288 /* wrappers.pb.swift in Sources */,
+				OBJ_289 /* ZigZag.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_290 /* Sources */ = {
+		OBJ_295 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_291 /* Session.swift in Sources */,
+				OBJ_296 /* Session.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_301 /* Sources */ = {
+		OBJ_306 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_302 /* TensorFlowTests.swift in Sources */,
+				OBJ_307 /* TensorFlowTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		OBJ_150 /* PBXTargetDependency */ = {
+		OBJ_155 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = OBJ_151 /* SwiftProtobuf */;
-			targetProxy = 837850D01ED1D04E00C7CFB8 /* PBXContainerItemProxy */;
+			target = OBJ_156 /* SwiftProtobuf */;
+			targetProxy = 8378517A1ED27E8F00C7CFB8 /* PBXContainerItemProxy */;
 		};
-		OBJ_176 /* PBXTargetDependency */ = {
+		OBJ_181 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = OBJ_151 /* SwiftProtobuf */;
-			targetProxy = 837850D11ED1D04E00C7CFB8 /* PBXContainerItemProxy */;
+			target = OBJ_156 /* SwiftProtobuf */;
+			targetProxy = 8378517B1ED27E8F00C7CFB8 /* PBXContainerItemProxy */;
 		};
-		OBJ_206 /* PBXTargetDependency */ = {
+		OBJ_211 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = OBJ_151 /* SwiftProtobuf */;
-			targetProxy = 837850D21ED1D04E00C7CFB8 /* PBXContainerItemProxy */;
+			target = OBJ_156 /* SwiftProtobuf */;
+			targetProxy = 8378517C1ED27E8F00C7CFB8 /* PBXContainerItemProxy */;
 		};
-		OBJ_207 /* PBXTargetDependency */ = {
+		OBJ_212 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = OBJ_152 /* PluginLibrary */;
-			targetProxy = 837850D31ED1D04E00C7CFB8 /* PBXContainerItemProxy */;
+			target = OBJ_157 /* PluginLibrary */;
+			targetProxy = 8378517D1ED27E8F00C7CFB8 /* PBXContainerItemProxy */;
 		};
-		OBJ_295 /* PBXTargetDependency */ = {
+		OBJ_300 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = OBJ_151 /* SwiftProtobuf */;
-			targetProxy = 837850D41ED1D04E00C7CFB8 /* PBXContainerItemProxy */;
+			target = OBJ_156 /* SwiftProtobuf */;
+			targetProxy = 8378517E1ED27E8F00C7CFB8 /* PBXContainerItemProxy */;
 		};
-		OBJ_296 /* PBXTargetDependency */ = {
+		OBJ_301 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = OBJ_152 /* PluginLibrary */;
-			targetProxy = 837850D51ED1D04E00C7CFB8 /* PBXContainerItemProxy */;
+			target = OBJ_157 /* PluginLibrary */;
+			targetProxy = 8378517F1ED27E8F00C7CFB8 /* PBXContainerItemProxy */;
 		};
-		OBJ_307 /* PBXTargetDependency */ = {
+		OBJ_312 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = OBJ_151 /* SwiftProtobuf */;
-			targetProxy = 837850D61ED1D04E00C7CFB8 /* PBXContainerItemProxy */;
+			target = OBJ_156 /* SwiftProtobuf */;
+			targetProxy = 837851801ED27E8F00C7CFB8 /* PBXContainerItemProxy */;
 		};
-		OBJ_308 /* PBXTargetDependency */ = {
+		OBJ_313 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = OBJ_152 /* PluginLibrary */;
-			targetProxy = 837850D71ED1D04E00C7CFB8 /* PBXContainerItemProxy */;
+			target = OBJ_157 /* PluginLibrary */;
+			targetProxy = 837851811ED27E8F00C7CFB8 /* PBXContainerItemProxy */;
 		};
-		OBJ_309 /* PBXTargetDependency */ = {
+		OBJ_314 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = OBJ_286 /* TensorFlow */;
-			targetProxy = 837850D81ED1D04E00C7CFB8 /* PBXContainerItemProxy */;
+			target = OBJ_291 /* TensorFlow */;
+			targetProxy = 837851821ED27E8F00C7CFB8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		OBJ_142 /* Debug */ = {
+		OBJ_147 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = OBJ_8 /* settings.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -971,8 +994,9 @@
 			};
 			name = Debug;
 		};
-		OBJ_143 /* Release */ = {
+		OBJ_148 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = OBJ_8 /* settings.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -989,8 +1013,9 @@
 			};
 			name = Release;
 		};
-		OBJ_154 /* Debug */ = {
+		OBJ_159 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = OBJ_8 /* settings.xcconfig */;
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1010,8 +1035,9 @@
 			};
 			name = Debug;
 		};
-		OBJ_155 /* Release */ = {
+		OBJ_160 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = OBJ_8 /* settings.xcconfig */;
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1031,8 +1057,9 @@
 			};
 			name = Release;
 		};
-		OBJ_179 /* Debug */ = {
+		OBJ_184 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = OBJ_8 /* settings.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1049,8 +1076,9 @@
 			};
 			name = Debug;
 		};
-		OBJ_180 /* Release */ = {
+		OBJ_185 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = OBJ_8 /* settings.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1067,8 +1095,9 @@
 			};
 			name = Release;
 		};
-		OBJ_209 /* Debug */ = {
+		OBJ_214 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = OBJ_8 /* settings.xcconfig */;
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1088,8 +1117,9 @@
 			};
 			name = Debug;
 		};
-		OBJ_210 /* Release */ = {
+		OBJ_215 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = OBJ_8 /* settings.xcconfig */;
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1109,9 +1139,12 @@
 			};
 			name = Release;
 		};
-		OBJ_288 /* Debug */ = {
+		OBJ_293 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = OBJ_8 /* settings.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				DEVELOPMENT_TEAM = WMDZ2CQA8K;
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1128,14 +1161,18 @@
 				PRODUCT_BUNDLE_IDENTIFIER = TensorFlow;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				TARGET_NAME = TensorFlow;
 			};
 			name = Debug;
 		};
-		OBJ_289 /* Release */ = {
+		OBJ_294 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = OBJ_8 /* settings.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				DEVELOPMENT_TEAM = WMDZ2CQA8K;
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1152,13 +1189,40 @@
 				PRODUCT_BUNDLE_IDENTIFIER = TensorFlow;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				TARGET_NAME = TensorFlow;
 			};
 			name = Release;
 		};
-		OBJ_299 /* Debug */ = {
+		OBJ_3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_NS_ASSERTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "-I/usr/local/include";
+				OTHER_LDFLAGS = "-L/usr/local/lib";
+				OTHER_SWIFT_FLAGS = "-framework DEBUG -DXcode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				USE_HEADERMAP = NO;
+			};
+			name = Debug;
+		};
+		OBJ_304 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = OBJ_8 /* settings.xcconfig */;
 			buildSettings = {
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1177,33 +1241,9 @@
 			};
 			name = Debug;
 		};
-		OBJ_3 /* Debug */ = {
+		OBJ_305 /* Release */ = {
 			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_NS_ASSERTIONS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				ONLY_ACTIVE_ARCH = YES;
-				OTHER_CFLAGS = "-I../..";
-				OTHER_LDFLAGS = "-L/usr/local/lib/tensorflow";
-				OTHER_SWIFT_FLAGS = "-DXcode";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				USE_HEADERMAP = NO;
-			};
-			name = Debug;
-		};
-		OBJ_300 /* Release */ = {
-			isa = XCBuildConfiguration;
+			baseConfigurationReference = OBJ_8 /* settings.xcconfig */;
 			buildSettings = {
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1232,12 +1272,13 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_OPTIMIZATION_LEVEL = s;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_CFLAGS = "-I../..";
-				OTHER_LDFLAGS = "-L/usr/local/lib/tensorflow";
-				OTHER_SWIFT_FLAGS = "-DXcode";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "-I/usr/local/include";
+				OTHER_LDFLAGS = "-L/usr/local/lib";
+				OTHER_SWIFT_FLAGS = "-framework DEBUG -DXcode";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SUPPORTED_PLATFORMS = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
@@ -1248,29 +1289,29 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		OBJ_141 /* Build configuration list for PBXNativeTarget "Conformance" */ = {
+		OBJ_146 /* Build configuration list for PBXNativeTarget "Conformance" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				OBJ_142 /* Debug */,
-				OBJ_143 /* Release */,
+				OBJ_147 /* Debug */,
+				OBJ_148 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		OBJ_153 /* Build configuration list for PBXNativeTarget "PluginLibrary" */ = {
+		OBJ_158 /* Build configuration list for PBXNativeTarget "PluginLibrary" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				OBJ_154 /* Debug */,
-				OBJ_155 /* Release */,
+				OBJ_159 /* Debug */,
+				OBJ_160 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		OBJ_178 /* Build configuration list for PBXNativeTarget "protoc-gen-swift" */ = {
+		OBJ_183 /* Build configuration list for PBXNativeTarget "protoc-gen-swift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				OBJ_179 /* Debug */,
-				OBJ_180 /* Release */,
+				OBJ_184 /* Debug */,
+				OBJ_185 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
@@ -1284,29 +1325,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		OBJ_208 /* Build configuration list for PBXNativeTarget "SwiftProtobuf" */ = {
+		OBJ_213 /* Build configuration list for PBXNativeTarget "SwiftProtobuf" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				OBJ_209 /* Debug */,
-				OBJ_210 /* Release */,
+				OBJ_214 /* Debug */,
+				OBJ_215 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		OBJ_287 /* Build configuration list for PBXNativeTarget "TensorFlow" */ = {
+		OBJ_292 /* Build configuration list for PBXNativeTarget "TensorFlow" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				OBJ_288 /* Debug */,
-				OBJ_289 /* Release */,
+				OBJ_293 /* Debug */,
+				OBJ_294 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		OBJ_298 /* Build configuration list for PBXNativeTarget "TensorFlowTests" */ = {
+		OBJ_303 /* Build configuration list for PBXNativeTarget "TensorFlowTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				OBJ_299 /* Debug */,
-				OBJ_300 /* Release */,
+				OBJ_304 /* Debug */,
+				OBJ_305 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
