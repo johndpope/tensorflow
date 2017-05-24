@@ -18,9 +18,10 @@ import CTensorFlow
 public final class Session {
 
     var session: OpaquePointer! = nil
-
+    var option: OpaquePointer! = nil
+    
     public init() {
-        let status = TF_NewSession(TF_NewSessionOptions(), session)
+        let status = TF_NewSession(TF_NewSessionOptions(), session,option)
         guard TF_GetCode(status) == TF_OK else {
             fatalError("Failed to initialize TensorFlow session.")
         }
