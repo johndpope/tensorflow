@@ -1,15 +1,9 @@
-#export C_INCLUDE_PATH=/usr/local/include
-CFLAGS := -I/usr/local/include
-LDFLAGS := -L/usr/local/lib 
-
-# LDFLAGS := -L../../bazel-bin/tensorflow
-#LDFLAGS := -L../../bazel-out/local-fastbuild/bin/tensorflow
-#generate-xcodeproj --xcconfig-overrides settings.xcconfig
-
+CFLAGS := "-I/usr/local/include"
+LDFLAGS := "-L/usr/local/lib" 
 SFLAGS=-Xcc $(CFLAGS) -Xlinker $(LDFLAGS)
 
-DBGLIB=.build/debug/TensorFlow
-RELLIB=.build/release/TensorFlow.swiftmodule
+DBGLIB=.build/debug/TensorFlow1
+RELLIB=.build/release/TensorFlow1
 
 all: $(DBGLIB)
 
@@ -17,6 +11,7 @@ $(DBGLIB): Sources/*
 #	swift package reset
 #	swift package clean
 	swift build $(SFLAGS)  
+#	swift package generate-xcodeproj --xcconfig-overrides settings.xcconfig
 
 
 release: $(RELLIB)
