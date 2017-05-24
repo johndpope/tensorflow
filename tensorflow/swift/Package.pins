@@ -4,14 +4,8 @@
     {
       "package": "CTensorFlow",
       "reason": null,
-      "repositoryURL": "/Users/johndpope/Documents/tensorFlowWorkspace/CTensorFlow",
-      "version": "0.0.0"
-    },
-    {
-      "package": "SwiftProtobuf",
-      "reason": null,
-      "repositoryURL": "https://github.com/apple/swift-protobuf.git",
-      "version": "0.9.902"
+      "repositoryURL": "https://github.com/johndpope/CTensorFlow.git",
+      "version": "0.0.1"
     }
   ],
   "version": 1

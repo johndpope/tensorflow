@@ -17,8 +17,6 @@ import CTensorFlow
 
 
 
-//UnsafeMutablePointer<CChar>.self
-
 
 
 public final class Session {
