@@ -565,14 +565,14 @@ public func tfSetAttrTensor(_ desc: OpaquePointer!, _ attr_name: UnsafePointer<I
   TF_SetAttrTensor(desc,attr_name,value,status)
 }
 public func tfSetAttrTensorList(_ desc: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ values: UnsafePointer<OpaquePointer?>!, _ num_values: Int32, _ status: OpaquePointer!){
-
+ print("TO IMPLMENT")
 }
 
 // `proto` should point to a sequence of bytes of length `proto_len`
 // representing a binary serialization of an AttrValue protocol
 // buffer.
 public func tfSetAttrValueProto(_ desc: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ proto: UnsafeRawPointer!, _ proto_len: Int, _ status: OpaquePointer!){
-
+ print("TO IMPLMENT")
 }
 
 // If this function succeeds:
@@ -777,11 +777,11 @@ public func tfOperationGetAttrInt(_ oper: OpaquePointer!, _ attr_name: UnsafePoi
 // TF_AttrMetadata.list_size from TF_OperationGetAttrMetadata(oper,
 // attr_name)).
 public func tfOperationGetAttrIntList(_ oper: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ values: UnsafeMutablePointer<Int64>!, _ max_values: Int32, _ status: OpaquePointer!){
-
+ print("TO IMPLMENT")
 }
 
 public func tfOperationGetAttrFloat(_ oper: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ value: UnsafeMutablePointer<Float>!, _ status: OpaquePointer!){
-
+ print("TO IMPLMENT")
 }
 
 // Fills in `values` with the value of the attribute `attr_name` of `oper`.
@@ -789,11 +789,11 @@ public func tfOperationGetAttrFloat(_ oper: OpaquePointer!, _ attr_name: UnsafeP
 // to TF_AttrMetadata.list_size from TF_OperationGetAttrMetadata(oper,
 // attr_name)).
 public func tfOperationGetAttrFloatList(_ oper: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ values: UnsafeMutablePointer<Float>!, _ max_values: Int32, _ status: OpaquePointer!){
-
+ print("TO IMPLMENT")
 }
 
 public func tfOperationGetAttrBool(_ oper: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ value: UnsafeMutablePointer<UInt8>!, _ status: OpaquePointer!){
-
+ print("TO IMPLMENT")
 }
 
 // Fills in `values` with the value of the attribute `attr_name` of `oper`.
@@ -801,11 +801,11 @@ public func tfOperationGetAttrBool(_ oper: OpaquePointer!, _ attr_name: UnsafePo
 // to TF_AttrMetadata.list_size from TF_OperationGetAttrMetadata(oper,
 // attr_name)).
 public func tfOperationGetAttrBoolList(_ oper: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ values: UnsafeMutablePointer<UInt8>!, _ max_values: Int32, _ status: OpaquePointer!){
-
+ print("TO IMPLMENT")
 }
 
 public func tfOperationGetAttrType(_ oper: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ value: UnsafeMutablePointer<TF_DataType>!, _ status: OpaquePointer!){
-
+ print("TO IMPLMENT")
 }
 
 // Fills in `values` with the value of the attribute `attr_name` of `oper`.
@@ -813,7 +813,7 @@ public func tfOperationGetAttrType(_ oper: OpaquePointer!, _ attr_name: UnsafePo
 // to TF_AttrMetadata.list_size from TF_OperationGetAttrMetadata(oper,
 // attr_name)).
 public func tfOperationGetAttrTypeList(_ oper: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ values: UnsafeMutablePointer<TF_DataType>!, _ max_values: Int32, _ status: OpaquePointer!){
-
+ print("TO IMPLMENT")
 }
 
 // Fills in `value` with the value of the attribute `attr_name` of `oper`.
@@ -837,13 +837,13 @@ public func tfOperationGetAttrShape(_ oper: OpaquePointer!, _ attr_name: UnsafeP
 //
 // Fails if storage_size is insufficient to hold the requested shapes.
 public func tfOperationGetAttrShapeList(_ oper: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ dims: UnsafeMutablePointer<UnsafeMutablePointer<Int64>?>!, _ num_dims: UnsafeMutablePointer<Int32>!, _ num_shapes: Int32, _ storage: UnsafeMutablePointer<Int64>!, _ storage_size: Int32, _ status: OpaquePointer!){
-
+ print("TO IMPLMENT")
 }
 
 // Sets `value` to the binary-serialized TensorShapeProto of the value of
 // `attr_name` attribute of `oper`'.
 public func tfOperationGetAttrTensorShapeProto(_ oper: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ value: UnsafeMutablePointer<TF_Buffer>!, _ status: OpaquePointer!){
-
+ print("TO IMPLMENT")
 }
 
 // Fills in `values` with binary-serialized TensorShapeProto values of the
@@ -851,7 +851,7 @@ public func tfOperationGetAttrTensorShapeProto(_ oper: OpaquePointer!, _ attr_na
 // least `num_values` (ideally set to TF_AttrMetadata.list_size from
 // TF_OperationGetAttrMetadata(oper, attr_name)).
 public func tfOperationGetAttrTensorShapeProtoList(_ oper: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ values: UnsafeMutablePointer<UnsafeMutablePointer<TF_Buffer>?>!, _ max_values: Int32, _ status: OpaquePointer!){
-
+ print("TO IMPLMENT")
 }
 
 // Gets the TF_Tensor valued attribute of `attr_name` of `oper`.
@@ -859,7 +859,7 @@ public func tfOperationGetAttrTensorShapeProtoList(_ oper: OpaquePointer!, _ att
 // Allocates a new TF_Tensor which the caller is expected to take
 // ownership of (and can deallocate using TF_DeleteTensor).
 public func tfOperationGetAttrTensor(_ oper: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ value: UnsafeMutablePointer<OpaquePointer?>!, _ status: OpaquePointer!){
-
+ print("TO IMPLMENT")
 }
 
 // Fills in `values` with the TF_Tensor values of the attribute `attr_name` of
@@ -870,13 +870,13 @@ public func tfOperationGetAttrTensor(_ oper: OpaquePointer!, _ attr_name: Unsafe
 // The caller takes ownership of all the non-null TF_Tensor* entries in `values`
 // (which can be deleted using TF_DeleteTensor(values[i])).
 public func tfOperationGetAttrTensorList(_ oper: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ values: UnsafeMutablePointer<OpaquePointer?>!, _ max_values: Int32, _ status: OpaquePointer!){
-
+ print("TO IMPLMENT")
 }
 
 // Sets `output_attr_value` to the binary-serialized AttrValue proto
 // representation of the value of the `attr_name` attr of `oper`.
 public func tfOperationGetAttrValueProto(_ oper: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ output_attr_value: UnsafeMutablePointer<TF_Buffer>!, _ status: OpaquePointer!){
-    
+    print("TO IMPLMENT") 
 }
 
 // Returns the operation in the graph with `oper_name`. Returns nullptr if
@@ -902,7 +902,7 @@ public func tfGraphNextOperation(_ graph: OpaquePointer!, _ pos: UnsafeMutablePo
 //
 // May fail on very large graphs in the future.
 public func tfGraphToGraphDef(_ graph: OpaquePointer!, _ output_graph_def: UnsafeMutablePointer<TF_Buffer>!, _ status: OpaquePointer!){
-
+ print("TO IMPLMENT")
 }
 
 // TF_ImportGraphDefOptions holds options that can be passed to
@@ -933,20 +933,20 @@ public func tfImportGraphDefOptionsAddInputMapping(_ opts: OpaquePointer!, _ src
 // `dst` references an operation already existing in the graph being imported
 // into.
 public func tfGraphImportGraphDefOptionsRemapControlDependency(_ opts: OpaquePointer!, _ src_name: UnsafePointer<Int8>!, _ dst: OpaquePointer!){
-
+ print("TO IMPLMENT")
 }
 
 // Cause the imported graph to have a control dependency on `oper`. `oper`
 // should exist in the graph being imported into.
 public func tfImportGraphDefOptionsAddControlDependency(_ opts: OpaquePointer!, _ oper: OpaquePointer!){
-
+ print("TO IMPLMENT")
 }
 
 // Add an output in `graph_def` to be returned via the `return_outputs` output
 // parameter of TF_GraphImportGraphDef(). If the output is remapped via an input
 // mapping, the corresponding existing tensor in `graph` will be returned.
 public func tfImportGraphDefOptionsAddReturnOutput(_ opts: OpaquePointer!, _ oper_name: UnsafePointer<Int8>!, _ index: Int32){
-
+ print("TO IMPLMENT")
 }
 
 // Returns the number of return outputs added via
@@ -962,19 +962,19 @@ public func tfImportGraphDefOptionsNumReturnOutputs(_ opts: OpaquePointer!) -> I
 // `num_return_outputs` is non-zero, `return_outputs` must be of length
 // `num_return_outputs`. Otherwise it can be null.
 public func tfGraphImportGraphDefWithReturnOutputs(_ graph: OpaquePointer!, _ graph_def: UnsafePointer<TF_Buffer>!, _ options: OpaquePointer!, _ return_outputs: UnsafeMutablePointer<TF_Output>!, _ num_return_outputs: Int32, _ status: OpaquePointer!){
-
+ print("TO IMPLMENT")
 }
 
 // Import the graph serialized in `graph_def` into `graph`.
 // Convenience function for when no return outputs have been added.
 public func tfGraphImportGraphDef(_ graph: OpaquePointer!, _ graph_def: UnsafePointer<TF_Buffer>!, _ options: OpaquePointer!, _ status: OpaquePointer!){
-
+ print("TO IMPLMENT")
 }
 
 // Note: The following function may fail on very large protos in the future.
 
 public func tfOperationToNodeDef(_ oper: OpaquePointer!, _ output_node_def: UnsafeMutablePointer<TF_Buffer>!, _ status: OpaquePointer!){
-
+ print("TO IMPLMENT")
 }
 
 /*public struct TF_WhileParams {
@@ -1048,14 +1048,14 @@ public func tfNewWhile(_ g: OpaquePointer!, _ inputs: UnsafeMutablePointer<TF_Ou
 // Either this or TF_AbortWhile() must be called after a successful
 // TF_NewWhile() call.
 public func tfFinishWhile(_ params: UnsafePointer<TF_WhileParams>!, _ status: OpaquePointer!, _ outputs: UnsafeMutablePointer<TF_Output>!){
-
+ print("TO IMPLMENT")
 }
 
 // Frees `params`s resources without building a while loop. `params` is no
 // longer valid after this returns. Either this or TF_FinishWhile() must be
 // called after a successful TF_NewWhile() call.
 public func tfAbortWhile(_ params: UnsafePointer<TF_WhileParams>!){
-
+ print("TO IMPLMENT")
 }
 
 // TODO(andydavis): Function to add gradients to a graph.
@@ -1210,30 +1210,30 @@ public func tfNewDeprecatedSession(pointer:OpaquePointer!, _ status: OpaquePoint
     return TF_NewDeprecatedSession(pointer,status)
 }
 public func tfCloseDeprecatedSession(pointer:OpaquePointer!, _ status: OpaquePointer!){
-
+ print("TO IMPLMENT")
 }
 public func tfDeleteDeprecatedSession(pointer:OpaquePointer!, _ status: OpaquePointer!){
-
+ print("TO IMPLMENT")
 }
 public func tfReset(_ opt: OpaquePointer!, _ containers: UnsafeMutablePointer<UnsafePointer<Int8>?>!, _ ncontainers: Int32, _ status: OpaquePointer!){
-
+ print("TO IMPLMENT")
 }
 // Treat the bytes proto[0,proto_len-1] as a serialized GraphDef and
 // add the nodes in that GraphDef to the graph for the session.
 //
 // Prefer use of TF_Session and TF_GraphImportGraphDef over this.
 public func tfExtendGraph(oPointer:OpaquePointer!, _ proto: UnsafeRawPointer!, _ proto_len: Int, pointer:OpaquePointer!){
-
+ print("TO IMPLMENT")
 }
 
 // See TF_SessionRun() above.
 public func tfRun(oPointer:OpaquePointer!, _ run_options: UnsafePointer<TF_Buffer>!, _ input_names: UnsafeMutablePointer<UnsafePointer<Int8>?>!, _ inputs: UnsafeMutablePointer<OpaquePointer?>!, _ ninputs: Int32, _ output_names: UnsafeMutablePointer<UnsafePointer<Int8>?>!, _ outputs: UnsafeMutablePointer<OpaquePointer?>!, _ noutputs: Int32, _ target_oper_names: UnsafeMutablePointer<UnsafePointer<Int8>?>!, _ ntargets: Int32, _ run_metadata: UnsafeMutablePointer<TF_Buffer>!, pointer:OpaquePointer!){
-
+ print("TO IMPLMENT")
 }
 
 // See TF_SessionPRunSetup() above.
 public func tfPRunSetup(oPointer:OpaquePointer!, _ input_names: UnsafeMutablePointer<UnsafePointer<Int8>?>!, _ ninputs: Int32, _ output_names: UnsafeMutablePointer<UnsafePointer<Int8>?>!, _ noutputs: Int32, _ target_oper_names: UnsafeMutablePointer<UnsafePointer<Int8>?>!, _ ntargets: Int32, _ handle: UnsafeMutablePointer<UnsafePointer<Int8>?>!, pointer:OpaquePointer!){
-
+ print("TO IMPLMENT")
 }
 
 // See TF_SessionPRun above.
