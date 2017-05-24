@@ -14,8 +14,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_17"
-               BuildableName = "TensorFlow.framework"
+               BlueprintIdentifier = "OBJ_23"
+               BuildableName = "TensorFlow"
                BlueprintName = "TensorFlow"
                ReferencedContainer = "container:TensorFlow.xcodeproj">
             </BuildableReference>
@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_24"
+               BlueprintIdentifier = "OBJ_34"
                BuildableName = "TensorFlowTests.xctest"
                BlueprintName = "TensorFlowTests"
                ReferencedContainer = "container:TensorFlow.xcodeproj">
@@ -55,8 +55,8 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "OBJ_17"
-            BuildableName = "TensorFlow.framework"
+            BlueprintIdentifier = "OBJ_23"
+            BuildableName = "TensorFlow"
             BlueprintName = "TensorFlow"
             ReferencedContainer = "container:TensorFlow.xcodeproj">
          </BuildableReference>

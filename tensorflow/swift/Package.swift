@@ -6,6 +6,6 @@ let package = Package(
         Target(name: "TensorFlow")
     ],
     dependencies: [
-         .Package(url: "https://github.com/johndpope/CTensorFlow.git", Version(0,0,1))
+         .Package(url: "https://github.com/johndpope/CTensorFlow.git", Version(0,0,2))
     ]
 )
