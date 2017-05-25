@@ -1,8 +1,10 @@
 import CTensorFlow
 
 
-let graph:OpaquePointer! = nil
-let options = TF_NewSessionOptions()
-let status:OpaquePointer! = nil
+let myGraph:tfGraph = tfGraph()
+let myConfig:OpaquePointer! = nil
+let opts:tfSessionOptions = tfSessionOptions(Target:"",Config:myConfig)
 
-let session = tfNewSession(graph, options, status)
+
+
+var (mySession,error) = newSession(graph:myGraph,options:opts)

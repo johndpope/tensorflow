@@ -76,31 +76,27 @@ struct tfSessionOptions  {
 
 // NewSession creates a new execution session with the associated graph.
 // options may be nil to use the default options.
-func NewSession(graph:tfGraph, options:tfSessionOptions)-> (session:tfSession, error:Error) {
+func newSession(graph:tfGraph, options:tfSessionOptions)-> (session:tfSession?, error:Tensorflow_Error_Code?) {
     
     
-    var status = newStatus()
-   // var cOpt, doneOpt, err = options.c()
+    let status = newStatus()
+   // var cOpt, doneOpt, err = options.c() // how to do this in swift??
    // defer doneOpt()
    // if err != nil {
    //     return nil, err
    // }
     let cOpt = TF_NewSessionOptions()
     if let cSess = TF_NewSession(graph.c, cOpt, status.c){
-        let s =  tfSession(c: cSess)
-        //    runtime.SetFinalizer(s, func(s *Session) { s.Close() })
-        return (s, Error())
-    }else{
-        let err = Error()
-        //status.c
         
-        return (nil,err)
-    }
-//    if err = status.Err(); err != nil {
-//        return nil, err
-//    }
+        let s =  tfSession(c: cSess)
+        //    runtime.SetFinalizer(s, func(s *Session) { s.Close() }) // how to do this in swift??
+        return (s, nil)
+    }else{
     
-
+        let code = tfGetCode(status.c)
+        let intRaw:Int = Int(code.rawValue)
+        return (nil,Tensorflow_Error_Code(rawValue: intRaw))
+    }
 }
 /*
  
