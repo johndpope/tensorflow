@@ -67,7 +67,7 @@ struct tfSessionOptions  {
     // tensorflow.ConfigProto protocol message
     // (https://www.tensorflow.org/code/tensorflow/core/protobuf/config.proto).
    // var Config:Tensorflow_ConfigProto //- TODO - decide whether to import monolithic grpc + tensorflow grpc swift
-    var Config:OpaquePointer
+    var Config:Tensorflow_ConfigProto
     
 }
 
@@ -80,6 +80,8 @@ func newSession(graph:tfGraph, options:tfSessionOptions)-> (session:tfSession?, 
     
     
     let status = newStatus()
+    
+    // TODO - determine the following from Config()
    // var cOpt, doneOpt, err = options.c() // how to do this in swift??
    // defer doneOpt()
    // if err != nil {
