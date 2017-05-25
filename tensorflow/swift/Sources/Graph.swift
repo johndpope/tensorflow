@@ -21,9 +21,9 @@ import CTensorFlow
     
 //}
 // Graph represents a computation graph. Graphs may be shared between sessions.
-//struct Graph  {
-  //  var c:UnsafeMutablePointer<TF_Graph>
-//}
+struct tfGraph  {
+    var c:OpaquePointer!
+}
 
 
 /*

@@ -19,16 +19,19 @@ import CTensorFlow
 
 // status holds error information returned by TensorFlow. We convert all
 // TF statuses to Go errors.
-/*struct status  {
-    var c:TF_Status
-}*/
-/*
-func newStatus() -> status {
-	s = &status{TF_NewStatus()}
-	runtime.SetFinalizer(s, (*status).finalizer)
-	return s
+struct tfStatus  {
+    var c:OpaquePointer!
 }
- */
+
+func newStatus() -> tfStatus {
+    let s = TF_NewStatus()
+//	s = &status{TF_NewStatus()}
+//	runtime.SetFinalizer(s, (*status).finalizer)
+    var tfstatus = tfStatus()
+    tfstatus.c = s
+	return tfstatus
+}
+
 
 /*func newStatus() -> status {
     let s = TF_NewStatus()
@@ -52,14 +55,17 @@ func (s *status) Code() code {
 func (s *status) String() string {
 	return C.GoString(TF_Message(s.c))
 }
+*/
 
 // Err converts the status to a Go error and returns nil if the status is OK.
-func (s *status) Err() error {
+/*func (s *status) Err() error {
 	if s == nil || s.Code() == TF_OK {
 		return nil
 	}
 	return (*statusError)(s)
-}
+}*/
+
+/*
 
 // statusError is distinct from status because it fulfills the error interface.
 // status itself may have a TF_OK code and is not always considered an error.

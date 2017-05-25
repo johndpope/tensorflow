@@ -24,19 +24,20 @@ import CTensorFlow
 // After creating the session with a graph, the caller uses the Run() API to
 // perform the computation and potentially fetch outputs as Tensors.
 // A Session allows concurrent calls to Run().
-/*struct Session  {
-    var c:TF_Session
+struct tfSession  {
+    //var c:TF_Session
+    var c:OpaquePointer
     
     // For ensuring that:
     // - Close() blocks on all Run() calls to complete.
     // - Close() can be called multiple times.
-    var wg:WaitGroup
-    var mu:Mutex
-}*/
+    //var wg:WaitGroup
+    //var mu:Mutex
+}
 
 
 // SessionOptions contains configuration information for a session.
-/*struct SessionOptions  {
+struct tfSessionOptions  {
     // Target indicates the TensorFlow runtime to connect to.
     //
     // If 'target' is empty or unspecified, the local TensorFlow runtime
@@ -65,32 +66,42 @@ import CTensorFlow
     // Config is a binary-serialized representation of the
     // tensorflow.ConfigProto protocol message
     // (https://www.tensorflow.org/code/tensorflow/core/protobuf/config.proto).
-    var Config:Tensorflow_ConfigProto
-}*/
+   // var Config:Tensorflow_ConfigProto //- TODO - decide whether to import monolithic grpc + tensorflow grpc swift
+    var Config:OpaquePointer
+    
+}
 
 
 
 
 // NewSession creates a new execution session with the associated graph.
 // options may be nil to use the default options.
-/*func NewSession(graph:Graph, options:SessionOptions)-> (session:Session, error:Error) {
+func NewSession(graph:tfGraph, options:tfSessionOptions)-> (session:tfSession, error:Error) {
     
     
-    status = newStatus()
-    cOpt, doneOpt, err = options.c()
-    defer doneOpt()
-    if err != nil {
-        return nil, err
+    var status = newStatus()
+   // var cOpt, doneOpt, err = options.c()
+   // defer doneOpt()
+   // if err != nil {
+   //     return nil, err
+   // }
+    let cOpt = TF_NewSessionOptions()
+    if let cSess = TF_NewSession(graph.c, cOpt, status.c){
+        let s =  tfSession(c: cSess)
+        //    runtime.SetFinalizer(s, func(s *Session) { s.Close() })
+        return (s, Error())
+    }else{
+        let err = Error()
+        //status.c
+        
+        return (nil,err)
     }
-    cSess = TF_NewSession(graph.c, cOpt, status.c)
-    if err = status.Err(); err != nil {
-        return nil, err
-    }
+//    if err = status.Err(); err != nil {
+//        return nil, err
+//    }
     
-    s = &Session{c: cSess}
-    runtime.SetFinalizer(s, func(s *Session) { s.Close() })
-    return s, nil
-}*/
+
+}
 /*
  
 
