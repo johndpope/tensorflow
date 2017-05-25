@@ -1,7 +1,6 @@
-# gcc -I/usr/local/include -L/usr/local/lib hello_tf.c -ltensorflow
-#https://www.tensorflow.org/install/install_sources
+# see https://www.tensorflow.org/versions/master/install/install_c
+
 CFLAGS := "-I/usr/local/include"
-#LDFLAGS := -L../../bazel-out/local-fastbuild/bin/tensorflow
 LDFLAGS := "-L/usr/local/lib -ltensorflow" 
 SFLAGS=-Xcc $(CFLAGS) -Xlinker $(LDFLAGS)
 
