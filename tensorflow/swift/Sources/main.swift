@@ -1,13 +1,10 @@
 import CTensorFlow
 import protoTensorFlow
 
-let myGraph:tfGraph = tfGraph()
-let myConfig:Tensorflow_ConfigProto  = Tensorflow_ConfigProto()
 
 
-let opts:tfSessionOptions = tfSessionOptions(Target:"",Config:myConfig)
-
-
+let myGraph:Graph = Graph()
+let opts:SessionOptions = SessionOptions()
 
 var (mySession,error) = newSession(graph:myGraph,options:opts)
 

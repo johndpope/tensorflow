@@ -25,7 +25,7 @@ import protoTensorFlow
 // After creating the session with a graph, the caller uses the Run() API to
 // perform the computation and potentially fetch outputs as Tensors.
 // A Session allows concurrent calls to Run().
-struct tfSession  {
+struct Session  {
     //var c:TF_Session
     var c:OpaquePointer
     
@@ -38,7 +38,17 @@ struct tfSession  {
 
 
 // SessionOptions contains configuration information for a session.
-struct tfSessionOptions  {
+struct SessionOptions  {
+    
+    init(){
+        self.c = tfNewSessionOptions()
+        self.Target = ""
+        self.Config = Tensorflow_ConfigProto()
+    }
+    // c *C.TF_Session
+    var c:OpaquePointer
+
+    
     // Target indicates the TensorFlow runtime to connect to.
     //
     // If 'target' is empty or unspecified, the local TensorFlow runtime
@@ -67,7 +77,7 @@ struct tfSessionOptions  {
     // Config is a binary-serialized representation of the
     // tensorflow.ConfigProto protocol message
     // (https://www.tensorflow.org/code/tensorflow/core/protobuf/config.proto).
-   // var Config:Tensorflow_ConfigProto //- TODO - decide whether to import monolithic grpc + tensorflow grpc swift
+   // var Config:Tensorflow_ConfigProto
     var Config:Tensorflow_ConfigProto
     
 }
@@ -77,7 +87,7 @@ struct tfSessionOptions  {
 
 // NewSession creates a new execution session with the associated graph.
 // options may be nil to use the default options.
-func newSession(graph:tfGraph, options:tfSessionOptions)-> (session:tfSession?, error:Tensorflow_Error_Code?) {
+func newSession(graph:Graph, options:SessionOptions)-> (session:Session?, error:Tensorflow_Error_Code?) {
     
     
     let status = newStatus()
@@ -88,10 +98,10 @@ func newSession(graph:tfGraph, options:tfSessionOptions)-> (session:tfSession?, 
    // if err != nil {
    //     return nil, err
    // }
-    let cOpt = TF_NewSessionOptions()
-    if let cSess = TF_NewSession(graph.c, cOpt, status.c){
+    let cOpt = tfNewSessionOptions()
+    if let cSess = tfNewSession(graph.c, cOpt, status.c){
         
-        let s =  tfSession(c: cSess)
+        let s =  Session(c: cSess)
         //    runtime.SetFinalizer(s, func(s *Session) { s.Close() }) // how to do this in swift??
         return (s, nil)
     }else{

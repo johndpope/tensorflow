@@ -16,33 +16,39 @@
 import CTensorFlow
 
 
-//struct  C{
- //   struct TF_Graph: OpaquePointer{
-    
-//}
 // Graph represents a computation graph. Graphs may be shared between sessions.
-struct tfGraph  {
+struct Graph  {
     var c:OpaquePointer!
 }
 
-
+func newGraph()-> Graph{
+    let graph:OpaquePointer = tfNewGraph()
+    var g = Graph()
+    g.c = graph
+    return g
+}
 /*
 // NewGraph returns a new Graph.
 func NewGraph() *Graph {
     g = &Graph{TF_NewGraph()}
     runtime.SetFinalizer(g, (*Graph).finalizer)
     return g
-}
+}*/
 
-func (g *Graph) finalizer() {
-    TF_DeleteGraph(g.c)
+
+func  finalizer(g :Graph) {
+    tfDeleteGraph(pointer:g.c)
 }
 
 // WriteTo writes out a serialized representation of g to w.
 //
 // Implements the io.WriterTo interface.
-func (g *Graph) WriteTo(w io.Writer) (int64, error) {
-    buf = TF_NewBuffer()
+
+/*func  writeTo(g:Graph, w:io.Writer)-> (int64, error) {
+    
+    //buf = TF_NewBuffer()
+    let buf = tfNewBuffer()
+    
     defer TF_DeleteBuffer(buf)
     status = newStatus()
     TF_GraphToGraphDef(g.c, buf, status.c)
@@ -60,13 +66,13 @@ func (g *Graph) WriteTo(w io.Writer) (int64, error) {
     slice = (*[1 << 30]byte)(unsafe.Pointer(buf.data))[:length:length]
     n, err = w.Write(slice)
     return int64(n), err
-}
+}*/
 
 // Import imports the nodes and edges from a serialized representation of
 // another Graph into g.
 //
 // Names of imported nodes will be prefixed with prefix.
-func (g *Graph) Import(def []byte, prefix string) error {
+/*func (g *Graph) Import(def []byte, prefix string) error {
     cprefix = C.CString(prefix)
     defer C.free(unsafe.Pointer(cprefix))
     
@@ -93,11 +99,11 @@ func (g *Graph) Import(def []byte, prefix string) error {
         return err
     }
     return nil
-}
+}*/
 
 // Operation returns the Operation named name in the Graph, or nil if no such
 // operation is present.
-func (g *Graph) Operation(name string) *Operation {
+/*func (g *Graph) Operation(name string) *Operation {
     cname = C.CString(name)
     defer C.free(unsafe.Pointer(cname))
     cop = TF_GraphOperationByName(g.c, cname)

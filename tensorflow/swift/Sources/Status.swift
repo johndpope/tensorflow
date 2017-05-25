@@ -24,25 +24,16 @@ struct tfStatus  {
 }
 
 func newStatus() -> tfStatus {
-    let s = TF_NewStatus()
-//	s = &status{TF_NewStatus()}
-//	runtime.SetFinalizer(s, (*status).finalizer)
+    //	s = &status{TF_NewStatus()}
+    let s = tfNewStatus()
+//	runtime.SetFinalizer(s, (*status).finalizer) // TODO how to port to swift?
     var tfstatus = tfStatus()
     tfstatus.c = s
 	return tfstatus
 }
 
 
-/*func newStatus() -> status {
-    let s = TF_NewStatus()
-    guard TF_GetCode(status) == TF_OK else {
-        fatalError("Failed to delete TensorFlow session.")
-    }
-        
-    //s = &status{TF_NewStatus()}
-    runtime.SetFinalizer(s, (*status).finalizer)
-    return s
-}*/
+
 /*
 func (s *status) finalizer() {
 	TF_DeleteStatus(s.c)
