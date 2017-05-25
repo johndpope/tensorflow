@@ -10,8 +10,4 @@
     OTHER_CPLUSPLUSFLAGS = -I/usr/local/include
     OTHER_LDFLAGS = -L/usr/local/lib -ltensorflow
     OTHER_SWIFT_FLAGS = -DXcode
-    SUPPORTED_PLATFORMS = "macosx"
-    PLATFORM_NAME = "macosx"
     PLATFORM_PREFERRED_ARCH = x86_64
-    arch = x86_64
-    variant = normal
