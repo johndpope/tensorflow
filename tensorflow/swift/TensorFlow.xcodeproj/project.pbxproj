@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E87AC8FA1ED68E8300D11514 /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87AC8F91ED68E8300D11514 /* Graph.swift */; };
+		E87AC8FC1ED68E8E00D11514 /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87AC8FB1ED68E8E00D11514 /* Operation.swift */; };
+		E87AC8FE1ED68EA200D11514 /* SavedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87AC8FD1ED68EA200D11514 /* SavedModel.swift */; };
+		E87AC9001ED68EB300D11514 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87AC8FF1ED68EB300D11514 /* Session.swift */; };
+		E87AC9021ED68ED200D11514 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87AC9011ED68ED200D11514 /* Shape.swift */; };
+		E87AC9041ED68EE600D11514 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87AC9031ED68EE600D11514 /* Status.swift */; };
+		E87AC9061ED68F0C00D11514 /* Tensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87AC9051ED68F0C00D11514 /* Tensor.swift */; };
 		OBJ_26 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* main.swift */; };
 		OBJ_27 /* TensorFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* TensorFlow.swift */; };
 		OBJ_34 /* TensorFlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* TensorFlowTests.swift */; };
@@ -23,6 +30,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E87AC8F91ED68E8300D11514 /* Graph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
+		E87AC8FB1ED68E8E00D11514 /* Operation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
+		E87AC8FD1ED68EA200D11514 /* SavedModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedModel.swift; sourceTree = "<group>"; };
+		E87AC8FF1ED68EB300D11514 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		E87AC9011ED68ED200D11514 /* Shape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
+		E87AC9031ED68EE600D11514 /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
+		E87AC9051ED68F0C00D11514 /* Tensor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tensor.swift; sourceTree = "<group>"; };
 		OBJ_10 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		OBJ_11 /* TensorFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TensorFlow.swift; sourceTree = "<group>"; };
 		OBJ_14 /* TensorFlowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TensorFlowTests.swift; sourceTree = "<group>"; };
@@ -118,7 +132,14 @@
 		OBJ_9 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				E87AC8F91ED68E8300D11514 /* Graph.swift */,
 				OBJ_10 /* main.swift */,
+				E87AC8FB1ED68E8E00D11514 /* Operation.swift */,
+				E87AC8FD1ED68EA200D11514 /* SavedModel.swift */,
+				E87AC8FF1ED68EB300D11514 /* Session.swift */,
+				E87AC9011ED68ED200D11514 /* Shape.swift */,
+				E87AC9031ED68EE600D11514 /* Status.swift */,
+				E87AC9051ED68F0C00D11514 /* Tensor.swift */,
 				OBJ_11 /* TensorFlow.swift */,
 			);
 			path = Sources;
@@ -191,8 +212,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				E87AC9061ED68F0C00D11514 /* Tensor.swift in Sources */,
+				E87AC8FA1ED68E8300D11514 /* Graph.swift in Sources */,
+				E87AC8FE1ED68EA200D11514 /* SavedModel.swift in Sources */,
+				E87AC9001ED68EB300D11514 /* Session.swift in Sources */,
+				E87AC9041ED68EE600D11514 /* Status.swift in Sources */,
+				E87AC9021ED68ED200D11514 /* Shape.swift in Sources */,
 				OBJ_26 /* main.swift in Sources */,
 				OBJ_27 /* TensorFlow.swift in Sources */,
+				E87AC8FC1ED68E8E00D11514 /* Operation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
