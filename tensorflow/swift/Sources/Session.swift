@@ -14,6 +14,7 @@
 /// ==============================================================================
 
 import CTensorFlow
+import protoTensorFlow
 
 
 // Session drives a TensorFlow graph computation.

@@ -17,7 +17,7 @@
 import Darwin.C.stddef
 import Darwin.C.stdint
 import CTensorFlow
-
+import protoTensorFlow
 // --------------------------------------------------------------------------
 // C API for TensorFlow.
 //
@@ -228,6 +228,15 @@ public func tfNewTensor(dt: TF_DataType, _ dims: UnsafePointer<Int64>!, _ num_di
     return TF_NewTensor(dt,dims, num_dims, data, len, deallocator, deallocator_arg)
   
 }
+
+// helper
+public func tfNewTensor(dt: Tensorflow_DataType, _ dims: UnsafePointer<Int64>!, _ num_dims: Int32, _ data: UnsafeMutableRawPointer!, _ len: Int, _ deallocator: (@convention(c) (UnsafeMutableRawPointer?, Int, UnsafeMutableRawPointer?) -> Swift.Void)!, _ deallocator_arg: UnsafeMutableRawPointer!) -> OpaquePointer!{
+    let structDt = TF_DataType(UInt32(dt.rawValue))
+    return TF_NewTensor(structDt,dims, num_dims, data, len, deallocator, deallocator_arg)
+    
+}
+
+
 
 // Allocate and return a new Tensor.
 //

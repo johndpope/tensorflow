@@ -1,5 +1,5 @@
 import CTensorFlow
-
+import protoTensorFlow
 
 let myGraph:tfGraph = tfGraph()
 let myConfig:Tensorflow_ConfigProto  = Tensorflow_ConfigProto()
