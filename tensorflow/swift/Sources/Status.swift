@@ -15,18 +15,27 @@ limitations under the License.
 */
 
 import CTensorFlow
+import Dispatch
 
 
 // status holds error information returned by TensorFlow. We convert all
 // TF statuses to Go errors.
 struct tfStatus  {
     var c:OpaquePointer!
+    
 }
 
 func newStatus() -> tfStatus {
     //	s = &status{TF_NewStatus()}
     let s = tfNewStatus()
+
 //	runtime.SetFinalizer(s, (*status).finalizer) // TODO how to port to swift?
+//https://github.com/reactive-swift/RunLoop/issues/11
+//     let main = DispatchQueue.main
+//    main.async() {
+//        dispatch_set_finalizer_f(s,finalizer)
+//    }
+    
     var tfstatus = tfStatus()
     tfstatus.c = s
 	return tfstatus
@@ -34,19 +43,20 @@ func newStatus() -> tfStatus {
 
 
 
-/*
-func (s *status) finalizer() {
-	TF_DeleteStatus(s.c)
+
+func  finalizer(s:tfStatus) {
+	tfDeleteStatus(s.c)
 }
 
-func (s *status) Code() code {
-	return code(TF_GetCode(s.c))
+func  code(s:tfStatus)-> TF_Code {
+	return tfGetCode(s.c)
 }
 
-func (s *status) String() string {
-	return C.GoString(TF_Message(s.c))
+func string(s:tfStatus)-> String {
+  let str:UnsafePointer<Int8> = tfMessage(s.c)
+  return  String(cString:str)
 }
-*/
+
 
 // Err converts the status to a Go error and returns nil if the status is OK.
 /*func (s *status) Err() error {

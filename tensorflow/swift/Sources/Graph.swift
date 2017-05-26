@@ -37,7 +37,7 @@ func NewGraph() *Graph {
 
 
 func  finalizer(g :Graph) {
-    tfDeleteGraph(pointer:g.c)
+    tfDeleteGraph(g.c)
 }
 
 // WriteTo writes out a serialized representation of g to w.

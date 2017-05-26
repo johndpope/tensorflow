@@ -66,8 +66,10 @@ import protoTensorFlow
 // --------------------------------------------------------------------------
 // TF_Version returns a string describing version information of the
 // TensorFlow library. TensorFlow using semantic versioning.
-public func tfVersion() -> UnsafePointer<Int8>!{
-    return TF_Version()
+public func tfVersion() ->String{
+    let str:UnsafePointer<Int8> = TF_Version()
+    return  String(cString:str)
+
 }
 
 // --------------------------------------------------------------------------
@@ -134,7 +136,7 @@ public func tfNewStatus() -> OpaquePointer!{
 }
 
 // Delete a previously created status object.
-public func tfDeleteStatus(pointer:OpaquePointer!){
+public func tfDeleteStatus(_ pointer:OpaquePointer!){
     TF_DeleteStatus(pointer)
 }
 
@@ -252,17 +254,17 @@ public func tfAllocateTensor(dt: TF_DataType, _ dims: UnsafePointer<Int64>!, _ n
 }
 
 // Destroy a tensor.
-public func tfDeleteTensor(pointer:OpaquePointer!){
+public func tfDeleteTensor(_ pointer:OpaquePointer!){
     return TF_DeleteTensor(pointer)
 }
 
 // Return the type of a tensor element.
-public func tfTensorType(pointer:OpaquePointer!) -> TF_DataType{
+public func tfTensorType(_ pointer:OpaquePointer!) -> TF_DataType{
     return TF_TensorType(pointer)
 }
 
 // Return the number of dimensions that the tensor has.
-public func tfNumDims(pointer: OpaquePointer!) -> Int32{
+public func tfNumDims(_ pointer: OpaquePointer!) -> Int32{
     return TF_NumDims(pointer)
 }
 
@@ -273,12 +275,12 @@ public func tfDim(_ tensor: OpaquePointer!, _ dim_index: Int32) -> Int64{
 }
 
 // Return the size of the underlying data in bytes.
-public func tfTensorByteSize(pointer: OpaquePointer!) -> Int{
+public func tfTensorByteSize(_ pointer: OpaquePointer!) -> Int{
     return  TF_TensorByteSize(pointer)
 }
 
 // Return a pointer to the underlying data buffer.
-public func tfTensorData(pointer: OpaquePointer!) -> UnsafeMutableRawPointer!{
+public func tfTensorData(_ pointer: OpaquePointer!) -> UnsafeMutableRawPointer!{
     return TF_TensorData(pointer)
 }
 
@@ -339,7 +341,7 @@ public func tfSetConfig(_ options: OpaquePointer!, _ proto: UnsafeRawPointer!, _
 }
 
 // Destroy an options object.
-public func tfDeleteSessionOptions(pointer:OpaquePointer!){
+public func tfDeleteSessionOptions(_ pointer:OpaquePointer!){
     TF_DeleteSessionOptions(pointer)
 }
 
@@ -359,7 +361,7 @@ public func tfNewGraph() -> OpaquePointer!{
 
 // Destroy an options object.  Graph will be deleted once no more
 // TFSession's are referencing it.
-public func tfDeleteGraph(pointer:OpaquePointer!){
+public func tfDeleteGraph(_ pointer:OpaquePointer!){
     return TF_DeleteGraph(pointer)
 }
 
@@ -1111,7 +1113,7 @@ public func tfLoadSessionFromSavedModel(_ session_options: OpaquePointer!, _ run
 //
 // Contacts any other processes associated with the session, if applicable.
 // May not be called after TF_DeleteSession().
-public func tfCloseSession(pointer:OpaquePointer!, _ status: OpaquePointer!){
+public func tfCloseSession(_ pointer:OpaquePointer!, _ status: OpaquePointer!){
     TF_CloseSession(pointer,status)
 }
 
@@ -1121,7 +1123,7 @@ public func tfCloseSession(pointer:OpaquePointer!, _ status: OpaquePointer!){
 // local resources associated with the session.  The session may not be used
 // during or after this call (and the session drops its reference to the
 // corresponding graph).
-public func tfDeleteSession(pointer:OpaquePointer!, _ status: OpaquePointer!){
+public func tfDeleteSession(_ pointer:OpaquePointer!, _ status: OpaquePointer!){
     TF_DeleteSession(pointer,status)
 }
 
@@ -1215,13 +1217,13 @@ public func tfDeletePRunHandle(_ handle: UnsafePointer<Int8>!){
 // TF_ExtendGraph(). This deprecated API can be removed at any time without
 // notice.
 
-public func tfNewDeprecatedSession(pointer:OpaquePointer!, _ status: OpaquePointer!) -> OpaquePointer!{
+public func tfNewDeprecatedSession(_ pointer:OpaquePointer!, _ status: OpaquePointer!) -> OpaquePointer!{
     return TF_NewDeprecatedSession(pointer,status)
 }
-public func tfCloseDeprecatedSession(pointer:OpaquePointer!, _ status: OpaquePointer!){
+public func tfCloseDeprecatedSession(_ pointer:OpaquePointer!, _ status: OpaquePointer!){
  print("TO IMPLMENT")
 }
-public func tfDeleteDeprecatedSession(pointer:OpaquePointer!, _ status: OpaquePointer!){
+public func tfDeleteDeprecatedSession(_ pointer:OpaquePointer!, _ status: OpaquePointer!){
  print("TO IMPLMENT")
 }
 public func tfReset(_ opt: OpaquePointer!, _ containers: UnsafeMutablePointer<UnsafePointer<Int8>?>!, _ ncontainers: Int32, _ status: OpaquePointer!){
