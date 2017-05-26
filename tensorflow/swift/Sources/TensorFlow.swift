@@ -155,8 +155,9 @@ public func tfGetCode(_ s: OpaquePointer!) -> TF_Code{
 // return value points to memory that is only usable until the next
 // mutation to *s.  Always returns an empty string if TF_GetCode(s) is
 // TF_OK.
-public func tfMessage(_ s: OpaquePointer!) -> UnsafePointer<Int8>!{
-    return TF_Message(s)
+public func tfMessage(_ s: OpaquePointer!) -> String{
+    let str:UnsafePointer<Int8> = TF_Message(s)
+    return  String(cString:str)
 }
 
 // --------------------------------------------------------------------------
@@ -603,14 +604,19 @@ public func tfFinishOperation(_ desc: OpaquePointer!, _ status: OpaquePointer!) 
 // TF_Operation functions.  Operations are immutable once created, so
 // these are all query functions.
 
-public func tfOperationName(_ oper: OpaquePointer!) -> UnsafePointer<Int8>!{
-    return TF_OperationName(oper)
+public func tfOperationName(_ oper: OpaquePointer!) -> String{
+    let str:UnsafePointer<Int8> = TF_OperationName(oper)
+    return  String(cString:str)
+
 }
-public func tfOperationOpType(_ oper: OpaquePointer!) -> UnsafePointer<Int8>!{
-   return  TF_OperationOpType(oper)
+public func tfOperationOpType(_ oper: OpaquePointer!) -> String{
+    let str:UnsafePointer<Int8> = TF_OperationOpType(oper)
+    return  String(cString:str)
+
 }
-public func tfOperationDevice(_ oper: OpaquePointer!) -> UnsafePointer<Int8>!{
-       return  TF_OperationDevice(oper)
+public func tfOperationDevice(_ oper: OpaquePointer!) -> String{
+    let str:UnsafePointer<Int8> = TF_OperationDevice(oper)
+    return  String(cString:str)
 }
 
 public func tfOperationNumOutputs(_ oper: OpaquePointer!) -> Int32{
