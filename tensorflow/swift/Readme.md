@@ -4,7 +4,13 @@
 - The intention of this unofficial/ unsupported tensorflow swift port is to mirror the supported / golang tensorflow project. By not diverging from their implementation - it should be simpler to leverage the patches / fixes that google implement. This means - the golang codebase - if it has limitations in its design - github issues should be raised against them in tensorflow github issues. They would then be addressed - and fixed - then we can port to swift. 
 
 
-- while dead code is frowned upon / while this code base is still in it's infancy - and not officially supported - I would urge anyone wanting to help to actually keep the golang code in code base along side the swift code but commented out. This would help people reviewing code down the track / as well as fix update code when the golang code is patched / reworked. 
+    
+There are some puzzles in porting golang code. It would be good to coordinate questions / issues / fixes.
+If you have all the answers and want to take on fixing them - be my guest.  **LET'S COORDINATE EFFORTS HERE ->** 
+https://docs.google.com/spreadsheets/d/1-B61huuIoKqyjS7dUb6GGZm5bt1gVcA58uxAKnojdDU/edit#gid=0 .  
+
+
+- while dead code (commented out code) is frowned upon / while this code  is still in it's infancy - and not officially supported - I would urge anyone wanting to help to actually keep the golang code in code base along side the swift code. This would help people reviewing code down the track / as well as fix update code when the golang code is patched / reworked. 
 
 eg.
 
@@ -34,12 +40,10 @@ eg.
 
 -> 
 write out the corresponding swift code .   
-    
-There are some puzzles in porting golang code. It would be good to coordinate questions / issues / fixes.
-Know all the answers and want to take on fixing them - be my guest.    
-Rather than totally removing this codebase and spawning a new project - let's use this google doc to coordinate efforts.
-https://docs.google.com/spreadsheets/d/1-B61huuIoKqyjS7dUb6GGZm5bt1gVcA58uxAKnojdDU/edit#gid=0 .  
 
+N.B. rather than calling TF_SessionRun -> Use the swift wrapper - > tfSessionRun()
+Complete wrapper here -> 
+https://github.com/johndpope/tensorflow/blob/swift/tensorflow/swift/Sources/TensorFlow.swift
 
 
 
@@ -57,7 +61,13 @@ https://github.com/johndpope/swift-grpc-tensorflow/tree/0.0.1
 
 
 **IMPORTANT NOTES** 
-- there's a CTensorflow package currently imported. It's hardcoded to use the osx path for tensorflow.
+
+The Makefile build swift has a bug in linking the library. 
+The xcode project file that gets spat out - does successfully link.
+
+- there's a CTensorflow swift package currently imported. 
+It's hardcoded to use the osx path for tensorflow.
+If you want to provide Linux access - happy to accept a PR.
 https://github.com/johndpope/CTensorFlow/blob/master/CTensorFlow.h
 
 
@@ -82,5 +92,5 @@ this avoids the c calls recursing into themselves and also makes things more swi
  .   
 Golang code makes use of cgo which wraps things. .   
 The Tensorflow.swift class is the swift equivalent wrapper.  .   
-I recommend using this umbrella wrapper when making calls out to c interface. .   
+I'd urge anyone wanting to work on this library to use this umbrella wrapper when making calls out to c interface. .   
  .   
