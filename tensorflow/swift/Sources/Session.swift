@@ -27,7 +27,8 @@ import protoTensorFlow
 // A Session allows concurrent calls to Run().
 struct Session  {
     //var c:TF_Session
-    var c:OpaquePointer
+    var c:UnsafeMutablePointer<TF_Session>
+    
     
     // For ensuring that:
     // - Close() blocks on all Run() calls to complete.
@@ -93,7 +94,7 @@ func newSession(graph:Graph, options:SessionOptions)-> (session:Session?, error:
     let status = newStatus()
     
     // TODO - determine the following from Config()
-   // var cOpt, doneOpt, err = options.c() // how to do this in swift??
+   // var cOpt, doneOpt, err = options.c // how to do this in swift??
    // defer doneOpt()
    // if err != nil {
    //     return nil, err

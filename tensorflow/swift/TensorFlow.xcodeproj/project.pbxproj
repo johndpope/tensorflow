@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E8C56DF51ED7B72100FF3720 /* TF_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C56DF41ED7B72100FF3720 /* TF_Extensions.swift */; };
 		OBJ_254 /* conformance.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_123 /* conformance.pb.swift */; };
 		OBJ_255 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_124 /* main.swift */; };
 		OBJ_256 /* test_messages_proto3.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_125 /* test_messages_proto3.pb.swift */; };
@@ -336,6 +337,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E8C56DF41ED7B72100FF3720 /* TF_Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TF_Extensions.swift; sourceTree = "<group>"; };
 		OBJ_10 /* Graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
 		OBJ_100 /* tensor_bundle.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tensor_bundle.pb.swift; sourceTree = "<group>"; };
 		OBJ_101 /* tensor_description.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tensor_description.pb.swift; sourceTree = "<group>"; };
@@ -943,7 +945,7 @@
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -954,7 +956,6 @@
 				OBJ_23 /* Dependencies */,
 				OBJ_241 /* Products */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_7 /* Configs */ = {
@@ -977,6 +978,7 @@
 				OBJ_16 /* Status.swift */,
 				OBJ_17 /* Tensor.swift */,
 				OBJ_18 /* TensorFlow.swift */,
+				E8C56DF41ED7B72100FF3720 /* TF_Extensions.swift */,
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -1124,7 +1126,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_241 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1148,6 +1150,7 @@
 				OBJ_254 /* conformance.pb.swift in Sources */,
 				OBJ_255 /* main.swift in Sources */,
 				OBJ_256 /* test_messages_proto3.pb.swift in Sources */,
+				E8C56DF51ED7B72100FF3720 /* TF_Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

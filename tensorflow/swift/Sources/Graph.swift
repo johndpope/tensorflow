@@ -72,7 +72,8 @@ func  finalizer(g :Graph) {
 // another Graph into g.
 //
 // Names of imported nodes will be prefixed with prefix.
-/*func (g *Graph) Import(def []byte, prefix string) error {
+
+/*func importGraph(g:Graph,def []byte, prefix string) error {
     cprefix = C.CString(prefix)
     defer C.free(unsafe.Pointer(cprefix))
     

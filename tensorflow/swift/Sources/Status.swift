@@ -15,7 +15,7 @@ limitations under the License.
 */
 
 import CTensorFlow
-import Dispatch
+import protoTensorFlow
 
 
 // status holds error information returned by TensorFlow. We convert all
@@ -53,8 +53,7 @@ func  code(s:tfStatus)-> TF_Code {
 }
 
 func string(s:tfStatus)-> String {
-  let str:UnsafePointer<Int8> = tfMessage(s.c)
-  return  String(cString:str)
+    return  tfMessage(s.c)
 }
 
 
@@ -74,7 +73,13 @@ func string(s:tfStatus)-> String {
 // TODO(jhseu): Make public, rename to Error, and provide a way for users to
 // check status codes.
 type statusError status
+*/
 
-func (s *statusError) Error() string {
-	return (*status)(s).String()
-}*/
+func error(s:tfStatus) -> Tensorflow_Error_Code {
+    
+    let code:TF_Code = tfGetCode(s.c)
+    if let code = Tensorflow_Error_Code(rawValue: Int(code.rawValue)){
+        return code
+    }
+    return Tensorflow_Error_Code(rawValue: 2)! //unknown
+}
