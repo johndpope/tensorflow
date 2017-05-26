@@ -967,7 +967,7 @@ public func tfImportGraphDefOptionsAddInputMapping(_ opts: OpaquePointer!, _ src
 // into.
 public func tfGraphImportGraphDefOptionsRemapControlDependency(_ opts: OpaquePointer!, _ src_name: String, _ dst: OpaquePointer!){
     let cSrcName = UnsafePointer<Int8>(src_name)
-    TF_GraphImportGraphDefOptionsRemapControlDependency(opts, cSrcName, dst)
+  //  TF_GraphImportGraphDefOptionsRemapControlDependency(opts, cSrcName, dst)
 }
 
 // Cause the imported graph to have a control dependency on `oper`. `oper`

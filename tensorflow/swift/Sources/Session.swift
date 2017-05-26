@@ -26,8 +26,7 @@ import protoTensorFlow
 // perform the computation and potentially fetch outputs as Tensors.
 // A Session allows concurrent calls to Run().
 struct Session  {
-    //var c:TF_Session
-    var c:UnsafeMutablePointer<TF_Session>
+    var c:TF_Session
     
     
     // For ensuring that:
