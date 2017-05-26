@@ -12,7 +12,7 @@
 /// See the License for the specific language governing permissions and
 /// limitations under the License.
 /// ==============================================================================
-
+import Foundation
 import CTensorFlow
 import protoTensorFlow
 
@@ -43,7 +43,8 @@ struct SessionOptions  {
     init(){
         self.c = tfNewSessionOptions()
         self.Target = ""
-        self.Config = Tensorflow_ConfigProto()
+        self.ConfigProto = Tensorflow_ConfigProto()
+       // self.Config = try self.ConfigProto.serializedData()
     }
     // c *C.TF_Session
     var c:OpaquePointer
@@ -78,7 +79,8 @@ struct SessionOptions  {
     // tensorflow.ConfigProto protocol message
     // (https://www.tensorflow.org/code/tensorflow/core/protobuf/config.proto).
    // var Config:Tensorflow_ConfigProto
-    var Config:Tensorflow_ConfigProto
+    var ConfigProto:Tensorflow_ConfigProto
+   // var Config:Data
     
 }
 
