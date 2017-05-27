@@ -1,6 +1,8 @@
 import CTensorFlow
 import protoTensorFlow
 import Foundation
+import CommandLineKit
+
 
 
 let myGraph:Graph = Graph()
@@ -10,7 +12,30 @@ var (mySession,error) = newSession(graph:myGraph,options:opts)
 
 print("Hello from TensorFlow C library version ",  tf.Version())
 
-//    let test = ArraySlice<Any>()
+let cmdLine = CommandLineKit.CommandLine()
+let dirFlag = StringOption(shortFlag: "d",
+                          longFlag: "dir",
+                          required: true,
+                          helpMessage: "Directory containing the trained model files. The directory will be created and the model downloaded into it if necessary")
+
+let imageFlag = StringOption(shortFlag: "i",
+                           longFlag: "image",
+                           required: true,
+                           helpMessage: "Path of a JPEG-image to extract labels for")
+
+cmdLine.addOptions(dirFlag,imageFlag)
+
+
+do {
+    try cmdLine.parse()
+    
+   print("dirFlag:",dirFlag)
+   print("imageFlag:",imageFlag)
+    
+}catch {
+    print("error: \(error)")
+    exit(1)
+}
 
 /*
 func main() {

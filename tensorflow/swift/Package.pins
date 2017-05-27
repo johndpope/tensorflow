@@ -8,6 +8,12 @@
       "version": "0.0.2"
     },
     {
+      "package": "CommandLine",
+      "reason": null,
+      "repositoryURL": "https://github.com/harlanhaskins/CommandLine.git",
+      "version": "3.0.0"
+    },
+    {
       "package": "IOSwift",
       "reason": null,
       "repositoryURL": "https://github.com/johndpope/IO-swift.git",
