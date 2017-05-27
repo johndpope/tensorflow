@@ -58,8 +58,8 @@ extension Graph{
             var status = newStatus()
             
             defer {
-                TF_DeleteStatus(status.c)
-                TF_DeleteBuffer(buffer)
+                tf.DeleteStatus(status.c)
+                tf.DeleteBuffer(buffer)
             }
             
             tf.GraphToGraphDef(self.c, buffer, status.c)
@@ -93,24 +93,19 @@ extension Graph{
 
 extension Graph{
     func importGraph(def: [Byte], prefix:String)-> NSError? {
-        let cprefix = prefix.cString(using: .utf8)
         
-        //    defer{
-        //        free(cprefix)
-        //    }
-        
-        let opts = TF_NewImportGraphDefOptions()
+        let opts = tf.NewImportGraphDefOptions()
         
         defer {
-            TF_DeleteImportGraphDefOptions(opts)
-            TF_ImportGraphDefOptionsSetPrefix(opts, cprefix)
+            tf.DeleteImportGraphDefOptions(opts)
+            tf.ImportGraphDefOptionsSetPrefix(opts, prefix)
         }
         
         
         if let buffer = tf.NewBuffer(){
             
             defer{
-                TF_DeleteBuffer(buffer)
+                tf.DeleteBuffer(buffer)
             }
             // Would have preferred to use C.CBytes, but that does not play well
             // with "go vet" till https://github.com/golang/go/issues/17201 is
@@ -337,7 +332,7 @@ func setAttr(_ cDesc:TF_OperationDescription?,_ status:TF_Status,_ name:String,_
         TF_SetAttrTypeList(cdesc, cAttrName, list, C.int(len(value)))
         case *Tensor:
         TF_SetAttrTensor(cdesc, cAttrName, value.c, status.c)
-        if err = status.Err(); err != nil {
+        if let err = status.error() {
             return NSError.newIoError("bad value for attribute %q: %v", name, err)
         }
         case []*Tensor:
@@ -351,7 +346,7 @@ func setAttr(_ cDesc:TF_OperationDescription?,_ status:TF_Status,_ name:String,_
             plist = &list[0]
         }
         TF_SetAttrTensorList(cdesc, cAttrName, plist, C.int(size), status.c)
-        if err = status.Err(); err != nil {
+        if let err = status.error() {
             return NSError.newIoError("bad value for attribute %q: %v", name, err)
         }
         case Shape:

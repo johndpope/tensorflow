@@ -78,45 +78,47 @@ func (p Output) DataType() DataType {
     return DataType(TF_OperationOutputType(p.c()))
 }
 
-// Shape returns the (possibly incomplete) shape of the tensor produced p.
-func (p Output) Shape() Shape {
-    status = newStatus()
-    port = p.c()
-    ndims = TF_GraphGetTensorNumDims(p.Op.g.c, port, status.c)
-    if err = status.Err(); err != nil {
+// Shape returns the (possibly incomplete) shape of the tensor produced p.*/
+extension Output{
+func  Shape()-> Shape {
+    var status = newStatus()
+    var port = self.c()
+    var ndims = tf.GraphGetTensorNumDims(self.Op.g.c, port, status.c)
+    if let err = status.error() {
         // This should not be possible since an error only occurs if
         // the operation does not belong to the graph.  It should not
         // be possible to construct such an Operation object.
-        return Shape{}
+        return Shape()
     }
     if ndims < 0 {
-        return Shape{}
+        return Shape()
     }
     if ndims == 0 {
         return ScalarShape()
     }
-    dims = make([]C.int64_t, ndims)
-    TF_GraphGetTensorShape(p.Op.g.c, port, &dims[0], ndims, status.c)
-    if err = status.Err(); err != nil {
+    var dims:[Int64] = []
+    tf.GraphGetTensorShape(self.Op.g.c, port, &dims[0], ndims, status.c)
+    if let err = status.error() {
         // Same as above, should not be possible.
-        return Shape{}
+        return Shape()
     }
-    ret = Shape{dims: make([]int64, ndims)}
-    for i = 0; i < int(ndims); i++ {
-        ret.dims[i] = int64(dims[i])
-    }
+    var ret = Shape()
+//    for dim in ndims{
+//        
+//    }
+//    for i = 0; i < int(ndims); i++ {
+//        ret.dims[i] = int64(dims[i])
+//    }
     return ret
-}
-*/
-extension Output{
+    }
+
     func c() -> TF_Output {
         return TF_Output(oper: self.Op.c, index: CInt(self.Index))
     }
+
+    func canBeAnInput() {}
 }
-
 /*
-func (p Output) canBeAnInput() {}
-
 // Input is the interface for specifying inputs to an operation being added to
 // a Graph.
 //

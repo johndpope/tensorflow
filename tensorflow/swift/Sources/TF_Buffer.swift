@@ -33,7 +33,7 @@ extension tf{
         return TF_NewBuffer()
     }
     
-    public class func DeleteBuffer(unsafePointer: UnsafeMutablePointer<TF_Buffer>!){
+    public class func DeleteBuffer(_ unsafePointer: UnsafeMutablePointer<TF_Buffer>!){
         TF_DeleteBuffer(unsafePointer)
     }
     

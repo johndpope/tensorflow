@@ -40,13 +40,13 @@ extension Shape{
 }
 
 
-/*
+
 // ScalarShape returns a Shape representing a scalar.
 func ScalarShape()->Shape {
-    return Shape{dims: make([]int64, 0)}
+    return Shape(dims: [])
 }
 
-
+/*
 // MakeShape returns a Shape with the provided size of each dimension.
 //
 // A value of -1 implies that the size of the corresponding dimension is not

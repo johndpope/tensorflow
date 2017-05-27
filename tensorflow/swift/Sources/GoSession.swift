@@ -137,12 +137,12 @@ func (s *Session) Run(feeds map[Output]*Tensor, fetches []Output, targets []*Ope
     
     c = newCRunArgs(feeds, fetches, targets)
     status = newStatus()
-    TF_SessionRun(s.c, nil,
+    tf.SessionRun(s.c, nil,
     ptrOutput(c.feeds), ptrTensor(c.feedTensors), C.int(len(feeds)),
     ptrOutput(c.fetches), ptrTensor(c.fetchTensors), C.int(len(fetches)),
     ptrOperation(c.targets), C.int(len(targets)),
     nil, status.c)
-    if err = status.Err(); err != nil {
+    if let err = status.error() {
         return nil, err
     }
     return c.toGo(), nil
@@ -185,12 +185,12 @@ func (pr *PartialRun) Run(feeds map[Output]*Tensor, fetches []Output, targets []
     s.mu.Unlock()
     defer s.wg.Done()
     
-    TF_SessionPRun(s.c, pr.handle,
+    tf.SessionPRun(s.c, pr.handle,
     ptrOutput(c.feeds), ptrTensor(c.feedTensors), C.int(len(feeds)),
     ptrOutput(c.fetches), ptrTensor(c.fetchTensors), C.int(len(fetches)),
     ptrOperation(c.targets), C.int(len(targets)),
     status.c)
-    if err = status.Err(); err != nil {
+    if let err = status.error() {
         return nil, err
     }
     return c.toGo(), nil
@@ -243,12 +243,12 @@ func (s *Session) NewPartialRun(feeds, fetches []Output, targets []*Operation) (
     defer s.wg.Done()
     
     pr = &PartialRun{session: s}
-    TF_SessionPRunSetup(s.c,
+    tf.SessionPRunSetup(s.c,
                           pcfeeds, C.int(len(feeds)),
                           pcfetches, C.int(len(fetches)),
                           pctargets, C.int(len(targets)),
                           &pr.handle, status.c)
-    if err = status.Err(); err != nil {
+    if let err = status.error() {
         return nil, err
     }
     runtime.SetFinalizer(pr, func(pr *PartialRun) {
@@ -267,11 +267,11 @@ func (s *Session) Close() error {
         return nil
     }
     status = newStatus()
-    TF_CloseSession(s.c, status.c)
-    if err = status.Err(); err != nil {
+    tf.CloseSession(s.c, status.c)
+    if let err = status.error() {
         return err
     }
-    TF_DeleteSession(s.c, status.c)
+    tf.DeleteSession(s.c, status.c)
     s.c = nil
     return status.Err()
 }
@@ -328,14 +328,14 @@ func (o *SessionOptions) c() (ret *TF_SessionOptions, done func(), err error) {
         // of a Go pointer after the call returns" from
         // https://golang.org/cmd/cgo/#hdr-Passing_pointers).
         cConfig = C.CBytes(o.Config)
-        TF_SetConfig(opt, cConfig, C.size_t(sz), status.c)
-        if err = status.Err(); err != nil {
-            TF_DeleteSessionOptions(opt)
-            return nil, func() {}, NSError.newIoError("invalid SessionOptions.Config: %v", err)
+        tf.SetConfig(opt, cConfig, C.size_t(sz), status.c)
+        if let err = status.error() {
+            tf.DeleteSessionOptions(opt)
+            return nil, func() {}, NSError.newIoError("invalid SessionOptions.Config",code:000)
         }
     }
     return opt, func() {
-        TF_DeleteSessionOptions(opt)
+        tf.DeleteSessionOptions(opt)
         C.free(cConfig)
     }, nil
 }

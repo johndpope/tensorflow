@@ -54,13 +54,13 @@ import CTensorFlow
 	}
 	graph = NewGraph()
 	// TODO(jhseu): Add support for run_options and meta_graph_def.
-	cSess = TF_LoadSessionFromSavedModel(cOpt, nil, cExportDir, (**C.char)(unsafe.Pointer(&cTags[0])), C.int(len(cTags)), graph.c, nil, status.c)
+	cSess = tf.LoadSessionFromSavedModel(cOpt, nil, cExportDir, (**C.char)(unsafe.Pointer(&cTags[0])), C.int(len(cTags)), graph.c, nil, status.c)
 	for i = range cTags {
 		C.free(unsafe.Pointer(cTags[i]))
 	}
 	C.free(unsafe.Pointer(cExportDir))
 
-	if err = status.Err(); err != nil {
+	if let err = status.error() {
 		return nil, err
 	}
 	s = &Session{c: cSess}
