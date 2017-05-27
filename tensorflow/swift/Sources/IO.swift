@@ -1,20 +1,37 @@
 //
+//  IO.swift
+//
+//
+//  Created by Tommie N. Carter, Jr., MBA on 2/12/16.
+//  Copyright © 2016 MING Technology. All rights reserved.
+//
+//  Based on work of:
+//
 //  Swift.IO
 //
 //  Created by Alec Thomas on 25/02/2015.
 //  Copyright (c) 2015 SwapOff. All rights reserved.
 //
 //
-// This file provides a consistent, simple interface to stream-based data sources.
-// It is based on Go's I/O library.
+//  This file provides a consistent, simple interface to stream-based data sources.
+//  It is based on Go's I/O library.
 //
-// All implementations should be concurrent safe unless stated otherwise.
+//  All implementations should be concurrent safe unless stated otherwise.
 //
-// Currently supported are: file descriptors, NSData, NSInputStream and NSOutputStream.
+//  Currently supported are: file descriptors, NSData, NSInputStream and NSOutputStream.
+//
+//  Additons by T.Carter
+//  Added FileError type and replaced callback functions
+//  Fixed Swift 1.0 -> 2.0+ syntax
+//  Fixed other invalid code
 
 import Foundation
 
 private let CEOF = EOF
+
+enum FileError:Error {
+    case InvalidSeekOffsetError, ReadError, UnknownError, AlreadyClosedError, CustomErrorMessage(message:String)
+}
 
 // EOF is returned for an end of stream.
 public let EOF = NSError(domain: "IO", code: 0, userInfo: ["localizedDescription": "EOF"])
@@ -69,15 +86,15 @@ public protocol ReadWriteSeeker: ReadWriter, Seeker {}
 // Converts a Reader into a ReadCloser with a no-op close() method.
 public class NopCloser: ReadCloser {
     public var reader: Reader
-
+    
     public init(_ reader: Reader) {
         self.reader = reader
     }
-
+    
     public func read(size: Int) -> (NSData, NSError?) {
         return reader.read(size: size)
     }
-
+    
     public func close() -> NSError? {
         return nil
     }
@@ -115,13 +132,13 @@ public class File: ReadWriteCloser, Seeker {
     private(set) public var fd: Int32
     // Filename (if known)
     private(set) public var name: String?
-
+    
     // Create a File attached to an existing FD.
     public init(fd: CInt, name: String? = nil) {
         self.fd = fd
         self.name = name
     }
-
+    
     // Open a file at the given path. See open(2).
     public class func open(path: String, oflag: CInt, mode: mode_t = DEFAULT_FILE_MODE) -> (File?, NSError?) {
         let fd = Darwin.open(path, oflag, mode)
@@ -130,7 +147,7 @@ public class File: ReadWriteCloser, Seeker {
         }
         return (File(fd: fd, name: path), nil)
     }
-
+    
     // Create a new file at the given path. See creat(2).
     public class func create(path: String, mode: mode_t = DEFAULT_FILE_MODE) -> (File?, NSError?) {
         let fd = Darwin.creat(path, mode)
@@ -139,14 +156,11 @@ public class File: ReadWriteCloser, Seeker {
         }
         return (File(fd: fd), nil)
     }
-
-    
-   
     
     // Create a new temporary file.
     public class func temporary(mode: mode_t = DEFAULT_FILE_MODE) -> (File?, NSError?) {
         // The template string:
-        let template = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("file.XXXXXX") as NSURL
+        let template = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("XXXXXX") as NSURL
         
         // Fill buffer with a C string representing the local file system path.
         var buffer = [Int8](repeating: 0, count: Int(PATH_MAX))
@@ -155,22 +169,19 @@ public class File: ReadWriteCloser, Seeker {
         // Create unique file name (and open file):
         let fd = mkstemp(&buffer)
         if fd != -1 {
-            
             // Create URL from file system string:
             let url = NSURL(fileURLWithFileSystemRepresentation: buffer, isDirectory: false, relativeTo: nil)
             print(url.path!)
-          
+            
             if let name =   url.path{
                 return (File(fd: fd, name: name), nil)
             }
-
-            
         }
-         print("Error: " + String(cString: strerror(errno)))
-         return (nil, File.getError())
-       
+        print("Error: " + String(cString: strerror(errno)))
+        return (nil, File.getError())
+        
     }
-
+    
     public func read(size: Int) -> (NSData, NSError?) {
         lock.lock()
         let buf = NSMutableData(length: size)!
@@ -186,7 +197,7 @@ public class File: ReadWriteCloser, Seeker {
         lock.unlock()
         return (buf, err)
     }
-
+    
     public func write(data: NSData) -> (Int, NSError?) {
         lock.lock()
         var err: NSError?
@@ -198,13 +209,13 @@ public class File: ReadWriteCloser, Seeker {
         lock.unlock()
         return (Int(n), err)
     }
-
+    
     // Close the File and set its fd to -1.
     public func close() -> NSError? {
         var err: NSError?
         lock.lock()
         if fd == -1 {
-            err = NSError.newError("already closed",code:101)
+            err = (FileError.AlreadyClosedError as NSError)
         } else if Darwin.close(fd) == -1 {
             err = File.getError()
         }
@@ -212,7 +223,7 @@ public class File: ReadWriteCloser, Seeker {
         lock.unlock()
         return err
     }
-
+    
     public func seek(offset: Int, whence: SeekWhence) -> (Int, NSError?) {
         lock.lock()
         let offset = Int(Darwin.lseek(fd, off_t(offset), Int32(whence.rawValue)))
@@ -222,23 +233,23 @@ public class File: ReadWriteCloser, Seeker {
         }
         return (offset, nil)
     }
-
+    
     // Get last error from errno as an NSError.
     private class func getError() -> NSError {
-        var message = String(cString:strerror(errno))
+        let message = String(cString:strerror(errno))
         return NSError.newError(message, code: Int(errno))
     }
-
+    
     deinit {
         close()
     }
-
+    
     private struct Static {
         static var stdin = File(fd: 0, name: "/dev/stdin")
         static var stdout = File(fd: 1, name: "/dev/stdout")
         static var stderr = File(fd: 2, name: "/dev/stderr")
     }
-
+    
     public class var stdin: File { return Static.stdin }
     public class var stdout: File { return Static.stdout }
     public class var stderr: File { return Static.stderr }
@@ -251,18 +262,18 @@ public class BufferReader: Reader, Seeker {
     let data: NSData
     // Cursor into NSData object.
     private(set) public var cursor = 0
-
+    
     public init( _ data: NSData) {
         self.data = data
     }
-
+    
     public func read(size: Int) -> (NSData, NSError?) {
         let count = size > data.length - cursor ? data.length - cursor : size
         let bytes = NSData(bytes: data.bytes + cursor, length: count)
         cursor += count
         return (bytes, nil)
     }
-
+    
     public func seek(offset: Int, whence: SeekWhence) -> (Int, NSError?) {
         switch whence {
         case .Current:
@@ -273,7 +284,7 @@ public class BufferReader: Reader, Seeker {
             self.cursor = Int(offset)
         }
         if self.cursor < 0 || self.cursor > self.data.length {
-            return (-1, NSError.newError("invalid seek offset",code:100))
+            return (-1, (FileError.InvalidSeekOffsetError as NSError))
         }
         return (self.cursor, nil)
     }
@@ -285,19 +296,19 @@ public class Buffer: ReadWriter {
     private var lock = NSLock()
     private(set) public var data: NSMutableData
     private(set) public var cursor: Int = 0
-
+    
     public init(data: NSMutableData) {
         self.data = data
     }
-
+    
     public convenience init(capacity: Int) {
         self.init(data: NSMutableData(capacity: capacity)!)
     }
-
+    
     public convenience init() {
         self.init(data: NSMutableData())
     }
-
+    
     public func read(size: Int) -> (NSData, NSError?) {
         lock.lock()
         let count = size > data.length - cursor ? data.length - cursor : size
@@ -306,7 +317,7 @@ public class Buffer: ReadWriter {
         lock.unlock()
         return (bytes, nil)
     }
-
+    
     public func write(data: NSData) -> (Int, NSError?) {
         lock.lock()
         self.data.append(data as Data)
@@ -322,13 +333,13 @@ class IOThreadRunLoop: NSObject {
     private var ready =  DispatchSemaphore(value: 0)
     private var thread: Thread?
     internal var runloop: RunLoop = RunLoop()
-
+    
     override init() {
         super.init()
         Thread.detachNewThreadSelector(#selector(IOThreadRunLoop.run), toTarget: self, with: nil)
         ready.wait(timeout: DispatchTime.distantFuture)
     }
-
+    
     @objc private func run() {
         Thread.current.name = "Swift.IO"
         self.runloop = RunLoop.current
@@ -340,6 +351,7 @@ class IOThreadRunLoop: NSObject {
 }
 
 
+
 // Global dedicated IO thread for Swift.IO.
 internal var io = IOThreadRunLoop()
 
@@ -347,12 +359,12 @@ internal var io = IOThreadRunLoop()
 // Resumes a queue whenever events are sent on a stream.
 public class StreamEventNotifier: NSObject, StreamDelegate {
     var ready = DispatchSemaphore(value: 0)
-
+    
     public init(_ q: DispatchSemaphore) {
         self.ready = q
         super.init()
     }
-
+    
     public func stream(theStream: Stream, handleEvent streamEvent: Stream.Event) {
         ready.signal()
     }
@@ -362,69 +374,60 @@ public class StreamEventNotifier: NSObject, StreamDelegate {
 public class NSStreamNotifierMixin {
     private var ready = DispatchSemaphore(value: 0)
     private var notifier: StreamEventNotifier
-
+    
     init() {
         notifier = StreamEventNotifier(ready)
     }
 }
 
-
 // IO.Reader adapter for an NSInputStream. The stream should NOT already be open.
 public class NSInputStreamReader: ReadCloser {
-   
-
-   
     private var istream: InputStream
-
+    
     public init(_ stream: InputStream) {
         self.istream = stream
         self.istream.open()
     }
-
-
+    
     public func read(size: Int) -> (NSData, NSError?) {
-        var bytes = UnsafeMutablePointer<UInt8>.allocate(capacity: size)
+        let bytes = UnsafeMutablePointer<UInt8>.allocate(capacity: size)
         let count = istream.read(bytes, maxLength: size)
-        var data = NSData(bytes: bytes, length: count)
-        if (count == 0){
-            return (data,EOF)
-        }else{
-            return (data,istream.streamError as! NSError )
-        }
-
+        let data = NSData(bytes: bytes, length: count)
+        return (data, count == 0 ? EOF : istream.streamError as! NSError)
     }
+    
     deinit {
         close()
     }
-
+    
     public func close() -> NSError? {
         istream.close()
-        return istream.streamError as! NSError
+        return istream.streamError! as! NSError
     }
 }
 
 
 public class NSOutputStreamWriter: WriteCloser {
     private var ostream: OutputStream
-
+    
     public init(_ stream: OutputStream) {
         self.ostream = stream
         self.ostream.open()
     }
-
+    
     public func write(data: NSData) -> (Int, NSError?) {
         var p: UnsafePointer = data.bytes.assumingMemoryBound(to: UInt8.self)
         let count = ostream.write(p, maxLength: data.length)
         return (count, ostream.streamError as! NSError)
     }
-
+    
     deinit {
         close()
     }
-
+    
     public func close() -> NSError? {
         ostream.close()
-        return ostream.streamError as! NSError
+        return ostream.streamError! as NSError
     }
 }
 
@@ -432,16 +435,16 @@ public class NSOutputStreamWriter: WriteCloser {
 public class ReadWriterFromReaderAndWriter: ReadWriter {
     var reader: Reader
     var writer: Writer
-
+    
     public init(reader: Reader, writer: Writer) {
         self.reader = reader
         self.writer = writer
     }
-
+    
     public func read(size: Int) -> (NSData, NSError?) {
         return reader.read(size: size)
     }
-
+    
     public func write(data: NSData) -> (Int, NSError?) {
         return writer.write(data: data)
     }
@@ -452,17 +455,17 @@ public class ReadWriterFromReaderAndWriter: ReadWriter {
 public class NSStreamReadWriteCloser: ReadWriterFromReaderAndWriter, ReadWriteCloser {
     var input: NSInputStreamReader
     var output: NSOutputStreamWriter
-
+    
     public init(input: InputStream, output: OutputStream) {
         self.input = NSInputStreamReader(input)
         self.output = NSOutputStreamWriter(output)
         super.init(reader: self.input, writer: self.output)
     }
-
+    
     deinit {
         close()
     }
-
+    
     public func close() -> NSError? {
         let rerr = input.close()
         let werr = output.close()
@@ -472,7 +475,7 @@ public class NSStreamReadWriteCloser: ReadWriterFromReaderAndWriter, ReadWriteCl
 
 
 
-// Copies from src to dst until either EOF is reached on src or an error occurs. 
+// Copies from src to dst until either EOF is reached on src or an error occurs.
 // If EOF is reached it does not return an error.
 public func Copy(dst: Writer, src: Reader, size: Int = Int.max) -> (Int, NSError?) {
     var written = 0
@@ -513,6 +516,7 @@ public func Copy(dst: Writer, src: Reader, size: Int = Int.max) -> (Int, NSError
 //   }
 public class with {
     private var err: NSError?
+    
 
     public init<T: Closer>(_ tuple: (value: T?, err: NSError?), _ success: (T) -> Void) {
         self.err = tuple.err
@@ -521,8 +525,7 @@ public class with {
             value.close()
         }
     }
-
-
+    
     public func error<R>(f: (NSError) -> R) -> Self {
         if let err = err {
             f(err)
@@ -533,42 +536,42 @@ public class with {
 
 // public class PipeReader: ReadCloser {
 //     private var ch: Channel<NSData>
-// 
+//
 //     public init(ch: Channel<NSData>) {
 //         self.ch = ch
 //     }
-// 
+//
 //     public func read(size: Int) -> (NSData, NSError?) {
 //         if let data = <-ch {
 //             return (data, nil)
 //         }
 //         return (NSData(), EOF)
 //     }
-// 
+//
 //     public func close() -> NSError? {
 //         return nil
 //     }
 // }
-// 
-// 
+//
+//
 // public class PipeWriter: WriteCloser {
 //     private var ch: Channel<NSData>
-// 
+//
 //     public init(ch: Channel<NSData>) {
 //         self.ch = ch
 //     }
-// 
+//
 //     public func write(data: NSData) -> (Int, NSError?) {
 //         ch <- data
 //         return (data.length, nil)
 //     }
-// 
+//
 //     public func close() -> NSError? {
 //         return nil
 //     }
 // }
-// 
-// 
+//
+//
 // public func pipe() -> (PipeReader, PipeWriter) {
 //     var ch = Channel<NSData>()
 //     return (PipeReader(ch: ch), PipeWriter(ch: ch))

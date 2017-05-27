@@ -29,7 +29,7 @@ class Graph  {
 
 func newGraph()-> Graph{
     let graph:OpaquePointer = tfNewGraph()
-    var g = Graph()
+    let g = Graph()
     g.c = graph
     return g
 }
@@ -78,7 +78,7 @@ func  writeTo(g:Graph, w:Writer)-> (Int64, NSError) {
     slice = (*[1 << 30]byte)(unsafe.Pointer(buf.data))[:length:length]
     n, err = w.Write(slice)
     return int64(n), err*/
-}*/
+
 
 // Import imports the nodes and edges from a serialized representation of
 // another Graph into g.
