@@ -126,13 +126,13 @@ public func tfGraphGetTensorShape(_ graph: TF_Graph!, _ output: TF_Output, _ dim
 // called (assuming TF_FinishOperation() does not return an error).
 // *graph must not be deleted until after TF_FinishOperation() is
 // called.
-public func tfNewOperation(_ graph: TF_Graph!, _ op_type: UnsafePointer<Int8>!, _ oper_name: UnsafePointer<Int8>!) -> OpaquePointer!{
-    return TF_NewOperation(graph,op_type,oper_name)
+public func tfNewOperation(_ graph: TF_Graph!, _ op_type: String, _ oper_name: String) -> TF_OperationDescription!{
+    return TF_NewOperation(graph,op_type.cString(using: .utf8),oper_name.cString(using: .utf8))
 }
 
 // Specify the device for `desc`.  Defaults to empty, meaning unconstrained.
-public func tfSetDevice(_ desc: TF_OperationDescription!, _ device: UnsafePointer<Int8>!){
-    TF_SetDevice(desc,device)
+public func tfSetDevice(_ desc: TF_OperationDescription!, _ device: String){
+    TF_SetDevice(desc,device.cString(using: .utf8))
 }
 
 // The calls to TF_AddInput and TF_AddInputList must match (in number,
@@ -185,76 +185,76 @@ public func tfColocateWith(_ desc: OpaquePointer!, _ op: OpaquePointer!){
 // keep.
 
 // `value` must point to a string of length `length` bytes.
-public func tfSetAttrString(_ desc: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ value: UnsafeRawPointer!, _ length: Int){
-    TF_SetAttrString(desc,attr_name,value,length)
+public func tfSetAttrString(_ desc: OpaquePointer!, _ attr_name:  String, _ value: UnsafeRawPointer!, _ length: Int){
+    TF_SetAttrString(desc,attr_name.cString(using: .utf8),value,length)
 }
 // `values` and `lengths` each must have lengths `num_values`.
 // `values[i]` must point to a string of length `lengths[i]` bytes.
-public func tfSetAttrStringList(_ desc: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ values: UnsafePointer<UnsafeRawPointer?>!, _ lengths: UnsafePointer<Int>!, _ num_values: Int32){
-    TF_SetAttrStringList(desc,attr_name,values,lengths,num_values)
+public func tfSetAttrStringList(_ desc: OpaquePointer!, _ attr_name:  String, _ values: UnsafePointer<UnsafeRawPointer?>!, _ lengths: UnsafePointer<Int>!, _ num_values: Int32){
+    TF_SetAttrStringList(desc,attr_name.cString(using: .utf8),values,lengths,num_values)
 }
-public func tfSetAttrInt(_ desc: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ value: Int64){
-    TF_SetAttrInt(desc,attr_name,value)
+public func tfSetAttrInt(_ desc: OpaquePointer!, _ attr_name:  String, _ value: Int64){
+    TF_SetAttrInt(desc,attr_name.cString(using: .utf8),value)
 }
-public func tfSetAttrIntList(_ desc: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ values: UnsafePointer<Int64>!, _ num_values: Int32){
-    TF_SetAttrIntList(desc,attr_name,values,num_values)
+public func tfSetAttrIntList(_ desc: OpaquePointer!, _ attr_name:  String, _ values: UnsafePointer<Int64>!, _ num_values: Int32){
+    TF_SetAttrIntList(desc,attr_name.cString(using: .utf8),values,num_values)
 }
-public func tfSetAttrFloat(_ desc: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ value: Float){
-    TF_SetAttrFloat(desc,attr_name,value)
+public func tfSetAttrFloat(_ desc: OpaquePointer!, _ attr_name:  String, _ value: Float){
+    TF_SetAttrFloat(desc,attr_name.cString(using: .utf8),value)
 }
-public func tfSetAttrFloatList(_ desc: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ values: UnsafePointer<Float>!, _ num_values: Int32){
-    TF_SetAttrFloatList(desc,attr_name,values,num_values)
+public func tfSetAttrFloatList(_ desc: OpaquePointer!, _ attr_name:  String, _ values: UnsafePointer<Float>!, _ num_values: Int32){
+    TF_SetAttrFloatList(desc,attr_name.cString(using: .utf8),values,num_values)
 }
-public func tfSetAttrBool(_ desc: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ value: UInt8){
-    TF_SetAttrBool(desc,attr_name,value)
+public func tfSetAttrBool(_ desc: OpaquePointer!, _ attr_name:  String, _ value: UInt8){
+    TF_SetAttrBool(desc,attr_name.cString(using: .utf8),value)
 }
-public func tfSetAttrBoolList(_ desc: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ values: UnsafePointer<UInt8>!, _ num_values: Int32){
-    TF_SetAttrBoolList(desc,attr_name,values,num_values)
+public func tfSetAttrBoolList(_ desc: OpaquePointer!, _ attr_name:  String, _ values: UnsafePointer<UInt8>!, _ num_values: Int32){
+    TF_SetAttrBoolList(desc,attr_name.cString(using: .utf8),values,num_values)
 }
-public func tfSetAttrType(_ desc: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ value: TF_DataType){
-    TF_SetAttrType(desc,attr_name,value)
+public func tfSetAttrType(_ desc: OpaquePointer!, _ attr_name:  String, _ value: TF_DataType){
+    TF_SetAttrType(desc,attr_name.cString(using: .utf8),value)
 }
-public func tfSetAttrTypeList(_ desc: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ values: UnsafePointer<TF_DataType>!, _ num_values: Int32){
-    TF_SetAttrTypeList(desc,attr_name,values,num_values)
+public func tfSetAttrTypeList(_ desc: OpaquePointer!, _ attr_name:  String, _ values: UnsafePointer<TF_DataType>!, _ num_values: Int32){
+    TF_SetAttrTypeList(desc,attr_name.cString(using: .utf8),values,num_values)
 }
 
 // Set `num_dims` to -1 to represent "unknown rank".  Otherwise,
 // `dims` points to an array of length `num_dims`.  `dims[i]` must be
 // >= -1, with -1 meaning "unknown dimension".
-public func tfSetAttrShape(_ desc: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ dims: UnsafePointer<Int64>!, _ num_dims: Int32){
-     TF_SetAttrShape(desc,attr_name,dims,num_dims)
+public func tfSetAttrShape(_ desc: OpaquePointer!, _ attr_name:  String, _ dims: UnsafePointer<Int64>!, _ num_dims: Int32){
+     TF_SetAttrShape(desc,attr_name.cString(using: .utf8),dims,num_dims)
 }
 // `dims` and `num_dims` must point to arrays of length `num_shapes`.
 // Set `num_dims[i]` to -1 to represent "unknown rank".  Otherwise,
 // `dims[i]` points to an array of length `num_dims[i]`.  `dims[i][j]`
 // must be >= -1, with -1 meaning "unknown dimension".
-public func tfSetAttrShapeList(_ desc: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ dims: UnsafePointer<UnsafePointer<Int64>?>!, _ num_dims: UnsafePointer<Int32>!, _ num_shapes: Int32){
-    TF_SetAttrShapeList(desc,attr_name,dims,num_dims,num_shapes)
+public func tfSetAttrShapeList(_ desc: OpaquePointer!, _ attr_name:  String, _ dims: UnsafePointer<UnsafePointer<Int64>?>!, _ num_dims: UnsafePointer<Int32>!, _ num_shapes: Int32){
+    TF_SetAttrShapeList(desc,attr_name.cString(using: .utf8),dims,num_dims,num_shapes)
 }
 // `proto` must point to an array of `proto_len` bytes representing a
 // binary-serialized TensorShapeProto.
-public func tfSetAttrTensorShapeProto(_ desc: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ proto: UnsafeRawPointer!, _ proto_len: Int, _ status: TF_Status!){
-  TF_SetAttrTensorShapeProto(desc,attr_name,proto,proto_len,status)
+public func tfSetAttrTensorShapeProto(_ desc: OpaquePointer!, _ attr_name:  String, _ proto: UnsafeRawPointer!, _ proto_len: Int, _ status: TF_Status!){
+  TF_SetAttrTensorShapeProto(desc,attr_name.cString(using: .utf8),proto,proto_len,status)
   print("status:",status)
 }
 // `protos` and `proto_lens` must point to arrays of length `num_shapes`.
 // `protos[i]` must point to an array of `proto_lens[i]` bytes
 // representing a binary-serialized TensorShapeProto.
-public func tfSetAttrTensorShapeProtoList(_ desc: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ protos: UnsafePointer<UnsafeRawPointer?>!, _ proto_lens: UnsafePointer<Int>!, _ num_shapes: Int32, _ status: TF_Status!){
-   TF_SetAttrTensorShapeProtoList(desc,attr_name,protos,proto_lens,num_shapes,status)
+public func tfSetAttrTensorShapeProtoList(_ desc: OpaquePointer!, _ attr_name:  String, _ protos: UnsafePointer<UnsafeRawPointer?>!, _ proto_lens: UnsafePointer<Int>!, _ num_shapes: Int32, _ status: TF_Status!){
+   TF_SetAttrTensorShapeProtoList(desc,attr_name.cString(using: .utf8),protos,proto_lens,num_shapes,status)
 }
 
-public func tfSetAttrTensor(_ desc: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ value: OpaquePointer!, _ status: TF_Status!){
-  TF_SetAttrTensor(desc,attr_name,value,status)
+public func tfSetAttrTensor(_ desc: OpaquePointer!, _ attr_name:  String, _ value: OpaquePointer!, _ status: TF_Status!){
+  TF_SetAttrTensor(desc,attr_name.cString(using: .utf8),value,status)
 }
-public func tfSetAttrTensorList(_ desc: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ values: UnsafePointer<OpaquePointer?>!, _ num_values: Int32, _ status: TF_Status!){
+public func tfSetAttrTensorList(_ desc: OpaquePointer!, _ attr_name:  String, _ values: UnsafePointer<OpaquePointer?>!, _ num_values: Int32, _ status: TF_Status!){
  print("TO IMPLEMENT")
 }
 
 // `proto` should point to a sequence of bytes of length `proto_len`
 // representing a binary serialization of an AttrValue protocol
 // buffer.
-public func tfSetAttrValueProto(_ desc: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ proto: UnsafeRawPointer!, _ proto_len: Int, _ status: TF_Status!){
+public func tfSetAttrValueProto(_ desc: OpaquePointer!, _ attr_name:  String, _ proto: UnsafeRawPointer!, _ proto_len: Int, _ status: TF_Status!){
  print("TO IMPLEMENT")
 }
 
@@ -427,17 +427,17 @@ public func tfOperationGetControlOutputs(_ oper: OpaquePointer!, _ control_outpu
 }*/
 
 // Returns metadata about the value of the attribute `attr_name` of `oper`.
-public func tfOperationGetAttrMetadata(_ oper: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ status: TF_Status!) -> TF_AttrMetadata{
-    return TF_OperationGetAttrMetadata(oper,attr_name,status)
+public func tfOperationGetAttrMetadata(_ oper: OpaquePointer!, _ attr_name:  String, _ status: TF_Status!) -> TF_AttrMetadata{
+    return TF_OperationGetAttrMetadata(oper,attr_name.cString(using: .utf8),status)
 }
 
 // Fills in `value` with the value of the attribute `attr_name`.  `value` must
 // point to an array of length at least `max_length` (ideally set to
 // TF_AttrMetadata.total_size from TF_OperationGetAttrMetadata(oper,
 // attr_name)).
-public func tfOperationGetAttrString(_ oper: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ value: UnsafeMutableRawPointer!, _ max_length: Int, _ status: TF_Status!){
+public func tfOperationGetAttrString(_ oper: OpaquePointer!, _ attr_name:  String, _ value: UnsafeMutableRawPointer!, _ max_length: Int, _ status: TF_Status!){
     
-     TF_OperationGetAttrString(oper,attr_name,value,max_length,status)
+     TF_OperationGetAttrString(oper,attr_name.cString(using: .utf8),value,max_length,status)
      print("status:",status)
 }
 
@@ -452,12 +452,12 @@ public func tfOperationGetAttrString(_ oper: OpaquePointer!, _ attr_name: Unsafe
 // attr_name).
 //
 // Fails if storage_size is too small to hold the requested number of strings.
-public func tfOperationGetAttrStringList(_ oper: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ values: UnsafeMutablePointer<UnsafeMutableRawPointer?>!, _ lengths: UnsafeMutablePointer<Int>!, _ max_values: Int32, _ storage: UnsafeMutableRawPointer!, _ storage_size: Int, _ status: TF_Status!){
-    TF_OperationGetAttrStringList(oper,attr_name,values,lengths,max_values,storage,storage_size,status)
+public func tfOperationGetAttrStringList(_ oper: OpaquePointer!, _ attr_name:  String, _ values: UnsafeMutablePointer<UnsafeMutableRawPointer?>!, _ lengths: UnsafeMutablePointer<Int>!, _ max_values: Int32, _ storage: UnsafeMutableRawPointer!, _ storage_size: Int, _ status: TF_Status!){
+    TF_OperationGetAttrStringList(oper,attr_name.cString(using: .utf8),values,lengths,max_values,storage,storage_size,status)
 }
 
-public func tfOperationGetAttrInt(_ oper: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ value: UnsafeMutablePointer<Int64>!, _ status: TF_Status!){
-    TF_OperationGetAttrInt(oper,attr_name,value,status)
+public func tfOperationGetAttrInt(_ oper: OpaquePointer!, _ attr_name:  String, _ value: UnsafeMutablePointer<Int64>!, _ status: TF_Status!){
+    TF_OperationGetAttrInt(oper,attr_name.cString(using: .utf8),value,status)
     print("status:",status)
 }
 
@@ -465,23 +465,11 @@ public func tfOperationGetAttrInt(_ oper: OpaquePointer!, _ attr_name: UnsafePoi
 // `values` must point to an array of length at least `max_values` (ideally set
 // TF_AttrMetadata.list_size from TF_OperationGetAttrMetadata(oper,
 // attr_name)).
-public func tfOperationGetAttrIntList(_ oper: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ values: UnsafeMutablePointer<Int64>!, _ max_values: Int32, _ status: TF_Status!){
+public func tfOperationGetAttrIntList(_ oper: OpaquePointer!, _ attr_name:  String, _ values: UnsafeMutablePointer<Int64>!, _ max_values: Int32, _ status: TF_Status!){
  print("TO IMPLEMENT")
 }
 
-public func tfOperationGetAttrFloat(_ oper: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ value: UnsafeMutablePointer<Float>!, _ status: TF_Status!){
- print("TO IMPLEMENT")
-}
-
-// Fills in `values` with the value of the attribute `attr_name` of `oper`.
-// `values` must point to an array of length at least `max_values` (ideally set
-// to TF_AttrMetadata.list_size from TF_OperationGetAttrMetadata(oper,
-// attr_name)).
-public func tfOperationGetAttrFloatList(_ oper: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ values: UnsafeMutablePointer<Float>!, _ max_values: Int32, _ status: TF_Status!){
- print("TO IMPLEMENT")
-}
-
-public func tfOperationGetAttrBool(_ oper: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ value: UnsafeMutablePointer<UInt8>!, _ status: TF_Status!){
+public func tfOperationGetAttrFloat(_ oper: OpaquePointer!, _ attr_name:  String, _ value: UnsafeMutablePointer<Float>!, _ status: TF_Status!){
  print("TO IMPLEMENT")
 }
 
@@ -489,11 +477,11 @@ public func tfOperationGetAttrBool(_ oper: OpaquePointer!, _ attr_name: UnsafePo
 // `values` must point to an array of length at least `max_values` (ideally set
 // to TF_AttrMetadata.list_size from TF_OperationGetAttrMetadata(oper,
 // attr_name)).
-public func tfOperationGetAttrBoolList(_ oper: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ values: UnsafeMutablePointer<UInt8>!, _ max_values: Int32, _ status: TF_Status!){
+public func tfOperationGetAttrFloatList(_ oper: OpaquePointer!, _ attr_name:  String, _ values: UnsafeMutablePointer<Float>!, _ max_values: Int32, _ status: TF_Status!){
  print("TO IMPLEMENT")
 }
 
-public func tfOperationGetAttrType(_ oper: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ value: UnsafeMutablePointer<TF_DataType>!, _ status: TF_Status!){
+public func tfOperationGetAttrBool(_ oper: OpaquePointer!, _ attr_name:  String, _ value: UnsafeMutablePointer<UInt8>!, _ status: TF_Status!){
  print("TO IMPLEMENT")
 }
 
@@ -501,14 +489,26 @@ public func tfOperationGetAttrType(_ oper: OpaquePointer!, _ attr_name: UnsafePo
 // `values` must point to an array of length at least `max_values` (ideally set
 // to TF_AttrMetadata.list_size from TF_OperationGetAttrMetadata(oper,
 // attr_name)).
-public func tfOperationGetAttrTypeList(_ oper: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ values: UnsafeMutablePointer<TF_DataType>!, _ max_values: Int32, _ status: TF_Status!){
+public func tfOperationGetAttrBoolList(_ oper: OpaquePointer!, _ attr_name:  String, _ values: UnsafeMutablePointer<UInt8>!, _ max_values: Int32, _ status: TF_Status!){
+ print("TO IMPLEMENT")
+}
+
+public func tfOperationGetAttrType(_ oper: OpaquePointer!, _ attr_name:  String, _ value: UnsafeMutablePointer<TF_DataType>!, _ status: TF_Status!){
+ print("TO IMPLEMENT")
+}
+
+// Fills in `values` with the value of the attribute `attr_name` of `oper`.
+// `values` must point to an array of length at least `max_values` (ideally set
+// to TF_AttrMetadata.list_size from TF_OperationGetAttrMetadata(oper,
+// attr_name)).
+public func tfOperationGetAttrTypeList(_ oper: OpaquePointer!, _ attr_name:  String, _ values: UnsafeMutablePointer<TF_DataType>!, _ max_values: Int32, _ status: TF_Status!){
  print("TO IMPLEMENT")
 }
 
 // Fills in `value` with the value of the attribute `attr_name` of `oper`.
 // `values` must point to an array of length at least `num_dims` (ideally set to
 // TF_Attr_Meta.size from TF_OperationGetAttrMetadata(oper, attr_name)).
-public func tfOperationGetAttrShape(_ oper: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ value: UnsafeMutablePointer<Int64>!, _ num_dims: Int32, _ status: TF_Status!){
+public func tfOperationGetAttrShape(_ oper: OpaquePointer!, _ attr_name:  String, _ value: UnsafeMutablePointer<Int64>!, _ num_dims: Int32, _ status: TF_Status!){
 
 }
 
@@ -525,13 +525,13 @@ public func tfOperationGetAttrShape(_ oper: OpaquePointer!, _ attr_name: UnsafeP
 // attr_name).
 //
 // Fails if storage_size is insufficient to hold the requested shapes.
-public func tfOperationGetAttrShapeList(_ oper: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ dims: UnsafeMutablePointer<UnsafeMutablePointer<Int64>?>!, _ num_dims: UnsafeMutablePointer<Int32>!, _ num_shapes: Int32, _ storage: UnsafeMutablePointer<Int64>!, _ storage_size: Int32, _ status: TF_Status!){
+public func tfOperationGetAttrShapeList(_ oper: OpaquePointer!, _ attr_name:  String, _ dims: UnsafeMutablePointer<UnsafeMutablePointer<Int64>?>!, _ num_dims: UnsafeMutablePointer<Int32>!, _ num_shapes: Int32, _ storage: UnsafeMutablePointer<Int64>!, _ storage_size: Int32, _ status: TF_Status!){
  print("TO IMPLEMENT")
 }
 
 // Sets `value` to the binary-serialized TensorShapeProto of the value of
 // `attr_name` attribute of `oper`'.
-public func tfOperationGetAttrTensorShapeProto(_ oper: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ value: UnsafeMutablePointer<TF_Buffer>!, _ status: TF_Status!){
+public func tfOperationGetAttrTensorShapeProto(_ oper: OpaquePointer!, _ attr_name:  String, _ value: UnsafeMutablePointer<TF_Buffer>!, _ status: TF_Status!){
  print("TO IMPLEMENT")
 }
 
@@ -539,7 +539,7 @@ public func tfOperationGetAttrTensorShapeProto(_ oper: OpaquePointer!, _ attr_na
 // attribute `attr_name` of `oper`. `values` must point to an array of length at
 // least `num_values` (ideally set to TF_AttrMetadata.list_size from
 // TF_OperationGetAttrMetadata(oper, attr_name)).
-public func tfOperationGetAttrTensorShapeProtoList(_ oper: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ values: UnsafeMutablePointer<UnsafeMutablePointer<TF_Buffer>?>!, _ max_values: Int32, _ status: TF_Status!){
+public func tfOperationGetAttrTensorShapeProtoList(_ oper: OpaquePointer!, _ attr_name:  String, _ values: UnsafeMutablePointer<UnsafeMutablePointer<TF_Buffer>?>!, _ max_values: Int32, _ status: TF_Status!){
  print("TO IMPLEMENT")
 }
 
@@ -547,7 +547,7 @@ public func tfOperationGetAttrTensorShapeProtoList(_ oper: OpaquePointer!, _ att
 //
 // Allocates a new TF_Tensor which the caller is expected to take
 // ownership of (and can deallocate using TF_DeleteTensor).
-public func tfOperationGetAttrTensor(_ oper: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ value: UnsafeMutablePointer<OpaquePointer?>!, _ status: TF_Status!){
+public func tfOperationGetAttrTensor(_ oper: OpaquePointer!, _ attr_name:  String, _ value: UnsafeMutablePointer<OpaquePointer?>!, _ status: TF_Status!){
  print("TO IMPLEMENT")
 }
 
@@ -558,13 +558,13 @@ public func tfOperationGetAttrTensor(_ oper: OpaquePointer!, _ attr_name: Unsafe
 //
 // The caller takes ownership of all the non-null TF_Tensor* entries in `values`
 // (which can be deleted using TF_DeleteTensor(values[i])).
-public func tfOperationGetAttrTensorList(_ oper: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ values: UnsafeMutablePointer<OpaquePointer?>!, _ max_values: Int32, _ status: TF_Status!){
+public func tfOperationGetAttrTensorList(_ oper: OpaquePointer!, _ attr_name:  String, _ values: UnsafeMutablePointer<OpaquePointer?>!, _ max_values: Int32, _ status: TF_Status!){
  print("TO IMPLEMENT")
 }
 
 // Sets `output_attr_value` to the binary-serialized AttrValue proto
 // representation of the value of the `attr_name` attr of `oper`.
-public func tfOperationGetAttrValueProto(_ oper: OpaquePointer!, _ attr_name: UnsafePointer<Int8>!, _ output_attr_value: UnsafeMutablePointer<TF_Buffer>!, _ status: TF_Status!){
+public func tfOperationGetAttrValueProto(_ oper: OpaquePointer!, _ attr_name:  String, _ output_attr_value: UnsafeMutablePointer<TF_Buffer>!, _ status: TF_Status!){
     print("TO IMPLEMENT") 
 }
 

@@ -24,6 +24,7 @@ import func Darwin.C.stdlib.free
 import func Darwin.C.string.memset
 import func Darwin.C.string.memcpy
 import func Darwin.malloc.malloc_size
+import protoTensorFlow
 
 typealias Byte = UInt8
 
@@ -153,17 +154,30 @@ func importGraph(g:Graph,def: [Byte], prefix:String)-> NSError? {
         return nil
     }
     return &Operation{cop, g}
+}*/
+
+func operation(g:Graph,name:String) -> GoOperation?{
+    let cname = name.cString(using: .utf8)
+    defer{
+//        free(cname)
+    }
+    let cOperation = tfGraphOperationByName(g.c, cname)
+    if cOperation == nil{
+        return nil
+    }
+    return GoOperation.init(c:cOperation!,g:g)
+    
 }
 
 // OpSpec is the specification of an Operation to be added to a Graph
 // (using Graph.AddOperation).
-type OpSpec struct {
+struct OpSpec  {
     // Type of the operation (e.g., "Add", "MatMul").
-    Type string
+    var OpType:String
     
     // Name by which the added operation will be referred to in the Graph.
     // If omitted, defaults to Type.
-    Name string
+    var Name:String
     
     // Inputs to this operation, which in turn must be outputs
     // of other operations already added to the Graph.
@@ -175,46 +189,42 @@ type OpSpec struct {
     // concatenate and (2) a list of tensors to concatenate. Thus, for
     // Concat, len(Input) must be 2, with the first element being an Output
     // and the second being an OutputList.
-    Input []Input
+    var Input:[TF_Input]
     
     // Map from attribute name to its value that will be attached to this
     // operation.
-    Attrs map[string]interface{}
+    var Attrs: Dictionary<String,Tensorflow_AttrValue> = [:]
     
     // Other possible fields: Device, ColocateWith, ControlInputs.
 }
 
 // AddOperation adds an operation to g.
-func (g *Graph) AddOperation(args OpSpec) (*Operation, error) {
-    if args.Name == "" {
-        args.Name = args.Type
+func addOperation (g: Graph,  args:OpSpec)-> (GoOperation?, NSError?) {
+
+    let cOperationDesc = tfNewOperation(g.c, args.OpType, args.Name)
+
+    for input in  args.Input {
+        
+//        switch input. = in.(type) {
+//            case Output:
+//            TF_AddInput(cOperationDesc, in.c())
+//            case OutputList:
+//            size = len(in)
+//            list = make([]TF_Output, size)
+//            for i, v = range in {
+//            list[i] = v.c()
+//            }
+//            if size > 0 {
+//            TF_AddInputList(cOperationDesc, &list[0], C.int(size))
+//            } else {
+//            TF_AddInputList(cOperationDesc, nil, 0)
+//            }
+//        }
     }
-    cname = C.CString(args.Name)
-    ctype = C.CString(args.Type)
-    cdesc = TF_NewOperation(g.c, ctype, cname)
-    C.free(unsafe.Pointer(cname))
-    C.free(unsafe.Pointer(ctype))
-    
-    for _, in = range args.Input {
-        switch in = in.(type) {
-            case Output:
-            TF_AddInput(cdesc, in.c())
-            case OutputList:
-            size = len(in)
-            list = make([]TF_Output, size)
-            for i, v = range in {
-            list[i] = v.c()
-            }
-            if size > 0 {
-            TF_AddInputList(cdesc, &list[0], C.int(size))
-            } else {
-            TF_AddInputList(cdesc, nil, 0)
-            }
-        }
-    }
-    status = newStatus()
-    for name, value = range args.Attrs {
-        if err = setAttr(cdesc, status, name, value); err != nil {
+    var status = newStatus()
+    for (name, value) in args.Attrs {
+        
+        if let err = setAttr(cOperationDesc, status.c, name, value) {
             // Memory leak here as the TF_OperationDescription
             // object will not be cleaned up. At the time of this
             // writing, this was next to impossible since it
@@ -223,23 +233,34 @@ func (g *Graph) AddOperation(args OpSpec) (*Operation, error) {
             // with the memory leak.  If it becomes a real problem,
             // consider adding a TF_DeleteOperationDescription
             // function to the C API.
-            return nil, fmt.Errorf("%v (memory will be leaked)", err)
+            return (nil, NSError.newIoError(" (memory will be leaked)", code: 444))
         }
     }
-    op = &Operation{
-        c: TF_FinishOperation(cdesc, status.c),
-        g: g,
-    }
-    return op, status.Err()
+    var op = GoOperation(
+        c: TF_FinishOperation(cOperationDesc, status.c),
+        g: g
+    )
+    return (op, status.error())
 }
 
-func setAttr(cdesc *TF_OperationDescription, status *status, name string, value interface{}) error {
-    cAttrName = C.CString(name)
-    defer C.free(unsafe.Pointer(cAttrName))
+/*
+ 
+ TODO - review Tensorflow_AttrValue in proto library to simplify this mess.
+ 
+func setAttr(_ cDesc:TF_OperationDescription?,_ status:TF_Status,_ name:String,_ value:Tensorflow_AttrValue) ->  NSError? {
+    
+    switch value.type {
+        case .dtBfloat16:
+        print("test")
+        
+        default:
+        print("default")
+    }
+    
     switch value = value.(type) {
         case string:
         cstr = C.CString(value)
-        TF_SetAttrString(cdesc, cAttrName, unsafe.Pointer(cstr), C.size_t(len(value)))
+        TF_SetAttrString(cDesc, cAttrName, unsafe.Pointer(cstr), C.size_t(len(value)))
         C.free(unsafe.Pointer(cstr))
         case []string:
         size = len(value)

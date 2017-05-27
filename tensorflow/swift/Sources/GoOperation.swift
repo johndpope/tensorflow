@@ -19,12 +19,12 @@ import CTensorFlow
 
 
 // Operation that has been added to the graph.
-/*struct Operation  {
-    var c:TF_Operation
+struct GoOperation  {
+    var c:TF_Operation 
     // A reference to the Graph to prevent it from
     // being GCed while the Operation is still alive.
     var g:Graph
-}*/
+}
 /*
 // Name returns the name of the operation.
 func (op *Operation) Name() string {
