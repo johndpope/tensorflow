@@ -74,18 +74,29 @@ public typealias TF_DeprecatedSession = OpaquePointer
 public typealias TF_OperationDescription = OpaquePointer
 public typealias TF_Operation = OpaquePointer
 
-
-//public typealias TF_Buffer = OpaquePointer
-
-
-// --------------------------------------------------------------------------
-// TF_Version returns a string describing version information of the
-// TensorFlow library. TensorFlow using semantic versioning.
-public func tfVersion() ->String{
-    let str:UnsafePointer<Int8> = TF_Version()
-    return  String(cString:str)
-
+class tf{
+    // --------------------------------------------------------------------------
+    // TF_Version returns a string describing version information of the
+    // TensorFlow library. TensorFlow using semantic versioning.
+     public class func Version() ->String{
+        let str:UnsafePointer<Int8> = TF_Version()
+        return  String(cString:str)
+        
+    }
+    
+    // TF_DataTypeSize returns the sizeof() for the underlying type corresponding
+    // to the given TF_DataType enum value. Returns 0 for variable length types
+    // (eg. TF_STRING) or on failure.
+    public class func DataTypeSize(_ dt: TF_DataType) -> Int{
+        let typeSize =  TF_DataTypeSize(dt) as Int
+        return typeSize
+    }
 }
+
+
+
+
+
 
 // --------------------------------------------------------------------------
 // TF_DataType holds the type for a scalar value.  E.g., one slot in a tensor.
@@ -117,13 +128,7 @@ public func tfVersion() ->String{
 
 // Double-precision complex
 
-// TF_DataTypeSize returns the sizeof() for the underlying type corresponding
-// to the given TF_DataType enum value. Returns 0 for variable length types
-// (eg. TF_STRING) or on failure.
-public func tfDataTypeSize(_ dt: TF_DataType) -> Int{
-    let typeSize =  TF_DataTypeSize(dt) as Int
-    return typeSize
-}
+
 
 // --------------------------------------------------------------------------
 // TF_Code holds an error code.  The enum values here are identical to

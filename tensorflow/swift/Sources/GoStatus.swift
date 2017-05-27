@@ -25,11 +25,11 @@ import Foundation
 struct tfStatus  {
     var c:OpaquePointer!
     func errorMessage()->String?{
-        return tfMessage(self.c)
+        return tf.Message(self.c)
     }
     
     func error() -> NSError?{
-        let msg =  tfMessage(self.c)
+        let msg =  tf.Message(self.c)
         if( msg == ""){
           return nil
         }else{
@@ -41,7 +41,7 @@ struct tfStatus  {
 
 func newStatus() -> tfStatus {
     //	s = &status{TF_NewStatus()}
-    let s = tfNewStatus()
+    let s = tf.NewStatus()
 
 //	runtime.SetFinalizer(s, (*status).finalizer) // TODO how to port to swift?
 //https://github.com/reactive-swift/RunLoop/issues/11
@@ -59,15 +59,15 @@ func newStatus() -> tfStatus {
 
 
 func  finalizer(s:tfStatus) {
-	tfDeleteStatus(s.c)
+	tf.DeleteStatus(s.c)
 }
 
 func  code(s:tfStatus)-> TF_Code {
-	return tfGetCode(s.c)
+	return tf.GetCode(s.c)
 }
 
 func string(s:tfStatus)-> String {
-    return  tfMessage(s.c)
+    return  tf.Message(s.c)
 }
 
 
@@ -91,7 +91,7 @@ type statusError status
 
 func error(s:tfStatus) -> Tensorflow_Error_Code {
     
-    let code:TF_Code = tfGetCode(s.c)
+    let code:TF_Code = tf.GetCode(s.c)
     if let code = Tensorflow_Error_Code(rawValue: Int(code.rawValue)){
         return code
     }

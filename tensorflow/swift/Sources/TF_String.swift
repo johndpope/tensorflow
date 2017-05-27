@@ -19,34 +19,35 @@ import Darwin.C.stdint
 import CTensorFlow
 import protoTensorFlow
 
-
-// --------------------------------------------------------------------------
-// Encode the string `src` (`src_len` bytes long) into `dst` in the format
-// required by TF_STRING tensors. Does not write to memory more than `dst_len`
-// bytes beyond `*dst`. `dst_len` should be at least
-// TF_StringEncodedSize(src_len).
-//
-// On success returns the size in bytes of the encoded string.
-// Returns an error into `status` otherwise.
-public func tfStringEncode(_ src: UnsafePointer<Int8>!, _ src_len: Int, _ dst: UnsafeMutablePointer<Int8>!, _ dst_len: Int, _ status: TF_Status!) -> Int{
-    return TF_StringEncode(src,src_len,dst,dst_len,status)
-}
-
-// Decode a string encoded using TF_StringEncode.
-//
-// On success, sets `*dst` to the start of the decoded string and `*dst_len` to
-// its length. Returns the number of bytes starting at `src` consumed while
-// decoding. `*dst` points to memory within the encoded buffer.  On failure,
-// `*dst` and `*dst_len` are undefined and an error is set in `status`.
-//
-// Does not read memory more than `src_len` bytes beyond `src`.
-public func tfStringDecode(_ src: UnsafePointer<Int8>!, _ src_len: Int, _ dst: UnsafeMutablePointer<UnsafePointer<Int8>?>!, _ dst_len: UnsafeMutablePointer<Int>!, _ status: TF_Status!) -> Int{
-    return TF_StringDecode(src,src_len,dst,dst_len,status)
-}
-
-// Return the size in bytes required to encode a string `len` bytes long into a
-// TF_STRING tensor.
-public func tfStringEncodedSize(_ len: Int) -> Int{
-    return TF_StringEncodedSize(len)
+extension tf{
+    // --------------------------------------------------------------------------
+    // Encode the string `src` (`src_len` bytes long) into `dst` in the format
+    // required by TF_STRING tensors. Does not write to memory more than `dst_len`
+    // bytes beyond `*dst`. `dst_len` should be at least
+    // TF_StringEncodedSize(src_len).
+    //
+    // On success returns the size in bytes of the encoded string.
+    // Returns an error into `status` otherwise.
+    public class func StringEncode(_ src: UnsafePointer<Int8>!, _ src_len: Int, _ dst: UnsafeMutablePointer<Int8>!, _ dst_len: Int, _ status: TF_Status!) -> Int{
+        return TF_StringEncode(src,src_len,dst,dst_len,status)
+    }
+    
+    // Decode a string encoded using TF_StringEncode.
+    //
+    // On success, sets `*dst` to the start of the decoded string and `*dst_len` to
+    // its length. Returns the number of bytes starting at `src` consumed while
+    // decoding. `*dst` points to memory within the encoded buffer.  On failure,
+    // `*dst` and `*dst_len` are undefined and an error is set in `status`.
+    //
+    // Does not read memory more than `src_len` bytes beyond `src`.
+    public class func StringDecode(_ src: UnsafePointer<Int8>!, _ src_len: Int, _ dst: UnsafeMutablePointer<UnsafePointer<Int8>?>!, _ dst_len: UnsafeMutablePointer<Int>!, _ status: TF_Status!) -> Int{
+        return TF_StringDecode(src,src_len,dst,dst_len,status)
+    }
+    
+    // Return the size in bytes required to encode a string `len` bytes long into a
+    // TF_STRING tensor.
+    public class func StringEncodedSize(_ len: Int) -> Int{
+        return TF_StringEncodedSize(len)
+    }
 }
 

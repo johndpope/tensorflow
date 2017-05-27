@@ -40,12 +40,12 @@ class Graph  {
 
 func newGraph()-> Graph{
     let g = Graph()
-    g.c = tfNewGraph()
+    g.c = tf.NewGraph()
     return g
 }
 
 func  finalizer(g :Graph) {
-    tfDeleteGraph(g.c)
+    tf.DeleteGraph(g.c)
 }
 
 // WriteTo writes out a serialized representation of g to w.
@@ -54,7 +54,7 @@ func  finalizer(g :Graph) {
 extension Graph{
     func  writeTo( w:Writer)-> (Int, NSError?) {
         
-        if let buffer =  tfNewBuffer(){
+        if let buffer =  tf.NewBuffer(){
             var status = newStatus()
             
             defer {
@@ -62,7 +62,7 @@ extension Graph{
                 TF_DeleteBuffer(buffer)
             }
             
-            tfGraphToGraphDef(self.c, buffer, status.c)
+            tf.GraphToGraphDef(self.c, buffer, status.c)
             
             if let msg = status.errorMessage(){
                 return (0, NSError.newIoError(msg, code: 111))
@@ -107,7 +107,7 @@ extension Graph{
         }
         
         
-        if let buffer = tfNewBuffer(){
+        if let buffer = tf.NewBuffer(){
             
             defer{
                 TF_DeleteBuffer(buffer)
@@ -127,7 +127,7 @@ extension Graph{
             //        C.memcpy(buf.data, unsafe.Pointer(&def[0]), buf.length)
             
             let status = newStatus()
-            tfGraphImportGraphDef(self.c, buffer, opts, status.c)
+            tf.GraphImportGraphDef(self.c, buffer, opts, status.c)
             if let error = status.error() {
                 return error
             }
@@ -158,7 +158,7 @@ extension Graph{
         defer{
             //        free(cname)
         }
-        let cOperation = tfGraphOperationByName(self.c, cname)
+        let cOperation = tf.GraphOperationByName(self.c, cname)
         if cOperation == nil{
             return nil
         }
@@ -201,7 +201,7 @@ struct OpSpec  {
 extension Graph{
     func addOperation ( args:OpSpec)-> (GoOperation?, NSError?) {
         
-        let cOperationDesc = tfNewOperation(self.c, args.OpType, args.Name)
+        let cOperationDesc = tf.NewOperation(self.c, args.OpType, args.Name)
         
         for input in  args.Input {
             

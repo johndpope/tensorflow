@@ -42,7 +42,7 @@ struct Session  {
 struct SessionOptions  {
     
     init(){
-        self.c = tfNewSessionOptions()
+        self.c = tf.NewSessionOptions()
         self.Target = ""
         self.ConfigProto = Tensorflow_ConfigProto()
        // self.Config = try self.ConfigProto.serializedData()
@@ -102,15 +102,15 @@ func newSession(graph:Graph, options:SessionOptions)-> (session:Session?, error:
    // if err != nil {
    //     return nil, err
    // }
-    let cOpt = tfNewSessionOptions()
-    if let cSess = tfNewSession(graph.c, cOpt, status.c){
+    let cOpt = tf.NewSessionOptions()
+    if let cSess = tf.NewSession(graph.c, cOpt, status.c){
         
         let s =  Session(c: cSess)
         //    runtime.SetFinalizer(s, func(s *Session) { s.Close() }) // how to do this in swift??
         return (s, nil)
     }else{
     
-        let code = tfGetCode(status.c)
+        let code = tf.GetCode(status.c)
         let intRaw:Int = Int(code.rawValue)
         return (nil,Tensorflow_Error_Code(rawValue: intRaw))
     }

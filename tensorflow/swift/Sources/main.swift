@@ -1,6 +1,6 @@
 import CTensorFlow
 import protoTensorFlow
-
+import Foundation
 
 
 let myGraph:Graph = Graph()
@@ -8,7 +8,7 @@ let opts:SessionOptions = SessionOptions()
 
 var (mySession,error) = newSession(graph:myGraph,options:opts)
 
-print("Hello from TensorFlow C library version ", tfVersion())
+print("Hello from TensorFlow C library version ", tf.Version())
 
 //    let test = ArraySlice<Any>()
 
@@ -44,32 +44,33 @@ func main() {
     // this example:
     // - Constructs another TensorFlow graph to normalize the image into a
     //   form suitable for the model (for example, resizing the image)
-    // - Creates an executes a Session to obtain a Tensor in this normalized form.
-    modeldir := flag.String("dir", "", "Directory containing the trained model files. The directory will be created and the model downloaded into it if necessary")
-    imagefile := flag.String("image", "", "Path of a JPEG-image to extract labels for")
+    // - Creates an executes a Session to obtain a Tensor in this normalized form.*/
+/*
+    var modeldir = flag.String("dir", "", "Directory containing the trained model files. The directory will be created and the model downloaded into it if necessary")
+    var imagefile = flag.String("image", "", "Path of a JPEG-image to extract labels for")
     flag.Parse()
     if *modeldir == "" || *imagefile == "" {
         flag.Usage()
         return
     }
     // Load the serialized GraphDef from a file.
-    modelfile, labelsfile, err := modelFiles(*modeldir)
+    modelfile, labelsfile, err = modelFiles(*modeldir)
     if err != nil {
         log.Fatal(err)
     }
-    model, err := ioutil.ReadFile(modelfile)
+    model, err = ioutil.ReadFile(modelfile)
     if err != nil {
         log.Fatal(err)
     }
     
     // Construct an in-memory graph from the serialized form.
-    graph := tf.NewGraph()
-    if err := graph.Import(model, ""); err != nil {
+    graph = tf.NewGraph()
+    if err = graph.Import(model, ""); err != nil {
         log.Fatal(err)
     }
     
     // Create a session for inference over graph.
-    session, err := tf.NewSession(graph, nil)
+    var session, err = tf.NewSession(graph, nil)
     if err != nil {
         log.Fatal(err)
     }
@@ -79,11 +80,11 @@ func main() {
     // For multiple images, session.Run() can be called in a loop (and
     // concurrently). Alternatively, images can be batched since the model
     // accepts batches of image data as input.
-    tensor, err := makeTensorFromImage(*imagefile)
+    tensor, err = makeTensorFromImage(*imagefile)
     if err != nil {
         log.Fatal(err)
     }
-    output, err := session.Run(
+    output, err = session.Run(
     map[tf.Output]*tf.Tensor{
     graph.Operation("input").Output(0): tensor,
     },
@@ -97,30 +98,30 @@ func main() {
     // output[0].Value() is a vector containing probabilities of
     // labels for each image in the "batch". The batch size was 1.
     // Find the most probably label index.
-    probabilities := output[0].Value().([][]float32)[0]
+    probabilities = output[0].Value().([][]float32)[0]
     printBestLabel(probabilities, labelsfile)
 }
 
 func printBestLabel(probabilities []float32, labelsFile string) {
-    bestIdx := 0
-    for i, p := range probabilities {
+    bestIdx = 0
+    for i, p = range probabilities {
         if p > probabilities[bestIdx] {
             bestIdx = i
         }
     }
     // Found the best match. Read the string from labelsFile, which
     // contains one line per label.
-    file, err := os.Open(labelsFile)
+    file, err = os.Open(labelsFile)
     if err != nil {
         log.Fatal(err)
     }
     defer file.Close()
-    scanner := bufio.NewScanner(file)
+    scanner = bufio.NewScanner(file)
     var labels []string
     for scanner.Scan() {
         labels = append(labels, scanner.Text())
     }
-    if err := scanner.Err(); err != nil {
+    if err = scanner.Err(); err != nil {
         log.Printf("ERROR: failed to read %s: %v", labelsFile, err)
     }
     fmt.Printf("BEST MATCH: (%2.0f%% likely) %s\n", probabilities[bestIdx]*100.0, labels[bestIdx])
@@ -128,27 +129,27 @@ func printBestLabel(probabilities []float32, labelsFile string) {
 
 // Convert the image in filename to a Tensor suitable as input to the Inception model.
 func makeTensorFromImage(filename string) (*tf.Tensor, error) {
-    bytes, err := ioutil.ReadFile(filename)
+    bytes, err = ioutil.ReadFile(filename)
     if err != nil {
         return nil, err
     }
     // DecodeJpeg uses a scalar String-valued tensor as input.
-    tensor, err := tf.NewTensor(string(bytes))
+    tensor, err = tf.NewTensor(string(bytes))
     if err != nil {
         return nil, err
     }
     // Construct a graph to normalize the image
-    graph, input, output, err := constructGraphToNormalizeImage()
+    graph, input, output, err = constructGraphToNormalizeImage()
     if err != nil {
         return nil, err
     }
     // Execute that graph to normalize this one image
-    session, err := tf.NewSession(graph, nil)
+    session, err = tf.NewSession(graph, nil)
     if err != nil {
         return nil, err
     }
     defer session.Close()
-    normalized, err := session.Run(
+    normalized, err = session.Run(
     map[tf.Output]*tf.Tensor{input: tensor},
     []tf.Output{output},
     nil)
@@ -165,7 +166,7 @@ func makeTensorFromImage(filename string) (*tf.Tensor, error) {
 // This function constructs a graph of TensorFlow operations which takes as
 // input a JPEG-encoded string and returns a tensor suitable as input to the
 // inception model.
-func constructGraphToNormalizeImage() (graph *tf.Graph, input, output tf.Output, err error) {
+func constructGraphToNormalizeImage() -> (graph :TF_Graph, input:TF_Input, output:TF_Output, err:NSError) {
     // Some constants specific to the pre-trained model at:
     // https://storage.googleapis.com/download.tensorflow.org/models/inception5h.zip
     //
@@ -183,7 +184,7 @@ func constructGraphToNormalizeImage() (graph *tf.Graph, input, output tf.Output,
     //   represented as a triplet of floats
     // - Apply normalization on each pixel and use ExpandDims to make
     //   this single image be a "batch" of size 1 for ResizeBilinear.
-    s := op.NewScope()
+    s = op.NewScope()
     input = op.Placeholder(s, tf.String)
     output = op.Div(s,
     op.Sub(s,
@@ -210,13 +211,13 @@ func modelFiles(dir string) (modelfile, labelsfile string, err error) {
         return model, labels, nil
     }
     log.Println("Did not find model in", dir, "downloading from", URL)
-    if err := os.MkdirAll(dir, 0755); err != nil {
+    if err = os.MkdirAll(dir, 0755); err != nil {
         return "", "", err
     }
-    if err := download(URL, zipfile); err != nil {
+    if err = download(URL, zipfile); err != nil {
         return "", "", NSError.newIoError("failed to download %v - %v", URL, err)
     }
-    if err := unzip(dir, zipfile); err != nil {
+    if err = unzip(dir, zipfile); err != nil {
         return "", "", NSError.newIoError("failed to extract contents from model archive: %v", err)
     }
     os.Remove(zipfile)
@@ -224,8 +225,8 @@ func modelFiles(dir string) (modelfile, labelsfile string, err error) {
 }
 
 func filesExist(files ...string) error {
-    for _, f := range files {
-        if _, err := os.Stat(f); err != nil {
+    for _, f = range files {
+        if _, err = os.Stat(f); err != nil {
             return NSError.newIoError("unable to stat %s: %v", f, err)
         }
     }
@@ -233,12 +234,12 @@ func filesExist(files ...string) error {
 }
 
 func download(URL, filename string) error {
-    resp, err := http.Get(URL)
+    resp, err = http.Get(URL)
     if err != nil {
         return err
     }
     defer resp.Body.Close()
-    file, err := os.OpenFile(filename, os.O_RDWR|os.O_CREATE, 0644)
+    file, err = os.OpenFile(filename, os.O_RDWR|os.O_CREATE, 0644)
     if err != nil {
         return err
     }
@@ -248,22 +249,22 @@ func download(URL, filename string) error {
 }
 
 func unzip(dir, zipfile string) error {
-    r, err := zip.OpenReader(zipfile)
+    r, err = zip.OpenReader(zipfile)
     if err != nil {
         return err
     }
     defer r.Close()
-    for _, f := range r.File {
-        src, err := f.Open()
+    for _, f = range r.File {
+        src, err = f.Open()
         if err != nil {
             return err
         }
         log.Println("Extracting", f.Name)
-        dst, err := os.OpenFile(filepath.Join(dir, f.Name), os.O_WRONLY|os.O_CREATE, 0644)
+        dst, err = os.OpenFile(filepath.Join(dir, f.Name), os.O_WRONLY|os.O_CREATE, 0644)
         if err != nil {
             return err
         }
-        if _, err := io.Copy(dst, src); err != nil {
+        if _, err = io.Copy(dst, src); err != nil {
             return err
         }
         dst.Close()

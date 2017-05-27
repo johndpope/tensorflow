@@ -19,22 +19,26 @@ import Darwin.C.stdint
 import CTensorFlow
 import protoTensorFlow
 
-// Makes a copy of the input and sets an appropriate deallocator.  Useful for
-// passing in read-only, input protobufs.
-public func tfNewBufferFromString(_ proto: UnsafeRawPointer!, _ proto_len: Int) -> UnsafeMutablePointer<TF_Buffer>!{
-   return TF_NewBufferFromString(proto,proto_len)
-}
 
-// Useful for passing *out* a protobuf.
-public func tfNewBuffer() -> UnsafeMutablePointer<TF_Buffer>!{
-    return TF_NewBuffer()
-}
-
-public func tfDeleteBuffer(unsafePointer: UnsafeMutablePointer<TF_Buffer>!){
-    TF_DeleteBuffer(unsafePointer)
-}
-
-public func tfGetBuffer(_ buffer: UnsafeMutablePointer<TF_Buffer>!) -> TF_Buffer{
-    return TF_GetBuffer(buffer)
+extension tf{
+    
+    // Makes a copy of the input and sets an appropriate deallocator.  Useful for
+    // passing in read-only, input protobufs.
+    public class func NewBufferFromString(_ proto: UnsafeRawPointer!, _ proto_len: Int) -> UnsafeMutablePointer<TF_Buffer>!{
+        return TF_NewBufferFromString(proto,proto_len)
+    }
+    
+    // Useful for passing *out* a protobuf.
+    public class func NewBuffer() -> UnsafeMutablePointer<TF_Buffer>!{
+        return TF_NewBuffer()
+    }
+    
+    public class func DeleteBuffer(unsafePointer: UnsafeMutablePointer<TF_Buffer>!){
+        TF_DeleteBuffer(unsafePointer)
+    }
+    
+    public class func GetBuffer(_ buffer: UnsafeMutablePointer<TF_Buffer>!) -> TF_Buffer{
+        return TF_GetBuffer(buffer)
+    }
 }
 
