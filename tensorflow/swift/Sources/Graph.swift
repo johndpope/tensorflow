@@ -14,11 +14,17 @@
  limitations under the License.
  */
 import CTensorFlow
+import Foundation
 
 
 // Graph represents a computation graph. Graphs may be shared between sessions.
-struct Graph  {
-    var c:OpaquePointer!
+class Graph  {
+    var c:TF_Graph!
+    
+    // TODO work out how to use  runtime.SetFinalizer(g, (*Graph).finalizer) on struct in swift
+    deinit {
+        finalizer(g:self)
+    }
 }
 
 func newGraph()-> Graph{
@@ -43,16 +49,22 @@ func  finalizer(g :Graph) {
 // WriteTo writes out a serialized representation of g to w.
 //
 // Implements the io.WriterTo interface.
+  /*
+func  writeTo(g:Graph, w:Writer)-> (Int64, NSError) {
 
-/*func  writeTo(g:Graph, w:io.Writer)-> (int64, error) {
-    
-    //buf = TF_NewBuffer()
     let buf = tfNewBuffer()
+    var status = newStatus()
     
-    defer TF_DeleteBuffer(buf)
-    status = newStatus()
-    TF_GraphToGraphDef(g.c, buf, status.c)
-    if err = status.Err(); err != nil {
+    defer {
+      TF_DeleteStatus(status.c)
+      TF_DeleteBuffer(buf)
+    }
+   
+    tfGraphToGraphDef(g.c, buf, status.c)
+
+  
+    if err = status.Err();
+    err != nil {
         return 0, err
     }
     if buf.length > (1 << 30) {
@@ -65,7 +77,7 @@ func  finalizer(g :Graph) {
     length = int(buf.length)
     slice = (*[1 << 30]byte)(unsafe.Pointer(buf.data))[:length:length]
     n, err = w.Write(slice)
-    return int64(n), err
+    return int64(n), err*/
 }*/
 
 // Import imports the nodes and edges from a serialized representation of

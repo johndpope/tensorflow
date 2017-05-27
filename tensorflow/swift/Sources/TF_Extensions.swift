@@ -23,3 +23,11 @@ public func tfNewTensor(dt: Tensorflow_DataType, _ dims: UnsafePointer<Int64>!, 
     return TF_NewTensor(nativeDt,dims, num_dims, data, len, deallocator, deallocator_arg)
     
 }
+
+
+extension NSError {
+    public static func newError(_ message: String, code: Int) -> NSError {
+        let dict: [AnyHashable: Any] = [NSLocalizedDescriptionKey: message]
+        return NSError(domain: Bundle.main.bundleIdentifier!, code: code, userInfo: dict)
+    }
+}

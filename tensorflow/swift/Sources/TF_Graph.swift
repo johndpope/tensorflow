@@ -592,6 +592,7 @@ public func tfGraphNextOperation(_ graph: TF_Graph!, _ pos: UnsafeMutablePointer
 // May fail on very large graphs in the future.
 public func tfGraphToGraphDef(_ graph: TF_Graph!, _ output_graph_def: UnsafeMutablePointer<TF_Buffer>!, _ status: TF_Status!){
  print("TO IMPLEMENT")
+    TF_GraphToGraphDef(graph,output_graph_def,status)
 }
 
 // TF_ImportGraphDefOptions holds options that can be passed to
