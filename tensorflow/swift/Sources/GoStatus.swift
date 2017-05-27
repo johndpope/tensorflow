@@ -17,7 +17,8 @@ limitations under the License.
 
 import CTensorFlow
 import protoTensorFlow
-
+import IOSwift
+import Foundation
 
 // status holds error information returned by TensorFlow. We convert all
 // TF statuses to Go errors.
@@ -26,6 +27,16 @@ struct tfStatus  {
     func errorMessage()->String?{
         return tfMessage(self.c)
     }
+    
+    func error() -> NSError?{
+        let msg =  tfMessage(self.c)
+        if( msg == ""){
+          return nil
+        }else{
+           return NSError.newIoError(msg,code:222)
+        }
+    }
+    
 }
 
 func newStatus() -> tfStatus {

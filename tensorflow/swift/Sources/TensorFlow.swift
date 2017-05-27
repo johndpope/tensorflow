@@ -63,6 +63,7 @@ import protoTensorFlow
 //   and the API just provides high level controls over the number of
 //   devices of each type.
 
+
 public typealias TF_Session = OpaquePointer
 public typealias TF_Tensor = OpaquePointer
 public typealias TF_Status = OpaquePointer

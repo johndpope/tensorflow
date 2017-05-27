@@ -18,8 +18,14 @@
 import CTensorFlow
 import Foundation
 import IOSwift
+import func Darwin.C.stdlib.malloc
+import func Darwin.C.stdlib.posix_memalign
+import func Darwin.C.stdlib.free
+import func Darwin.C.string.memset
+import func Darwin.C.string.memcpy
+import func Darwin.malloc.malloc_size
 
-
+typealias Byte = UInt8
 
 // Graph represents a computation graph. Graphs may be shared between sessions.
 class Graph  {
@@ -64,8 +70,7 @@ func  writeTo(g:Graph, w:Writer)-> (Int, NSError?) {
         }
         
         tfGraphToGraphDef(g.c, buffer, status.c)
-        
-        
+
         if let msg = status.errorMessage(){
             return (0, NSError.newIoError(msg, code: 111))
         }
@@ -91,34 +96,52 @@ func  writeTo(g:Graph, w:Writer)-> (Int, NSError?) {
 //
 // Names of imported nodes will be prefixed with prefix.
 
-/*func importGraph(g:Graph,def []byte, prefix string) error {
-    cprefix = C.CString(prefix)
-    defer C.free(unsafe.Pointer(cprefix))
+func importGraph(g:Graph,def: [Byte], prefix:String)-> NSError? {
+    let cprefix = prefix.cString(using: .utf8)
     
-    opts = TF_NewImportGraphDefOptions()
-    defer TF_DeleteImportGraphDefOptions(opts)
-    TF_ImportGraphDefOptionsSetPrefix(opts, cprefix)
+//    defer{
+//        free(cprefix)
+//    }
     
-    buf = TF_NewBuffer()
-    defer TF_DeleteBuffer(buf)
-    // Would have preferred to use C.CBytes, but that does not play well
-    // with "go vet" till https://github.com/golang/go/issues/17201 is
-    // resolved.
-    buf.length = C.size_t(len(def))
-    buf.data = C.malloc(buf.length)
-    if buf.data == nil {
-        return fmt.Errorf("unable to allocate memory")
+    let opts = TF_NewImportGraphDefOptions()
+    
+    defer {
+        TF_DeleteImportGraphDefOptions(opts)
+        TF_ImportGraphDefOptionsSetPrefix(opts, cprefix)
     }
-    defer C.free(buf.data)
-    C.memcpy(buf.data, unsafe.Pointer(&def[0]), buf.length)
     
-    status = newStatus()
-    TF_GraphImportGraphDef(g.c, buf, opts, status.c)
-    if err = status.Err(); err != nil {
-        return err
+    
+    if let buffer = tfNewBuffer(){
+        
+        defer{
+            TF_DeleteBuffer(buffer)
+        }
+        // Would have preferred to use C.CBytes, but that does not play well
+        // with "go vet" till https://github.com/golang/go/issues/17201 is
+        // resolved.
+        buffer.pointee.length = size_t(def.count)
+//        buffer.pointee.data =  malloc(4)
+        if buffer.pointee.data == nil {
+            return NSError.newIoError("unable to allocate memory", code: 123)
+        }
+        defer {
+            free(buffer)
+        }
+//        memcpy(buffer.pointee.data, &def[0], buffer.pointee.length)
+//        C.memcpy(buf.data, unsafe.Pointer(&def[0]), buf.length)
+        
+        let status = newStatus()
+        tfGraphImportGraphDef(g.c, buffer, opts, status.c)
+        if let error = status.error() {
+            return error
+        }
     }
-    return nil
-}*/
+    
+    return NSError.newIoError("couldn't allocate buffer", code: 123)
+    
+
+    
+}
 
 // Operation returns the Operation named name in the Graph, or nil if no such
 // operation is present.

@@ -48,7 +48,7 @@ struct SessionOptions  {
        // self.Config = try self.ConfigProto.serializedData()
     }
     // c *C.TF_Session
-    var c:OpaquePointer
+    var c:TF_Session
 
     
     // Target indicates the TensorFlow runtime to connect to.
@@ -96,6 +96,7 @@ func newSession(graph:Graph, options:SessionOptions)-> (session:Session?, error:
     let status = newStatus()
     
     // TODO - determine the following from Config()
+//    options.c.pointee.
    // var cOpt, doneOpt, err = options.c // how to do this in swift??
    // defer doneOpt()
    // if err != nil {
