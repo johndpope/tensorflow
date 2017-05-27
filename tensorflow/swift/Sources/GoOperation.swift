@@ -60,19 +60,19 @@ func (op *Operation) OutputListSize(output string) (int, error) {
 func (op *Operation) Output(i int) Output {
     return Output{op, i}
 }
-
+*/
 // Output represents one of the outputs of an operation in the graph. Has a
 // DataType (and eventually a Shape).  May be passed as an input argument to a
 // function for adding operations to a graph, or to a Session's Run() method to
 // fetch that output as a tensor.
-type Output struct {
+struct Output  {
     // Op is the Operation that produces this Output.
-    Op *Operation
+    var Op :GoOperation
     
     // Index specifies the index of the output within the Operation.
-    Index int
+    var Index:Int
 }
-
+/*
 // DataType returns the type of elements in the tensor produced by p.
 func (p Output) DataType() DataType {
     return DataType(TF_OperationOutputType(p.c()))
@@ -107,11 +107,14 @@ func (p Output) Shape() Shape {
     }
     return ret
 }
-
-func (p Output) c() TF_Output {
-    return TF_Output{oper: p.Op.c, index: C.int(p.Index)}
+*/
+extension Output{
+    func c() -> TF_Output {
+        return TF_Output(oper: self.Op.c, index: CInt(self.Index))
+    }
 }
 
+/*
 func (p Output) canBeAnInput() {}
 
 // Input is the interface for specifying inputs to an operation being added to

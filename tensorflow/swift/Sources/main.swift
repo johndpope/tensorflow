@@ -8,7 +8,7 @@ let opts:SessionOptions = SessionOptions()
 
 var (mySession,error) = newSession(graph:myGraph,options:opts)
 
-print("Hello from TensorFlow C library version ", tf.Version())
+print("Hello from TensorFlow C library version ",  tf.Version())
 
 //    let test = ArraySlice<Any>()
 
@@ -198,14 +198,14 @@ func constructGraphToNormalizeImage() -> (graph :TF_Graph, input:TF_Input, outpu
     op.Const(s.SubScope("scale"), Scale))
     graph, err = s.Finalize()
     return graph, input, output, err
-}
-
-func modelFiles(dir string) (modelfile, labelsfile string, err error) {
-    const URL = "https://storage.googleapis.com/download.tensorflow.org/models/inception5h.zip"
+}*/
+/*
+func modelFiles(dir:String)-> (modelfile:NSURL, labelsfile:String, err:NSError) {
+    let URL = "https://storage.googleapis.com/download.tensorflow.org/models/inception5h.zip"
     var (
-    model   = filepath.Join(dir, "tensorflow_inception_graph.pb")
-    labels  = filepath.Join(dir, "imagenet_comp_graph_label_strings.txt")
-    zipfile = filepath.Join(dir, "inception5h.zip")
+        model   = filepath.Join(dir, "tensorflow_inception_graph.pb")
+        labels  = filepath.Join(dir, "imagenet_comp_graph_label_strings.txt")
+        zipfile = filepath.Join(dir, "inception5h.zip")
     )
     if filesExist(model, labels) == nil {
         return model, labels, nil
