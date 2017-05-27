@@ -4,15 +4,17 @@
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
-    "43BF8F9148B1F39FBDE34E7D1E69C54C78D21FCC" : 9223372036854775807,
+    "3D6EEA4F5A9777897DB9384A379172ADF60BE680" : 9223372036854775807,
     "6BB20761708304A2C0886A5DF6D82003D67281DF" : 9223372036854775807,
+    "43BF8F9148B1F39FBDE34E7D1E69C54C78D21FCC" : 9223372036854775807,
     "DEF827AEE61008D72BA753A95234A28088662AAB" : 9223372036854775807,
     "9EDDABE139EFE2CF16D7964A3F5B908927455C00" : 9223372036854775807
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "57A5C418-3918-4398-86DA-B2BF55123AEA",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "43BF8F9148B1F39FBDE34E7D1E69C54C78D21FCC" : "tensorflow\/tensorflow\/swift\/.build\/checkouts\/swift-protobuf.git--7219529775138357838\/",
+    "3D6EEA4F5A9777897DB9384A379172ADF60BE680" : "tensorflow\/tensorflow\/swift\/.build\/checkouts\/IO-swift.git-8255835922304939596\/",
     "6BB20761708304A2C0886A5DF6D82003D67281DF" : "tensorflow\/tensorflow\/swift\/.build\/checkouts\/swift-grpc-tensorflow.git--5994516077474897617\/",
+    "43BF8F9148B1F39FBDE34E7D1E69C54C78D21FCC" : "tensorflow\/tensorflow\/swift\/.build\/checkouts\/swift-protobuf.git--7219529775138357838\/",
     "DEF827AEE61008D72BA753A95234A28088662AAB" : "tensorflow\/",
     "9EDDABE139EFE2CF16D7964A3F5B908927455C00" : "tensorflow\/tensorflow\/swift\/.build\/checkouts\/grpc-swift.git-1944885664151884802\/"
   },
@@ -20,6 +22,11 @@
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
   "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "tensorflow\/swift\/TensorFlow.xcodeproj",
   "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/jp\/Documents\/tensorWorkspace\/tensorflow\/tensorflow\/swift\/.build\/repositories\/IO-swift.git-8255835922304939596",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3D6EEA4F5A9777897DB9384A379172ADF60BE680"
+    },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/johndpope\/Documents\/tensorFlowWorkspace\/tensorflow\/tensorflow\/swift\/.build\/repositories\/swift-protobuf.git--7219529775138357838",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",

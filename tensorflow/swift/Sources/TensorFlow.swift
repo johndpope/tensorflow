@@ -149,20 +149,27 @@ public func tfDataTypeSize(_ dt: TF_DataType) -> Int{
 // By default, TF_Buffer itself does not do any memory management of the
 // pointed-to block.  If need be, users of this struct should specify how to
 // deallocate the block by setting the `data_deallocator` function pointer.
-/*public struct TF_Buffer {
+/*public struct tfBuffer {
 
-    public var data: UnsafeRawPointer!
-
-    public var length: Int
-
-    public var data_deallocator: (@convention(c) (UnsafeMutableRawPointer?, Int) -> Swift.Void)!
-
-    public init(){
-        self = TF_Buffer()
+    var c:TF_Buffer
+    
+    public var data: UnsafeRawPointer{
+        get { return self.c.data }
     }
 
+    public var length: Int{
+        get {return self.c.length}
+    }
+
+    public var data_deallocator: (@convention(c) (UnsafeMutableRawPointer?, Int) -> Swift.Void)!{
+        get {return self.c.data_deallocator}
+    }
+
+    
+
     public init(data: UnsafeRawPointer!, length: Int, data_deallocator: (@convention(c) (UnsafeMutableRawPointer?, Int) -> Swift.Void)!){
-       self =  TF_Buffer(data,length,data_deallocator)
+      self = tfBuffer(data:nil,length:0,data_deallocator:nil)
+        self.c = TF_Buffer(data:data,length:length,data_deallocator:data_deallocator)
     }
 }*/
 

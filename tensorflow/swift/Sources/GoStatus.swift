@@ -12,6 +12,7 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+ https://github.com/tensorflow/tensorflow/blob/master/tensorflow/go/status.go
 */
 
 import CTensorFlow
@@ -22,7 +23,9 @@ import protoTensorFlow
 // TF statuses to Go errors.
 struct tfStatus  {
     var c:OpaquePointer!
-    
+    func errorMessage()->String?{
+        return tfMessage(self.c)
+    }
 }
 
 func newStatus() -> tfStatus {

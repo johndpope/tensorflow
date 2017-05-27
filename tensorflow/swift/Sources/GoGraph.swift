@@ -12,9 +12,13 @@
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  See the License for the specific language governing permissions and
  limitations under the License.
+ 
+ https://github.com/tensorflow/tensorflow/blob/master/tensorflow/go/graph.go
  */
 import CTensorFlow
 import Foundation
+import IOSwift
+
 
 
 // Graph represents a computation graph. Graphs may be shared between sessions.
@@ -49,35 +53,37 @@ func  finalizer(g :Graph) {
 // WriteTo writes out a serialized representation of g to w.
 //
 // Implements the io.WriterTo interface.
-  /*
-func  writeTo(g:Graph, w:Writer)-> (Int64, NSError) {
+func  writeTo(g:Graph, w:Writer)-> (Int, NSError?) {
 
-    let buf = tfNewBuffer()
-    var status = newStatus()
+    if let buffer =  tfNewBuffer(){
+        var status = newStatus()
+        
+        defer {
+            TF_DeleteStatus(status.c)
+            TF_DeleteBuffer(buffer)
+        }
+        
+        tfGraphToGraphDef(g.c, buffer, status.c)
+        
+        
+        if let msg = status.errorMessage(){
+            return (0, NSError.newIoError(msg, code: 111))
+        }
+        
+        if buffer.pointee.length > (1 << 30) {
+            // For very large graphs, the writes can be chunked.
+            // Punt on that for now.
+            return (0, NSError.newIoError("Graph is too large to write out, Graph.WriteTo needs to be updated", code: 111))
+        }
+        // A []byte slice backed by C memory.
+        // See: https://github.com/golang/go/wiki/cgo#turning-c-arrays-into-go-slices
+
+        return w.write(data: buffer.pointee.data.load(as: NSData.self))
+    }else{
+        return (0,NSError.newIoError("couldn't access buffer", code: 111))
+    }
     
-    defer {
-      TF_DeleteStatus(status.c)
-      TF_DeleteBuffer(buf)
-    }
-   
-    tfGraphToGraphDef(g.c, buf, status.c)
-
-  
-    if err = status.Err();
-    err != nil {
-        return 0, err
-    }
-    if buf.length > (1 << 30) {
-        // For very large graphs, the writes can be chunked.
-        // Punt on that for now.
-        return 0, fmt.Errorf("Graph is too large to write out, Graph.WriteTo needs to be updated")
-    }
-    // A []byte slice backed by C memory.
-    // See: https://github.com/golang/go/wiki/cgo#turning-c-arrays-into-go-slices
-    length = int(buf.length)
-    slice = (*[1 << 30]byte)(unsafe.Pointer(buf.data))[:length:length]
-    n, err = w.Write(slice)
-    return int64(n), err*/
+}
 
 
 // Import imports the nodes and edges from a serialized representation of

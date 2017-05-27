@@ -20,7 +20,7 @@ test:
 	swift test -v $(CFLAGS) $(LDFLAGS) 
 
 clean:
-	swift build --clean
+	swift package clean
 	rm -rf Packages
 	rm -rf .build
 	rm -rf Package.pins

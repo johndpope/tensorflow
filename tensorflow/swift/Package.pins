@@ -8,6 +8,12 @@
       "version": "0.0.2"
     },
     {
+      "package": "IOSwift",
+      "reason": null,
+      "repositoryURL": "https://github.com/johndpope/IO-swift.git",
+      "version": "0.0.3"
+    },
+    {
       "package": "SwiftProtobuf",
       "reason": null,
       "repositoryURL": "https://github.com/apple/swift-protobuf.git",
