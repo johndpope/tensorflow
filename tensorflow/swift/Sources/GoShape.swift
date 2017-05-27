@@ -13,7 +13,7 @@
 /// limitations under the License.
 //  https://github.com/tensorflow/tensorflow/blob/master/tensorflow/go/shape.go
 /// ==============================================================================
-
+import Foundation
 
 
 // Shape represents the (possibly partially known) shape of a tensor that will
@@ -21,14 +21,31 @@
 //
 // The zero-value of a Shape represents a shape with an unknown number of
 // dimensions.
-/*struct Shape  {
+
+// TODO - use Tensorflow_TensorShapeProto see tensor_shape.pb.swift
+struct Shape  {
     var  dims: [Int64]
-}*/
+}
+
+// NumDimensions returns the number of dimensions represented by s, or -1 if
+// unknown.
+extension Shape{
+    func NumDimensions() -> CInt{
+        if(self.dims.count == 0){
+            return -1
+        }else{
+            return CInt(dims.count)
+        }
+    }
+}
+
+
 /*
 // ScalarShape returns a Shape representing a scalar.
 func ScalarShape()->Shape {
     return Shape{dims: make([]int64, 0)}
 }
+
 
 // MakeShape returns a Shape with the provided size of each dimension.
 //
@@ -40,61 +57,64 @@ func MakeShape(shape ...int64)->Shape {
     return Shape{dims: cpy}
 }
 
-// NumDimensions returns the number of dimensions represented by s, or -1 if
-// unknown.
-func (s Shape) NumDimensions() int {
-    if s.dims == nil {
-        return -1
-    }
-    return len(s.dims)
-}
+*/
+
 
 // Size returns the size of the dim-th dimension of the shape, or -1 if it
 // is unknown.
 //
 // REQUIRES: 0 <= dim < s.NumDimensions()
-func (s Shape) Size(dim int) int64 {
-    if dim < 0 || dim > s.NumDimensions() {
-        return -1
+extension Shape{
+    func Size(dim:Int) -> Int64 {
+        if dim < 0 || dim > self.dims.count{
+            return -1
+        }
+        return self.dims[dim]
     }
-    return s.dims[dim]
 }
 
 // IsFullySpecified returns true iff the size of all the dimensions of s are
 // known.
-func (s Shape) IsFullySpecified() bool {
-    if s.dims == nil {
-        return false
-    }
-    for _, size = range s.dims {
-        if size <= 1 {
+extension Shape{
+    func IsFullySpecified()-> Bool {
+        if (self.dims.count == 0) {
             return false
         }
+        for size in self.dims {
+            if (size <= 1) {
+                return false
+            }
+        }
+        return true
     }
-    return true
 }
 
 // ToSlice returns the (possibly partially known) shape represented by s as a
 // slice, or an error if the number of dimensions is not known.
-func (s Shape) ToSlice() ([]int64, error) {
-    if s.dims == nil {
-        return nil, fmt.Errorf("cannot create a slice for a Shape with an unknown number of dimensions")
+extension Shape{
+    func ToSlice()-> ([Int64]?, NSError?) {
+        if (self.dims.count == 0) {
+            return (nil, NSError.newIoError("cannot create a slice for a Shape with an unknown number of dimensions",code:000))
+        }
+        let copy:[Int64] = self.dims
+        return (copy, nil)
     }
-    cpy = make([]int64, len(s.dims))
-    copy(cpy, s.dims)
-    return cpy, nil
 }
 
-func (s Shape) String() string {
-    if s.dims == nil {
-        return "?"
-    }
-    ret = fmt.Sprint(s.dims)
-    for _, size = range s.dims {
-        if size < 0 {
-            ret = strings.Replace(ret, fmt.Sprint(size), "?", 1)
+// TODO - is this just to debug shape? maybe just use debugDescription instead.
+extension Shape{
+    func String()-> String {
+        if (self.dims.count == 0) {
+            return "?"
         }
+        let ret = "\(self.dims)"
+        for size in self.dims {
+            if (size < 0 ){
+               // ret = strings.Replace(ret, fmt.Sprint(size), "?", 1)
+            }
+        }
+       // return strings.Replace(ret, " ", ", ", -1)
+        return self.dims.debugDescription
     }
-    return strings.Replace(ret, " ", ", ", -1)
 }
-*/
+

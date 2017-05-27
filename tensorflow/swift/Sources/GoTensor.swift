@@ -121,7 +121,7 @@ func ReadTensor(dataType DataType, shape []int64, r io.Reader) (*Tensor, error) 
 		return nil, err
 	}
 	if uintptr(n) != nbytes {
-		return nil, fmt.Errorf("expected serialized tensor to be %v bytes, read %v", nbytes, n)
+		return nil, NSError.newIoError("expected serialized tensor to be %v bytes, read %v", nbytes, n)
 	}
 	return t, nil
 }
@@ -229,7 +229,7 @@ func shapeAndDataTypeOf(val reflect.Value) (shape []int64, dt DataType, err erro
 				expected = val.Index(0).Len()
 				for i = 1; i < val.Len(); i++ {
 					if val.Index(i).Len() != expected {
-						return shape, dt, fmt.Errorf("mismatched slice lengths: %d and %d", val.Index(i).Len(), expected)
+						return shape, dt, NSError.newIoError("mismatched slice lengths: %d and %d", val.Index(i).Len(), expected)
 					}
 				}
 			}
@@ -242,7 +242,7 @@ func shapeAndDataTypeOf(val reflect.Value) (shape []int64, dt DataType, err erro
 			return shape, DataType(t.dataType), nil
 		}
 	}
-	return shape, dt, fmt.Errorf("unsupported type %v", typ)
+	return shape, dt, NSError.newIoError("unsupported type %v", typ)
 }
 
 // typeOf converts from a DataType and Shape to the equivalent Go type.
@@ -310,7 +310,7 @@ func encodeTensor(w *bytes.Buffer, v reflect.Value) error {
 			expected = v.Index(0).Len()
 			for i = 1; i < v.Len(); i++ {
 				if v.Index(i).Len() != expected {
-					return fmt.Errorf("mismatched slice lengths: %d and %d", v.Index(i).Len(), expected)
+					return NSError.newIoError("mismatched slice lengths: %d and %d", v.Index(i).Len(), expected)
 				}
 			}
 		}
@@ -323,7 +323,7 @@ func encodeTensor(w *bytes.Buffer, v reflect.Value) error {
 		}
 
 	default:
-		return fmt.Errorf("unsupported type %v", v.Type())
+		return NSError.newIoError("unsupported type %v", v.Type())
 	}
 	return nil
 }
@@ -353,7 +353,7 @@ func decodeTensor(r *bytes.Reader, shape []int64, typ reflect.Type, ptr reflect.
 		}
 
 	default:
-		return fmt.Errorf("unsupported type %v", typ)
+		return NSError.newIoError("unsupported type %v", typ)
 	}
 	return nil
 }
@@ -408,7 +408,7 @@ func (d *stringDecoder) decode(ptr reflect.Value, shape []int64) error {
 			dstLen C.size_t
 		)
 		if offset > uint64(len(d.data)) {
-			return fmt.Errorf("invalid offsets in String Tensor")
+			return NSError.newIoError("invalid offsets in String Tensor")
 		}
 		TF_StringDecode(src, srcLen, &dst, &dstLen, d.status.c)
 		if err = d.status.Err(); err != nil {
@@ -429,7 +429,7 @@ func (d *stringDecoder) decode(ptr reflect.Value, shape []int64) error {
 }
 
 func bug(format string, args ...interface{}) error {
-	return fmt.Errorf("BUG: Please report at https://github.com/tensorflow/tensorflow/issues with the note: Go TensorFlow %v: %v", Version(), fmt.Sprintf(format, args...))
+	return NSError.newIoError("BUG: Please report at https://github.com/tensorflow/tensorflow/issues with the note: Go TensorFlow %v: %v", Version(), fmt.Sprintf(format, args...))
 }
 
 func isTensorSerializable(dataType DataType) error {
@@ -445,7 +445,7 @@ func isTensorSerializable(dataType DataType) error {
 	case Float, Double, Int32, Uint8, Int16, Int8, Complex, Int64, Bool, Quint8, Qint32, Bfloat16, Qint16, Quint16, Uint16, Complex128, Half:
 		return nil
 	default:
-		return fmt.Errorf("serialization of tensors with the DataType %d is not yet supported, see https://github.com/tensorflow/tensorflow/issues/6003", dataType)
+		return NSError.newIoError("serialization of tensors with the DataType %d is not yet supported, see https://github.com/tensorflow/tensorflow/issues/6003", dataType)
 	}
 }
 

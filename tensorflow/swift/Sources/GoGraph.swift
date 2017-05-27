@@ -39,19 +39,10 @@ class Graph  {
 }
 
 func newGraph()-> Graph{
-    let graph:OpaquePointer = tfNewGraph()
     let g = Graph()
-    g.c = graph
+    g.c = tfNewGraph()
     return g
 }
-/*
-// NewGraph returns a new Graph.
-func NewGraph() *Graph {
-    g = &Graph{TF_NewGraph()}
-    runtime.SetFinalizer(g, (*Graph).finalizer)
-    return g
-}*/
-
 
 func  finalizer(g :Graph) {
     tfDeleteGraph(g.c)
@@ -60,36 +51,39 @@ func  finalizer(g :Graph) {
 // WriteTo writes out a serialized representation of g to w.
 //
 // Implements the io.WriterTo interface.
-func  writeTo(g:Graph, w:Writer)-> (Int, NSError?) {
-
-    if let buffer =  tfNewBuffer(){
-        var status = newStatus()
+extension Graph{
+    func  writeTo( w:Writer)-> (Int, NSError?) {
         
-        defer {
-            TF_DeleteStatus(status.c)
-            TF_DeleteBuffer(buffer)
+        if let buffer =  tfNewBuffer(){
+            var status = newStatus()
+            
+            defer {
+                TF_DeleteStatus(status.c)
+                TF_DeleteBuffer(buffer)
+            }
+            
+            tfGraphToGraphDef(self.c, buffer, status.c)
+            
+            if let msg = status.errorMessage(){
+                return (0, NSError.newIoError(msg, code: 111))
+            }
+            
+            if buffer.pointee.length > (1 << 30) {
+                // For very large graphs, the writes can be chunked.
+                // Punt on that for now.
+                return (0, NSError.newIoError("Graph is too large to write out, Graph.WriteTo needs to be updated", code: 111))
+            }
+            // A []byte slice backed by C memory.
+            // See: https://github.com/golang/go/wiki/cgo#turning-c-arrays-into-go-slices
+            
+            return w.write(data: buffer.pointee.data.load(as: NSData.self)) // TODO - Is this correct?
+        }else{
+            return (0,NSError.newIoError("couldn't access buffer", code: 111))
         }
         
-        tfGraphToGraphDef(g.c, buffer, status.c)
-
-        if let msg = status.errorMessage(){
-            return (0, NSError.newIoError(msg, code: 111))
-        }
-        
-        if buffer.pointee.length > (1 << 30) {
-            // For very large graphs, the writes can be chunked.
-            // Punt on that for now.
-            return (0, NSError.newIoError("Graph is too large to write out, Graph.WriteTo needs to be updated", code: 111))
-        }
-        // A []byte slice backed by C memory.
-        // See: https://github.com/golang/go/wiki/cgo#turning-c-arrays-into-go-slices
-
-        return w.write(data: buffer.pointee.data.load(as: NSData.self))
-    }else{
-        return (0,NSError.newIoError("couldn't access buffer", code: 111))
     }
-    
 }
+
 
 
 // Import imports the nodes and edges from a serialized representation of
@@ -97,52 +91,53 @@ func  writeTo(g:Graph, w:Writer)-> (Int, NSError?) {
 //
 // Names of imported nodes will be prefixed with prefix.
 
-func importGraph(g:Graph,def: [Byte], prefix:String)-> NSError? {
-    let cprefix = prefix.cString(using: .utf8)
-    
-//    defer{
-//        free(cprefix)
-//    }
-    
-    let opts = TF_NewImportGraphDefOptions()
-    
-    defer {
-        TF_DeleteImportGraphDefOptions(opts)
-        TF_ImportGraphDefOptionsSetPrefix(opts, cprefix)
-    }
-    
-    
-    if let buffer = tfNewBuffer(){
+extension Graph{
+    func importGraph(def: [Byte], prefix:String)-> NSError? {
+        let cprefix = prefix.cString(using: .utf8)
         
-        defer{
-            TF_DeleteBuffer(buffer)
-        }
-        // Would have preferred to use C.CBytes, but that does not play well
-        // with "go vet" till https://github.com/golang/go/issues/17201 is
-        // resolved.
-        buffer.pointee.length = size_t(def.count)
-//        buffer.pointee.data =  malloc(4)
-        if buffer.pointee.data == nil {
-            return NSError.newIoError("unable to allocate memory", code: 123)
-        }
+        //    defer{
+        //        free(cprefix)
+        //    }
+        
+        let opts = TF_NewImportGraphDefOptions()
+        
         defer {
-            free(buffer)
+            TF_DeleteImportGraphDefOptions(opts)
+            TF_ImportGraphDefOptionsSetPrefix(opts, cprefix)
         }
-//        memcpy(buffer.pointee.data, &def[0], buffer.pointee.length)
-//        C.memcpy(buf.data, unsafe.Pointer(&def[0]), buf.length)
         
-        let status = newStatus()
-        tfGraphImportGraphDef(g.c, buffer, opts, status.c)
-        if let error = status.error() {
-            return error
+        
+        if let buffer = tfNewBuffer(){
+            
+            defer{
+                TF_DeleteBuffer(buffer)
+            }
+            // Would have preferred to use C.CBytes, but that does not play well
+            // with "go vet" till https://github.com/golang/go/issues/17201 is
+            // resolved.
+            buffer.pointee.length = size_t(def.count)
+            //        buffer.pointee.data =  malloc(4)
+            if buffer.pointee.data == nil {
+                return NSError.newIoError("unable to allocate memory", code: 123)
+            }
+            defer {
+                free(buffer)
+            }
+            //        memcpy(buffer.pointee.data, &def[0], buffer.pointee.length)
+            //        C.memcpy(buf.data, unsafe.Pointer(&def[0]), buf.length)
+            
+            let status = newStatus()
+            tfGraphImportGraphDef(self.c, buffer, opts, status.c)
+            if let error = status.error() {
+                return error
+            }
         }
-    }
-    
-    return NSError.newIoError("couldn't allocate buffer", code: 123)
-    
+        
+        return NSError.newIoError("couldn't allocate buffer", code: 123)
 
-    
+    }
 }
+
 
 // Operation returns the Operation named name in the Graph, or nil if no such
 // operation is present.
@@ -156,18 +151,22 @@ func importGraph(g:Graph,def: [Byte], prefix:String)-> NSError? {
     return &Operation{cop, g}
 }*/
 
-func operation(g:Graph,name:String) -> GoOperation?{
-    let cname = name.cString(using: .utf8)
-    defer{
-//        free(cname)
-    }
-    let cOperation = tfGraphOperationByName(g.c, cname)
-    if cOperation == nil{
-        return nil
-    }
-    return GoOperation.init(c:cOperation!,g:g)
+extension Graph{
     
+    func operation(name:String) -> GoOperation?{
+        let cname = name.cString(using: .utf8)
+        defer{
+            //        free(cname)
+        }
+        let cOperation = tfGraphOperationByName(self.c, cname)
+        if cOperation == nil{
+            return nil
+        }
+        return GoOperation.init(c:cOperation!,g:self)
+        
+    }
 }
+
 
 // OpSpec is the specification of an Operation to be added to a Graph
 // (using Graph.AddOperation).
@@ -199,53 +198,58 @@ struct OpSpec  {
 }
 
 // AddOperation adds an operation to g.
-func addOperation (g: Graph,  args:OpSpec)-> (GoOperation?, NSError?) {
-
-    let cOperationDesc = tfNewOperation(g.c, args.OpType, args.Name)
-
-    for input in  args.Input {
+extension Graph{
+    func addOperation ( args:OpSpec)-> (GoOperation?, NSError?) {
         
-//        switch input. = in.(type) {
-//            case Output:
-//            TF_AddInput(cOperationDesc, in.c())
-//            case OutputList:
-//            size = len(in)
-//            list = make([]TF_Output, size)
-//            for i, v = range in {
-//            list[i] = v.c()
-//            }
-//            if size > 0 {
-//            TF_AddInputList(cOperationDesc, &list[0], C.int(size))
-//            } else {
-//            TF_AddInputList(cOperationDesc, nil, 0)
-//            }
-//        }
-    }
-    var status = newStatus()
-    for (name, value) in args.Attrs {
+        let cOperationDesc = tfNewOperation(self.c, args.OpType, args.Name)
         
-        if let err = setAttr(cOperationDesc, status.c, name, value) {
-            // Memory leak here as the TF_OperationDescription
-            // object will not be cleaned up. At the time of this
-            // writing, this was next to impossible since it
-            // required value to be a string tensor with
-            // incorrectly encoded strings. Given this rarity, live
-            // with the memory leak.  If it becomes a real problem,
-            // consider adding a TF_DeleteOperationDescription
-            // function to the C API.
-            return (nil, NSError.newIoError(" (memory will be leaked)", code: 444))
+        for input in  args.Input {
+            
+            //        switch input. = in.(type) {
+            //            case Output:
+            //            TF_AddInput(cOperationDesc, in.c())
+            //            case OutputList:
+            //            size = len(in)
+            //            list = make([]TF_Output, size)
+            //            for i, v = range in {
+            //            list[i] = v.c()
+            //            }
+            //            if size > 0 {
+            //            TF_AddInputList(cOperationDesc, &list[0], C.int(size))
+            //            } else {
+            //            TF_AddInputList(cOperationDesc, nil, 0)
+            //            }
+            //        }
         }
+        var status = newStatus()
+        for (name, value) in args.Attrs {
+            
+            if let err = setAttr(cOperationDesc, status.c, name, value) {
+                // Memory leak here as the TF_OperationDescription
+                // object will not be cleaned up. At the time of this
+                // writing, this was next to impossible since it
+                // required value to be a string tensor with
+                // incorrectly encoded strings. Given this rarity, live
+                // with the memory leak.  If it becomes a real problem,
+                // consider adding a TF_DeleteOperationDescription
+                // function to the C API.
+                return (nil, NSError.newIoError(" (memory will be leaked)", code: 444))
+            }
+        }
+        let op = GoOperation(
+            c: TF_FinishOperation(cOperationDesc, status.c),
+            g: self
+        )
+        return (op, status.error())
+        
+        
     }
-    var op = GoOperation(
-        c: TF_FinishOperation(cOperationDesc, status.c),
-        g: g
-    )
-    return (op, status.error())
 }
 
-/*
+
+
  
- TODO - review Tensorflow_AttrValue in proto library to simplify this mess.
+// TODO - review Tensorflow_AttrValue in proto library to simplify this mess.
  
 func setAttr(_ cDesc:TF_OperationDescription?,_ status:TF_Status,_ name:String,_ value:Tensorflow_AttrValue) ->  NSError? {
     
@@ -257,7 +261,7 @@ func setAttr(_ cDesc:TF_OperationDescription?,_ status:TF_Status,_ name:String,_
         print("default")
     }
     
-    switch value = value.(type) {
+    /*switch value = value.(type) {
         case string:
         cstr = C.CString(value)
         TF_SetAttrString(cDesc, cAttrName, unsafe.Pointer(cstr), C.size_t(len(value)))
@@ -334,7 +338,7 @@ func setAttr(_ cDesc:TF_OperationDescription?,_ status:TF_Status,_ name:String,_
         case *Tensor:
         TF_SetAttrTensor(cdesc, cAttrName, value.c, status.c)
         if err = status.Err(); err != nil {
-            return fmt.Errorf("bad value for attribute %q: %v", name, err)
+            return NSError.newIoError("bad value for attribute %q: %v", name, err)
         }
         case []*Tensor:
         size = len(value)
@@ -348,7 +352,7 @@ func setAttr(_ cDesc:TF_OperationDescription?,_ status:TF_Status,_ name:String,_
         }
         TF_SetAttrTensorList(cdesc, cAttrName, plist, C.int(size), status.c)
         if err = status.Err(); err != nil {
-            return fmt.Errorf("bad value for attribute %q: %v", name, err)
+            return NSError.newIoError("bad value for attribute %q: %v", name, err)
         }
         case Shape:
         ndims, dims = cshape(value)
@@ -373,20 +377,22 @@ func setAttr(_ cDesc:TF_OperationDescription?,_ status:TF_Status,_ name:String,_
             TF_SetAttrShapeList(cdesc, cAttrName, nil, nil, 0)
         }
         default:
-        return fmt.Errorf("attribute %q has a type (%T) which is not valid for operation attributes", name, value)
-    }
+        return NSError.newIoError("attribute %q has a type (%T) which is not valid for operation attributes", name, value)
+    }*/
     return nil
 }
 
-func cshape(s Shape) (C.int, []C.int64_t) {
-    ndims = C.int(s.NumDimensions())
+// TODO - let's use Tensorflow_AttrValue.shape value instead of this logic.
+/*func cshape(s:Shape)-> (CInt, [Int64]?) {
+    let ndims = s.NumDimensions()
     if ndims < 0 {
-        return -1, nil
+        return (-1, nil)
     }
-    dims = make([]C.int64_t, ndims)
-    for i, s = range s.dims {
-        dims[i] = C.int64_t(s)
+    var dims:[Int64] =  []
+    
+    for (index) in s.dims {
+        dims[index] = Int64(s)
     }
-    return ndims, dims
-}
-*/
+    return (ndims, dims)
+}*/
+
