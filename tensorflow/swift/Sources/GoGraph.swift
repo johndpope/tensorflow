@@ -136,30 +136,15 @@ extension Graph{
 
 // Operation returns the Operation named name in the Graph, or nil if no such
 // operation is present.
-/*func (g *Graph) Operation(name string) *Operation {
-    cname = C.CString(name)
-    defer C.free(unsafe.Pointer(cname))
-    cop = TF_GraphOperationByName(g.c, cname)
-    if cop == nil {
-        return nil
-    }
-    return &Operation{cop, g}
-}*/
-
 extension Graph{
-    
-    func operation(name:String) -> GoOperation?{
-        let cname = name.cString(using: .utf8)
-        defer{
-            //        free(cname)
+    func Operation(name:String)->GoOperation? {
+        let cOperation = tf.GraphOperationByName(self.c, name)
+        if let cOperation = cOperation {
+           return GoOperation(cOperation, self)
         }
-        let cOperation = tf.GraphOperationByName(self.c, cname)
-        if cOperation == nil{
-            return nil
-        }
-        return GoOperation.init(c:cOperation!,g:self)
-        
+         return nil
     }
+
 }
 
 
@@ -232,8 +217,8 @@ extension Graph{
             }
         }
         let op = GoOperation(
-            c: TF_FinishOperation(cOperationDesc, status.c),
-            g: self
+             tf.FinishOperation(cOperationDesc, status.c),
+             self
         )
         return (op, status.error())
         
@@ -377,7 +362,7 @@ func setAttr(_ cDesc:TF_OperationDescription?,_ status:TF_Status,_ name:String,_
     return nil
 }
 
-// TODO - let's use Tensorflow_AttrValue.shape value instead of this logic.
+// TODO - let's use Tensorflow_AttrValue.shape  value from attr_value.pb.swift  instead of this logic.
 /*func cshape(s:Shape)-> (CInt, [Int64]?) {
     let ndims = s.NumDimensions()
     if ndims < 0 {

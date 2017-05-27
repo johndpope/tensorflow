@@ -24,6 +24,10 @@ struct GoOperation  {
     // A reference to the Graph to prevent it from
     // being GCed while the Operation is still alive.
     var g:Graph
+    public init(_ c:TF_Operation,_ g:Graph){
+        self.c = c
+        self.g = g
+    }
 }
 /*
 // Name returns the name of the operation.

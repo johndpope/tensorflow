@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E877AF4D1EDA1E2600913A62 /* GoOpWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E877AF4C1EDA1E2600913A62 /* GoOpWrapper.swift */; };
 		OBJ_265 /* conformance.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_133 /* conformance.pb.swift */; };
 		OBJ_266 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_134 /* main.swift */; };
 		OBJ_267 /* test_messages_proto3.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_135 /* test_messages_proto3.pb.swift */; };
@@ -361,6 +362,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E877AF4C1EDA1E2600913A62 /* GoOpWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoOpWrapper.swift; sourceTree = "<group>"; };
 		OBJ_10 /* GoGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoGraph.swift; sourceTree = "<group>"; };
 		OBJ_100 /* session.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = session.pb.swift; sourceTree = "<group>"; };
 		OBJ_101 /* session_bundle_config.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = session_bundle_config.pb.swift; sourceTree = "<group>"; };
@@ -1023,6 +1025,7 @@
 		OBJ_9 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				E877AF4C1EDA1E2600913A62 /* GoOpWrapper.swift */,
 				OBJ_10 /* GoGraph.swift */,
 				OBJ_11 /* GoOperation.swift */,
 				OBJ_12 /* GoSavedModel.swift */,
@@ -1488,6 +1491,7 @@
 				OBJ_529 /* GoStatus.swift in Sources */,
 				OBJ_530 /* GoTensor.swift in Sources */,
 				OBJ_531 /* main.swift in Sources */,
+				E877AF4D1EDA1E2600913A62 /* GoOpWrapper.swift in Sources */,
 				OBJ_532 /* TensorFlow.swift in Sources */,
 				OBJ_533 /* TF_Buffer.swift in Sources */,
 				OBJ_534 /* TF_Extensions.swift in Sources */,
