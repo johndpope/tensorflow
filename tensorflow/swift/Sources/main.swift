@@ -4,7 +4,7 @@ import Foundation
 import CommandLineKit
 import IOSwift
 import ByteTools
-
+import protoTensorFlow
 
 // An example for using the TensorFlow Go API for image recognition
 // using a pre-trained inception model (http://arxiv.org/abs/1512.00567).
@@ -40,10 +40,6 @@ import ByteTools
 
 
 
-let myGraph:Graph = Graph()
-let opts:SessionOptions = SessionOptions()
-
-var (mySession,error) = newSession(graph:myGraph,options:opts)
 
 print("Hello from TensorFlow C library version ",  tf.Version())
 
@@ -52,7 +48,6 @@ let dirFlag = StringOption(shortFlag: "d",
                           longFlag: "dir",
                           required: true,
                           helpMessage: "Directory containing the trained model files. ")
-
 let imageFlag = StringOption(shortFlag: "i",
                            longFlag: "image",
                            required: true,
@@ -64,13 +59,18 @@ cmdLine.addOptions(dirFlag,imageFlag)
 do {
     try cmdLine.parse()
     
-   print("dirFlag:",dirFlag.value!)
-   print("imageFlag:",imageFlag.value!)
-    
-   
+    print("dirFlag:",dirFlag.value!)
+
+    // The two files are extracted from a zip archive as so:
+    /*
+		   curl -L https://storage.googleapis.com/download.tensorflow.org/models/inception5h.zip -o misc/inception5h.zip
+		   unzip misc/inception5h.zip -d /misc
+     */
+    let modelFile  = "tensorflow_inception_graph.pb"
+    let imagefile = imageFlag.value! // change in the edit scheme arguments passed on launch
     
     // Load the serialized GraphDef from a file.
-    let model = try Data(contentsOf:URL(fileURLWithPath: "\(dirFlag.value!)/\(imageFlag.value!)"))
+    let model = try Data(contentsOf:URL(fileURLWithPath: "\(dirFlag.value!)/\(modelFile)"))
     
     
     // Construct an in-memory graph from the serialized form.
@@ -80,19 +80,21 @@ do {
     }
     
     // Create a session for inference over graph.
-//    var session, err = tf.NewSession(graph, nil)
-//    if err != nil {
-//        log.Fatal(err)
-//    }
-//    defer{
-//        session.Close()
-//    }
+    let opts:SessionOptions = SessionOptions()
+    var (session, error) = newSession( graph,opts)
+    
+    if error != nil {
+        print(error.debugDescription)
+    }
+   
     
     // Run inference on *imageFile.
     // For multiple images, session.Run() can be called in a loop (and
     // concurrently). Alternatively, images can be batched since the model
     // accepts batches of image data as input.
-//    tensor, err = makeTensorFromImage(*imagefile)
+    var tensor:Tensor
+//    (tensor, error) = makeTensorFromImage(imagefile)
+    
 //    if err != nil {
 //        log.Fatal(err)
 //    }
@@ -115,7 +117,8 @@ do {
 
     
 }catch {
-    print("download -> https://storage.googleapis.com/download.tensorflow.org/models/inception5h.zip and extract / put into misc folder")
+
+    
     print("error: \(error)")
     exit(1)
 }
@@ -146,38 +149,38 @@ func printBestLabel(probabilities []float32, labelsFile string) {
         log.Printf("ERROR: failed to read %s: %v", labelsFile, err)
     }
     fmt.Printf("BEST MATCH: (%2.0f%% likely) %s\n", probabilities[bestIdx]*100.0, labels[bestIdx])
-}
+}*/
 
 // Convert the image in filename to a Tensor suitable as input to the Inception model.
-func makeTensorFromImage(filename :String)-> (TF_Tensor, error) {
-    bytes, err = ioutil.ReadFile(filename)
-    if err != nil {
-        return nil, err
-    }
+func makeTensorFromImage(filename :String)-> (TF_Tensor?, NSError?) {
+    
+    let photo = try! Data(contentsOf:URL(fileURLWithPath: "\(dirFlag.value!)/\(imageFlag.value!)"))
+    
     // DecodeJpeg uses a scalar String-valued tensor as input.
-    tensor, err = tf.NewTensor(string(bytes))
-    if err != nil {
-        return nil, err
-    }
-    // Construct a graph to normalize the image
-    graph, input, output, err = constructGraphToNormalizeImage()
-    if err != nil {
-        return nil, err
-    }
-    // Execute that graph to normalize this one image
-    session, err = tf.NewSession(graph, nil)
-    if err != nil {
-        return nil, err
-    }
-    defer session.Close()
-    normalized, err = session.Run(
-    map[tf.Output]*tf.Tensor{input: tensor},
-    []tf.Output{output},
-    nil)
-    if err != nil {
-        return nil, err
-    }
-    return normalized[0], nil
+//    let tensor = newTensor(dt:.dtString,value: photo.cBytes())
+//    if err != nil {
+//        return nil, err
+//    }
+//    // Construct a graph to normalize the image
+//    graph, input, output, err = constructGraphToNormalizeImage()
+//    if err != nil {
+//        return nil, err
+//    }
+//    // Execute that graph to normalize this one image
+//    session, err = tf.NewSession(graph, nil)
+//    if err != nil {
+//        return nil, err
+//    }
+//    defer session.Close()
+//    normalized, err = session.Run(
+//    map[tf.Output]*tf.Tensor{input: tensor},
+//    []tf.Output{output},
+//    nil)
+//    if err != nil {
+//        return nil, err
+//    }
+//    return normalized[0], nil
+     return (nil, nil)
 }
 
 // The inception model takes as input the image described by a Tensor in a very
@@ -187,7 +190,7 @@ func makeTensorFromImage(filename :String)-> (TF_Tensor, error) {
 // This function constructs a graph of TensorFlow operations which takes as
 // input a JPEG-encoded string and returns a tensor suitable as input to the
 // inception model.
-func constructGraphToNormalizeImage() -> (graph :TF_Graph, input:TF_Input, output:TF_Output, err:NSError) {
+/*func constructGraphToNormalizeImage() -> (graph :TF_Graph, input:TF_Input, output:TF_Output, err:NSError) {
     // Some constants specific to the pre-trained model at:
     // https://storage.googleapis.com/download.tensorflow.org/models/inception5h.zip
     //
@@ -220,76 +223,5 @@ func constructGraphToNormalizeImage() -> (graph :TF_Graph, input:TF_Input, outpu
     graph, err = s.Finalize()
     return graph, input, output, err
 }
-/*
-func modelFiles(dir:String)-> (modelfile:NSURL, labelsfile:String, err:NSError) {
-    let URL = "https://storage.googleapis.com/download.tensorflow.org/models/inception5h.zip"
-    var (
-        model   = filepath.Join(dir, "tensorflow_inception_graph.pb")
-        labels  = filepath.Join(dir, "imagenet_comp_graph_label_strings.txt")
-        zipfile = filepath.Join(dir, "inception5h.zip")
-    )
-    if filesExist(model, labels) == nil {
-        return model, labels, nil
-    }
-    log.Println("Did not find model in", dir, "downloading from", URL)
-    if err = os.MkdirAll(dir, 0755); err != nil {
-        return "", "", err
-    }
-    if err = download(URL, zipfile); err != nil {
-        return "", "", NSError.newIoError("failed to download %v - %v", URL, err)
-    }
-    if err = unzip(dir, zipfile); err != nil {
-        return "", "", NSError.newIoError("failed to extract contents from model archive: %v", err)
-    }
-    os.Remove(zipfile)
-    return model, labels, filesExist(model, labels)
-}
 
-func filesExist(files ...string) error {
-    for _, f = range files {
-        if _, err = os.Stat(f); err != nil {
-            return NSError.newIoError("unable to stat %s: %v", f, err)
-        }
-    }
-    return nil
-}
-
-func download(URL, filename string) error {
-    resp, err = http.Get(URL)
-    if err != nil {
-        return err
-    }
-    defer resp.Body.Close()
-    file, err = os.OpenFile(filename, os.O_RDWR|os.O_CREATE, 0644)
-    if err != nil {
-        return err
-    }
-    defer file.Close()
-    _, err = io.Copy(file, resp.Body)
-    return err
-}
-
-func unzip(dir, zipfile string) error {
-    r, err = zip.OpenReader(zipfile)
-    if err != nil {
-        return err
-    }
-    defer r.Close()
-    for _, f = range r.File {
-        src, err = f.Open()
-        if err != nil {
-            return err
-        }
-        log.Println("Extracting", f.Name)
-        dst, err = os.OpenFile(filepath.Join(dir, f.Name), os.O_WRONLY|os.O_CREATE, 0644)
-        if err != nil {
-            return err
-        }
-        if _, err = io.Copy(dst, src); err != nil {
-            return err
-        }
-        dst.Close()
-    }
-    return nil
-}*/
  */

@@ -17,11 +17,18 @@ limitations under the License.
 
 
 import CTensorFlow
+import protoTensorFlow
+import Foundation
+
 
 // DataType holds the type for a scalar value.  E.g., one slot in a tensor.
 //var DataType:TF_DataType
-
 // Types of scalar values in the TensorFlow type system.
+
+
+// WARNING - deprecate this - and use Tensorflow_DataType.rawValue
+
+
 /*const (
 	Float      DataType = TF_FLOAT
 	Double     DataType = TF_DOUBLE
@@ -46,17 +53,17 @@ import CTensorFlow
 )*/
 
 // Tensor holds a multi-dimensional array of elements of a single data type.
-/*struct Tensor  {
+struct Tensor  {
     var c:TF_Tensor
-    var shape:[int64]
-}*/
+    var shape:[Int64] // TODO - use this Tensorflow_TensorShapeProto
+}
 
 // NewTensor converts from a Go value to a Tensor. Valid values are scalars,
 // slices, and arrays. Every element of a slice must have the same length so
 // that the resulting Tensor has a valid shape.
-/*func NewTensor(value interface{}) (*Tensor, error) {
-	val = reflect.ValueOf(value)
-	shape, dataType, err = shapeAndDataTypeOf(val)
+func newTensor(dt:Tensorflow_DataType,value:AnyObject) -> (Tensor?, NSError?) {
+//	val = reflect.ValueOf(value)
+	/*shape, dataType, err = shapeAndDataTypeOf(val)
 	if err != nil {
 		return nil, err
 	}
@@ -93,14 +100,15 @@ import CTensorFlow
 		if int64(buf.Len()) != nflattened*8 {
 			return nil, bug("invalid offset encoding for TF_STRING tensor with shape %v (got %v, want %v)", shape, buf.Len(), nflattened*8)
 		}
-	}
-	return t, nil
+	}*/
+	return (nil, nil)
 }
 
 // ReadTensor constructs a Tensor with the provided type and shape from the
 // serialized tensor contents in r.
 //
 // See also WriteContentsTo.
+/*
 func ReadTensor(dataType DataType, shape []int64, r io.Reader) (*Tensor, error) {
 	if err = isTensorSerializable(dataType); err != nil {
 		return nil, err

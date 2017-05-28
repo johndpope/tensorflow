@@ -115,10 +115,10 @@ extension Graph{
             if let error = status.error() {
                 return error
             }
+        }else{
+            return NSError.newIoError("couldn't allocate buffer", code: 123)
         }
-        
-        return NSError.newIoError("couldn't allocate buffer", code: 123)
-
+        return nil
     }
 }
 

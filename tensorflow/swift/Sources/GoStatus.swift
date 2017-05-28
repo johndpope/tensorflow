@@ -40,7 +40,7 @@ struct tfStatus  {
 }
 
 func newStatus() -> tfStatus {
-    //	s = &status{TF_NewStatus()}
+
     let s = tf.NewStatus()
 
 //	runtime.SetFinalizer(s, (*status).finalizer) // TODO how to port to swift?

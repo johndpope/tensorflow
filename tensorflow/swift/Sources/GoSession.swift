@@ -26,9 +26,17 @@ import protoTensorFlow
 // After creating the session with a graph, the caller uses the Run() API to
 // perform the computation and potentially fetch outputs as Tensors.
 // A Session allows concurrent calls to Run().
-struct Session  {
+class Session  {
     var c:TF_Session
     
+    init(c:TF_Session) {
+        self.c = c
+    }
+    
+    deinit {
+        let status = newStatus()
+        tf.CloseSession(self.c, status.c)
+    }
     
     // For ensuring that:
     // - Close() blocks on all Run() calls to complete.
@@ -81,7 +89,10 @@ struct SessionOptions  {
     // (https://www.tensorflow.org/code/tensorflow/core/protobuf/config.proto).
    // var Config:Tensorflow_ConfigProto
     var ConfigProto:Tensorflow_ConfigProto
-   // var Config:Data
+    var Config:Data{
+        get{  return try! self.ConfigProto.serializedData() }
+    }
+    
     
 }
 
@@ -90,7 +101,7 @@ struct SessionOptions  {
 
 // NewSession creates a new execution session with the associated graph.
 // options may be nil to use the default options.
-func newSession(graph:Graph, options:SessionOptions)-> (session:Session?, error:Tensorflow_Error_Code?) {
+func newSession(_ graph:Graph, _ options:SessionOptions)-> (session:Session?, error:Tensorflow_Error_Code?) {
     
     
     let status = newStatus()
@@ -115,6 +126,7 @@ func newSession(graph:Graph, options:SessionOptions)-> (session:Session?, error:
         return (nil,Tensorflow_Error_Code(rawValue: intRaw))
     }
 }
+
 /*
  
 
