@@ -28,6 +28,8 @@ import protoTensorFlow
 
 typealias Byte = UInt8
 
+
+
 // Graph represents a computation graph. Graphs may be shared between sessions.
 class Graph  {
     var c:TF_Graph!
@@ -92,36 +94,23 @@ extension Graph{
 // Names of imported nodes will be prefixed with prefix.
 
 extension Graph{
-    func importGraph(def: [Byte], prefix:String)-> NSError? {
+    func Import(def:[Byte], prefix:String)-> NSError? {
         
         let opts = tf.NewImportGraphDefOptions()
         
         defer {
             tf.DeleteImportGraphDefOptions(opts)
-            tf.ImportGraphDefOptionsSetPrefix(opts, prefix)
         }
         
+        tf.ImportGraphDefOptionsSetPrefix(opts, prefix);
         
-        if let buffer = tf.NewBuffer(){
-            
-            defer{
-                tf.DeleteBuffer(buffer)
-            }
-            // Would have preferred to use C.CBytes, but that does not play well
-            // with "go vet" till https://github.com/golang/go/issues/17201 is
-            // resolved.
-            buffer.pointee.length = size_t(def.count)
-            //        buffer.pointee.data =  malloc(4)
-            if buffer.pointee.data == nil {
-                return NSError.newIoError("unable to allocate memory", code: 123)
-            }
-            defer {
-                free(buffer)
-            }
-            //        memcpy(buffer.pointee.data, &def[0], buffer.pointee.length)
-            //        C.memcpy(buf.data, unsafe.Pointer(&def[0]), buf.length)
-            
+        if let buffer = tf.NewBufferFromString(def,def.count ){
             let status = newStatus()
+            defer {
+                tf.DeleteStatus(status.c)
+                tf.DeleteBuffer(buffer)
+               //  free(def) TODO
+            }
             tf.GraphImportGraphDef(self.c, buffer, opts, status.c)
             if let error = status.error() {
                 return error

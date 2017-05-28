@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_267"
+               BlueprintIdentifier = "OBJ_270"
                BuildableName = "Conformance"
                BlueprintName = "Conformance"
                ReferencedContainer = "container:TensorFlow.xcodeproj">
@@ -28,7 +28,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_279"
+               BlueprintIdentifier = "OBJ_282"
                BuildableName = "PluginLibrary.framework"
                BlueprintName = "PluginLibrary"
                ReferencedContainer = "container:TensorFlow.xcodeproj">
@@ -42,7 +42,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_304"
+               BlueprintIdentifier = "OBJ_307"
                BuildableName = "protoc-gen-swift"
                BlueprintName = "protoc-gen-swift"
                ReferencedContainer = "container:TensorFlow.xcodeproj">
@@ -56,7 +56,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_278"
+               BlueprintIdentifier = "OBJ_281"
                BuildableName = "SwiftProtobuf.framework"
                BlueprintName = "SwiftProtobuf"
                ReferencedContainer = "container:TensorFlow.xcodeproj">
@@ -70,7 +70,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_413"
+               BlueprintIdentifier = "OBJ_416"
                BuildableName = "IOSwift.framework"
                BlueprintName = "IOSwift"
                ReferencedContainer = "container:TensorFlow.xcodeproj">
@@ -84,7 +84,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_420"
+               BlueprintIdentifier = "OBJ_423"
                BuildableName = "CommandLineKit.framework"
                BlueprintName = "CommandLineKit"
                ReferencedContainer = "container:TensorFlow.xcodeproj">
@@ -98,7 +98,21 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_429"
+               BlueprintIdentifier = "OBJ_432"
+               BuildableName = "ByteTools.framework"
+               BlueprintName = "ByteTools"
+               ReferencedContainer = "container:TensorFlow.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "OBJ_439"
                BuildableName = "protoTensorFlow.framework"
                BlueprintName = "protoTensorFlow"
                ReferencedContainer = "container:TensorFlow.xcodeproj">
@@ -112,7 +126,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_535"
+               BlueprintIdentifier = "OBJ_545"
                BuildableName = "TensorFlow"
                BlueprintName = "TensorFlow"
                ReferencedContainer = "container:TensorFlow.xcodeproj">
@@ -130,7 +144,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_569"
+               BlueprintIdentifier = "OBJ_581"
                BuildableName = "TensorFlowTests.xctest"
                BlueprintName = "TensorFlowTests"
                ReferencedContainer = "container:TensorFlow.xcodeproj">
@@ -153,7 +167,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "OBJ_267"
+            BlueprintIdentifier = "OBJ_270"
             BuildableName = "Conformance"
             BlueprintName = "Conformance"
             ReferencedContainer = "container:TensorFlow.xcodeproj">

@@ -2,6 +2,41 @@ import CTensorFlow
 import protoTensorFlow
 import Foundation
 import CommandLineKit
+import IOSwift
+import ByteTools
+
+
+// An example for using the TensorFlow Go API for image recognition
+// using a pre-trained inception model (http://arxiv.org/abs/1512.00567).
+//
+// Sample usage: <program> -dir=/tmp/modeldir -image=/path/to/some/jpeg
+//
+// The pre-trained model takes input in the form of a 4-dimensional
+// tensor with shape [ BATCH_SIZE, IMAGE_HEIGHT, IMAGE_WIDTH, 3 ],
+// where:
+// - BATCH_SIZE allows for inference of multiple images in one pass through the graph
+// - IMAGE_HEIGHT is the height of the images on which the model was trained
+// - IMAGE_WIDTH is the width of the images on which the model was trained
+// - 3 is the (R, G, B) values of the pixel colors represented as a float.
+//
+// And produces as output a vector with shape [ NUM_LABELS ].
+// output[i] is the probability that the input image was recognized as
+// having the i-th label.
+//
+// A separate file contains a list of string labels corresponding to the
+// integer indices of the output.
+//
+// This example:
+// - Loads the serialized representation of the pre-trained model into a Graph
+// - Creates a Session to execute operations on the Graph
+// - Converts an image file to a Tensor to provide as input to a Session run
+// - Executes the Session and prints out the label with the highest probability
+//
+// To convert an image file to a Tensor suitable for input to the Inception model,
+// this example:
+// - Constructs another TensorFlow graph to normalize the image into a
+//   form suitable for the model (for example, resizing the image)
+// - Creates an executes a Session to obtain a Tensor in this normalized form.*/
 
 
 
@@ -16,7 +51,7 @@ let cmdLine = CommandLineKit.CommandLine()
 let dirFlag = StringOption(shortFlag: "d",
                           longFlag: "dir",
                           required: true,
-                          helpMessage: "Directory containing the trained model files. The directory will be created and the model downloaded into it if necessary")
+                          helpMessage: "Directory containing the trained model files. ")
 
 let imageFlag = StringOption(shortFlag: "i",
                            longFlag: "image",
@@ -29,103 +64,64 @@ cmdLine.addOptions(dirFlag,imageFlag)
 do {
     try cmdLine.parse()
     
-   print("dirFlag:",dirFlag)
-   print("imageFlag:",imageFlag)
+   print("dirFlag:",dirFlag.value!)
+   print("imageFlag:",imageFlag.value!)
     
-}catch {
-    print("error: \(error)")
-    exit(1)
-}
-
-/*
-func main() {
-    // An example for using the TensorFlow Go API for image recognition
-    // using a pre-trained inception model (http://arxiv.org/abs/1512.00567).
-    //
-    // Sample usage: <program> -dir=/tmp/modeldir -image=/path/to/some/jpeg
-    //
-    // The pre-trained model takes input in the form of a 4-dimensional
-    // tensor with shape [ BATCH_SIZE, IMAGE_HEIGHT, IMAGE_WIDTH, 3 ],
-    // where:
-    // - BATCH_SIZE allows for inference of multiple images in one pass through the graph
-    // - IMAGE_HEIGHT is the height of the images on which the model was trained
-    // - IMAGE_WIDTH is the width of the images on which the model was trained
-    // - 3 is the (R, G, B) values of the pixel colors represented as a float.
-    //
-    // And produces as output a vector with shape [ NUM_LABELS ].
-    // output[i] is the probability that the input image was recognized as
-    // having the i-th label.
-    //
-    // A separate file contains a list of string labels corresponding to the
-    // integer indices of the output.
-    //
-    // This example:
-    // - Loads the serialized representation of the pre-trained model into a Graph
-    // - Creates a Session to execute operations on the Graph
-    // - Converts an image file to a Tensor to provide as input to a Session run
-    // - Executes the Session and prints out the label with the highest probability
-    //
-    // To convert an image file to a Tensor suitable for input to the Inception model,
-    // this example:
-    // - Constructs another TensorFlow graph to normalize the image into a
-    //   form suitable for the model (for example, resizing the image)
-    // - Creates an executes a Session to obtain a Tensor in this normalized form.*/
-/*
-    var modeldir = flag.String("dir", "", "Directory containing the trained model files. The directory will be created and the model downloaded into it if necessary")
-    var imagefile = flag.String("image", "", "Path of a JPEG-image to extract labels for")
-    flag.Parse()
-    if *modeldir == "" || *imagefile == "" {
-        flag.Usage()
-        return
-    }
+   
+    
     // Load the serialized GraphDef from a file.
-    modelfile, labelsfile, err = modelFiles(*modeldir)
-    if err != nil {
-        log.Fatal(err)
-    }
-    model, err = ioutil.ReadFile(modelfile)
-    if err != nil {
-        log.Fatal(err)
-    }
+    let model = try Data(contentsOf:URL(fileURLWithPath: "\(dirFlag.value!)/\(imageFlag.value!)"))
+    
     
     // Construct an in-memory graph from the serialized form.
-    graph = tf.NewGraph()
-    if err = graph.Import(model, ""); err != nil {
-        log.Fatal(err)
+    let graph = newGraph()
+    if let error = graph.Import(def:model.cBytes(),prefix: "OK"){
+        print(error)
     }
     
     // Create a session for inference over graph.
-    var session, err = tf.NewSession(graph, nil)
-    if err != nil {
-        log.Fatal(err)
-    }
-    defer session.Close()
+//    var session, err = tf.NewSession(graph, nil)
+//    if err != nil {
+//        log.Fatal(err)
+//    }
+//    defer{
+//        session.Close()
+//    }
     
     // Run inference on *imageFile.
     // For multiple images, session.Run() can be called in a loop (and
     // concurrently). Alternatively, images can be batched since the model
     // accepts batches of image data as input.
-    tensor, err = makeTensorFromImage(*imagefile)
-    if err != nil {
-        log.Fatal(err)
-    }
-    output, err = session.Run(
-    map[tf.Output]*tf.Tensor{
-    graph.Operation("input").Output(0): tensor,
-    },
-    []tf.Output{
-    graph.Operation("output").Output(0),
-    },
-    nil)
-    if err != nil {
-        log.Fatal(err)
-    }
+//    tensor, err = makeTensorFromImage(*imagefile)
+//    if err != nil {
+//        log.Fatal(err)
+//    }
+//    output, err = session.Run(
+//    map[tf.Output]*tf.Tensor{
+//    graph.Operation("input").Output(0): tensor,
+//    },
+//    []tf.Output{
+//    graph.Operation("output").Output(0),
+//    },
+//    nil)
+//    if err != nil {
+//        log.Fatal(err)
+//    }
     // output[0].Value() is a vector containing probabilities of
     // labels for each image in the "batch". The batch size was 1.
     // Find the most probably label index.
-    probabilities = output[0].Value().([][]float32)[0]
-    printBestLabel(probabilities, labelsfile)
+//    probabilities = output[0].Value().([][]float32)[0]
+//    printBestLabel(probabilities, labelsfile)
+
+    
+}catch {
+    print("download -> https://storage.googleapis.com/download.tensorflow.org/models/inception5h.zip and extract / put into misc folder")
+    print("error: \(error)")
+    exit(1)
 }
+
+
+/*
 
 func printBestLabel(probabilities []float32, labelsFile string) {
     bestIdx = 0
@@ -153,7 +149,7 @@ func printBestLabel(probabilities []float32, labelsFile string) {
 }
 
 // Convert the image in filename to a Tensor suitable as input to the Inception model.
-func makeTensorFromImage(filename string) (*tf.Tensor, error) {
+func makeTensorFromImage(filename :String)-> (TF_Tensor, error) {
     bytes, err = ioutil.ReadFile(filename)
     if err != nil {
         return nil, err
@@ -198,7 +194,7 @@ func constructGraphToNormalizeImage() -> (graph :TF_Graph, input:TF_Input, outpu
     // - The model was trained after with images scaled to 224x224 pixels.
     // - The colors, represented as R, G, B in 1-byte each were converted to
     //   float using (value - Mean)/Scale.
-    const (
+    let const (
         H, W  = 224, 224
         Mean  = float32(117)
         Scale = float32(1)
@@ -223,7 +219,7 @@ func constructGraphToNormalizeImage() -> (graph :TF_Graph, input:TF_Input, outpu
     op.Const(s.SubScope("scale"), Scale))
     graph, err = s.Finalize()
     return graph, input, output, err
-}*/
+}
 /*
 func modelFiles(dir:String)-> (modelfile:NSURL, labelsfile:String, err:NSError) {
     let URL = "https://storage.googleapis.com/download.tensorflow.org/models/inception5h.zip"
@@ -296,3 +292,4 @@ func unzip(dir, zipfile string) error {
     }
     return nil
 }*/
+ */

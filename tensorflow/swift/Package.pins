@@ -2,6 +2,12 @@
   "autoPin": true,
   "pins": [
     {
+      "package": "ByteTools",
+      "reason": null,
+      "repositoryURL": "https://github.com/johndpope/ByteTools-swift",
+      "version": "0.0.4"
+    },
+    {
       "package": "CTensorFlow",
       "reason": null,
       "repositoryURL": "https://github.com/johndpope/CTensorFlow.git",

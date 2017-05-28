@@ -662,7 +662,7 @@ extension tf{
     // Import the graph serialized in `graph_def` into `graph`.
     // Convenience function for when no return outputs have been added.
     public class func GraphImportGraphDef(_ graph: TF_Graph!, _ graph_def: UnsafePointer<TF_Buffer>!, _ options: TF_SessionOptions!, _ status: TF_Status!){
-        print("TO IMPLEMENT")
+        TF_GraphImportGraphDef(graph, graph_def, options, status)
     }
     
     // Note: The following function may fail on very large protos in the future.
