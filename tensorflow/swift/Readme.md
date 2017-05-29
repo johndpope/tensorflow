@@ -10,50 +10,52 @@ If you have all the answers and want to take on fixing them - be my guest.  **LE
 https://docs.google.com/spreadsheets/d/1-B61huuIoKqyjS7dUb6GGZm5bt1gVcA58uxAKnojdDU/edit#gid=0 .  
 
 
-- while dead code (commented out code) is frowned upon / while this code  is still in it's infancy - and not officially supported - I would urge anyone wanting to help to actually keep the golang code in code base along side the swift code. This would help people reviewing code down the track / as well as fix update code when the golang code is patched / reworked. 
+for each method - perhaps where appropriate hot link to respective golang class / line on github.
 
-eg.
 
-    func (s *Session) Run(feeds map[Output]*Tensor, fetches []Output, targets []*Operation) ([]*Tensor, error) {
-        s.mu.Lock()
-        if s.c == nil {
-            s.mu.Unlock()
-            return nil, errors.New("session is closed")
+//https://github.com/johndpope/tensorflow-1/blob/master/tensorflow.go#L33
+        extension SessionOptions{
+            func setConfig(config:Tensorflow_ConfigProto){
+                let status = newStatus()
+
+                defer{
+                    tf.DeleteStatus(status.c)
+                }
+
+                if let data = try? config.serializedData(){
+                    //https://stackoverflow.com/questions/39671789/in-swift-3-how-do-i-get-unsaferawpointer-from-data
+                    data.withUnsafeBytes {(uint8Ptr: UnsafePointer<UInt8>) in
+                        let rawPtr = UnsafeRawPointer(uint8Ptr)
+                        tf.SetConfig(self.c, rawPtr, data.count, status.c)
+                    }
+                }
+
+                if let error =  status.error(){
+                    print("error:",error.localizedDescription)
+                }
+            }
         }
-        s.wg.Add(1)
-        s.mu.Unlock()
-        defer s.wg.Done()
-        
-        c = newCRunArgs(feeds, fetches, targets)
-        status = newStatus()
-        TF_SessionRun(s.c, nil,
-        ptrOutput(c.feeds), ptrTensor(c.feedTensors), C.int(len(feeds)),
-        ptrOutput(c.fetches), ptrTensor(c.fetchTensors), C.int(len(fetches)),
-        ptrOperation(c.targets), C.int(len(targets)),
-        nil, status.c)
-        if err = status.Err(); err != nil {
-            return nil, err
-        }
-        return c.toGo(), nil
-    }
+   
 
-
--> 
-write out the corresponding swift code .   
-
-N.B. rather than calling TF_SessionRun -> Use the swift wrapper - > tfSessionRun()
-Complete wrapper here -> 
+N.B. rather than calling TF_SessionRun -> Use the swift wrapper - > tf.SessionRun()
+Complete wrapper here ->  TODO - make relative links
 https://github.com/johndpope/tensorflow/blob/swift/tensorflow/swift/Sources/TensorFlow.swift
-
+https://github.com/johndpope/tensorflow/blob/swift/tensorflow/swift/Sources/TF_Buffer.swift
+https://github.com/johndpope/tensorflow/blob/swift/tensorflow/swift/Sources/TF_Graph.swift
+https://github.com/johndpope/tensorflow/blob/swift/tensorflow/swift/Sources/TF_Session.swift
+https://github.com/johndpope/tensorflow/blob/swift/tensorflow/swift/Sources/TF_Status.swift
+https://github.com/johndpope/tensorflow/blob/swift/tensorflow/swift/Sources/TF_String.swift
+https://github.com/johndpope/tensorflow/blob/swift/tensorflow/swift/Sources/TF_Tensor.swift
 
 
 
 C API
 --------------------------------------------------
 I've included a misc folder - it has a script to download and build a helloWorldTensor flow app.
-This is a sanity check 
+This is a sanity check. helloWorld should work. 
 
-The c api references several proto files. Most notably error_codes.proto / types.proto and ConfigProto.
+The c api references several proto files. 
+Most notably error_codes.proto / types.proto and ConfigProto.
 These currently live here -> 
 https://github.com/johndpope/swift-grpc-tensorflow/tree/0.0.1
  
@@ -65,9 +67,9 @@ https://github.com/johndpope/swift-grpc-tensorflow/tree/0.0.1
 The Makefile build swift has a bug in linking the library. 
 The xcode project file that gets spat out - does successfully link.
 
-- there's a CTensorflow swift package currently imported. 
+- there's a CTensorflow swift umbrella package currently imported. 
 It's hardcoded to use the osx path for tensorflow.
-If you want to provide Linux access - happy to accept a PR.
+If you want to provide Linux access - fork / fix and change the tag in package.
 https://github.com/johndpope/CTensorFlow/blob/master/CTensorFlow.h
 
 
@@ -77,20 +79,20 @@ Amazingly - you can create a new objective-c file in xcode and paste in all this
 Eg.
  .   
 Before  .   
-    -public func tfAllocateTensor(dt: TF_DataType, _ dims: UnsafePointer<Int64>!, _ num_dims: Int32, _ len: Int) -> OpaquePointer!{
+    -public func TF_AllocateTensor(dt: TF_DataType, _ dims: UnsafePointer<Int64>!, _ num_dims: Int32, _ len: Int) -> OpaquePointer!{
 
 After
-    +public func tfAllocateTensor(dt: TF_DataType, _ dims: UnsafePointer<Int64>!, _ num_dims: Int32, _ len: Int) -> TF_Tensor!{
+
+class tf{
+
+    +public class func AllocateTensor(dt: TF_DataType, _ dims: UnsafePointer<Int64>!, _ num_dims: Int32, _ len: Int) -> TF_Tensor!{
         return TF_AllocateTensor(dt,dims,num_dims,len)
     }
-
-the methods were renamed from TF_MethodName -> to tfMethodName .   
+}
+the methods were renamed from TF_MethodName -> to tf.MethodName .   
 this avoids the c calls recursing into themselves and also makes things more swifty. .   
  .   
  .   
  .   
  .   
-Golang code makes use of cgo which wraps things. .   
-The Tensorflow.swift class is the swift equivalent wrapper.  .   
-I'd urge anyone wanting to work on this library to use this umbrella wrapper when making calls out to c interface. .   
  .   
