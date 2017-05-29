@@ -80,7 +80,11 @@ do {
     }
     
     // Create a session for inference over graph.
-    let opts:SessionOptions = SessionOptions()
+    var opts:SessionOptions = SessionOptions()
+    var config = Tensorflow_ConfigProto()
+    config.operationTimeoutInMs = 2
+    opts.ConfigProto = config
+    
     var (session, error) = newSession( graph,opts)
     
     if error != nil {

@@ -52,12 +52,10 @@ struct SessionOptions  {
     init(){
         self.c = tf.NewSessionOptions()
         self.Target = ""
-        self.ConfigProto = Tensorflow_ConfigProto()
-       // self.Config = try self.ConfigProto.serializedData()
-    }
-    // c *C.TF_Session
-    var c:TF_Session
 
+    }
+    var c:TF_Session
+    
     
     // Target indicates the TensorFlow runtime to connect to.
     //
@@ -87,35 +85,45 @@ struct SessionOptions  {
     // Config is a binary-serialized representation of the
     // tensorflow.ConfigProto protocol message
     // (https://www.tensorflow.org/code/tensorflow/core/protobuf/config.proto).
-   // var Config:Tensorflow_ConfigProto
-    var ConfigProto:Tensorflow_ConfigProto
-    var Config:Data{
-        get{  return try! self.ConfigProto.serializedData() }
+    // var Config:Tensorflow_ConfigProto
+    private var _configProto: Tensorflow_ConfigProto = Tensorflow_ConfigProto()
+    
+    var ConfigProto:Tensorflow_ConfigProto{
+        set{
+            self._configProto = newValue
+            setConfig(config:newValue)
+        }
+        get{
+            return self._configProto
+        }
     }
+   
     
     
 }
 
 //https://github.com/johndpope/tensorflow-1/blob/master/tensorflow.go#L33
 extension SessionOptions{
-    func setConfig(config:Tensorflow_ConfigProto)->  NSError? {
-    let status = newStatus()
+    func setConfig(config:Tensorflow_ConfigProto){
+        let status = newStatus()
         
-    defer{
-       tf.DeleteStatus(status.c)
-    }
-
-    if let data = try? config.serializedData(){
-        //https://stackoverflow.com/questions/39671789/in-swift-3-how-do-i-get-unsaferawpointer-from-data
-        data.withUnsafeBytes {(uint8Ptr: UnsafePointer<UInt8>) in
-            let rawPtr = UnsafeRawPointer(uint8Ptr)
-            tf.SetConfig(self.c, rawPtr, data.count, status.c)
+        defer{
+            tf.DeleteStatus(status.c)
+        }
+        
+        if let data = try? config.serializedData(){
+            //https://stackoverflow.com/questions/39671789/in-swift-3-how-do-i-get-unsaferawpointer-from-data
+            data.withUnsafeBytes {(uint8Ptr: UnsafePointer<UInt8>) in
+                let rawPtr = UnsafeRawPointer(uint8Ptr)
+                tf.SetConfig(self.c, rawPtr, data.count, status.c)
+            }
+        }
+        
+        if let error =  status.error(){
+            print("error:",error.localizedDescription)
         }
     }
-
-    return status.error()
 }
-
 
 // NewSession creates a new execution session with the associated graph.
 // options may be nil to use the default options.
@@ -125,12 +133,12 @@ func newSession(_ graph:Graph, _ options:SessionOptions)-> (session:Session?, er
     let status = newStatus()
     
     // TODO - determine the following from Config()
-//    options.c.pointee.
-   // var cOpt, doneOpt, err = options.c // how to do this in swift??
-   // defer doneOpt()
-   // if err != nil {
-   //     return nil, err
-   // }
+    //    options.c.pointee.
+    // var cOpt, doneOpt, err = options.c // how to do this in swift??
+    // defer doneOpt()
+    // if err != nil {
+    //     return nil, err
+    // }
     let cOpt = tf.NewSessionOptions()
     if let cSess = tf.NewSession(graph.c, cOpt, status.c){
         
@@ -138,7 +146,7 @@ func newSession(_ graph:Graph, _ options:SessionOptions)-> (session:Session?, er
         //    runtime.SetFinalizer(s, func(s *Session) { s.Close() }) // how to do this in swift??
         return (s, nil)
     }else{
-    
+        
         let code = tf.GetCode(status.c)
         let intRaw:Int = Int(code.rawValue)
         return (nil,Tensorflow_Error_Code(rawValue: intRaw))
@@ -147,287 +155,287 @@ func newSession(_ graph:Graph, _ options:SessionOptions)-> (session:Session?, er
 
 /*
  
-
-// Run the graph with the associated session starting with the supplied feeds
-// to compute the value of the requested fetches. Runs, but does not return
-// Tensors for operations specified in targets.
-//
-// On success, returns the fetched Tensors in the same order as supplied in
-// the fetches argument. If fetches is set to nil, the returned Tensor fetches
-// is empty.
-func (s *Session) Run(feeds map[Output]*Tensor, fetches []Output, targets []*Operation) ([]*Tensor, error) {
-    s.mu.Lock()
-    if s.c == nil {
-        s.mu.Unlock()
-        return nil, errors.New("session is closed")
-    }
-    s.wg.Add(1)
-    s.mu.Unlock()
-    defer s.wg.Done()
-    
-    c = newCRunArgs(feeds, fetches, targets)
-    status = newStatus()
-    tf.SessionRun(s.c, nil,
-    ptrOutput(c.feeds), ptrTensor(c.feedTensors), C.int(len(feeds)),
-    ptrOutput(c.fetches), ptrTensor(c.fetchTensors), C.int(len(fetches)),
-    ptrOperation(c.targets), C.int(len(targets)),
-    nil, status.c)
-    if let err = status.error() {
-        return nil, err
-    }
-    return c.toGo(), nil
-}
-
-// PartialRun enables incremental evaluation of graphs.
-//
-// PartialRun allows the caller to pause the evaluation of a graph, run
-// arbitrary code that depends on the intermediate computation of the graph,
-// and then resume graph execution. The results of the arbitrary code can be
-// fed into the graph when resuming execution.  In contrast, Session.Run
-// executes the graph to compute the requested fetches using the provided feeds
-// and discards all intermediate state (e.g., value of intermediate tensors)
-// when it returns.
-//
-// For example, consider a graph for unsupervised training of a neural network
-// model. PartialRun can be used to pause execution after the forward pass of
-// the network, let the caller actuate the output (e.g., play a game, actuate a
-// robot etc.), determine the error/loss and then feed this calculated loss
-// when resuming the backward pass of the graph.
-type PartialRun struct {
-    session *Session
-    handle  *C.char
-}
-
-// Run resumes execution of the graph to compute the requested fetches and
-// targets with the provided feeds.
-func (pr *PartialRun) Run(feeds map[Output]*Tensor, fetches []Output, targets []*Operation) ([]*Tensor, error) {
-    var (
-    c      = newCRunArgs(feeds, fetches, targets)
-    status = newStatus()
-    s      = pr.session
-    )
-    s.mu.Lock()
-    if s.c == nil {
-        s.mu.Unlock()
-        return nil, errors.New("session is closed")
-    }
-    s.wg.Add(1)
-    s.mu.Unlock()
-    defer s.wg.Done()
-    
-    tf.SessionPRun(s.c, pr.handle,
-    ptrOutput(c.feeds), ptrTensor(c.feedTensors), C.int(len(feeds)),
-    ptrOutput(c.fetches), ptrTensor(c.fetchTensors), C.int(len(fetches)),
-    ptrOperation(c.targets), C.int(len(targets)),
-    status.c)
-    if let err = status.error() {
-        return nil, err
-    }
-    return c.toGo(), nil
-}
-
-// NewPartialRun sets up the graph for incremental evaluation.
-//
-// All values of feeds, fetches and targets that may be provided to Run calls
-// on the returned PartialRun need to be provided to NewPartialRun.
-//
-// See documentation for the PartialRun type.
-func (s *Session) NewPartialRun(feeds, fetches []Output, targets []*Operation) (*PartialRun, error) {
-    var (
-    cfeeds   = make([]TF_Output, len(feeds))
-    cfetches = make([]TF_Output, len(fetches))
-    ctargets = make([]*TF_Operation, len(targets))
-    
-    pcfeeds   *TF_Output
-    pcfetches *TF_Output
-    pctargets **TF_Operation
-    
-    status = newStatus()
-    )
-    if len(feeds) > 0 {
-        pcfeeds = &cfeeds[0]
-        for i, o = range feeds {
-            cfeeds[i] = o.c()
-        }
-    }
-    if len(fetches) > 0 {
-        pcfetches = &cfetches[0]
-        for i, o = range fetches {
-            cfetches[i] = o.c()
-        }
-    }
-    if len(targets) > 0 {
-        pctargets = &ctargets[0]
-        for i, o = range targets {
-            ctargets[i] = o.c
-        }
-    }
-    
-    s.mu.Lock()
-    if s.c == nil {
-        s.mu.Unlock()
-        return nil, errors.New("session is closed")
-    }
-    s.wg.Add(1)
-    s.mu.Unlock()
-    defer s.wg.Done()
-    
-    pr = &PartialRun{session: s}
-    tf.SessionPRunSetup(s.c,
-                          pcfeeds, C.int(len(feeds)),
-                          pcfetches, C.int(len(fetches)),
-                          pctargets, C.int(len(targets)),
-                          &pr.handle, status.c)
-    if let err = status.error() {
-        return nil, err
-    }
-    runtime.SetFinalizer(pr, func(pr *PartialRun) {
-        deletePRunHandle(pr.handle)
-    })
-    return pr, nil
-}
-
-// Close a session. This contacts any other processes associated with this
-// session, if applicable. Blocks until all previous calls to Run have returned.
-func (s *Session) Close() error {
-    s.mu.Lock()
-    defer s.mu.Unlock()
-    s.wg.Wait()
-    if s.c == nil {
-        return nil
-    }
-    status = newStatus()
-    tf.CloseSession(s.c, status.c)
-    if let err = status.error() {
-        return err
-    }
-    tf.DeleteSession(s.c, status.c)
-    s.c = nil
-    return status.Err()
-}
-
-// SessionOptions contains configuration information for a session.
-type SessionOptions struct {
-    // Target indicates the TensorFlow runtime to connect to.
-    //
-    // If 'target' is empty or unspecified, the local TensorFlow runtime
-    // implementation will be used.  Otherwise, the TensorFlow engine
-    // defined by 'target' will be used to perform all computations.
-    //
-    // "target" can be either a single entry or a comma separated list
-    // of entries. Each entry is a resolvable address of one of the
-    // following formats:
-    //   local
-    //   ip:port
-    //   host:port
-    //   ... other system-specific formats to identify tasks and jobs ...
-    //
-    // NOTE: at the moment 'local' maps to an in-process service-based
-    // runtime.
-    //
-    // Upon creation, a single session affines itself to one of the
-    // remote processes, with possible load balancing choices when the
-    // "target" resolves to a list of possible processes.
-    //
-    // If the session disconnects from the remote process during its
-    // lifetime, session calls may fail immediately.
-    Target string
-    
-    // Config is a binary-serialized representation of the
-    // tensorflow.ConfigProto protocol message
-    // (https://www.tensorflow.org/code/tensorflow/core/protobuf/config.proto).
-    Config []byte
-}
-
-// c converts the SessionOptions to the C API's TF_SessionOptions. Callers must
-// deallocate by calling the returned done() closure.
-func (o *SessionOptions) c() (ret *TF_SessionOptions, done func(), err error) {
-    opt = TF_NewSessionOptions()
-    if o == nil {
-        return opt, func() { TF_DeleteSessionOptions(opt) }, nil
-    }
-    t = C.CString(o.Target)
-    TF_SetTarget(opt, t)
-    C.free(unsafe.Pointer(t))
-    
-    var cConfig unsafe.Pointer
-    if sz = len(o.Config); sz > 0 {
-        status = newStatus()
-        // Copying into C-memory is the simplest thing to do in terms
-        // of memory safety and cgo rules ("C code may not keep a copy
-        // of a Go pointer after the call returns" from
-        // https://golang.org/cmd/cgo/#hdr-Passing_pointers).
-        cConfig = C.CBytes(o.Config)
-        tf.SetConfig(opt, cConfig, C.size_t(sz), status.c)
-        if let err = status.error() {
-            tf.DeleteSessionOptions(opt)
-            return nil, func() {}, NSError.newIoError("invalid SessionOptions.Config",code:000)
-        }
-    }
-    return opt, func() {
-        tf.DeleteSessionOptions(opt)
-        C.free(cConfig)
-    }, nil
-}
-*/
+ 
+ // Run the graph with the associated session starting with the supplied feeds
+ // to compute the value of the requested fetches. Runs, but does not return
+ // Tensors for operations specified in targets.
+ //
+ // On success, returns the fetched Tensors in the same order as supplied in
+ // the fetches argument. If fetches is set to nil, the returned Tensor fetches
+ // is empty.
+ func (s *Session) Run(feeds map[Output]*Tensor, fetches []Output, targets []*Operation) ([]*Tensor, error) {
+ s.mu.Lock()
+ if s.c == nil {
+ s.mu.Unlock()
+ return nil, errors.New("session is closed")
+ }
+ s.wg.Add(1)
+ s.mu.Unlock()
+ defer s.wg.Done()
+ 
+ c = newCRunArgs(feeds, fetches, targets)
+ status = newStatus()
+ tf.SessionRun(s.c, nil,
+ ptrOutput(c.feeds), ptrTensor(c.feedTensors), C.int(len(feeds)),
+ ptrOutput(c.fetches), ptrTensor(c.fetchTensors), C.int(len(fetches)),
+ ptrOperation(c.targets), C.int(len(targets)),
+ nil, status.c)
+ if let err = status.error() {
+ return nil, err
+ }
+ return c.toGo(), nil
+ }
+ 
+ // PartialRun enables incremental evaluation of graphs.
+ //
+ // PartialRun allows the caller to pause the evaluation of a graph, run
+ // arbitrary code that depends on the intermediate computation of the graph,
+ // and then resume graph execution. The results of the arbitrary code can be
+ // fed into the graph when resuming execution.  In contrast, Session.Run
+ // executes the graph to compute the requested fetches using the provided feeds
+ // and discards all intermediate state (e.g., value of intermediate tensors)
+ // when it returns.
+ //
+ // For example, consider a graph for unsupervised training of a neural network
+ // model. PartialRun can be used to pause execution after the forward pass of
+ // the network, let the caller actuate the output (e.g., play a game, actuate a
+ // robot etc.), determine the error/loss and then feed this calculated loss
+ // when resuming the backward pass of the graph.
+ type PartialRun struct {
+ session *Session
+ handle  *C.char
+ }
+ 
+ // Run resumes execution of the graph to compute the requested fetches and
+ // targets with the provided feeds.
+ func (pr *PartialRun) Run(feeds map[Output]*Tensor, fetches []Output, targets []*Operation) ([]*Tensor, error) {
+ var (
+ c      = newCRunArgs(feeds, fetches, targets)
+ status = newStatus()
+ s      = pr.session
+ )
+ s.mu.Lock()
+ if s.c == nil {
+ s.mu.Unlock()
+ return nil, errors.New("session is closed")
+ }
+ s.wg.Add(1)
+ s.mu.Unlock()
+ defer s.wg.Done()
+ 
+ tf.SessionPRun(s.c, pr.handle,
+ ptrOutput(c.feeds), ptrTensor(c.feedTensors), C.int(len(feeds)),
+ ptrOutput(c.fetches), ptrTensor(c.fetchTensors), C.int(len(fetches)),
+ ptrOperation(c.targets), C.int(len(targets)),
+ status.c)
+ if let err = status.error() {
+ return nil, err
+ }
+ return c.toGo(), nil
+ }
+ 
+ // NewPartialRun sets up the graph for incremental evaluation.
+ //
+ // All values of feeds, fetches and targets that may be provided to Run calls
+ // on the returned PartialRun need to be provided to NewPartialRun.
+ //
+ // See documentation for the PartialRun type.
+ func (s *Session) NewPartialRun(feeds, fetches []Output, targets []*Operation) (*PartialRun, error) {
+ var (
+ cfeeds   = make([]TF_Output, len(feeds))
+ cfetches = make([]TF_Output, len(fetches))
+ ctargets = make([]*TF_Operation, len(targets))
+ 
+ pcfeeds   *TF_Output
+ pcfetches *TF_Output
+ pctargets **TF_Operation
+ 
+ status = newStatus()
+ )
+ if len(feeds) > 0 {
+ pcfeeds = &cfeeds[0]
+ for i, o = range feeds {
+ cfeeds[i] = o.c()
+ }
+ }
+ if len(fetches) > 0 {
+ pcfetches = &cfetches[0]
+ for i, o = range fetches {
+ cfetches[i] = o.c()
+ }
+ }
+ if len(targets) > 0 {
+ pctargets = &ctargets[0]
+ for i, o = range targets {
+ ctargets[i] = o.c
+ }
+ }
+ 
+ s.mu.Lock()
+ if s.c == nil {
+ s.mu.Unlock()
+ return nil, errors.New("session is closed")
+ }
+ s.wg.Add(1)
+ s.mu.Unlock()
+ defer s.wg.Done()
+ 
+ pr = &PartialRun{session: s}
+ tf.SessionPRunSetup(s.c,
+ pcfeeds, C.int(len(feeds)),
+ pcfetches, C.int(len(fetches)),
+ pctargets, C.int(len(targets)),
+ &pr.handle, status.c)
+ if let err = status.error() {
+ return nil, err
+ }
+ runtime.SetFinalizer(pr, func(pr *PartialRun) {
+ deletePRunHandle(pr.handle)
+ })
+ return pr, nil
+ }
+ 
+ // Close a session. This contacts any other processes associated with this
+ // session, if applicable. Blocks until all previous calls to Run have returned.
+ func (s *Session) Close() error {
+ s.mu.Lock()
+ defer s.mu.Unlock()
+ s.wg.Wait()
+ if s.c == nil {
+ return nil
+ }
+ status = newStatus()
+ tf.CloseSession(s.c, status.c)
+ if let err = status.error() {
+ return err
+ }
+ tf.DeleteSession(s.c, status.c)
+ s.c = nil
+ return status.Err()
+ }
+ 
+ // SessionOptions contains configuration information for a session.
+ type SessionOptions struct {
+ // Target indicates the TensorFlow runtime to connect to.
+ //
+ // If 'target' is empty or unspecified, the local TensorFlow runtime
+ // implementation will be used.  Otherwise, the TensorFlow engine
+ // defined by 'target' will be used to perform all computations.
+ //
+ // "target" can be either a single entry or a comma separated list
+ // of entries. Each entry is a resolvable address of one of the
+ // following formats:
+ //   local
+ //   ip:port
+ //   host:port
+ //   ... other system-specific formats to identify tasks and jobs ...
+ //
+ // NOTE: at the moment 'local' maps to an in-process service-based
+ // runtime.
+ //
+ // Upon creation, a single session affines itself to one of the
+ // remote processes, with possible load balancing choices when the
+ // "target" resolves to a list of possible processes.
+ //
+ // If the session disconnects from the remote process during its
+ // lifetime, session calls may fail immediately.
+ Target string
+ 
+ // Config is a binary-serialized representation of the
+ // tensorflow.ConfigProto protocol message
+ // (https://www.tensorflow.org/code/tensorflow/core/protobuf/config.proto).
+ Config []byte
+ }
+ 
+ // c converts the SessionOptions to the C API's TF_SessionOptions. Callers must
+ // deallocate by calling the returned done() closure.
+ func (o *SessionOptions) c() (ret *TF_SessionOptions, done func(), err error) {
+ opt = TF_NewSessionOptions()
+ if o == nil {
+ return opt, func() { TF_DeleteSessionOptions(opt) }, nil
+ }
+ t = C.CString(o.Target)
+ TF_SetTarget(opt, t)
+ C.free(unsafe.Pointer(t))
+ 
+ var cConfig unsafe.Pointer
+ if sz = len(o.Config); sz > 0 {
+ status = newStatus()
+ // Copying into C-memory is the simplest thing to do in terms
+ // of memory safety and cgo rules ("C code may not keep a copy
+ // of a Go pointer after the call returns" from
+ // https://golang.org/cmd/cgo/#hdr-Passing_pointers).
+ cConfig = C.CBytes(o.Config)
+ tf.SetConfig(opt, cConfig, C.size_t(sz), status.c)
+ if let err = status.error() {
+ tf.DeleteSessionOptions(opt)
+ return nil, func() {}, NSError.newIoError("invalid SessionOptions.Config",code:000)
+ }
+ }
+ return opt, func() {
+ tf.DeleteSessionOptions(opt)
+ C.free(cConfig)
+ }, nil
+ }
+ */
 
 
 // cRunArgs translates the arguments to Session.Run and PartialRun.Run into
 // values suitable for C library calls.
 /*struct cRunArgs  {
-    var feeds:TF_Output
-    var feedTensors:TF_Tensor
-    var fetches:TF_Output
-    var fetchTensors:TF_Tensor
-    var targets:TF_Operation
-}*/
+ var feeds:TF_Output
+ var feedTensors:TF_Tensor
+ var fetches:TF_Output
+ var fetchTensors:TF_Tensor
+ var targets:TF_Operation
+ }*/
 /*
-func newCRunArgs(feeds map[Output]*Tensor, fetches []Output, targets []*Operation) *cRunArgs {
-    c = &cRunArgs{
-        fetches:      make([]TF_Output, len(fetches)),
-        fetchTensors: make([]*TF_Tensor, len(fetches)),
-        targets:      make([]*TF_Operation, len(targets)),
-    }
-    for o, t = range feeds {
-        c.feeds = append(c.feeds, o.c())
-        c.feedTensors = append(c.feedTensors, t.c)
-    }
-    for i, o = range fetches {
-        c.fetches[i] = o.c()
-    }
-    for i, t = range targets {
-        c.targets[i] = t.c
-    }
-    return c
-}
-
-func (c *cRunArgs) toGo() []*Tensor {
-    ret = make([]*Tensor, len(c.fetchTensors))
-    for i, ct = range c.fetchTensors {
-        ret[i] = newTensorFromC(ct)
-    }
-    return ret
-}
-
-func ptrOutput(l []TF_Output) *TF_Output {
-    if len(l) == 0 {
-        return nil
-    }
-    return &l[0]
-}
-
-func ptrTensor(l []*TF_Tensor) **TF_Tensor {
-    if len(l) == 0 {
-        return nil
-    }
-    return &l[0]
-}
-
-func ptrOperation(l []*TF_Operation) **TF_Operation {
-    if len(l) == 0 {
-        return nil
-    }
-    return &l[0]
-}
+ func newCRunArgs(feeds map[Output]*Tensor, fetches []Output, targets []*Operation) *cRunArgs {
+ c = &cRunArgs{
+ fetches:      make([]TF_Output, len(fetches)),
+ fetchTensors: make([]*TF_Tensor, len(fetches)),
+ targets:      make([]*TF_Operation, len(targets)),
+ }
+ for o, t = range feeds {
+ c.feeds = append(c.feeds, o.c())
+ c.feedTensors = append(c.feedTensors, t.c)
+ }
+ for i, o = range fetches {
+ c.fetches[i] = o.c()
+ }
+ for i, t = range targets {
+ c.targets[i] = t.c
+ }
+ return c
+ }
+ 
+ func (c *cRunArgs) toGo() []*Tensor {
+ ret = make([]*Tensor, len(c.fetchTensors))
+ for i, ct = range c.fetchTensors {
+ ret[i] = newTensorFromC(ct)
+ }
+ return ret
+ }
+ 
+ func ptrOutput(l []TF_Output) *TF_Output {
+ if len(l) == 0 {
+ return nil
+ }
+ return &l[0]
+ }
+ 
+ func ptrTensor(l []*TF_Tensor) **TF_Tensor {
+ if len(l) == 0 {
+ return nil
+ }
+ return &l[0]
+ }
+ 
+ func ptrOperation(l []*TF_Operation) **TF_Operation {
+ if len(l) == 0 {
+ return nil
+ }
+ return &l[0]
+ }
  */
 
