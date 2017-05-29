@@ -14,9 +14,10 @@ for each method - perhaps where appropriate hot link to respective golang class 
 
 
 //https://github.com/johndpope/tensorflow-1/blob/master/tensorflow.go#L33
-        extension SessionOptions{
-            func setConfig(config:Tensorflow_ConfigProto){
-                let status = newStatus()
+
+              extension SessionOptions{
+               func setConfig(config:Tensorflow_ConfigProto){
+                  let status = newStatus()
 
                 defer{
                     tf.DeleteStatus(status.c)
