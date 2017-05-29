@@ -96,7 +96,25 @@ struct SessionOptions  {
     
 }
 
+//https://github.com/johndpope/tensorflow-1/blob/master/tensorflow.go#L33
+extension SessionOptions{
+    func setConfig(config:Tensorflow_ConfigProto)->  NSError? {
+    let status = newStatus()
+        
+    defer{
+       tf.DeleteStatus(status.c)
+    }
 
+    if let data = try? config.serializedData(){
+        //https://stackoverflow.com/questions/39671789/in-swift-3-how-do-i-get-unsaferawpointer-from-data
+        data.withUnsafeBytes {(uint8Ptr: UnsafePointer<UInt8>) in
+            let rawPtr = UnsafeRawPointer(uint8Ptr)
+            tf.SetConfig(self.c, rawPtr, data.count, status.c)
+        }
+    }
+
+    return status.error()
+}
 
 
 // NewSession creates a new execution session with the associated graph.
