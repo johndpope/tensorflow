@@ -26,7 +26,7 @@ import Foundation
 // Types of scalar values in the TensorFlow type system.
 
 
-// WARNING - deprecate this - and use Tensorflow_DataType.rawValue
+// WARNING - deprecate this - and use Tensorflow_AttrValue/Tensorflow_DataType.rawValue see att_value.pb.swift
 
 
 /*const (
@@ -61,6 +61,7 @@ struct Tensor  {
 // NewTensor converts from a Go value to a Tensor. Valid values are scalars,
 // slices, and arrays. Every element of a slice must have the same length so
 // that the resulting Tensor has a valid shape.
+
 func newTensor(dt:Tensorflow_DataType,value:AnyObject) -> (Tensor?, NSError?) {
 //	val = reflect.ValueOf(value)
 	/*shape, dataType, err = shapeAndDataTypeOf(val)

@@ -100,7 +100,7 @@ class tf{
 
 // --------------------------------------------------------------------------
 // TF_DataType holds the type for a scalar value.  E.g., one slot in a tensor.
-// The enum values here are identical to corresponding values in types.proto.
+// The enum values here are identical to corresponding values in types.proto. see types.pb.swift
 /*public struct TF_DataType : RawRepresentable, Equatable {
 
     public init(_ rawValue: UInt32){

@@ -23,6 +23,9 @@ import Foundation
 // dimensions.
 
 // TODO - use Tensorflow_TensorShapeProto see tensor_shape.pb.swift
+
+// notes - it seems doable to simply throw c api a protobuf. see ConfigProto
+// https://github.com/johndpope/tensorflow-1/blob/master/tensorflow.go#L33
 struct Shape  {
     var  dims: [Int64]
 }
