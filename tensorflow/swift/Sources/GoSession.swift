@@ -47,16 +47,8 @@ class Session  {
 
 
 // SessionOptions contains configuration information for a session.
+//https://github.com/tensorflow/tensorflow/blob/fca253c282eedbfa4e82071af389bdb75ac13a90/tensorflow/go/session.go#L227
 struct SessionOptions  {
-    
-    init(){
-        self.c = tf.NewSessionOptions()
-        self.Target = ""
-
-    }
-    var c:TF_Session
-    
-    
     // Target indicates the TensorFlow runtime to connect to.
     //
     // If 'target' is empty or unspecified, the local TensorFlow runtime
@@ -97,10 +89,50 @@ struct SessionOptions  {
             return self._configProto
         }
     }
-   
+    
     
     
 }
+
+typealias SessionDoneClosure = ()  -> ()
+
+
+
+//https://github.com/tensorflow/tensorflow/blob/fca253c282eedbfa4e82071af389bdb75ac13a90/tensorflow/go/session.go#L261
+
+extension SessionOptions{
+    func  c() ->  (cOpts:TF_SessionOptions?, doneOpt: SessionDoneClosure, error:NSError?) {
+        if let opt = tf.NewSessionOptions(){
+            //if (self  == nil ){
+            //return (opt,  {tf.DeleteSessionOptions(opt)}() , nil)
+            //  }
+            
+            tf.SetTarget(opt, self.Target)
+            
+            let status = newStatus()
+            if let  config = try? self.ConfigProto.serializedData(){
+                tf.SetConfig(opt, config.cBytes(), config.count, status.c)
+                
+                
+                if let error = status.error(){
+                    tf.DeleteSessionOptions(opt)
+                    return (nil, {}, NSError.newIoError("invalid SessionOptions.Config", code: error.code))
+                }
+            }
+            
+            let noParameterAndNoReturnValue: () -> () = {
+                tf.DeleteSessionOptions(opt)
+            }
+            
+            return (opt,noParameterAndNoReturnValue,nil)
+        }
+        
+    }
+    
+    
+}
+
+
 
 //https://github.com/johndpope/tensorflow-1/blob/master/tensorflow.go#L33
 extension SessionOptions{
