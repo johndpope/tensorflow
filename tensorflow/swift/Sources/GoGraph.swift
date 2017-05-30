@@ -167,8 +167,11 @@ struct OpSpec  {
 }
 
 // AddOperation adds an operation to g.
+// https://github.com/tensorflow/tensorflow/blob/master/tensorflow/go/graph.go#L147
 extension Graph{
     func AddOperation ( args:OpSpec)-> (GoOperation?, NSError?) {
+        
+        print("TODO - flesh out implementation")
         
         let cOperationDesc = tf.NewOperation(self.c, args.OpType, args.Name)
         
@@ -218,8 +221,8 @@ extension Graph{
 
 
  
-// TODO - review Tensorflow_AttrValue in proto library to simplify this mess.
- 
+// TODO - review Tensorflow_AttrValue in proto library to simplify this.
+ // https://github.com/tensorflow/tensorflow/blob/master/tensorflow/go/graph.go#L195
 func setAttr(_ cDesc:TF_OperationDescription?,_ status:TF_Status,_ name:String,_ value:Tensorflow_AttrValue) ->  NSError? {
     
     switch value.type {
