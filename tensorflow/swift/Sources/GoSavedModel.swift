@@ -17,15 +17,20 @@ limitations under the License.
 */
 
 import CTensorFlow
-
+import Foundation
 
 
 // SavedModel represents the contents of loaded SavedModel.
-// TODO(jhseu): Add and document metagraphdef when we pregenerate protobufs.
-/*struct SavedModel  {
+// TODO(jhseu): Add and document metagraphdef when we pre-generate protobufs.
+struct SavedModel  {
     var Session:Session
     var Graph:Graph
-}*/
+    
+    public init(_ Session:Session,_ Graph:Graph){
+        self.Session = Session
+        self.Graph = Graph
+    }
+}
 
 // LoadSavedModel creates a new SavedModel from a model previously
 // exported to a directory on disk.
@@ -39,31 +44,41 @@ import CTensorFlow
 // to a directory from Go. This function thus currently targets loading models
 // exported in other languages, such as using tf.saved_model.builder in Python.
 // See:
-// https://www.tensorflow.org/code/tensorflow/python/saved_model/
-/*func LoadSavedModel(exportDir string, tags []string, options *SessionOptions) (*SavedModel, error) {
-	status = newStatus()
-	cOpt, doneOpt, err = options.c()
-	defer doneOpt()
-	if err != nil {
-		return nil, err
-	}
-	cExportDir = C.CString(exportDir)
-	cTags = make([]*C.char, len(tags))
-	for i = range tags {
-		cTags[i] = C.CString(tags[i])
-	}
-	graph = NewGraph()
-	// TODO(jhseu): Add support for run_options and meta_graph_def.
-	cSess = tf.LoadSessionFromSavedModel(cOpt, nil, cExportDir, (**C.char)(unsafe.Pointer(&cTags[0])), C.int(len(cTags)), graph.c, nil, status.c)
-	for i = range cTags {
-		C.free(unsafe.Pointer(cTags[i]))
-	}
-	C.free(unsafe.Pointer(cExportDir))
+ //https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/saved_model/README.md#tags
 
-	if let err = status.error() {
-		return nil, err
+func LoadSavedModel(exportDir:String, tags:[String?], options:SessionOptions) -> (SavedModel?, NSError?) {
+	let status = newStatus()
+    var cOpt:TF_SessionOptions?, doneOpt:SessionDoneClosure, error:NSError?;
+    (cOpt, doneOpt, error) = options.c()
+ 
+    defer {
+        doneOpt()
+    }
+    
+	if error != nil {
+		return (nil, error)
 	}
-	s = &Session{c: cSess}
-	runtime.SetFinalizer(s, func(s *Session) { s.Close() })
-	return &SavedModel{Session: s, Graph: graph}, nil
-}*/
+    
+    if let cExportDir:[CChar] = exportDir.cString(using: .utf8){
+
+        let graph = newGraph()
+        let cTags = tags.map { $0.flatMap { UnsafePointer<Int8>(strdup($0)) } }
+
+        
+        if let cSession = tf.LoadSessionFromSavedModel(cOpt, nil, cExportDir, cTags, Int32(cTags.count), graph.c, nil, status.c){
+            let s = Session(c:cSession)
+            
+            //runtime.SetFinalizer(s, func(s *Session) { s.Close() })
+            let savedModel = SavedModel( s,  graph)
+            return (savedModel, nil)
+        }
+        
+    }
+    
+    if let error = status.error() {
+        return (nil, error)
+    }else{
+        return (nil, nil)
+    }
+    
+}

@@ -132,32 +132,32 @@ do {
     }
    
     
-    // Run inference on *imageFile.
-    // For multiple images, session.Run() can be called in a loop (and
-    // concurrently). Alternatively, images can be batched since the model
-    // accepts batches of image data as input.
-   // var tensor:Tensor
-//    (tensor, error) = makeTensorFromImage(imagefile)
+//     Run inference on *imageFile.
+//     For multiple images, session.Run() can be called in a loop (and
+//     concurrently). Alternatively, images can be batched since the model
+//     accepts batches of image data as input.
+/*    var tensor:Tensor
+    (tensor, error) = makeTensorFromImage(imagefile)
     
-//    if err != nil {
-//        log.Fatal(err)
-//    }
-//    output, err = session.Run(
-//    map[tf.Output]*tf.Tensor{
-//    graph.Operation("input").Output(0): tensor,
-//    },
-//    []tf.Output{
-//    graph.Operation("output").Output(0),
-//    },
-//    nil)
-//    if err != nil {
-//        log.Fatal(err)
-//    }
-    // output[0].Value() is a vector containing probabilities of
-    // labels for each image in the "batch". The batch size was 1.
-    // Find the most probably label index.
-//    probabilities = output[0].Value().([][]float32)[0]
-//    printBestLabel(probabilities, labelsfile)
+    if err != nil {
+        log.Fatal(err)
+    }
+    output, err = session.Run(
+    map[tf.Output]*tf.Tensor{
+    graph.Operation("input").Output(0): tensor,
+    },
+    []tf.Output{
+    graph.Operation("output").Output(0),
+    },
+    nil)
+    if err != nil {
+        log.Fatal(err)
+    }
+     output[0].Value() is a vector containing probabilities of
+     labels for each image in the "batch". The batch size was 1.
+     Find the most probably label index.
+    probabilities = output[0].Value().([][]float32)[0]
+    printBestLabel(probabilities, labelsfile)
 
     
 }catch {
@@ -166,16 +166,17 @@ do {
     print("error: \(error)")
     exit(1)
 }
-
+*/
 
 
 // Convert the image in filename to a Tensor suitable as input to the Inception model.
+//https://github.com/ctava/tensorflow-go-imagerecognition/blob/ffce1d23cb7f4194a38023eeaf25632553ca483c/main.go#L133
 func makeTensorFromImage(filename :String)-> (TF_Tensor?, NSError?) {
     
     let photo = try! Data(contentsOf:URL(fileURLWithPath: "\(dirFlag.value!)/\(imageFlag.value!)"))
     
     // DecodeJpeg uses a scalar String-valued tensor as input.
-//    let tensor = newTensor(dt:.dtString,value: photo.cBytes())
+//    let tensor = newTensor(photo.cBytes())
 //    if err != nil {
 //        return nil, err
 //    }
@@ -208,26 +209,26 @@ func makeTensorFromImage(filename :String)-> (TF_Tensor?, NSError?) {
 // This function constructs a graph of TensorFlow operations which takes as
 // input a JPEG-encoded string and returns a tensor suitable as input to the
 // inception model.
-/*func constructGraphToNormalizeImage() -> (graph :TF_Graph, input:TF_Input, output:TF_Output, err:NSError) {
+//func constructGraphToNormalizeImage() -> (graph :TF_Graph, input:TF_Input, output:TF_Output, err:NSError?) {
     // Some constants specific to the pre-trained model at:
     // https://storage.googleapis.com/download.tensorflow.org/models/inception5h.zip
     //
     // - The model was trained after with images scaled to 224x224 pixels.
     // - The colors, represented as R, G, B in 1-byte each were converted to
     //   float using (value - Mean)/Scale.
-    let const (
+    /*let const (
         H, W  = 224, 224
         Mean  = float32(117)
         Scale = float32(1)
-    )
+    )*/
     // - input is a String-Tensor, where the string the JPEG-encoded image.
     // - The inception model takes a 4D tensor of shape
     //   [BatchSize, Height, Width, Colors=3], where each pixel is
     //   represented as a triplet of floats
     // - Apply normalization on each pixel and use ExpandDims to make
     //   this single image be a "batch" of size 1 for ResizeBilinear.
-    s = op.NewScope()
-    input = op.Placeholder(s, tf.String)
+   /* let s = op.NewScope()
+    let input = op.Placeholder(s, tf.String)
     output = op.Div(s,
     op.Sub(s,
     op.ResizeBilinear(s,
@@ -239,10 +240,11 @@ func makeTensorFromImage(filename :String)-> (TF_Tensor?, NSError?) {
     op.Const(s.SubScope("mean"), Mean)),
     op.Const(s.SubScope("scale"), Scale))
     graph, err = s.Finalize()
-    return graph, input, output, err
-}
+    return graph, input, output, err*/
 
- */
+//}
+
+}
 
 
 /*
