@@ -38,6 +38,7 @@ import protoTensorFlow
 //   form suitable for the model (for example, resizing the image)
 // - Creates an executes a Session to obtain a Tensor in this normalized form.*/
 
+public typealias ShapeProto = Tensorflow_TensorShapeProto
 
 
 
@@ -85,6 +86,45 @@ do {
     config.operationTimeoutInMs = 2
     opts.ConfigProto = config
     
+    // Tensor
+    var tensor = Tensorflow_TensorProto()
+    // TODO make this setter infer dType automagically by introspecting setter.
+    tensor.dtype = .dtInt64
+    tensor.int64Val = [Int64(0.0),Int64(1.0),Int64(1.0),Int64(1.0)]
+  
+    // Shape
+    var shape = ShapeProto()
+    shape.unknownRank = false
+    
+    /// The order of entries in "dim" matters: It indicates the layout of the
+    /// values in the tensor in-memory representation.
+    var dimensions :[ShapeProto.Dim] = []
+    
+    // Rows
+    var H = ShapeProto.Dim()
+    H.size = 224
+    H.name  = "height"
+    dimensions.append(H)
+    
+    // Columns
+    var W = ShapeProto.Dim()
+    W.size = 224
+    W.name  = "width"
+    dimensions.append(W)
+
+    // Colors
+    var colors = ShapeProto.Dim()
+    colors.size = 3
+    colors.name  = "colors"
+    dimensions.append(colors)
+    
+    shape.dim = dimensions
+    tensor.tensorShape = shape
+    
+    
+    
+    
+    
     var (session, error) = newSession( graph,opts)
     
     if error != nil {
@@ -96,7 +136,7 @@ do {
     // For multiple images, session.Run() can be called in a loop (and
     // concurrently). Alternatively, images can be batched since the model
     // accepts batches of image data as input.
-    var tensor:Tensor
+   // var tensor:Tensor
 //    (tensor, error) = makeTensorFromImage(imagefile)
     
 //    if err != nil {
@@ -128,32 +168,6 @@ do {
 }
 
 
-/*
-
-func printBestLabel(probabilities []float32, labelsFile string) {
-    bestIdx = 0
-    for i, p = range probabilities {
-        if p > probabilities[bestIdx] {
-            bestIdx = i
-        }
-    }
-    // Found the best match. Read the string from labelsFile, which
-    // contains one line per label.
-    file, err = os.Open(labelsFile)
-    if err != nil {
-        log.Fatal(err)
-    }
-    defer file.Close()
-    scanner = bufio.NewScanner(file)
-    var labels []string
-    for scanner.Scan() {
-        labels = append(labels, scanner.Text())
-    }
-    if err = scanner.Err(); err != nil {
-        log.Printf("ERROR: failed to read %s: %v", labelsFile, err)
-    }
-    fmt.Printf("BEST MATCH: (%2.0f%% likely) %s\n", probabilities[bestIdx]*100.0, labels[bestIdx])
-}*/
 
 // Convert the image in filename to a Tensor suitable as input to the Inception model.
 func makeTensorFromImage(filename :String)-> (TF_Tensor?, NSError?) {
@@ -229,3 +243,31 @@ func makeTensorFromImage(filename :String)-> (TF_Tensor?, NSError?) {
 }
 
  */
+
+
+/*
+ 
+ func printBestLabel(probabilities []float32, labelsFile string) {
+ bestIdx = 0
+ for i, p = range probabilities {
+ if p > probabilities[bestIdx] {
+ bestIdx = i
+ }
+ }
+ // Found the best match. Read the string from labelsFile, which
+ // contains one line per label.
+ file, err = os.Open(labelsFile)
+ if err != nil {
+ log.Fatal(err)
+ }
+ defer file.Close()
+ scanner = bufio.NewScanner(file)
+ var labels []string
+ for scanner.Scan() {
+ labels = append(labels, scanner.Text())
+ }
+ if err = scanner.Err(); err != nil {
+ log.Printf("ERROR: failed to read %s: %v", labelsFile, err)
+ }
+ fmt.Printf("BEST MATCH: (%2.0f%% likely) %s\n", probabilities[bestIdx]*100.0, labels[bestIdx])
+ }*/

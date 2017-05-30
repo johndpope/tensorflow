@@ -168,7 +168,7 @@ struct OpSpec  {
 
 // AddOperation adds an operation to g.
 extension Graph{
-    func addOperation ( args:OpSpec)-> (GoOperation?, NSError?) {
+    func AddOperation ( args:OpSpec)-> (GoOperation?, NSError?) {
         
         let cOperationDesc = tf.NewOperation(self.c, args.OpType, args.Name)
         

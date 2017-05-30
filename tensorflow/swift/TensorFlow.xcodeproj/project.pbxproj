@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E87AEB341EDDAD240060826D /* GoScope.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87AEB331EDDAD240060826D /* GoScope.swift */; };
 		OBJ_275 /* conformance.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_141 /* conformance.pb.swift */; };
 		OBJ_276 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_142 /* main.swift */; };
 		OBJ_277 /* test_messages_proto3.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_143 /* test_messages_proto3.pb.swift */; };
@@ -398,6 +399,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E87AEB331EDDAD240060826D /* GoScope.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoScope.swift; sourceTree = "<group>"; };
 		OBJ_10 /* GoGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoGraph.swift; sourceTree = "<group>"; };
 		OBJ_100 /* serialized_input.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = serialized_input.pb.swift; sourceTree = "<group>"; };
 		OBJ_101 /* session.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = session.pb.swift; sourceTree = "<group>"; };
@@ -1092,7 +1094,7 @@
 			path = ".build/checkouts/swift-grpc-tensorflow.git--5994516077474897617/Sources";
 			sourceTree = SOURCE_ROOT;
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -1103,7 +1105,6 @@
 				OBJ_32 /* Dependencies */,
 				OBJ_259 /* Products */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_7 /* Configs */ = {
@@ -1117,6 +1118,7 @@
 		OBJ_9 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				E87AEB331EDDAD240060826D /* GoScope.swift */,
 				OBJ_10 /* GoGraph.swift */,
 				OBJ_11 /* GoOperation.swift */,
 				OBJ_12 /* GoOpWrapper.swift */,
@@ -1336,7 +1338,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_259 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1631,6 +1633,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				E87AEB341EDDAD240060826D /* GoScope.swift in Sources */,
 				OBJ_550 /* GoGraph.swift in Sources */,
 				OBJ_551 /* GoOperation.swift in Sources */,
 				OBJ_552 /* GoOpWrapper.swift in Sources */,

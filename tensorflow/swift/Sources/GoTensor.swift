@@ -62,7 +62,7 @@ struct Tensor  {
 // slices, and arrays. Every element of a slice must have the same length so
 // that the resulting Tensor has a valid shape.
 
-func newTensor(dt:Tensorflow_DataType,value:AnyObject) -> (Tensor?, NSError?) {
+func newTensor(dt:TF_DataType,value:AnyObject) -> (Tensor?, NSError?) {
 //	val = reflect.ValueOf(value)
 	/*shape, dataType, err = shapeAndDataTypeOf(val)
 	if err != nil {
