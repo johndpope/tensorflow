@@ -30,50 +30,30 @@ var _allowsUninitializedInput: Bool = false
 
 {{op._storage._description_p}}
 
-_inputArg
-{% for arg in op._storage._inputArg %} {{arg.name}}:{{arg.type}}: .{{arg.typeAttr}} {% endfor %}
-_outputArg
-
-_outputArg
-{% for arg in op._storage._outputArg %} {{arg.name}}:{{arg.type}}:{{arg.typeAttr}} {% endfor %}
-
 */
 
+{% macro returnFunctionBlock types %}{% if op._storage._outputArg.count %}->({% for type in types %}{{type.name|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}: tf.Output{% if not forloop.last %}, {% endif %}{% endfor %}){% endif %}{% endmacro %}
+{% macro functionArgumentBlock types %}{% for type in types %}{{type.name|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}: tf.Output{% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
+{% macro functionAttributesBlock types %}{% for type in types %}{{type._storage._name}} :{{type._storage._type|snakeToCamelCase|lowerFirstWord}}{% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
-
-{% macro returnParametersBlock types %}{% for type in types %}{{type.name}}: tf.Output{% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
-
-{% macro parametersBlock types %}{% for type in types %}{{type.name}}: tf.Output{% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
-
-{% macro returnBlock types %}{% for type in types %}op.Output({{forloop.counter}}){% if not forloop.last %},{% endif %}{% endfor %}{% endmacro %}
-
+{% macro returnBlock types %}{% for type in types %}op.Output({{forloop.counter}} -1){% if not forloop.last %},{% endif %}{% endfor %}{% endmacro %}
 {% macro ifArgsCount %}{% if op._storage._inputArg.count %}scope:Scope,{% else %}scope:Scope{% endif %}{% endmacro %}
+{% macro trimmedInputArgs types %}{% for type in types %}{{type.name|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}{% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
 
-func {{ op._storage._name|lowerFirstWord}}({% call ifArgsCount %}{% call parametersBlock op._storage._inputArg %})  -> ({% call returnParametersBlock op._storage._outputArg %}){
+func {{ op._storage._name|lowerFirstWord}}({% call ifArgsCount %}{% call functionArgumentBlock op._storage._inputArg %}{% call functionAttributesBlock op._storage._attr %})  {% call returnFunctionBlock op._storage._outputArg %}{
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "{{ op._storage._name}}",
-        Input: [ {% for arg in op._storage._inputArg %} {{arg.name}},{{arg.type}} {% endfor %})]
+        Input: [ {% call trimmedInputArgs op._storage._inputArg %}]
         Attrs: attrs
     )
-
-
-
     {% if op._storage._outputArg.count %}
     let op = scope.AddOperation(opspec)
-    return ({% call returnBlock op._storage._outputArg %})
-    {% endif %}
-
+    return ({% call returnBlock op._storage._outputArg %}){% endif %}
 }
 {% endfor %}
 
