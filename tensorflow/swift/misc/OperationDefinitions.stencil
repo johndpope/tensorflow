@@ -31,11 +31,13 @@ var _allowsUninitializedInput: Bool = false
 {{op._storage._description_p}}
 
 */
+{% macro hasDefaultValue attribute %}{% if attribute._storage._defaultValue %} = {{attribute._storage._defaultValue}}{% endif %}{% endmacro %}
 
-{% macro returnFunctionBlock types %}{% if op._storage._outputArg.count %}->({% for type in types %}{{type.name|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}: tf.Output{% if not forloop.last %}, {% endif %}{% endfor %}){% endif %}{% endmacro %}
+{% macro returnFunctionBlock types %}{% if op._storage._outputArg.count %}->({% for type in types %}{{type.name|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}: tf.Output{% if not forloop.last %}, {% endif %}{% endfor %}){%else%}->(o:tf.Operation){% endif %}{% endmacro %}
 {% macro functionArgumentBlock types %}{% for type in types %}{{type.name|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}: tf.Output{% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
-{% macro functionAttributesBlock types %}{% for type in types %}{{type._storage._name}} :{{type._storage._type|snakeToCamelCase|lowerFirstWord}}{% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
+{% macro functionAttributesBlock types %}{% for type in types %}{{type._storage._name|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}} :{{type._storage._type|snakeToCamelCase|lowerFirstWord}}  {% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
 {% macro hasInputArgumentsAndAttribtues %}{% if op._storage._inputArg.count %}{% if op._storage._attr.count %},{% endif %}{% endif %} {%endmacro%}
+
 {% macro returnBlock types %}{% for type in types %}op.Output({{forloop.counter}} -1){% if not forloop.last %},{% endif %}{% endfor %}{% endmacro %}
 {% macro ifArgsCount %}{% if op._storage._inputArg.count %}scope:Scope,{% else %}scope:Scope{% endif %}{% endmacro %}
 {% macro trimmedInputArgs types %}{% for type in types %}{{type.name|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}{% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
@@ -44,6 +46,8 @@ func {{ op._storage._name|lowerFirstWord}}({% call ifArgsCount %}{% call functio
     if scope.error() != nil {
         return
     }
+    var attrs = Dictionary<String,Tensorflow_AttrValue> = [:]
+
     let opspec = tf.OpSpec(
         Type: "{{ op._storage._name}}",
         Input: [ {% call trimmedInputArgs op._storage._inputArg %}]
@@ -51,7 +55,10 @@ func {{ op._storage._name|lowerFirstWord}}({% call ifArgsCount %}{% call functio
     )
     {% if op._storage._outputArg.count %}
     let op = scope.AddOperation(opspec)
-    return ({% call returnBlock op._storage._outputArg %}){% endif %}
+    return ({% call returnBlock op._storage._outputArg %})
+    {%else%}
+    return scope.AddOperation(opspec)
+    {% endif %}
 }
 {% endfor %}
 
