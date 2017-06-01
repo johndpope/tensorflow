@@ -8,6 +8,13 @@ import StencilSwiftKit
 import Stencil
 
 
+extension Tensorflow_OpDef{
+    func hasOutputArgs()->Bool{
+        if(self.outputArg.count > 0) {return true}
+        return false
+    }
+    
+}
 class OperationsStencil{
     
     
