@@ -2,6 +2,7 @@
 //  tensorflow/core/framework/op_def.proto
 //  tensorflow/core/framework/op_def.pb.swift
 //  https://github.com/tensorflow/tensorflow/blob/c9428db01eec1c457d9451ef1ca550b634bddf60/tensorflow/go/op/wrappers.go
+// https://github.com/SwiftGen/templates/blob/master/templates/strings/flat-swift3.stencil
 
 import Foundation
 import Darwin.C.stddef
@@ -52,7 +53,9 @@ _outputArg
 
 {% macro returnBlock types %}{% for type in types %}op.Output({{forloop.counter}}){% if not forloop.last %},{% endif %}{% endfor %}{% endmacro %}
 
-func {{ op._storage._name|lowerFirstWord}}(scope:Scope,{% call parametersBlock op._storage._inputArg %})  -> ({% call returnParametersBlock op._storage._outputArg %}){
+{% macro ifArgsCount %}{% if op._storage._inputArg.count %}scope:Scope,{% else %}scope:Scope{% endif %}{% endmacro %}
+
+func {{ op._storage._name|lowerFirstWord}}({% call ifArgsCount %}{% call parametersBlock op._storage._inputArg %})  -> ({% call returnParametersBlock op._storage._outputArg %}){
     if scope.error() != nil {
         return
     }
@@ -67,8 +70,8 @@ func {{ op._storage._name|lowerFirstWord}}(scope:Scope,{% call parametersBlock o
 
 
     {% if op._storage._outputArg.count %}
-        let op = scope.AddOperation(opspec)
-        return ({% call returnBlock op._storage._outputArg %})
+    let op = scope.AddOperation(opspec)
+    return ({% call returnBlock op._storage._outputArg %})
     {% endif %}
 
 }
