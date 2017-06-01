@@ -107,18 +107,18 @@ extension Scope{
 // SubScope returns a new Scope which will cause all operations added to the
 // graph to be namespaced with 'namespace'.  If namespace collides with an
 // existing namespace within the scope, then a suffix will be added.
-/*func (s *Scope) SubScope(namespace string) *Scope {
-	namespace = s.uniqueName(namespace)
-	if s.namespace != "" {
- namespace = s.namespace + "/" + namespace
-	}
-	return &Scope{
- graph:     s.graph,
- namemap:   make(map[string]int),
- namespace: namespace,
- err:       s.err,
-	}
- }*/
+extension Scope{
+    func SubScope(namespace:String)->Scope {
+        var namespace = self.uniqueName(namespace)
+        if self.namespace != "" {
+            namespace = self.namespace + "/" + namespace
+        }
+        // TODO ->  make(map[string]int) -> Dictionary<String,Int>? or Dictionary<[String],Int>
+        return Scope( graph: self.graph, namemap:   Dictionary<String,Int>(),namespace: namespace, error:self.error)
+        
+    }
+}
+
 
 // Err returns the error, if any, encountered during the construction
 // of the Graph managed by s.
@@ -147,7 +147,7 @@ extension Scope{
 
 //https://github.com/tensorflow/tensorflow/blob/master/tensorflow/go/op/scope.go#L124
 extension Scope{
-    func uniqueName(name:String)-> String {
+    func uniqueName(_ name:String)-> String {
         if let count = self.namemap[name], count > 0{
             return"\(name)_\(count)"
         }
