@@ -42,7 +42,7 @@ var _allowsUninitializedInput: Bool = false
 {% macro ifArgsCount %}{% if op._storage._inputArg.count %}scope:Scope,{% else %}scope:Scope{% endif %}{% endmacro %}
 {% macro trimmedInputArgs types %}{% for type in types %}{{type.name|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}{% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
 
-{% macro injectAttributes types %}{% for type in types %}attr.append({{type._storage._name|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}})
+{% macro injectAttributes types %}{% for type in types %}attr.append("{{type._storage._name}}":{{type._storage._name|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}})
     {% endfor %}{% endmacro %}
 
 func {{ op._storage._name|lowerFirstWord}}({% call ifArgsCount %}{% call functionArgumentBlock op._storage._inputArg %}{% call hasInputArgumentsAndAttribtues %}{% call functionAttributesBlock op._storage._attr %})  {% call returnFunctionBlock op._storage._outputArg %}{
