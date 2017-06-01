@@ -40,6 +40,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Abort(scope:Scope, ) -> () {
     if scope.error() != nil {
@@ -79,6 +82,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Abs(scope:Scope,  x:tf.Output, ) -> ( y:tf.Output, ) {
     if scope.error() != nil {
@@ -115,6 +121,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func AccumulatorApplyGradient(scope:Scope,  handle:tf.Output,  local_step:tf.Output,  gradient:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -151,6 +160,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func AccumulatorNumAccumulated(scope:Scope,  handle:tf.Output, ) -> ( num_accumulated:tf.Output, ) {
     if scope.error() != nil {
@@ -188,6 +200,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func AccumulatorSetGlobalStep(scope:Scope,  handle:tf.Output,  new_global_step:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -229,6 +244,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func AccumulatorTakeGradient(scope:Scope,  handle:tf.Output,  num_required:tf.Output, ) -> ( average:tf.Output, ) {
     if scope.error() != nil {
@@ -265,6 +283,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Acos(scope:Scope,  x:tf.Output, ) -> ( y:tf.Output, ) {
     if scope.error() != nil {
@@ -303,6 +324,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Add(scope:Scope,  x:tf.Output,  y:tf.Output, ) -> ( z:tf.Output, ) {
     if scope.error() != nil {
@@ -357,6 +381,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func AddManySparseToTensorsMap(scope:Scope,  sparse_indices:tf.Output,  sparse_values:tf.Output,  sparse_shape:tf.Output, ) -> ( sparse_handles:tf.Output, ) {
     if scope.error() != nil {
@@ -393,6 +420,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func AddN(scope:Scope,  inputs:tf.Output, ) -> ( sum:tf.Output, ) {
     if scope.error() != nil {
@@ -441,6 +471,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func AddSparseToTensorsMap(scope:Scope,  sparse_indices:tf.Output,  sparse_values:tf.Output,  sparse_shape:tf.Output, ) -> ( sparse_handle:tf.Output, ) {
     if scope.error() != nil {
@@ -477,6 +510,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func AdjustContrast(scope:Scope,  images:tf.Output,  contrast_factor:tf.Output,  min_value:tf.Output,  max_value:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -520,6 +556,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func AdjustContrastv2(scope:Scope,  images:tf.Output,  contrast_factor:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -561,6 +600,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func AdjustHue(scope:Scope,  images:tf.Output,  delta:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -602,6 +644,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func AdjustSaturation(scope:Scope,  images:tf.Output,  scale:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -642,6 +687,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func All(scope:Scope,  input:tf.Output,  reduction_indices:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -685,6 +733,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func AllCandidateSampler(scope:Scope,  true_classes:tf.Output, ) -> ( sampled_candidates:tf.Output,  true_expected_count:tf.Output,  sampled_expected_count:tf.Output, ) {
     if scope.error() != nil {
@@ -725,6 +776,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Any(scope:Scope,  input:tf.Output,  reduction_indices:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -765,6 +819,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ApplyAdadelta(scope:Scope,  var:tf.Output,  accum:tf.Output,  accum_update:tf.Output,  lr:tf.Output,  rho:tf.Output,  epsilon:tf.Output,  grad:tf.Output, ) -> ( out:tf.Output, ) {
     if scope.error() != nil {
@@ -803,6 +860,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ApplyAdagrad(scope:Scope,  var:tf.Output,  accum:tf.Output,  lr:tf.Output,  grad:tf.Output, ) -> ( out:tf.Output, ) {
     if scope.error() != nil {
@@ -839,6 +899,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ApplyAdagradDA(scope:Scope,  var:tf.Output,  gradient_accumulator:tf.Output,  gradient_squared_accumulator:tf.Output,  grad:tf.Output,  lr:tf.Output,  l1:tf.Output,  l2:tf.Output,  global_step:tf.Output, ) -> ( out:tf.Output, ) {
     if scope.error() != nil {
@@ -879,6 +942,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ApplyAdam(scope:Scope,  var:tf.Output,  m:tf.Output,  v:tf.Output,  beta1_power:tf.Output,  beta2_power:tf.Output,  lr:tf.Output,  beta1:tf.Output,  beta2:tf.Output,  epsilon:tf.Output,  grad:tf.Output, ) -> ( out:tf.Output, ) {
     if scope.error() != nil {
@@ -929,6 +995,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ApplyCenteredRMSProp(scope:Scope,  var:tf.Output,  mg:tf.Output,  ms:tf.Output,  mom:tf.Output,  lr:tf.Output,  rho:tf.Output,  momentum:tf.Output,  epsilon:tf.Output,  grad:tf.Output, ) -> ( out:tf.Output, ) {
     if scope.error() != nil {
@@ -970,6 +1039,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ApplyFtrl(scope:Scope,  var:tf.Output,  accum:tf.Output,  linear:tf.Output,  grad:tf.Output,  lr:tf.Output,  l1:tf.Output,  l2:tf.Output,  lr_power:tf.Output, ) -> ( out:tf.Output, ) {
     if scope.error() != nil {
@@ -1006,6 +1078,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ApplyGradientDescent(scope:Scope,  var:tf.Output,  alpha:tf.Output,  delta:tf.Output, ) -> ( out:tf.Output, ) {
     if scope.error() != nil {
@@ -1045,6 +1120,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ApplyMomentum(scope:Scope,  var:tf.Output,  accum:tf.Output,  lr:tf.Output,  grad:tf.Output,  momentum:tf.Output, ) -> ( out:tf.Output, ) {
     if scope.error() != nil {
@@ -1084,6 +1162,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ApplyProximalAdagrad(scope:Scope,  var:tf.Output,  accum:tf.Output,  lr:tf.Output,  l1:tf.Output,  l2:tf.Output,  grad:tf.Output, ) -> ( out:tf.Output, ) {
     if scope.error() != nil {
@@ -1122,6 +1203,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ApplyProximalGradientDescent(scope:Scope,  var:tf.Output,  alpha:tf.Output,  l1:tf.Output,  l2:tf.Output,  delta:tf.Output, ) -> ( out:tf.Output, ) {
     if scope.error() != nil {
@@ -1166,6 +1250,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ApplyRMSProp(scope:Scope,  var:tf.Output,  ms:tf.Output,  mom:tf.Output,  lr:tf.Output,  rho:tf.Output,  momentum:tf.Output,  epsilon:tf.Output,  grad:tf.Output, ) -> ( out:tf.Output, ) {
     if scope.error() != nil {
@@ -1202,6 +1289,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ApproximateEqual(scope:Scope,  x:tf.Output,  y:tf.Output, ) -> ( z:tf.Output, ) {
     if scope.error() != nil {
@@ -1239,6 +1329,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ArgMax(scope:Scope,  input:tf.Output,  dimension:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -1276,6 +1369,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ArgMin(scope:Scope,  input:tf.Output,  dimension:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -1313,6 +1409,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func AsString(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -1349,6 +1448,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Asin(scope:Scope,  x:tf.Output, ) -> ( y:tf.Output, ) {
     if scope.error() != nil {
@@ -1386,6 +1488,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Assert(scope:Scope,  condition:tf.Output,  data:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -1424,6 +1529,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Assign(scope:Scope,  ref:tf.Output,  value:tf.Output, ) -> ( output_ref:tf.Output, ) {
     if scope.error() != nil {
@@ -1462,6 +1570,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func AssignAdd(scope:Scope,  ref:tf.Output,  value:tf.Output, ) -> ( output_ref:tf.Output, ) {
     if scope.error() != nil {
@@ -1500,6 +1611,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func AssignSub(scope:Scope,  ref:tf.Output,  value:tf.Output, ) -> ( output_ref:tf.Output, ) {
     if scope.error() != nil {
@@ -1536,6 +1650,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Atan(scope:Scope,  x:tf.Output, ) -> ( y:tf.Output, ) {
     if scope.error() != nil {
@@ -1577,6 +1694,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Atan2(scope:Scope,  y:tf.Output,  x:tf.Output, ) -> ( z:tf.Output, ) {
     if scope.error() != nil {
@@ -1634,6 +1754,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func AudioSpectrogram(scope:Scope,  input:tf.Output, ) -> ( spectrogram:tf.Output, ) {
     if scope.error() != nil {
@@ -1679,6 +1802,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func AudioSummary(scope:Scope,  tag:tf.Output,  tensor:tf.Output, ) -> ( summary:tf.Output, ) {
     if scope.error() != nil {
@@ -1724,6 +1850,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func AudioSummaryV2(scope:Scope,  tag:tf.Output,  tensor:tf.Output,  sample_rate:tf.Output, ) -> ( summary:tf.Output, ) {
     if scope.error() != nil {
@@ -1762,6 +1891,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func AvgPool(scope:Scope,  value:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -1798,6 +1930,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func AvgPool3D(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -1834,6 +1969,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func AvgPool3DGrad(scope:Scope,  orig_input_shape:tf.Output,  grad:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -1870,6 +2008,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func AvgPoolGrad(scope:Scope,  orig_input_shape:tf.Output,  grad:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -1912,6 +2053,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Barrier(scope:Scope, ) -> ( handle:tf.Output, ) {
     if scope.error() != nil {
@@ -1953,6 +2097,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func BarrierClose(scope:Scope,  handle:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -1989,6 +2136,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func BarrierIncompleteSize(scope:Scope,  handle:tf.Output, ) -> ( size:tf.Output, ) {
     if scope.error() != nil {
@@ -2028,6 +2178,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func BarrierInsertMany(scope:Scope,  handle:tf.Output,  keys:tf.Output,  values:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -2064,6 +2217,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func BarrierReadySize(scope:Scope,  handle:tf.Output, ) -> ( size:tf.Output, ) {
     if scope.error() != nil {
@@ -2106,6 +2262,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func BarrierTakeMany(scope:Scope,  handle:tf.Output,  num_elements:tf.Output, ) -> ( indices:tf.Output,  keys:tf.Output,  values:tf.Output, ) {
     if scope.error() != nil {
@@ -2141,6 +2300,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func BatchCholesky(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -2176,6 +2338,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func BatchCholeskyGrad(scope:Scope,  l:tf.Output,  grad:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -2212,6 +2377,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func BatchDataset(scope:Scope,  input_dataset:tf.Output,  batch_size:tf.Output, ) -> ( handle:tf.Output, ) {
     if scope.error() != nil {
@@ -2247,6 +2415,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func BatchFFT(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -2282,6 +2453,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func BatchFFT2D(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -2317,6 +2491,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func BatchFFT3D(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -2352,6 +2529,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func BatchIFFT(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -2387,6 +2567,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func BatchIFFT2D(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -2422,6 +2605,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func BatchIFFT3D(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -2471,6 +2657,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func BatchMatMul(scope:Scope,  x:tf.Output,  y:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -2506,6 +2695,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func BatchMatrixBandPart(scope:Scope,  input:tf.Output,  num_lower:tf.Output,  num_upper:tf.Output, ) -> ( band:tf.Output, ) {
     if scope.error() != nil {
@@ -2541,6 +2733,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func BatchMatrixDeterminant(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -2576,6 +2771,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func BatchMatrixDiag(scope:Scope,  diagonal:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -2611,6 +2809,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func BatchMatrixDiagPart(scope:Scope,  input:tf.Output, ) -> ( diagonal:tf.Output, ) {
     if scope.error() != nil {
@@ -2646,6 +2847,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func BatchMatrixInverse(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -2681,6 +2885,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func BatchMatrixSetDiag(scope:Scope,  input:tf.Output,  diagonal:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -2716,6 +2923,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func BatchMatrixSolve(scope:Scope,  matrix:tf.Output,  rhs:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -2751,6 +2961,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func BatchMatrixSolveLs(scope:Scope,  matrix:tf.Output,  rhs:tf.Output,  l2_regularizer:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -2786,6 +2999,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func BatchMatrixTriangularSolve(scope:Scope,  matrix:tf.Output,  rhs:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -2823,6 +3039,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func BatchNormWithGlobalNormalization(scope:Scope,  t:tf.Output,  m:tf.Output,  v:tf.Output,  beta:tf.Output,  gamma:tf.Output, ) -> ( result:tf.Output, ) {
     if scope.error() != nil {
@@ -2860,6 +3079,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func BatchNormWithGlobalNormalizationGrad(scope:Scope,  t:tf.Output,  m:tf.Output,  v:tf.Output,  gamma:tf.Output,  backprop:tf.Output, ) -> ( dx:tf.Output,  dm:tf.Output,  dv:tf.Output,  db:tf.Output,  dg:tf.Output, ) {
     if scope.error() != nil {
@@ -2895,6 +3117,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func BatchSelfAdjointEig(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -2930,6 +3155,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func BatchSelfAdjointEigV2(scope:Scope,  input:tf.Output, ) -> ( e:tf.Output,  v:tf.Output, ) {
     if scope.error() != nil {
@@ -2965,6 +3193,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func BatchSvd(scope:Scope,  input:tf.Output, ) -> ( s:tf.Output,  u:tf.Output,  v:tf.Output, ) {
     if scope.error() != nil {
@@ -3007,6 +3238,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func BatchToSpace(scope:Scope,  input:tf.Output,  crops:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -3049,6 +3283,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func BatchToSpaceND(scope:Scope,  input:tf.Output,  block_shape:tf.Output,  crops:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -3091,6 +3328,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Betainc(scope:Scope,  a:tf.Output,  b:tf.Output,  x:tf.Output, ) -> ( z:tf.Output, ) {
     if scope.error() != nil {
@@ -3129,6 +3369,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func BiasAdd(scope:Scope,  value:tf.Output,  bias:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -3168,6 +3411,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func BiasAddGrad(scope:Scope,  out_backprop:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -3207,6 +3453,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func BiasAddV1(scope:Scope,  value:tf.Output,  bias:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -3249,6 +3498,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Bincount(scope:Scope,  arr:tf.Output,  size:tf.Output,  weights:tf.Output, ) -> ( bins:tf.Output, ) {
     if scope.error() != nil {
@@ -3294,6 +3546,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Bitcast(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -3332,6 +3587,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func BroadcastArgs(scope:Scope,  s0:tf.Output,  s1:tf.Output, ) -> ( r0:tf.Output, ) {
     if scope.error() != nil {
@@ -3369,6 +3627,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func BroadcastGradientArgs(scope:Scope,  s0:tf.Output,  s1:tf.Output, ) -> ( r0:tf.Output,  r1:tf.Output, ) {
     if scope.error() != nil {
@@ -3414,6 +3675,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Bucketize(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -3455,6 +3719,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func CTCBeamSearchDecoder(scope:Scope,  inputs:tf.Output,  sequence_length:tf.Output, ) -> ( decoded_indices:tf.Output,  decoded_values:tf.Output,  decoded_shape:tf.Output,  log_probability:tf.Output, ) {
     if scope.error() != nil {
@@ -3499,6 +3766,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func CTCGreedyDecoder(scope:Scope,  inputs:tf.Output,  sequence_length:tf.Output, ) -> ( decoded_indices:tf.Output,  decoded_values:tf.Output,  decoded_shape:tf.Output,  log_probability:tf.Output, ) {
     if scope.error() != nil {
@@ -3537,6 +3807,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func CTCLoss(scope:Scope,  inputs:tf.Output,  labels_indices:tf.Output,  labels_values:tf.Output,  sequence_length:tf.Output, ) -> ( loss:tf.Output,  gradient:tf.Output, ) {
     if scope.error() != nil {
@@ -3573,6 +3846,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Cast(scope:Scope,  x:tf.Output, ) -> ( y:tf.Output, ) {
     if scope.error() != nil {
@@ -3609,6 +3885,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Ceil(scope:Scope,  x:tf.Output, ) -> ( y:tf.Output, ) {
     if scope.error() != nil {
@@ -3647,6 +3926,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func CheckNumerics(scope:Scope,  tensor:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -3687,6 +3969,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Cholesky(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -3725,6 +4010,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func CholeskyGrad(scope:Scope,  l:tf.Output,  grad:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -3772,6 +4060,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Complex(scope:Scope,  real:tf.Output,  imag:tf.Output, ) -> ( out:tf.Output, ) {
     if scope.error() != nil {
@@ -3812,6 +4103,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ComplexAbs(scope:Scope,  x:tf.Output, ) -> ( y:tf.Output, ) {
     if scope.error() != nil {
@@ -3852,6 +4146,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ComputeAccidentalHits(scope:Scope,  true_classes:tf.Output,  sampled_candidates:tf.Output, ) -> ( indices:tf.Output,  ids:tf.Output,  weights:tf.Output, ) {
     if scope.error() != nil {
@@ -3888,6 +4185,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Concat(scope:Scope,  concat_dim:tf.Output,  values:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -3932,6 +4232,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ConcatOffset(scope:Scope,  concat_dim:tf.Output,  shape:tf.Output, ) -> ( offset:tf.Output, ) {
     if scope.error() != nil {
@@ -3968,6 +4271,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ConcatV2(scope:Scope,  values:tf.Output,  axis:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -4009,6 +4315,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ConditionalAccumulator(scope:Scope, ) -> ( handle:tf.Output, ) {
     if scope.error() != nil {
@@ -4055,6 +4364,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Conj(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -4090,6 +4402,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Const(scope:Scope, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -4125,6 +4440,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ControlTrigger(scope:Scope, ) -> () {
     if scope.error() != nil {
@@ -4178,6 +4496,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Conv2D(scope:Scope,  input:tf.Output,  filter:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -4214,6 +4535,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Conv2DBackpropFilter(scope:Scope,  input:tf.Output,  filter_sizes:tf.Output,  out_backprop:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -4250,6 +4574,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Conv2DBackpropInput(scope:Scope,  input_sizes:tf.Output,  filter:tf.Output,  out_backprop:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -4290,6 +4617,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Conv3D(scope:Scope,  input:tf.Output,  filter:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -4326,6 +4656,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Conv3DBackpropFilter(scope:Scope,  input:tf.Output,  filter:tf.Output,  out_backprop:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -4362,6 +4695,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Conv3DBackpropFilterV2(scope:Scope,  input:tf.Output,  filter_sizes:tf.Output,  out_backprop:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -4398,6 +4734,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Conv3DBackpropInput(scope:Scope,  input:tf.Output,  filter:tf.Output,  out_backprop:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -4434,6 +4773,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Conv3DBackpropInputV2(scope:Scope,  input_sizes:tf.Output,  filter:tf.Output,  out_backprop:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -4477,6 +4819,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Copy(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -4518,6 +4863,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func CopyHost(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -4554,6 +4902,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Cos(scope:Scope,  x:tf.Output, ) -> ( y:tf.Output, ) {
     if scope.error() != nil {
@@ -4590,6 +4941,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func CountUpTo(scope:Scope,  ref:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -4633,6 +4987,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func CropAndResize(scope:Scope,  image:tf.Output,  boxes:tf.Output,  box_ind:tf.Output,  crop_size:tf.Output, ) -> ( crops:tf.Output, ) {
     if scope.error() != nil {
@@ -4669,6 +5026,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func CropAndResizeGradBoxes(scope:Scope,  grads:tf.Output,  image:tf.Output,  boxes:tf.Output,  box_ind:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -4705,6 +5065,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func CropAndResizeGradImage(scope:Scope,  grads:tf.Output,  boxes:tf.Output,  box_ind:tf.Output,  image_size:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -4744,6 +5107,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Cross(scope:Scope,  a:tf.Output,  b:tf.Output, ) -> ( product:tf.Output, ) {
     if scope.error() != nil {
@@ -4800,6 +5166,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Cumprod(scope:Scope,  x:tf.Output,  axis:tf.Output, ) -> ( out:tf.Output, ) {
     if scope.error() != nil {
@@ -4856,6 +5225,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Cumsum(scope:Scope,  x:tf.Output,  axis:tf.Output, ) -> ( out:tf.Output, ) {
     if scope.error() != nil {
@@ -4893,6 +5265,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func DebugIdentity(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -4930,6 +5305,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func DebugNanCount(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -4967,6 +5345,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func DebugNumericSummary(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -5005,6 +5386,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func DecodeBase64(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -5047,6 +5431,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func DecodeBmp(scope:Scope,  contents:tf.Output, ) -> ( image:tf.Output, ) {
     if scope.error() != nil {
@@ -5086,6 +5473,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func DecodeCSV(scope:Scope,  records:tf.Output,  record_defaults:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -5127,6 +5517,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func DecodeGif(scope:Scope,  contents:tf.Output, ) -> ( image:tf.Output, ) {
     if scope.error() != nil {
@@ -5169,6 +5562,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func DecodeJSONExample(scope:Scope,  json_examples:tf.Output, ) -> ( binary_examples:tf.Output, ) {
     if scope.error() != nil {
@@ -5218,6 +5614,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func DecodeJpeg(scope:Scope,  contents:tf.Output, ) -> ( image:tf.Output, ) {
     if scope.error() != nil {
@@ -5265,6 +5664,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func DecodePng(scope:Scope,  contents:tf.Output, ) -> ( image:tf.Output, ) {
     if scope.error() != nil {
@@ -5301,6 +5703,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func DecodeRaw(scope:Scope,  bytes:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -5348,6 +5753,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func DecodeWav(scope:Scope,  contents:tf.Output, ) -> ( audio:tf.Output,  sample_rate:tf.Output, ) {
     if scope.error() != nil {
@@ -5383,6 +5791,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func DeleteSessionTensor(scope:Scope,  handle:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -5425,6 +5836,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func DenseToDenseSetOperation(scope:Scope,  set1:tf.Output,  set2:tf.Output, ) -> ( result_indices:tf.Output,  result_values:tf.Output,  result_shape:tf.Output, ) {
     if scope.error() != nil {
@@ -5461,6 +5875,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func DenseToSparseBatchDataset(scope:Scope,  input_dataset:tf.Output,  batch_size:tf.Output,  row_shape:tf.Output, ) -> ( handle:tf.Output, ) {
     if scope.error() != nil {
@@ -5509,6 +5926,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func DenseToSparseSetOperation(scope:Scope,  set1:tf.Output,  set2_indices:tf.Output,  set2_values:tf.Output,  set2_shape:tf.Output, ) -> ( result_indices:tf.Output,  result_values:tf.Output,  result_shape:tf.Output, ) {
     if scope.error() != nil {
@@ -5603,6 +6023,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func DepthToSpace(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -5653,6 +6076,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func DepthwiseConv2dNative(scope:Scope,  input:tf.Output,  filter:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -5689,6 +6115,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func DepthwiseConv2dNativeBackpropFilter(scope:Scope,  input:tf.Output,  filter_sizes:tf.Output,  out_backprop:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -5725,6 +6154,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func DepthwiseConv2dNativeBackpropInput(scope:Scope,  input_sizes:tf.Output,  filter:tf.Output,  out_backprop:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -5787,6 +6219,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Dequantize(scope:Scope,  input:tf.Output,  min_range:tf.Output,  max_range:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -5856,6 +6291,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func DeserializeManySparse(scope:Scope,  serialized_sparse:tf.Output, ) -> ( sparse_indices:tf.Output,  sparse_values:tf.Output,  sparse_shape:tf.Output, ) {
     if scope.error() != nil {
@@ -5898,6 +6336,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func DestroyTemporaryVariable(scope:Scope,  ref:tf.Output, ) -> ( value:tf.Output, ) {
     if scope.error() != nil {
@@ -5947,6 +6388,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Diag(scope:Scope,  diagonal:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -5996,6 +6440,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func DiagPart(scope:Scope,  input:tf.Output, ) -> ( diagonal:tf.Output, ) {
     if scope.error() != nil {
@@ -6033,6 +6480,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Digamma(scope:Scope,  x:tf.Output, ) -> ( y:tf.Output, ) {
     if scope.error() != nil {
@@ -6088,6 +6538,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Dilation2D(scope:Scope,  input:tf.Output,  filter:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -6124,6 +6577,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Dilation2DBackpropFilter(scope:Scope,  input:tf.Output,  filter:tf.Output,  out_backprop:tf.Output, ) -> ( filter_backprop:tf.Output, ) {
     if scope.error() != nil {
@@ -6160,6 +6616,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Dilation2DBackpropInput(scope:Scope,  input:tf.Output,  filter:tf.Output,  out_backprop:tf.Output, ) -> ( in_backprop:tf.Output, ) {
     if scope.error() != nil {
@@ -6198,6 +6657,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Div(scope:Scope,  x:tf.Output,  y:tf.Output, ) -> ( z:tf.Output, ) {
     if scope.error() != nil {
@@ -6243,6 +6705,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func DrawBoundingBoxes(scope:Scope,  images:tf.Output,  boxes:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -6308,6 +6773,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func DynamicPartition(scope:Scope,  data:tf.Output,  partitions:tf.Output, ) -> ( outputs:tf.Output, ) {
     if scope.error() != nil {
@@ -6393,6 +6861,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func DynamicStitch(scope:Scope,  indices:tf.Output,  data:tf.Output, ) -> ( merged:tf.Output, ) {
     if scope.error() != nil {
@@ -6434,6 +6905,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func EditDistance(scope:Scope,  hypothesis_indices:tf.Output,  hypothesis_values:tf.Output,  hypothesis_shape:tf.Output,  truth_indices:tf.Output,  truth_values:tf.Output,  truth_shape:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -6472,6 +6946,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Elu(scope:Scope,  features:tf.Output, ) -> ( activations:tf.Output, ) {
     if scope.error() != nil {
@@ -6508,6 +6985,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func EluGrad(scope:Scope,  gradients:tf.Output,  outputs:tf.Output, ) -> ( backprops:tf.Output, ) {
     if scope.error() != nil {
@@ -6549,6 +7029,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func EncodeBase64(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -6597,6 +7080,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func EncodeJpeg(scope:Scope,  image:tf.Output, ) -> ( contents:tf.Output, ) {
     if scope.error() != nil {
@@ -6642,6 +7128,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func EncodePng(scope:Scope,  image:tf.Output, ) -> ( contents:tf.Output, ) {
     if scope.error() != nil {
@@ -6684,6 +7173,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func EncodeWav(scope:Scope,  audio:tf.Output,  sample_rate:tf.Output, ) -> ( contents:tf.Output, ) {
     if scope.error() != nil {
@@ -6725,6 +7217,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Enter(scope:Scope,  data:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -6763,6 +7258,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Equal(scope:Scope,  x:tf.Output,  y:tf.Output, ) -> ( z:tf.Output, ) {
     if scope.error() != nil {
@@ -6799,6 +7297,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Erf(scope:Scope,  x:tf.Output, ) -> ( y:tf.Output, ) {
     if scope.error() != nil {
@@ -6835,6 +7336,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Erfc(scope:Scope,  x:tf.Output, ) -> ( y:tf.Output, ) {
     if scope.error() != nil {
@@ -6872,6 +7376,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Exit(scope:Scope,  data:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -6908,6 +7415,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Exp(scope:Scope,  x:tf.Output, ) -> ( y:tf.Output, ) {
     if scope.error() != nil {
@@ -6967,6 +7477,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ExpandDims(scope:Scope,  input:tf.Output,  dim:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -7004,6 +7517,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Expm1(scope:Scope,  x:tf.Output, ) -> ( y:tf.Output, ) {
     if scope.error() != nil {
@@ -7058,6 +7574,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ExtractGlimpse(scope:Scope,  input:tf.Output,  size:tf.Output,  offsets:tf.Output, ) -> ( glimpse:tf.Output, ) {
     if scope.error() != nil {
@@ -7094,6 +7613,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ExtractImagePatches(scope:Scope,  images:tf.Output, ) -> ( patches:tf.Output, ) {
     if scope.error() != nil {
@@ -7132,6 +7654,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func FFT(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -7170,6 +7695,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func FFT2D(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -7208,6 +7736,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func FFT3D(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -7243,6 +7774,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func FIFOQueue(scope:Scope, ) -> ( handle:tf.Output, ) {
     if scope.error() != nil {
@@ -7278,6 +7812,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func FIFOQueueV2(scope:Scope, ) -> ( handle:tf.Output, ) {
     if scope.error() != nil {
@@ -7313,6 +7850,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Fact(scope:Scope, ) -> ( fact:tf.Output, ) {
     if scope.error() != nil {
@@ -7354,6 +7894,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func FakeQuantWithMinMaxArgs(scope:Scope,  inputs:tf.Output, ) -> ( outputs:tf.Output, ) {
     if scope.error() != nil {
@@ -7390,6 +7933,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func FakeQuantWithMinMaxArgsGradient(scope:Scope,  gradients:tf.Output,  inputs:tf.Output, ) -> ( backprops:tf.Output, ) {
     if scope.error() != nil {
@@ -7432,6 +7978,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func FakeQuantWithMinMaxVars(scope:Scope,  inputs:tf.Output,  min:tf.Output,  max:tf.Output, ) -> ( outputs:tf.Output, ) {
     if scope.error() != nil {
@@ -7468,6 +8017,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func FakeQuantWithMinMaxVarsGradient(scope:Scope,  gradients:tf.Output,  inputs:tf.Output,  min:tf.Output,  max:tf.Output, ) -> ( backprops_wrt_input:tf.Output,  backprop_wrt_min:tf.Output,  backprop_wrt_max:tf.Output, ) {
     if scope.error() != nil {
@@ -7511,6 +8063,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func FakeQuantWithMinMaxVarsPerChannel(scope:Scope,  inputs:tf.Output,  min:tf.Output,  max:tf.Output, ) -> ( outputs:tf.Output, ) {
     if scope.error() != nil {
@@ -7547,6 +8102,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func FakeQuantWithMinMaxVarsPerChannelGradient(scope:Scope,  gradients:tf.Output,  inputs:tf.Output,  min:tf.Output,  max:tf.Output, ) -> ( backprops_wrt_input:tf.Output,  backprop_wrt_min:tf.Output,  backprop_wrt_max:tf.Output, ) {
     if scope.error() != nil {
@@ -7583,6 +8141,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func FakeQueue(scope:Scope,  resource:tf.Output, ) -> ( handle:tf.Output, ) {
     if scope.error() != nil {
@@ -7626,6 +8187,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Fill(scope:Scope,  dims:tf.Output,  value:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -7666,6 +8230,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func FilterDataset(scope:Scope,  input_dataset:tf.Output,  other_arguments:tf.Output, ) -> ( handle:tf.Output, ) {
     if scope.error() != nil {
@@ -7702,6 +8269,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func FixedLengthRecordDataset(scope:Scope,  filenames:tf.Output,  header_bytes:tf.Output,  record_bytes:tf.Output,  footer_bytes:tf.Output, ) -> ( handle:tf.Output, ) {
     if scope.error() != nil {
@@ -7737,6 +8307,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func FixedLengthRecordReader(scope:Scope, ) -> ( reader_handle:tf.Output, ) {
     if scope.error() != nil {
@@ -7772,6 +8345,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func FixedLengthRecordReaderV2(scope:Scope, ) -> ( reader_handle:tf.Output, ) {
     if scope.error() != nil {
@@ -7819,6 +8395,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func FixedUnigramCandidateSampler(scope:Scope,  true_classes:tf.Output, ) -> ( sampled_candidates:tf.Output,  true_expected_count:tf.Output,  sampled_expected_count:tf.Output, ) {
     if scope.error() != nil {
@@ -7858,6 +8437,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func FlatMapDataset(scope:Scope,  input_dataset:tf.Output,  other_arguments:tf.Output, ) -> ( handle:tf.Output, ) {
     if scope.error() != nil {
@@ -7894,6 +8476,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Floor(scope:Scope,  x:tf.Output, ) -> ( y:tf.Output, ) {
     if scope.error() != nil {
@@ -7932,6 +8517,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func FloorDiv(scope:Scope,  x:tf.Output,  y:tf.Output, ) -> ( z:tf.Output, ) {
     if scope.error() != nil {
@@ -7972,6 +8560,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func FloorMod(scope:Scope,  x:tf.Output,  y:tf.Output, ) -> ( z:tf.Output, ) {
     if scope.error() != nil {
@@ -8012,6 +8603,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func FractionalAvgPool(scope:Scope,  value:tf.Output, ) -> ( output:tf.Output,  row_pooling_sequence:tf.Output,  col_pooling_sequence:tf.Output, ) {
     if scope.error() != nil {
@@ -8053,6 +8647,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func FractionalAvgPoolGrad(scope:Scope,  orig_input_tensor_shape:tf.Output,  out_backprop:tf.Output,  row_pooling_sequence:tf.Output,  col_pooling_sequence:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -8111,6 +8708,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func FractionalMaxPool(scope:Scope,  value:tf.Output, ) -> ( output:tf.Output,  row_pooling_sequence:tf.Output,  col_pooling_sequence:tf.Output, ) {
     if scope.error() != nil {
@@ -8147,6 +8747,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func FractionalMaxPoolGrad(scope:Scope,  orig_input:tf.Output,  orig_output:tf.Output,  out_backprop:tf.Output,  row_pooling_sequence:tf.Output,  col_pooling_sequence:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -8185,6 +8788,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func FusedBatchNorm(scope:Scope,  x:tf.Output,  scale:tf.Output,  offset:tf.Output,  mean:tf.Output,  variance:tf.Output, ) -> ( y:tf.Output,  batch_mean:tf.Output,  batch_variance:tf.Output,  reserve_space_1:tf.Output,  reserve_space_2:tf.Output, ) {
     if scope.error() != nil {
@@ -8223,6 +8829,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func FusedBatchNormGrad(scope:Scope,  y_backprop:tf.Output,  x:tf.Output,  scale:tf.Output,  reserve_space_1:tf.Output,  reserve_space_2:tf.Output, ) -> ( x_backprop:tf.Output,  scale_backprop:tf.Output,  offset_backprop:tf.Output,  reserve_space_3:tf.Output,  reserve_space_4:tf.Output, ) {
     if scope.error() != nil {
@@ -8270,6 +8879,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func FusedPadConv2D(scope:Scope,  input:tf.Output,  paddings:tf.Output,  filter:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -8316,6 +8928,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func FusedResizeAndPadConv2D(scope:Scope,  input:tf.Output,  size:tf.Output,  paddings:tf.Output,  filter:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -8371,6 +8986,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Gather(scope:Scope,  params:tf.Output,  indices:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -8472,6 +9090,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func GatherNd(scope:Scope,  params:tf.Output,  indices:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -8508,6 +9129,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func GetSessionHandle(scope:Scope,  value:tf.Output, ) -> ( handle:tf.Output, ) {
     if scope.error() != nil {
@@ -8544,6 +9168,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func GetSessionHandleV2(scope:Scope,  value:tf.Output, ) -> ( handle:tf.Output, ) {
     if scope.error() != nil {
@@ -8580,6 +9207,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func GetSessionTensor(scope:Scope,  handle:tf.Output, ) -> ( value:tf.Output, ) {
     if scope.error() != nil {
@@ -8618,6 +9248,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Greater(scope:Scope,  x:tf.Output,  y:tf.Output, ) -> ( z:tf.Output, ) {
     if scope.error() != nil {
@@ -8656,6 +9289,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func GreaterEqual(scope:Scope,  x:tf.Output,  y:tf.Output, ) -> ( z:tf.Output, ) {
     if scope.error() != nil {
@@ -8693,6 +9329,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func GroupByWindowDataset(scope:Scope,  input_dataset:tf.Output,  key_func_other_arguments:tf.Output,  reduce_func_other_arguments:tf.Output,  window_size:tf.Output, ) -> ( handle:tf.Output, ) {
     if scope.error() != nil {
@@ -8733,6 +9372,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func HSVToRGB(scope:Scope,  images:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -8771,6 +9413,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func HashTable(scope:Scope, ) -> ( table_handle:tf.Output, ) {
     if scope.error() != nil {
@@ -8809,6 +9454,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func HashTableV2(scope:Scope, ) -> ( table_handle:tf.Output, ) {
     if scope.error() != nil {
@@ -8849,6 +9497,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func HistogramSummary(scope:Scope,  tag:tf.Output,  values:tf.Output, ) -> ( summary:tf.Output, ) {
     if scope.error() != nil {
@@ -8887,6 +9538,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func IFFT(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -8925,6 +9579,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func IFFT2D(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -8963,6 +9620,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func IFFT3D(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -9007,6 +9667,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func IRFFT(scope:Scope,  input:tf.Output,  fft_length:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -9051,6 +9714,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func IRFFT2D(scope:Scope,  input:tf.Output,  fft_length:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -9095,6 +9761,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func IRFFT3D(scope:Scope,  input:tf.Output,  fft_length:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -9131,6 +9800,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Identity(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -9168,6 +9840,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func IdentityReader(scope:Scope, ) -> ( reader_handle:tf.Output, ) {
     if scope.error() != nil {
@@ -9205,6 +9880,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func IdentityReaderV2(scope:Scope, ) -> ( reader_handle:tf.Output, ) {
     if scope.error() != nil {
@@ -9248,6 +9926,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Igamma(scope:Scope,  a:tf.Output,  x:tf.Output, ) -> ( z:tf.Output, ) {
     if scope.error() != nil {
@@ -9291,6 +9972,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Igammac(scope:Scope,  a:tf.Output,  x:tf.Output, ) -> ( z:tf.Output, ) {
     if scope.error() != nil {
@@ -9336,6 +10020,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Imag(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -9398,6 +10085,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ImageSummary(scope:Scope,  tag:tf.Output,  tensor:tf.Output, ) -> ( summary:tf.Output, ) {
     if scope.error() != nil {
@@ -9434,6 +10124,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ImmutableConst(scope:Scope, ) -> ( tensor:tf.Output, ) {
     if scope.error() != nil {
@@ -9481,6 +10174,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func InTopK(scope:Scope,  predictions:tf.Output,  targets:tf.Output, ) -> ( precision:tf.Output, ) {
     if scope.error() != nil {
@@ -9516,6 +10212,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func InitializeTable(scope:Scope,  table_handle:tf.Output,  keys:tf.Output,  values:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -9560,6 +10259,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func InitializeTableFromTextFile(scope:Scope,  table_handle:tf.Output,  filename:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -9604,6 +10306,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func InitializeTableFromTextFileV2(scope:Scope,  table_handle:tf.Output,  filename:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -9639,6 +10344,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func InitializeTableV2(scope:Scope,  table_handle:tf.Output,  keys:tf.Output,  values:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -9676,6 +10384,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Inv(scope:Scope,  x:tf.Output, ) -> ( y:tf.Output, ) {
     if scope.error() != nil {
@@ -9714,6 +10425,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func InvGrad(scope:Scope,  x:tf.Output,  y:tf.Output, ) -> ( z:tf.Output, ) {
     if scope.error() != nil {
@@ -9761,6 +10475,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func InvertPermutation(scope:Scope,  x:tf.Output, ) -> ( y:tf.Output, ) {
     if scope.error() != nil {
@@ -9800,6 +10517,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func IsFinite(scope:Scope,  x:tf.Output, ) -> ( y:tf.Output, ) {
     if scope.error() != nil {
@@ -9839,6 +10559,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func IsInf(scope:Scope,  x:tf.Output, ) -> ( y:tf.Output, ) {
     if scope.error() != nil {
@@ -9878,6 +10601,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func IsNan(scope:Scope,  x:tf.Output, ) -> ( y:tf.Output, ) {
     if scope.error() != nil {
@@ -9915,6 +10641,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func IsVariableInitialized(scope:Scope,  ref:tf.Output, ) -> ( is_initialized:tf.Output, ) {
     if scope.error() != nil {
@@ -9950,6 +10679,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Iterator(scope:Scope, ) -> ( handle:tf.Output, ) {
     if scope.error() != nil {
@@ -9985,6 +10717,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func IteratorDispose(scope:Scope,  iterator:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -10021,6 +10756,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func IteratorGetNext(scope:Scope,  iterator:tf.Output, ) -> ( components:tf.Output, ) {
     if scope.error() != nil {
@@ -10059,6 +10797,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func L2Loss(scope:Scope,  t:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -10104,6 +10845,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func LRN(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -10140,6 +10884,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func LRNGrad(scope:Scope,  input_grads:tf.Output,  input_image:tf.Output,  output_image:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -10183,6 +10930,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func LearnedUnigramCandidateSampler(scope:Scope,  true_classes:tf.Output, ) -> ( sampled_candidates:tf.Output,  true_expected_count:tf.Output,  sampled_expected_count:tf.Output, ) {
     if scope.error() != nil {
@@ -10221,6 +10971,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Less(scope:Scope,  x:tf.Output,  y:tf.Output, ) -> ( z:tf.Output, ) {
     if scope.error() != nil {
@@ -10259,6 +11012,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func LessEqual(scope:Scope,  x:tf.Output,  y:tf.Output, ) -> ( z:tf.Output, ) {
     if scope.error() != nil {
@@ -10295,6 +11051,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Lgamma(scope:Scope,  x:tf.Output, ) -> ( y:tf.Output, ) {
     if scope.error() != nil {
@@ -10338,6 +11097,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func LinSpace(scope:Scope,  start:tf.Output,  stop:tf.Output,  num:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -10390,6 +11152,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ListDiff(scope:Scope,  x:tf.Output,  y:tf.Output, ) -> ( out:tf.Output,  idx:tf.Output, ) {
     if scope.error() != nil {
@@ -10427,6 +11192,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Log(scope:Scope,  x:tf.Output, ) -> ( y:tf.Output, ) {
     if scope.error() != nil {
@@ -10464,6 +11232,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Log1p(scope:Scope,  x:tf.Output, ) -> ( y:tf.Output, ) {
     if scope.error() != nil {
@@ -10502,6 +11273,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func LogSoftmax(scope:Scope,  logits:tf.Output, ) -> ( logsoftmax:tf.Output, ) {
     if scope.error() != nil {
@@ -10545,6 +11319,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func LogUniformCandidateSampler(scope:Scope,  true_classes:tf.Output, ) -> ( sampled_candidates:tf.Output,  true_expected_count:tf.Output,  sampled_expected_count:tf.Output, ) {
     if scope.error() != nil {
@@ -10583,6 +11360,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func LogicalAnd(scope:Scope,  x:tf.Output,  y:tf.Output, ) -> ( z:tf.Output, ) {
     if scope.error() != nil {
@@ -10619,6 +11399,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func LogicalNot(scope:Scope,  x:tf.Output, ) -> ( y:tf.Output, ) {
     if scope.error() != nil {
@@ -10657,6 +11440,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func LogicalOr(scope:Scope,  x:tf.Output,  y:tf.Output, ) -> ( z:tf.Output, ) {
     if scope.error() != nil {
@@ -10693,6 +11479,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func LookupTableExport(scope:Scope,  table_handle:tf.Output, ) -> ( keys:tf.Output,  values:tf.Output, ) {
     if scope.error() != nil {
@@ -10729,6 +11518,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func LookupTableExportV2(scope:Scope,  table_handle:tf.Output, ) -> ( keys:tf.Output,  values:tf.Output, ) {
     if scope.error() != nil {
@@ -10769,6 +11561,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func LookupTableFind(scope:Scope,  table_handle:tf.Output,  keys:tf.Output,  default_value:tf.Output, ) -> ( values:tf.Output, ) {
     if scope.error() != nil {
@@ -10809,6 +11604,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func LookupTableFindV2(scope:Scope,  table_handle:tf.Output,  keys:tf.Output,  default_value:tf.Output, ) -> ( values:tf.Output, ) {
     if scope.error() != nil {
@@ -10846,6 +11644,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func LookupTableImport(scope:Scope,  table_handle:tf.Output,  keys:tf.Output,  values:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -10883,6 +11684,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func LookupTableImportV2(scope:Scope,  table_handle:tf.Output,  keys:tf.Output,  values:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -10920,6 +11724,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func LookupTableInsert(scope:Scope,  table_handle:tf.Output,  keys:tf.Output,  values:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -10957,6 +11764,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func LookupTableInsertV2(scope:Scope,  table_handle:tf.Output,  keys:tf.Output,  values:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -10993,6 +11803,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func LookupTableSize(scope:Scope,  table_handle:tf.Output, ) -> ( size:tf.Output, ) {
     if scope.error() != nil {
@@ -11029,6 +11842,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func LookupTableSizeV2(scope:Scope,  table_handle:tf.Output, ) -> ( size:tf.Output, ) {
     if scope.error() != nil {
@@ -11067,6 +11883,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func LoopCond(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -11104,6 +11923,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func MakeIterator(scope:Scope,  dataset:tf.Output,  iterator:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -11140,6 +11962,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func MapDataset(scope:Scope,  input_dataset:tf.Output,  other_arguments:tf.Output, ) -> ( handle:tf.Output, ) {
     if scope.error() != nil {
@@ -11182,6 +12007,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func MatMul(scope:Scope,  a:tf.Output,  b:tf.Output, ) -> ( product:tf.Output, ) {
     if scope.error() != nil {
@@ -11220,6 +12048,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func MatchingFiles(scope:Scope,  pattern:tf.Output, ) -> ( filenames:tf.Output, ) {
     if scope.error() != nil {
@@ -11285,6 +12116,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func MatrixBandPart(scope:Scope,  input:tf.Output,  num_lower:tf.Output,  num_upper:tf.Output, ) -> ( band:tf.Output, ) {
     if scope.error() != nil {
@@ -11324,6 +12158,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func MatrixDeterminant(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -11379,6 +12216,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func MatrixDiag(scope:Scope,  diagonal:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -11435,6 +12275,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func MatrixDiagPart(scope:Scope,  input:tf.Output, ) -> ( diagonal:tf.Output, ) {
     if scope.error() != nil {
@@ -11479,6 +12322,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func MatrixInverse(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -11524,6 +12370,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func MatrixSetDiag(scope:Scope,  input:tf.Output,  diagonal:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -11566,6 +12415,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func MatrixSolve(scope:Scope,  matrix:tf.Output,  rhs:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -11629,6 +12481,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func MatrixSolveLs(scope:Scope,  matrix:tf.Output,  rhs:tf.Output,  l2_regularizer:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -11678,6 +12533,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func MatrixTriangularSolve(scope:Scope,  matrix:tf.Output,  rhs:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -11718,6 +12576,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Max(scope:Scope,  input:tf.Output,  reduction_indices:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -11754,6 +12615,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func MaxPool(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -11790,6 +12654,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func MaxPool3D(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -11826,6 +12693,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func MaxPool3DGrad(scope:Scope,  orig_input:tf.Output,  orig_output:tf.Output,  grad:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -11862,6 +12732,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func MaxPool3DGradGrad(scope:Scope,  orig_input:tf.Output,  orig_output:tf.Output,  grad:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -11898,6 +12771,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func MaxPoolGrad(scope:Scope,  orig_input:tf.Output,  orig_output:tf.Output,  grad:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -11934,6 +12810,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func MaxPoolGradGrad(scope:Scope,  orig_input:tf.Output,  orig_output:tf.Output,  grad:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -11970,6 +12849,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func MaxPoolGradGradWithArgmax(scope:Scope,  input:tf.Output,  grad:tf.Output,  argmax:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -12006,6 +12888,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func MaxPoolGradWithArgmax(scope:Scope,  input:tf.Output,  grad:tf.Output,  argmax:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -12045,6 +12930,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func MaxPoolWithArgmax(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output,  argmax:tf.Output, ) {
     if scope.error() != nil {
@@ -12083,6 +12971,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Maximum(scope:Scope,  x:tf.Output,  y:tf.Output, ) -> ( z:tf.Output, ) {
     if scope.error() != nil {
@@ -12123,6 +13014,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Mean(scope:Scope,  input:tf.Output,  reduction_indices:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -12163,6 +13057,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Merge(scope:Scope,  inputs:tf.Output, ) -> ( output:tf.Output,  value_index:tf.Output, ) {
     if scope.error() != nil {
@@ -12205,6 +13102,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func MergeSummary(scope:Scope,  inputs:tf.Output, ) -> ( summary:tf.Output, ) {
     if scope.error() != nil {
@@ -12246,6 +13146,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func MergeV2Checkpoints(scope:Scope,  checkpoint_prefixes:tf.Output,  destination_prefix:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -12288,6 +13191,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Mfcc(scope:Scope,  spectrogram:tf.Output,  sample_rate:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -12328,6 +13234,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Min(scope:Scope,  input:tf.Output,  reduction_indices:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -12366,6 +13275,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Minimum(scope:Scope,  x:tf.Output,  y:tf.Output, ) -> ( z:tf.Output, ) {
     if scope.error() != nil {
@@ -12423,6 +13335,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func MirrorPad(scope:Scope,  input:tf.Output,  paddings:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -12473,6 +13388,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func MirrorPadGrad(scope:Scope,  input:tf.Output,  paddings:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -12513,6 +13431,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Mod(scope:Scope,  x:tf.Output,  y:tf.Output, ) -> ( z:tf.Output, ) {
     if scope.error() != nil {
@@ -12551,6 +13472,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Mul(scope:Scope,  x:tf.Output,  y:tf.Output, ) -> ( z:tf.Output, ) {
     if scope.error() != nil {
@@ -12587,6 +13511,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Multinomial(scope:Scope,  logits:tf.Output,  num_samples:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -12628,6 +13555,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func MutableDenseHashTable(scope:Scope,  empty_key:tf.Output, ) -> ( table_handle:tf.Output, ) {
     if scope.error() != nil {
@@ -12669,6 +13599,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func MutableDenseHashTableV2(scope:Scope,  empty_key:tf.Output, ) -> ( table_handle:tf.Output, ) {
     if scope.error() != nil {
@@ -12707,6 +13640,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func MutableHashTable(scope:Scope, ) -> ( table_handle:tf.Output, ) {
     if scope.error() != nil {
@@ -12745,6 +13681,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func MutableHashTableOfTensors(scope:Scope, ) -> ( table_handle:tf.Output, ) {
     if scope.error() != nil {
@@ -12783,6 +13722,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func MutableHashTableOfTensorsV2(scope:Scope, ) -> ( table_handle:tf.Output, ) {
     if scope.error() != nil {
@@ -12821,6 +13763,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func MutableHashTableV2(scope:Scope, ) -> ( table_handle:tf.Output, ) {
     if scope.error() != nil {
@@ -12858,6 +13803,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Neg(scope:Scope,  x:tf.Output, ) -> ( y:tf.Output, ) {
     if scope.error() != nil {
@@ -12893,6 +13841,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func NegTrain(scope:Scope,  w_in:tf.Output,  w_out:tf.Output,  examples:tf.Output,  labels:tf.Output,  lr:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -12929,6 +13880,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func NextIteration(scope:Scope,  data:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -12963,6 +13917,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func NoOp(scope:Scope, ) -> () {
     if scope.error() != nil {
@@ -13015,6 +13972,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func NonMaxSuppression(scope:Scope,  boxes:tf.Output,  scores:tf.Output,  max_output_size:tf.Output, ) -> ( selected_indices:tf.Output, ) {
     if scope.error() != nil {
@@ -13067,6 +14027,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func NonMaxSuppressionV2(scope:Scope,  boxes:tf.Output,  scores:tf.Output,  max_output_size:tf.Output,  iou_threshold:tf.Output, ) -> ( selected_indices:tf.Output, ) {
     if scope.error() != nil {
@@ -13105,6 +14068,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func NotEqual(scope:Scope,  x:tf.Output,  y:tf.Output, ) -> ( z:tf.Output, ) {
     if scope.error() != nil {
@@ -13212,6 +14178,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func OneHot(scope:Scope,  indices:tf.Output,  depth:tf.Output,  on_value:tf.Output,  off_value:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -13261,6 +14230,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func OneShotIterator(scope:Scope, ) -> ( handle:tf.Output, ) {
     if scope.error() != nil {
@@ -13297,6 +14269,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func OnesLike(scope:Scope,  x:tf.Output, ) -> ( y:tf.Output, ) {
     if scope.error() != nil {
@@ -13348,6 +14323,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Pack(scope:Scope,  values:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -13402,6 +14380,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Pad(scope:Scope,  input:tf.Output,  paddings:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -13438,6 +14419,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func PaddedBatchDataset(scope:Scope,  input_dataset:tf.Output,  batch_size:tf.Output,  padded_shapes:tf.Output,  padding_values:tf.Output, ) -> ( handle:tf.Output, ) {
     if scope.error() != nil {
@@ -13476,6 +14460,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func PaddingFIFOQueue(scope:Scope, ) -> ( handle:tf.Output, ) {
     if scope.error() != nil {
@@ -13514,6 +14501,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func PaddingFIFOQueueV2(scope:Scope, ) -> ( handle:tf.Output, ) {
     if scope.error() != nil {
@@ -13563,6 +14553,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ParallelConcat(scope:Scope,  values:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -13602,6 +14595,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ParallelMapDataset(scope:Scope,  input_dataset:tf.Output,  other_arguments:tf.Output,  num_threads:tf.Output,  output_buffer_size:tf.Output, ) -> ( handle:tf.Output, ) {
     if scope.error() != nil {
@@ -13640,6 +14636,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ParameterizedTruncatedNormal(scope:Scope,  shape:tf.Output,  means:tf.Output,  stdevs:tf.Output,  minvals:tf.Output,  maxvals:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -13676,6 +14675,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ParseExample(scope:Scope,  serialized:tf.Output,  names:tf.Output,  sparse_keys:tf.Output,  dense_keys:tf.Output,  dense_defaults:tf.Output, ) -> ( sparse_indices:tf.Output,  sparse_values:tf.Output,  sparse_shapes:tf.Output,  dense_values:tf.Output, ) {
     if scope.error() != nil {
@@ -13712,6 +14714,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ParseSingleSequenceExample(scope:Scope,  serialized:tf.Output,  feature_list_dense_missing_assumed_empty:tf.Output,  context_sparse_keys:tf.Output,  context_dense_keys:tf.Output,  feature_list_sparse_keys:tf.Output,  feature_list_dense_keys:tf.Output,  context_dense_defaults:tf.Output,  debug_name:tf.Output, ) -> ( context_sparse_indices:tf.Output,  context_sparse_values:tf.Output,  context_sparse_shapes:tf.Output,  context_dense_values:tf.Output,  feature_list_sparse_indices:tf.Output,  feature_list_sparse_values:tf.Output,  feature_list_sparse_shapes:tf.Output,  feature_list_dense_values:tf.Output, ) {
     if scope.error() != nil {
@@ -13748,6 +14753,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ParseTensor(scope:Scope,  serialized:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -13786,6 +14794,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Placeholder(scope:Scope, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -13824,6 +14835,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func PlaceholderV2(scope:Scope, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -13860,6 +14874,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func PlaceholderWithDefault(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -13899,6 +14916,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Polygamma(scope:Scope,  a:tf.Output,  x:tf.Output, ) -> ( z:tf.Output, ) {
     if scope.error() != nil {
@@ -13942,6 +14962,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Pow(scope:Scope,  x:tf.Output,  y:tf.Output, ) -> ( z:tf.Output, ) {
     if scope.error() != nil {
@@ -13984,6 +15007,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func PreventGradient(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -14021,6 +15047,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Print(scope:Scope,  input:tf.Output,  data:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -14061,6 +15090,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func PriorityQueue(scope:Scope, ) -> ( handle:tf.Output, ) {
     if scope.error() != nil {
@@ -14101,6 +15133,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func PriorityQueueV2(scope:Scope, ) -> ( handle:tf.Output, ) {
     if scope.error() != nil {
@@ -14141,6 +15176,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Prod(scope:Scope,  input:tf.Output,  reduction_indices:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -14179,6 +15217,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func PyFunc(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -14215,6 +15256,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func PyFuncStateless(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -14260,6 +15304,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Qr(scope:Scope,  input:tf.Output, ) -> ( q:tf.Output,  r:tf.Output, ) {
     if scope.error() != nil {
@@ -14296,6 +15343,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func QuantizeAndDequantize(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -14365,6 +15415,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func QuantizeAndDequantizeV2(scope:Scope,  input:tf.Output,  input_min:tf.Output,  input_max:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -14420,6 +15473,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func QuantizeDownAndShrinkRange(scope:Scope,  input:tf.Output,  input_min:tf.Output,  input_max:tf.Output, ) -> ( output:tf.Output,  output_min:tf.Output,  output_max:tf.Output, ) {
     if scope.error() != nil {
@@ -14496,6 +15552,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func QuantizeV2(scope:Scope,  input:tf.Output,  min_range:tf.Output,  max_range:tf.Output, ) -> ( output:tf.Output,  output_min:tf.Output,  output_max:tf.Output, ) {
     if scope.error() != nil {
@@ -14532,6 +15591,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func QuantizedAdd(scope:Scope,  x:tf.Output,  y:tf.Output,  min_x:tf.Output,  max_x:tf.Output,  min_y:tf.Output,  max_y:tf.Output, ) -> ( z:tf.Output,  min_z:tf.Output,  max_z:tf.Output, ) {
     if scope.error() != nil {
@@ -14568,6 +15630,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func QuantizedAvgPool(scope:Scope,  input:tf.Output,  min_input:tf.Output,  max_input:tf.Output, ) -> ( output:tf.Output,  min_output:tf.Output,  max_output:tf.Output, ) {
     if scope.error() != nil {
@@ -14606,6 +15671,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func QuantizedBatchNormWithGlobalNormalization(scope:Scope,  t:tf.Output,  t_min:tf.Output,  t_max:tf.Output,  m:tf.Output,  m_min:tf.Output,  m_max:tf.Output,  v:tf.Output,  v_min:tf.Output,  v_max:tf.Output,  beta:tf.Output,  beta_min:tf.Output,  beta_max:tf.Output,  gamma:tf.Output,  gamma_min:tf.Output,  gamma_max:tf.Output, ) -> ( result:tf.Output,  result_min:tf.Output,  result_max:tf.Output, ) {
     if scope.error() != nil {
@@ -14643,6 +15711,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func QuantizedBiasAdd(scope:Scope,  input:tf.Output,  bias:tf.Output,  min_input:tf.Output,  max_input:tf.Output,  min_bias:tf.Output,  max_bias:tf.Output, ) -> ( output:tf.Output,  min_out:tf.Output,  max_out:tf.Output, ) {
     if scope.error() != nil {
@@ -14679,6 +15750,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func QuantizedConcat(scope:Scope,  concat_dim:tf.Output,  values:tf.Output,  input_mins:tf.Output,  input_maxes:tf.Output, ) -> ( output:tf.Output,  output_min:tf.Output,  output_max:tf.Output, ) {
     if scope.error() != nil {
@@ -14719,6 +15793,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func QuantizedConv2D(scope:Scope,  input:tf.Output,  filter:tf.Output,  min_input:tf.Output,  max_input:tf.Output,  min_filter:tf.Output,  max_filter:tf.Output, ) -> ( output:tf.Output,  min_output:tf.Output,  max_output:tf.Output, ) {
     if scope.error() != nil {
@@ -14755,6 +15832,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func QuantizedInstanceNorm(scope:Scope,  x:tf.Output,  x_min:tf.Output,  x_max:tf.Output, ) -> ( y:tf.Output,  y_min:tf.Output,  y_max:tf.Output, ) {
     if scope.error() != nil {
@@ -14795,6 +15875,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func QuantizedMatMul(scope:Scope,  a:tf.Output,  b:tf.Output,  min_a:tf.Output,  max_a:tf.Output,  min_b:tf.Output,  max_b:tf.Output, ) -> ( out:tf.Output,  min_out:tf.Output,  max_out:tf.Output, ) {
     if scope.error() != nil {
@@ -14831,6 +15914,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func QuantizedMaxPool(scope:Scope,  input:tf.Output,  min_input:tf.Output,  max_input:tf.Output, ) -> ( output:tf.Output,  min_output:tf.Output,  max_output:tf.Output, ) {
     if scope.error() != nil {
@@ -14867,6 +15953,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func QuantizedMul(scope:Scope,  x:tf.Output,  y:tf.Output,  min_x:tf.Output,  max_x:tf.Output,  min_y:tf.Output,  max_y:tf.Output, ) -> ( z:tf.Output,  min_z:tf.Output,  max_z:tf.Output, ) {
     if scope.error() != nil {
@@ -14903,6 +15992,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func QuantizedRelu(scope:Scope,  features:tf.Output,  min_features:tf.Output,  max_features:tf.Output, ) -> ( activations:tf.Output,  min_activations:tf.Output,  max_activations:tf.Output, ) {
     if scope.error() != nil {
@@ -14939,6 +16031,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func QuantizedRelu6(scope:Scope,  features:tf.Output,  min_features:tf.Output,  max_features:tf.Output, ) -> ( activations:tf.Output,  min_activations:tf.Output,  max_activations:tf.Output, ) {
     if scope.error() != nil {
@@ -14975,6 +16070,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func QuantizedReluX(scope:Scope,  features:tf.Output,  max_value:tf.Output,  min_features:tf.Output,  max_features:tf.Output, ) -> ( activations:tf.Output,  min_activations:tf.Output,  max_activations:tf.Output, ) {
     if scope.error() != nil {
@@ -15012,6 +16110,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func QuantizedReshape(scope:Scope,  tensor:tf.Output,  shape:tf.Output,  input_min:tf.Output,  input_max:tf.Output, ) -> ( output:tf.Output,  output_min:tf.Output,  output_max:tf.Output, ) {
     if scope.error() != nil {
@@ -15052,6 +16153,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func QueueClose(scope:Scope,  handle:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -15092,6 +16196,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func QueueCloseV2(scope:Scope,  handle:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -15133,6 +16240,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func QueueDequeue(scope:Scope,  handle:tf.Output, ) -> ( components:tf.Output, ) {
     if scope.error() != nil {
@@ -15179,6 +16289,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func QueueDequeueMany(scope:Scope,  handle:tf.Output,  n:tf.Output, ) -> ( components:tf.Output, ) {
     if scope.error() != nil {
@@ -15225,6 +16338,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func QueueDequeueManyV2(scope:Scope,  handle:tf.Output,  n:tf.Output, ) -> ( components:tf.Output, ) {
     if scope.error() != nil {
@@ -15275,6 +16391,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func QueueDequeueUpTo(scope:Scope,  handle:tf.Output,  n:tf.Output, ) -> ( components:tf.Output, ) {
     if scope.error() != nil {
@@ -15325,6 +16444,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func QueueDequeueUpToV2(scope:Scope,  handle:tf.Output,  n:tf.Output, ) -> ( components:tf.Output, ) {
     if scope.error() != nil {
@@ -15366,6 +16488,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func QueueDequeueV2(scope:Scope,  handle:tf.Output, ) -> ( components:tf.Output, ) {
     if scope.error() != nil {
@@ -15405,6 +16530,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func QueueEnqueue(scope:Scope,  handle:tf.Output,  components:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -15447,6 +16575,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func QueueEnqueueMany(scope:Scope,  handle:tf.Output,  components:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -15489,6 +16620,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func QueueEnqueueManyV2(scope:Scope,  handle:tf.Output,  components:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -15528,6 +16662,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func QueueEnqueueV2(scope:Scope,  handle:tf.Output,  components:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -15564,6 +16701,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func QueueSize(scope:Scope,  handle:tf.Output, ) -> ( size:tf.Output, ) {
     if scope.error() != nil {
@@ -15600,6 +16740,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func QueueSizeV2(scope:Scope,  handle:tf.Output, ) -> ( size:tf.Output, ) {
     if scope.error() != nil {
@@ -15641,6 +16784,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func RFFT(scope:Scope,  input:tf.Output,  fft_length:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -15683,6 +16829,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func RFFT2D(scope:Scope,  input:tf.Output,  fft_length:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -15725,6 +16874,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func RFFT3D(scope:Scope,  input:tf.Output,  fft_length:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -15767,6 +16919,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func RGBToHSV(scope:Scope,  images:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -15808,6 +16963,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func RandomCrop(scope:Scope,  image:tf.Output,  size:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -15847,6 +17005,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func RandomGamma(scope:Scope,  shape:tf.Output,  alpha:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -15891,6 +17052,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func RandomPoisson(scope:Scope,  shape:tf.Output,  rate:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -15935,6 +17099,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func RandomShuffle(scope:Scope,  value:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -15970,6 +17137,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func RandomShuffleQueue(scope:Scope, ) -> ( handle:tf.Output, ) {
     if scope.error() != nil {
@@ -16005,6 +17175,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func RandomShuffleQueueV2(scope:Scope, ) -> ( handle:tf.Output, ) {
     if scope.error() != nil {
@@ -16042,6 +17215,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func RandomStandardNormal(scope:Scope,  shape:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -16080,6 +17256,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func RandomUniform(scope:Scope,  shape:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -16122,6 +17301,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func RandomUniformInt(scope:Scope,  shape:tf.Output,  minval:tf.Output,  maxval:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -16167,6 +17349,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Range(scope:Scope,  start:tf.Output,  limit:tf.Output,  delta:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -16203,6 +17388,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func RangeDataset(scope:Scope,  start:tf.Output,  stop:tf.Output,  step:tf.Output, ) -> ( handle:tf.Output, ) {
     if scope.error() != nil {
@@ -16249,6 +17437,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Rank(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -16285,6 +17476,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ReadFile(scope:Scope,  filename:tf.Output, ) -> ( contents:tf.Output, ) {
     if scope.error() != nil {
@@ -16323,6 +17517,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ReaderNumRecordsProduced(scope:Scope,  reader_handle:tf.Output, ) -> ( records_produced:tf.Output, ) {
     if scope.error() != nil {
@@ -16361,6 +17558,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ReaderNumRecordsProducedV2(scope:Scope,  reader_handle:tf.Output, ) -> ( records_produced:tf.Output, ) {
     if scope.error() != nil {
@@ -16397,6 +17597,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ReaderNumWorkUnitsCompleted(scope:Scope,  reader_handle:tf.Output, ) -> ( units_completed:tf.Output, ) {
     if scope.error() != nil {
@@ -16433,6 +17636,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ReaderNumWorkUnitsCompletedV2(scope:Scope,  reader_handle:tf.Output, ) -> ( units_completed:tf.Output, ) {
     if scope.error() != nil {
@@ -16472,6 +17678,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ReaderRead(scope:Scope,  reader_handle:tf.Output,  queue_handle:tf.Output, ) -> ( key:tf.Output,  value:tf.Output, ) {
     if scope.error() != nil {
@@ -16512,6 +17721,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ReaderReadUpTo(scope:Scope,  reader_handle:tf.Output,  queue_handle:tf.Output,  num_records:tf.Output, ) -> ( keys:tf.Output,  values:tf.Output, ) {
     if scope.error() != nil {
@@ -16552,6 +17764,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ReaderReadUpToV2(scope:Scope,  reader_handle:tf.Output,  queue_handle:tf.Output,  num_records:tf.Output, ) -> ( keys:tf.Output,  values:tf.Output, ) {
     if scope.error() != nil {
@@ -16591,6 +17806,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ReaderReadV2(scope:Scope,  reader_handle:tf.Output,  queue_handle:tf.Output, ) -> ( key:tf.Output,  value:tf.Output, ) {
     if scope.error() != nil {
@@ -16626,6 +17844,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ReaderReset(scope:Scope,  reader_handle:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -16661,6 +17882,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ReaderResetV2(scope:Scope,  reader_handle:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -16698,6 +17922,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ReaderRestoreState(scope:Scope,  reader_handle:tf.Output,  state:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -16735,6 +17962,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ReaderRestoreStateV2(scope:Scope,  reader_handle:tf.Output,  state:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -16773,6 +18003,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ReaderSerializeState(scope:Scope,  reader_handle:tf.Output, ) -> ( state:tf.Output, ) {
     if scope.error() != nil {
@@ -16811,6 +18044,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ReaderSerializeStateV2(scope:Scope,  reader_handle:tf.Output, ) -> ( state:tf.Output, ) {
     if scope.error() != nil {
@@ -16856,6 +18092,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Real(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -16895,6 +18134,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func RealDiv(scope:Scope,  x:tf.Output,  y:tf.Output, ) -> ( z:tf.Output, ) {
     if scope.error() != nil {
@@ -16932,6 +18174,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Reciprocal(scope:Scope,  x:tf.Output, ) -> ( y:tf.Output, ) {
     if scope.error() != nil {
@@ -16970,6 +18215,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ReciprocalGrad(scope:Scope,  x:tf.Output,  y:tf.Output, ) -> ( z:tf.Output, ) {
     if scope.error() != nil {
@@ -17005,6 +18253,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func RecordInput(scope:Scope, ) -> ( records:tf.Output, ) {
     if scope.error() != nil {
@@ -17059,6 +18310,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ReduceJoin(scope:Scope,  inputs:tf.Output,  reduction_indices:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -17099,6 +18353,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func RefEnter(scope:Scope,  data:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -17136,6 +18393,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func RefExit(scope:Scope,  data:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -17172,6 +18432,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func RefIdentity(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -17212,6 +18475,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func RefMerge(scope:Scope,  inputs:tf.Output, ) -> ( output:tf.Output,  value_index:tf.Output, ) {
     if scope.error() != nil {
@@ -17248,6 +18514,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func RefNextIteration(scope:Scope,  data:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -17284,6 +18553,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func RefSelect(scope:Scope,  index:tf.Output,  inputs:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -17323,6 +18595,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func RefSwitch(scope:Scope,  data:tf.Output,  pred:tf.Output, ) -> ( output_false:tf.Output,  output_true:tf.Output, ) {
     if scope.error() != nil {
@@ -17359,6 +18634,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Relu(scope:Scope,  features:tf.Output, ) -> ( activations:tf.Output, ) {
     if scope.error() != nil {
@@ -17395,6 +18673,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Relu6(scope:Scope,  features:tf.Output, ) -> ( activations:tf.Output, ) {
     if scope.error() != nil {
@@ -17431,6 +18712,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Relu6Grad(scope:Scope,  gradients:tf.Output,  features:tf.Output, ) -> ( backprops:tf.Output, ) {
     if scope.error() != nil {
@@ -17467,6 +18751,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ReluGrad(scope:Scope,  gradients:tf.Output,  features:tf.Output, ) -> ( backprops:tf.Output, ) {
     if scope.error() != nil {
@@ -17503,6 +18790,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func RepeatDataset(scope:Scope,  input_dataset:tf.Output,  count:tf.Output, ) -> ( handle:tf.Output, ) {
     if scope.error() != nil {
@@ -17542,6 +18832,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func RequantizationRange(scope:Scope,  input:tf.Output,  input_min:tf.Output,  input_max:tf.Output, ) -> ( output_min:tf.Output,  output_max:tf.Output, ) {
     if scope.error() != nil {
@@ -17583,6 +18876,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Requantize(scope:Scope,  input:tf.Output,  input_min:tf.Output,  input_max:tf.Output,  requested_output_min:tf.Output,  requested_output_max:tf.Output, ) -> ( output:tf.Output,  output_min:tf.Output,  output_max:tf.Output, ) {
     if scope.error() != nil {
@@ -17666,6 +18962,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Reshape(scope:Scope,  tensor:tf.Output,  shape:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -17703,6 +19002,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ResizeArea(scope:Scope,  images:tf.Output,  size:tf.Output, ) -> ( resized_images:tf.Output, ) {
     if scope.error() != nil {
@@ -17740,6 +19042,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ResizeBicubic(scope:Scope,  images:tf.Output,  size:tf.Output, ) -> ( resized_images:tf.Output, ) {
     if scope.error() != nil {
@@ -17777,6 +19082,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ResizeBilinear(scope:Scope,  images:tf.Output,  size:tf.Output, ) -> ( resized_images:tf.Output, ) {
     if scope.error() != nil {
@@ -17813,6 +19121,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ResizeBilinearGrad(scope:Scope,  grads:tf.Output,  original_image:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -17849,6 +19160,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ResizeNearestNeighbor(scope:Scope,  images:tf.Output,  size:tf.Output, ) -> ( resized_images:tf.Output, ) {
     if scope.error() != nil {
@@ -17885,6 +19199,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ResizeNearestNeighborGrad(scope:Scope,  grads:tf.Output,  size:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -17924,6 +19241,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ResourceApplyAdadelta(scope:Scope,  var:tf.Output,  accum:tf.Output,  accum_update:tf.Output,  lr:tf.Output,  rho:tf.Output,  epsilon:tf.Output,  grad:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -17961,6 +19281,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ResourceApplyAdagrad(scope:Scope,  var:tf.Output,  accum:tf.Output,  lr:tf.Output,  grad:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -17996,6 +19319,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ResourceApplyAdagradDA(scope:Scope,  var:tf.Output,  gradient_accumulator:tf.Output,  gradient_squared_accumulator:tf.Output,  grad:tf.Output,  lr:tf.Output,  l1:tf.Output,  l2:tf.Output,  global_step:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -18035,6 +19361,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ResourceApplyAdam(scope:Scope,  var:tf.Output,  m:tf.Output,  v:tf.Output,  beta1_power:tf.Output,  beta2_power:tf.Output,  lr:tf.Output,  beta1:tf.Output,  beta2:tf.Output,  epsilon:tf.Output,  grad:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -18084,6 +19413,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ResourceApplyCenteredRMSProp(scope:Scope,  var:tf.Output,  mg:tf.Output,  ms:tf.Output,  mom:tf.Output,  lr:tf.Output,  rho:tf.Output,  momentum:tf.Output,  epsilon:tf.Output,  grad:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -18124,6 +19456,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ResourceApplyFtrl(scope:Scope,  var:tf.Output,  accum:tf.Output,  linear:tf.Output,  grad:tf.Output,  lr:tf.Output,  l1:tf.Output,  l2:tf.Output,  lr_power:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -18159,6 +19494,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ResourceApplyGradientDescent(scope:Scope,  var:tf.Output,  alpha:tf.Output,  delta:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -18197,6 +19535,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ResourceApplyMomentum(scope:Scope,  var:tf.Output,  accum:tf.Output,  lr:tf.Output,  grad:tf.Output,  momentum:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -18235,6 +19576,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ResourceApplyProximalAdagrad(scope:Scope,  var:tf.Output,  accum:tf.Output,  lr:tf.Output,  l1:tf.Output,  l2:tf.Output,  grad:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -18272,6 +19616,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ResourceApplyProximalGradientDescent(scope:Scope,  var:tf.Output,  alpha:tf.Output,  l1:tf.Output,  l2:tf.Output,  delta:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -18315,6 +19662,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ResourceApplyRMSProp(scope:Scope,  var:tf.Output,  ms:tf.Output,  mom:tf.Output,  lr:tf.Output,  rho:tf.Output,  momentum:tf.Output,  epsilon:tf.Output,  grad:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -18350,6 +19700,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ResourceSparseApplyAdadelta(scope:Scope,  var:tf.Output,  accum:tf.Output,  accum_update:tf.Output,  lr:tf.Output,  rho:tf.Output,  epsilon:tf.Output,  grad:tf.Output,  indices:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -18388,6 +19741,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ResourceSparseApplyAdagrad(scope:Scope,  var:tf.Output,  accum:tf.Output,  lr:tf.Output,  grad:tf.Output,  indices:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -18423,6 +19779,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ResourceSparseApplyAdagradDA(scope:Scope,  var:tf.Output,  gradient_accumulator:tf.Output,  gradient_squared_accumulator:tf.Output,  grad:tf.Output,  indices:tf.Output,  lr:tf.Output,  l1:tf.Output,  l2:tf.Output,  global_step:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -18471,6 +19830,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ResourceSparseApplyCenteredRMSProp(scope:Scope,  var:tf.Output,  mg:tf.Output,  ms:tf.Output,  mom:tf.Output,  lr:tf.Output,  rho:tf.Output,  momentum:tf.Output,  epsilon:tf.Output,  grad:tf.Output,  indices:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -18512,6 +19874,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ResourceSparseApplyFtrl(scope:Scope,  var:tf.Output,  accum:tf.Output,  linear:tf.Output,  grad:tf.Output,  indices:tf.Output,  lr:tf.Output,  l1:tf.Output,  l2:tf.Output,  lr_power:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -18551,6 +19916,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ResourceSparseApplyMomentum(scope:Scope,  var:tf.Output,  accum:tf.Output,  lr:tf.Output,  grad:tf.Output,  indices:tf.Output,  momentum:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -18591,6 +19959,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ResourceSparseApplyProximalAdagrad(scope:Scope,  var:tf.Output,  accum:tf.Output,  lr:tf.Output,  l1:tf.Output,  l2:tf.Output,  grad:tf.Output,  indices:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -18629,6 +20000,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ResourceSparseApplyProximalGradientDescent(scope:Scope,  var:tf.Output,  alpha:tf.Output,  l1:tf.Output,  l2:tf.Output,  grad:tf.Output,  indices:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -18672,6 +20046,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ResourceSparseApplyRMSProp(scope:Scope,  var:tf.Output,  ms:tf.Output,  mom:tf.Output,  lr:tf.Output,  rho:tf.Output,  momentum:tf.Output,  epsilon:tf.Output,  grad:tf.Output,  indices:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -18712,6 +20089,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ResourceStridedSliceAssign(scope:Scope,  ref:tf.Output,  begin:tf.Output,  end:tf.Output,  strides:tf.Output,  value:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -18762,6 +20142,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Restore(scope:Scope,  file_pattern:tf.Output,  tensor_name:tf.Output, ) -> ( tensor:tf.Output, ) {
     if scope.error() != nil {
@@ -18803,6 +20186,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func RestoreSlice(scope:Scope,  file_pattern:tf.Output,  tensor_name:tf.Output,  shape_and_slice:tf.Output, ) -> ( tensor:tf.Output, ) {
     if scope.error() != nil {
@@ -18850,6 +20236,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func RestoreV2(scope:Scope,  prefix:tf.Output,  tensor_names:tf.Output,  shape_and_slices:tf.Output, ) -> ( tensors:tf.Output, ) {
     if scope.error() != nil {
@@ -18923,6 +20312,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Reverse(scope:Scope,  tensor:tf.Output,  dims:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -19003,6 +20395,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ReverseSequence(scope:Scope,  input:tf.Output,  seq_lengths:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -19078,6 +20473,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ReverseV2(scope:Scope,  tensor:tf.Output,  axis:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -19122,6 +20520,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Rint(scope:Scope,  x:tf.Output, ) -> ( y:tf.Output, ) {
     if scope.error() != nil {
@@ -19160,6 +20561,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Round(scope:Scope,  x:tf.Output, ) -> ( y:tf.Output, ) {
     if scope.error() != nil {
@@ -19197,6 +20601,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Rsqrt(scope:Scope,  x:tf.Output, ) -> ( y:tf.Output, ) {
     if scope.error() != nil {
@@ -19235,6 +20642,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func RsqrtGrad(scope:Scope,  x:tf.Output,  y:tf.Output, ) -> ( z:tf.Output, ) {
     if scope.error() != nil {
@@ -19302,6 +20712,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SampleDistortedBoundingBox(scope:Scope,  image_size:tf.Output,  bounding_boxes:tf.Output, ) -> ( begin:tf.Output,  size:tf.Output,  bboxes:tf.Output, ) {
     if scope.error() != nil {
@@ -19340,6 +20753,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Save(scope:Scope,  filename:tf.Output,  tensor_names:tf.Output,  data:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -19391,6 +20807,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SaveSlices(scope:Scope,  filename:tf.Output,  tensor_names:tf.Output,  shapes_and_slices:tf.Output,  data:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -19429,6 +20848,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SaveV2(scope:Scope,  prefix:tf.Output,  tensor_names:tf.Output,  shape_and_slices:tf.Output,  tensors:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -19467,6 +20889,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ScalarSummary(scope:Scope,  tags:tf.Output,  values:tf.Output, ) -> ( summary:tf.Output, ) {
     if scope.error() != nil {
@@ -19518,6 +20943,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ScatterAdd(scope:Scope,  ref:tf.Output,  indices:tf.Output,  updates:tf.Output, ) -> ( output_ref:tf.Output, ) {
     if scope.error() != nil {
@@ -19568,6 +20996,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ScatterDiv(scope:Scope,  ref:tf.Output,  indices:tf.Output,  updates:tf.Output, ) -> ( output_ref:tf.Output, ) {
     if scope.error() != nil {
@@ -19618,6 +21049,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ScatterMul(scope:Scope,  ref:tf.Output,  indices:tf.Output,  updates:tf.Output, ) -> ( output_ref:tf.Output, ) {
     if scope.error() != nil {
@@ -19708,6 +21142,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ScatterNd(scope:Scope,  indices:tf.Output,  updates:tf.Output,  shape:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -19767,6 +21204,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ScatterNdAdd(scope:Scope,  ref:tf.Output,  indices:tf.Output,  updates:tf.Output, ) -> ( output_ref:tf.Output, ) {
     if scope.error() != nil {
@@ -19826,6 +21266,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ScatterNdSub(scope:Scope,  ref:tf.Output,  indices:tf.Output,  updates:tf.Output, ) -> ( output_ref:tf.Output, ) {
     if scope.error() != nil {
@@ -19887,6 +21330,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ScatterNdUpdate(scope:Scope,  ref:tf.Output,  indices:tf.Output,  updates:tf.Output, ) -> ( output_ref:tf.Output, ) {
     if scope.error() != nil {
@@ -19939,6 +21385,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ScatterSub(scope:Scope,  ref:tf.Output,  indices:tf.Output,  updates:tf.Output, ) -> ( output_ref:tf.Output, ) {
     if scope.error() != nil {
@@ -19993,6 +21442,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ScatterUpdate(scope:Scope,  ref:tf.Output,  indices:tf.Output,  updates:tf.Output, ) -> ( output_ref:tf.Output, ) {
     if scope.error() != nil {
@@ -20029,6 +21481,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SdcaFprint(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -20078,6 +21533,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SdcaOptimizer(scope:Scope,  sparse_example_indices:tf.Output,  sparse_feature_indices:tf.Output,  sparse_feature_values:tf.Output,  dense_features:tf.Output,  example_weights:tf.Output,  example_labels:tf.Output,  sparse_indices:tf.Output,  sparse_weights:tf.Output,  dense_weights:tf.Output,  example_state_data:tf.Output, ) -> ( out_example_state_data:tf.Output,  out_delta_sparse_weights:tf.Output,  out_delta_dense_weights:tf.Output, ) {
     if scope.error() != nil {
@@ -20113,6 +21571,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SdcaShrinkL1(scope:Scope,  weights:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -20158,6 +21619,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SegmentMax(scope:Scope,  data:tf.Output,  segment_ids:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -20204,6 +21668,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SegmentMean(scope:Scope,  data:tf.Output,  segment_ids:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -20249,6 +21716,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SegmentMin(scope:Scope,  data:tf.Output,  segment_ids:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -20294,6 +21764,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SegmentProd(scope:Scope,  data:tf.Output,  segment_ids:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -20339,6 +21812,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SegmentSum(scope:Scope,  data:tf.Output,  segment_ids:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -20405,6 +21881,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Select(scope:Scope,  condition:tf.Output,  t:tf.Output,  e:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -20446,6 +21925,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SelfAdjointEig(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -20491,6 +21973,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SelfAdjointEigV2(scope:Scope,  input:tf.Output, ) -> ( e:tf.Output,  v:tf.Output, ) {
     if scope.error() != nil {
@@ -20533,6 +22018,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SerializeManySparse(scope:Scope,  sparse_indices:tf.Output,  sparse_values:tf.Output,  sparse_shape:tf.Output, ) -> ( serialized_sparse:tf.Output, ) {
     if scope.error() != nil {
@@ -20569,6 +22057,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SerializeSparse(scope:Scope,  sparse_indices:tf.Output,  sparse_values:tf.Output,  sparse_shape:tf.Output, ) -> ( serialized_sparse:tf.Output, ) {
     if scope.error() != nil {
@@ -20610,6 +22101,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SetSize(scope:Scope,  set_indices:tf.Output,  set_values:tf.Output,  set_shape:tf.Output, ) -> ( size:tf.Output, ) {
     if scope.error() != nil {
@@ -20652,6 +22146,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Shape(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -20689,6 +22186,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ShapeN(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -20726,6 +22226,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ShardedFilename(scope:Scope,  basename:tf.Output,  shard:tf.Output,  num_shards:tf.Output, ) -> ( filename:tf.Output, ) {
     if scope.error() != nil {
@@ -20762,6 +22265,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ShardedFilespec(scope:Scope,  basename:tf.Output,  num_shards:tf.Output, ) -> ( filename:tf.Output, ) {
     if scope.error() != nil {
@@ -20798,6 +22304,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ShuffleDataset(scope:Scope,  input_dataset:tf.Output,  buffer_size:tf.Output,  seed:tf.Output,  seed2:tf.Output, ) -> ( handle:tf.Output, ) {
     if scope.error() != nil {
@@ -20835,6 +22344,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Sigmoid(scope:Scope,  x:tf.Output, ) -> ( y:tf.Output, ) {
     if scope.error() != nil {
@@ -20873,6 +22385,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SigmoidGrad(scope:Scope,  x:tf.Output,  y:tf.Output, ) -> ( z:tf.Output, ) {
     if scope.error() != nil {
@@ -20911,6 +22426,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Sign(scope:Scope,  x:tf.Output, ) -> ( y:tf.Output, ) {
     if scope.error() != nil {
@@ -20947,6 +22465,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Sin(scope:Scope,  x:tf.Output, ) -> ( y:tf.Output, ) {
     if scope.error() != nil {
@@ -20990,6 +22511,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Size(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -21026,6 +22550,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SkipDataset(scope:Scope,  input_dataset:tf.Output,  count:tf.Output, ) -> ( handle:tf.Output, ) {
     if scope.error() != nil {
@@ -21061,6 +22588,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Skipgram(scope:Scope, ) -> ( vocab_word:tf.Output,  vocab_freq:tf.Output,  words_per_epoch:tf.Output,  current_epoch:tf.Output,  total_words_processed:tf.Output,  examples:tf.Output,  labels:tf.Output, ) {
     if scope.error() != nil {
@@ -21102,6 +22632,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Slice(scope:Scope,  input:tf.Output,  begin:tf.Output,  size:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -21140,6 +22673,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Softmax(scope:Scope,  logits:tf.Output, ) -> ( softmax:tf.Output, ) {
     if scope.error() != nil {
@@ -21177,6 +22713,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SoftmaxCrossEntropyWithLogits(scope:Scope,  features:tf.Output,  labels:tf.Output, ) -> ( loss:tf.Output,  backprop:tf.Output, ) {
     if scope.error() != nil {
@@ -21213,6 +22752,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Softplus(scope:Scope,  features:tf.Output, ) -> ( activations:tf.Output, ) {
     if scope.error() != nil {
@@ -21249,6 +22791,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SoftplusGrad(scope:Scope,  gradients:tf.Output,  features:tf.Output, ) -> ( backprops:tf.Output, ) {
     if scope.error() != nil {
@@ -21285,6 +22830,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Softsign(scope:Scope,  features:tf.Output, ) -> ( activations:tf.Output, ) {
     if scope.error() != nil {
@@ -21321,6 +22869,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SoftsignGrad(scope:Scope,  gradients:tf.Output,  features:tf.Output, ) -> ( backprops:tf.Output, ) {
     if scope.error() != nil {
@@ -21363,6 +22914,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SpaceToBatch(scope:Scope,  input:tf.Output,  paddings:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -21407,6 +22961,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SpaceToBatchND(scope:Scope,  input:tf.Output,  block_shape:tf.Output,  paddings:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -21497,6 +23054,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SpaceToDepth(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -21534,6 +23094,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SparseAccumulatorApplyGradient(scope:Scope,  handle:tf.Output,  local_step:tf.Output,  gradient_indices:tf.Output,  gradient_values:tf.Output,  gradient_shape:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -21576,6 +23139,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SparseAccumulatorTakeGradient(scope:Scope,  handle:tf.Output,  num_required:tf.Output, ) -> ( indices:tf.Output,  values:tf.Output,  shape:tf.Output, ) {
     if scope.error() != nil {
@@ -21623,6 +23189,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SparseAdd(scope:Scope,  a_indices:tf.Output,  a_values:tf.Output,  a_shape:tf.Output,  b_indices:tf.Output,  b_values:tf.Output,  b_shape:tf.Output,  thresh:tf.Output, ) -> ( sum_indices:tf.Output,  sum_values:tf.Output,  sum_shape:tf.Output, ) {
     if scope.error() != nil {
@@ -21663,6 +23232,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SparseAddGrad(scope:Scope,  backprop_val_grad:tf.Output,  a_indices:tf.Output,  b_indices:tf.Output,  sum_indices:tf.Output, ) -> ( a_val_grad:tf.Output,  b_val_grad:tf.Output, ) {
     if scope.error() != nil {
@@ -21699,6 +23271,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SparseApplyAdadelta(scope:Scope,  var:tf.Output,  accum:tf.Output,  accum_update:tf.Output,  lr:tf.Output,  rho:tf.Output,  epsilon:tf.Output,  grad:tf.Output,  indices:tf.Output, ) -> ( out:tf.Output, ) {
     if scope.error() != nil {
@@ -21738,6 +23313,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SparseApplyAdagrad(scope:Scope,  var:tf.Output,  accum:tf.Output,  lr:tf.Output,  grad:tf.Output,  indices:tf.Output, ) -> ( out:tf.Output, ) {
     if scope.error() != nil {
@@ -21774,6 +23352,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SparseApplyAdagradDA(scope:Scope,  var:tf.Output,  gradient_accumulator:tf.Output,  gradient_squared_accumulator:tf.Output,  grad:tf.Output,  indices:tf.Output,  lr:tf.Output,  l1:tf.Output,  l2:tf.Output,  global_step:tf.Output, ) -> ( out:tf.Output, ) {
     if scope.error() != nil {
@@ -21823,6 +23404,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SparseApplyCenteredRMSProp(scope:Scope,  var:tf.Output,  mg:tf.Output,  ms:tf.Output,  mom:tf.Output,  lr:tf.Output,  rho:tf.Output,  momentum:tf.Output,  epsilon:tf.Output,  grad:tf.Output,  indices:tf.Output, ) -> ( out:tf.Output, ) {
     if scope.error() != nil {
@@ -21865,6 +23449,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SparseApplyFtrl(scope:Scope,  var:tf.Output,  accum:tf.Output,  linear:tf.Output,  grad:tf.Output,  indices:tf.Output,  lr:tf.Output,  l1:tf.Output,  l2:tf.Output,  lr_power:tf.Output, ) -> ( out:tf.Output, ) {
     if scope.error() != nil {
@@ -21905,6 +23492,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SparseApplyMomentum(scope:Scope,  var:tf.Output,  accum:tf.Output,  lr:tf.Output,  grad:tf.Output,  indices:tf.Output,  momentum:tf.Output, ) -> ( out:tf.Output, ) {
     if scope.error() != nil {
@@ -21946,6 +23536,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SparseApplyProximalAdagrad(scope:Scope,  var:tf.Output,  accum:tf.Output,  lr:tf.Output,  l1:tf.Output,  l2:tf.Output,  grad:tf.Output,  indices:tf.Output, ) -> ( out:tf.Output, ) {
     if scope.error() != nil {
@@ -21985,6 +23578,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SparseApplyProximalGradientDescent(scope:Scope,  var:tf.Output,  alpha:tf.Output,  l1:tf.Output,  l2:tf.Output,  grad:tf.Output,  indices:tf.Output, ) -> ( out:tf.Output, ) {
     if scope.error() != nil {
@@ -22029,6 +23625,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SparseApplyRMSProp(scope:Scope,  var:tf.Output,  ms:tf.Output,  mom:tf.Output,  lr:tf.Output,  rho:tf.Output,  momentum:tf.Output,  epsilon:tf.Output,  grad:tf.Output,  indices:tf.Output, ) -> ( out:tf.Output, ) {
     if scope.error() != nil {
@@ -22095,6 +23694,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SparseConcat(scope:Scope,  indices:tf.Output,  values:tf.Output,  shapes:tf.Output, ) -> ( output_indices:tf.Output,  output_values:tf.Output,  output_shape:tf.Output, ) {
     if scope.error() != nil {
@@ -22136,6 +23738,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SparseConditionalAccumulator(scope:Scope, ) -> ( handle:tf.Output, ) {
     if scope.error() != nil {
@@ -22200,6 +23805,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SparseCross(scope:Scope,  indices:tf.Output,  values:tf.Output,  shapes:tf.Output,  dense_inputs:tf.Output, ) -> ( output_indices:tf.Output,  output_values:tf.Output,  output_shape:tf.Output, ) {
     if scope.error() != nil {
@@ -22243,6 +23851,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SparseDenseCwiseAdd(scope:Scope,  sp_indices:tf.Output,  sp_values:tf.Output,  sp_shape:tf.Output,  dense:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -22281,6 +23892,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SparseDenseCwiseDiv(scope:Scope,  sp_indices:tf.Output,  sp_values:tf.Output,  sp_shape:tf.Output,  dense:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -22322,6 +23936,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SparseDenseCwiseMul(scope:Scope,  sp_indices:tf.Output,  sp_values:tf.Output,  sp_shape:tf.Output,  dense:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -22384,6 +24001,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SparseFillEmptyRows(scope:Scope,  indices:tf.Output,  values:tf.Output,  dense_shape:tf.Output,  default_value:tf.Output, ) -> ( output_indices:tf.Output,  output_values:tf.Output,  empty_row_indicator:tf.Output,  reverse_index_map:tf.Output, ) {
     if scope.error() != nil {
@@ -22427,6 +24047,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SparseFillEmptyRowsGrad(scope:Scope,  reverse_index_map:tf.Output,  grad_values:tf.Output, ) -> ( d_values:tf.Output,  d_default_value:tf.Output, ) {
     if scope.error() != nil {
@@ -22467,6 +24090,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SparseMatMul(scope:Scope,  a:tf.Output,  b:tf.Output, ) -> ( product:tf.Output, ) {
     if scope.error() != nil {
@@ -22513,6 +24139,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SparseReduceSum(scope:Scope,  input_indices:tf.Output,  input_values:tf.Output,  input_shape:tf.Output,  reduction_axes:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -22559,6 +24188,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SparseReduceSumSparse(scope:Scope,  input_indices:tf.Output,  input_values:tf.Output,  input_shape:tf.Output,  reduction_axes:tf.Output, ) -> ( output_indices:tf.Output,  output_values:tf.Output,  output_shape:tf.Output, ) {
     if scope.error() != nil {
@@ -22601,6 +24233,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SparseReorder(scope:Scope,  input_indices:tf.Output,  input_values:tf.Output,  input_shape:tf.Output, ) -> ( output_indices:tf.Output,  output_values:tf.Output, ) {
     if scope.error() != nil {
@@ -22649,6 +24284,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SparseReshape(scope:Scope,  input_indices:tf.Output,  input_shape:tf.Output,  new_shape:tf.Output, ) -> ( output_indices:tf.Output,  output_shape:tf.Output, ) {
     if scope.error() != nil {
@@ -22689,6 +24327,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SparseSegmentMean(scope:Scope,  data:tf.Output,  indices:tf.Output,  segment_ids:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -22727,6 +24368,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SparseSegmentMeanGrad(scope:Scope,  grad:tf.Output,  indices:tf.Output,  segment_ids:tf.Output,  output_dim0:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -22766,6 +24410,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SparseSegmentSqrtN(scope:Scope,  data:tf.Output,  indices:tf.Output,  segment_ids:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -22804,6 +24451,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SparseSegmentSqrtNGrad(scope:Scope,  grad:tf.Output,  indices:tf.Output,  segment_ids:tf.Output,  output_dim0:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -22861,6 +24511,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SparseSegmentSum(scope:Scope,  data:tf.Output,  indices:tf.Output,  segment_ids:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -22909,6 +24562,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SparseSoftmax(scope:Scope,  sp_indices:tf.Output,  sp_values:tf.Output,  sp_shape:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -22950,6 +24606,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SparseSoftmaxCrossEntropyWithLogits(scope:Scope,  features:tf.Output,  labels:tf.Output, ) -> ( loss:tf.Output,  backprop:tf.Output, ) {
     if scope.error() != nil {
@@ -22987,6 +24646,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SparseSparseMaximum(scope:Scope,  a_indices:tf.Output,  a_values:tf.Output,  a_shape:tf.Output,  b_indices:tf.Output,  b_values:tf.Output,  b_shape:tf.Output, ) -> ( output_indices:tf.Output,  output_values:tf.Output, ) {
     if scope.error() != nil {
@@ -23024,6 +24686,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SparseSparseMinimum(scope:Scope,  a_indices:tf.Output,  a_values:tf.Output,  a_shape:tf.Output,  b_indices:tf.Output,  b_values:tf.Output,  b_shape:tf.Output, ) -> ( output_indices:tf.Output,  output_values:tf.Output, ) {
     if scope.error() != nil {
@@ -23073,6 +24738,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SparseSplit(scope:Scope,  split_dim:tf.Output,  indices:tf.Output,  values:tf.Output,  shape:tf.Output, ) -> ( output_indices:tf.Output,  output_values:tf.Output,  output_shape:tf.Output, ) {
     if scope.error() != nil {
@@ -23110,6 +24778,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SparseTensorDenseAdd(scope:Scope,  a_indices:tf.Output,  a_values:tf.Output,  a_shape:tf.Output,  b:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -23154,6 +24825,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SparseTensorDenseMatMul(scope:Scope,  a_indices:tf.Output,  a_values:tf.Output,  a_shape:tf.Output,  b:tf.Output, ) -> ( product:tf.Output, ) {
     if scope.error() != nil {
@@ -23190,6 +24864,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SparseTensorSliceDataset(scope:Scope,  indices:tf.Output,  values:tf.Output,  dense_shape:tf.Output, ) -> ( handle:tf.Output, ) {
     if scope.error() != nil {
@@ -23240,6 +24917,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SparseToDense(scope:Scope,  sparse_indices:tf.Output,  output_shape:tf.Output,  sparse_values:tf.Output,  default_value:tf.Output, ) -> ( dense:tf.Output, ) {
     if scope.error() != nil {
@@ -23294,6 +24974,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SparseToSparseSetOperation(scope:Scope,  set1_indices:tf.Output,  set1_values:tf.Output,  set1_shape:tf.Output,  set2_indices:tf.Output,  set2_values:tf.Output,  set2_shape:tf.Output, ) -> ( result_indices:tf.Output,  result_values:tf.Output,  result_shape:tf.Output, ) {
     if scope.error() != nil {
@@ -23330,6 +25013,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Split(scope:Scope,  split_dim:tf.Output,  value:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -23366,6 +25052,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SplitV(scope:Scope,  value:tf.Output,  size_splits:tf.Output,  split_dim:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -23403,6 +25092,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Sqrt(scope:Scope,  x:tf.Output, ) -> ( y:tf.Output, ) {
     if scope.error() != nil {
@@ -23441,6 +25133,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SqrtGrad(scope:Scope,  x:tf.Output,  y:tf.Output, ) -> ( z:tf.Output, ) {
     if scope.error() != nil {
@@ -23478,6 +25173,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Square(scope:Scope,  x:tf.Output, ) -> ( y:tf.Output, ) {
     if scope.error() != nil {
@@ -23516,6 +25214,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SquaredDifference(scope:Scope,  x:tf.Output,  y:tf.Output, ) -> ( z:tf.Output, ) {
     if scope.error() != nil {
@@ -23566,6 +25267,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Squeeze(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -23601,6 +25305,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Stack(scope:Scope, ) -> ( handle:tf.Output, ) {
     if scope.error() != nil {
@@ -23636,6 +25343,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func StackClose(scope:Scope,  handle:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -23672,6 +25382,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func StackPop(scope:Scope,  handle:tf.Output, ) -> ( elem:tf.Output, ) {
     if scope.error() != nil {
@@ -23708,6 +25421,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func StackPush(scope:Scope,  handle:tf.Output,  elem:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -23745,6 +25461,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Stage(scope:Scope,  values:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -23783,6 +25502,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func StatelessRandomNormal(scope:Scope,  shape:tf.Output,  seed:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -23822,6 +25544,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func StatelessRandomUniform(scope:Scope,  shape:tf.Output,  seed:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -23862,6 +25587,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func StatelessTruncatedNormal(scope:Scope,  shape:tf.Output,  seed:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -23914,6 +25642,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func StopGradient(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -24023,6 +25754,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func StridedSlice(scope:Scope,  input:tf.Output,  begin:tf.Output,  end:tf.Output,  strides:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -24064,6 +25798,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func StridedSliceAssign(scope:Scope,  ref:tf.Output,  begin:tf.Output,  end:tf.Output,  strides:tf.Output,  value:tf.Output, ) -> ( output_ref:tf.Output, ) {
     if scope.error() != nil {
@@ -24107,6 +25844,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func StridedSliceGrad(scope:Scope,  shape:tf.Output,  begin:tf.Output,  end:tf.Output,  strides:tf.Output,  dy:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -24144,6 +25884,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func StringJoin(scope:Scope,  inputs:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -24197,6 +25940,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func StringSplit(scope:Scope,  input:tf.Output,  delimiter:tf.Output, ) -> ( indices:tf.Output,  values:tf.Output,  shape:tf.Output, ) {
     if scope.error() != nil {
@@ -24238,6 +25984,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func StringToHashBucket(scope:Scope,  string_tensor:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -24280,6 +26029,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func StringToHashBucketFast(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -24325,6 +26077,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func StringToHashBucketStrong(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -24363,6 +26118,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func StringToNumber(scope:Scope,  string_tensor:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -24401,6 +26159,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Sub(scope:Scope,  x:tf.Output,  y:tf.Output, ) -> ( z:tf.Output, ) {
     if scope.error() != nil {
@@ -24492,6 +26253,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Substr(scope:Scope,  input:tf.Output,  pos:tf.Output,  len:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -24532,6 +26296,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Sum(scope:Scope,  input:tf.Output,  reduction_indices:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -24578,6 +26345,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Svd(scope:Scope,  input:tf.Output, ) -> ( s:tf.Output,  u:tf.Output,  v:tf.Output, ) {
     if scope.error() != nil {
@@ -24617,6 +26387,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Switch(scope:Scope,  data:tf.Output,  pred:tf.Output, ) -> ( output_false:tf.Output,  output_true:tf.Output, ) {
     if scope.error() != nil {
@@ -24653,6 +26426,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func SymbolicGradient(scope:Scope,  input:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -24689,6 +26465,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TFRecordDataset(scope:Scope,  filenames:tf.Output,  compression_type:tf.Output, ) -> ( handle:tf.Output, ) {
     if scope.error() != nil {
@@ -24724,6 +26503,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TFRecordReader(scope:Scope, ) -> ( reader_handle:tf.Output, ) {
     if scope.error() != nil {
@@ -24759,6 +26541,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TFRecordReaderV2(scope:Scope, ) -> ( reader_handle:tf.Output, ) {
     if scope.error() != nil {
@@ -24795,6 +26580,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TakeDataset(scope:Scope,  input_dataset:tf.Output,  count:tf.Output, ) -> ( handle:tf.Output, ) {
     if scope.error() != nil {
@@ -24871,6 +26659,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TakeManySparseFromTensorsMap(scope:Scope,  sparse_handles:tf.Output, ) -> ( sparse_indices:tf.Output,  sparse_values:tf.Output,  sparse_shape:tf.Output, ) {
     if scope.error() != nil {
@@ -24907,6 +26698,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Tan(scope:Scope,  x:tf.Output, ) -> ( y:tf.Output, ) {
     if scope.error() != nil {
@@ -24943,6 +26737,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Tanh(scope:Scope,  x:tf.Output, ) -> ( y:tf.Output, ) {
     if scope.error() != nil {
@@ -24981,6 +26778,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TanhGrad(scope:Scope,  x:tf.Output,  y:tf.Output, ) -> ( z:tf.Output, ) {
     if scope.error() != nil {
@@ -25027,6 +26827,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TemporaryVariable(scope:Scope, ) -> ( ref:tf.Output, ) {
     if scope.error() != nil {
@@ -25062,6 +26865,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TensorArray(scope:Scope,  size:tf.Output, ) -> ( handle:tf.Output, ) {
     if scope.error() != nil {
@@ -25096,6 +26902,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TensorArrayClose(scope:Scope,  handle:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -25131,6 +26940,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TensorArrayCloseV2(scope:Scope,  handle:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -25168,6 +26980,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TensorArrayCloseV3(scope:Scope,  handle:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -25203,6 +27018,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TensorArrayConcat(scope:Scope,  handle:tf.Output,  flow_in:tf.Output, ) -> ( value:tf.Output,  lengths:tf.Output, ) {
     if scope.error() != nil {
@@ -25239,6 +27057,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TensorArrayConcatV2(scope:Scope,  handle:tf.Output,  flow_in:tf.Output, ) -> ( value:tf.Output,  lengths:tf.Output, ) {
     if scope.error() != nil {
@@ -25282,6 +27103,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TensorArrayConcatV3(scope:Scope,  handle:tf.Output,  flow_in:tf.Output, ) -> ( value:tf.Output,  lengths:tf.Output, ) {
     if scope.error() != nil {
@@ -25317,6 +27141,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TensorArrayGather(scope:Scope,  handle:tf.Output,  indices:tf.Output,  flow_in:tf.Output, ) -> ( value:tf.Output, ) {
     if scope.error() != nil {
@@ -25353,6 +27180,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TensorArrayGatherV2(scope:Scope,  handle:tf.Output,  indices:tf.Output,  flow_in:tf.Output, ) -> ( value:tf.Output, ) {
     if scope.error() != nil {
@@ -25390,6 +27220,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TensorArrayGatherV3(scope:Scope,  handle:tf.Output,  indices:tf.Output,  flow_in:tf.Output, ) -> ( value:tf.Output, ) {
     if scope.error() != nil {
@@ -25425,6 +27258,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TensorArrayGrad(scope:Scope,  handle:tf.Output,  flow_in:tf.Output, ) -> ( grad_handle:tf.Output, ) {
     if scope.error() != nil {
@@ -25461,6 +27297,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TensorArrayGradV2(scope:Scope,  handle:tf.Output,  flow_in:tf.Output, ) -> ( grad_handle:tf.Output, ) {
     if scope.error() != nil {
@@ -25525,6 +27364,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TensorArrayGradV3(scope:Scope,  handle:tf.Output,  flow_in:tf.Output, ) -> ( grad_handle:tf.Output,  flow_out:tf.Output, ) {
     if scope.error() != nil {
@@ -25560,6 +27402,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TensorArrayPack(scope:Scope,  handle:tf.Output,  flow_in:tf.Output, ) -> ( value:tf.Output, ) {
     if scope.error() != nil {
@@ -25595,6 +27440,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TensorArrayRead(scope:Scope,  handle:tf.Output,  index:tf.Output,  flow_in:tf.Output, ) -> ( value:tf.Output, ) {
     if scope.error() != nil {
@@ -25631,6 +27479,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TensorArrayReadV2(scope:Scope,  handle:tf.Output,  index:tf.Output,  flow_in:tf.Output, ) -> ( value:tf.Output, ) {
     if scope.error() != nil {
@@ -25667,6 +27518,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TensorArrayReadV3(scope:Scope,  handle:tf.Output,  index:tf.Output,  flow_in:tf.Output, ) -> ( value:tf.Output, ) {
     if scope.error() != nil {
@@ -25702,6 +27556,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TensorArrayScatter(scope:Scope,  handle:tf.Output,  indices:tf.Output,  value:tf.Output,  flow_in:tf.Output, ) -> ( flow_out:tf.Output, ) {
     if scope.error() != nil {
@@ -25738,6 +27595,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TensorArrayScatterV2(scope:Scope,  handle:tf.Output,  indices:tf.Output,  value:tf.Output,  flow_in:tf.Output, ) -> ( flow_out:tf.Output, ) {
     if scope.error() != nil {
@@ -25775,6 +27635,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TensorArrayScatterV3(scope:Scope,  handle:tf.Output,  indices:tf.Output,  value:tf.Output,  flow_in:tf.Output, ) -> ( flow_out:tf.Output, ) {
     if scope.error() != nil {
@@ -25810,6 +27673,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TensorArraySize(scope:Scope,  handle:tf.Output,  flow_in:tf.Output, ) -> ( size:tf.Output, ) {
     if scope.error() != nil {
@@ -25846,6 +27712,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TensorArraySizeV2(scope:Scope,  handle:tf.Output,  flow_in:tf.Output, ) -> ( size:tf.Output, ) {
     if scope.error() != nil {
@@ -25882,6 +27751,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TensorArraySizeV3(scope:Scope,  handle:tf.Output,  flow_in:tf.Output, ) -> ( size:tf.Output, ) {
     if scope.error() != nil {
@@ -25917,6 +27789,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TensorArraySplit(scope:Scope,  handle:tf.Output,  value:tf.Output,  lengths:tf.Output,  flow_in:tf.Output, ) -> ( flow_out:tf.Output, ) {
     if scope.error() != nil {
@@ -25953,6 +27828,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TensorArraySplitV2(scope:Scope,  handle:tf.Output,  value:tf.Output,  lengths:tf.Output,  flow_in:tf.Output, ) -> ( flow_out:tf.Output, ) {
     if scope.error() != nil {
@@ -25998,6 +27876,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TensorArraySplitV3(scope:Scope,  handle:tf.Output,  value:tf.Output,  lengths:tf.Output,  flow_in:tf.Output, ) -> ( flow_out:tf.Output, ) {
     if scope.error() != nil {
@@ -26033,6 +27914,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TensorArrayUnpack(scope:Scope,  handle:tf.Output,  value:tf.Output,  flow_in:tf.Output, ) -> ( flow_out:tf.Output, ) {
     if scope.error() != nil {
@@ -26069,6 +27953,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TensorArrayV2(scope:Scope,  size:tf.Output, ) -> ( handle:tf.Output, ) {
     if scope.error() != nil {
@@ -26106,6 +27993,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TensorArrayV3(scope:Scope,  size:tf.Output, ) -> ( handle:tf.Output,  flow:tf.Output, ) {
     if scope.error() != nil {
@@ -26141,6 +28031,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TensorArrayWrite(scope:Scope,  handle:tf.Output,  index:tf.Output,  value:tf.Output,  flow_in:tf.Output, ) -> ( flow_out:tf.Output, ) {
     if scope.error() != nil {
@@ -26177,6 +28070,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TensorArrayWriteV2(scope:Scope,  handle:tf.Output,  index:tf.Output,  value:tf.Output,  flow_in:tf.Output, ) -> ( flow_out:tf.Output, ) {
     if scope.error() != nil {
@@ -26213,6 +28109,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TensorArrayWriteV3(scope:Scope,  handle:tf.Output,  index:tf.Output,  value:tf.Output,  flow_in:tf.Output, ) -> ( flow_out:tf.Output, ) {
     if scope.error() != nil {
@@ -26249,6 +28148,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TensorDataset(scope:Scope,  components:tf.Output, ) -> ( handle:tf.Output, ) {
     if scope.error() != nil {
@@ -26285,6 +28187,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TensorSliceDataset(scope:Scope,  components:tf.Output, ) -> ( handle:tf.Output, ) {
     if scope.error() != nil {
@@ -26321,6 +28226,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TensorSummary(scope:Scope,  tensor:tf.Output, ) -> ( summary:tf.Output, ) {
     if scope.error() != nil {
@@ -26357,6 +28265,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TextLineDataset(scope:Scope,  filenames:tf.Output, ) -> ( handle:tf.Output, ) {
     if scope.error() != nil {
@@ -26392,6 +28303,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TextLineReader(scope:Scope, ) -> ( reader_handle:tf.Output, ) {
     if scope.error() != nil {
@@ -26427,6 +28341,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TextLineReaderV2(scope:Scope, ) -> ( reader_handle:tf.Output, ) {
     if scope.error() != nil {
@@ -26470,6 +28387,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ThreadUnsafeUnigramCandidateSampler(scope:Scope,  true_classes:tf.Output, ) -> ( sampled_candidates:tf.Output,  true_expected_count:tf.Output,  sampled_expected_count:tf.Output, ) {
     if scope.error() != nil {
@@ -26511,6 +28431,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Tile(scope:Scope,  input:tf.Output,  multiples:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -26550,6 +28473,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TileGrad(scope:Scope,  input:tf.Output,  multiples:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -26594,6 +28520,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TopK(scope:Scope,  input:tf.Output, ) -> ( values:tf.Output,  indices:tf.Output, ) {
     if scope.error() != nil {
@@ -26637,6 +28566,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TopKV2(scope:Scope,  input:tf.Output,  k:tf.Output, ) -> ( values:tf.Output,  indices:tf.Output, ) {
     if scope.error() != nil {
@@ -26675,6 +28607,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Transpose(scope:Scope,  x:tf.Output,  perm:tf.Output, ) -> ( y:tf.Output, ) {
     if scope.error() != nil {
@@ -26717,6 +28652,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TruncateDiv(scope:Scope,  x:tf.Output,  y:tf.Output, ) -> ( z:tf.Output, ) {
     if scope.error() != nil {
@@ -26757,6 +28695,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TruncateMod(scope:Scope,  x:tf.Output,  y:tf.Output, ) -> ( z:tf.Output, ) {
     if scope.error() != nil {
@@ -26796,6 +28737,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func TruncatedNormal(scope:Scope,  shape:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -26839,6 +28783,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func UniformCandidateSampler(scope:Scope,  true_classes:tf.Output, ) -> ( sampled_candidates:tf.Output,  true_expected_count:tf.Output,  sampled_expected_count:tf.Output, ) {
     if scope.error() != nil {
@@ -26887,6 +28834,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Unique(scope:Scope,  x:tf.Output, ) -> ( y:tf.Output,  idx:tf.Output, ) {
     if scope.error() != nil {
@@ -26937,6 +28887,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func UniqueWithCounts(scope:Scope,  x:tf.Output, ) -> ( y:tf.Output,  idx:tf.Output,  count:tf.Output, ) {
     if scope.error() != nil {
@@ -26982,6 +28935,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Unpack(scope:Scope,  value:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -27030,6 +28986,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func UnsortedSegmentMax(scope:Scope,  data:tf.Output,  segment_ids:tf.Output,  num_segments:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -27078,6 +29037,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func UnsortedSegmentSum(scope:Scope,  data:tf.Output,  segment_ids:tf.Output,  num_segments:tf.Output, ) -> ( output:tf.Output, ) {
     if scope.error() != nil {
@@ -27115,6 +29077,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Unstage(scope:Scope, ) -> ( values:tf.Output, ) {
     if scope.error() != nil {
@@ -27150,6 +29115,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Variable(scope:Scope, ) -> ( ref:tf.Output, ) {
     if scope.error() != nil {
@@ -27188,6 +29156,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func VariableV2(scope:Scope, ) -> ( ref:tf.Output, ) {
     if scope.error() != nil {
@@ -27252,6 +29223,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Where(scope:Scope,  input:tf.Output, ) -> ( index:tf.Output, ) {
     if scope.error() != nil {
@@ -27289,6 +29263,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func WholeFileReader(scope:Scope, ) -> ( reader_handle:tf.Output, ) {
     if scope.error() != nil {
@@ -27326,6 +29303,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func WholeFileReaderV2(scope:Scope, ) -> ( reader_handle:tf.Output, ) {
     if scope.error() != nil {
@@ -27361,6 +29341,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func WriteFile(scope:Scope,  filename:tf.Output,  contents:tf.Output, ) -> () {
     if scope.error() != nil {
@@ -27397,6 +29380,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ZerosLike(scope:Scope,  x:tf.Output, ) -> ( y:tf.Output, ) {
     if scope.error() != nil {
@@ -27435,6 +29421,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func Zeta(scope:Scope,  x:tf.Output,  q:tf.Output, ) -> ( z:tf.Output, ) {
     if scope.error() != nil {
@@ -27471,6 +29460,9 @@ _outputArg
 // TODO - detect if the output args = 0
 // TODO - in the return parameters use an index Output(0) // output(1) etc
 // TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
 
 func ZipDataset(scope:Scope,  input_datasets:tf.Output, ) -> ( handle:tf.Output, ) {
     if scope.error() != nil {

@@ -3,7 +3,6 @@ import protoTensorFlow
 import Foundation
 import IOSwift
 import ByteTools
-import protoTensorFlow
 
 
 
@@ -52,7 +51,7 @@ do {
 		   curl -L https://storage.googleapis.com/download.tensorflow.org/models/inception5h.zip -o misc/inception5h.zip
 		   unzip misc/inception5h.zip -d /misc
      */
-    let projectDir = "/Users/jpope/Documents/tensorflowWorkspace/tensorflow/tensorflow/swift/misc"
+    let projectDir = "/Users/jp/Documents/tensorflowWorkspace/tensorflow/tensorflow/swift/misc"
     let modelFile  = "tensorflow_inception_graph.pb"
     let imagefile = "grace_hopper.jpg"
 
@@ -62,6 +61,17 @@ do {
     // Load the serialized GraphDef from a file.
     let model = try Data(contentsOf:URL(fileURLWithPath: "\(projectDir)/\(modelFile)"))
 
+    // pull apart inception model.
+    let myGraphProto = try Tensorflow_GraphDef.init(serializedData:model)
+    for (index,nodeDef) in myGraphProto.node.enumerated(){
+        print("node:",nodeDef.name)
+        if (index == 1){
+            print("node:",nodeDef.debugDescription)
+        }
+    }
+
+    
+    
     // Construct an in-memory graph from the serialized form.
     let graph = newGraph()
     if let error = graph.Import(def:model.cBytes(),prefix: "OK"){

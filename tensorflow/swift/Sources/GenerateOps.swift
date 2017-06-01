@@ -17,7 +17,7 @@ class OperationsStencil{
         do {
 
         
-        let projectDir = "/Users/jpope/Documents/tensorflowWorkspace/tensorflow/tensorflow/swift/misc"
+        let projectDir = "/Users/jp/Documents/tensorflowWorkspace/tensorflow/tensorflow/swift/misc"
         let opsFile = "ops.pb"
         let stencilFile = "OperationDefinitions.stencil"
         let generatedFile = "Operations.swift"
