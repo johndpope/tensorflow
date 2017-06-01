@@ -1,0 +1,66 @@
+// This file is generated automatically, DO NOT EDIT
+//  tensorflow/core/framework/op_def.proto
+//  tensorflow/core/framework/op_def.pb.swift
+
+import Foundation
+import Darwin.C.stddef
+import Darwin.C.stdint
+import CTensorFlow
+import protoTensorFlow
+
+/*
+var _inputArg: [Tensorflow_OpDef.ArgDef] = []
+var _outputArg: [Tensorflow_OpDef.ArgDef] = []
+var _attr: [Tensorflow_OpDef.AttrDef] = []
+var _deprecation: Tensorflow_OpDeprecation? = nil
+var _summary: String = String()
+var _description_p: String = String()
+var _isCommutative: Bool = false
+var _isAggregate: Bool = false
+var _isStateful: Bool = false
+var _allowsUninitializedInput: Bool = false
+*/
+
+{% for op in operations %}
+
+/*
+{{op._storage._summary}}
+
+{{op._storage._description_p}}
+
+_inputArg
+{% for arg in op._storage._inputArg %} {{arg.name}}:{{arg.type}}: .{{arg.typeAttr}} {% endfor %}
+_outputArg
+
+_outputArg
+{% for arg in op._storage._outputArg %} {{arg.name}}:{{arg.type}}:{{arg.typeAttr}} {% endfor %}
+
+*/
+
+
+// TODO - detect if the output args = 0
+// TODO - in the return parameters use an index Output(0) // output(1) etc
+// TODO - work out a way to skip extroneous , eg. param,param, )
+// TODO - Not all return types are output eg.
+// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
+
+
+func {{ op._storage._name}}(scope:Scope, {% for arg in op._storage._inputArg %} {{arg.name}}:tf.Output,{{arg.type}} {% endfor %}) -> ({% for arg in op._storage._outputArg %} {{arg.name}}:tf.Output, {% endfor %}) {
+    if scope.error() != nil {
+        return
+    }
+
+
+    let opspec = tf.OpSpec(
+        Type: "{{ op._storage._name}}",
+        Input: [ {% for arg in op._storage._inputArg %} {{arg.name}},{{arg.type}} {% endfor %})]
+        Attrs: attrs
+    )
+
+
+    let op = scope.AddOperation(opspec)
+    return ( {% for arg in op._storage._outputArg %} op.Output(*) {{arg.name}}{{arg.type}} {% endfor %})
+
+}
+{% endfor %}
+

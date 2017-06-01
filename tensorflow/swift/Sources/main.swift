@@ -1,10 +1,11 @@
 import CTensorFlow
 import protoTensorFlow
 import Foundation
-import CommandLineKit
 import IOSwift
 import ByteTools
 import protoTensorFlow
+
+
 
 // An example for using the TensorFlow Go API for image recognition
 // using a pre-trained inception model (http://arxiv.org/abs/1512.00567).
@@ -41,39 +42,26 @@ import protoTensorFlow
 public typealias ShapeProto = Tensorflow_TensorShapeProto
 
 
-
 print("Hello from TensorFlow C library version ",  tf.Version())
-
-let cmdLine = CommandLineKit.CommandLine()
-let dirFlag = StringOption(shortFlag: "d",
-                          longFlag: "dir",
-                          required: true,
-                          helpMessage: "Directory containing the trained model files. ")
-let imageFlag = StringOption(shortFlag: "i",
-                           longFlag: "image",
-                           required: true,
-                           helpMessage: "Path of a JPEG-image to extract labels for")
-
-cmdLine.addOptions(dirFlag,imageFlag)
 
 
 do {
-    try cmdLine.parse()
-    
-    print("dirFlag:",dirFlag.value!)
 
     // The two files are extracted from a zip archive as so:
     /*
 		   curl -L https://storage.googleapis.com/download.tensorflow.org/models/inception5h.zip -o misc/inception5h.zip
 		   unzip misc/inception5h.zip -d /misc
      */
+    let projectDir = "/Users/jpope/Documents/tensorflowWorkspace/tensorflow/tensorflow/swift/misc"
     let modelFile  = "tensorflow_inception_graph.pb"
-    let imagefile = imageFlag.value! // change in the edit scheme arguments passed on launch
+    let imagefile = "grace_hopper.jpg"
+
+    
+    OperationsStencil.generateClasses()
     
     // Load the serialized GraphDef from a file.
-    let model = try Data(contentsOf:URL(fileURLWithPath: "\(dirFlag.value!)/\(modelFile)"))
-    
-    
+    let model = try Data(contentsOf:URL(fileURLWithPath: "\(projectDir)/\(modelFile)"))
+
     // Construct an in-memory graph from the serialized form.
     let graph = newGraph()
     if let error = graph.Import(def:model.cBytes(),prefix: "OK"){
@@ -120,10 +108,6 @@ do {
     
     shape.dim = dimensions
     tensor.tensorShape = shape
-    
-    
-    
-    
     
     var (session, error) = newSession( graph,opts)
     
@@ -173,7 +157,7 @@ do {
 //https://github.com/ctava/tensorflow-go-imagerecognition/blob/ffce1d23cb7f4194a38023eeaf25632553ca483c/main.go#L133
 func makeTensorFromImage(filename :String)-> (TF_Tensor?, NSError?) {
     
-    let photo = try! Data(contentsOf:URL(fileURLWithPath: "\(dirFlag.value!)/\(imageFlag.value!)"))
+  //  let photo = try! Data(contentsOf:URL(fileURLWithPath: "\(dirFlag.value!)/\(imageFlag.value!)"))
     
     // DecodeJpeg uses a scalar String-valued tensor as input.
 //    let tensor = newTensor(photo.cBytes())

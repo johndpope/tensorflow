@@ -4,25 +4,33 @@
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "3D6EEA4F5A9777897DB9384A379172ADF60BE680" : 9223372036854775807,
+    "D591987028BFCE350CA11D7DA7F1AE9C4373C207" : 9223372036854775807,
     "CBF5F70D4EDC8047BC75C25236002B0EA7F6B15B" : 9223372036854775807,
     "9EDDABE139EFE2CF16D7964A3F5B908927455C00" : 9223372036854775807,
-    "47F39DE8C3A309CC1ADE5DAA6C6D41B915C546E3" : 9223372036854775807,
-    "3D6EEA4F5A9777897DB9384A379172ADF60BE680" : 9223372036854775807,
-    "5AD55F74BEEB86028D7559B5C1D80706617C7C0F" : 9223372036854775807,
-    "6BB20761708304A2C0886A5DF6D82003D67281DF" : 9223372036854775807,
+    "3DA8097D366B6AFDAEA91946C35253AA1EBC780B" : 9223372036854775807,
+    "804E0A642F9B0288E24EC6843BD9BD71D8BD7EA7" : 9223372036854775807,
+    "E3472B155FC961329A2EA7BFAD3AFAE6EFBD63E5" : 9223372036854775807,
     "43BF8F9148B1F39FBDE34E7D1E69C54C78D21FCC" : 9223372036854775807,
-    "DEF827AEE61008D72BA753A95234A28088662AAB" : 9223372036854775807
+    "47F39DE8C3A309CC1ADE5DAA6C6D41B915C546E3" : 9223372036854775807,
+    "DEF827AEE61008D72BA753A95234A28088662AAB" : 9223372036854775807,
+    "5AD55F74BEEB86028D7559B5C1D80706617C7C0F" : 9223372036854775807,
+    "6BB20761708304A2C0886A5DF6D82003D67281DF" : 9223372036854775807
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "57A5C418-3918-4398-86DA-B2BF55123AEA",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "3D6EEA4F5A9777897DB9384A379172ADF60BE680" : "tensorflow\/tensorflow\/swift\/.build\/checkouts\/IO-swift.git-8255835922304939596\/",
+    "D591987028BFCE350CA11D7DA7F1AE9C4373C207" : "tensorflow\/tensorflow\/swift\/.build\/checkouts\/Spectre.git--7655155069707042687\/",
     "CBF5F70D4EDC8047BC75C25236002B0EA7F6B15B" : "tensorflow\/tensorflow\/swift\/.build\/checkouts\/CommandLine.git-3526138725398552904\/",
     "9EDDABE139EFE2CF16D7964A3F5B908927455C00" : "tensorflow\/tensorflow\/swift\/.build\/checkouts\/grpc-swift.git-1944885664151884802\/",
-    "47F39DE8C3A309CC1ADE5DAA6C6D41B915C546E3" : "tensorflow\/tensorflow\/swift\/.build\/checkouts\/ByteTools-swift--5045579632451246038\/",
-    "3D6EEA4F5A9777897DB9384A379172ADF60BE680" : "tensorflow\/tensorflow\/swift\/.build\/checkouts\/IO-swift.git-8255835922304939596\/",
-    "5AD55F74BEEB86028D7559B5C1D80706617C7C0F" : "tensorflow\/tensorflow\/swift\/.build\/checkouts\/Serialization-swift.git-6884777950175051807\/",
-    "6BB20761708304A2C0886A5DF6D82003D67281DF" : "tensorflow\/tensorflow\/swift\/.build\/checkouts\/swift-grpc-tensorflow.git--5994516077474897617\/",
+    "3DA8097D366B6AFDAEA91946C35253AA1EBC780B" : "tensorflow\/tensorflow\/swift\/.build\/checkouts\/Stencil.git-7635584243355970173\/",
+    "804E0A642F9B0288E24EC6843BD9BD71D8BD7EA7" : "tensorflow\/tensorflow\/swift\/.build\/checkouts\/StencilSwiftKit.git--4362189531575350872\/",
+    "E3472B155FC961329A2EA7BFAD3AFAE6EFBD63E5" : "tensorflow\/tensorflow\/swift\/.build\/checkouts\/PathKit.git--1865447967743163058\/",
     "43BF8F9148B1F39FBDE34E7D1E69C54C78D21FCC" : "tensorflow\/tensorflow\/swift\/.build\/checkouts\/swift-protobuf.git--7219529775138357838\/",
-    "DEF827AEE61008D72BA753A95234A28088662AAB" : "tensorflow\/"
+    "47F39DE8C3A309CC1ADE5DAA6C6D41B915C546E3" : "tensorflow\/tensorflow\/swift\/.build\/checkouts\/ByteTools-swift--5045579632451246038\/",
+    "DEF827AEE61008D72BA753A95234A28088662AAB" : "tensorflow\/",
+    "5AD55F74BEEB86028D7559B5C1D80706617C7C0F" : "tensorflow\/tensorflow\/swift\/.build\/checkouts\/Serialization-swift.git-6884777950175051807\/",
+    "6BB20761708304A2C0886A5DF6D82003D67281DF" : "tensorflow\/tensorflow\/swift\/.build\/checkouts\/swift-grpc-tensorflow.git--5994516077474897617\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "TensorFlow",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
@@ -32,6 +40,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/jp\/Documents\/tensorWorkspace\/tensorflow\/tensorflow\/swift\/.build\/repositories\/IO-swift.git-8255835922304939596",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3D6EEA4F5A9777897DB9384A379172ADF60BE680"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/jpope\/Documents\/tensorflowWorkspace\/tensorflow\/tensorflow\/swift\/.build\/repositories\/Stencil.git-7635584243355970173",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3DA8097D366B6AFDAEA91946C35253AA1EBC780B"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/johndpope\/Documents\/tensorFlowWorkspace\/tensorflow\/tensorflow\/swift\/.build\/repositories\/swift-protobuf.git--7219529775138357838",
@@ -54,6 +67,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6BB20761708304A2C0886A5DF6D82003D67281DF"
     },
     {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/jpope\/Documents\/tensorflowWorkspace\/tensorflow\/tensorflow\/swift\/.build\/repositories\/StencilSwiftKit.git--4362189531575350872",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "804E0A642F9B0288E24EC6843BD9BD71D8BD7EA7"
+    },
+    {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/johndpope\/Documents\/tensorFlowWorkspace\/tensorflow\/tensorflow\/swift\/.build\/repositories\/grpc-swift.git-1944885664151884802",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9EDDABE139EFE2CF16D7964A3F5B908927455C00"
@@ -64,9 +82,19 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "CBF5F70D4EDC8047BC75C25236002B0EA7F6B15B"
     },
     {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/jpope\/Documents\/tensorflowWorkspace\/tensorflow\/tensorflow\/swift\/.build\/repositories\/Spectre.git--7655155069707042687",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D591987028BFCE350CA11D7DA7F1AE9C4373C207"
+    },
+    {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/rxwei\/tensorflow.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "DEF827AEE61008D72BA753A95234A28088662AAB"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/jpope\/Documents\/tensorflowWorkspace\/tensorflow\/tensorflow\/swift\/.build\/repositories\/PathKit.git--1865447967743163058",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E3472B155FC961329A2EA7BFAD3AFAE6EFBD63E5"
     }
   ]
 }
