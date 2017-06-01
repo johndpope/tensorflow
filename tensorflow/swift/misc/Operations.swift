@@ -31,40 +31,21 @@ If exit_without_error is true, the process will exit normally,
 otherwise it will exit with a SIGABORT signal.
 Returns nothing but an exception.
 
-_inputArg
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func abort(scope:Scope)  -> (){
+func abort(scope:Scopeerror_msg :string, exit_without_error :bool)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Abort",
-        Input: [ )]
+        Input: [ ]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
@@ -74,44 +55,23 @@ Given a tensor `x`, this operation returns a tensor containing the absolute
 value of each element in `x`. For example, if x is an input element and y is
 an output element, this operation computes \\(y = |x|\\).
 
-_inputArg
- x:: .T 
-_outputArg
-
-_outputArg
- y::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func abs(scope:Scope,x: tf.Output)  -> (y: tf.Output){
+func abs(scope:Scope,x: tf.OutputT :type)  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Abs",
-        Input: [  x, )]
+        Input: [ x]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -119,85 +79,44 @@ Applies a gradient to a given accumulator.
 
 Does not add if local_step is lesser than the accumulator's global_step.
 
-_inputArg
- handle:: .  local_step:: .  gradient:: .dtype 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func accumulatorApplyGradient(scope:Scope,handle: tf.Output, local_step: tf.Output, gradient: tf.Output)  -> (){
+func accumulatorApplyGradient(scope:Scope,handle: tf.Output, localStep: tf.Output, gradient: tf.Outputdtype :type)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "AccumulatorApplyGradient",
-        Input: [  handle,  local_step,  gradient, )]
+        Input: [ handle, localStep, gradient]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
 Returns the number of gradients aggregated in the given accumulators.
 
 
-_inputArg
- handle:: . 
-_outputArg
-
-_outputArg
- num_accumulated:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func accumulatorNumAccumulated(scope:Scope,handle: tf.Output)  -> (num_accumulated: tf.Output){
+func accumulatorNumAccumulated(scope:Scope,handle: tf.Output)  ->(numAccumulated: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "AccumulatorNumAccumulated",
-        Input: [  handle, )]
+        Input: [ handle]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -206,41 +125,21 @@ Updates the accumulator with a new value for global_step.
 Logs warning if the accumulator's value is already higher than
 new_global_step.
 
-_inputArg
- handle:: .  new_global_step:: . 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func accumulatorSetGlobalStep(scope:Scope,handle: tf.Output, new_global_step: tf.Output)  -> (){
+func accumulatorSetGlobalStep(scope:Scope,handle: tf.Output, newGlobalStep: tf.Output)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "AccumulatorSetGlobalStep",
-        Input: [  handle,  new_global_step, )]
+        Input: [ handle, newGlobalStep]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
@@ -252,88 +151,46 @@ aggregated more than num_required gradients, it returns the average of
 the accumulated gradients.  Also automatically increments the recorded
 global_step in the accumulator by 1, and resets the aggregate to 0.
 
-_inputArg
- handle:: .  num_required:: . 
-_outputArg
-
-_outputArg
- average::dtype 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func accumulatorTakeGradient(scope:Scope,handle: tf.Output, num_required: tf.Output)  -> (average: tf.Output){
+func accumulatorTakeGradient(scope:Scope,handle: tf.Output, numRequired: tf.Outputdtype :type)  ->(average: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "AccumulatorTakeGradient",
-        Input: [  handle,  num_required, )]
+        Input: [ handle, numRequired]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Computes acos of x element-wise.
 
 
-_inputArg
- x:: .T 
-_outputArg
-
-_outputArg
- y::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func acos(scope:Scope,x: tf.Output)  -> (y: tf.Output){
+func acos(scope:Scope,x: tf.OutputT :type)  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Acos",
-        Input: [  x, )]
+        Input: [ x]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -342,44 +199,23 @@ Returns x + y element-wise.
 *NOTE*: `Add` supports broadcasting. `AddN` does not. More about broadcasting
 [here](http://docs.scipy.org/doc/numpy/user/basics.broadcasting.html)
 
-_inputArg
- x:: .T  y:: .T 
-_outputArg
-
-_outputArg
- z::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func add(scope:Scope,x: tf.Output, y: tf.Output)  -> (z: tf.Output){
+func add(scope:Scope,x: tf.Output, y: tf.OutputT :type)  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Add",
-        Input: [  x,  y, )]
+        Input: [ x, y]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -404,88 +240,46 @@ is provided here, instead use the *name* of the Operation created by calling
 `AddManySparseToTensorsMap` as the `shared_name` passed to
 `TakeManySparseFromTensorsMap`.  Ensure the Operations are colocated.
 
-_inputArg
- sparse_indices:: .  sparse_values:: .T  sparse_shape:: . 
-_outputArg
-
-_outputArg
- sparse_handles:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func addManySparseToTensorsMap(scope:Scope,sparse_indices: tf.Output, sparse_values: tf.Output, sparse_shape: tf.Output)  -> (sparse_handles: tf.Output){
+func addManySparseToTensorsMap(scope:Scope,sparseIndices: tf.Output, sparseValues: tf.Output, sparseShape: tf.OutputT :type, container :string, shared_name :string)  ->(sparseHandles: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "AddManySparseToTensorsMap",
-        Input: [  sparse_indices,  sparse_values,  sparse_shape, )]
+        Input: [ sparseIndices, sparseValues, sparseShape]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Add all input tensors element wise.
 
 
-_inputArg
- inputs:: .T 
-_outputArg
-
-_outputArg
- sum::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func addN(scope:Scope,inputs: tf.Output)  -> (sum: tf.Output){
+func addN(scope:Scope,inputs: tf.OutputN :int, T :type)  ->(sum: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "AddN",
-        Input: [  inputs, )]
+        Input: [ inputs]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -504,88 +298,46 @@ is provided here, instead use the *name* of the Operation created by calling
 `AddSparseToTensorsMap` as the `shared_name` passed to
 `TakeManySparseFromTensorsMap`.  Ensure the Operations are colocated.
 
-_inputArg
- sparse_indices:: .  sparse_values:: .T  sparse_shape:: . 
-_outputArg
-
-_outputArg
- sparse_handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func addSparseToTensorsMap(scope:Scope,sparse_indices: tf.Output, sparse_values: tf.Output, sparse_shape: tf.Output)  -> (sparse_handle: tf.Output){
+func addSparseToTensorsMap(scope:Scope,sparseIndices: tf.Output, sparseValues: tf.Output, sparseShape: tf.OutputT :type, container :string, shared_name :string)  ->(sparseHandle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "AddSparseToTensorsMap",
-        Input: [  sparse_indices,  sparse_values,  sparse_shape, )]
+        Input: [ sparseIndices, sparseValues, sparseShape]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Deprecated. Disallowed in GraphDef version >= 2.
 
 
-_inputArg
- images:: .T  contrast_factor:: .  min_value:: .  max_value:: . 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func adjustContrast(scope:Scope,images: tf.Output, contrast_factor: tf.Output, min_value: tf.Output, max_value: tf.Output)  -> (output: tf.Output){
+func adjustContrast(scope:Scope,images: tf.Output, contrastFactor: tf.Output, minValue: tf.Output, maxValue: tf.OutputT :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "AdjustContrast",
-        Input: [  images,  contrast_factor,  min_value,  max_value, )]
+        Input: [ images, contrastFactor, minValue, maxValue]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -599,44 +351,23 @@ For each channel, the Op first computes the mean of the image pixels in the
 channel and then adjusts each component of each pixel to
 `(x - mean) * contrast_factor + mean`.
 
-_inputArg
- images:: .  contrast_factor:: . 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func adjustContrastv2(scope:Scope,images: tf.Output, contrast_factor: tf.Output)  -> (output: tf.Output){
+func adjustContrastv2(scope:Scope,images: tf.Output, contrastFactor: tf.Output)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "AdjustContrastv2",
-        Input: [  images,  contrast_factor, )]
+        Input: [ images, contrastFactor]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -648,44 +379,23 @@ The input image is considered in the RGB colorspace. Conceptually, the RGB
 colors are first mapped into HSV. A delta is then applied all the hue values,
 and then remapped back to RGB colorspace.
 
-_inputArg
- images:: .  delta:: . 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func adjustHue(scope:Scope,images: tf.Output, delta: tf.Output)  -> (output: tf.Output){
+func adjustHue(scope:Scope,images: tf.Output, delta: tf.Output)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "AdjustHue",
-        Input: [  images,  delta, )]
+        Input: [ images, delta]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -697,44 +407,23 @@ The input image is considered in the RGB colorspace. Conceptually, the RGB
 colors are first mapped into HSV. A scale is then applied all the saturation
 values, and then remapped back to RGB colorspace.
 
-_inputArg
- images:: .  scale:: . 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func adjustSaturation(scope:Scope,images: tf.Output, scale: tf.Output)  -> (output: tf.Output){
+func adjustSaturation(scope:Scope,images: tf.Output, scale: tf.Output)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "AdjustSaturation",
-        Input: [  images,  scale, )]
+        Input: [ images, scale]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -745,44 +434,23 @@ Reduces `input` along the dimensions given in `reduction_indices`. Unless
 `reduction_indices`. If `keep_dims` is true, the reduced dimensions are
 retained with length 1.
 
-_inputArg
- input:: .  reduction_indices:: .Tidx 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func all(scope:Scope,input: tf.Output, reduction_indices: tf.Output)  -> (output: tf.Output){
+func all(scope:Scope,input: tf.Output, reductionIndices: tf.Outputkeep_dims :bool, Tidx :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "All",
-        Input: [  input,  reduction_indices, )]
+        Input: [ input, reductionIndices]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -796,44 +464,23 @@ possibility of efficient dense matrix multiplication. The disadvantage is that
 the sampled candidates must be chosen independently of the context and of the
 true labels.
 
-_inputArg
- true_classes:: . 
-_outputArg
-
-_outputArg
- sampled_candidates::  true_expected_count::  sampled_expected_count:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func allCandidateSampler(scope:Scope,true_classes: tf.Output)  -> (sampled_candidates: tf.Output, true_expected_count: tf.Output, sampled_expected_count: tf.Output){
+func allCandidateSampler(scope:Scope,trueClasses: tf.Outputnum_true :int, num_sampled :int, unique :bool, seed :int, seed2 :int)  ->(sampledCandidates: tf.Output, trueExpectedCount: tf.Output, sampledExpectedCount: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "AllCandidateSampler",
-        Input: [  true_classes, )]
+        Input: [ trueClasses]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1))
 }
 
 /*
@@ -844,44 +491,23 @@ Reduces `input` along the dimensions given in `reduction_indices`. Unless
 `reduction_indices`. If `keep_dims` is true, the reduced dimensions are
 retained with length 1.
 
-_inputArg
- input:: .  reduction_indices:: .Tidx 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func any(scope:Scope,input: tf.Output, reduction_indices: tf.Output)  -> (output: tf.Output){
+func any(scope:Scope,input: tf.Output, reductionIndices: tf.Outputkeep_dims :bool, Tidx :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Any",
-        Input: [  input,  reduction_indices, )]
+        Input: [ input, reductionIndices]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -892,44 +518,23 @@ update = (update_accum + epsilon).sqrt() * (accum + epsilon()).rsqrt() * grad;
 update_accum = rho() * update_accum + (1 - rho()) * update.square();
 var -= update;
 
-_inputArg
- var:: .T  accum:: .T  accum_update:: .T  lr:: .T  rho:: .T  epsilon:: .T  grad:: .T 
-_outputArg
-
-_outputArg
- out::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func applyAdadelta(scope:Scope,var: tf.Output, accum: tf.Output, accum_update: tf.Output, lr: tf.Output, rho: tf.Output, epsilon: tf.Output, grad: tf.Output)  -> (out: tf.Output){
+func applyAdadelta(scope:Scope,`var`: tf.Output, accum: tf.Output, accumUpdate: tf.Output, lr: tf.Output, rho: tf.Output, epsilon: tf.Output, grad: tf.OutputT :type, use_locking :bool)  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ApplyAdadelta",
-        Input: [  var,  accum,  accum_update,  lr,  rho,  epsilon,  grad, )]
+        Input: [ `var`, accum, accumUpdate, lr, rho, epsilon, grad]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -938,88 +543,46 @@ Update '*var' according to the adagrad scheme.
 accum += grad * grad
 var -= lr * grad * (1 / sqrt(accum))
 
-_inputArg
- var:: .T  accum:: .T  lr:: .T  grad:: .T 
-_outputArg
-
-_outputArg
- out::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func applyAdagrad(scope:Scope,var: tf.Output, accum: tf.Output, lr: tf.Output, grad: tf.Output)  -> (out: tf.Output){
+func applyAdagrad(scope:Scope,`var`: tf.Output, accum: tf.Output, lr: tf.Output, grad: tf.OutputT :type, use_locking :bool)  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ApplyAdagrad",
-        Input: [  var,  accum,  lr,  grad, )]
+        Input: [ `var`, accum, lr, grad]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Update '*var' according to the proximal adagrad scheme.
 
 
-_inputArg
- var:: .T  gradient_accumulator:: .T  gradient_squared_accumulator:: .T  grad:: .T  lr:: .T  l1:: .T  l2:: .T  global_step:: . 
-_outputArg
-
-_outputArg
- out::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func applyAdagradDA(scope:Scope,var: tf.Output, gradient_accumulator: tf.Output, gradient_squared_accumulator: tf.Output, grad: tf.Output, lr: tf.Output, l1: tf.Output, l2: tf.Output, global_step: tf.Output)  -> (out: tf.Output){
+func applyAdagradDA(scope:Scope,`var`: tf.Output, gradientAccumulator: tf.Output, gradientSquaredAccumulator: tf.Output, grad: tf.Output, lr: tf.Output, l1: tf.Output, l2: tf.Output, globalStep: tf.OutputT :type, use_locking :bool)  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ApplyAdagradDA",
-        Input: [  var,  gradient_accumulator,  gradient_squared_accumulator,  grad,  lr,  l1,  l2,  global_step, )]
+        Input: [ `var`, gradientAccumulator, gradientSquaredAccumulator, grad, lr, l1, l2, globalStep]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -1030,44 +593,23 @@ m_t <- beta1 * m_{t-1} + (1 - beta1) * g_t
 v_t <- beta2 * v_{t-1} + (1 - beta2) * g_t * g_t
 variable <- variable - lr_t * m_t / (sqrt(v_t) + epsilon)
 
-_inputArg
- var:: .T  m:: .T  v:: .T  beta1_power:: .T  beta2_power:: .T  lr:: .T  beta1:: .T  beta2:: .T  epsilon:: .T  grad:: .T 
-_outputArg
-
-_outputArg
- out::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func applyAdam(scope:Scope,var: tf.Output, m: tf.Output, v: tf.Output, beta1_power: tf.Output, beta2_power: tf.Output, lr: tf.Output, beta1: tf.Output, beta2: tf.Output, epsilon: tf.Output, grad: tf.Output)  -> (out: tf.Output){
+func applyAdam(scope:Scope,`var`: tf.Output, m: tf.Output, v: tf.Output, beta1Power: tf.Output, beta2Power: tf.Output, lr: tf.Output, beta1: tf.Output, beta2: tf.Output, epsilon: tf.Output, grad: tf.OutputT :type, use_locking :bool, use_nesterov :bool)  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ApplyAdam",
-        Input: [  var,  m,  v,  beta1_power,  beta2_power,  lr,  beta1,  beta2,  epsilon,  grad, )]
+        Input: [ `var`, m, v, beta1Power, beta2Power, lr, beta1, beta2, epsilon, grad]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -1088,44 +630,23 @@ ms <- rho * ms_{t-1} + (1-rho) * grad * grad
 mom <- momentum * mom_{t-1} + lr * grad / sqrt(ms - mg * mg + epsilon)
 var <- var - mom
 
-_inputArg
- var:: .T  mg:: .T  ms:: .T  mom:: .T  lr:: .T  rho:: .T  momentum:: .T  epsilon:: .T  grad:: .T 
-_outputArg
-
-_outputArg
- out::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func applyCenteredRMSProp(scope:Scope,var: tf.Output, mg: tf.Output, ms: tf.Output, mom: tf.Output, lr: tf.Output, rho: tf.Output, momentum: tf.Output, epsilon: tf.Output, grad: tf.Output)  -> (out: tf.Output){
+func applyCenteredRMSProp(scope:Scope,`var`: tf.Output, mg: tf.Output, ms: tf.Output, mom: tf.Output, lr: tf.Output, rho: tf.Output, momentum: tf.Output, epsilon: tf.Output, grad: tf.OutputT :type, use_locking :bool)  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ApplyCenteredRMSProp",
-        Input: [  var,  mg,  ms,  mom,  lr,  rho,  momentum,  epsilon,  grad, )]
+        Input: [ `var`, mg, ms, mom, lr, rho, momentum, epsilon, grad]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -1137,88 +658,46 @@ quadratic = 1.0 / (accum_new^(lr_power) * lr) + 2 * l2
 var = (sign(linear) * l1 - linear) / quadratic if |linear| > l1 else 0.0
 accum = accum_new
 
-_inputArg
- var:: .T  accum:: .T  linear:: .T  grad:: .T  lr:: .T  l1:: .T  l2:: .T  lr_power:: .T 
-_outputArg
-
-_outputArg
- out::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func applyFtrl(scope:Scope,var: tf.Output, accum: tf.Output, linear: tf.Output, grad: tf.Output, lr: tf.Output, l1: tf.Output, l2: tf.Output, lr_power: tf.Output)  -> (out: tf.Output){
+func applyFtrl(scope:Scope,`var`: tf.Output, accum: tf.Output, linear: tf.Output, grad: tf.Output, lr: tf.Output, l1: tf.Output, l2: tf.Output, lrPower: tf.OutputT :type, use_locking :bool)  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ApplyFtrl",
-        Input: [  var,  accum,  linear,  grad,  lr,  l1,  l2,  lr_power, )]
+        Input: [ `var`, accum, linear, grad, lr, l1, l2, lrPower]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Update '*var' by subtracting 'alpha' * 'delta' from it.
 
 
-_inputArg
- var:: .T  alpha:: .T  delta:: .T 
-_outputArg
-
-_outputArg
- out::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func applyGradientDescent(scope:Scope,var: tf.Output, alpha: tf.Output, delta: tf.Output)  -> (out: tf.Output){
+func applyGradientDescent(scope:Scope,`var`: tf.Output, alpha: tf.Output, delta: tf.OutputT :type, use_locking :bool)  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ApplyGradientDescent",
-        Input: [  var,  alpha,  delta, )]
+        Input: [ `var`, alpha, delta]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -1228,44 +707,23 @@ want to use Nesterov momentum.
 accum = accum * momentum + grad
 var -= lr * accum
 
-_inputArg
- var:: .T  accum:: .T  lr:: .T  grad:: .T  momentum:: .T 
-_outputArg
-
-_outputArg
- out::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func applyMomentum(scope:Scope,var: tf.Output, accum: tf.Output, lr: tf.Output, grad: tf.Output, momentum: tf.Output)  -> (out: tf.Output){
+func applyMomentum(scope:Scope,`var`: tf.Output, accum: tf.Output, lr: tf.Output, grad: tf.Output, momentum: tf.OutputT :type, use_locking :bool, use_nesterov :bool)  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ApplyMomentum",
-        Input: [  var,  accum,  lr,  grad,  momentum, )]
+        Input: [ `var`, accum, lr, grad, momentum]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -1275,44 +733,23 @@ accum += grad * grad
 prox_v = var - lr * grad * (1 / sqrt(accum))
 var = sign(prox_v)/(1+lr*l2) * max{|prox_v|-lr*l1,0}
 
-_inputArg
- var:: .T  accum:: .T  lr:: .T  l1:: .T  l2:: .T  grad:: .T 
-_outputArg
-
-_outputArg
- out::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func applyProximalAdagrad(scope:Scope,var: tf.Output, accum: tf.Output, lr: tf.Output, l1: tf.Output, l2: tf.Output, grad: tf.Output)  -> (out: tf.Output){
+func applyProximalAdagrad(scope:Scope,`var`: tf.Output, accum: tf.Output, lr: tf.Output, l1: tf.Output, l2: tf.Output, grad: tf.OutputT :type, use_locking :bool)  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ApplyProximalAdagrad",
-        Input: [  var,  accum,  lr,  l1,  l2,  grad, )]
+        Input: [ `var`, accum, lr, l1, l2, grad]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -1321,44 +758,23 @@ Update '*var' as FOBOS algorithm with fixed learning rate.
 prox_v = var - alpha * delta
 var = sign(prox_v)/(1+alpha*l2) * max{|prox_v|-alpha*l1,0}
 
-_inputArg
- var:: .T  alpha:: .T  l1:: .T  l2:: .T  delta:: .T 
-_outputArg
-
-_outputArg
- out::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func applyProximalGradientDescent(scope:Scope,var: tf.Output, alpha: tf.Output, l1: tf.Output, l2: tf.Output, delta: tf.Output)  -> (out: tf.Output){
+func applyProximalGradientDescent(scope:Scope,`var`: tf.Output, alpha: tf.Output, l1: tf.Output, l2: tf.Output, delta: tf.OutputT :type, use_locking :bool)  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ApplyProximalGradientDescent",
-        Input: [  var,  alpha,  l1,  l2,  delta, )]
+        Input: [ `var`, alpha, l1, l2, delta]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -1373,88 +789,46 @@ ms <- rho * ms_{t-1} + (1-rho) * grad * grad
 mom <- momentum * mom_{t-1} + lr * grad / sqrt(ms + epsilon)
 var <- var - mom
 
-_inputArg
- var:: .T  ms:: .T  mom:: .T  lr:: .T  rho:: .T  momentum:: .T  epsilon:: .T  grad:: .T 
-_outputArg
-
-_outputArg
- out::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func applyRMSProp(scope:Scope,var: tf.Output, ms: tf.Output, mom: tf.Output, lr: tf.Output, rho: tf.Output, momentum: tf.Output, epsilon: tf.Output, grad: tf.Output)  -> (out: tf.Output){
+func applyRMSProp(scope:Scope,`var`: tf.Output, ms: tf.Output, mom: tf.Output, lr: tf.Output, rho: tf.Output, momentum: tf.Output, epsilon: tf.Output, grad: tf.OutputT :type, use_locking :bool)  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ApplyRMSProp",
-        Input: [  var,  ms,  mom,  lr,  rho,  momentum,  epsilon,  grad, )]
+        Input: [ `var`, ms, mom, lr, rho, momentum, epsilon, grad]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Returns the truth value of abs(x-y) < tolerance element-wise.
 
 
-_inputArg
- x:: .T  y:: .T 
-_outputArg
-
-_outputArg
- z:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func approximateEqual(scope:Scope,x: tf.Output, y: tf.Output)  -> (z: tf.Output){
+func approximateEqual(scope:Scope,x: tf.Output, y: tf.OutputT :type, tolerance :float)  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ApproximateEqual",
-        Input: [  x,  y, )]
+        Input: [ x, y]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -1462,44 +836,23 @@ Returns the index with the largest value across dimensions of a tensor.
 
 Note that in case of ties the identity of the return value is not guaranteed.
 
-_inputArg
- input:: .T  dimension:: .Tidx 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func argMax(scope:Scope,input: tf.Output, dimension: tf.Output)  -> (output: tf.Output){
+func argMax(scope:Scope,input: tf.Output, dimension: tf.OutputT :type, Tidx :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ArgMax",
-        Input: [  input,  dimension, )]
+        Input: [ input, dimension]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -1507,44 +860,23 @@ Returns the index with the smallest value across dimensions of a tensor.
 
 Note that in case of ties the identity of the return value is not guaranteed.
 
-_inputArg
- input:: .T  dimension:: .Tidx 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func argMin(scope:Scope,input: tf.Output, dimension: tf.Output)  -> (output: tf.Output){
+func argMin(scope:Scope,input: tf.Output, dimension: tf.OutputT :type, Tidx :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ArgMin",
-        Input: [  input,  dimension, )]
+        Input: [ input, dimension]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -1552,88 +884,46 @@ Converts each entry in the given tensor to strings.  Supports many numeric
 
 types and boolean.
 
-_inputArg
- input:: .T 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func asString(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func asString(scope:Scope,input: tf.OutputT :type, precision :int, scientific :bool, shortest :bool, width :int, fill :string)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "AsString",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Computes asin of x element-wise.
 
 
-_inputArg
- x:: .T 
-_outputArg
-
-_outputArg
- y::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func asin(scope:Scope,x: tf.Output)  -> (y: tf.Output){
+func asin(scope:Scope,x: tf.OutputT :type)  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Asin",
-        Input: [  x, )]
+        Input: [ x]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -1642,41 +932,21 @@ Asserts that the given condition is true.
 If `condition` evaluates to false, print the list of tensors in `data`.
 `summarize` determines how many entries of the tensors to print.
 
-_inputArg
- condition:: .  data:: . 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func assert(scope:Scope,condition: tf.Output, data: tf.Output)  -> (){
+func assert(scope:Scope,condition: tf.Output, data: tf.OutputT :list(type), summarize :int)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Assert",
-        Input: [  condition,  data, )]
+        Input: [ condition, data]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
@@ -1685,44 +955,23 @@ Update 'ref' by assigning 'value' to it.
 This operation outputs "ref" after the assignment is done.
 This makes it easier to chain operations that need to use the reset value.
 
-_inputArg
- ref:: .T  value:: .T 
-_outputArg
-
-_outputArg
- output_ref::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func assign(scope:Scope,ref: tf.Output, value: tf.Output)  -> (output_ref: tf.Output){
+func assign(scope:Scope,ref: tf.Output, value: tf.OutputT :type, validate_shape :bool, use_locking :bool)  ->(outputRef: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Assign",
-        Input: [  ref,  value, )]
+        Input: [ ref, value]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -1731,44 +980,23 @@ Update 'ref' by adding 'value' to it.
 This operation outputs "ref" after the update is done.
 This makes it easier to chain operations that need to use the reset value.
 
-_inputArg
- ref:: .T  value:: .T 
-_outputArg
-
-_outputArg
- output_ref::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func assignAdd(scope:Scope,ref: tf.Output, value: tf.Output)  -> (output_ref: tf.Output){
+func assignAdd(scope:Scope,ref: tf.Output, value: tf.OutputT :type, use_locking :bool)  ->(outputRef: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "AssignAdd",
-        Input: [  ref,  value, )]
+        Input: [ ref, value]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -1777,88 +1005,46 @@ Update 'ref' by subtracting 'value' from it.
 This operation outputs "ref" after the update is done.
 This makes it easier to chain operations that need to use the reset value.
 
-_inputArg
- ref:: .T  value:: .T 
-_outputArg
-
-_outputArg
- output_ref::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func assignSub(scope:Scope,ref: tf.Output, value: tf.Output)  -> (output_ref: tf.Output){
+func assignSub(scope:Scope,ref: tf.Output, value: tf.OutputT :type, use_locking :bool)  ->(outputRef: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "AssignSub",
-        Input: [  ref,  value, )]
+        Input: [ ref, value]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Computes atan of x element-wise.
 
 
-_inputArg
- x:: .T 
-_outputArg
-
-_outputArg
- y::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func atan(scope:Scope,x: tf.Output)  -> (y: tf.Output){
+func atan(scope:Scope,x: tf.OutputT :type)  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Atan",
-        Input: [  x, )]
+        Input: [ x]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -1870,44 +1056,23 @@ and
 \[ y = r \sin(\theta) \]
 where \(r = \sqrt(x^2 + y^2) \).
 
-_inputArg
- y:: .T  x:: .T 
-_outputArg
-
-_outputArg
- z::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func atan2(scope:Scope,y: tf.Output, x: tf.Output)  -> (z: tf.Output){
+func atan2(scope:Scope,y: tf.Output, x: tf.OutputT :type)  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Atan2",
-        Input: [  y,  x, )]
+        Input: [ y, x]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -1935,44 +1100,23 @@ To get a more intuitive and visual look at what this operation does, you can run
 tensorflow/examples/wav_to_spectrogram to read in an audio file and save out the
 resulting spectrogram as a PNG image.
 
-_inputArg
- input:: . 
-_outputArg
-
-_outputArg
- spectrogram:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func audioSpectrogram(scope:Scope,input: tf.Output)  -> (spectrogram: tf.Output){
+func audioSpectrogram(scope:Scope,input: tf.Outputwindow_size :int, stride :int, magnitude_squared :bool)  ->(spectrogram: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "AudioSpectrogram",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -1988,44 +1132,23 @@ build the `tag` of the summary values:
 *  If `max_outputs` is greater than 1, the summary value tags are
    generated sequentially as '*tag*/audio/0', '*tag*/audio/1', etc.
 
-_inputArg
- tag:: .  tensor:: . 
-_outputArg
-
-_outputArg
- summary:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func audioSummary(scope:Scope,tag: tf.Output, tensor: tf.Output)  -> (summary: tf.Output){
+func audioSummary(scope:Scope,tag: tf.Output, tensor: tf.Outputsample_rate :float, max_outputs :int)  ->(summary: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "AudioSummary",
-        Input: [  tag,  tensor, )]
+        Input: [ tag, tensor]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -2041,44 +1164,23 @@ build the `tag` of the summary values:
 *  If `max_outputs` is greater than 1, the summary value tags are
    generated sequentially as '*tag*/audio/0', '*tag*/audio/1', etc.
 
-_inputArg
- tag:: .  tensor:: .  sample_rate:: . 
-_outputArg
-
-_outputArg
- summary:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func audioSummaryV2(scope:Scope,tag: tf.Output, tensor: tf.Output, sample_rate: tf.Output)  -> (summary: tf.Output){
+func audioSummaryV2(scope:Scope,tag: tf.Output, tensor: tf.Output, sampleRate: tf.Outputmax_outputs :int)  ->(summary: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "AudioSummaryV2",
-        Input: [  tag,  tensor,  sample_rate, )]
+        Input: [ tag, tensor, sampleRate]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -2087,176 +1189,92 @@ Performs average pooling on the input.
 Each entry in `output` is the mean of the corresponding size `ksize`
 window in `value`.
 
-_inputArg
- value:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func avgPool(scope:Scope,value: tf.Output)  -> (output: tf.Output){
+func avgPool(scope:Scope,value: tf.Outputksize :list(int), strides :list(int), padding :string, data_format :string, T :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "AvgPool",
-        Input: [  value, )]
+        Input: [ value]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Performs 3D average pooling on the input.
 
 
-_inputArg
- input:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func avgPool3D(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func avgPool3D(scope:Scope,input: tf.Outputksize :list(int), strides :list(int), padding :string, data_format :string, T :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "AvgPool3D",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Computes gradients of average pooling function.
 
 
-_inputArg
- orig_input_shape:: .  grad:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func avgPool3DGrad(scope:Scope,orig_input_shape: tf.Output, grad: tf.Output)  -> (output: tf.Output){
+func avgPool3DGrad(scope:Scope,origInputShape: tf.Output, grad: tf.Outputksize :list(int), strides :list(int), padding :string, data_format :string, T :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "AvgPool3DGrad",
-        Input: [  orig_input_shape,  grad, )]
+        Input: [ origInputShape, grad]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Computes gradients of the average pooling function.
 
 
-_inputArg
- orig_input_shape:: .  grad:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func avgPoolGrad(scope:Scope,orig_input_shape: tf.Output, grad: tf.Output)  -> (output: tf.Output){
+func avgPoolGrad(scope:Scope,origInputShape: tf.Output, grad: tf.Outputksize :list(int), strides :list(int), padding :string, data_format :string, T :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "AvgPoolGrad",
-        Input: [  orig_input_shape,  grad, )]
+        Input: [ origInputShape, grad]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -2270,43 +1288,23 @@ its value tuple, and may be accessed using BarrierTakeMany. An
 incomplete element has some undefined components in its value tuple,
 and may be updated using BarrierInsertMany.
 
-_inputArg
-_outputArg
-
-_outputArg
- handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func barrier(scope:Scope)  -> (handle: tf.Output){
+func barrier(scope:Scopecomponent_types :list(type), shapes :list(shape), capacity :int, container :string, shared_name :string)  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Barrier",
-        Input: [ )]
+        Input: [ ]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -2319,85 +1317,44 @@ existing elements will continue to succeed. Subsequent TakeMany operations will
 continue to succeed if sufficient completed elements remain in the barrier.
 Subsequent TakeMany operations that would block will fail immediately.
 
-_inputArg
- handle:: . 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func barrierClose(scope:Scope,handle: tf.Output)  -> (){
+func barrierClose(scope:Scope,handle: tf.Outputcancel_pending_enqueues :bool)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "BarrierClose",
-        Input: [  handle, )]
+        Input: [ handle]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
 Computes the number of incomplete elements in the given barrier.
 
 
-_inputArg
- handle:: . 
-_outputArg
-
-_outputArg
- size:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func barrierIncompleteSize(scope:Scope,handle: tf.Output)  -> (size: tf.Output){
+func barrierIncompleteSize(scope:Scope,handle: tf.Output)  ->(size: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "BarrierIncompleteSize",
-        Input: [  handle, )]
+        Input: [ handle]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -2408,85 +1365,44 @@ incomplete element. If a key is found in the barrier, and the element
 already has a value at component_index, this operation will fail with
 INVALID_ARGUMENT, and leave the barrier in an undefined state.
 
-_inputArg
- handle:: .  keys:: .  values:: .T 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func barrierInsertMany(scope:Scope,handle: tf.Output, keys: tf.Output, values: tf.Output)  -> (){
+func barrierInsertMany(scope:Scope,handle: tf.Output, keys: tf.Output, values: tf.OutputT :type, component_index :int)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "BarrierInsertMany",
-        Input: [  handle,  keys,  values, )]
+        Input: [ handle, keys, values]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
 Computes the number of complete elements in the given barrier.
 
 
-_inputArg
- handle:: . 
-_outputArg
-
-_outputArg
- size:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func barrierReadySize(scope:Scope,handle: tf.Output)  -> (size: tf.Output){
+func barrierReadySize(scope:Scope,handle: tf.Output)  ->(size: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "BarrierReadySize",
-        Input: [  handle, )]
+        Input: [ handle]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -2499,432 +1415,222 @@ in which they were placed into the barrier.  The indices output provides
 information about the batch in which each element was originally inserted
 into the barrier.
 
-_inputArg
- handle:: .  num_elements:: . 
-_outputArg
-
-_outputArg
- indices::  keys::  values:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func barrierTakeMany(scope:Scope,handle: tf.Output, num_elements: tf.Output)  -> (indices: tf.Output, keys: tf.Output, values: tf.Output){
+func barrierTakeMany(scope:Scope,handle: tf.Output, numElements: tf.Outputcomponent_types :list(type), allow_small_batch :bool, wait_for_incomplete :bool, timeout_ms :int)  ->(indices: tf.Output, keys: tf.Output, values: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "BarrierTakeMany",
-        Input: [  handle,  num_elements, )]
+        Input: [ handle, numElements]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1))
 }
 
 /*
 
 
-_inputArg
- input:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func batchCholesky(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func batchCholesky(scope:Scope,input: tf.OutputT :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "BatchCholesky",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 
 
-_inputArg
- l:: .T  grad:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func batchCholeskyGrad(scope:Scope,l: tf.Output, grad: tf.Output)  -> (output: tf.Output){
+func batchCholeskyGrad(scope:Scope,l: tf.Output, grad: tf.OutputT :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "BatchCholeskyGrad",
-        Input: [  l,  grad, )]
+        Input: [ l, grad]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Creates a dataset that batches `batch_size` elements from `input_dataset`.
 
 
-_inputArg
- input_dataset:: .  batch_size:: . 
-_outputArg
-
-_outputArg
- handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func batchDataset(scope:Scope,input_dataset: tf.Output, batch_size: tf.Output)  -> (handle: tf.Output){
+func batchDataset(scope:Scope,inputDataset: tf.Output, batchSize: tf.Outputoutput_types :list(type), output_shapes :list(shape))  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "BatchDataset",
-        Input: [  input_dataset,  batch_size, )]
+        Input: [ inputDataset, batchSize]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 
 
-_inputArg
- input:: . 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func batchFFT(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func batchFFT(scope:Scope,input: tf.Output)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "BatchFFT",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 
 
-_inputArg
- input:: . 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func batchFFT2D(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func batchFFT2D(scope:Scope,input: tf.Output)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "BatchFFT2D",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 
 
-_inputArg
- input:: . 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func batchFFT3D(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func batchFFT3D(scope:Scope,input: tf.Output)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "BatchFFT3D",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 
 
-_inputArg
- input:: . 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func batchIFFT(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func batchIFFT(scope:Scope,input: tf.Output)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "BatchIFFT",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 
 
-_inputArg
- input:: . 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func batchIFFT2D(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func batchIFFT2D(scope:Scope,input: tf.Output)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "BatchIFFT2D",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 
 
-_inputArg
- input:: . 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func batchIFFT3D(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func batchIFFT3D(scope:Scope,input: tf.Output)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "BatchIFFT3D",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -2944,431 +1650,221 @@ The output tensor is 2-D or higher with shape `[..., r_o, c_o]`, where:
 It is computed as:
     output[..., :, :] = matrix(x[..., :, :]) * matrix(y[..., :, :])
 
-_inputArg
- x:: .T  y:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func batchMatMul(scope:Scope,x: tf.Output, y: tf.Output)  -> (output: tf.Output){
+func batchMatMul(scope:Scope,x: tf.Output, y: tf.OutputT :type, adj_x :bool, adj_y :bool)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "BatchMatMul",
-        Input: [  x,  y, )]
+        Input: [ x, y]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 
 
-_inputArg
- input:: .T  num_lower:: .  num_upper:: . 
-_outputArg
-
-_outputArg
- band::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func batchMatrixBandPart(scope:Scope,input: tf.Output, num_lower: tf.Output, num_upper: tf.Output)  -> (band: tf.Output){
+func batchMatrixBandPart(scope:Scope,input: tf.Output, numLower: tf.Output, numUpper: tf.OutputT :type)  ->(band: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "BatchMatrixBandPart",
-        Input: [  input,  num_lower,  num_upper, )]
+        Input: [ input, numLower, numUpper]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 
 
-_inputArg
- input:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func batchMatrixDeterminant(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func batchMatrixDeterminant(scope:Scope,input: tf.OutputT :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "BatchMatrixDeterminant",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 
 
-_inputArg
- diagonal:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func batchMatrixDiag(scope:Scope,diagonal: tf.Output)  -> (output: tf.Output){
+func batchMatrixDiag(scope:Scope,diagonal: tf.OutputT :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "BatchMatrixDiag",
-        Input: [  diagonal, )]
+        Input: [ diagonal]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 
 
-_inputArg
- input:: .T 
-_outputArg
-
-_outputArg
- diagonal::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func batchMatrixDiagPart(scope:Scope,input: tf.Output)  -> (diagonal: tf.Output){
+func batchMatrixDiagPart(scope:Scope,input: tf.OutputT :type)  ->(diagonal: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "BatchMatrixDiagPart",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 
 
-_inputArg
- input:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func batchMatrixInverse(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func batchMatrixInverse(scope:Scope,input: tf.Outputadjoint :bool, T :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "BatchMatrixInverse",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 
 
-_inputArg
- input:: .T  diagonal:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func batchMatrixSetDiag(scope:Scope,input: tf.Output, diagonal: tf.Output)  -> (output: tf.Output){
+func batchMatrixSetDiag(scope:Scope,input: tf.Output, diagonal: tf.OutputT :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "BatchMatrixSetDiag",
-        Input: [  input,  diagonal, )]
+        Input: [ input, diagonal]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 
 
-_inputArg
- matrix:: .T  rhs:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func batchMatrixSolve(scope:Scope,matrix: tf.Output, rhs: tf.Output)  -> (output: tf.Output){
+func batchMatrixSolve(scope:Scope,matrix: tf.Output, rhs: tf.Outputadjoint :bool, T :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "BatchMatrixSolve",
-        Input: [  matrix,  rhs, )]
+        Input: [ matrix, rhs]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 
 
-_inputArg
- matrix:: .T  rhs:: .T  l2_regularizer:: . 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func batchMatrixSolveLs(scope:Scope,matrix: tf.Output, rhs: tf.Output, l2_regularizer: tf.Output)  -> (output: tf.Output){
+func batchMatrixSolveLs(scope:Scope,matrix: tf.Output, rhs: tf.Output, l2Regularizer: tf.OutputT :type, fast :bool)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "BatchMatrixSolveLs",
-        Input: [  matrix,  rhs,  l2_regularizer, )]
+        Input: [ matrix, rhs, l2Regularizer]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 
 
-_inputArg
- matrix:: .T  rhs:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func batchMatrixTriangularSolve(scope:Scope,matrix: tf.Output, rhs: tf.Output)  -> (output: tf.Output){
+func batchMatrixTriangularSolve(scope:Scope,matrix: tf.Output, rhs: tf.Outputlower :bool, adjoint :bool, T :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "BatchMatrixTriangularSolve",
-        Input: [  matrix,  rhs, )]
+        Input: [ matrix, rhs]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -3376,44 +1872,23 @@ Batch normalization.
 
 This op is deprecated. Prefer `tf.nn.batch_normalization`.
 
-_inputArg
- t:: .T  m:: .T  v:: .T  beta:: .T  gamma:: .T 
-_outputArg
-
-_outputArg
- result::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func batchNormWithGlobalNormalization(scope:Scope,t: tf.Output, m: tf.Output, v: tf.Output, beta: tf.Output, gamma: tf.Output)  -> (result: tf.Output){
+func batchNormWithGlobalNormalization(scope:Scope,t: tf.Output, m: tf.Output, v: tf.Output, beta: tf.Output, gamma: tf.OutputT :type, variance_epsilon :float, scale_after_normalization :bool)  ->(result: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "BatchNormWithGlobalNormalization",
-        Input: [  t,  m,  v,  beta,  gamma, )]
+        Input: [ t, m, v, beta, gamma]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -3421,173 +1896,89 @@ Gradients for batch normalization.
 
 This op is deprecated. See `tf.nn.batch_normalization`.
 
-_inputArg
- t:: .T  m:: .T  v:: .T  gamma:: .T  backprop:: .T 
-_outputArg
-
-_outputArg
- dx::T  dm::T  dv::T  db::T  dg::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func batchNormWithGlobalNormalizationGrad(scope:Scope,t: tf.Output, m: tf.Output, v: tf.Output, gamma: tf.Output, backprop: tf.Output)  -> (dx: tf.Output, dm: tf.Output, dv: tf.Output, db: tf.Output, dg: tf.Output){
+func batchNormWithGlobalNormalizationGrad(scope:Scope,t: tf.Output, m: tf.Output, v: tf.Output, gamma: tf.Output, backprop: tf.OutputT :type, variance_epsilon :float, scale_after_normalization :bool)  ->(dx: tf.Output, dm: tf.Output, dv: tf.Output, db: tf.Output, dg: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "BatchNormWithGlobalNormalizationGrad",
-        Input: [  t,  m,  v,  gamma,  backprop, )]
+        Input: [ t, m, v, gamma, backprop]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3),op.Output(4),op.Output(5))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1),op.Output(4 -1),op.Output(5 -1))
 }
 
 /*
 
 
-_inputArg
- input:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func batchSelfAdjointEig(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func batchSelfAdjointEig(scope:Scope,input: tf.OutputT :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "BatchSelfAdjointEig",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 
 
-_inputArg
- input:: .T 
-_outputArg
-
-_outputArg
- e::T  v::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func batchSelfAdjointEigV2(scope:Scope,input: tf.Output)  -> (e: tf.Output, v: tf.Output){
+func batchSelfAdjointEigV2(scope:Scope,input: tf.Outputcompute_v :bool, T :type)  ->(e: tf.Output, v: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "BatchSelfAdjointEigV2",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1))
 }
 
 /*
 
 
-_inputArg
- input:: .T 
-_outputArg
-
-_outputArg
- s::T  u::T  v::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func batchSvd(scope:Scope,input: tf.Output)  -> (s: tf.Output, u: tf.Output, v: tf.Output){
+func batchSvd(scope:Scope,input: tf.Outputcompute_uv :bool, full_matrices :bool, T :type)  ->(s: tf.Output, u: tf.Output, v: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "BatchSvd",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1))
 }
 
 /*
@@ -3600,44 +1991,23 @@ this op outputs a copy of the input tensor where values from the `batch`
 dimension are moved in spatial blocks to the `height` and `width` dimensions,
 followed by cropping along the `height` and `width` dimensions.
 
-_inputArg
- input:: .T  crops:: .Tidx 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func batchToSpace(scope:Scope,input: tf.Output, crops: tf.Output)  -> (output: tf.Output){
+func batchToSpace(scope:Scope,input: tf.Output, crops: tf.OutputT :type, block_size :int, Tidx :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "BatchToSpace",
-        Input: [  input,  crops, )]
+        Input: [ input, crops]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -3650,44 +2020,23 @@ the input.  The spatial dimensions of this intermediate result are then
 optionally cropped according to `crops` to produce the output.  This is the
 reverse of SpaceToBatch.  See below for a precise description.
 
-_inputArg
- input:: .T  block_shape:: .Tblock_shape  crops:: .Tcrops 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func batchToSpaceND(scope:Scope,input: tf.Output, block_shape: tf.Output, crops: tf.Output)  -> (output: tf.Output){
+func batchToSpaceND(scope:Scope,input: tf.Output, blockShape: tf.Output, crops: tf.OutputT :type, Tblock_shape :type, Tcrops :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "BatchToSpaceND",
-        Input: [  input,  block_shape,  crops, )]
+        Input: [ input, blockShape, crops]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -3700,44 +2049,23 @@ where
 is the incomplete beta function and \\(B(a, b)\\) is the *complete*
 beta function.
 
-_inputArg
- a:: .T  b:: .T  x:: .T 
-_outputArg
-
-_outputArg
- z::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func betainc(scope:Scope,a: tf.Output, b: tf.Output, x: tf.Output)  -> (z: tf.Output){
+func betainc(scope:Scope,a: tf.Output, b: tf.Output, x: tf.OutputT :type)  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Betainc",
-        Input: [  a,  b,  x, )]
+        Input: [ a, b, x]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -3746,44 +2074,23 @@ Adds `bias` to `value`.
 This is a special case of `tf.add` where `bias` is restricted to be 1-D.
 Broadcasting is supported, so `value` may have any number of dimensions.
 
-_inputArg
- value:: .T  bias:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func biasAdd(scope:Scope,value: tf.Output, bias: tf.Output)  -> (output: tf.Output){
+func biasAdd(scope:Scope,value: tf.Output, bias: tf.OutputT :type, data_format :string)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "BiasAdd",
-        Input: [  value,  bias, )]
+        Input: [ value, bias]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -3793,44 +2100,23 @@ It accumulates all the values from out_backprop into the feature dimension.
 For NHWC data format, the feature dimension is the last. For NCHW data format,
 the feature dimension is the third-to-last.
 
-_inputArg
- out_backprop:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func biasAddGrad(scope:Scope,out_backprop: tf.Output)  -> (output: tf.Output){
+func biasAddGrad(scope:Scope,outBackprop: tf.OutputT :type, data_format :string)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "BiasAddGrad",
-        Input: [  out_backprop, )]
+        Input: [ outBackprop]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -3840,44 +2126,23 @@ This is a deprecated version of BiasAdd and will be soon removed.
 This is a special case of `tf.add` where `bias` is restricted to be 1-D.
 Broadcasting is supported, so `value` may have any number of dimensions.
 
-_inputArg
- value:: .T  bias:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func biasAddV1(scope:Scope,value: tf.Output, bias: tf.Output)  -> (output: tf.Output){
+func biasAddV1(scope:Scope,value: tf.Output, bias: tf.OutputT :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "BiasAddV1",
-        Input: [  value,  bias, )]
+        Input: [ value, bias]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -3890,44 +2155,23 @@ the value in `weights` at each index where the corresponding value in `arr` is
 `i`.
 Values in `arr` outside of the range [0, size) are ignored.
 
-_inputArg
- arr:: .  size:: .  weights:: .T 
-_outputArg
-
-_outputArg
- bins::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func bincount(scope:Scope,arr: tf.Output, size: tf.Output, weights: tf.Output)  -> (bins: tf.Output){
+func bincount(scope:Scope,arr: tf.Output, size: tf.Output, weights: tf.OutputT :type)  ->(bins: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Bincount",
-        Input: [  arr,  size,  weights, )]
+        Input: [ arr, size, weights]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -3943,44 +2187,23 @@ dimension be equal to sizeof(`type`)/sizeof(`T`). The shape then goes from
 *NOTE*: Bitcast is implemented as a low-level cast, so machines with different
 endian orderings will give different results.
 
-_inputArg
- input:: .T 
-_outputArg
-
-_outputArg
- output::type 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func bitcast(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func bitcast(scope:Scope,input: tf.OutputT :type, type :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Bitcast",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -3989,44 +2212,23 @@ Return the shape of s0 op s1 with broadcast.
 Given `s0` and `s1`, tensors that represent shapes, compute `r0`, the
 broadcasted shape. `s0`, `s1` and `r0` are all integer vectors.
 
-_inputArg
- s0:: .T  s1:: .T 
-_outputArg
-
-_outputArg
- r0::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func broadcastArgs(scope:Scope,s0: tf.Output, s1: tf.Output)  -> (r0: tf.Output){
+func broadcastArgs(scope:Scope,s0: tf.Output, s1: tf.OutputT :type)  ->(r0: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "BroadcastArgs",
-        Input: [  s0,  s1, )]
+        Input: [ s0, s1]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -4034,44 +2236,23 @@ Return the reduction indices for computing gradients of s0 op s1 with broadcast.
 
 This is typically used by gradient computations for a broadcasting operation.
 
-_inputArg
- s0:: .T  s1:: .T 
-_outputArg
-
-_outputArg
- r0::T  r1::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func broadcastGradientArgs(scope:Scope,s0: tf.Output, s1: tf.Output)  -> (r0: tf.Output, r1: tf.Output){
+func broadcastGradientArgs(scope:Scope,s0: tf.Output, s1: tf.OutputT :type)  ->(r0: tf.Output, r1: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "BroadcastGradientArgs",
-        Input: [  s0,  s1, )]
+        Input: [ s0, s1]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1))
 }
 
 /*
@@ -4087,44 +2268,23 @@ then the output will be
               [3, 2]
               [1, 3]]
 
-_inputArg
- input:: .T 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func bucketize(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func bucketize(scope:Scope,input: tf.OutputT :type, boundaries :list(float))  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Bucketize",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -4136,44 +2296,23 @@ the first of these is emitted.  That is, when the top path is "A B B B B",
 "A B" is returned if merge_repeated = True but "A B B B B" is
 returned if merge_repeated = False.
 
-_inputArg
- inputs:: .  sequence_length:: . 
-_outputArg
-
-_outputArg
- decoded_indices::  decoded_values::  decoded_shape::  log_probability:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func ctcBeamSearchDecoder(scope:Scope,inputs: tf.Output, sequence_length: tf.Output)  -> (decoded_indices: tf.Output, decoded_values: tf.Output, decoded_shape: tf.Output, log_probability: tf.Output){
+func ctcBeamSearchDecoder(scope:Scope,inputs: tf.Output, sequenceLength: tf.Outputbeam_width :int, top_paths :int, merge_repeated :bool)  ->(decodedIndices: tf.Output, decodedValues: tf.Output, decodedShape: tf.Output, logProbability: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "CTCBeamSearchDecoder",
-        Input: [  inputs,  sequence_length, )]
+        Input: [ inputs, sequenceLength]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3),op.Output(4))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1),op.Output(4 -1))
 }
 
 /*
@@ -4188,44 +2327,23 @@ Regardless of the value of merge_repeated, if the maximum index of a given
 time and batch corresponds to the blank, index `(num_classes - 1)`, no new
 element is emitted.
 
-_inputArg
- inputs:: .  sequence_length:: . 
-_outputArg
-
-_outputArg
- decoded_indices::  decoded_values::  decoded_shape::  log_probability:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func ctcGreedyDecoder(scope:Scope,inputs: tf.Output, sequence_length: tf.Output)  -> (decoded_indices: tf.Output, decoded_values: tf.Output, decoded_shape: tf.Output, log_probability: tf.Output){
+func ctcGreedyDecoder(scope:Scope,inputs: tf.Output, sequenceLength: tf.Outputmerge_repeated :bool)  ->(decodedIndices: tf.Output, decodedValues: tf.Output, decodedShape: tf.Output, logProbability: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "CTCGreedyDecoder",
-        Input: [  inputs,  sequence_length, )]
+        Input: [ inputs, sequenceLength]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3),op.Output(4))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1),op.Output(4 -1))
 }
 
 /*
@@ -4234,132 +2352,69 @@ Calculates the CTC Loss (log probability) for each batch entry.  Also calculates
 the gradient.  This class performs the softmax operation for you, so inputs
 should be e.g. linear projections of outputs by an LSTM.
 
-_inputArg
- inputs:: .  labels_indices:: .  labels_values:: .  sequence_length:: . 
-_outputArg
-
-_outputArg
- loss::  gradient:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func ctcLoss(scope:Scope,inputs: tf.Output, labels_indices: tf.Output, labels_values: tf.Output, sequence_length: tf.Output)  -> (loss: tf.Output, gradient: tf.Output){
+func ctcLoss(scope:Scope,inputs: tf.Output, labelsIndices: tf.Output, labelsValues: tf.Output, sequenceLength: tf.Outputpreprocess_collapse_repeated :bool, ctc_merge_repeated :bool, ignore_longer_outputs_than_inputs :bool)  ->(loss: tf.Output, gradient: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "CTCLoss",
-        Input: [  inputs,  labels_indices,  labels_values,  sequence_length, )]
+        Input: [ inputs, labelsIndices, labelsValues, sequenceLength]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1))
 }
 
 /*
 Cast x of type SrcT to y of DstT.
 
 
-_inputArg
- x:: .SrcT 
-_outputArg
-
-_outputArg
- y::DstT 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func cast(scope:Scope,x: tf.Output)  -> (y: tf.Output){
+func cast(scope:Scope,x: tf.OutputSrcT :type, DstT :type)  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Cast",
-        Input: [  x, )]
+        Input: [ x]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Returns element-wise smallest integer in not less than x.
 
 
-_inputArg
- x:: .T 
-_outputArg
-
-_outputArg
- y::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func ceil(scope:Scope,x: tf.Output)  -> (y: tf.Output){
+func ceil(scope:Scope,x: tf.OutputT :type)  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Ceil",
-        Input: [  x, )]
+        Input: [ x]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -4368,44 +2423,23 @@ Checks a tensor for NaN and Inf values.
 When run, reports an `InvalidArgument` error if `tensor` has any values
 that are not a number (NaN) or infinity (Inf). Otherwise, passes `tensor` as-is.
 
-_inputArg
- tensor:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func checkNumerics(scope:Scope,tensor: tf.Output)  -> (output: tf.Output){
+func checkNumerics(scope:Scope,tensor: tf.OutputT :type, message :string)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "CheckNumerics",
-        Input: [  tensor, )]
+        Input: [ tensor]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -4416,44 +2450,23 @@ form square matrices, with the same constraints as the single matrix Cholesky
 decomposition above. The output is a tensor of the same shape as the input
 containing the Cholesky decompositions for all input submatrices `[..., :, :]`.
 
-_inputArg
- input:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func cholesky(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func cholesky(scope:Scope,input: tf.OutputT :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Cholesky",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -4462,44 +2475,23 @@ Computes the reverse mode backpropagated gradient of the Cholesky algorithm.
 For an explanation see "Differentiation of the Cholesky algorithm" by
 Iain Murray http://arxiv.org/abs/1602.07527.
 
-_inputArg
- l:: .T  grad:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func choleskyGrad(scope:Scope,l: tf.Output, grad: tf.Output)  -> (output: tf.Output){
+func choleskyGrad(scope:Scope,l: tf.Output, grad: tf.OutputT :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "CholeskyGrad",
-        Input: [  l,  grad, )]
+        Input: [ l, grad]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -4517,44 +2509,23 @@ For example:
 tf.complex(real, imag) ==> [[2.25 + 4.75j], [3.25 + 5.75j]]
 ```
 
-_inputArg
- real:: .T  imag:: .T 
-_outputArg
-
-_outputArg
- out::Tout 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func complex(scope:Scope,real: tf.Output, imag: tf.Output)  -> (out: tf.Output){
+func complex(scope:Scope,real: tf.Output, imag: tf.OutputT :type, Tout :type)  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Complex",
-        Input: [  real,  imag, )]
+        Input: [ real, imag]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -4565,44 +2536,23 @@ Given a tensor `x` of complex numbers, this operation returns a tensor of type
 elements in `x` must be complex numbers of the form \\(a + bj\\). The absolute
 value is computed as \\( \sqrt{a^2 + b^2}\\).
 
-_inputArg
- x:: .T 
-_outputArg
-
-_outputArg
- y::Tout 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func complexAbs(scope:Scope,x: tf.Output)  -> (y: tf.Output){
+func complexAbs(scope:Scope,x: tf.OutputT :type, Tout :type)  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ComplexAbs",
-        Input: [  x, )]
+        Input: [ x]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -4613,88 +2563,46 @@ SparseToDense op, then added to the logits of the sampled candidates. This has
 the effect of 'removing' the sampled labels that match the true labels by
 making the classifier sure that they are sampled labels.
 
-_inputArg
- true_classes:: .  sampled_candidates:: . 
-_outputArg
-
-_outputArg
- indices::  ids::  weights:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func computeAccidentalHits(scope:Scope,true_classes: tf.Output, sampled_candidates: tf.Output)  -> (indices: tf.Output, ids: tf.Output, weights: tf.Output){
+func computeAccidentalHits(scope:Scope,trueClasses: tf.Output, sampledCandidates: tf.Outputnum_true :int, seed :int, seed2 :int)  ->(indices: tf.Output, ids: tf.Output, weights: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ComputeAccidentalHits",
-        Input: [  true_classes,  sampled_candidates, )]
+        Input: [ trueClasses, sampledCandidates]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1))
 }
 
 /*
 Concatenates tensors along one dimension.
 
 
-_inputArg
- concat_dim:: .  values:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func concat(scope:Scope,concat_dim: tf.Output, values: tf.Output)  -> (output: tf.Output){
+func concat(scope:Scope,concatDim: tf.Output, values: tf.OutputN :int, T :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Concat",
-        Input: [  concat_dim,  values, )]
+        Input: [ concatDim, values]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -4709,88 +2617,46 @@ concat_offset(2, [x, y, z]) => [0, 0, 0], [0, 2, 0], [0, 5, 0]
 ```
 This is typically used by gradient computations for a concat operation.
 
-_inputArg
- concat_dim:: .  shape:: . 
-_outputArg
-
-_outputArg
- offset:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func concatOffset(scope:Scope,concat_dim: tf.Output, shape: tf.Output)  -> (offset: tf.Output){
+func concatOffset(scope:Scope,concatDim: tf.Output, shape: tf.OutputN :int)  ->(offset: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ConcatOffset",
-        Input: [  concat_dim,  shape, )]
+        Input: [ concatDim, shape]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Concatenates tensors along one dimension.
 
 
-_inputArg
- values:: .T  axis:: .Tidx 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func concatV2(scope:Scope,values: tf.Output, axis: tf.Output)  -> (output: tf.Output){
+func concatV2(scope:Scope,values: tf.Output, axis: tf.OutputN :int, T :type, Tidx :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ConcatV2",
-        Input: [  values,  axis, )]
+        Input: [ values, axis]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -4803,43 +2669,23 @@ gradients have been accumulated. Extracting the average automatically
 resets the aggregate to 0, and increments the global_step recorded by
 the accumulator.
 
-_inputArg
-_outputArg
-
-_outputArg
- handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func conditionalAccumulator(scope:Scope)  -> (handle: tf.Output){
+func conditionalAccumulator(scope:Scopedtype :type, shape :shape, container :string, shared_name :string)  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ConditionalAccumulator",
-        Input: [ )]
+        Input: [ ]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -4856,87 +2702,46 @@ For example:
 tf.conj(input) ==> [-2.25 - 4.75j, 3.25 - 5.75j]
 ```
 
-_inputArg
- input:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func conj(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func conj(scope:Scope,input: tf.OutputT :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Conj",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Returns a constant tensor.
 
 
-_inputArg
-_outputArg
-
-_outputArg
- output::dtype 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func const(scope:Scope)  -> (output: tf.Output){
+func const(scope:Scopevalue :tensor, dtype :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Const",
-        Input: [ )]
+        Input: [ ]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -4944,40 +2749,21 @@ Does nothing. Serves as a control trigger for scheduling.
 
 Only useful as a placeholder for control edges.
 
-_inputArg
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func controlTrigger(scope:Scope)  -> (){
+func controlTrigger(scope:Scope)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ControlTrigger",
-        Input: [ )]
+        Input: [ ]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
@@ -5001,132 +2787,69 @@ In detail, with the default NHWC format,
 Must have `strides[0] = strides[3] = 1`.  For the most common case of the same
 horizontal and vertices strides, `strides = [1, stride, stride, 1]`.
 
-_inputArg
- input:: .T  filter:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func conv2D(scope:Scope,input: tf.Output, filter: tf.Output)  -> (output: tf.Output){
+func conv2D(scope:Scope,input: tf.Output, filter: tf.OutputT :type, strides :list(int), use_cudnn_on_gpu :bool, padding :string, data_format :string)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Conv2D",
-        Input: [  input,  filter, )]
+        Input: [ input, filter]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Computes the gradients of convolution with respect to the filter.
 
 
-_inputArg
- input:: .T  filter_sizes:: .  out_backprop:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func conv2DBackpropFilter(scope:Scope,input: tf.Output, filter_sizes: tf.Output, out_backprop: tf.Output)  -> (output: tf.Output){
+func conv2DBackpropFilter(scope:Scope,input: tf.Output, filterSizes: tf.Output, outBackprop: tf.OutputT :type, strides :list(int), use_cudnn_on_gpu :bool, padding :string, data_format :string)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Conv2DBackpropFilter",
-        Input: [  input,  filter_sizes,  out_backprop, )]
+        Input: [ input, filterSizes, outBackprop]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Computes the gradients of convolution with respect to the input.
 
 
-_inputArg
- input_sizes:: .  filter:: .T  out_backprop:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func conv2DBackpropInput(scope:Scope,input_sizes: tf.Output, filter: tf.Output, out_backprop: tf.Output)  -> (output: tf.Output){
+func conv2DBackpropInput(scope:Scope,inputSizes: tf.Output, filter: tf.Output, outBackprop: tf.OutputT :type, strides :list(int), use_cudnn_on_gpu :bool, padding :string, data_format :string)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Conv2DBackpropInput",
-        Input: [  input_sizes,  filter,  out_backprop, )]
+        Input: [ inputSizes, filter, outBackprop]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -5137,220 +2860,115 @@ two waveforms as a function of a time-lag applied to one of them. This
 is also known as a sliding dot product or sliding inner-product.
 Our Conv3D implements a form of cross-correlation.
 
-_inputArg
- input:: .T  filter:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func conv3D(scope:Scope,input: tf.Output, filter: tf.Output)  -> (output: tf.Output){
+func conv3D(scope:Scope,input: tf.Output, filter: tf.OutputT :type, strides :list(int), padding :string, data_format :string)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Conv3D",
-        Input: [  input,  filter, )]
+        Input: [ input, filter]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Computes the gradients of 3-D convolution with respect to the filter.
 
 
-_inputArg
- input:: .T  filter:: .T  out_backprop:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func conv3DBackpropFilter(scope:Scope,input: tf.Output, filter: tf.Output, out_backprop: tf.Output)  -> (output: tf.Output){
+func conv3DBackpropFilter(scope:Scope,input: tf.Output, filter: tf.Output, outBackprop: tf.OutputT :type, strides :list(int), padding :string)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Conv3DBackpropFilter",
-        Input: [  input,  filter,  out_backprop, )]
+        Input: [ input, filter, outBackprop]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Computes the gradients of 3-D convolution with respect to the filter.
 
 
-_inputArg
- input:: .T  filter_sizes:: .  out_backprop:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func conv3DBackpropFilterV2(scope:Scope,input: tf.Output, filter_sizes: tf.Output, out_backprop: tf.Output)  -> (output: tf.Output){
+func conv3DBackpropFilterV2(scope:Scope,input: tf.Output, filterSizes: tf.Output, outBackprop: tf.OutputT :type, strides :list(int), padding :string, data_format :string)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Conv3DBackpropFilterV2",
-        Input: [  input,  filter_sizes,  out_backprop, )]
+        Input: [ input, filterSizes, outBackprop]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Computes the gradients of 3-D convolution with respect to the input.
 
 
-_inputArg
- input:: .T  filter:: .T  out_backprop:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func conv3DBackpropInput(scope:Scope,input: tf.Output, filter: tf.Output, out_backprop: tf.Output)  -> (output: tf.Output){
+func conv3DBackpropInput(scope:Scope,input: tf.Output, filter: tf.Output, outBackprop: tf.OutputT :type, strides :list(int), padding :string)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Conv3DBackpropInput",
-        Input: [  input,  filter,  out_backprop, )]
+        Input: [ input, filter, outBackprop]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Computes the gradients of 3-D convolution with respect to the input.
 
 
-_inputArg
- input_sizes:: .  filter:: .T  out_backprop:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func conv3DBackpropInputV2(scope:Scope,input_sizes: tf.Output, filter: tf.Output, out_backprop: tf.Output)  -> (output: tf.Output){
+func conv3DBackpropInputV2(scope:Scope,inputSizes: tf.Output, filter: tf.Output, outBackprop: tf.OutputT :type, strides :list(int), padding :string, data_format :string)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Conv3DBackpropInputV2",
-        Input: [  input_sizes,  filter,  out_backprop, )]
+        Input: [ inputSizes, filter, outBackprop]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -5364,44 +2982,23 @@ deep-copying. See the documentation of Debug* ops for more details.
 Unlike the CopyHost Op, this op does not have HostMemory constraint on its
 input or output.
 
-_inputArg
- input:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func copy(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func copy(scope:Scope,input: tf.OutputT :type, tensor_name :string, debug_ops_spec :list(string))  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Copy",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -5413,132 +3010,69 @@ gRPC gating status, the output will simply forward the input tensor without
 deep-copying. See the documentation of Debug* ops for more details.
 Unlike the Copy Op, this op has HostMemory constraint on its input or output.
 
-_inputArg
- input:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func copyHost(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func copyHost(scope:Scope,input: tf.OutputT :type, tensor_name :string, debug_ops_spec :list(string))  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "CopyHost",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Computes cos of x element-wise.
 
 
-_inputArg
- x:: .T 
-_outputArg
-
-_outputArg
- y::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func cos(scope:Scope,x: tf.Output)  -> (y: tf.Output){
+func cos(scope:Scope,x: tf.OutputT :type)  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Cos",
-        Input: [  x, )]
+        Input: [ x]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Increments 'ref' until it reaches 'limit'.
 
 
-_inputArg
- ref:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func countUpTo(scope:Scope,ref: tf.Output)  -> (output: tf.Output){
+func countUpTo(scope:Scope,ref: tf.Outputlimit :int, T :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "CountUpTo",
-        Input: [  ref, )]
+        Input: [ ref]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -5552,132 +3086,69 @@ bounding box locations in `boxes`. The cropped boxes are all resized (with
 bilinear interpolation) to a fixed `size = [crop_height, crop_width]`. The
 result is a 4-D tensor `[num_boxes, crop_height, crop_width, depth]`.
 
-_inputArg
- image:: .T  boxes:: .  box_ind:: .  crop_size:: . 
-_outputArg
-
-_outputArg
- crops:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func cropAndResize(scope:Scope,image: tf.Output, boxes: tf.Output, box_ind: tf.Output, crop_size: tf.Output)  -> (crops: tf.Output){
+func cropAndResize(scope:Scope,image: tf.Output, boxes: tf.Output, boxInd: tf.Output, cropSize: tf.OutputT :type, method :string, extrapolation_value :float)  ->(crops: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "CropAndResize",
-        Input: [  image,  boxes,  box_ind,  crop_size, )]
+        Input: [ image, boxes, boxInd, cropSize]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Computes the gradient of the crop_and_resize op wrt the input boxes tensor.
 
 
-_inputArg
- grads:: .  image:: .T  boxes:: .  box_ind:: . 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func cropAndResizeGradBoxes(scope:Scope,grads: tf.Output, image: tf.Output, boxes: tf.Output, box_ind: tf.Output)  -> (output: tf.Output){
+func cropAndResizeGradBoxes(scope:Scope,grads: tf.Output, image: tf.Output, boxes: tf.Output, boxInd: tf.OutputT :type, method :string)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "CropAndResizeGradBoxes",
-        Input: [  grads,  image,  boxes,  box_ind, )]
+        Input: [ grads, image, boxes, boxInd]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Computes the gradient of the crop_and_resize op wrt the input image tensor.
 
 
-_inputArg
- grads:: .  boxes:: .  box_ind:: .  image_size:: . 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func cropAndResizeGradImage(scope:Scope,grads: tf.Output, boxes: tf.Output, box_ind: tf.Output, image_size: tf.Output)  -> (output: tf.Output){
+func cropAndResizeGradImage(scope:Scope,grads: tf.Output, boxes: tf.Output, boxInd: tf.Output, imageSize: tf.OutputT :type, method :string)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "CropAndResizeGradImage",
-        Input: [  grads,  boxes,  box_ind,  image_size, )]
+        Input: [ grads, boxes, boxInd, imageSize]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -5687,44 +3158,23 @@ Compute the pairwise cross product.
 or any shape where the innermost dimension is 3. In the latter case, each pair
 of corresponding 3-element vectors is cross-multiplied independently.
 
-_inputArg
- a:: .T  b:: .T 
-_outputArg
-
-_outputArg
- product::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func cross(scope:Scope,a: tf.Output, b: tf.Output)  -> (product: tf.Output){
+func cross(scope:Scope,a: tf.Output, b: tf.OutputT :type)  ->(product: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Cross",
-        Input: [  a,  b, )]
+        Input: [ a, b]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -5751,44 +3201,23 @@ The `reverse` and `exclusive` kwargs can also be combined:
 tf.cumprod([a, b, c], exclusive=True, reverse=True)  # => [b * c, c, 1]
 ```
 
-_inputArg
- x:: .T  axis:: .Tidx 
-_outputArg
-
-_outputArg
- out::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func cumprod(scope:Scope,x: tf.Output, axis: tf.Output)  -> (out: tf.Output){
+func cumprod(scope:Scope,x: tf.Output, axis: tf.Outputexclusive :bool, reverse :bool, T :type, Tidx :type)  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Cumprod",
-        Input: [  x,  axis, )]
+        Input: [ x, axis]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -5815,44 +3244,23 @@ The `reverse` and `exclusive` kwargs can also be combined:
 tf.cumsum([a, b, c], exclusive=True, reverse=True)  # => [b + c, c, 0]
 ```
 
-_inputArg
- x:: .T  axis:: .Tidx 
-_outputArg
-
-_outputArg
- out::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func cumsum(scope:Scope,x: tf.Output, axis: tf.Output)  -> (out: tf.Output){
+func cumsum(scope:Scope,x: tf.Output, axis: tf.Outputexclusive :bool, reverse :bool, T :type, Tidx :type)  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Cumsum",
-        Input: [  x,  axis, )]
+        Input: [ x, axis]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -5860,44 +3268,23 @@ Debug Identity Op.
 
 Provides an identity mapping of the non-Ref type input tensor for debugging.
 
-_inputArg
- input:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func debugIdentity(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func debugIdentity(scope:Scope,input: tf.OutputT :type, device_name :string, tensor_name :string, debug_urls :list(string), gated_grpc :bool)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "DebugIdentity",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -5905,44 +3292,23 @@ Debug NaN Value Counter Op
 
 Counts number of NaNs in the input tensor, for debugging.
 
-_inputArg
- input:: .T 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func debugNanCount(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func debugNanCount(scope:Scope,input: tf.OutputT :type, device_name :string, tensor_name :string, debug_urls :list(string), gated_grpc :bool)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "DebugNanCount",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -5950,44 +3316,23 @@ Debug Numeric Summary Op.
 
 Provide a basic summary of numeric value types, range and distribution.
 
-_inputArg
- input:: .T 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func debugNumericSummary(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func debugNumericSummary(scope:Scope,input: tf.OutputT :type, device_name :string, tensor_name :string, debug_urls :list(string), lower_bound :float, upper_bound :float, mute_if_healthy :bool, gated_grpc :bool)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "DebugNumericSummary",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -5996,44 +3341,23 @@ Decode web-safe base64-encoded strings.
 Input may or may not have padding at the end. See EncodeBase64 for padding.
 Web-safe means that input must use - and _ instead of + and /.
 
-_inputArg
- input:: . 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func decodeBase64(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func decodeBase64(scope:Scope,input: tf.Output)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "DecodeBase64",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -6046,44 +3370,23 @@ Accepted values are:
 *   3: output an RGB image.
 *   4: output an RGBA image.
 
-_inputArg
- contents:: . 
-_outputArg
-
-_outputArg
- image:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func decodeBmp(scope:Scope,contents: tf.Output)  -> (image: tf.Output){
+func decodeBmp(scope:Scope,contents: tf.Outputchannels :int)  ->(image: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "DecodeBmp",
-        Input: [  contents, )]
+        Input: [ contents]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -6093,44 +3396,23 @@ RFC 4180 format is expected for the CSV records.
 (https://tools.ietf.org/html/rfc4180)
 Note that we allow leading and trailing spaces with int or float field.
 
-_inputArg
- records:: .  record_defaults:: . 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func decodeCSV(scope:Scope,records: tf.Output, record_defaults: tf.Output)  -> (output: tf.Output){
+func decodeCSV(scope:Scope,records: tf.Output, recordDefaults: tf.OutputOUT_TYPE :list(type), field_delim :string, use_quote_delim :bool)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "DecodeCSV",
-        Input: [  records,  record_defaults, )]
+        Input: [ records, recordDefaults]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -6142,44 +3424,23 @@ convert animated GIF from compressed to uncompressed by:
 This op also supports decoding JPEGs and PNGs, though it is cleaner to use
 `tf.image.decode_image`.
 
-_inputArg
- contents:: . 
-_outputArg
-
-_outputArg
- image:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func decodeGif(scope:Scope,contents: tf.Output)  -> (image: tf.Output){
+func decodeGif(scope:Scope,contents: tf.Output)  ->(image: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "DecodeGif",
-        Input: [  contents, )]
+        Input: [ contents]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -6192,44 +3453,23 @@ into a tensor containing the same records encoded as binary protocol
 buffers. The resulting tensor can then be fed to any of the other
 Example-parsing ops.
 
-_inputArg
- json_examples:: . 
-_outputArg
-
-_outputArg
- binary_examples:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func decodeJSONExample(scope:Scope,json_examples: tf.Output)  -> (binary_examples: tf.Output){
+func decodeJSONExample(scope:Scope,jsonExamples: tf.Output)  ->(binaryExamples: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "DecodeJSONExample",
-        Input: [  json_examples, )]
+        Input: [ jsonExamples]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -6249,44 +3489,23 @@ downscaling the image later.
 This op also supports decoding PNGs and non-animated GIFs since the interface is
 the same, though it is cleaner to use `tf.image.decode_image`.
 
-_inputArg
- contents:: . 
-_outputArg
-
-_outputArg
- image:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func decodeJpeg(scope:Scope,contents: tf.Output)  -> (image: tf.Output){
+func decodeJpeg(scope:Scope,contents: tf.Outputchannels :int, ratio :int, fancy_upscaling :bool, try_recover_truncated :bool, acceptable_fraction :float, dct_method :string)  ->(image: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "DecodeJpeg",
-        Input: [  contents, )]
+        Input: [ contents]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -6304,88 +3523,46 @@ of color channels.
 This op also supports decoding JPEGs and non-animated GIFs since the interface
 is the same, though it is cleaner to use `tf.image.decode_image`.
 
-_inputArg
- contents:: . 
-_outputArg
-
-_outputArg
- image::dtype 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func decodePng(scope:Scope,contents: tf.Output)  -> (image: tf.Output){
+func decodePng(scope:Scope,contents: tf.Outputchannels :int, dtype :type)  ->(image: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "DecodePng",
-        Input: [  contents, )]
+        Input: [ contents]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Reinterpret the bytes of a string as a vector of numbers.
 
 
-_inputArg
- bytes:: . 
-_outputArg
-
-_outputArg
- output::out_type 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func decodeRaw(scope:Scope,bytes: tf.Output)  -> (output: tf.Output){
+func decodeRaw(scope:Scope,bytes: tf.Outputout_type :type, little_endian :bool)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "DecodeRaw",
-        Input: [  bytes, )]
+        Input: [ bytes]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -6403,85 +3580,44 @@ lowest dimension will be the number of channels, and the second will be the
 number of samples. For example, a ten-sample-long stereo WAV file should give an
 output shape of [10, 2].
 
-_inputArg
- contents:: . 
-_outputArg
-
-_outputArg
- audio::  sample_rate:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func decodeWav(scope:Scope,contents: tf.Output)  -> (audio: tf.Output, sample_rate: tf.Output){
+func decodeWav(scope:Scope,contents: tf.Outputdesired_channels :int, desired_samples :int)  ->(audio: tf.Output, sampleRate: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "DecodeWav",
-        Input: [  contents, )]
+        Input: [ contents]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1))
 }
 
 /*
 Delete the tensor specified by its handle in the session.
 
 
-_inputArg
- handle:: . 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func deleteSessionTensor(scope:Scope,handle: tf.Output)  -> (){
+func deleteSessionTensor(scope:Scope,handle: tf.Output)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "DeleteSessionTensor",
-        Input: [  handle, )]
+        Input: [ handle]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
@@ -6494,88 +3630,46 @@ has rank `n` and the same 1st `n-1` dimensions as `set1` and `set2`. The `nth`
 dimension contains the result of `set_operation` applied to the corresponding
 `[0...n-1]` dimension of `set`.
 
-_inputArg
- set1:: .T  set2:: .T 
-_outputArg
-
-_outputArg
- result_indices::  result_values::T  result_shape:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func denseToDenseSetOperation(scope:Scope,set1: tf.Output, set2: tf.Output)  -> (result_indices: tf.Output, result_values: tf.Output, result_shape: tf.Output){
+func denseToDenseSetOperation(scope:Scope,set1: tf.Output, set2: tf.Outputset_operation :string, validate_indices :bool, T :type)  ->(resultIndices: tf.Output, resultValues: tf.Output, resultShape: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "DenseToDenseSetOperation",
-        Input: [  set1,  set2, )]
+        Input: [ set1, set2]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1))
 }
 
 /*
 Creates a dataset that yields a SparseTensor for each element of the input.
 
 
-_inputArg
- input_dataset:: .  batch_size:: .  row_shape:: . 
-_outputArg
-
-_outputArg
- handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func denseToSparseBatchDataset(scope:Scope,input_dataset: tf.Output, batch_size: tf.Output, row_shape: tf.Output)  -> (handle: tf.Output){
+func denseToSparseBatchDataset(scope:Scope,inputDataset: tf.Output, batchSize: tf.Output, rowShape: tf.Outputoutput_types :list(type), output_shapes :list(shape))  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "DenseToSparseBatchDataset",
-        Input: [  input_dataset,  batch_size,  row_shape, )]
+        Input: [ inputDataset, batchSize, rowShape]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -6594,44 +3688,23 @@ has rank `n` and the same 1st `n-1` dimensions as `set1` and `set2`. The `nth`
 dimension contains the result of `set_operation` applied to the corresponding
 `[0...n-1]` dimension of `set`.
 
-_inputArg
- set1:: .T  set2_indices:: .  set2_values:: .T  set2_shape:: . 
-_outputArg
-
-_outputArg
- result_indices::  result_values::T  result_shape:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func denseToSparseSetOperation(scope:Scope,set1: tf.Output, set2_indices: tf.Output, set2_values: tf.Output, set2_shape: tf.Output)  -> (result_indices: tf.Output, result_values: tf.Output, result_shape: tf.Output){
+func denseToSparseSetOperation(scope:Scope,set1: tf.Output, set2Indices: tf.Output, set2Values: tf.Output, set2Shape: tf.Outputset_operation :string, validate_indices :bool, T :type)  ->(resultIndices: tf.Output, resultValues: tf.Output, resultShape: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "DenseToSparseSetOperation",
-        Input: [  set1,  set2_indices,  set2_values,  set2_shape, )]
+        Input: [ set1, set2Indices, set2Values, set2Shape]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1))
 }
 
 /*
@@ -6696,44 +3769,23 @@ x = [[ [1],   [2],  [5],  [6]],
      [ [11], [12], [15],  [16]]]
 ```
 
-_inputArg
- input:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func depthToSpace(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func depthToSpace(scope:Scope,input: tf.OutputT :type, block_size :int)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "DepthToSpace",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -6754,132 +3806,69 @@ for k in 0..in_channels-1
 Must have `strides[0] = strides[3] = 1`.  For the most common case of the same
 horizontal and vertices strides, `strides = [1, stride, stride, 1]`.
 
-_inputArg
- input:: .T  filter:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func depthwiseConv2dNative(scope:Scope,input: tf.Output, filter: tf.Output)  -> (output: tf.Output){
+func depthwiseConv2dNative(scope:Scope,input: tf.Output, filter: tf.OutputT :type, strides :list(int), padding :string, data_format :string)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "DepthwiseConv2dNative",
-        Input: [  input,  filter, )]
+        Input: [ input, filter]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Computes the gradients of depthwise convolution with respect to the filter.
 
 
-_inputArg
- input:: .T  filter_sizes:: .  out_backprop:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func depthwiseConv2dNativeBackpropFilter(scope:Scope,input: tf.Output, filter_sizes: tf.Output, out_backprop: tf.Output)  -> (output: tf.Output){
+func depthwiseConv2dNativeBackpropFilter(scope:Scope,input: tf.Output, filterSizes: tf.Output, outBackprop: tf.OutputT :type, strides :list(int), padding :string, data_format :string)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "DepthwiseConv2dNativeBackpropFilter",
-        Input: [  input,  filter_sizes,  out_backprop, )]
+        Input: [ input, filterSizes, outBackprop]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Computes the gradients of depthwise convolution with respect to the input.
 
 
-_inputArg
- input_sizes:: .  filter:: .T  out_backprop:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func depthwiseConv2dNativeBackpropInput(scope:Scope,input_sizes: tf.Output, filter: tf.Output, out_backprop: tf.Output)  -> (output: tf.Output){
+func depthwiseConv2dNativeBackpropInput(scope:Scope,inputSizes: tf.Output, filter: tf.Output, outBackprop: tf.OutputT :type, strides :list(int), padding :string, data_format :string)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "DepthwiseConv2dNativeBackpropInput",
-        Input: [  input_sizes,  filter,  out_backprop, )]
+        Input: [ inputSizes, filter, outBackprop]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -6912,44 +3901,23 @@ const double offset_input = static_cast<double>(input) - lowest_quantized;
 result = range_min + ((input - numeric_limits<T>::min()) * range_scale)
 ```
 
-_inputArg
- input:: .T  min_range:: .  max_range:: . 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func dequantize(scope:Scope,input: tf.Output, min_range: tf.Output, max_range: tf.Output)  -> (output: tf.Output){
+func dequantize(scope:Scope,input: tf.Output, minRange: tf.Output, maxRange: tf.OutputT :type, mode :string)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Dequantize",
-        Input: [  input,  min_range,  max_range, )]
+        Input: [ input, minRange, maxRange]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -6989,44 +3957,23 @@ then the final deserialized `SparseTensor` will be:
     values = [1, 2, 3, 4, 5]
     shape = [2 50]
 
-_inputArg
- serialized_sparse:: . 
-_outputArg
-
-_outputArg
- sparse_indices::  sparse_values::dtype  sparse_shape:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func deserializeManySparse(scope:Scope,serialized_sparse: tf.Output)  -> (sparse_indices: tf.Output, sparse_values: tf.Output, sparse_shape: tf.Output){
+func deserializeManySparse(scope:Scope,serializedSparse: tf.Outputdtype :type)  ->(sparseIndices: tf.Output, sparseValues: tf.Output, sparseShape: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "DeserializeManySparse",
-        Input: [  serialized_sparse, )]
+        Input: [ serializedSparse]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1))
 }
 
 /*
@@ -7039,44 +3986,23 @@ This is typically achieved by chaining the ref through each assign op, or by
 using control dependencies.
 Outputs the final value of the tensor pointed to by 'ref'.
 
-_inputArg
- ref:: .T 
-_outputArg
-
-_outputArg
- value::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func destroyTemporaryVariable(scope:Scope,ref: tf.Output)  -> (value: tf.Output){
+func destroyTemporaryVariable(scope:Scope,ref: tf.OutputT :type, var_name :string)  ->(value: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "DestroyTemporaryVariable",
-        Input: [  ref, )]
+        Input: [ ref]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -7096,44 +4022,23 @@ tf.diag(diagonal) ==> [[1, 0, 0, 0]
                        [0, 0, 0, 4]]
 ```
 
-_inputArg
- diagonal:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func diag(scope:Scope,diagonal: tf.Output)  -> (output: tf.Output){
+func diag(scope:Scope,diagonal: tf.OutputT :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Diag",
-        Input: [  diagonal, )]
+        Input: [ diagonal]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -7153,44 +4058,23 @@ For example:
 tf.diag_part(input) ==> [1, 2, 3, 4]
 ```
 
-_inputArg
- input:: .T 
-_outputArg
-
-_outputArg
- diagonal::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func diagPart(scope:Scope,input: tf.Output)  -> (diagonal: tf.Output){
+func diagPart(scope:Scope,input: tf.OutputT :type)  ->(diagonal: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "DiagPart",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -7198,44 +4082,23 @@ Computes Psi, the derivative of Lgamma (the log of the absolute value of
 
 `Gamma(x)`), element-wise.
 
-_inputArg
- x:: .T 
-_outputArg
-
-_outputArg
- y::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func digamma(scope:Scope,x: tf.Output)  -> (y: tf.Output){
+func digamma(scope:Scope,x: tf.OutputT :type)  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Digamma",
-        Input: [  x, )]
+        Input: [ x]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -7261,132 +4124,69 @@ kernel size and contains all zeros.
 Note on duality: The dilation of `input` by the `filter` is equal to the
 negation of the erosion of `-input` by the reflected `filter`.
 
-_inputArg
- input:: .T  filter:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func dilation2D(scope:Scope,input: tf.Output, filter: tf.Output)  -> (output: tf.Output){
+func dilation2D(scope:Scope,input: tf.Output, filter: tf.OutputT :type, strides :list(int), rates :list(int), padding :string)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Dilation2D",
-        Input: [  input,  filter, )]
+        Input: [ input, filter]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Computes the gradient of morphological 2-D dilation with respect to the filter.
 
 
-_inputArg
- input:: .T  filter:: .T  out_backprop:: .T 
-_outputArg
-
-_outputArg
- filter_backprop::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func dilation2DBackpropFilter(scope:Scope,input: tf.Output, filter: tf.Output, out_backprop: tf.Output)  -> (filter_backprop: tf.Output){
+func dilation2DBackpropFilter(scope:Scope,input: tf.Output, filter: tf.Output, outBackprop: tf.OutputT :type, strides :list(int), rates :list(int), padding :string)  ->(filterBackprop: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Dilation2DBackpropFilter",
-        Input: [  input,  filter,  out_backprop, )]
+        Input: [ input, filter, outBackprop]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Computes the gradient of morphological 2-D dilation with respect to the input.
 
 
-_inputArg
- input:: .T  filter:: .T  out_backprop:: .T 
-_outputArg
-
-_outputArg
- in_backprop::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func dilation2DBackpropInput(scope:Scope,input: tf.Output, filter: tf.Output, out_backprop: tf.Output)  -> (in_backprop: tf.Output){
+func dilation2DBackpropInput(scope:Scope,input: tf.Output, filter: tf.Output, outBackprop: tf.OutputT :type, strides :list(int), rates :list(int), padding :string)  ->(inBackprop: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Dilation2DBackpropInput",
-        Input: [  input,  filter,  out_backprop, )]
+        Input: [ input, filter, outBackprop]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -7395,44 +4195,23 @@ Returns x / y element-wise.
 *NOTE*: `Div` supports broadcasting. More about broadcasting
 [here](http://docs.scipy.org/doc/numpy/user/basics.broadcasting.html)
 
-_inputArg
- x:: .T  y:: .T 
-_outputArg
-
-_outputArg
- z::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func div(scope:Scope,x: tf.Output, y: tf.Output)  -> (z: tf.Output){
+func div(scope:Scope,x: tf.Output, y: tf.OutputT :type)  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Div",
-        Input: [  x,  y, )]
+        Input: [ x, y]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -7448,44 +4227,23 @@ For example, if an image is 100 x 200 pixels and the bounding box is
 bounding box will be `(10, 40)` to `(50, 180)`.
 Parts of the bounding box may fall outside the image.
 
-_inputArg
- images:: .T  boxes:: . 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func drawBoundingBoxes(scope:Scope,images: tf.Output, boxes: tf.Output)  -> (output: tf.Output){
+func drawBoundingBoxes(scope:Scope,images: tf.Output, boxes: tf.OutputT :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "DrawBoundingBoxes",
-        Input: [  images,  boxes, )]
+        Input: [ images, boxes]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -7521,44 +4279,23 @@ See `dynamic_stitch` for an example on how to merge partitions back.
 <img style="width:100%" src="https://www.tensorflow.org/images/DynamicPartition.png" alt>
 </div>
 
-_inputArg
- data:: .T  partitions:: . 
-_outputArg
-
-_outputArg
- outputs::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func dynamicPartition(scope:Scope,data: tf.Output, partitions: tf.Output)  -> (outputs: tf.Output){
+func dynamicPartition(scope:Scope,data: tf.Output, partitions: tf.Outputnum_partitions :int, T :type)  ->(outputs: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "DynamicPartition",
-        Input: [  data,  partitions, )]
+        Input: [ data, partitions]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -7614,44 +4351,23 @@ as illustrated on the following example:
 <img style="width:100%" src="https://www.tensorflow.org/images/DynamicStitch.png" alt>
 </div>
 
-_inputArg
- indices:: .  data:: .T 
-_outputArg
-
-_outputArg
- merged::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func dynamicStitch(scope:Scope,indices: tf.Output, data: tf.Output)  -> (merged: tf.Output){
+func dynamicStitch(scope:Scope,indices: tf.Output, data: tf.OutputN :int, T :type)  ->(merged: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "DynamicStitch",
-        Input: [  indices,  data, )]
+        Input: [ indices, data]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -7663,44 +4379,23 @@ and
   (truth_indices, truth_values, truth_shape).
 The inputs are:
 
-_inputArg
- hypothesis_indices:: .  hypothesis_values:: .T  hypothesis_shape:: .  truth_indices:: .  truth_values:: .T  truth_shape:: . 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func editDistance(scope:Scope,hypothesis_indices: tf.Output, hypothesis_values: tf.Output, hypothesis_shape: tf.Output, truth_indices: tf.Output, truth_values: tf.Output, truth_shape: tf.Output)  -> (output: tf.Output){
+func editDistance(scope:Scope,hypothesisIndices: tf.Output, hypothesisValues: tf.Output, hypothesisShape: tf.Output, truthIndices: tf.Output, truthValues: tf.Output, truthShape: tf.Outputnormalize :bool, T :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "EditDistance",
-        Input: [  hypothesis_indices,  hypothesis_values,  hypothesis_shape,  truth_indices,  truth_values,  truth_shape, )]
+        Input: [ hypothesisIndices, hypothesisValues, hypothesisShape, truthIndices, truthValues, truthShape]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -7709,88 +4404,46 @@ Computes exponential linear: `exp(features) - 1` if < 0, `features` otherwise.
 See [Fast and Accurate Deep Network Learning by Exponential Linear Units (ELUs)
 ](http://arxiv.org/abs/1511.07289)
 
-_inputArg
- features:: .T 
-_outputArg
-
-_outputArg
- activations::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func elu(scope:Scope,features: tf.Output)  -> (activations: tf.Output){
+func elu(scope:Scope,features: tf.OutputT :type)  ->(activations: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Elu",
-        Input: [  features, )]
+        Input: [ features]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Computes gradients for the exponential linear (Elu) operation.
 
 
-_inputArg
- gradients:: .T  outputs:: .T 
-_outputArg
-
-_outputArg
- backprops::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func eluGrad(scope:Scope,gradients: tf.Output, outputs: tf.Output)  -> (backprops: tf.Output){
+func eluGrad(scope:Scope,gradients: tf.Output, outputs: tf.OutputT :type)  ->(backprops: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "EluGrad",
-        Input: [  gradients,  outputs, )]
+        Input: [ gradients, outputs]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -7802,44 +4455,23 @@ end so that the encoded has length multiple of 4. See Padding section of the
 link above.
 Web-safe means that the encoder uses - and _ instead of + and /.
 
-_inputArg
- input:: . 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func encodeBase64(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func encodeBase64(scope:Scope,input: tf.Outputpad :bool)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "EncodeBase64",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -7858,44 +4490,23 @@ in function of the number of channels in `image`:
 *   1: Output a grayscale image.
 *   3: Output an RGB image.
 
-_inputArg
- image:: . 
-_outputArg
-
-_outputArg
- contents:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func encodeJpeg(scope:Scope,image: tf.Output)  -> (contents: tf.Output){
+func encodeJpeg(scope:Scope,image: tf.Outputformat :string, quality :int, progressive :bool, optimize_size :bool, chroma_downsampling :bool, density_unit :string, x_density :int, y_density :int, xmp_metadata :string)  ->(contents: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "EncodeJpeg",
-        Input: [  image, )]
+        Input: [ image]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -7911,44 +4522,23 @@ The ZLIB compression level, `compression`, can be -1 for the PNG-encoder
 default or a value from 0 to 9.  9 is the highest compression level, generating
 the smallest output, but is slower.
 
-_inputArg
- image:: .T 
-_outputArg
-
-_outputArg
- contents:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func encodePng(scope:Scope,image: tf.Output)  -> (contents: tf.Output){
+func encodePng(scope:Scope,image: tf.Outputcompression :int, T :type)  ->(contents: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "EncodePng",
-        Input: [  image, )]
+        Input: [ image]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -7961,44 +4551,23 @@ that range.
 `audio` is a 2-D float Tensor of shape `[length, channels]`.
 `sample_rate` is a scalar Tensor holding the rate to use (e.g. 44100).
 
-_inputArg
- audio:: .  sample_rate:: . 
-_outputArg
-
-_outputArg
- contents:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func encodeWav(scope:Scope,audio: tf.Output, sample_rate: tf.Output)  -> (contents: tf.Output){
+func encodeWav(scope:Scope,audio: tf.Output, sampleRate: tf.Output)  ->(contents: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "EncodeWav",
-        Input: [  audio,  sample_rate, )]
+        Input: [ audio, sampleRate]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -8010,44 +4579,23 @@ The unique `frame_name` is used by the `Executor` to identify frames. If
 it may be changed in the child frame. At most `parallel_iterations` iterations
 are run in parallel in the child frame.
 
-_inputArg
- data:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func enter(scope:Scope,data: tf.Output)  -> (output: tf.Output){
+func enter(scope:Scope,data: tf.OutputT :type, frame_name :string, is_constant :bool, parallel_iterations :int)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Enter",
-        Input: [  data, )]
+        Input: [ data]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -8056,132 +4604,69 @@ Returns the truth value of (x == y) element-wise.
 *NOTE*: `Equal` supports broadcasting. More about broadcasting
 [here](http://docs.scipy.org/doc/numpy/user/basics.broadcasting.html)
 
-_inputArg
- x:: .T  y:: .T 
-_outputArg
-
-_outputArg
- z:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func equal(scope:Scope,x: tf.Output, y: tf.Output)  -> (z: tf.Output){
+func equal(scope:Scope,x: tf.Output, y: tf.OutputT :type)  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Equal",
-        Input: [  x,  y, )]
+        Input: [ x, y]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Computes the Gauss error function of `x` element-wise.
 
 
-_inputArg
- x:: .T 
-_outputArg
-
-_outputArg
- y::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func erf(scope:Scope,x: tf.Output)  -> (y: tf.Output){
+func erf(scope:Scope,x: tf.OutputT :type)  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Erf",
-        Input: [  x, )]
+        Input: [ x]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Computes the complementary error function of `x` element-wise.
 
 
-_inputArg
- x:: .T 
-_outputArg
-
-_outputArg
- y::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func erfc(scope:Scope,x: tf.Output)  -> (y: tf.Output){
+func erfc(scope:Scope,x: tf.OutputT :type)  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Erfc",
-        Input: [  x, )]
+        Input: [ x]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -8189,88 +4674,46 @@ Exits the current frame to its parent frame.
 
 Exit makes its input `data` available to the parent frame.
 
-_inputArg
- data:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func exit(scope:Scope,data: tf.Output)  -> (output: tf.Output){
+func exit(scope:Scope,data: tf.OutputT :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Exit",
-        Input: [  data, )]
+        Input: [ data]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Computes exponential of x element-wise.  \\(y = e^x\\).
 
 
-_inputArg
- x:: .T 
-_outputArg
-
-_outputArg
- y::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func exp(scope:Scope,x: tf.Output)  -> (y: tf.Output){
+func exp(scope:Scope,x: tf.OutputT :type)  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Exp",
-        Input: [  x, )]
+        Input: [ x]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -8300,44 +4743,23 @@ This operation requires that:
 This operation is related to `squeeze()`, which removes dimensions of
 size 1.
 
-_inputArg
- input:: .T  dim:: .Tdim 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func expandDims(scope:Scope,input: tf.Output, dim: tf.Output)  -> (output: tf.Output){
+func expandDims(scope:Scope,input: tf.Output, dim: tf.OutputT :type, Tdim :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ExpandDims",
-        Input: [  input,  dim, )]
+        Input: [ input, dim]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -8345,44 +4767,23 @@ Computes exponential of x - 1 element-wise.
 
 I.e., \\(y = (\exp x) - 1\\).
 
-_inputArg
- x:: .T 
-_outputArg
-
-_outputArg
- y::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func expm1(scope:Scope,x: tf.Output)  -> (y: tf.Output){
+func expm1(scope:Scope,x: tf.OutputT :type)  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Expm1",
-        Input: [  x, )]
+        Input: [ x]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -8407,88 +4808,46 @@ The argument `normalized` and `centered` controls how the windows are built:
 * If the coordinates are not normalized they are interpreted as
   numbers of pixels.
 
-_inputArg
- input:: .  size:: .  offsets:: . 
-_outputArg
-
-_outputArg
- glimpse:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func extractGlimpse(scope:Scope,input: tf.Output, size: tf.Output, offsets: tf.Output)  -> (glimpse: tf.Output){
+func extractGlimpse(scope:Scope,input: tf.Output, size: tf.Output, offsets: tf.Outputcentered :bool, normalized :bool, uniform_noise :bool)  ->(glimpse: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ExtractGlimpse",
-        Input: [  input,  size,  offsets, )]
+        Input: [ input, size, offsets]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Extract `patches` from `images` and put them in the "depth" output dimension.
 
 
-_inputArg
- images:: .T 
-_outputArg
-
-_outputArg
- patches::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func extractImagePatches(scope:Scope,images: tf.Output)  -> (patches: tf.Output){
+func extractImagePatches(scope:Scope,images: tf.Outputksizes :list(int), strides :list(int), rates :list(int), T :type, padding :string)  ->(patches: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ExtractImagePatches",
-        Input: [  images, )]
+        Input: [ images]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -8497,44 +4856,23 @@ Fast Fourier transform.
 Computes the 1-dimensional discrete Fourier transform over the inner-most
 dimension of `input`.
 
-_inputArg
- input:: . 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func fft(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func fft(scope:Scope,input: tf.Output)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "FFT",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -8543,44 +4881,23 @@ func fft(scope:Scope,input: tf.Output)  -> (output: tf.Output){
 Computes the 2-dimensional discrete Fourier transform over the inner-most
 2 dimensions of `input`.
 
-_inputArg
- input:: . 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func fft2D(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func fft2D(scope:Scope,input: tf.Output)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "FFT2D",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -8589,173 +4906,92 @@ func fft2D(scope:Scope,input: tf.Output)  -> (output: tf.Output){
 Computes the 3-dimensional discrete Fourier transform over the inner-most 3
 dimensions of `input`.
 
-_inputArg
- input:: . 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func fft3D(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func fft3D(scope:Scope,input: tf.Output)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "FFT3D",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 A queue that produces elements in first-in first-out order.
 
 
-_inputArg
-_outputArg
-
-_outputArg
- handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func fifoQueue(scope:Scope)  -> (handle: tf.Output){
+func fifoQueue(scope:Scopecomponent_types :list(type), shapes :list(shape), capacity :int, container :string, shared_name :string)  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "FIFOQueue",
-        Input: [ )]
+        Input: [ ]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 A queue that produces elements in first-in first-out order.
 
 
-_inputArg
-_outputArg
-
-_outputArg
- handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func fifoQueueV2(scope:Scope)  -> (handle: tf.Output){
+func fifoQueueV2(scope:Scopecomponent_types :list(type), shapes :list(shape), capacity :int, container :string, shared_name :string)  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "FIFOQueueV2",
-        Input: [ )]
+        Input: [ ]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Output a fact about factorials.
 
 
-_inputArg
-_outputArg
-
-_outputArg
- fact:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func fact(scope:Scope)  -> (fact: tf.Output){
+func fact(scope:Scope)  ->(fact: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Fact",
-        Input: [ )]
+        Input: [ ]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -8767,88 +5003,46 @@ divides this range into 255 steps (total of 256 values), then replaces each
 'num_bits' is the bitwidth of the quantization; between 2 and 8, inclusive.
 Quantization is called fake since the output is still in floating point.
 
-_inputArg
- inputs:: . 
-_outputArg
-
-_outputArg
- outputs:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func fakeQuantWithMinMaxArgs(scope:Scope,inputs: tf.Output)  -> (outputs: tf.Output){
+func fakeQuantWithMinMaxArgs(scope:Scope,inputs: tf.Outputmin :float, max :float, num_bits :int)  ->(outputs: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "FakeQuantWithMinMaxArgs",
-        Input: [  inputs, )]
+        Input: [ inputs]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Compute gradients for a FakeQuantWithMinMaxArgs operation.
 
 
-_inputArg
- gradients:: .  inputs:: . 
-_outputArg
-
-_outputArg
- backprops:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func fakeQuantWithMinMaxArgsGradient(scope:Scope,gradients: tf.Output, inputs: tf.Output)  -> (backprops: tf.Output){
+func fakeQuantWithMinMaxArgsGradient(scope:Scope,gradients: tf.Output, inputs: tf.Outputmin :float, max :float, num_bits :int)  ->(backprops: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "FakeQuantWithMinMaxArgsGradient",
-        Input: [  gradients,  inputs, )]
+        Input: [ gradients, inputs]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -8861,88 +5055,46 @@ closest of the quantized step values.
 'num_bits' is the bitwidth of the quantization; between 2 and 8, inclusive.
 This operation has a gradient and thus allows for training `min` and `max` values.
 
-_inputArg
- inputs:: .  min:: .  max:: . 
-_outputArg
-
-_outputArg
- outputs:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func fakeQuantWithMinMaxVars(scope:Scope,inputs: tf.Output, min: tf.Output, max: tf.Output)  -> (outputs: tf.Output){
+func fakeQuantWithMinMaxVars(scope:Scope,inputs: tf.Output, min: tf.Output, max: tf.Outputnum_bits :int)  ->(outputs: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "FakeQuantWithMinMaxVars",
-        Input: [  inputs,  min,  max, )]
+        Input: [ inputs, min, max]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Compute gradients for a FakeQuantWithMinMaxVars operation.
 
 
-_inputArg
- gradients:: .  inputs:: .  min:: .  max:: . 
-_outputArg
-
-_outputArg
- backprops_wrt_input::  backprop_wrt_min::  backprop_wrt_max:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func fakeQuantWithMinMaxVarsGradient(scope:Scope,gradients: tf.Output, inputs: tf.Output, min: tf.Output, max: tf.Output)  -> (backprops_wrt_input: tf.Output, backprop_wrt_min: tf.Output, backprop_wrt_max: tf.Output){
+func fakeQuantWithMinMaxVarsGradient(scope:Scope,gradients: tf.Output, inputs: tf.Output, min: tf.Output, max: tf.Outputnum_bits :int)  ->(backpropsWrtInput: tf.Output, backpropWrtMin: tf.Output, backpropWrtMax: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "FakeQuantWithMinMaxVarsGradient",
-        Input: [  gradients,  inputs,  min,  max, )]
+        Input: [ gradients, inputs, min, max]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1))
 }
 
 /*
@@ -8956,132 +5108,69 @@ replaces each 'inputs' value with the closest of the quantized step values.
 'num_bits' is the bitwidth of the quantization; between 2 and 8, inclusive.
 This operation has a gradient and thus allows for training `min` and `max` values.
 
-_inputArg
- inputs:: .  min:: .  max:: . 
-_outputArg
-
-_outputArg
- outputs:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func fakeQuantWithMinMaxVarsPerChannel(scope:Scope,inputs: tf.Output, min: tf.Output, max: tf.Output)  -> (outputs: tf.Output){
+func fakeQuantWithMinMaxVarsPerChannel(scope:Scope,inputs: tf.Output, min: tf.Output, max: tf.Outputnum_bits :int)  ->(outputs: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "FakeQuantWithMinMaxVarsPerChannel",
-        Input: [  inputs,  min,  max, )]
+        Input: [ inputs, min, max]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Compute gradients for a FakeQuantWithMinMaxVarsPerChannel operation.
 
 
-_inputArg
- gradients:: .  inputs:: .  min:: .  max:: . 
-_outputArg
-
-_outputArg
- backprops_wrt_input::  backprop_wrt_min::  backprop_wrt_max:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func fakeQuantWithMinMaxVarsPerChannelGradient(scope:Scope,gradients: tf.Output, inputs: tf.Output, min: tf.Output, max: tf.Output)  -> (backprops_wrt_input: tf.Output, backprop_wrt_min: tf.Output, backprop_wrt_max: tf.Output){
+func fakeQuantWithMinMaxVarsPerChannelGradient(scope:Scope,gradients: tf.Output, inputs: tf.Output, min: tf.Output, max: tf.Outputnum_bits :int)  ->(backpropsWrtInput: tf.Output, backpropWrtMin: tf.Output, backpropWrtMax: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "FakeQuantWithMinMaxVarsPerChannelGradient",
-        Input: [  gradients,  inputs,  min,  max, )]
+        Input: [ gradients, inputs, min, max]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1))
 }
 
 /*
 Deprecated. Do not use.
 
 
-_inputArg
- resource:: . 
-_outputArg
-
-_outputArg
- handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func fakeQueue(scope:Scope,resource: tf.Output)  -> (handle: tf.Output){
+func fakeQueue(scope:Scope,resource: tf.Output)  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "FakeQueue",
-        Input: [  resource, )]
+        Input: [ resource]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -9095,44 +5184,23 @@ fill([2, 3], 9) ==> [[9, 9, 9]
                      [9, 9, 9]]
 ```
 
-_inputArg
- dims:: .  value:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func fill(scope:Scope,dims: tf.Output, value: tf.Output)  -> (output: tf.Output){
+func fill(scope:Scope,dims: tf.Output, value: tf.OutputT :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Fill",
-        Input: [  dims,  value, )]
+        Input: [ dims, value]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -9143,174 +5211,92 @@ following arguments:
 * One tensor for each component of an element of `input_dataset`.
 * One tensor for each value in `other_arguments`.
 
-_inputArg
- input_dataset:: .  other_arguments:: . 
-_outputArg
-
-_outputArg
- handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func filterDataset(scope:Scope,input_dataset: tf.Output, other_arguments: tf.Output)  -> (handle: tf.Output){
+func filterDataset(scope:Scope,inputDataset: tf.Output, otherArguments: tf.Outputpredicate :func, Targuments :list(type), output_types :list(type), output_shapes :list(shape))  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "FilterDataset",
-        Input: [  input_dataset,  other_arguments, )]
+        Input: [ inputDataset, otherArguments]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Creates a dataset that emits the records from one or more binary files.
 
 
-_inputArg
- filenames:: .  header_bytes:: .  record_bytes:: .  footer_bytes:: . 
-_outputArg
-
-_outputArg
- handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func fixedLengthRecordDataset(scope:Scope,filenames: tf.Output, header_bytes: tf.Output, record_bytes: tf.Output, footer_bytes: tf.Output)  -> (handle: tf.Output){
+func fixedLengthRecordDataset(scope:Scope,filenames: tf.Output, headerBytes: tf.Output, recordBytes: tf.Output, footerBytes: tf.Output)  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "FixedLengthRecordDataset",
-        Input: [  filenames,  header_bytes,  record_bytes,  footer_bytes, )]
+        Input: [ filenames, headerBytes, recordBytes, footerBytes]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 A Reader that outputs fixed-length records from a file.
 
 
-_inputArg
-_outputArg
-
-_outputArg
- reader_handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func fixedLengthRecordReader(scope:Scope)  -> (reader_handle: tf.Output){
+func fixedLengthRecordReader(scope:Scopeheader_bytes :int, record_bytes :int, footer_bytes :int, hop_bytes :int, container :string, shared_name :string)  ->(readerHandle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "FixedLengthRecordReader",
-        Input: [ )]
+        Input: [ ]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 A Reader that outputs fixed-length records from a file.
 
 
-_inputArg
-_outputArg
-
-_outputArg
- reader_handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func fixedLengthRecordReaderV2(scope:Scope)  -> (reader_handle: tf.Output){
+func fixedLengthRecordReaderV2(scope:Scopeheader_bytes :int, record_bytes :int, footer_bytes :int, hop_bytes :int, container :string, shared_name :string)  ->(readerHandle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "FixedLengthRecordReaderV2",
-        Input: [ )]
+        Input: [ ]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -9328,44 +5314,23 @@ possibility of efficient dense matrix multiplication. The disadvantage is that
 the sampled candidates must be chosen independently of the context and of the
 true labels.
 
-_inputArg
- true_classes:: . 
-_outputArg
-
-_outputArg
- sampled_candidates::  true_expected_count::  sampled_expected_count:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func fixedUnigramCandidateSampler(scope:Scope,true_classes: tf.Output)  -> (sampled_candidates: tf.Output, true_expected_count: tf.Output, sampled_expected_count: tf.Output){
+func fixedUnigramCandidateSampler(scope:Scope,trueClasses: tf.Outputnum_true :int, num_sampled :int, unique :bool, range_max :int, vocab_file :string, distortion :float, num_reserved_ids :int, num_shards :int, shard :int, unigrams :list(float), seed :int, seed2 :int)  ->(sampledCandidates: tf.Output, trueExpectedCount: tf.Output, sampledExpectedCount: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "FixedUnigramCandidateSampler",
-        Input: [  true_classes, )]
+        Input: [ trueClasses]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1))
 }
 
 /*
@@ -9375,88 +5340,46 @@ Unlike MapDataset, the `f` in FlatMapDataset is expected to return a
 Dataset resource, and FlatMapDataset will flatten successive results
 into a single Dataset.
 
-_inputArg
- input_dataset:: .  other_arguments:: . 
-_outputArg
-
-_outputArg
- handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func flatMapDataset(scope:Scope,input_dataset: tf.Output, other_arguments: tf.Output)  -> (handle: tf.Output){
+func flatMapDataset(scope:Scope,inputDataset: tf.Output, otherArguments: tf.Outputf :func, Targuments :list(type), output_types :list(type), output_shapes :list(shape))  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "FlatMapDataset",
-        Input: [  input_dataset,  other_arguments, )]
+        Input: [ inputDataset, otherArguments]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Returns element-wise largest integer not greater than x.
 
 
-_inputArg
- x:: .T 
-_outputArg
-
-_outputArg
- y::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func floor(scope:Scope,x: tf.Output)  -> (y: tf.Output){
+func floor(scope:Scope,x: tf.OutputT :type)  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Floor",
-        Input: [  x, )]
+        Input: [ x]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -9465,44 +5388,23 @@ Returns x // y element-wise.
 *NOTE*: `FloorDiv` supports broadcasting. More about broadcasting
 [here](http://docs.scipy.org/doc/numpy/user/basics.broadcasting.html)
 
-_inputArg
- x:: .T  y:: .T 
-_outputArg
-
-_outputArg
- z::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func floorDiv(scope:Scope,x: tf.Output, y: tf.Output)  -> (z: tf.Output){
+func floorDiv(scope:Scope,x: tf.Output, y: tf.OutputT :type)  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "FloorDiv",
-        Input: [  x,  y, )]
+        Input: [ x, y]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -9513,44 +5415,23 @@ with a flooring divide. E.g. `floor(x / y) * y + mod(x, y) = x`.
 *NOTE*: `FloorMod` supports broadcasting. More about broadcasting
 [here](http://docs.scipy.org/doc/numpy/user/basics.broadcasting.html)
 
-_inputArg
- x:: .T  y:: .T 
-_outputArg
-
-_outputArg
- z::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func floorMod(scope:Scope,x: tf.Output, y: tf.Output)  -> (z: tf.Output){
+func floorMod(scope:Scope,x: tf.Output, y: tf.OutputT :type)  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "FloorMod",
-        Input: [  x,  y, )]
+        Input: [ x, y]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -9561,44 +5442,23 @@ region generation step. The only difference is that after pooling regions are
 generated, a mean operation is performed instead of a max operation in each
 pooling region.
 
-_inputArg
- value:: .T 
-_outputArg
-
-_outputArg
- output::T  row_pooling_sequence::  col_pooling_sequence:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func fractionalAvgPool(scope:Scope,value: tf.Output)  -> (output: tf.Output, row_pooling_sequence: tf.Output, col_pooling_sequence: tf.Output){
+func fractionalAvgPool(scope:Scope,value: tf.Outputpooling_ratio :list(float), pseudo_random :bool, overlapping :bool, deterministic :bool, seed :int, seed2 :int, T :type)  ->(output: tf.Output, rowPoolingSequence: tf.Output, colPoolingSequence: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "FractionalAvgPool",
-        Input: [  value, )]
+        Input: [ value]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1))
 }
 
 /*
@@ -9610,44 +5470,23 @@ out_backprop to those indices that form the same pooling cell. Therefore, we
 just need to know the shape of original input tensor, instead of the whole
 tensor.
 
-_inputArg
- orig_input_tensor_shape:: .  out_backprop:: .T  row_pooling_sequence:: .  col_pooling_sequence:: . 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func fractionalAvgPoolGrad(scope:Scope,orig_input_tensor_shape: tf.Output, out_backprop: tf.Output, row_pooling_sequence: tf.Output, col_pooling_sequence: tf.Output)  -> (output: tf.Output){
+func fractionalAvgPoolGrad(scope:Scope,origInputTensorShape: tf.Output, outBackprop: tf.Output, rowPoolingSequence: tf.Output, colPoolingSequence: tf.Outputoverlapping :bool, T :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "FractionalAvgPoolGrad",
-        Input: [  orig_input_tensor_shape,  out_backprop,  row_pooling_sequence,  col_pooling_sequence, )]
+        Input: [ origInputTensorShape, outBackprop, rowPoolingSequence, colPoolingSequence]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -9676,88 +5515,46 @@ Then, row_pooling_sequence should satisfy:
 For more details on fractional max pooling, see this paper:
 [Benjamin Graham, Fractional Max-Pooling](http://arxiv.org/abs/1412.6071)
 
-_inputArg
- value:: .T 
-_outputArg
-
-_outputArg
- output::T  row_pooling_sequence::  col_pooling_sequence:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func fractionalMaxPool(scope:Scope,value: tf.Output)  -> (output: tf.Output, row_pooling_sequence: tf.Output, col_pooling_sequence: tf.Output){
+func fractionalMaxPool(scope:Scope,value: tf.Outputpooling_ratio :list(float), pseudo_random :bool, overlapping :bool, deterministic :bool, seed :int, seed2 :int, T :type)  ->(output: tf.Output, rowPoolingSequence: tf.Output, colPoolingSequence: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "FractionalMaxPool",
-        Input: [  value, )]
+        Input: [ value]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1))
 }
 
 /*
 Computes gradient of the FractionalMaxPool function.
 
 
-_inputArg
- orig_input:: .T  orig_output:: .T  out_backprop:: .T  row_pooling_sequence:: .  col_pooling_sequence:: . 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func fractionalMaxPoolGrad(scope:Scope,orig_input: tf.Output, orig_output: tf.Output, out_backprop: tf.Output, row_pooling_sequence: tf.Output, col_pooling_sequence: tf.Output)  -> (output: tf.Output){
+func fractionalMaxPoolGrad(scope:Scope,origInput: tf.Output, origOutput: tf.Output, outBackprop: tf.Output, rowPoolingSequence: tf.Output, colPoolingSequence: tf.Outputoverlapping :bool, T :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "FractionalMaxPoolGrad",
-        Input: [  orig_input,  orig_output,  out_backprop,  row_pooling_sequence,  col_pooling_sequence, )]
+        Input: [ origInput, origOutput, outBackprop, rowPoolingSequence, colPoolingSequence]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -9766,44 +5563,23 @@ Batch normalization.
 Note that the size of 4D Tensors are defined by either "NHWC" or "NCHW".
 The size of 1D Tensors matches the dimension C of the 4D Tensors.
 
-_inputArg
- x:: .T  scale:: .T  offset:: .T  mean:: .T  variance:: .T 
-_outputArg
-
-_outputArg
- y::T  batch_mean::T  batch_variance::T  reserve_space_1::T  reserve_space_2::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func fusedBatchNorm(scope:Scope,x: tf.Output, scale: tf.Output, offset: tf.Output, mean: tf.Output, variance: tf.Output)  -> (y: tf.Output, batch_mean: tf.Output, batch_variance: tf.Output, reserve_space_1: tf.Output, reserve_space_2: tf.Output){
+func fusedBatchNorm(scope:Scope,x: tf.Output, scale: tf.Output, offset: tf.Output, mean: tf.Output, variance: tf.OutputT :type, epsilon :float, data_format :string, is_training :bool)  ->(y: tf.Output, batchMean: tf.Output, batchVariance: tf.Output, reserveSpace1: tf.Output, reserveSpace2: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "FusedBatchNorm",
-        Input: [  x,  scale,  offset,  mean,  variance, )]
+        Input: [ x, scale, offset, mean, variance]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3),op.Output(4),op.Output(5))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1),op.Output(4 -1),op.Output(5 -1))
 }
 
 /*
@@ -9812,44 +5588,23 @@ Gradient for batch normalization.
 Note that the size of 4D Tensors are defined by either "NHWC" or "NCHW".
 The size of 1D Tensors matches the dimension C of the 4D Tensors.
 
-_inputArg
- y_backprop:: .T  x:: .T  scale:: .T  reserve_space_1:: .T  reserve_space_2:: .T 
-_outputArg
-
-_outputArg
- x_backprop::T  scale_backprop::T  offset_backprop::T  reserve_space_3::T  reserve_space_4::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func fusedBatchNormGrad(scope:Scope,y_backprop: tf.Output, x: tf.Output, scale: tf.Output, reserve_space_1: tf.Output, reserve_space_2: tf.Output)  -> (x_backprop: tf.Output, scale_backprop: tf.Output, offset_backprop: tf.Output, reserve_space_3: tf.Output, reserve_space_4: tf.Output){
+func fusedBatchNormGrad(scope:Scope,yBackprop: tf.Output, x: tf.Output, scale: tf.Output, reserveSpace1: tf.Output, reserveSpace2: tf.OutputT :type, epsilon :float, data_format :string, is_training :bool)  ->(xBackprop: tf.Output, scaleBackprop: tf.Output, offsetBackprop: tf.Output, reserveSpace3: tf.Output, reserveSpace4: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "FusedBatchNormGrad",
-        Input: [  y_backprop,  x,  scale,  reserve_space_1,  reserve_space_2, )]
+        Input: [ yBackprop, x, scale, reserveSpace1, reserveSpace2]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3),op.Output(4),op.Output(5))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1),op.Output(4 -1),op.Output(5 -1))
 }
 
 /*
@@ -9867,44 +5622,23 @@ Internally this op uses a single per-graph scratch buffer, which means that it
 will block if multiple versions are being run in parallel. This is because this
 operator is primarily an optimization to minimize memory usage.
 
-_inputArg
- input:: .T  paddings:: .  filter:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func fusedPadConv2D(scope:Scope,input: tf.Output, paddings: tf.Output, filter: tf.Output)  -> (output: tf.Output){
+func fusedPadConv2D(scope:Scope,input: tf.Output, paddings: tf.Output, filter: tf.OutputT :type, mode :string, strides :list(int), padding :string)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "FusedPadConv2D",
-        Input: [  input,  paddings,  filter, )]
+        Input: [ input, paddings, filter]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -9921,44 +5655,23 @@ Internally this op uses a single per-graph scratch buffer, which means that it
 will block if multiple versions are being run in parallel. This is because this
 operator is primarily an optimization to minimize memory usage.
 
-_inputArg
- input:: .T  size:: .  paddings:: .  filter:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func fusedResizeAndPadConv2D(scope:Scope,input: tf.Output, size: tf.Output, paddings: tf.Output, filter: tf.Output)  -> (output: tf.Output){
+func fusedResizeAndPadConv2D(scope:Scope,input: tf.Output, size: tf.Output, paddings: tf.Output, filter: tf.OutputT :type, resize_align_corners :bool, mode :string, strides :list(int), padding :string)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "FusedResizeAndPadConv2D",
-        Input: [  input,  size,  paddings,  filter, )]
+        Input: [ input, size, paddings, filter]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -9984,44 +5697,23 @@ raising an error.
 <img style="width:100%" src="https://www.tensorflow.org/images/Gather.png" alt>
 </div>
 
-_inputArg
- params:: .Tparams  indices:: .Tindices 
-_outputArg
-
-_outputArg
- output::Tparams 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func gather(scope:Scope,params: tf.Output, indices: tf.Output)  -> (output: tf.Output){
+func gather(scope:Scope,params: tf.Output, indices: tf.Outputvalidate_indices :bool, Tparams :type, Tindices :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Gather",
-        Input: [  params,  indices, )]
+        Input: [ params, indices]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -10093,176 +5785,92 @@ Batched indexing into a 3-tensor:
     output = [['b0', 'b1'], ['d0', 'c1']]
 ```
 
-_inputArg
- params:: .Tparams  indices:: .Tindices 
-_outputArg
-
-_outputArg
- output::Tparams 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func gatherNd(scope:Scope,params: tf.Output, indices: tf.Output)  -> (output: tf.Output){
+func gatherNd(scope:Scope,params: tf.Output, indices: tf.OutputTparams :type, Tindices :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "GatherNd",
-        Input: [  params,  indices, )]
+        Input: [ params, indices]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Store the input tensor in the state of the current session.
 
 
-_inputArg
- value:: .T 
-_outputArg
-
-_outputArg
- handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func getSessionHandle(scope:Scope,value: tf.Output)  -> (handle: tf.Output){
+func getSessionHandle(scope:Scope,value: tf.OutputT :type)  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "GetSessionHandle",
-        Input: [  value, )]
+        Input: [ value]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Store the input tensor in the state of the current session.
 
 
-_inputArg
- value:: .T 
-_outputArg
-
-_outputArg
- handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func getSessionHandleV2(scope:Scope,value: tf.Output)  -> (handle: tf.Output){
+func getSessionHandleV2(scope:Scope,value: tf.OutputT :type)  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "GetSessionHandleV2",
-        Input: [  value, )]
+        Input: [ value]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Get the value of the tensor specified by its handle.
 
 
-_inputArg
- handle:: . 
-_outputArg
-
-_outputArg
- value::dtype 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func getSessionTensor(scope:Scope,handle: tf.Output)  -> (value: tf.Output){
+func getSessionTensor(scope:Scope,handle: tf.Outputdtype :type)  ->(value: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "GetSessionTensor",
-        Input: [  handle, )]
+        Input: [ handle]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -10271,44 +5879,23 @@ Returns the truth value of (x > y) element-wise.
 *NOTE*: `Greater` supports broadcasting. More about broadcasting
 [here](http://docs.scipy.org/doc/numpy/user/basics.broadcasting.html)
 
-_inputArg
- x:: .T  y:: .T 
-_outputArg
-
-_outputArg
- z:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func greater(scope:Scope,x: tf.Output, y: tf.Output)  -> (z: tf.Output){
+func greater(scope:Scope,x: tf.Output, y: tf.OutputT :type)  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Greater",
-        Input: [  x,  y, )]
+        Input: [ x, y]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -10317,44 +5904,23 @@ Returns the truth value of (x >= y) element-wise.
 *NOTE*: `GreaterEqual` supports broadcasting. More about broadcasting
 [here](http://docs.scipy.org/doc/numpy/user/basics.broadcasting.html)
 
-_inputArg
- x:: .T  y:: .T 
-_outputArg
-
-_outputArg
- z:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func greaterEqual(scope:Scope,x: tf.Output, y: tf.Output)  -> (z: tf.Output){
+func greaterEqual(scope:Scope,x: tf.Output, y: tf.OutputT :type)  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "GreaterEqual",
-        Input: [  x,  y, )]
+        Input: [ x, y]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -10362,44 +5928,23 @@ Creates a dataset that computes a windowed group-by on `input_dataset`.
 
 // TODO(mrry): Support non-int64 keys.
 
-_inputArg
- input_dataset:: .  key_func_other_arguments:: .  reduce_func_other_arguments:: .  window_size:: . 
-_outputArg
-
-_outputArg
- handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func groupByWindowDataset(scope:Scope,input_dataset: tf.Output, key_func_other_arguments: tf.Output, reduce_func_other_arguments: tf.Output, window_size: tf.Output)  -> (handle: tf.Output){
+func groupByWindowDataset(scope:Scope,inputDataset: tf.Output, keyFuncOtherArguments: tf.Output, reduceFuncOtherArguments: tf.Output, windowSize: tf.Outputkey_func :func, reduce_func :func, Tkey_func_other_arguments :list(type), Treduce_func_other_arguments :list(type), output_types :list(type), output_shapes :list(shape))  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "GroupByWindowDataset",
-        Input: [  input_dataset,  key_func_other_arguments,  reduce_func_other_arguments,  window_size, )]
+        Input: [ inputDataset, keyFuncOtherArguments, reduceFuncOtherArguments, windowSize]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -10410,44 +5955,23 @@ value of the pixels. The output is only well defined if the value in `images`
 are in `[0,1]`.
 See `rgb_to_hsv` for a description of the HSV encoding.
 
-_inputArg
- images:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func hsvToRGB(scope:Scope,images: tf.Output)  -> (output: tf.Output){
+func hsvToRGB(scope:Scope,images: tf.OutputT :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "HSVToRGB",
-        Input: [  images, )]
+        Input: [ images]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -10457,43 +5981,23 @@ This op creates a hash table, specifying the type of its keys and values.
 Before using the table you will have to initialize it.  After initialization the
 table will be immutable.
 
-_inputArg
-_outputArg
-
-_outputArg
- table_handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func hashTable(scope:Scope)  -> (table_handle: tf.Output){
+func hashTable(scope:Scopecontainer :string, shared_name :string, use_node_name_sharing :bool, key_dtype :type, value_dtype :type)  ->(tableHandle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "HashTable",
-        Input: [ )]
+        Input: [ ]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -10503,43 +6007,23 @@ This op creates a hash table, specifying the type of its keys and values.
 Before using the table you will have to initialize it.  After initialization the
 table will be immutable.
 
-_inputArg
-_outputArg
-
-_outputArg
- table_handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func hashTableV2(scope:Scope)  -> (table_handle: tf.Output){
+func hashTableV2(scope:Scopecontainer :string, shared_name :string, use_node_name_sharing :bool, key_dtype :type, value_dtype :type)  ->(tableHandle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "HashTableV2",
-        Input: [ )]
+        Input: [ ]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -10550,44 +6034,23 @@ The generated
 has one summary value containing a histogram for `values`.
 This op reports an `InvalidArgument` error if any value is not finite.
 
-_inputArg
- tag:: .  values:: .T 
-_outputArg
-
-_outputArg
- summary:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func histogramSummary(scope:Scope,tag: tf.Output, values: tf.Output)  -> (summary: tf.Output){
+func histogramSummary(scope:Scope,tag: tf.Output, values: tf.OutputT :type)  ->(summary: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "HistogramSummary",
-        Input: [  tag,  values, )]
+        Input: [ tag, values]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -10596,44 +6059,23 @@ Inverse fast Fourier transform.
 Computes the inverse 1-dimensional discrete Fourier transform over the
 inner-most dimension of `input`.
 
-_inputArg
- input:: . 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func ifft(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func ifft(scope:Scope,input: tf.Output)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "IFFT",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -10642,44 +6084,23 @@ Inverse 2D fast Fourier transform.
 Computes the inverse 2-dimensional discrete Fourier transform over the
 inner-most 2 dimensions of `input`.
 
-_inputArg
- input:: . 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func ifft2D(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func ifft2D(scope:Scope,input: tf.Output)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "IFFT2D",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -10688,44 +6109,23 @@ Inverse 3D fast Fourier transform.
 Computes the inverse 3-dimensional discrete Fourier transform over the
 inner-most 3 dimensions of `input`.
 
-_inputArg
- input:: . 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func ifft3D(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func ifft3D(scope:Scope,input: tf.Output)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "IFFT3D",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -10740,44 +6140,23 @@ dimension of `input` (`fft_length = 2 * (inner - 1)`). If the FFT length used to
 compute `input` is odd, it should be provided since it cannot be inferred
 properly.
 
-_inputArg
- input:: .  fft_length:: . 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func irfft(scope:Scope,input: tf.Output, fft_length: tf.Output)  -> (output: tf.Output){
+func irfft(scope:Scope,input: tf.Output, fftLength: tf.Output)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "IRFFT",
-        Input: [  input,  fft_length, )]
+        Input: [ input, fftLength]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -10792,44 +6171,23 @@ from the size of the inner-most 2 dimensions of `input`. If the FFT length used
 to compute `input` is odd, it should be provided since it cannot be inferred
 properly.
 
-_inputArg
- input:: .  fft_length:: . 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func irfft2D(scope:Scope,input: tf.Output, fft_length: tf.Output)  -> (output: tf.Output){
+func irfft2D(scope:Scope,input: tf.Output, fftLength: tf.Output)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "IRFFT2D",
-        Input: [  input,  fft_length, )]
+        Input: [ input, fftLength]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -10844,88 +6202,46 @@ from the size of the inner-most 3 dimensions of `input`. If the FFT length used
 to compute `input` is odd, it should be provided since it cannot be inferred
 properly.
 
-_inputArg
- input:: .  fft_length:: . 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func irfft3D(scope:Scope,input: tf.Output, fft_length: tf.Output)  -> (output: tf.Output){
+func irfft3D(scope:Scope,input: tf.Output, fftLength: tf.Output)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "IRFFT3D",
-        Input: [  input,  fft_length, )]
+        Input: [ input, fftLength]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Return a tensor with the same shape and contents as the input tensor or value.
 
 
-_inputArg
- input:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func identity(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func identity(scope:Scope,input: tf.OutputT :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Identity",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -10934,43 +6250,23 @@ A Reader that outputs the queued work as both the key and value.
 To use, enqueue strings in a Queue.  ReaderRead will take the front
 work string and output (work, work).
 
-_inputArg
-_outputArg
-
-_outputArg
- reader_handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func identityReader(scope:Scope)  -> (reader_handle: tf.Output){
+func identityReader(scope:Scopecontainer :string, shared_name :string)  ->(readerHandle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "IdentityReader",
-        Input: [ )]
+        Input: [ ]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -10979,43 +6275,23 @@ A Reader that outputs the queued work as both the key and value.
 To use, enqueue strings in a Queue.  ReaderRead will take the front
 work string and output (work, work).
 
-_inputArg
-_outputArg
-
-_outputArg
- reader_handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func identityReaderV2(scope:Scope)  -> (reader_handle: tf.Output){
+func identityReaderV2(scope:Scopecontainer :string, shared_name :string)  ->(readerHandle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "IdentityReaderV2",
-        Input: [ )]
+        Input: [ ]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -11029,44 +6305,23 @@ is the lower incomplete Gamma function.
 Note, above `Q(a, x)` (`Igammac`) is the upper regularized complete
 Gamma function.
 
-_inputArg
- a:: .T  x:: .T 
-_outputArg
-
-_outputArg
- z::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func igamma(scope:Scope,a: tf.Output, x: tf.Output)  -> (z: tf.Output){
+func igamma(scope:Scope,a: tf.Output, x: tf.OutputT :type)  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Igamma",
-        Input: [  a,  x, )]
+        Input: [ a, x]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -11080,44 +6335,23 @@ is the upper incomplete Gama function.
 Note, above `P(a, x)` (`Igamma`) is the lower regularized complete
 Gamma function.
 
-_inputArg
- a:: .T  x:: .T 
-_outputArg
-
-_outputArg
- z::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func igammac(scope:Scope,a: tf.Output, x: tf.Output)  -> (z: tf.Output){
+func igammac(scope:Scope,a: tf.Output, x: tf.OutputT :type)  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Igammac",
-        Input: [  a,  x, )]
+        Input: [ a, x]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -11133,44 +6367,23 @@ For example:
 tf.imag(input) ==> [4.75, 5.75]
 ```
 
-_inputArg
- input:: .T 
-_outputArg
-
-_outputArg
- output::Tout 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func imag(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func imag(scope:Scope,input: tf.OutputT :type, Tout :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Imag",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -11203,44 +6416,23 @@ pixel in the output image).  Non-finite values in the input tensor are
 replaced by this tensor in the output image.  The default value is the color
 red.
 
-_inputArg
- tag:: .  tensor:: .T 
-_outputArg
-
-_outputArg
- summary:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func imageSummary(scope:Scope,tag: tf.Output, tensor: tf.Output)  -> (summary: tf.Output){
+func imageSummary(scope:Scope,tag: tf.Output, tensor: tf.Outputmax_images :int, T :type, bad_color :tensor)  ->(summary: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ImageSummary",
-        Input: [  tag,  tensor, )]
+        Input: [ tag, tensor]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -11248,43 +6440,23 @@ Returns immutable tensor from memory region.
 
 The current implementation memmaps the tensor from a file.
 
-_inputArg
-_outputArg
-
-_outputArg
- tensor::dtype 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func immutableConst(scope:Scope)  -> (tensor: tf.Output){
+func immutableConst(scope:Scopedtype :type, shape :shape, memory_region_name :string)  ->(tensor: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ImmutableConst",
-        Input: [ )]
+        Input: [ ]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -11302,85 +6474,44 @@ More formally, let
   \\(out_i\\) be the output for example `i`,
 $$out_i = predictions_{i, targets_i} \in TopKIncludingTies(predictions_i)$$
 
-_inputArg
- predictions:: .  targets:: .T 
-_outputArg
-
-_outputArg
- precision:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func inTopK(scope:Scope,predictions: tf.Output, targets: tf.Output)  -> (precision: tf.Output){
+func inTopK(scope:Scope,predictions: tf.Output, targets: tf.Outputk :int, T :type)  ->(precision: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "InTopK",
-        Input: [  predictions,  targets, )]
+        Input: [ predictions, targets]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Table initializer that takes two tensors for keys and values respectively.
 
 
-_inputArg
- table_handle:: .  keys:: .Tkey  values:: .Tval 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func initializeTable(scope:Scope,table_handle: tf.Output, keys: tf.Output, values: tf.Output)  -> (){
+func initializeTable(scope:Scope,tableHandle: tf.Output, keys: tf.Output, values: tf.OutputTkey :type, Tval :type)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "InitializeTable",
-        Input: [  table_handle,  keys,  values, )]
+        Input: [ tableHandle, keys, values]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
@@ -11396,41 +6527,21 @@ Where to extract the key and value from a line is specified by `key_index` and
 - A value >= 0 means use the index (starting at zero) of the split line based
   on `delimiter`.
 
-_inputArg
- table_handle:: .  filename:: . 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func initializeTableFromTextFile(scope:Scope,table_handle: tf.Output, filename: tf.Output)  -> (){
+func initializeTableFromTextFile(scope:Scope,tableHandle: tf.Output, filename: tf.Outputkey_index :int, value_index :int, vocab_size :int, delimiter :string)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "InitializeTableFromTextFile",
-        Input: [  table_handle,  filename, )]
+        Input: [ tableHandle, filename]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
@@ -11446,82 +6557,42 @@ Where to extract the key and value from a line is specified by `key_index` and
 - A value >= 0 means use the index (starting at zero) of the split line based
   on `delimiter`.
 
-_inputArg
- table_handle:: .  filename:: . 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func initializeTableFromTextFileV2(scope:Scope,table_handle: tf.Output, filename: tf.Output)  -> (){
+func initializeTableFromTextFileV2(scope:Scope,tableHandle: tf.Output, filename: tf.Outputkey_index :int, value_index :int, vocab_size :int, delimiter :string)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "InitializeTableFromTextFileV2",
-        Input: [  table_handle,  filename, )]
+        Input: [ tableHandle, filename]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
 Table initializer that takes two tensors for keys and values respectively.
 
 
-_inputArg
- table_handle:: .  keys:: .Tkey  values:: .Tval 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func initializeTableV2(scope:Scope,table_handle: tf.Output, keys: tf.Output, values: tf.Output)  -> (){
+func initializeTableV2(scope:Scope,tableHandle: tf.Output, keys: tf.Output, values: tf.OutputTkey :type, Tval :type)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "InitializeTableV2",
-        Input: [  table_handle,  keys,  values, )]
+        Input: [ tableHandle, keys, values]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
@@ -11529,44 +6600,23 @@ Computes the reciprocal of x element-wise.
 
 I.e., \\(y = 1 / x\\).
 
-_inputArg
- x:: .T 
-_outputArg
-
-_outputArg
- y::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func inv(scope:Scope,x: tf.Output)  -> (y: tf.Output){
+func inv(scope:Scope,x: tf.OutputT :type)  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Inv",
-        Input: [  x, )]
+        Input: [ x]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -11575,44 +6625,23 @@ Computes the gradient for the inverse of `x` wrt its input.
 Specifically, `grad = -dy * y*y`, where `y = 1/x`, and `dy`
 is the corresponding input gradient.
 
-_inputArg
- x:: .T  y:: .T 
-_outputArg
-
-_outputArg
- z::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func invGrad(scope:Scope,x: tf.Output, y: tf.Output)  -> (z: tf.Output){
+func invGrad(scope:Scope,x: tf.Output, y: tf.OutputT :type)  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "InvGrad",
-        Input: [  x,  y, )]
+        Input: [ x, y]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -11630,44 +6659,23 @@ For example:
 invert_permutation(x) ==> [2, 4, 3, 0, 1]
 ```
 
-_inputArg
- x:: .T 
-_outputArg
-
-_outputArg
- y::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func invertPermutation(scope:Scope,x: tf.Output)  -> (y: tf.Output){
+func invertPermutation(scope:Scope,x: tf.OutputT :type)  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "InvertPermutation",
-        Input: [  x, )]
+        Input: [ x]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -11677,44 +6685,23 @@ Returns which elements of x are finite.
 Equivalent to np.isfinite
 @end_compatibility
 
-_inputArg
- x:: .T 
-_outputArg
-
-_outputArg
- y:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func isFinite(scope:Scope,x: tf.Output)  -> (y: tf.Output){
+func isFinite(scope:Scope,x: tf.OutputT :type)  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "IsFinite",
-        Input: [  x, )]
+        Input: [ x]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -11724,44 +6711,23 @@ Returns which elements of x are Inf.
 Equivalent to np.isinf
 @end_compatibility
 
-_inputArg
- x:: .T 
-_outputArg
-
-_outputArg
- y:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func isInf(scope:Scope,x: tf.Output)  -> (y: tf.Output){
+func isInf(scope:Scope,x: tf.OutputT :type)  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "IsInf",
-        Input: [  x, )]
+        Input: [ x]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -11771,44 +6737,23 @@ Returns which elements of x are NaN.
 Equivalent to np.isnan
 @end_compatibility
 
-_inputArg
- x:: .T 
-_outputArg
-
-_outputArg
- y:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func isNan(scope:Scope,x: tf.Output)  -> (y: tf.Output){
+func isNan(scope:Scope,x: tf.OutputT :type)  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "IsNan",
-        Input: [  x, )]
+        Input: [ x]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -11816,172 +6761,90 @@ Checks whether a tensor has been initialized.
 
 Outputs boolean scalar indicating whether the tensor has been initialized.
 
-_inputArg
- ref:: .dtype 
-_outputArg
-
-_outputArg
- is_initialized:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func isVariableInitialized(scope:Scope,ref: tf.Output)  -> (is_initialized: tf.Output){
+func isVariableInitialized(scope:Scope,ref: tf.Outputdtype :type)  ->(isInitialized: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "IsVariableInitialized",
-        Input: [  ref, )]
+        Input: [ ref]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 A container for an iterator resource.
 
 
-_inputArg
-_outputArg
-
-_outputArg
- handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func iterator(scope:Scope)  -> (handle: tf.Output){
+func iterator(scope:Scopeshared_name :string, container :string, output_types :list(type), output_shapes :list(shape))  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Iterator",
-        Input: [ )]
+        Input: [ ]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Releases any resources used by the given iterator.
 
 
-_inputArg
- iterator:: . 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func iteratorDispose(scope:Scope,iterator: tf.Output)  -> (){
+func iteratorDispose(scope:Scope,iterator: tf.Output)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "IteratorDispose",
-        Input: [  iterator, )]
+        Input: [ iterator]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
 Gets the next output from the given iterator.
 
 
-_inputArg
- iterator:: . 
-_outputArg
-
-_outputArg
- components:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func iteratorGetNext(scope:Scope,iterator: tf.Output)  -> (components: tf.Output){
+func iteratorGetNext(scope:Scope,iterator: tf.Outputoutput_types :list(type), output_shapes :list(shape))  ->(components: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "IteratorGetNext",
-        Input: [  iterator, )]
+        Input: [ iterator]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -11990,44 +6853,23 @@ L2 Loss.
 Computes half the L2 norm of a tensor without the `sqrt`:
     output = sum(t ** 2) / 2
 
-_inputArg
- t:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func l2Loss(scope:Scope,t: tf.Output)  -> (output: tf.Output){
+func l2Loss(scope:Scope,t: tf.OutputT :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "L2Loss",
-        Input: [  t, )]
+        Input: [ t]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -12043,88 +6885,46 @@ each component is divided by the weighted, squared sum of inputs within
 For details, see [Krizhevsky et al., ImageNet classification with deep
 convolutional neural networks (NIPS 2012)](http://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks).
 
-_inputArg
- input:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func lrn(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func lrn(scope:Scope,input: tf.Outputdepth_radius :int, bias :float, alpha :float, beta :float, T :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "LRN",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Gradients for Local Response Normalization.
 
 
-_inputArg
- input_grads:: .T  input_image:: .T  output_image:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func lrnGrad(scope:Scope,input_grads: tf.Output, input_image: tf.Output, output_image: tf.Output)  -> (output: tf.Output){
+func lrnGrad(scope:Scope,inputGrads: tf.Output, inputImage: tf.Output, outputImage: tf.Outputdepth_radius :int, bias :float, alpha :float, beta :float, T :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "LRNGrad",
-        Input: [  input_grads,  input_image,  output_image, )]
+        Input: [ inputGrads, inputImage, outputImage]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -12138,44 +6938,23 @@ possibility of efficient dense matrix multiplication. The disadvantage is that
 the sampled candidates must be chosen independently of the context and of the
 true labels.
 
-_inputArg
- true_classes:: . 
-_outputArg
-
-_outputArg
- sampled_candidates::  true_expected_count::  sampled_expected_count:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func learnedUnigramCandidateSampler(scope:Scope,true_classes: tf.Output)  -> (sampled_candidates: tf.Output, true_expected_count: tf.Output, sampled_expected_count: tf.Output){
+func learnedUnigramCandidateSampler(scope:Scope,trueClasses: tf.Outputnum_true :int, num_sampled :int, unique :bool, range_max :int, seed :int, seed2 :int)  ->(sampledCandidates: tf.Output, trueExpectedCount: tf.Output, sampledExpectedCount: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "LearnedUnigramCandidateSampler",
-        Input: [  true_classes, )]
+        Input: [ trueClasses]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1))
 }
 
 /*
@@ -12184,44 +6963,23 @@ Returns the truth value of (x < y) element-wise.
 *NOTE*: `Less` supports broadcasting. More about broadcasting
 [here](http://docs.scipy.org/doc/numpy/user/basics.broadcasting.html)
 
-_inputArg
- x:: .T  y:: .T 
-_outputArg
-
-_outputArg
- z:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func less(scope:Scope,x: tf.Output, y: tf.Output)  -> (z: tf.Output){
+func less(scope:Scope,x: tf.Output, y: tf.OutputT :type)  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Less",
-        Input: [  x,  y, )]
+        Input: [ x, y]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -12230,88 +6988,46 @@ Returns the truth value of (x <= y) element-wise.
 *NOTE*: `LessEqual` supports broadcasting. More about broadcasting
 [here](http://docs.scipy.org/doc/numpy/user/basics.broadcasting.html)
 
-_inputArg
- x:: .T  y:: .T 
-_outputArg
-
-_outputArg
- z:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func lessEqual(scope:Scope,x: tf.Output, y: tf.Output)  -> (z: tf.Output){
+func lessEqual(scope:Scope,x: tf.Output, y: tf.OutputT :type)  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "LessEqual",
-        Input: [  x,  y, )]
+        Input: [ x, y]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Computes the log of the absolute value of `Gamma(x)` element-wise.
 
 
-_inputArg
- x:: .T 
-_outputArg
-
-_outputArg
- y::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func lgamma(scope:Scope,x: tf.Output)  -> (y: tf.Output){
+func lgamma(scope:Scope,x: tf.OutputT :type)  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Lgamma",
-        Input: [  x, )]
+        Input: [ x]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -12325,44 +7041,23 @@ For example:
 tf.linspace(10.0, 12.0, 3, name="linspace") => [ 10.0  11.0  12.0]
 ```
 
-_inputArg
- start:: .T  stop:: .T  num:: .Tidx 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func linSpace(scope:Scope,start: tf.Output, stop: tf.Output, num: tf.Output)  -> (output: tf.Output){
+func linSpace(scope:Scope,start: tf.Output, stop: tf.Output, num: tf.OutputT :type, Tidx :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "LinSpace",
-        Input: [  start,  stop,  num, )]
+        Input: [ start, stop, num]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -12385,44 +7080,23 @@ out ==> [2, 4, 6]
 idx ==> [1, 3, 5]
 ```
 
-_inputArg
- x:: .T  y:: .T 
-_outputArg
-
-_outputArg
- out::T  idx::out_idx 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func listDiff(scope:Scope,x: tf.Output, y: tf.Output)  -> (out: tf.Output, idx: tf.Output){
+func listDiff(scope:Scope,x: tf.Output, y: tf.OutputT :type, out_idx :type)  ->(out: tf.Output, idx: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ListDiff",
-        Input: [  x,  y, )]
+        Input: [ x, y]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1))
 }
 
 /*
@@ -12430,44 +7104,23 @@ Computes natural logarithm of x element-wise.
 
 I.e., \\(y = \log_e x\\).
 
-_inputArg
- x:: .T 
-_outputArg
-
-_outputArg
- y::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func log(scope:Scope,x: tf.Output)  -> (y: tf.Output){
+func log(scope:Scope,x: tf.OutputT :type)  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Log",
-        Input: [  x, )]
+        Input: [ x]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -12475,44 +7128,23 @@ Computes natural logarithm of (1 + x) element-wise.
 
 I.e., \\(y = \log_e (1 + x)\\).
 
-_inputArg
- x:: .T 
-_outputArg
-
-_outputArg
- y::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func log1p(scope:Scope,x: tf.Output)  -> (y: tf.Output){
+func log1p(scope:Scope,x: tf.OutputT :type)  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Log1p",
-        Input: [  x, )]
+        Input: [ x]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -12521,44 +7153,23 @@ Computes log softmax activations.
 For each batch `i` and class `j` we have
     logsoftmax[i, j] = logits[i, j] - log(sum(exp(logits[i])))
 
-_inputArg
- logits:: .T 
-_outputArg
-
-_outputArg
- logsoftmax::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func logSoftmax(scope:Scope,logits: tf.Output)  -> (logsoftmax: tf.Output){
+func logSoftmax(scope:Scope,logits: tf.OutputT :type)  ->(logsoftmax: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "LogSoftmax",
-        Input: [  logits, )]
+        Input: [ logits]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -12572,44 +7183,23 @@ possibility of efficient dense matrix multiplication. The disadvantage is that
 the sampled candidates must be chosen independently of the context and of the
 true labels.
 
-_inputArg
- true_classes:: . 
-_outputArg
-
-_outputArg
- sampled_candidates::  true_expected_count::  sampled_expected_count:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func logUniformCandidateSampler(scope:Scope,true_classes: tf.Output)  -> (sampled_candidates: tf.Output, true_expected_count: tf.Output, sampled_expected_count: tf.Output){
+func logUniformCandidateSampler(scope:Scope,trueClasses: tf.Outputnum_true :int, num_sampled :int, unique :bool, range_max :int, seed :int, seed2 :int)  ->(sampledCandidates: tf.Output, trueExpectedCount: tf.Output, sampledExpectedCount: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "LogUniformCandidateSampler",
-        Input: [  true_classes, )]
+        Input: [ trueClasses]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1))
 }
 
 /*
@@ -12618,88 +7208,46 @@ Returns the truth value of x AND y element-wise.
 *NOTE*: `LogicalAnd` supports broadcasting. More about broadcasting
 [here](http://docs.scipy.org/doc/numpy/user/basics.broadcasting.html)
 
-_inputArg
- x:: .  y:: . 
-_outputArg
-
-_outputArg
- z:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func logicalAnd(scope:Scope,x: tf.Output, y: tf.Output)  -> (z: tf.Output){
+func logicalAnd(scope:Scope,x: tf.Output, y: tf.Output)  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "LogicalAnd",
-        Input: [  x,  y, )]
+        Input: [ x, y]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Returns the truth value of NOT x element-wise.
 
 
-_inputArg
- x:: . 
-_outputArg
-
-_outputArg
- y:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func logicalNot(scope:Scope,x: tf.Output)  -> (y: tf.Output){
+func logicalNot(scope:Scope,x: tf.Output)  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "LogicalNot",
-        Input: [  x, )]
+        Input: [ x]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -12708,132 +7256,69 @@ Returns the truth value of x OR y element-wise.
 *NOTE*: `LogicalOr` supports broadcasting. More about broadcasting
 [here](http://docs.scipy.org/doc/numpy/user/basics.broadcasting.html)
 
-_inputArg
- x:: .  y:: . 
-_outputArg
-
-_outputArg
- z:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func logicalOr(scope:Scope,x: tf.Output, y: tf.Output)  -> (z: tf.Output){
+func logicalOr(scope:Scope,x: tf.Output, y: tf.Output)  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "LogicalOr",
-        Input: [  x,  y, )]
+        Input: [ x, y]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Outputs all keys and values in the table.
 
 
-_inputArg
- table_handle:: . 
-_outputArg
-
-_outputArg
- keys::Tkeys  values::Tvalues 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func lookupTableExport(scope:Scope,table_handle: tf.Output)  -> (keys: tf.Output, values: tf.Output){
+func lookupTableExport(scope:Scope,tableHandle: tf.OutputTkeys :type, Tvalues :type)  ->(keys: tf.Output, values: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "LookupTableExport",
-        Input: [  table_handle, )]
+        Input: [ tableHandle]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1))
 }
 
 /*
 Outputs all keys and values in the table.
 
 
-_inputArg
- table_handle:: . 
-_outputArg
-
-_outputArg
- keys::Tkeys  values::Tvalues 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func lookupTableExportV2(scope:Scope,table_handle: tf.Output)  -> (keys: tf.Output, values: tf.Output){
+func lookupTableExportV2(scope:Scope,tableHandle: tf.OutputTkeys :type, Tvalues :type)  ->(keys: tf.Output, values: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "LookupTableExportV2",
-        Input: [  table_handle, )]
+        Input: [ tableHandle]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1))
 }
 
 /*
@@ -12844,44 +7329,23 @@ The output `values` is of the type of the table values.
 The scalar `default_value` is the value output for keys not present in the
 table. It must also be of the same type as the table values.
 
-_inputArg
- table_handle:: .  keys:: .Tin  default_value:: .Tout 
-_outputArg
-
-_outputArg
- values::Tout 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func lookupTableFind(scope:Scope,table_handle: tf.Output, keys: tf.Output, default_value: tf.Output)  -> (values: tf.Output){
+func lookupTableFind(scope:Scope,tableHandle: tf.Output, keys: tf.Output, defaultValue: tf.OutputTin :type, Tout :type)  ->(values: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "LookupTableFind",
-        Input: [  table_handle,  keys,  default_value, )]
+        Input: [ tableHandle, keys, defaultValue]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -12892,44 +7356,23 @@ The output `values` is of the type of the table values.
 The scalar `default_value` is the value output for keys not present in the
 table. It must also be of the same type as the table values.
 
-_inputArg
- table_handle:: .  keys:: .Tin  default_value:: .Tout 
-_outputArg
-
-_outputArg
- values::Tout 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func lookupTableFindV2(scope:Scope,table_handle: tf.Output, keys: tf.Output, default_value: tf.Output)  -> (values: tf.Output){
+func lookupTableFindV2(scope:Scope,tableHandle: tf.Output, keys: tf.Output, defaultValue: tf.OutputTin :type, Tout :type)  ->(values: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "LookupTableFindV2",
-        Input: [  table_handle,  keys,  default_value, )]
+        Input: [ tableHandle, keys, defaultValue]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -12938,41 +7381,21 @@ Replaces the contents of the table with the specified keys and values.
 The tensor `keys` must be of the same type as the keys of the table.
 The tensor `values` must be of the type of the table values.
 
-_inputArg
- table_handle:: .  keys:: .Tin  values:: .Tout 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func lookupTableImport(scope:Scope,table_handle: tf.Output, keys: tf.Output, values: tf.Output)  -> (){
+func lookupTableImport(scope:Scope,tableHandle: tf.Output, keys: tf.Output, values: tf.OutputTin :type, Tout :type)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "LookupTableImport",
-        Input: [  table_handle,  keys,  values, )]
+        Input: [ tableHandle, keys, values]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
@@ -12981,41 +7404,21 @@ Replaces the contents of the table with the specified keys and values.
 The tensor `keys` must be of the same type as the keys of the table.
 The tensor `values` must be of the type of the table values.
 
-_inputArg
- table_handle:: .  keys:: .Tin  values:: .Tout 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func lookupTableImportV2(scope:Scope,table_handle: tf.Output, keys: tf.Output, values: tf.Output)  -> (){
+func lookupTableImportV2(scope:Scope,tableHandle: tf.Output, keys: tf.Output, values: tf.OutputTin :type, Tout :type)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "LookupTableImportV2",
-        Input: [  table_handle,  keys,  values, )]
+        Input: [ tableHandle, keys, values]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
@@ -13024,41 +7427,21 @@ Updates the table to associates keys with values.
 The tensor `keys` must be of the same type as the keys of the table.
 The tensor `values` must be of the type of the table values.
 
-_inputArg
- table_handle:: .  keys:: .Tin  values:: .Tout 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func lookupTableInsert(scope:Scope,table_handle: tf.Output, keys: tf.Output, values: tf.Output)  -> (){
+func lookupTableInsert(scope:Scope,tableHandle: tf.Output, keys: tf.Output, values: tf.OutputTin :type, Tout :type)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "LookupTableInsert",
-        Input: [  table_handle,  keys,  values, )]
+        Input: [ tableHandle, keys, values]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
@@ -13067,129 +7450,67 @@ Updates the table to associates keys with values.
 The tensor `keys` must be of the same type as the keys of the table.
 The tensor `values` must be of the type of the table values.
 
-_inputArg
- table_handle:: .  keys:: .Tin  values:: .Tout 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func lookupTableInsertV2(scope:Scope,table_handle: tf.Output, keys: tf.Output, values: tf.Output)  -> (){
+func lookupTableInsertV2(scope:Scope,tableHandle: tf.Output, keys: tf.Output, values: tf.OutputTin :type, Tout :type)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "LookupTableInsertV2",
-        Input: [  table_handle,  keys,  values, )]
+        Input: [ tableHandle, keys, values]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
 Computes the number of elements in the given table.
 
 
-_inputArg
- table_handle:: . 
-_outputArg
-
-_outputArg
- size:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func lookupTableSize(scope:Scope,table_handle: tf.Output)  -> (size: tf.Output){
+func lookupTableSize(scope:Scope,tableHandle: tf.Output)  ->(size: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "LookupTableSize",
-        Input: [  table_handle, )]
+        Input: [ tableHandle]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Computes the number of elements in the given table.
 
 
-_inputArg
- table_handle:: . 
-_outputArg
-
-_outputArg
- size:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func lookupTableSizeV2(scope:Scope,table_handle: tf.Output)  -> (size: tf.Output){
+func lookupTableSizeV2(scope:Scope,tableHandle: tf.Output)  ->(size: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "LookupTableSizeV2",
-        Input: [  table_handle, )]
+        Input: [ tableHandle]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -13198,44 +7519,23 @@ Forwards the input to the output.
 This operator represents the loop termination condition used by the
 "pivot" switches of a loop.
 
-_inputArg
- input:: . 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func loopCond(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func loopCond(scope:Scope,input: tf.Output)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "LoopCond",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -13244,85 +7544,44 @@ Makes a new iterator from the given `dataset` and stores it in `iterator`.
 This operation may be executed multiple times. Each execution will reset the
 iterator in `iterator` to the first element of `dataset`.
 
-_inputArg
- dataset:: .  iterator:: . 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func makeIterator(scope:Scope,dataset: tf.Output, iterator: tf.Output)  -> (){
+func makeIterator(scope:Scope,dataset: tf.Output, iterator: tf.Output)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "MakeIterator",
-        Input: [  dataset,  iterator, )]
+        Input: [ dataset, iterator]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
 Creates a dataset that applies `f` to the outputs of `input_dataset`.
 
 
-_inputArg
- input_dataset:: .  other_arguments:: . 
-_outputArg
-
-_outputArg
- handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func mapDataset(scope:Scope,input_dataset: tf.Output, other_arguments: tf.Output)  -> (handle: tf.Output){
+func mapDataset(scope:Scope,inputDataset: tf.Output, otherArguments: tf.Outputf :func, Targuments :list(type), output_types :list(type), output_shapes :list(shape))  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "MapDataset",
-        Input: [  input_dataset,  other_arguments, )]
+        Input: [ inputDataset, otherArguments]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -13335,44 +7594,23 @@ true).
 *Note*: The default kernel implementation for MatMul on GPUs uses
 cublas.
 
-_inputArg
- a:: .T  b:: .T 
-_outputArg
-
-_outputArg
- product::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func matMul(scope:Scope,a: tf.Output, b: tf.Output)  -> (product: tf.Output){
+func matMul(scope:Scope,a: tf.Output, b: tf.Outputtranspose_a :bool, transpose_b :bool, T :type)  ->(product: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "MatMul",
-        Input: [  a,  b, )]
+        Input: [ a, b]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -13381,44 +7619,23 @@ Returns the set of files matching one or more glob patterns.
 Note that this routine only supports wildcard characters in the
 basename portion of the pattern, not in the directory portion.
 
-_inputArg
- pattern:: . 
-_outputArg
-
-_outputArg
- filenames:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func matchingFiles(scope:Scope,pattern: tf.Output)  -> (filenames: tf.Output){
+func matchingFiles(scope:Scope,pattern: tf.Output)  ->(filenames: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "MatchingFiles",
-        Input: [  pattern, )]
+        Input: [ pattern]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -13454,44 +7671,23 @@ Useful special cases:
  tf.matrix_band_part(input, 0, 0) ==> Diagonal.
 ```
 
-_inputArg
- input:: .T  num_lower:: .  num_upper:: . 
-_outputArg
-
-_outputArg
- band::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func matrixBandPart(scope:Scope,input: tf.Output, num_lower: tf.Output, num_upper: tf.Output)  -> (band: tf.Output){
+func matrixBandPart(scope:Scope,input: tf.Output, numLower: tf.Output, numUpper: tf.OutputT :type)  ->(band: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "MatrixBandPart",
-        Input: [  input,  num_lower,  num_upper, )]
+        Input: [ input, numLower, numUpper]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -13501,44 +7697,23 @@ The input is a tensor of shape `[..., M, M]` whose inner-most 2 dimensions
 form square matrices. The output is a tensor containing the determinants
 for all input submatrices `[..., :, :]`.
 
-_inputArg
- input:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func matrixDeterminant(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func matrixDeterminant(scope:Scope,input: tf.OutputT :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "MatrixDeterminant",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -13564,44 +7739,23 @@ tf.matrix_diag(diagonal) ==> [[[1, 0, 0, 0]
 which has shape (2, 4, 4)
 ```
 
-_inputArg
- diagonal:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func matrixDiag(scope:Scope,diagonal: tf.Output)  -> (output: tf.Output){
+func matrixDiag(scope:Scope,diagonal: tf.OutputT :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "MatrixDiag",
-        Input: [  diagonal, )]
+        Input: [ diagonal]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -13628,44 +7782,23 @@ tf.matrix_diag_part(input) ==> [[1, 2, 3, 4], [5, 6, 7, 8]]
 which has shape (2, 4)
 ```
 
-_inputArg
- input:: .T 
-_outputArg
-
-_outputArg
- diagonal::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func matrixDiagPart(scope:Scope,input: tf.Output)  -> (diagonal: tf.Output){
+func matrixDiagPart(scope:Scope,input: tf.OutputT :type)  ->(diagonal: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "MatrixDiagPart",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -13680,44 +7813,23 @@ If a matrix is not invertible there is no guarantee what the op does. It
 may detect the condition and raise an exception or it may simply return a
 garbage result.
 
-_inputArg
- input:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func matrixInverse(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func matrixInverse(scope:Scope,input: tf.Outputadjoint :bool, T :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "MatrixInverse",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -13733,44 +7845,23 @@ tensor of rank `k+1` with dimensions `[I, J, K, ..., M, N]` where:
   * `output[i, j, k, ..., m, n] = diagonal[i, j, k, ..., n]` for `m == n`.
   * `output[i, j, k, ..., m, n] = input[i, j, k, ..., m, n]` for `m != n`.
 
-_inputArg
- input:: .T  diagonal:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func matrixSetDiag(scope:Scope,input: tf.Output, diagonal: tf.Output)  -> (output: tf.Output){
+func matrixSetDiag(scope:Scope,input: tf.Output, diagonal: tf.OutputT :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "MatrixSetDiag",
-        Input: [  input,  diagonal, )]
+        Input: [ input, diagonal]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -13783,44 +7874,23 @@ satisfies `matrix[..., :, :] * output[..., :, :] = rhs[..., :, :]`.
 If `adjoint` is `True` then each output matrix satisfies
 `adjoint(matrix[..., :, :]) * output[..., :, :] = rhs[..., :, :]`.
 
-_inputArg
- matrix:: .T  rhs:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func matrixSolve(scope:Scope,matrix: tf.Output, rhs: tf.Output)  -> (output: tf.Output){
+func matrixSolve(scope:Scope,matrix: tf.Output, rhs: tf.Outputadjoint :bool, T :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "MatrixSolve",
-        Input: [  matrix,  rhs, )]
+        Input: [ matrix, rhs]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -13854,44 +7924,23 @@ least-squares solution, even when \\(A\\) is rank deficient. This path is
 typically 6-7 times slower than the fast path. If `fast` is `False` then
 `l2_regularizer` is ignored.
 
-_inputArg
- matrix:: .T  rhs:: .T  l2_regularizer:: . 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func matrixSolveLs(scope:Scope,matrix: tf.Output, rhs: tf.Output, l2_regularizer: tf.Output)  -> (output: tf.Output){
+func matrixSolveLs(scope:Scope,matrix: tf.Output, rhs: tf.Output, l2Regularizer: tf.OutputT :type, fast :bool)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "MatrixSolveLs",
-        Input: [  matrix,  rhs,  l2_regularizer, )]
+        Input: [ matrix, rhs, l2Regularizer]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -13911,44 +7960,23 @@ If `adjoint` is `False` then the strictly then the  innermost matrices in
 `output` satisfy matrix equations
 `adjoint(matrix[..., i, k]) * output[..., k, j] = rhs[..., i, j]`.
 
-_inputArg
- matrix:: .T  rhs:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func matrixTriangularSolve(scope:Scope,matrix: tf.Output, rhs: tf.Output)  -> (output: tf.Output){
+func matrixTriangularSolve(scope:Scope,matrix: tf.Output, rhs: tf.Outputlower :bool, adjoint :bool, T :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "MatrixTriangularSolve",
-        Input: [  matrix,  rhs, )]
+        Input: [ matrix, rhs]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -13959,396 +7987,207 @@ Reduces `input` along the dimensions given in `reduction_indices`. Unless
 `reduction_indices`. If `keep_dims` is true, the reduced dimensions are
 retained with length 1.
 
-_inputArg
- input:: .T  reduction_indices:: .Tidx 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func max(scope:Scope,input: tf.Output, reduction_indices: tf.Output)  -> (output: tf.Output){
+func max(scope:Scope,input: tf.Output, reductionIndices: tf.Outputkeep_dims :bool, T :type, Tidx :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Max",
-        Input: [  input,  reduction_indices, )]
+        Input: [ input, reductionIndices]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Performs max pooling on the input.
 
 
-_inputArg
- input:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func maxPool(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func maxPool(scope:Scope,input: tf.OutputT :type, ksize :list(int), strides :list(int), padding :string, data_format :string)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "MaxPool",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Performs 3D max pooling on the input.
 
 
-_inputArg
- input:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func maxPool3D(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func maxPool3D(scope:Scope,input: tf.Outputksize :list(int), strides :list(int), padding :string, data_format :string, T :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "MaxPool3D",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Computes gradients of max pooling function.
 
 
-_inputArg
- orig_input:: .TInput  orig_output:: .TInput  grad:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func maxPool3DGrad(scope:Scope,orig_input: tf.Output, orig_output: tf.Output, grad: tf.Output)  -> (output: tf.Output){
+func maxPool3DGrad(scope:Scope,origInput: tf.Output, origOutput: tf.Output, grad: tf.Outputksize :list(int), strides :list(int), padding :string, data_format :string, T :type, TInput :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "MaxPool3DGrad",
-        Input: [  orig_input,  orig_output,  grad, )]
+        Input: [ origInput, origOutput, grad]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Computes second-order gradients of the maxpooling function.
 
 
-_inputArg
- orig_input:: .T  orig_output:: .T  grad:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func maxPool3DGradGrad(scope:Scope,orig_input: tf.Output, orig_output: tf.Output, grad: tf.Output)  -> (output: tf.Output){
+func maxPool3DGradGrad(scope:Scope,origInput: tf.Output, origOutput: tf.Output, grad: tf.Outputksize :list(int), strides :list(int), padding :string, data_format :string, T :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "MaxPool3DGradGrad",
-        Input: [  orig_input,  orig_output,  grad, )]
+        Input: [ origInput, origOutput, grad]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Computes gradients of the maxpooling function.
 
 
-_inputArg
- orig_input:: .T  orig_output:: .T  grad:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func maxPoolGrad(scope:Scope,orig_input: tf.Output, orig_output: tf.Output, grad: tf.Output)  -> (output: tf.Output){
+func maxPoolGrad(scope:Scope,origInput: tf.Output, origOutput: tf.Output, grad: tf.Outputksize :list(int), strides :list(int), padding :string, data_format :string, T :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "MaxPoolGrad",
-        Input: [  orig_input,  orig_output,  grad, )]
+        Input: [ origInput, origOutput, grad]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Computes second-order gradients of the maxpooling function.
 
 
-_inputArg
- orig_input:: .T  orig_output:: .T  grad:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func maxPoolGradGrad(scope:Scope,orig_input: tf.Output, orig_output: tf.Output, grad: tf.Output)  -> (output: tf.Output){
+func maxPoolGradGrad(scope:Scope,origInput: tf.Output, origOutput: tf.Output, grad: tf.Outputksize :list(int), strides :list(int), padding :string, data_format :string, T :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "MaxPoolGradGrad",
-        Input: [  orig_input,  orig_output,  grad, )]
+        Input: [ origInput, origOutput, grad]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Computes second-order gradients of the maxpooling function.
 
 
-_inputArg
- input:: .T  grad:: .T  argmax:: .Targmax 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func maxPoolGradGradWithArgmax(scope:Scope,input: tf.Output, grad: tf.Output, argmax: tf.Output)  -> (output: tf.Output){
+func maxPoolGradGradWithArgmax(scope:Scope,input: tf.Output, grad: tf.Output, argmax: tf.Outputksize :list(int), strides :list(int), padding :string, Targmax :type, T :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "MaxPoolGradGradWithArgmax",
-        Input: [  input,  grad,  argmax, )]
+        Input: [ input, grad, argmax]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Computes gradients of the maxpooling function.
 
 
-_inputArg
- input:: .T  grad:: .T  argmax:: .Targmax 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func maxPoolGradWithArgmax(scope:Scope,input: tf.Output, grad: tf.Output, argmax: tf.Output)  -> (output: tf.Output){
+func maxPoolGradWithArgmax(scope:Scope,input: tf.Output, grad: tf.Output, argmax: tf.Outputksize :list(int), strides :list(int), padding :string, Targmax :type, T :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "MaxPoolGradWithArgmax",
-        Input: [  input,  grad,  argmax, )]
+        Input: [ input, grad, argmax]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -14358,44 +8197,23 @@ The indices in `argmax` are flattened, so that a maximum value at position
 `[b, y, x, c]` becomes flattened index
 `((b * height + y) * width + x) * channels + c`.
 
-_inputArg
- input:: .T 
-_outputArg
-
-_outputArg
- output::T  argmax::Targmax 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func maxPoolWithArgmax(scope:Scope,input: tf.Output)  -> (output: tf.Output, argmax: tf.Output){
+func maxPoolWithArgmax(scope:Scope,input: tf.Outputksize :list(int), strides :list(int), Targmax :type, padding :string, T :type)  ->(output: tf.Output, argmax: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "MaxPoolWithArgmax",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1))
 }
 
 /*
@@ -14404,44 +8222,23 @@ Returns the max of x and y (i.e. x > y ? x : y) element-wise.
 *NOTE*: `Maximum` supports broadcasting. More about broadcasting
 [here](http://docs.scipy.org/doc/numpy/user/basics.broadcasting.html)
 
-_inputArg
- x:: .T  y:: .T 
-_outputArg
-
-_outputArg
- z::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func maximum(scope:Scope,x: tf.Output, y: tf.Output)  -> (z: tf.Output){
+func maximum(scope:Scope,x: tf.Output, y: tf.OutputT :type)  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Maximum",
-        Input: [  x,  y, )]
+        Input: [ x, y]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -14452,44 +8249,23 @@ Reduces `input` along the dimensions given in `reduction_indices`. Unless
 `reduction_indices`. If `keep_dims` is true, the reduced dimensions are
 retained with length 1.
 
-_inputArg
- input:: .T  reduction_indices:: .Tidx 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func mean(scope:Scope,input: tf.Output, reduction_indices: tf.Output)  -> (output: tf.Output){
+func mean(scope:Scope,input: tf.Output, reductionIndices: tf.Outputkeep_dims :bool, T :type, Tidx :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Mean",
-        Input: [  input,  reduction_indices, )]
+        Input: [ input, reductionIndices]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -14500,44 +8276,23 @@ It is usually combined with `Switch` to implement branching.
 `Merge` forwards the first tensor to become available to `output`, and sets
 `value_index` to its index in `inputs`.
 
-_inputArg
- inputs:: .T 
-_outputArg
-
-_outputArg
- output::T  value_index:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func merge(scope:Scope,inputs: tf.Output)  -> (output: tf.Output, value_index: tf.Output){
+func merge(scope:Scope,inputs: tf.OutputT :type, N :int)  ->(output: tf.Output, valueIndex: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Merge",
-        Input: [  inputs, )]
+        Input: [ inputs]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1))
 }
 
 /*
@@ -14550,44 +8305,23 @@ summaries.
 When the Op is run, it reports an `InvalidArgument` error if multiple values
 in the summaries to merge use the same tag.
 
-_inputArg
- inputs:: . 
-_outputArg
-
-_outputArg
- summary:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func mergeSummary(scope:Scope,inputs: tf.Output)  -> (summary: tf.Output){
+func mergeSummary(scope:Scope,inputs: tf.OutputN :int)  ->(summary: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "MergeSummary",
-        Input: [  inputs, )]
+        Input: [ inputs]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -14600,41 +8334,21 @@ If delete_old_dirs is true, attempts to delete recursively the dirname of each
 path in the input checkpoint_prefixes.  This is useful when those paths are non
 user-facing temporary locations.
 
-_inputArg
- checkpoint_prefixes:: .  destination_prefix:: . 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func mergeV2Checkpoints(scope:Scope,checkpoint_prefixes: tf.Output, destination_prefix: tf.Output)  -> (){
+func mergeV2Checkpoints(scope:Scope,checkpointPrefixes: tf.Output, destinationPrefix: tf.Outputdelete_old_dirs :bool)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "MergeV2Checkpoints",
-        Input: [  checkpoint_prefixes,  destination_prefix, )]
+        Input: [ checkpointPrefixes, destinationPrefix]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
@@ -14647,44 +8361,23 @@ higher frequencies that are less significant to the human ear. They have a long
 history in the speech recognition world, and https://en.wikipedia.org/wiki/Mel-frequency_cepstrum
 is a good resource to learn more.
 
-_inputArg
- spectrogram:: .  sample_rate:: . 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func mfcc(scope:Scope,spectrogram: tf.Output, sample_rate: tf.Output)  -> (output: tf.Output){
+func mfcc(scope:Scope,spectrogram: tf.Output, sampleRate: tf.Outputupper_frequency_limit :float, lower_frequency_limit :float, filterbank_channel_count :int, dct_coefficient_count :int)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Mfcc",
-        Input: [  spectrogram,  sample_rate, )]
+        Input: [ spectrogram, sampleRate]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -14695,44 +8388,23 @@ Reduces `input` along the dimensions given in `reduction_indices`. Unless
 `reduction_indices`. If `keep_dims` is true, the reduced dimensions are
 retained with length 1.
 
-_inputArg
- input:: .T  reduction_indices:: .Tidx 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func min(scope:Scope,input: tf.Output, reduction_indices: tf.Output)  -> (output: tf.Output){
+func min(scope:Scope,input: tf.Output, reductionIndices: tf.Outputkeep_dims :bool, T :type, Tidx :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Min",
-        Input: [  input,  reduction_indices, )]
+        Input: [ input, reductionIndices]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -14741,44 +8413,23 @@ Returns the min of x and y (i.e. x < y ? x : y) element-wise.
 *NOTE*: `Minimum` supports broadcasting. More about broadcasting
 [here](http://docs.scipy.org/doc/numpy/user/basics.broadcasting.html)
 
-_inputArg
- x:: .T  y:: .T 
-_outputArg
-
-_outputArg
- z::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func minimum(scope:Scope,x: tf.Output, y: tf.Output)  -> (z: tf.Output){
+func minimum(scope:Scope,x: tf.Output, y: tf.OutputT :type)  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Minimum",
-        Input: [  x,  y, )]
+        Input: [ x, y]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -14806,44 +8457,23 @@ pad(t, paddings) ==> [[2, 1, 1, 2, 3, 3, 2]
                       [5, 4, 4, 5, 6, 6, 5]]
 ```
 
-_inputArg
- input:: .T  paddings:: .Tpaddings 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func mirrorPad(scope:Scope,input: tf.Output, paddings: tf.Output)  -> (output: tf.Output){
+func mirrorPad(scope:Scope,input: tf.Output, paddings: tf.OutputT :type, Tpaddings :type, mode :string)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "MirrorPad",
-        Input: [  input,  paddings, )]
+        Input: [ input, paddings]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -14864,44 +8494,23 @@ pad(t, paddings) ==> [[ 1,  5]
                       [11, 28]]
 ```
 
-_inputArg
- input:: .T  paddings:: .Tpaddings 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func mirrorPadGrad(scope:Scope,input: tf.Output, paddings: tf.Output)  -> (output: tf.Output){
+func mirrorPadGrad(scope:Scope,input: tf.Output, paddings: tf.OutputT :type, Tpaddings :type, mode :string)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "MirrorPadGrad",
-        Input: [  input,  paddings, )]
+        Input: [ input, paddings]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -14912,44 +8521,23 @@ y + truncate_mod(x, y) = x`.
 *NOTE*: `Mod` supports broadcasting. More about broadcasting
 [here](http://docs.scipy.org/doc/numpy/user/basics.broadcasting.html)
 
-_inputArg
- x:: .T  y:: .T 
-_outputArg
-
-_outputArg
- z::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func mod(scope:Scope,x: tf.Output, y: tf.Output)  -> (z: tf.Output){
+func mod(scope:Scope,x: tf.Output, y: tf.OutputT :type)  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Mod",
-        Input: [  x,  y, )]
+        Input: [ x, y]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -14958,88 +8546,46 @@ Returns x * y element-wise.
 *NOTE*: `Mul` supports broadcasting. More about broadcasting
 [here](http://docs.scipy.org/doc/numpy/user/basics.broadcasting.html)
 
-_inputArg
- x:: .T  y:: .T 
-_outputArg
-
-_outputArg
- z::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func mul(scope:Scope,x: tf.Output, y: tf.Output)  -> (z: tf.Output){
+func mul(scope:Scope,x: tf.Output, y: tf.OutputT :type)  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Mul",
-        Input: [  x,  y, )]
+        Input: [ x, y]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Draws samples from a multinomial distribution.
 
 
-_inputArg
- logits:: .T  num_samples:: . 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func multinomial(scope:Scope,logits: tf.Output, num_samples: tf.Output)  -> (output: tf.Output){
+func multinomial(scope:Scope,logits: tf.Output, numSamples: tf.Outputseed :int, seed2 :int, T :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Multinomial",
-        Input: [  logits,  num_samples, )]
+        Input: [ logits, numSamples]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -15051,44 +8597,23 @@ This op creates a mutable hash table, specifying the type of its keys and
 values. Each value must be a scalar. Data can be inserted into the table using
 the insert operations. It does not support the initialization operation.
 
-_inputArg
- empty_key:: .key_dtype 
-_outputArg
-
-_outputArg
- table_handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func mutableDenseHashTable(scope:Scope,empty_key: tf.Output)  -> (table_handle: tf.Output){
+func mutableDenseHashTable(scope:Scope,emptyKey: tf.Outputcontainer :string, shared_name :string, use_node_name_sharing :bool, key_dtype :type, value_dtype :type, value_shape :shape, initial_num_buckets :int, max_load_factor :float)  ->(tableHandle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "MutableDenseHashTable",
-        Input: [  empty_key, )]
+        Input: [ emptyKey]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -15100,44 +8625,23 @@ This op creates a mutable hash table, specifying the type of its keys and
 values. Each value must be a scalar. Data can be inserted into the table using
 the insert operations. It does not support the initialization operation.
 
-_inputArg
- empty_key:: .key_dtype 
-_outputArg
-
-_outputArg
- table_handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func mutableDenseHashTableV2(scope:Scope,empty_key: tf.Output)  -> (table_handle: tf.Output){
+func mutableDenseHashTableV2(scope:Scope,emptyKey: tf.Outputcontainer :string, shared_name :string, use_node_name_sharing :bool, key_dtype :type, value_dtype :type, value_shape :shape, initial_num_buckets :int, max_load_factor :float)  ->(tableHandle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "MutableDenseHashTableV2",
-        Input: [  empty_key, )]
+        Input: [ emptyKey]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -15147,43 +8651,23 @@ This op creates a mutable hash table, specifying the type of its keys and
 values. Each value must be a scalar. Data can be inserted into the table using
 the insert operations. It does not support the initialization operation.
 
-_inputArg
-_outputArg
-
-_outputArg
- table_handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func mutableHashTable(scope:Scope)  -> (table_handle: tf.Output){
+func mutableHashTable(scope:Scopecontainer :string, shared_name :string, use_node_name_sharing :bool, key_dtype :type, value_dtype :type)  ->(tableHandle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "MutableHashTable",
-        Input: [ )]
+        Input: [ ]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -15193,43 +8677,23 @@ This op creates a mutable hash table, specifying the type of its keys and
 values. Each value must be a vector. Data can be inserted into the table using
 the insert operations. It does not support the initialization operation.
 
-_inputArg
-_outputArg
-
-_outputArg
- table_handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func mutableHashTableOfTensors(scope:Scope)  -> (table_handle: tf.Output){
+func mutableHashTableOfTensors(scope:Scopecontainer :string, shared_name :string, use_node_name_sharing :bool, key_dtype :type, value_dtype :type, value_shape :shape)  ->(tableHandle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "MutableHashTableOfTensors",
-        Input: [ )]
+        Input: [ ]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -15239,43 +8703,23 @@ This op creates a mutable hash table, specifying the type of its keys and
 values. Each value must be a vector. Data can be inserted into the table using
 the insert operations. It does not support the initialization operation.
 
-_inputArg
-_outputArg
-
-_outputArg
- table_handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func mutableHashTableOfTensorsV2(scope:Scope)  -> (table_handle: tf.Output){
+func mutableHashTableOfTensorsV2(scope:Scopecontainer :string, shared_name :string, use_node_name_sharing :bool, key_dtype :type, value_dtype :type, value_shape :shape)  ->(tableHandle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "MutableHashTableOfTensorsV2",
-        Input: [ )]
+        Input: [ ]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -15285,43 +8729,23 @@ This op creates a mutable hash table, specifying the type of its keys and
 values. Each value must be a scalar. Data can be inserted into the table using
 the insert operations. It does not support the initialization operation.
 
-_inputArg
-_outputArg
-
-_outputArg
- table_handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func mutableHashTableV2(scope:Scope)  -> (table_handle: tf.Output){
+func mutableHashTableV2(scope:Scopecontainer :string, shared_name :string, use_node_name_sharing :bool, key_dtype :type, value_dtype :type)  ->(tableHandle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "MutableHashTableV2",
-        Input: [ )]
+        Input: [ ]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -15329,169 +8753,88 @@ Computes numerical negative value element-wise.
 
 I.e., \\(y = -x\\).
 
-_inputArg
- x:: .T 
-_outputArg
-
-_outputArg
- y::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func neg(scope:Scope,x: tf.Output)  -> (y: tf.Output){
+func neg(scope:Scope,x: tf.OutputT :type)  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Neg",
-        Input: [  x, )]
+        Input: [ x]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Training via negative sampling.
 
 
-_inputArg
- w_in:: .  w_out:: .  examples:: .  labels:: .  lr:: . 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func negTrain(scope:Scope,w_in: tf.Output, w_out: tf.Output, examples: tf.Output, labels: tf.Output, lr: tf.Output)  -> (){
+func negTrain(scope:Scope,wIn: tf.Output, wOut: tf.Output, examples: tf.Output, labels: tf.Output, lr: tf.Outputvocab_count :list(int), num_negative_samples :int)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "NegTrain",
-        Input: [  w_in,  w_out,  examples,  labels,  lr, )]
+        Input: [ wIn, wOut, examples, labels, lr]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
 Makes its input available to the next iteration.
 
 
-_inputArg
- data:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func nextIteration(scope:Scope,data: tf.Output)  -> (output: tf.Output){
+func nextIteration(scope:Scope,data: tf.OutputT :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "NextIteration",
-        Input: [  data, )]
+        Input: [ data]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Does nothing. Only useful as a placeholder for control edges.
 
 
-_inputArg
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func noOp(scope:Scope)  -> (){
+func noOp(scope:Scope)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "NoOp",
-        Input: [ )]
+        Input: [ ]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
@@ -15514,44 +8857,23 @@ using the `tf.gather operation`.  For example:
       boxes, scores, max_output_size, iou_threshold)
   selected_boxes = tf.gather(boxes, selected_indices)
 
-_inputArg
- boxes:: .  scores:: .  max_output_size:: . 
-_outputArg
-
-_outputArg
- selected_indices:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func nonMaxSuppression(scope:Scope,boxes: tf.Output, scores: tf.Output, max_output_size: tf.Output)  -> (selected_indices: tf.Output){
+func nonMaxSuppression(scope:Scope,boxes: tf.Output, scores: tf.Output, maxOutputSize: tf.Outputiou_threshold :float)  ->(selectedIndices: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "NonMaxSuppression",
-        Input: [  boxes,  scores,  max_output_size, )]
+        Input: [ boxes, scores, maxOutputSize]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -15574,44 +8896,23 @@ using the `tf.gather operation`.  For example:
       boxes, scores, max_output_size, iou_threshold)
   selected_boxes = tf.gather(boxes, selected_indices)
 
-_inputArg
- boxes:: .  scores:: .  max_output_size:: .  iou_threshold:: . 
-_outputArg
-
-_outputArg
- selected_indices:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func nonMaxSuppressionV2(scope:Scope,boxes: tf.Output, scores: tf.Output, max_output_size: tf.Output, iou_threshold: tf.Output)  -> (selected_indices: tf.Output){
+func nonMaxSuppressionV2(scope:Scope,boxes: tf.Output, scores: tf.Output, maxOutputSize: tf.Output, iouThreshold: tf.Output)  ->(selectedIndices: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "NonMaxSuppressionV2",
-        Input: [  boxes,  scores,  max_output_size,  iou_threshold, )]
+        Input: [ boxes, scores, maxOutputSize, iouThreshold]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -15620,44 +8921,23 @@ Returns the truth value of (x != y) element-wise.
 *NOTE*: `NotEqual` supports broadcasting. More about broadcasting
 [here](http://docs.scipy.org/doc/numpy/user/basics.broadcasting.html)
 
-_inputArg
- x:: .T  y:: .T 
-_outputArg
-
-_outputArg
- z:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func notEqual(scope:Scope,x: tf.Output, y: tf.Output)  -> (z: tf.Output){
+func notEqual(scope:Scope,x: tf.Output, y: tf.OutputT :type)  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "NotEqual",
-        Input: [  x,  y, )]
+        Input: [ x, y]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -15735,44 +9015,23 @@ Then output is `[2 x 2 x 3]`:
         [0.0, 0.0, 0.0]  // one_hot(-1)
       ]```
 
-_inputArg
- indices:: .TI  depth:: .  on_value:: .T  off_value:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func oneHot(scope:Scope,indices: tf.Output, depth: tf.Output, on_value: tf.Output, off_value: tf.Output)  -> (output: tf.Output){
+func oneHot(scope:Scope,indices: tf.Output, depth: tf.Output, onValue: tf.Output, offValue: tf.Outputaxis :int, T :type, TI :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "OneHot",
-        Input: [  indices,  depth,  on_value,  off_value, )]
+        Input: [ indices, depth, onValue, offValue]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -15793,87 +9052,46 @@ an iterator using an arbitrary subgraph, which may capture tensors
 (including fed values) as parameters, and which may be reset multiple
 times by rerunning "MakeIterator".
 
-_inputArg
-_outputArg
-
-_outputArg
- handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func oneShotIterator(scope:Scope)  -> (handle: tf.Output){
+func oneShotIterator(scope:Scopedataset_factory :func, output_types :list(type), output_shapes :list(shape), container :string, shared_name :string)  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "OneShotIterator",
-        Input: [ )]
+        Input: [ ]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Returns a tensor of ones with the same shape and type as x.
 
 
-_inputArg
- x:: .T 
-_outputArg
-
-_outputArg
- y::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func onesLike(scope:Scope,x: tf.Output)  -> (y: tf.Output){
+func onesLike(scope:Scope,x: tf.OutputT :type)  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "OnesLike",
-        Input: [  x, )]
+        Input: [ x]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -15895,44 +9113,23 @@ pack([x, y, z], axis=1) => [[1, 2, 3], [4, 5, 6]]
 ```
 This is the opposite of `unpack`.
 
-_inputArg
- values:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func pack(scope:Scope,values: tf.Output)  -> (output: tf.Output){
+func pack(scope:Scope,values: tf.OutputN :int, T :type, axis :int)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Pack",
-        Input: [  values, )]
+        Input: [ values]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -15957,88 +9154,46 @@ pad(t, paddings) ==> [[0, 0, 0, 0, 0, 0]
                       [0, 0, 0, 0, 0, 0]]
 ```
 
-_inputArg
- input:: .T  paddings:: .Tpaddings 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func pad(scope:Scope,input: tf.Output, paddings: tf.Output)  -> (output: tf.Output){
+func pad(scope:Scope,input: tf.Output, paddings: tf.OutputT :type, Tpaddings :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Pad",
-        Input: [  input,  paddings, )]
+        Input: [ input, paddings]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Creates a dataset that batches and pads `batch_size` elements from the input.
 
 
-_inputArg
- input_dataset:: .  batch_size:: .  padded_shapes:: .  padding_values:: . 
-_outputArg
-
-_outputArg
- handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func paddedBatchDataset(scope:Scope,input_dataset: tf.Output, batch_size: tf.Output, padded_shapes: tf.Output, padding_values: tf.Output)  -> (handle: tf.Output){
+func paddedBatchDataset(scope:Scope,inputDataset: tf.Output, batchSize: tf.Output, paddedShapes: tf.Output, paddingValues: tf.OutputToutput_types :list(type), output_shapes :list(shape), N :int)  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "PaddedBatchDataset",
-        Input: [  input_dataset,  batch_size,  padded_shapes,  padding_values, )]
+        Input: [ inputDataset, batchSize, paddedShapes, paddingValues]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -16048,43 +9203,23 @@ Variable-size shapes are allowed by setting the corresponding shape dimensions
 to 0 in the shape attr.  In this case DequeueMany will pad up to the maximum
 size of any given element in the minibatch.  See below for details.
 
-_inputArg
-_outputArg
-
-_outputArg
- handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func paddingFIFOQueue(scope:Scope)  -> (handle: tf.Output){
+func paddingFIFOQueue(scope:Scopecomponent_types :list(type), shapes :list(shape), capacity :int, container :string, shared_name :string)  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "PaddingFIFOQueue",
-        Input: [ )]
+        Input: [ ]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -16094,43 +9229,23 @@ Variable-size shapes are allowed by setting the corresponding shape dimensions
 to 0 in the shape attr.  In this case DequeueMany will pad up to the maximum
 size of any given element in the minibatch.  See below for details.
 
-_inputArg
-_outputArg
-
-_outputArg
- handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func paddingFIFOQueueV2(scope:Scope)  -> (handle: tf.Output){
+func paddingFIFOQueueV2(scope:Scopecomponent_types :list(type), shapes :list(shape), capacity :int, container :string, shared_name :string)  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "PaddingFIFOQueueV2",
-        Input: [ )]
+        Input: [ ]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -16150,44 +9265,23 @@ that the input shapes be known during graph construction.  Parallel concat
 will copy pieces of the input into the output as they become available, in
 some situations this can provide a performance benefit.
 
-_inputArg
- values:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func parallelConcat(scope:Scope,values: tf.Output)  -> (output: tf.Output){
+func parallelConcat(scope:Scope,values: tf.OutputN :int, T :type, shape :shape)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ParallelConcat",
-        Input: [  values, )]
+        Input: [ values]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -16197,44 +9291,23 @@ Unlike a "MapDataset", which applies `f` sequentially, this dataset uses
 up to `num_threads` threads to process elements from `input_dataset`
 in parallel.
 
-_inputArg
- input_dataset:: .  other_arguments:: .  num_threads:: .  output_buffer_size:: . 
-_outputArg
-
-_outputArg
- handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func parallelMapDataset(scope:Scope,input_dataset: tf.Output, other_arguments: tf.Output, num_threads: tf.Output, output_buffer_size: tf.Output)  -> (handle: tf.Output){
+func parallelMapDataset(scope:Scope,inputDataset: tf.Output, otherArguments: tf.Output, numThreads: tf.Output, outputBufferSize: tf.Outputf :func, Targuments :list(type), output_types :list(type), output_shapes :list(shape))  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ParallelMapDataset",
-        Input: [  input_dataset,  other_arguments,  num_threads,  output_buffer_size, )]
+        Input: [ inputDataset, otherArguments, numThreads, outputBufferSize]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -16243,176 +9316,92 @@ Outputs random values from a normal distribution. The parameters may each be a
 scalar which applies to the entire output, or a vector of length shape[0] which
 stores the parameters for each batch.
 
-_inputArg
- shape:: .T  means:: .dtype  stdevs:: .dtype  minvals:: .dtype  maxvals:: .dtype 
-_outputArg
-
-_outputArg
- output::dtype 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func parameterizedTruncatedNormal(scope:Scope,shape: tf.Output, means: tf.Output, stdevs: tf.Output, minvals: tf.Output, maxvals: tf.Output)  -> (output: tf.Output){
+func parameterizedTruncatedNormal(scope:Scope,shape: tf.Output, means: tf.Output, stdevs: tf.Output, minvals: tf.Output, maxvals: tf.Outputseed :int, seed2 :int, dtype :type, T :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ParameterizedTruncatedNormal",
-        Input: [  shape,  means,  stdevs,  minvals,  maxvals, )]
+        Input: [ shape, means, stdevs, minvals, maxvals]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Transforms a vector of brain.Example protos (as strings) into typed tensors.
 
 
-_inputArg
- serialized:: .  names:: .  sparse_keys:: .  dense_keys:: .  dense_defaults:: . 
-_outputArg
-
-_outputArg
- sparse_indices::  sparse_values::  sparse_shapes::  dense_values:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func parseExample(scope:Scope,serialized: tf.Output, names: tf.Output, sparse_keys: tf.Output, dense_keys: tf.Output, dense_defaults: tf.Output)  -> (sparse_indices: tf.Output, sparse_values: tf.Output, sparse_shapes: tf.Output, dense_values: tf.Output){
+func parseExample(scope:Scope,serialized: tf.Output, names: tf.Output, sparseKeys: tf.Output, denseKeys: tf.Output, denseDefaults: tf.OutputNsparse :int, Ndense :int, sparse_types :list(type), Tdense :list(type), dense_shapes :list(shape))  ->(sparseIndices: tf.Output, sparseValues: tf.Output, sparseShapes: tf.Output, denseValues: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ParseExample",
-        Input: [  serialized,  names,  sparse_keys,  dense_keys,  dense_defaults, )]
+        Input: [ serialized, names, sparseKeys, denseKeys, denseDefaults]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3),op.Output(4))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1),op.Output(4 -1))
 }
 
 /*
 Transforms a scalar brain.SequenceExample proto (as strings) into typed tensors.
 
 
-_inputArg
- serialized:: .  feature_list_dense_missing_assumed_empty:: .  context_sparse_keys:: .  context_dense_keys:: .  feature_list_sparse_keys:: .  feature_list_dense_keys:: .  context_dense_defaults:: .  debug_name:: . 
-_outputArg
-
-_outputArg
- context_sparse_indices::  context_sparse_values::  context_sparse_shapes::  context_dense_values::  feature_list_sparse_indices::  feature_list_sparse_values::  feature_list_sparse_shapes::  feature_list_dense_values:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func parseSingleSequenceExample(scope:Scope,serialized: tf.Output, feature_list_dense_missing_assumed_empty: tf.Output, context_sparse_keys: tf.Output, context_dense_keys: tf.Output, feature_list_sparse_keys: tf.Output, feature_list_dense_keys: tf.Output, context_dense_defaults: tf.Output, debug_name: tf.Output)  -> (context_sparse_indices: tf.Output, context_sparse_values: tf.Output, context_sparse_shapes: tf.Output, context_dense_values: tf.Output, feature_list_sparse_indices: tf.Output, feature_list_sparse_values: tf.Output, feature_list_sparse_shapes: tf.Output, feature_list_dense_values: tf.Output){
+func parseSingleSequenceExample(scope:Scope,serialized: tf.Output, featureListDenseMissingAssumedEmpty: tf.Output, contextSparseKeys: tf.Output, contextDenseKeys: tf.Output, featureListSparseKeys: tf.Output, featureListDenseKeys: tf.Output, contextDenseDefaults: tf.Output, debugName: tf.OutputNcontext_sparse :int, Ncontext_dense :int, Nfeature_list_sparse :int, Nfeature_list_dense :int, context_sparse_types :list(type), Tcontext_dense :list(type), feature_list_dense_types :list(type), context_dense_shapes :list(shape), feature_list_sparse_types :list(type), feature_list_dense_shapes :list(shape))  ->(contextSparseIndices: tf.Output, contextSparseValues: tf.Output, contextSparseShapes: tf.Output, contextDenseValues: tf.Output, featureListSparseIndices: tf.Output, featureListSparseValues: tf.Output, featureListSparseShapes: tf.Output, featureListDenseValues: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ParseSingleSequenceExample",
-        Input: [  serialized,  feature_list_dense_missing_assumed_empty,  context_sparse_keys,  context_dense_keys,  feature_list_sparse_keys,  feature_list_dense_keys,  context_dense_defaults,  debug_name, )]
+        Input: [ serialized, featureListDenseMissingAssumedEmpty, contextSparseKeys, contextDenseKeys, featureListSparseKeys, featureListDenseKeys, contextDenseDefaults, debugName]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3),op.Output(4),op.Output(5),op.Output(6),op.Output(7),op.Output(8))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1),op.Output(4 -1),op.Output(5 -1),op.Output(6 -1),op.Output(7 -1),op.Output(8 -1))
 }
 
 /*
 Transforms a serialized tensorflow.TensorProto proto into a Tensor.
 
 
-_inputArg
- serialized:: . 
-_outputArg
-
-_outputArg
- output::out_type 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func parseTensor(scope:Scope,serialized: tf.Output)  -> (output: tf.Output){
+func parseTensor(scope:Scope,serialized: tf.Outputout_type :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ParseTensor",
-        Input: [  serialized, )]
+        Input: [ serialized]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -16422,43 +9411,23 @@ N.B. This operation will fail with an error if it is executed. It is
 intended as a way to represent a value that will always be fed, and to
 provide attrs that enable the fed value to be checked at runtime.
 
-_inputArg
-_outputArg
-
-_outputArg
- output::dtype 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func placeholder(scope:Scope)  -> (output: tf.Output){
+func placeholder(scope:Scopedtype :type, shape :shape)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Placeholder",
-        Input: [ )]
+        Input: [ ]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -16468,87 +9437,46 @@ N.B. This operation will fail with an error if it is executed. It is
 intended as a way to represent a value that will always be fed, and to
 provide attrs that enable the fed value to be checked at runtime.
 
-_inputArg
-_outputArg
-
-_outputArg
- output::dtype 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func placeholderV2(scope:Scope)  -> (output: tf.Output){
+func placeholderV2(scope:Scopedtype :type, shape :shape)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "PlaceholderV2",
-        Input: [ )]
+        Input: [ ]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 A placeholder op that passes through `input` when its output is not fed.
 
 
-_inputArg
- input:: .dtype 
-_outputArg
-
-_outputArg
- output::dtype 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func placeholderWithDefault(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func placeholderWithDefault(scope:Scope,input: tf.Outputdtype :type, shape :shape)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "PlaceholderWithDefault",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -16558,44 +9486,23 @@ The polygamma function is defined as:
 \\(\psi^{(n)}(x) = \frac{d^n}{dx^n} \psi(x)\\)
 where \\(\psi(x)\\) is the digamma function.
 
-_inputArg
- a:: .T  x:: .T 
-_outputArg
-
-_outputArg
- z::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func polygamma(scope:Scope,a: tf.Output, x: tf.Output)  -> (z: tf.Output){
+func polygamma(scope:Scope,a: tf.Output, x: tf.OutputT :type)  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Polygamma",
-        Input: [  a,  x, )]
+        Input: [ a, x]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -16609,44 +9516,23 @@ corresponding elements in `x` and `y`. For example:
 tf.pow(x, y) ==> [[256, 65536], [9, 27]]
 ```
 
-_inputArg
- x:: .T  y:: .T 
-_outputArg
-
-_outputArg
- z::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func pow(scope:Scope,x: tf.Output, y: tf.Output)  -> (z: tf.Output){
+func pow(scope:Scope,x: tf.Output, y: tf.OutputT :type)  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Pow",
-        Input: [  x,  y, )]
+        Input: [ x, y]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -16659,44 +9545,23 @@ because no gradient must ever be registered for this function.  This
 op exists to prevent subtle bugs from silently returning unimplemented
 gradients in some corner cases.
 
-_inputArg
- input:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func preventGradient(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func preventGradient(scope:Scope,input: tf.OutputT :type, message :string)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "PreventGradient",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -16704,44 +9569,23 @@ Prints a list of tensors.
 
 Passes `input` through to `output` and prints `data` when evaluating.
 
-_inputArg
- input:: .T  data:: . 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func print(scope:Scope,input: tf.Output, data: tf.Output)  -> (output: tf.Output){
+func print(scope:Scope,input: tf.Output, data: tf.OutputT :type, U :list(type), message :string, first_n :int, summarize :int)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Print",
-        Input: [  input,  data, )]
+        Input: [ input, data]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -16753,43 +9597,23 @@ component_types.  Therefore calls to Enqueue and EnqueueMany (resp. Dequeue
 and DequeueMany) on a PriorityQueue will all require (resp. output) one extra
 entry in their input (resp. output) lists.
 
-_inputArg
-_outputArg
-
-_outputArg
- handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func priorityQueue(scope:Scope)  -> (handle: tf.Output){
+func priorityQueue(scope:Scopecomponent_types :list(type), shapes :list(shape), capacity :int, container :string, shared_name :string)  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "PriorityQueue",
-        Input: [ )]
+        Input: [ ]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -16801,43 +9625,23 @@ component_types.  Therefore calls to Enqueue and EnqueueMany (resp. Dequeue
 and DequeueMany) on a PriorityQueue will all require (resp. output) one extra
 entry in their input (resp. output) lists.
 
-_inputArg
-_outputArg
-
-_outputArg
- handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func priorityQueueV2(scope:Scope)  -> (handle: tf.Output){
+func priorityQueueV2(scope:Scopecomponent_types :list(type), shapes :list(shape), capacity :int, container :string, shared_name :string)  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "PriorityQueueV2",
-        Input: [ )]
+        Input: [ ]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -16848,44 +9652,23 @@ Reduces `input` along the dimensions given in `reduction_indices`. Unless
 `reduction_indices`. If `keep_dims` is true, the reduced dimensions are
 retained with length 1.
 
-_inputArg
- input:: .T  reduction_indices:: .Tidx 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func prod(scope:Scope,input: tf.Output, reduction_indices: tf.Output)  -> (output: tf.Output){
+func prod(scope:Scope,input: tf.Output, reductionIndices: tf.Outputkeep_dims :bool, T :type, Tidx :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Prod",
-        Input: [  input,  reduction_indices, )]
+        Input: [ input, reductionIndices]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -16894,88 +9677,46 @@ Invokes a python function to compute func(input)->output.
 This operation is considered stateful. For a stateless version, see
 PyFuncStateless.
 
-_inputArg
- input:: . 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func pyFunc(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func pyFunc(scope:Scope,input: tf.Outputtoken :string, Tin :list(type), Tout :list(type))  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "PyFunc",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 A stateless version of PyFunc.
 
 
-_inputArg
- input:: . 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func pyFuncStateless(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func pyFuncStateless(scope:Scope,input: tf.Outputtoken :string, Tin :list(type), Tout :list(type))  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "PyFuncStateless",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -16991,88 +9732,46 @@ q, r = qr(a)
 q_full, r_full = qr(a, full_matrices=True)
 ```
 
-_inputArg
- input:: .T 
-_outputArg
-
-_outputArg
- q::T  r::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func qr(scope:Scope,input: tf.Output)  -> (q: tf.Output, r: tf.Output){
+func qr(scope:Scope,input: tf.Outputfull_matrices :bool, T :type)  ->(q: tf.Output, r: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Qr",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1))
 }
 
 /*
 Use QuantizeAndDequantizeV2 instead.
 
 
-_inputArg
- input:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func quantizeAndDequantize(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func quantizeAndDequantize(scope:Scope,input: tf.Outputsigned_input :bool, num_bits :int, range_given :bool, input_min :float, input_max :float, T :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "QuantizeAndDequantize",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -17112,44 +9811,23 @@ For example, suppose num_bits = 8 and m = 1.  Then
 Given the vector {-1, -0.5, 0, 0.3}, this is quantized to
 {-127, -63, 0, 38}, and dequantized to {-1, -63.0/127, 0, 38.0/127}.
 
-_inputArg
- input:: .T  input_min:: .T  input_max:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func quantizeAndDequantizeV2(scope:Scope,input: tf.Output, input_min: tf.Output, input_max: tf.Output)  -> (output: tf.Output){
+func quantizeAndDequantizeV2(scope:Scope,input: tf.Output, inputMin: tf.Output, inputMax: tf.Outputsigned_input :bool, num_bits :int, range_given :bool, T :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "QuantizeAndDequantizeV2",
-        Input: [  input,  input_min,  input_max, )]
+        Input: [ input, inputMin, inputMax]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -17175,44 +9853,23 @@ input values that only uses a small fraction of the possible range. By feeding
 that output into this operator, we can reduce it from 32 bits down to 8 with
 minimal loss of accuracy.
 
-_inputArg
- input:: .Tinput  input_min:: .  input_max:: . 
-_outputArg
-
-_outputArg
- output::out_type  output_min::  output_max:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func quantizeDownAndShrinkRange(scope:Scope,input: tf.Output, input_min: tf.Output, input_max: tf.Output)  -> (output: tf.Output, output_min: tf.Output, output_max: tf.Output){
+func quantizeDownAndShrinkRange(scope:Scope,input: tf.Output, inputMin: tf.Output, inputMax: tf.OutputTinput :type, out_type :type)  ->(output: tf.Output, outputMin: tf.Output, outputMax: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "QuantizeDownAndShrinkRange",
-        Input: [  input,  input_min,  input_max, )]
+        Input: [ input, inputMin, inputMax]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1))
 }
 
 /*
@@ -17259,132 +9916,69 @@ buffers from being created. Otherwise, you can end up with buffers where all the
 quantized values map to the same float value, which causes problems for
 operations that have to perform further calculations on them.
 
-_inputArg
- input:: .  min_range:: .  max_range:: . 
-_outputArg
-
-_outputArg
- output::T  output_min::  output_max:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func quantizeV2(scope:Scope,input: tf.Output, min_range: tf.Output, max_range: tf.Output)  -> (output: tf.Output, output_min: tf.Output, output_max: tf.Output){
+func quantizeV2(scope:Scope,input: tf.Output, minRange: tf.Output, maxRange: tf.OutputT :type, mode :string)  ->(output: tf.Output, outputMin: tf.Output, outputMax: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "QuantizeV2",
-        Input: [  input,  min_range,  max_range, )]
+        Input: [ input, minRange, maxRange]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1))
 }
 
 /*
 Returns x + y element-wise, working on quantized buffers.
 
 
-_inputArg
- x:: .T1  y:: .T2  min_x:: .  max_x:: .  min_y:: .  max_y:: . 
-_outputArg
-
-_outputArg
- z::Toutput  min_z::  max_z:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func quantizedAdd(scope:Scope,x: tf.Output, y: tf.Output, min_x: tf.Output, max_x: tf.Output, min_y: tf.Output, max_y: tf.Output)  -> (z: tf.Output, min_z: tf.Output, max_z: tf.Output){
+func quantizedAdd(scope:Scope,x: tf.Output, y: tf.Output, minX: tf.Output, maxX: tf.Output, minY: tf.Output, maxY: tf.OutputT1 :type, T2 :type, Toutput :type)  ->(z: tf.Output, minZ: tf.Output, maxZ: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "QuantizedAdd",
-        Input: [  x,  y,  min_x,  max_x,  min_y,  max_y, )]
+        Input: [ x, y, minX, maxX, minY, maxY]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1))
 }
 
 /*
 Produces the average pool of the input tensor for quantized types.
 
 
-_inputArg
- input:: .T  min_input:: .  max_input:: . 
-_outputArg
-
-_outputArg
- output::T  min_output::  max_output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func quantizedAvgPool(scope:Scope,input: tf.Output, min_input: tf.Output, max_input: tf.Output)  -> (output: tf.Output, min_output: tf.Output, max_output: tf.Output){
+func quantizedAvgPool(scope:Scope,input: tf.Output, minInput: tf.Output, maxInput: tf.OutputT :type, ksize :list(int), strides :list(int), padding :string)  ->(output: tf.Output, minOutput: tf.Output, maxOutput: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "QuantizedAvgPool",
-        Input: [  input,  min_input,  max_input, )]
+        Input: [ input, minInput, maxInput]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1))
 }
 
 /*
@@ -17393,44 +9987,23 @@ Quantized Batch normalization.
 This op is deprecated and will be removed in the future. Prefer
 `tf.nn.batch_normalization`.
 
-_inputArg
- t:: .Tinput  t_min:: .  t_max:: .  m:: .Tinput  m_min:: .  m_max:: .  v:: .Tinput  v_min:: .  v_max:: .  beta:: .Tinput  beta_min:: .  beta_max:: .  gamma:: .Tinput  gamma_min:: .  gamma_max:: . 
-_outputArg
-
-_outputArg
- result::out_type  result_min::  result_max:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func quantizedBatchNormWithGlobalNormalization(scope:Scope,t: tf.Output, t_min: tf.Output, t_max: tf.Output, m: tf.Output, m_min: tf.Output, m_max: tf.Output, v: tf.Output, v_min: tf.Output, v_max: tf.Output, beta: tf.Output, beta_min: tf.Output, beta_max: tf.Output, gamma: tf.Output, gamma_min: tf.Output, gamma_max: tf.Output)  -> (result: tf.Output, result_min: tf.Output, result_max: tf.Output){
+func quantizedBatchNormWithGlobalNormalization(scope:Scope,t: tf.Output, tMin: tf.Output, tMax: tf.Output, m: tf.Output, mMin: tf.Output, mMax: tf.Output, v: tf.Output, vMin: tf.Output, vMax: tf.Output, beta: tf.Output, betaMin: tf.Output, betaMax: tf.Output, gamma: tf.Output, gammaMin: tf.Output, gammaMax: tf.OutputTinput :type, out_type :type, variance_epsilon :float, scale_after_normalization :bool)  ->(result: tf.Output, resultMin: tf.Output, resultMax: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "QuantizedBatchNormWithGlobalNormalization",
-        Input: [  t,  t_min,  t_max,  m,  m_min,  m_max,  v,  v_min,  v_max,  beta,  beta_min,  beta_max,  gamma,  gamma_min,  gamma_max, )]
+        Input: [ t, tMin, tMax, m, mMin, mMax, v, vMin, vMax, beta, betaMin, betaMax, gamma, gammaMin, gammaMax]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1))
 }
 
 /*
@@ -17438,88 +10011,46 @@ Adds Tensor 'bias' to Tensor 'input' for Quantized types.
 
 Broadcasts the values of bias on dimensions 0..N-2 of 'input'.
 
-_inputArg
- input:: .T1  bias:: .T2  min_input:: .  max_input:: .  min_bias:: .  max_bias:: . 
-_outputArg
-
-_outputArg
- output::out_type  min_out::  max_out:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func quantizedBiasAdd(scope:Scope,input: tf.Output, bias: tf.Output, min_input: tf.Output, max_input: tf.Output, min_bias: tf.Output, max_bias: tf.Output)  -> (output: tf.Output, min_out: tf.Output, max_out: tf.Output){
+func quantizedBiasAdd(scope:Scope,input: tf.Output, bias: tf.Output, minInput: tf.Output, maxInput: tf.Output, minBias: tf.Output, maxBias: tf.OutputT1 :type, T2 :type, out_type :type)  ->(output: tf.Output, minOut: tf.Output, maxOut: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "QuantizedBiasAdd",
-        Input: [  input,  bias,  min_input,  max_input,  min_bias,  max_bias, )]
+        Input: [ input, bias, minInput, maxInput, minBias, maxBias]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1))
 }
 
 /*
 Concatenates quantized tensors along one dimension.
 
 
-_inputArg
- concat_dim:: .  values:: .T  input_mins:: .  input_maxes:: . 
-_outputArg
-
-_outputArg
- output::T  output_min::  output_max:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func quantizedConcat(scope:Scope,concat_dim: tf.Output, values: tf.Output, input_mins: tf.Output, input_maxes: tf.Output)  -> (output: tf.Output, output_min: tf.Output, output_max: tf.Output){
+func quantizedConcat(scope:Scope,concatDim: tf.Output, values: tf.Output, inputMins: tf.Output, inputMaxes: tf.OutputN :int, T :type)  ->(output: tf.Output, outputMin: tf.Output, outputMax: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "QuantizedConcat",
-        Input: [  concat_dim,  values,  input_mins,  input_maxes, )]
+        Input: [ concatDim, values, inputMins, inputMaxes]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1))
 }
 
 /*
@@ -17530,88 +10061,46 @@ number of the associated minimum, and the highest represents the maximum.
 This means that you can only interpret the quantized output in the same way, by
 taking the returned minimum and maximum values into account.
 
-_inputArg
- input:: .Tinput  filter:: .Tfilter  min_input:: .  max_input:: .  min_filter:: .  max_filter:: . 
-_outputArg
-
-_outputArg
- output::out_type  min_output::  max_output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func quantizedConv2D(scope:Scope,input: tf.Output, filter: tf.Output, min_input: tf.Output, max_input: tf.Output, min_filter: tf.Output, max_filter: tf.Output)  -> (output: tf.Output, min_output: tf.Output, max_output: tf.Output){
+func quantizedConv2D(scope:Scope,input: tf.Output, filter: tf.Output, minInput: tf.Output, maxInput: tf.Output, minFilter: tf.Output, maxFilter: tf.OutputTinput :type, Tfilter :type, out_type :type, strides :list(int), padding :string)  ->(output: tf.Output, minOutput: tf.Output, maxOutput: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "QuantizedConv2D",
-        Input: [  input,  filter,  min_input,  max_input,  min_filter,  max_filter, )]
+        Input: [ input, filter, minInput, maxInput, minFilter, maxFilter]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1))
 }
 
 /*
 Quantized Instance normalization.
 
 
-_inputArg
- x:: .T  x_min:: .  x_max:: . 
-_outputArg
-
-_outputArg
- y::T  y_min::  y_max:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func quantizedInstanceNorm(scope:Scope,x: tf.Output, x_min: tf.Output, x_max: tf.Output)  -> (y: tf.Output, y_min: tf.Output, y_max: tf.Output){
+func quantizedInstanceNorm(scope:Scope,x: tf.Output, xMin: tf.Output, xMax: tf.OutputT :type, output_range_given :bool, given_y_min :float, given_y_max :float, variance_epsilon :float, min_separation :float)  ->(y: tf.Output, yMin: tf.Output, yMax: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "QuantizedInstanceNorm",
-        Input: [  x,  x_min,  x_max, )]
+        Input: [ x, xMin, xMax]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1))
 }
 
 /*
@@ -17622,264 +10111,138 @@ The inputs must be two-dimensional matrices and the inner dimension of
 outer dimension of `b` (after being transposed if `transposed_b` is
 non-zero).
 
-_inputArg
- a:: .T1  b:: .T2  min_a:: .  max_a:: .  min_b:: .  max_b:: . 
-_outputArg
-
-_outputArg
- out::Toutput  min_out::  max_out:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func quantizedMatMul(scope:Scope,a: tf.Output, b: tf.Output, min_a: tf.Output, max_a: tf.Output, min_b: tf.Output, max_b: tf.Output)  -> (out: tf.Output, min_out: tf.Output, max_out: tf.Output){
+func quantizedMatMul(scope:Scope,a: tf.Output, b: tf.Output, minA: tf.Output, maxA: tf.Output, minB: tf.Output, maxB: tf.OutputT1 :type, T2 :type, Toutput :type, transpose_a :bool, transpose_b :bool, Tactivation :type)  ->(out: tf.Output, minOut: tf.Output, maxOut: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "QuantizedMatMul",
-        Input: [  a,  b,  min_a,  max_a,  min_b,  max_b, )]
+        Input: [ a, b, minA, maxA, minB, maxB]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1))
 }
 
 /*
 Produces the max pool of the input tensor for quantized types.
 
 
-_inputArg
- input:: .T  min_input:: .  max_input:: . 
-_outputArg
-
-_outputArg
- output::T  min_output::  max_output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func quantizedMaxPool(scope:Scope,input: tf.Output, min_input: tf.Output, max_input: tf.Output)  -> (output: tf.Output, min_output: tf.Output, max_output: tf.Output){
+func quantizedMaxPool(scope:Scope,input: tf.Output, minInput: tf.Output, maxInput: tf.OutputT :type, ksize :list(int), strides :list(int), padding :string)  ->(output: tf.Output, minOutput: tf.Output, maxOutput: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "QuantizedMaxPool",
-        Input: [  input,  min_input,  max_input, )]
+        Input: [ input, minInput, maxInput]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1))
 }
 
 /*
 Returns x * y element-wise, working on quantized buffers.
 
 
-_inputArg
- x:: .T1  y:: .T2  min_x:: .  max_x:: .  min_y:: .  max_y:: . 
-_outputArg
-
-_outputArg
- z::Toutput  min_z::  max_z:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func quantizedMul(scope:Scope,x: tf.Output, y: tf.Output, min_x: tf.Output, max_x: tf.Output, min_y: tf.Output, max_y: tf.Output)  -> (z: tf.Output, min_z: tf.Output, max_z: tf.Output){
+func quantizedMul(scope:Scope,x: tf.Output, y: tf.Output, minX: tf.Output, maxX: tf.Output, minY: tf.Output, maxY: tf.OutputT1 :type, T2 :type, Toutput :type)  ->(z: tf.Output, minZ: tf.Output, maxZ: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "QuantizedMul",
-        Input: [  x,  y,  min_x,  max_x,  min_y,  max_y, )]
+        Input: [ x, y, minX, maxX, minY, maxY]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1))
 }
 
 /*
 Computes Quantized Rectified Linear: `max(features, 0)`
 
 
-_inputArg
- features:: .Tinput  min_features:: .  max_features:: . 
-_outputArg
-
-_outputArg
- activations::out_type  min_activations::  max_activations:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func quantizedRelu(scope:Scope,features: tf.Output, min_features: tf.Output, max_features: tf.Output)  -> (activations: tf.Output, min_activations: tf.Output, max_activations: tf.Output){
+func quantizedRelu(scope:Scope,features: tf.Output, minFeatures: tf.Output, maxFeatures: tf.OutputTinput :type, out_type :type)  ->(activations: tf.Output, minActivations: tf.Output, maxActivations: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "QuantizedRelu",
-        Input: [  features,  min_features,  max_features, )]
+        Input: [ features, minFeatures, maxFeatures]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1))
 }
 
 /*
 Computes Quantized Rectified Linear 6: `min(max(features, 0), 6)`
 
 
-_inputArg
- features:: .Tinput  min_features:: .  max_features:: . 
-_outputArg
-
-_outputArg
- activations::out_type  min_activations::  max_activations:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func quantizedRelu6(scope:Scope,features: tf.Output, min_features: tf.Output, max_features: tf.Output)  -> (activations: tf.Output, min_activations: tf.Output, max_activations: tf.Output){
+func quantizedRelu6(scope:Scope,features: tf.Output, minFeatures: tf.Output, maxFeatures: tf.OutputTinput :type, out_type :type)  ->(activations: tf.Output, minActivations: tf.Output, maxActivations: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "QuantizedRelu6",
-        Input: [  features,  min_features,  max_features, )]
+        Input: [ features, minFeatures, maxFeatures]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1))
 }
 
 /*
 Computes Quantized Rectified Linear X: `min(max(features, 0), max_value)`
 
 
-_inputArg
- features:: .Tinput  max_value:: .  min_features:: .  max_features:: . 
-_outputArg
-
-_outputArg
- activations::out_type  min_activations::  max_activations:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func quantizedReluX(scope:Scope,features: tf.Output, max_value: tf.Output, min_features: tf.Output, max_features: tf.Output)  -> (activations: tf.Output, min_activations: tf.Output, max_activations: tf.Output){
+func quantizedReluX(scope:Scope,features: tf.Output, maxValue: tf.Output, minFeatures: tf.Output, maxFeatures: tf.OutputTinput :type, out_type :type)  ->(activations: tf.Output, minActivations: tf.Output, maxActivations: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "QuantizedReluX",
-        Input: [  features,  max_value,  min_features,  max_features, )]
+        Input: [ features, maxValue, minFeatures, maxFeatures]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1))
 }
 
 /*
@@ -17887,44 +10250,23 @@ Reshapes a quantized tensor as per the Reshape op.
 
 ```
 
-_inputArg
- tensor:: .T  shape:: .Tshape  input_min:: .  input_max:: . 
-_outputArg
-
-_outputArg
- output::T  output_min::  output_max:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func quantizedReshape(scope:Scope,tensor: tf.Output, shape: tf.Output, input_min: tf.Output, input_max: tf.Output)  -> (output: tf.Output, output_min: tf.Output, output_max: tf.Output){
+func quantizedReshape(scope:Scope,tensor: tf.Output, shape: tf.Output, inputMin: tf.Output, inputMax: tf.OutputT :type, Tshape :type)  ->(output: tf.Output, outputMin: tf.Output, outputMax: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "QuantizedReshape",
-        Input: [  tensor,  shape,  input_min,  input_max, )]
+        Input: [ tensor, shape, inputMin, inputMax]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1))
 }
 
 /*
@@ -17936,41 +10278,21 @@ Subsequent Dequeue(Many) operations will continue to succeed if
 sufficient elements remain in the queue. Subsequent Dequeue(Many)
 operations that would block will fail immediately.
 
-_inputArg
- handle:: . 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func queueClose(scope:Scope,handle: tf.Output)  -> (){
+func queueClose(scope:Scope,handle: tf.Outputcancel_pending_enqueues :bool)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "QueueClose",
-        Input: [  handle, )]
+        Input: [ handle]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
@@ -17982,41 +10304,21 @@ Subsequent Dequeue(Many) operations will continue to succeed if
 sufficient elements remain in the queue. Subsequent Dequeue(Many)
 operations that would block will fail immediately.
 
-_inputArg
- handle:: . 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func queueCloseV2(scope:Scope,handle: tf.Output)  -> (){
+func queueCloseV2(scope:Scope,handle: tf.Outputcancel_pending_enqueues :bool)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "QueueCloseV2",
-        Input: [  handle, )]
+        Input: [ handle]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
@@ -18028,44 +10330,23 @@ component of the dequeued tuple.
 N.B. If the queue is empty, this operation will block until an element
 has been dequeued (or 'timeout_ms' elapses, if specified).
 
-_inputArg
- handle:: . 
-_outputArg
-
-_outputArg
- components:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func queueDequeue(scope:Scope,handle: tf.Output)  -> (components: tf.Output){
+func queueDequeue(scope:Scope,handle: tf.Outputcomponent_types :list(type), timeout_ms :int)  ->(components: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "QueueDequeue",
-        Input: [  handle, )]
+        Input: [ handle]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -18082,44 +10363,23 @@ component of the dequeued tuple.
 N.B. If the queue is empty, this operation will block until `n` elements
 have been dequeued (or 'timeout_ms' elapses, if specified).
 
-_inputArg
- handle:: .  n:: . 
-_outputArg
-
-_outputArg
- components:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func queueDequeueMany(scope:Scope,handle: tf.Output, n: tf.Output)  -> (components: tf.Output){
+func queueDequeueMany(scope:Scope,handle: tf.Output, n: tf.Outputcomponent_types :list(type), timeout_ms :int)  ->(components: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "QueueDequeueMany",
-        Input: [  handle,  n, )]
+        Input: [ handle, n]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -18136,44 +10396,23 @@ component of the dequeued tuple.
 N.B. If the queue is empty, this operation will block until `n` elements
 have been dequeued (or 'timeout_ms' elapses, if specified).
 
-_inputArg
- handle:: .  n:: . 
-_outputArg
-
-_outputArg
- components:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func queueDequeueManyV2(scope:Scope,handle: tf.Output, n: tf.Output)  -> (components: tf.Output){
+func queueDequeueManyV2(scope:Scope,handle: tf.Output, n: tf.Outputcomponent_types :list(type), timeout_ms :int)  ->(components: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "QueueDequeueManyV2",
-        Input: [  handle,  n, )]
+        Input: [ handle, n]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -18194,44 +10433,23 @@ This operation has k outputs, where `k` is the number of components in
 the tuples stored in the given queue, and output `i` is the ith
 component of the dequeued tuple.
 
-_inputArg
- handle:: .  n:: . 
-_outputArg
-
-_outputArg
- components:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func queueDequeueUpTo(scope:Scope,handle: tf.Output, n: tf.Output)  -> (components: tf.Output){
+func queueDequeueUpTo(scope:Scope,handle: tf.Output, n: tf.Outputcomponent_types :list(type), timeout_ms :int)  ->(components: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "QueueDequeueUpTo",
-        Input: [  handle,  n, )]
+        Input: [ handle, n]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -18252,44 +10470,23 @@ This operation has `k` outputs, where `k` is the number of components in
 the tuples stored in the given queue, and output `i` is the ith
 component of the dequeued tuple.
 
-_inputArg
- handle:: .  n:: . 
-_outputArg
-
-_outputArg
- components:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func queueDequeueUpToV2(scope:Scope,handle: tf.Output, n: tf.Output)  -> (components: tf.Output){
+func queueDequeueUpToV2(scope:Scope,handle: tf.Output, n: tf.Outputcomponent_types :list(type), timeout_ms :int)  ->(components: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "QueueDequeueUpToV2",
-        Input: [  handle,  n, )]
+        Input: [ handle, n]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -18301,44 +10498,23 @@ component of the dequeued tuple.
 N.B. If the queue is empty, this operation will block until an element
 has been dequeued (or 'timeout_ms' elapses, if specified).
 
-_inputArg
- handle:: . 
-_outputArg
-
-_outputArg
- components:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func queueDequeueV2(scope:Scope,handle: tf.Output)  -> (components: tf.Output){
+func queueDequeueV2(scope:Scope,handle: tf.Outputcomponent_types :list(type), timeout_ms :int)  ->(components: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "QueueDequeueV2",
-        Input: [  handle, )]
+        Input: [ handle]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -18349,41 +10525,21 @@ tuples stored in the given queue.
 N.B. If the queue is full, this operation will block until the given
 element has been enqueued (or 'timeout_ms' elapses, if specified).
 
-_inputArg
- handle:: .  components:: . 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func queueEnqueue(scope:Scope,handle: tf.Output, components: tf.Output)  -> (){
+func queueEnqueue(scope:Scope,handle: tf.Output, components: tf.OutputTcomponents :list(type), timeout_ms :int)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "QueueEnqueue",
-        Input: [  handle,  components, )]
+        Input: [ handle, components]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
@@ -18397,41 +10553,21 @@ tuples stored in the given queue.
 N.B. If the queue is full, this operation will block until the given
 elements have been enqueued (or 'timeout_ms' elapses, if specified).
 
-_inputArg
- handle:: .  components:: . 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func queueEnqueueMany(scope:Scope,handle: tf.Output, components: tf.Output)  -> (){
+func queueEnqueueMany(scope:Scope,handle: tf.Output, components: tf.OutputTcomponents :list(type), timeout_ms :int)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "QueueEnqueueMany",
-        Input: [  handle,  components, )]
+        Input: [ handle, components]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
@@ -18445,41 +10581,21 @@ tuples stored in the given queue.
 N.B. If the queue is full, this operation will block until the given
 elements have been enqueued (or 'timeout_ms' elapses, if specified).
 
-_inputArg
- handle:: .  components:: . 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func queueEnqueueManyV2(scope:Scope,handle: tf.Output, components: tf.Output)  -> (){
+func queueEnqueueManyV2(scope:Scope,handle: tf.Output, components: tf.OutputTcomponents :list(type), timeout_ms :int)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "QueueEnqueueManyV2",
-        Input: [  handle,  components, )]
+        Input: [ handle, components]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
@@ -18490,129 +10606,67 @@ tuples stored in the given queue.
 N.B. If the queue is full, this operation will block until the given
 element has been enqueued (or 'timeout_ms' elapses, if specified).
 
-_inputArg
- handle:: .  components:: . 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func queueEnqueueV2(scope:Scope,handle: tf.Output, components: tf.Output)  -> (){
+func queueEnqueueV2(scope:Scope,handle: tf.Output, components: tf.OutputTcomponents :list(type), timeout_ms :int)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "QueueEnqueueV2",
-        Input: [  handle,  components, )]
+        Input: [ handle, components]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
 Computes the number of elements in the given queue.
 
 
-_inputArg
- handle:: . 
-_outputArg
-
-_outputArg
- size:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func queueSize(scope:Scope,handle: tf.Output)  -> (size: tf.Output){
+func queueSize(scope:Scope,handle: tf.Output)  ->(size: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "QueueSize",
-        Input: [  handle, )]
+        Input: [ handle]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Computes the number of elements in the given queue.
 
 
-_inputArg
- handle:: . 
-_outputArg
-
-_outputArg
- size:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func queueSizeV2(scope:Scope,handle: tf.Output)  -> (size: tf.Output){
+func queueSizeV2(scope:Scope,handle: tf.Output)  ->(size: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "QueueSizeV2",
-        Input: [  handle, )]
+        Input: [ handle]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -18624,44 +10678,23 @@ Since the DFT of a real signal is Hermitian-symmetric, `RFFT` only returns the
 `fft_length / 2 + 1` unique components of the FFT: the zero-frequency term,
 followed by the `fft_length / 2` positive-frequency terms.
 
-_inputArg
- input:: .  fft_length:: . 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func rfft(scope:Scope,input: tf.Output, fft_length: tf.Output)  -> (output: tf.Output){
+func rfft(scope:Scope,input: tf.Output, fftLength: tf.Output)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "RFFT",
-        Input: [  input,  fft_length, )]
+        Input: [ input, fftLength]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -18674,44 +10707,23 @@ Since the DFT of a real signal is Hermitian-symmetric, `RFFT2D` only returns the
 of `output`: the zero-frequency term, followed by the `fft_length / 2`
 positive-frequency terms.
 
-_inputArg
- input:: .  fft_length:: . 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func rfft2D(scope:Scope,input: tf.Output, fft_length: tf.Output)  -> (output: tf.Output){
+func rfft2D(scope:Scope,input: tf.Output, fftLength: tf.Output)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "RFFT2D",
-        Input: [  input,  fft_length, )]
+        Input: [ input, fftLength]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -18724,44 +10736,23 @@ Since the DFT of a real signal is Hermitian-symmetric, `RFFT3D` only returns the
 of `output`: the zero-frequency term, followed by the `fft_length / 2`
 positive-frequency terms.
 
-_inputArg
- input:: .  fft_length:: . 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func rfft3D(scope:Scope,input: tf.Output, fft_length: tf.Output)  -> (output: tf.Output){
+func rfft3D(scope:Scope,input: tf.Output, fftLength: tf.Output)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "RFFT3D",
-        Input: [  input,  fft_length, )]
+        Input: [ input, fftLength]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -18774,44 +10765,23 @@ are in `[0,1]`.
 `output[..., 2]` contains value. All HSV values are in `[0,1]`. A hue of 0
 corresponds to pure red, hue 1/3 is pure green, and 2/3 is pure blue.
 
-_inputArg
- images:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func rgbToHSV(scope:Scope,images: tf.Output)  -> (output: tf.Output){
+func rgbToHSV(scope:Scope,images: tf.OutputT :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "RGBToHSV",
-        Input: [  images, )]
+        Input: [ images]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -18823,44 +10793,23 @@ This Op picks a random location in `image` and crops a `height` by `width`
 rectangle from that location.  The random location is picked so the cropped
 area will fit inside the original image.
 
-_inputArg
- image:: .T  size:: . 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func randomCrop(scope:Scope,image: tf.Output, size: tf.Output)  -> (output: tf.Output){
+func randomCrop(scope:Scope,image: tf.Output, size: tf.OutputT :type, seed :int, seed2 :int)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "RandomCrop",
-        Input: [  image,  size, )]
+        Input: [ image, size]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -18870,44 +10819,23 @@ This op uses the algorithm by Marsaglia et al. to acquire samples via
 transformation-rejection from pairs of uniform and normal random variables.
 See http://dl.acm.org/citation.cfm?id=358414
 
-_inputArg
- shape:: .S  alpha:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func randomGamma(scope:Scope,shape: tf.Output, alpha: tf.Output)  -> (output: tf.Output){
+func randomGamma(scope:Scope,shape: tf.Output, alpha: tf.Outputseed :int, seed2 :int, S :type, T :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "RandomGamma",
-        Input: [  shape,  alpha, )]
+        Input: [ shape, alpha]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -18922,44 +10850,23 @@ random variables.
 See Donald E. Knuth (1969). Seminumerical Algorithms. The Art of Computer
 Programming, Volume 2. Addison Wesley
 
-_inputArg
- shape:: .S  rate:: .dtype 
-_outputArg
-
-_outputArg
- output::dtype 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func randomPoisson(scope:Scope,shape: tf.Output, rate: tf.Output)  -> (output: tf.Output){
+func randomPoisson(scope:Scope,shape: tf.Output, rate: tf.Outputseed :int, seed2 :int, S :type, dtype :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "RandomPoisson",
-        Input: [  shape,  rate, )]
+        Input: [ shape, rate]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -18974,130 +10881,69 @@ Randomly shuffles a tensor along its first dimension.
  [5, 6]]        [3, 4]]
 ```
 
-_inputArg
- value:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func randomShuffle(scope:Scope,value: tf.Output)  -> (output: tf.Output){
+func randomShuffle(scope:Scope,value: tf.Outputseed :int, seed2 :int, T :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "RandomShuffle",
-        Input: [  value, )]
+        Input: [ value]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 A queue that randomizes the order of elements.
 
 
-_inputArg
-_outputArg
-
-_outputArg
- handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func randomShuffleQueue(scope:Scope)  -> (handle: tf.Output){
+func randomShuffleQueue(scope:Scopecomponent_types :list(type), shapes :list(shape), capacity :int, min_after_dequeue :int, seed :int, seed2 :int, container :string, shared_name :string)  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "RandomShuffleQueue",
-        Input: [ )]
+        Input: [ ]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 A queue that randomizes the order of elements.
 
 
-_inputArg
-_outputArg
-
-_outputArg
- handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func randomShuffleQueueV2(scope:Scope)  -> (handle: tf.Output){
+func randomShuffleQueueV2(scope:Scopecomponent_types :list(type), shapes :list(shape), capacity :int, min_after_dequeue :int, seed :int, seed2 :int, container :string, shared_name :string)  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "RandomShuffleQueueV2",
-        Input: [ )]
+        Input: [ ]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -19105,44 +10951,23 @@ Outputs random values from a normal distribution.
 
 The generated values will have mean 0 and standard deviation 1.
 
-_inputArg
- shape:: .T 
-_outputArg
-
-_outputArg
- output::dtype 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func randomStandardNormal(scope:Scope,shape: tf.Output)  -> (output: tf.Output){
+func randomStandardNormal(scope:Scope,shape: tf.Outputseed :int, seed2 :int, dtype :type, T :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "RandomStandardNormal",
-        Input: [  shape, )]
+        Input: [ shape]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -19151,44 +10976,23 @@ Outputs random values from a uniform distribution.
 The generated values follow a uniform distribution in the range `[0, 1)`. The
 lower bound 0 is included in the range, while the upper bound 1 is excluded.
 
-_inputArg
- shape:: .T 
-_outputArg
-
-_outputArg
- output::dtype 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func randomUniform(scope:Scope,shape: tf.Output)  -> (output: tf.Output){
+func randomUniform(scope:Scope,shape: tf.Outputseed :int, seed2 :int, dtype :type, T :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "RandomUniform",
-        Input: [  shape, )]
+        Input: [ shape]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -19201,44 +11005,23 @@ The random integers are slightly biased unless `maxval - minval` is an exact
 power of two.  The bias is small for values of `maxval - minval` significantly
 smaller than the range of the output (either `2^32` or `2^64`).
 
-_inputArg
- shape:: .T  minval:: .Tout  maxval:: .Tout 
-_outputArg
-
-_outputArg
- output::Tout 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func randomUniformInt(scope:Scope,shape: tf.Output, minval: tf.Output, maxval: tf.Output)  -> (output: tf.Output){
+func randomUniformInt(scope:Scope,shape: tf.Output, minval: tf.Output, maxval: tf.Outputseed :int, seed2 :int, Tout :type, T :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "RandomUniformInt",
-        Input: [  shape,  minval,  maxval, )]
+        Input: [ shape, minval, maxval]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -19254,88 +11037,46 @@ For example:
 tf.range(start, limit, delta) ==> [3, 6, 9, 12, 15]
 ```
 
-_inputArg
- start:: .Tidx  limit:: .Tidx  delta:: .Tidx 
-_outputArg
-
-_outputArg
- output::Tidx 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func range(scope:Scope,start: tf.Output, limit: tf.Output, delta: tf.Output)  -> (output: tf.Output){
+func range(scope:Scope,start: tf.Output, limit: tf.Output, delta: tf.OutputTidx :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Range",
-        Input: [  start,  limit,  delta, )]
+        Input: [ start, limit, delta]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Creates a dataset with a range of values. Corresponds to python's xrange.
 
 
-_inputArg
- start:: .  stop:: .  step:: . 
-_outputArg
-
-_outputArg
- handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func rangeDataset(scope:Scope,start: tf.Output, stop: tf.Output, step: tf.Output)  -> (handle: tf.Output){
+func rangeDataset(scope:Scope,start: tf.Output, stop: tf.Output, step: tf.Outputoutput_types :list(type), output_shapes :list(shape))  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "RangeDataset",
-        Input: [  start,  stop,  step, )]
+        Input: [ start, stop, step]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -19352,88 +11093,46 @@ rank(t) ==> 3
 of a tensor is the number of indices required to uniquely select each element
 of the tensor. Rank is also known as "order", "degree", or "ndims."
 
-_inputArg
- input:: .T 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func rank(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func rank(scope:Scope,input: tf.OutputT :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Rank",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Reads and outputs the entire contents of the input filename.
 
 
-_inputArg
- filename:: . 
-_outputArg
-
-_outputArg
- contents:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func readFile(scope:Scope,filename: tf.Output)  -> (contents: tf.Output){
+func readFile(scope:Scope,filename: tf.Output)  ->(contents: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ReadFile",
-        Input: [  filename, )]
+        Input: [ filename]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -19442,44 +11141,23 @@ Returns the number of records this Reader has produced.
 This is the same as the number of ReaderRead executions that have
 succeeded.
 
-_inputArg
- reader_handle:: . 
-_outputArg
-
-_outputArg
- records_produced:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func readerNumRecordsProduced(scope:Scope,reader_handle: tf.Output)  -> (records_produced: tf.Output){
+func readerNumRecordsProduced(scope:Scope,readerHandle: tf.Output)  ->(recordsProduced: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ReaderNumRecordsProduced",
-        Input: [  reader_handle, )]
+        Input: [ readerHandle]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -19488,132 +11166,69 @@ Returns the number of records this Reader has produced.
 This is the same as the number of ReaderRead executions that have
 succeeded.
 
-_inputArg
- reader_handle:: . 
-_outputArg
-
-_outputArg
- records_produced:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func readerNumRecordsProducedV2(scope:Scope,reader_handle: tf.Output)  -> (records_produced: tf.Output){
+func readerNumRecordsProducedV2(scope:Scope,readerHandle: tf.Output)  ->(recordsProduced: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ReaderNumRecordsProducedV2",
-        Input: [  reader_handle, )]
+        Input: [ readerHandle]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Returns the number of work units this Reader has finished processing.
 
 
-_inputArg
- reader_handle:: . 
-_outputArg
-
-_outputArg
- units_completed:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func readerNumWorkUnitsCompleted(scope:Scope,reader_handle: tf.Output)  -> (units_completed: tf.Output){
+func readerNumWorkUnitsCompleted(scope:Scope,readerHandle: tf.Output)  ->(unitsCompleted: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ReaderNumWorkUnitsCompleted",
-        Input: [  reader_handle, )]
+        Input: [ readerHandle]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Returns the number of work units this Reader has finished processing.
 
 
-_inputArg
- reader_handle:: . 
-_outputArg
-
-_outputArg
- units_completed:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func readerNumWorkUnitsCompletedV2(scope:Scope,reader_handle: tf.Output)  -> (units_completed: tf.Output){
+func readerNumWorkUnitsCompletedV2(scope:Scope,readerHandle: tf.Output)  ->(unitsCompleted: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ReaderNumWorkUnitsCompletedV2",
-        Input: [  reader_handle, )]
+        Input: [ readerHandle]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -19623,44 +11238,23 @@ Will dequeue from the input queue if necessary (e.g. when the
 Reader needs to start reading from a new file since it has finished
 with the previous file).
 
-_inputArg
- reader_handle:: .  queue_handle:: . 
-_outputArg
-
-_outputArg
- key::  value:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func readerRead(scope:Scope,reader_handle: tf.Output, queue_handle: tf.Output)  -> (key: tf.Output, value: tf.Output){
+func readerRead(scope:Scope,readerHandle: tf.Output, queueHandle: tf.Output)  ->(key: tf.Output, value: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ReaderRead",
-        Input: [  reader_handle,  queue_handle, )]
+        Input: [ readerHandle, queueHandle]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1))
 }
 
 /*
@@ -19671,44 +11265,23 @@ Reader needs to start reading from a new file since it has finished
 with the previous file).
 It may return less than `num_records` even before the last batch.
 
-_inputArg
- reader_handle:: .  queue_handle:: .  num_records:: . 
-_outputArg
-
-_outputArg
- keys::  values:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func readerReadUpTo(scope:Scope,reader_handle: tf.Output, queue_handle: tf.Output, num_records: tf.Output)  -> (keys: tf.Output, values: tf.Output){
+func readerReadUpTo(scope:Scope,readerHandle: tf.Output, queueHandle: tf.Output, numRecords: tf.Output)  ->(keys: tf.Output, values: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ReaderReadUpTo",
-        Input: [  reader_handle,  queue_handle,  num_records, )]
+        Input: [ readerHandle, queueHandle, numRecords]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1))
 }
 
 /*
@@ -19719,44 +11292,23 @@ Reader needs to start reading from a new file since it has finished
 with the previous file).
 It may return less than `num_records` even before the last batch.
 
-_inputArg
- reader_handle:: .  queue_handle:: .  num_records:: . 
-_outputArg
-
-_outputArg
- keys::  values:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func readerReadUpToV2(scope:Scope,reader_handle: tf.Output, queue_handle: tf.Output, num_records: tf.Output)  -> (keys: tf.Output, values: tf.Output){
+func readerReadUpToV2(scope:Scope,readerHandle: tf.Output, queueHandle: tf.Output, numRecords: tf.Output)  ->(keys: tf.Output, values: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ReaderReadUpToV2",
-        Input: [  reader_handle,  queue_handle,  num_records, )]
+        Input: [ readerHandle, queueHandle, numRecords]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1))
 }
 
 /*
@@ -19766,126 +11318,65 @@ Will dequeue from the input queue if necessary (e.g. when the
 Reader needs to start reading from a new file since it has finished
 with the previous file).
 
-_inputArg
- reader_handle:: .  queue_handle:: . 
-_outputArg
-
-_outputArg
- key::  value:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func readerReadV2(scope:Scope,reader_handle: tf.Output, queue_handle: tf.Output)  -> (key: tf.Output, value: tf.Output){
+func readerReadV2(scope:Scope,readerHandle: tf.Output, queueHandle: tf.Output)  ->(key: tf.Output, value: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ReaderReadV2",
-        Input: [  reader_handle,  queue_handle, )]
+        Input: [ readerHandle, queueHandle]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1))
 }
 
 /*
 Restore a Reader to its initial clean state.
 
 
-_inputArg
- reader_handle:: . 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func readerReset(scope:Scope,reader_handle: tf.Output)  -> (){
+func readerReset(scope:Scope,readerHandle: tf.Output)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ReaderReset",
-        Input: [  reader_handle, )]
+        Input: [ readerHandle]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
 Restore a Reader to its initial clean state.
 
 
-_inputArg
- reader_handle:: . 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func readerResetV2(scope:Scope,reader_handle: tf.Output)  -> (){
+func readerResetV2(scope:Scope,readerHandle: tf.Output)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ReaderResetV2",
-        Input: [  reader_handle, )]
+        Input: [ readerHandle]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
@@ -19894,41 +11385,21 @@ Restore a reader to a previously saved state.
 Not all Readers support being restored, so this can produce an
 Unimplemented error.
 
-_inputArg
- reader_handle:: .  state:: . 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func readerRestoreState(scope:Scope,reader_handle: tf.Output, state: tf.Output)  -> (){
+func readerRestoreState(scope:Scope,readerHandle: tf.Output, state: tf.Output)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ReaderRestoreState",
-        Input: [  reader_handle,  state, )]
+        Input: [ readerHandle, state]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
@@ -19937,41 +11408,21 @@ Restore a reader to a previously saved state.
 Not all Readers support being restored, so this can produce an
 Unimplemented error.
 
-_inputArg
- reader_handle:: .  state:: . 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func readerRestoreStateV2(scope:Scope,reader_handle: tf.Output, state: tf.Output)  -> (){
+func readerRestoreStateV2(scope:Scope,readerHandle: tf.Output, state: tf.Output)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ReaderRestoreStateV2",
-        Input: [  reader_handle,  state, )]
+        Input: [ readerHandle, state]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
@@ -19980,44 +11431,23 @@ Produce a string tensor that encodes the state of a Reader.
 Not all Readers support being serialized, so this can produce an
 Unimplemented error.
 
-_inputArg
- reader_handle:: . 
-_outputArg
-
-_outputArg
- state:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func readerSerializeState(scope:Scope,reader_handle: tf.Output)  -> (state: tf.Output){
+func readerSerializeState(scope:Scope,readerHandle: tf.Output)  ->(state: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ReaderSerializeState",
-        Input: [  reader_handle, )]
+        Input: [ readerHandle]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -20026,44 +11456,23 @@ Produce a string tensor that encodes the state of a Reader.
 Not all Readers support being serialized, so this can produce an
 Unimplemented error.
 
-_inputArg
- reader_handle:: . 
-_outputArg
-
-_outputArg
- state:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func readerSerializeStateV2(scope:Scope,reader_handle: tf.Output)  -> (state: tf.Output){
+func readerSerializeStateV2(scope:Scope,readerHandle: tf.Output)  ->(state: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ReaderSerializeStateV2",
-        Input: [  reader_handle, )]
+        Input: [ readerHandle]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -20079,44 +11488,23 @@ For example:
 tf.real(input) ==> [-2.25, 3.25]
 ```
 
-_inputArg
- input:: .T 
-_outputArg
-
-_outputArg
- output::Tout 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func real(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func real(scope:Scope,input: tf.OutputT :type, Tout :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Real",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -20126,44 +11514,23 @@ If `x` and `y` are reals, this will return the floating-point division.
 *NOTE*: `Div` supports broadcasting. More about broadcasting
 [here](http://docs.scipy.org/doc/numpy/user/basics.broadcasting.html)
 
-_inputArg
- x:: .T  y:: .T 
-_outputArg
-
-_outputArg
- z::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func realDiv(scope:Scope,x: tf.Output, y: tf.Output)  -> (z: tf.Output){
+func realDiv(scope:Scope,x: tf.Output, y: tf.OutputT :type)  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "RealDiv",
-        Input: [  x,  y, )]
+        Input: [ x, y]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -20171,44 +11538,23 @@ Computes the reciprocal of x element-wise.
 
 I.e., \\(y = 1 / x\\).
 
-_inputArg
- x:: .T 
-_outputArg
-
-_outputArg
- y::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func reciprocal(scope:Scope,x: tf.Output)  -> (y: tf.Output){
+func reciprocal(scope:Scope,x: tf.OutputT :type)  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Reciprocal",
-        Input: [  x, )]
+        Input: [ x]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -20217,87 +11563,46 @@ Computes the gradient for the inverse of `x` wrt its input.
 Specifically, `grad = -dy * y*y`, where `y = 1/x`, and `dy`
 is the corresponding input gradient.
 
-_inputArg
- x:: .T  y:: .T 
-_outputArg
-
-_outputArg
- z::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func reciprocalGrad(scope:Scope,x: tf.Output, y: tf.Output)  -> (z: tf.Output){
+func reciprocalGrad(scope:Scope,x: tf.Output, y: tf.OutputT :type)  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ReciprocalGrad",
-        Input: [  x,  y, )]
+        Input: [ x, y]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Emits randomized records.
 
 
-_inputArg
-_outputArg
-
-_outputArg
- records:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func recordInput(scope:Scope)  -> (records: tf.Output){
+func recordInput(scope:Scopefile_pattern :string, file_random_seed :int, file_shuffle_shift_ratio :float, file_buffer_size :int, file_parallelism :int, batch_size :int)  ->(records: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "RecordInput",
-        Input: [ )]
+        Input: [ ]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -20322,44 +11627,23 @@ tf.reduce_join(a, [1, 0]) ==> ["abcd"]
 tf.reduce_join(a, []) ==> ["abcd"]
 ```
 
-_inputArg
- inputs:: .  reduction_indices:: . 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func reduceJoin(scope:Scope,inputs: tf.Output, reduction_indices: tf.Output)  -> (output: tf.Output){
+func reduceJoin(scope:Scope,inputs: tf.Output, reductionIndices: tf.Outputkeep_dims :bool, separator :string)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ReduceJoin",
-        Input: [  inputs,  reduction_indices, )]
+        Input: [ inputs, reductionIndices]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -20370,44 +11654,23 @@ The unique `frame_name` is used by the `Executor` to identify frames. If
 it may be changed in the child frame. At most `parallel_iterations` iterations
 are run in parallel in the child frame.
 
-_inputArg
- data:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func refEnter(scope:Scope,data: tf.Output)  -> (output: tf.Output){
+func refEnter(scope:Scope,data: tf.OutputT :type, frame_name :string, is_constant :bool, parallel_iterations :int)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "RefEnter",
-        Input: [  data, )]
+        Input: [ data]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -20415,88 +11678,46 @@ Exits the current frame to its parent frame.
 
 Exit makes its input `data` available to the parent frame.
 
-_inputArg
- data:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func refExit(scope:Scope,data: tf.Output)  -> (output: tf.Output){
+func refExit(scope:Scope,data: tf.OutputT :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "RefExit",
-        Input: [  data, )]
+        Input: [ data]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Return the same ref tensor as the input ref tensor.
 
 
-_inputArg
- input:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func refIdentity(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func refIdentity(scope:Scope,input: tf.OutputT :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "RefIdentity",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -20507,132 +11728,69 @@ It is usually combined with `Switch` to implement branching.
 `Merge` forwards the first tensor for become available to `output`, and sets
 `value_index` to its index in `inputs`.
 
-_inputArg
- inputs:: .T 
-_outputArg
-
-_outputArg
- output::T  value_index:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func refMerge(scope:Scope,inputs: tf.Output)  -> (output: tf.Output, value_index: tf.Output){
+func refMerge(scope:Scope,inputs: tf.OutputT :type, N :int)  ->(output: tf.Output, valueIndex: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "RefMerge",
-        Input: [  inputs, )]
+        Input: [ inputs]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1))
 }
 
 /*
 Makes its input available to the next iteration.
 
 
-_inputArg
- data:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func refNextIteration(scope:Scope,data: tf.Output)  -> (output: tf.Output){
+func refNextIteration(scope:Scope,data: tf.OutputT :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "RefNextIteration",
-        Input: [  data, )]
+        Input: [ data]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Forwards the `index`th element of `inputs` to `output`.
 
 
-_inputArg
- index:: .  inputs:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func refSelect(scope:Scope,index: tf.Output, inputs: tf.Output)  -> (output: tf.Output){
+func refSelect(scope:Scope,index: tf.Output, inputs: tf.OutputT :type, N :int)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "RefSelect",
-        Input: [  index,  inputs, )]
+        Input: [ index, inputs]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -20642,264 +11800,138 @@ If `pred` is true, the `data` input is forwarded to `output_true`. Otherwise,
 the data goes to `output_false`.
 See also `Switch` and `Merge`.
 
-_inputArg
- data:: .T  pred:: . 
-_outputArg
-
-_outputArg
- output_false::T  output_true::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func refSwitch(scope:Scope,data: tf.Output, pred: tf.Output)  -> (output_false: tf.Output, output_true: tf.Output){
+func refSwitch(scope:Scope,data: tf.Output, pred: tf.OutputT :type)  ->(outputFalse: tf.Output, outputTrue: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "RefSwitch",
-        Input: [  data,  pred, )]
+        Input: [ data, pred]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1))
 }
 
 /*
 Computes rectified linear: `max(features, 0)`.
 
 
-_inputArg
- features:: .T 
-_outputArg
-
-_outputArg
- activations::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func relu(scope:Scope,features: tf.Output)  -> (activations: tf.Output){
+func relu(scope:Scope,features: tf.OutputT :type)  ->(activations: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Relu",
-        Input: [  features, )]
+        Input: [ features]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Computes rectified linear 6: `min(max(features, 0), 6)`.
 
 
-_inputArg
- features:: .T 
-_outputArg
-
-_outputArg
- activations::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func relu6(scope:Scope,features: tf.Output)  -> (activations: tf.Output){
+func relu6(scope:Scope,features: tf.OutputT :type)  ->(activations: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Relu6",
-        Input: [  features, )]
+        Input: [ features]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Computes rectified linear 6 gradients for a Relu6 operation.
 
 
-_inputArg
- gradients:: .T  features:: .T 
-_outputArg
-
-_outputArg
- backprops::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func relu6Grad(scope:Scope,gradients: tf.Output, features: tf.Output)  -> (backprops: tf.Output){
+func relu6Grad(scope:Scope,gradients: tf.Output, features: tf.OutputT :type)  ->(backprops: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Relu6Grad",
-        Input: [  gradients,  features, )]
+        Input: [ gradients, features]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Computes rectified linear gradients for a Relu operation.
 
 
-_inputArg
- gradients:: .T  features:: .T 
-_outputArg
-
-_outputArg
- backprops::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func reluGrad(scope:Scope,gradients: tf.Output, features: tf.Output)  -> (backprops: tf.Output){
+func reluGrad(scope:Scope,gradients: tf.Output, features: tf.OutputT :type)  ->(backprops: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ReluGrad",
-        Input: [  gradients,  features, )]
+        Input: [ gradients, features]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Creates a dataset that emits the outputs of `input_dataset` `count` times.
 
 
-_inputArg
- input_dataset:: .  count:: . 
-_outputArg
-
-_outputArg
- handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func repeatDataset(scope:Scope,input_dataset: tf.Output, count: tf.Output)  -> (handle: tf.Output){
+func repeatDataset(scope:Scope,inputDataset: tf.Output, count: tf.Outputoutput_types :list(type), output_shapes :list(shape))  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "RepeatDataset",
-        Input: [  input_dataset,  count, )]
+        Input: [ inputDataset, count]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -20909,44 +11941,23 @@ range that covers the actual values present in that tensor.  This op is
 typically used to produce the requested_output_min and requested_output_max for
 Requantize.
 
-_inputArg
- input:: .Tinput  input_min:: .  input_max:: . 
-_outputArg
-
-_outputArg
- output_min::  output_max:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func requantizationRange(scope:Scope,input: tf.Output, input_min: tf.Output, input_max: tf.Output)  -> (output_min: tf.Output, output_max: tf.Output){
+func requantizationRange(scope:Scope,input: tf.Output, inputMin: tf.Output, inputMax: tf.OutputTinput :type)  ->(outputMin: tf.Output, outputMax: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "RequantizationRange",
-        Input: [  input,  input_min,  input_max, )]
+        Input: [ input, inputMin, inputMax]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1))
 }
 
 /*
@@ -20958,44 +11969,23 @@ interpretation of the 'input' data. For example, if input_min is -1.0f and
 input_max is 1.0f, and we are dealing with quint16 quantized data, then a 0
 value in the 16-bit data should be interpreted as -1.0f, and a 65535 means 1.0f.
 
-_inputArg
- input:: .Tinput  input_min:: .  input_max:: .  requested_output_min:: .  requested_output_max:: . 
-_outputArg
-
-_outputArg
- output::out_type  output_min::  output_max:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func requantize(scope:Scope,input: tf.Output, input_min: tf.Output, input_max: tf.Output, requested_output_min: tf.Output, requested_output_max: tf.Output)  -> (output: tf.Output, output_min: tf.Output, output_max: tf.Output){
+func requantize(scope:Scope,input: tf.Output, inputMin: tf.Output, inputMax: tf.Output, requestedOutputMin: tf.Output, requestedOutputMax: tf.OutputTinput :type, out_type :type)  ->(output: tf.Output, outputMin: tf.Output, outputMax: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Requantize",
-        Input: [  input,  input_min,  input_max,  requested_output_min,  requested_output_max, )]
+        Input: [ input, inputMin, inputMax, requestedOutputMin, requestedOutputMax]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1))
 }
 
 /*
@@ -21049,44 +12039,23 @@ reshape(t, [ 2, -1, 3]) ==> [[[1, 1, 1],
 reshape(t, []) ==> 7
 ```
 
-_inputArg
- tensor:: .T  shape:: .Tshape 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func reshape(scope:Scope,tensor: tf.Output, shape: tf.Output)  -> (output: tf.Output){
+func reshape(scope:Scope,tensor: tf.Output, shape: tf.OutputT :type, Tshape :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Reshape",
-        Input: [  tensor,  shape, )]
+        Input: [ tensor, shape]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -21094,44 +12063,23 @@ Resize `images` to `size` using area interpolation.
 
 Input images can be of different types but output images are always float.
 
-_inputArg
- images:: .T  size:: . 
-_outputArg
-
-_outputArg
- resized_images:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func resizeArea(scope:Scope,images: tf.Output, size: tf.Output)  -> (resized_images: tf.Output){
+func resizeArea(scope:Scope,images: tf.Output, size: tf.OutputT :type, align_corners :bool)  ->(resizedImages: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ResizeArea",
-        Input: [  images,  size, )]
+        Input: [ images, size]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -21139,44 +12087,23 @@ Resize `images` to `size` using bicubic interpolation.
 
 Input images can be of different types but output images are always float.
 
-_inputArg
- images:: .T  size:: . 
-_outputArg
-
-_outputArg
- resized_images:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func resizeBicubic(scope:Scope,images: tf.Output, size: tf.Output)  -> (resized_images: tf.Output){
+func resizeBicubic(scope:Scope,images: tf.Output, size: tf.OutputT :type, align_corners :bool)  ->(resizedImages: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ResizeBicubic",
-        Input: [  images,  size, )]
+        Input: [ images, size]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -21184,176 +12111,92 @@ Resize `images` to `size` using bilinear interpolation.
 
 Input images can be of different types but output images are always float.
 
-_inputArg
- images:: .T  size:: . 
-_outputArg
-
-_outputArg
- resized_images:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func resizeBilinear(scope:Scope,images: tf.Output, size: tf.Output)  -> (resized_images: tf.Output){
+func resizeBilinear(scope:Scope,images: tf.Output, size: tf.OutputT :type, align_corners :bool)  ->(resizedImages: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ResizeBilinear",
-        Input: [  images,  size, )]
+        Input: [ images, size]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Computes the gradient of bilinear interpolation.
 
 
-_inputArg
- grads:: .  original_image:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func resizeBilinearGrad(scope:Scope,grads: tf.Output, original_image: tf.Output)  -> (output: tf.Output){
+func resizeBilinearGrad(scope:Scope,grads: tf.Output, originalImage: tf.OutputT :type, align_corners :bool)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ResizeBilinearGrad",
-        Input: [  grads,  original_image, )]
+        Input: [ grads, originalImage]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Resize `images` to `size` using nearest neighbor interpolation.
 
 
-_inputArg
- images:: .T  size:: . 
-_outputArg
-
-_outputArg
- resized_images::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func resizeNearestNeighbor(scope:Scope,images: tf.Output, size: tf.Output)  -> (resized_images: tf.Output){
+func resizeNearestNeighbor(scope:Scope,images: tf.Output, size: tf.OutputT :type, align_corners :bool)  ->(resizedImages: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ResizeNearestNeighbor",
-        Input: [  images,  size, )]
+        Input: [ images, size]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Computes the gradient of nearest neighbor interpolation.
 
 
-_inputArg
- grads:: .T  size:: . 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func resizeNearestNeighborGrad(scope:Scope,grads: tf.Output, size: tf.Output)  -> (output: tf.Output){
+func resizeNearestNeighborGrad(scope:Scope,grads: tf.Output, size: tf.OutputT :type, align_corners :bool)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ResizeNearestNeighborGrad",
-        Input: [  grads,  size, )]
+        Input: [ grads, size]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -21364,41 +12207,21 @@ update = (update_accum + epsilon).sqrt() * (accum + epsilon()).rsqrt() * grad;
 update_accum = rho() * update_accum + (1 - rho()) * update.square();
 var -= update;
 
-_inputArg
- var:: .  accum:: .  accum_update:: .  lr:: .T  rho:: .T  epsilon:: .T  grad:: .T 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func resourceApplyAdadelta(scope:Scope,var: tf.Output, accum: tf.Output, accum_update: tf.Output, lr: tf.Output, rho: tf.Output, epsilon: tf.Output, grad: tf.Output)  -> (){
+func resourceApplyAdadelta(scope:Scope,`var`: tf.Output, accum: tf.Output, accumUpdate: tf.Output, lr: tf.Output, rho: tf.Output, epsilon: tf.Output, grad: tf.OutputT :type, use_locking :bool)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ResourceApplyAdadelta",
-        Input: [  var,  accum,  accum_update,  lr,  rho,  epsilon,  grad, )]
+        Input: [ `var`, accum, accumUpdate, lr, rho, epsilon, grad]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
@@ -21407,82 +12230,42 @@ Update '*var' according to the adagrad scheme.
 accum += grad * grad
 var -= lr * grad * (1 / sqrt(accum))
 
-_inputArg
- var:: .  accum:: .  lr:: .T  grad:: .T 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func resourceApplyAdagrad(scope:Scope,var: tf.Output, accum: tf.Output, lr: tf.Output, grad: tf.Output)  -> (){
+func resourceApplyAdagrad(scope:Scope,`var`: tf.Output, accum: tf.Output, lr: tf.Output, grad: tf.OutputT :type, use_locking :bool)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ResourceApplyAdagrad",
-        Input: [  var,  accum,  lr,  grad, )]
+        Input: [ `var`, accum, lr, grad]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
 Update '*var' according to the proximal adagrad scheme.
 
 
-_inputArg
- var:: .  gradient_accumulator:: .  gradient_squared_accumulator:: .  grad:: .T  lr:: .T  l1:: .T  l2:: .T  global_step:: . 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func resourceApplyAdagradDA(scope:Scope,var: tf.Output, gradient_accumulator: tf.Output, gradient_squared_accumulator: tf.Output, grad: tf.Output, lr: tf.Output, l1: tf.Output, l2: tf.Output, global_step: tf.Output)  -> (){
+func resourceApplyAdagradDA(scope:Scope,`var`: tf.Output, gradientAccumulator: tf.Output, gradientSquaredAccumulator: tf.Output, grad: tf.Output, lr: tf.Output, l1: tf.Output, l2: tf.Output, globalStep: tf.OutputT :type, use_locking :bool)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ResourceApplyAdagradDA",
-        Input: [  var,  gradient_accumulator,  gradient_squared_accumulator,  grad,  lr,  l1,  l2,  global_step, )]
+        Input: [ `var`, gradientAccumulator, gradientSquaredAccumulator, grad, lr, l1, l2, globalStep]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
@@ -21493,41 +12276,21 @@ m_t <- beta1 * m_{t-1} + (1 - beta1) * g_t
 v_t <- beta2 * v_{t-1} + (1 - beta2) * g_t * g_t
 variable <- variable - lr_t * m_t / (sqrt(v_t) + epsilon)
 
-_inputArg
- var:: .  m:: .  v:: .  beta1_power:: .T  beta2_power:: .T  lr:: .T  beta1:: .T  beta2:: .T  epsilon:: .T  grad:: .T 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func resourceApplyAdam(scope:Scope,var: tf.Output, m: tf.Output, v: tf.Output, beta1_power: tf.Output, beta2_power: tf.Output, lr: tf.Output, beta1: tf.Output, beta2: tf.Output, epsilon: tf.Output, grad: tf.Output)  -> (){
+func resourceApplyAdam(scope:Scope,`var`: tf.Output, m: tf.Output, v: tf.Output, beta1Power: tf.Output, beta2Power: tf.Output, lr: tf.Output, beta1: tf.Output, beta2: tf.Output, epsilon: tf.Output, grad: tf.OutputT :type, use_locking :bool, use_nesterov :bool)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ResourceApplyAdam",
-        Input: [  var,  m,  v,  beta1_power,  beta2_power,  lr,  beta1,  beta2,  epsilon,  grad, )]
+        Input: [ `var`, m, v, beta1Power, beta2Power, lr, beta1, beta2, epsilon, grad]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
@@ -21548,41 +12311,21 @@ ms <- rho * ms_{t-1} + (1-rho) * grad * grad
 mom <- momentum * mom_{t-1} + lr * grad / sqrt(ms - mg * mg + epsilon)
 var <- var - mom
 
-_inputArg
- var:: .  mg:: .  ms:: .  mom:: .  lr:: .T  rho:: .T  momentum:: .T  epsilon:: .T  grad:: .T 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func resourceApplyCenteredRMSProp(scope:Scope,var: tf.Output, mg: tf.Output, ms: tf.Output, mom: tf.Output, lr: tf.Output, rho: tf.Output, momentum: tf.Output, epsilon: tf.Output, grad: tf.Output)  -> (){
+func resourceApplyCenteredRMSProp(scope:Scope,`var`: tf.Output, mg: tf.Output, ms: tf.Output, mom: tf.Output, lr: tf.Output, rho: tf.Output, momentum: tf.Output, epsilon: tf.Output, grad: tf.OutputT :type, use_locking :bool)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ResourceApplyCenteredRMSProp",
-        Input: [  var,  mg,  ms,  mom,  lr,  rho,  momentum,  epsilon,  grad, )]
+        Input: [ `var`, mg, ms, mom, lr, rho, momentum, epsilon, grad]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
@@ -21594,82 +12337,42 @@ quadratic = 1.0 / (accum_new^(lr_power) * lr) + 2 * l2
 var = (sign(linear) * l1 - linear) / quadratic if |linear| > l1 else 0.0
 accum = accum_new
 
-_inputArg
- var:: .  accum:: .  linear:: .  grad:: .T  lr:: .T  l1:: .T  l2:: .T  lr_power:: .T 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func resourceApplyFtrl(scope:Scope,var: tf.Output, accum: tf.Output, linear: tf.Output, grad: tf.Output, lr: tf.Output, l1: tf.Output, l2: tf.Output, lr_power: tf.Output)  -> (){
+func resourceApplyFtrl(scope:Scope,`var`: tf.Output, accum: tf.Output, linear: tf.Output, grad: tf.Output, lr: tf.Output, l1: tf.Output, l2: tf.Output, lrPower: tf.OutputT :type, use_locking :bool)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ResourceApplyFtrl",
-        Input: [  var,  accum,  linear,  grad,  lr,  l1,  l2,  lr_power, )]
+        Input: [ `var`, accum, linear, grad, lr, l1, l2, lrPower]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
 Update '*var' by subtracting 'alpha' * 'delta' from it.
 
 
-_inputArg
- var:: .  alpha:: .T  delta:: .T 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func resourceApplyGradientDescent(scope:Scope,var: tf.Output, alpha: tf.Output, delta: tf.Output)  -> (){
+func resourceApplyGradientDescent(scope:Scope,`var`: tf.Output, alpha: tf.Output, delta: tf.OutputT :type, use_locking :bool)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ResourceApplyGradientDescent",
-        Input: [  var,  alpha,  delta, )]
+        Input: [ `var`, alpha, delta]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
@@ -21679,41 +12382,21 @@ want to use Nesterov momentum.
 accum = accum * momentum + grad
 var -= lr * accum
 
-_inputArg
- var:: .  accum:: .  lr:: .T  grad:: .T  momentum:: .T 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func resourceApplyMomentum(scope:Scope,var: tf.Output, accum: tf.Output, lr: tf.Output, grad: tf.Output, momentum: tf.Output)  -> (){
+func resourceApplyMomentum(scope:Scope,`var`: tf.Output, accum: tf.Output, lr: tf.Output, grad: tf.Output, momentum: tf.OutputT :type, use_locking :bool, use_nesterov :bool)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ResourceApplyMomentum",
-        Input: [  var,  accum,  lr,  grad,  momentum, )]
+        Input: [ `var`, accum, lr, grad, momentum]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
@@ -21723,41 +12406,21 @@ accum += grad * grad
 prox_v = var - lr * grad * (1 / sqrt(accum))
 var = sign(prox_v)/(1+lr*l2) * max{|prox_v|-lr*l1,0}
 
-_inputArg
- var:: .  accum:: .  lr:: .T  l1:: .T  l2:: .T  grad:: .T 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func resourceApplyProximalAdagrad(scope:Scope,var: tf.Output, accum: tf.Output, lr: tf.Output, l1: tf.Output, l2: tf.Output, grad: tf.Output)  -> (){
+func resourceApplyProximalAdagrad(scope:Scope,`var`: tf.Output, accum: tf.Output, lr: tf.Output, l1: tf.Output, l2: tf.Output, grad: tf.OutputT :type, use_locking :bool)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ResourceApplyProximalAdagrad",
-        Input: [  var,  accum,  lr,  l1,  l2,  grad, )]
+        Input: [ `var`, accum, lr, l1, l2, grad]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
@@ -21766,41 +12429,21 @@ Update '*var' as FOBOS algorithm with fixed learning rate.
 prox_v = var - alpha * delta
 var = sign(prox_v)/(1+alpha*l2) * max{|prox_v|-alpha*l1,0}
 
-_inputArg
- var:: .  alpha:: .T  l1:: .T  l2:: .T  delta:: .T 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func resourceApplyProximalGradientDescent(scope:Scope,var: tf.Output, alpha: tf.Output, l1: tf.Output, l2: tf.Output, delta: tf.Output)  -> (){
+func resourceApplyProximalGradientDescent(scope:Scope,`var`: tf.Output, alpha: tf.Output, l1: tf.Output, l2: tf.Output, delta: tf.OutputT :type, use_locking :bool)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ResourceApplyProximalGradientDescent",
-        Input: [  var,  alpha,  l1,  l2,  delta, )]
+        Input: [ `var`, alpha, l1, l2, delta]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
@@ -21815,82 +12458,42 @@ ms <- rho * ms_{t-1} + (1-rho) * grad * grad
 mom <- momentum * mom_{t-1} + lr * grad / sqrt(ms + epsilon)
 var <- var - mom
 
-_inputArg
- var:: .  ms:: .  mom:: .  lr:: .T  rho:: .T  momentum:: .T  epsilon:: .T  grad:: .T 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func resourceApplyRMSProp(scope:Scope,var: tf.Output, ms: tf.Output, mom: tf.Output, lr: tf.Output, rho: tf.Output, momentum: tf.Output, epsilon: tf.Output, grad: tf.Output)  -> (){
+func resourceApplyRMSProp(scope:Scope,`var`: tf.Output, ms: tf.Output, mom: tf.Output, lr: tf.Output, rho: tf.Output, momentum: tf.Output, epsilon: tf.Output, grad: tf.OutputT :type, use_locking :bool)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ResourceApplyRMSProp",
-        Input: [  var,  ms,  mom,  lr,  rho,  momentum,  epsilon,  grad, )]
+        Input: [ `var`, ms, mom, lr, rho, momentum, epsilon, grad]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
 var: Should be from a Variable().
 
 
-_inputArg
- var:: .  accum:: .  accum_update:: .  lr:: .T  rho:: .T  epsilon:: .T  grad:: .T  indices:: .Tindices 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func resourceSparseApplyAdadelta(scope:Scope,var: tf.Output, accum: tf.Output, accum_update: tf.Output, lr: tf.Output, rho: tf.Output, epsilon: tf.Output, grad: tf.Output, indices: tf.Output)  -> (){
+func resourceSparseApplyAdadelta(scope:Scope,`var`: tf.Output, accum: tf.Output, accumUpdate: tf.Output, lr: tf.Output, rho: tf.Output, epsilon: tf.Output, grad: tf.Output, indices: tf.OutputT :type, Tindices :type, use_locking :bool)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ResourceSparseApplyAdadelta",
-        Input: [  var,  accum,  accum_update,  lr,  rho,  epsilon,  grad,  indices, )]
+        Input: [ `var`, accum, accumUpdate, lr, rho, epsilon, grad, indices]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
@@ -21900,82 +12503,42 @@ That is for rows we have grad for, we update var and accum as follows:
 accum += grad * grad
 var -= lr * grad * (1 / sqrt(accum))
 
-_inputArg
- var:: .  accum:: .  lr:: .T  grad:: .T  indices:: .Tindices 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func resourceSparseApplyAdagrad(scope:Scope,var: tf.Output, accum: tf.Output, lr: tf.Output, grad: tf.Output, indices: tf.Output)  -> (){
+func resourceSparseApplyAdagrad(scope:Scope,`var`: tf.Output, accum: tf.Output, lr: tf.Output, grad: tf.Output, indices: tf.OutputT :type, Tindices :type, use_locking :bool)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ResourceSparseApplyAdagrad",
-        Input: [  var,  accum,  lr,  grad,  indices, )]
+        Input: [ `var`, accum, lr, grad, indices]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
 Update entries in '*var' and '*accum' according to the proximal adagrad scheme.
 
 
-_inputArg
- var:: .  gradient_accumulator:: .  gradient_squared_accumulator:: .  grad:: .T  indices:: .Tindices  lr:: .T  l1:: .T  l2:: .T  global_step:: . 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func resourceSparseApplyAdagradDA(scope:Scope,var: tf.Output, gradient_accumulator: tf.Output, gradient_squared_accumulator: tf.Output, grad: tf.Output, indices: tf.Output, lr: tf.Output, l1: tf.Output, l2: tf.Output, global_step: tf.Output)  -> (){
+func resourceSparseApplyAdagradDA(scope:Scope,`var`: tf.Output, gradientAccumulator: tf.Output, gradientSquaredAccumulator: tf.Output, grad: tf.Output, indices: tf.Output, lr: tf.Output, l1: tf.Output, l2: tf.Output, globalStep: tf.OutputT :type, Tindices :type, use_locking :bool)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ResourceSparseApplyAdagradDA",
-        Input: [  var,  gradient_accumulator,  gradient_squared_accumulator,  grad,  indices,  lr,  l1,  l2,  global_step, )]
+        Input: [ `var`, gradientAccumulator, gradientSquaredAccumulator, grad, indices, lr, l1, l2, globalStep]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
@@ -21995,41 +12558,21 @@ ms <- rho * ms_{t-1} + (1-rho) * grad * grad
 mom <- momentum * mom_{t-1} + lr * grad / sqrt(ms + epsilon)
 var <- var - mom
 
-_inputArg
- var:: .  mg:: .  ms:: .  mom:: .  lr:: .T  rho:: .T  momentum:: .T  epsilon:: .T  grad:: .T  indices:: .Tindices 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func resourceSparseApplyCenteredRMSProp(scope:Scope,var: tf.Output, mg: tf.Output, ms: tf.Output, mom: tf.Output, lr: tf.Output, rho: tf.Output, momentum: tf.Output, epsilon: tf.Output, grad: tf.Output, indices: tf.Output)  -> (){
+func resourceSparseApplyCenteredRMSProp(scope:Scope,`var`: tf.Output, mg: tf.Output, ms: tf.Output, mom: tf.Output, lr: tf.Output, rho: tf.Output, momentum: tf.Output, epsilon: tf.Output, grad: tf.Output, indices: tf.OutputT :type, Tindices :type, use_locking :bool)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ResourceSparseApplyCenteredRMSProp",
-        Input: [  var,  mg,  ms,  mom,  lr,  rho,  momentum,  epsilon,  grad,  indices, )]
+        Input: [ `var`, mg, ms, mom, lr, rho, momentum, epsilon, grad, indices]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
@@ -22042,41 +12585,21 @@ quadratic = 1.0 / (accum_new^(lr_power) * lr) + 2 * l2
 var = (sign(linear) * l1 - linear) / quadratic if |linear| > l1 else 0.0
 accum = accum_new
 
-_inputArg
- var:: .  accum:: .  linear:: .  grad:: .T  indices:: .Tindices  lr:: .T  l1:: .T  l2:: .T  lr_power:: .T 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func resourceSparseApplyFtrl(scope:Scope,var: tf.Output, accum: tf.Output, linear: tf.Output, grad: tf.Output, indices: tf.Output, lr: tf.Output, l1: tf.Output, l2: tf.Output, lr_power: tf.Output)  -> (){
+func resourceSparseApplyFtrl(scope:Scope,`var`: tf.Output, accum: tf.Output, linear: tf.Output, grad: tf.Output, indices: tf.Output, lr: tf.Output, l1: tf.Output, l2: tf.Output, lrPower: tf.OutputT :type, Tindices :type, use_locking :bool)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ResourceSparseApplyFtrl",
-        Input: [  var,  accum,  linear,  grad,  indices,  lr,  l1,  l2,  lr_power, )]
+        Input: [ `var`, accum, linear, grad, indices, lr, l1, l2, lrPower]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
@@ -22087,41 +12610,21 @@ That is for rows we have grad for, we update var and accum as follows:
 accum = accum * momentum + grad
 var -= lr * accum
 
-_inputArg
- var:: .  accum:: .  lr:: .T  grad:: .T  indices:: .Tindices  momentum:: .T 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func resourceSparseApplyMomentum(scope:Scope,var: tf.Output, accum: tf.Output, lr: tf.Output, grad: tf.Output, indices: tf.Output, momentum: tf.Output)  -> (){
+func resourceSparseApplyMomentum(scope:Scope,`var`: tf.Output, accum: tf.Output, lr: tf.Output, grad: tf.Output, indices: tf.Output, momentum: tf.OutputT :type, Tindices :type, use_locking :bool, use_nesterov :bool)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ResourceSparseApplyMomentum",
-        Input: [  var,  accum,  lr,  grad,  indices,  momentum, )]
+        Input: [ `var`, accum, lr, grad, indices, momentum]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
@@ -22133,41 +12636,21 @@ prox_v = var
 prox_v -= lr * grad * (1 / sqrt(accum))
 var = sign(prox_v)/(1+lr*l2) * max{|prox_v|-lr*l1,0}
 
-_inputArg
- var:: .  accum:: .  lr:: .T  l1:: .T  l2:: .T  grad:: .T  indices:: .Tindices 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func resourceSparseApplyProximalAdagrad(scope:Scope,var: tf.Output, accum: tf.Output, lr: tf.Output, l1: tf.Output, l2: tf.Output, grad: tf.Output, indices: tf.Output)  -> (){
+func resourceSparseApplyProximalAdagrad(scope:Scope,`var`: tf.Output, accum: tf.Output, lr: tf.Output, l1: tf.Output, l2: tf.Output, grad: tf.Output, indices: tf.OutputT :type, Tindices :type, use_locking :bool)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ResourceSparseApplyProximalAdagrad",
-        Input: [  var,  accum,  lr,  l1,  l2,  grad,  indices, )]
+        Input: [ `var`, accum, lr, l1, l2, grad, indices]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
@@ -22177,41 +12660,21 @@ That is for rows we have grad for, we update var as follows:
 prox_v = var - alpha * grad
 var = sign(prox_v)/(1+alpha*l2) * max{|prox_v|-alpha*l1,0}
 
-_inputArg
- var:: .  alpha:: .T  l1:: .T  l2:: .T  grad:: .T  indices:: .Tindices 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func resourceSparseApplyProximalGradientDescent(scope:Scope,var: tf.Output, alpha: tf.Output, l1: tf.Output, l2: tf.Output, grad: tf.Output, indices: tf.Output)  -> (){
+func resourceSparseApplyProximalGradientDescent(scope:Scope,`var`: tf.Output, alpha: tf.Output, l1: tf.Output, l2: tf.Output, grad: tf.Output, indices: tf.OutputT :type, Tindices :type, use_locking :bool)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ResourceSparseApplyProximalGradientDescent",
-        Input: [  var,  alpha,  l1,  l2,  grad,  indices, )]
+        Input: [ `var`, alpha, l1, l2, grad, indices]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
@@ -22226,41 +12689,21 @@ ms <- rho * ms_{t-1} + (1-rho) * grad * grad
 mom <- momentum * mom_{t-1} + lr * grad / sqrt(ms + epsilon)
 var <- var - mom
 
-_inputArg
- var:: .  ms:: .  mom:: .  lr:: .T  rho:: .T  momentum:: .T  epsilon:: .T  grad:: .T  indices:: .Tindices 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func resourceSparseApplyRMSProp(scope:Scope,var: tf.Output, ms: tf.Output, mom: tf.Output, lr: tf.Output, rho: tf.Output, momentum: tf.Output, epsilon: tf.Output, grad: tf.Output, indices: tf.Output)  -> (){
+func resourceSparseApplyRMSProp(scope:Scope,`var`: tf.Output, ms: tf.Output, mom: tf.Output, lr: tf.Output, rho: tf.Output, momentum: tf.Output, epsilon: tf.Output, grad: tf.Output, indices: tf.OutputT :type, Tindices :type, use_locking :bool)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ResourceSparseApplyRMSProp",
-        Input: [  var,  ms,  mom,  lr,  rho,  momentum,  epsilon,  grad,  indices, )]
+        Input: [ `var`, ms, mom, lr, rho, momentum, epsilon, grad, indices]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
@@ -22272,41 +12715,21 @@ The values of `value` are assigned to the positions in the variable
 NOTE this op currently does not support broadcasting and so `value`'s
 shape must be exactly the shape produced by the slice of `ref`.
 
-_inputArg
- ref:: .  begin:: .Index  end:: .Index  strides:: .Index  value:: .T 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func resourceStridedSliceAssign(scope:Scope,ref: tf.Output, begin: tf.Output, end: tf.Output, strides: tf.Output, value: tf.Output)  -> (){
+func resourceStridedSliceAssign(scope:Scope,ref: tf.Output, begin: tf.Output, end: tf.Output, strides: tf.Output, value: tf.OutputT :type, Index :type, begin_mask :int, end_mask :int, ellipsis_mask :int, new_axis_mask :int, shrink_axis_mask :int)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ResourceStridedSliceAssign",
-        Input: [  ref,  begin,  end,  strides,  value, )]
+        Input: [ ref, begin, end, strides, value]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
@@ -22327,44 +12750,23 @@ performance, not correctness.  The default value -1 means files are processed in
 order.
 See also `RestoreSlice`.
 
-_inputArg
- file_pattern:: .  tensor_name:: . 
-_outputArg
-
-_outputArg
- tensor::dt 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func restore(scope:Scope,file_pattern: tf.Output, tensor_name: tf.Output)  -> (tensor: tf.Output){
+func restore(scope:Scope,filePattern: tf.Output, tensorName: tf.Outputdt :type, preferred_shard :int)  ->(tensor: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Restore",
-        Input: [  file_pattern,  tensor_name, )]
+        Input: [ filePattern, tensorName]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -22376,44 +12778,23 @@ larger tensor and the slice that the restored tensor covers.
 The `shape_and_slice` input has the same format as the
 elements of the `shapes_and_slices` input of the `SaveSlices` op.
 
-_inputArg
- file_pattern:: .  tensor_name:: .  shape_and_slice:: . 
-_outputArg
-
-_outputArg
- tensor::dt 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func restoreSlice(scope:Scope,file_pattern: tf.Output, tensor_name: tf.Output, shape_and_slice: tf.Output)  -> (tensor: tf.Output){
+func restoreSlice(scope:Scope,filePattern: tf.Output, tensorName: tf.Output, shapeAndSlice: tf.Outputdt :type, preferred_shard :int)  ->(tensor: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "RestoreSlice",
-        Input: [  file_pattern,  tensor_name,  shape_and_slice, )]
+        Input: [ filePattern, tensorName, shapeAndSlice]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -22431,44 +12812,23 @@ specific slices of stored tensors, "shape_and_slices" should be non-empty
 strings and correspondingly well-formed.
 Callers must ensure all the named tensors are indeed stored in the checkpoint.
 
-_inputArg
- prefix:: .  tensor_names:: .  shape_and_slices:: . 
-_outputArg
-
-_outputArg
- tensors:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func restoreV2(scope:Scope,prefix: tf.Output, tensor_names: tf.Output, shape_and_slices: tf.Output)  -> (tensors: tf.Output){
+func restoreV2(scope:Scope,`prefix`: tf.Output, tensorNames: tf.Output, shapeAndSlices: tf.Outputdtypes :list(type))  ->(tensors: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "RestoreV2",
-        Input: [  prefix,  tensor_names,  shape_and_slices, )]
+        Input: [ `prefix`, tensorNames, shapeAndSlices]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -22512,44 +12872,23 @@ reverse(t, dims) ==> [[[[8, 9, 10, 11],
                         [12, 13, 14, 15]]]]
 ```
 
-_inputArg
- tensor:: .T  dims:: . 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func reverse(scope:Scope,tensor: tf.Output, dims: tf.Output)  -> (output: tf.Output){
+func reverse(scope:Scope,tensor: tf.Output, dims: tf.OutputT :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Reverse",
-        Input: [  tensor,  dims, )]
+        Input: [ tensor, dims]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -22600,44 +12939,23 @@ output[3:, :, 2, :, ...] = input[3:, :, 2, :, ...]
 output[2:, :, 3, :, ...] = input[2:, :, 3, :, ...]
 ```
 
-_inputArg
- input:: .T  seq_lengths:: .Tlen 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func reverseSequence(scope:Scope,input: tf.Output, seq_lengths: tf.Output)  -> (output: tf.Output){
+func reverseSequence(scope:Scope,input: tf.Output, seqLengths: tf.Outputseq_dim :int, batch_dim :int, T :type, Tlen :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ReverseSequence",
-        Input: [  input,  seq_lengths, )]
+        Input: [ input, seqLengths]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -22683,44 +13001,23 @@ reverse(t, dims) ==> [[[[8, 9, 10, 11],
                         [12, 13, 14, 15]]]]
 ```
 
-_inputArg
- tensor:: .T  axis:: .Tidx 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func reverseV2(scope:Scope,tensor: tf.Output, axis: tf.Output)  -> (output: tf.Output){
+func reverseV2(scope:Scope,tensor: tf.Output, axis: tf.OutputTidx :type, T :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ReverseV2",
-        Input: [  tensor,  axis, )]
+        Input: [ tensor, axis]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -22735,44 +13032,23 @@ rint(0.5000001) ==> 1.0
 rint([-1.7, -1.5, -0.2, 0.2, 1.5, 1.7, 2.0]) ==> [-2., -2., -0., 0., 2., 2., 2.]
 ```
 
-_inputArg
- x:: .T 
-_outputArg
-
-_outputArg
- y::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func rint(scope:Scope,x: tf.Output)  -> (y: tf.Output){
+func rint(scope:Scope,x: tf.OutputT :type)  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Rint",
-        Input: [  x, )]
+        Input: [ x]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -22781,44 +13057,23 @@ Rounds the values of a tensor to the nearest integer, element-wise.
 Rounds half to even.  Also known as bankers rounding. If you want to round
 according to the current system rounding mode use std::cint.
 
-_inputArg
- x:: .T 
-_outputArg
-
-_outputArg
- y::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func round(scope:Scope,x: tf.Output)  -> (y: tf.Output){
+func round(scope:Scope,x: tf.OutputT :type)  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Round",
-        Input: [  x, )]
+        Input: [ x]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -22826,44 +13081,23 @@ Computes reciprocal of square root of x element-wise.
 
 I.e., \\(y = 1 / \sqrt{x}\\).
 
-_inputArg
- x:: .T 
-_outputArg
-
-_outputArg
- y::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func rsqrt(scope:Scope,x: tf.Output)  -> (y: tf.Output){
+func rsqrt(scope:Scope,x: tf.OutputT :type)  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Rsqrt",
-        Input: [  x, )]
+        Input: [ x]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -22872,44 +13106,23 @@ Computes the gradient for the rsqrt of `x` wrt its input.
 Specifically, `grad = dy * -0.5 * y^3`, where `y = rsqrt(x)`, and `dy`
 is the corresponding input gradient.
 
-_inputArg
- x:: .T  y:: .T 
-_outputArg
-
-_outputArg
- z::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func rsqrtGrad(scope:Scope,x: tf.Output, y: tf.Output)  -> (z: tf.Output){
+func rsqrtGrad(scope:Scope,x: tf.Output, y: tf.OutputT :type)  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "RsqrtGrad",
-        Input: [  x,  y, )]
+        Input: [ x, y]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -22947,44 +13160,23 @@ Note that if no bounding box information is available, setting
 bounding box covering the whole image. If `use_image_if_no_bounding_boxes` is
 false and no bounding boxes are supplied, an error is raised.
 
-_inputArg
- image_size:: .T  bounding_boxes:: . 
-_outputArg
-
-_outputArg
- begin::T  size::T  bboxes:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sampleDistortedBoundingBox(scope:Scope,image_size: tf.Output, bounding_boxes: tf.Output)  -> (begin: tf.Output, size: tf.Output, bboxes: tf.Output){
+func sampleDistortedBoundingBox(scope:Scope,imageSize: tf.Output, boundingBoxes: tf.OutputT :type, seed :int, seed2 :int, min_object_covered :float, aspect_ratio_range :list(float), area_range :list(float), max_attempts :int, use_image_if_no_bounding_boxes :bool)  ->(begin: tf.Output, size: tf.Output, bboxes: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SampleDistortedBoundingBox",
-        Input: [  image_size,  bounding_boxes, )]
+        Input: [ imageSize, boundingBoxes]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1))
 }
 
 /*
@@ -22994,41 +13186,21 @@ The size of `tensor_names` must match the number of tensors in `data`. `data[i]`
 is written to `filename` with name `tensor_names[i]`.
 See also `SaveSlices`.
 
-_inputArg
- filename:: .  tensor_names:: .  data:: . 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func save(scope:Scope,filename: tf.Output, tensor_names: tf.Output, data: tf.Output)  -> (){
+func save(scope:Scope,filename: tf.Output, tensorNames: tf.Output, data: tf.OutputT :list(type))  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Save",
-        Input: [  filename,  tensor_names,  data, )]
+        Input: [ filename, tensorNames, data]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
@@ -23051,41 +13223,21 @@ where each `sliceI` is either:
    case the slice covers `length` indices starting at `start`.
 See also `Save`.
 
-_inputArg
- filename:: .  tensor_names:: .  shapes_and_slices:: .  data:: . 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func saveSlices(scope:Scope,filename: tf.Output, tensor_names: tf.Output, shapes_and_slices: tf.Output, data: tf.Output)  -> (){
+func saveSlices(scope:Scope,filename: tf.Output, tensorNames: tf.Output, shapesAndSlices: tf.Output, data: tf.OutputT :list(type))  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SaveSlices",
-        Input: [  filename,  tensor_names,  shapes_and_slices,  data, )]
+        Input: [ filename, tensorNames, shapesAndSlices, data]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
@@ -23095,41 +13247,21 @@ By default, saves the named tensors in full.  If the caller wishes to save
 specific slices of full tensors, "shape_and_slices" should be non-empty strings
 and correspondingly well-formed.
 
-_inputArg
- prefix:: .  tensor_names:: .  shape_and_slices:: .  tensors:: . 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func saveV2(scope:Scope,prefix: tf.Output, tensor_names: tf.Output, shape_and_slices: tf.Output, tensors: tf.Output)  -> (){
+func saveV2(scope:Scope,`prefix`: tf.Output, tensorNames: tf.Output, shapeAndSlices: tf.Output, tensors: tf.Outputdtypes :list(type))  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SaveV2",
-        Input: [  prefix,  tensor_names,  shape_and_slices,  tensors, )]
+        Input: [ `prefix`, tensorNames, shapeAndSlices, tensors]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
@@ -23138,44 +13270,23 @@ Outputs a `Summary` protocol buffer with scalar values.
 The input `tags` and `values` must have the same shape.  The generated summary
 has a summary value for each tag-value pair in `tags` and `values`.
 
-_inputArg
- tags:: .  values:: .T 
-_outputArg
-
-_outputArg
- summary:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func scalarSummary(scope:Scope,tags: tf.Output, values: tf.Output)  -> (summary: tf.Output){
+func scalarSummary(scope:Scope,tags: tf.Output, values: tf.OutputT :type)  ->(summary: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ScalarSummary",
-        Input: [  tags,  values, )]
+        Input: [ tags, values]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -23197,44 +13308,23 @@ Requires `updates.shape = indices.shape + ref.shape[1:]`.
 <img style="width:100%" src="https://www.tensorflow.org/images/ScatterAdd.png" alt>
 </div>
 
-_inputArg
- ref:: .T  indices:: .Tindices  updates:: .T 
-_outputArg
-
-_outputArg
- output_ref::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func scatterAdd(scope:Scope,ref: tf.Output, indices: tf.Output, updates: tf.Output)  -> (output_ref: tf.Output){
+func scatterAdd(scope:Scope,ref: tf.Output, indices: tf.Output, updates: tf.OutputT :type, Tindices :type, use_locking :bool)  ->(outputRef: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ScatterAdd",
-        Input: [  ref,  indices,  updates, )]
+        Input: [ ref, indices, updates]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -23255,44 +13345,23 @@ Duplicate entries are handled correctly: if multiple `indices` reference
 the same location, their contributions divide.
 Requires `updates.shape = indices.shape + ref.shape[1:]`.
 
-_inputArg
- ref:: .T  indices:: .Tindices  updates:: .T 
-_outputArg
-
-_outputArg
- output_ref::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func scatterDiv(scope:Scope,ref: tf.Output, indices: tf.Output, updates: tf.Output)  -> (output_ref: tf.Output){
+func scatterDiv(scope:Scope,ref: tf.Output, indices: tf.Output, updates: tf.OutputT :type, Tindices :type, use_locking :bool)  ->(outputRef: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ScatterDiv",
-        Input: [  ref,  indices,  updates, )]
+        Input: [ ref, indices, updates]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -23313,44 +13382,23 @@ Duplicate entries are handled correctly: if multiple `indices` reference
 the same location, their contributions multiply.
 Requires `updates.shape = indices.shape + ref.shape[1:]`.
 
-_inputArg
- ref:: .T  indices:: .Tindices  updates:: .T 
-_outputArg
-
-_outputArg
- output_ref::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func scatterMul(scope:Scope,ref: tf.Output, indices: tf.Output, updates: tf.Output)  -> (output_ref: tf.Output){
+func scatterMul(scope:Scope,ref: tf.Output, indices: tf.Output, updates: tf.OutputT :type, Tindices :type, use_locking :bool)  ->(outputRef: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ScatterMul",
-        Input: [  ref,  indices,  updates, )]
+        Input: [ ref, indices, updates]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -23411,44 +13459,23 @@ The resulting tensor would look like this:
      [[5, 5, 5, 5], [6, 6, 6, 6], [7, 7, 7, 7], [8, 8, 8, 8]],
      [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]]
 
-_inputArg
- indices:: .Tindices  updates:: .T  shape:: .Tindices 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func scatterNd(scope:Scope,indices: tf.Output, updates: tf.Output, shape: tf.Output)  -> (output: tf.Output){
+func scatterNd(scope:Scope,indices: tf.Output, updates: tf.Output, shape: tf.OutputT :type, Tindices :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ScatterNd",
-        Input: [  indices,  updates,  shape, )]
+        Input: [ indices, updates, shape]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -23478,44 +13505,23 @@ The resulting update to ref would look like this:
 See [tf.scatter_nd](#scatter_nd) for more details about how to make updates to
 slices.
 
-_inputArg
- ref:: .T  indices:: .Tindices  updates:: .T 
-_outputArg
-
-_outputArg
- output_ref::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func scatterNdAdd(scope:Scope,ref: tf.Output, indices: tf.Output, updates: tf.Output)  -> (output_ref: tf.Output){
+func scatterNdAdd(scope:Scope,ref: tf.Output, indices: tf.Output, updates: tf.OutputT :type, Tindices :type, use_locking :bool)  ->(outputRef: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ScatterNdAdd",
-        Input: [  ref,  indices,  updates, )]
+        Input: [ ref, indices, updates]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -23545,44 +13551,23 @@ The resulting update to ref would look like this:
 See [tf.scatter_nd](#scatter_nd) for more details about how to make updates to
 slices.
 
-_inputArg
- ref:: .T  indices:: .Tindices  updates:: .T 
-_outputArg
-
-_outputArg
- output_ref::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func scatterNdSub(scope:Scope,ref: tf.Output, indices: tf.Output, updates: tf.Output)  -> (output_ref: tf.Output){
+func scatterNdSub(scope:Scope,ref: tf.Output, indices: tf.Output, updates: tf.OutputT :type, Tindices :type, use_locking :bool)  ->(outputRef: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ScatterNdSub",
-        Input: [  ref,  indices,  updates, )]
+        Input: [ ref, indices, updates]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -23614,44 +13599,23 @@ The resulting update to ref would look like this:
 See [tf.scatter_nd](#scatter_nd) for more details about how to make updates to
 slices.
 
-_inputArg
- ref:: .T  indices:: .Tindices  updates:: .T 
-_outputArg
-
-_outputArg
- output_ref::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func scatterNdUpdate(scope:Scope,ref: tf.Output, indices: tf.Output, updates: tf.Output)  -> (output_ref: tf.Output){
+func scatterNdUpdate(scope:Scope,ref: tf.Output, indices: tf.Output, updates: tf.OutputT :type, Tindices :type, use_locking :bool)  ->(outputRef: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ScatterNdUpdate",
-        Input: [  ref,  indices,  updates, )]
+        Input: [ ref, indices, updates]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -23674,44 +13638,23 @@ Requires `updates.shape = indices.shape + ref.shape[1:]`.
 <img style="width:100%" src="https://www.tensorflow.org/images/ScatterSub.png" alt>
 </div>
 
-_inputArg
- ref:: .T  indices:: .Tindices  updates:: .T 
-_outputArg
-
-_outputArg
- output_ref::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func scatterSub(scope:Scope,ref: tf.Output, indices: tf.Output, updates: tf.Output)  -> (output_ref: tf.Output){
+func scatterSub(scope:Scope,ref: tf.Output, indices: tf.Output, updates: tf.OutputT :type, Tindices :type, use_locking :bool)  ->(outputRef: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ScatterSub",
-        Input: [  ref,  indices,  updates, )]
+        Input: [ ref, indices, updates]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -23736,88 +13679,46 @@ Requires `updates.shape = indices.shape + ref.shape[1:]`.
 <img style="width:100%" src="https://www.tensorflow.org/images/ScatterUpdate.png" alt>
 </div>
 
-_inputArg
- ref:: .T  indices:: .Tindices  updates:: .T 
-_outputArg
-
-_outputArg
- output_ref::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func scatterUpdate(scope:Scope,ref: tf.Output, indices: tf.Output, updates: tf.Output)  -> (output_ref: tf.Output){
+func scatterUpdate(scope:Scope,ref: tf.Output, indices: tf.Output, updates: tf.OutputT :type, Tindices :type, use_locking :bool)  ->(outputRef: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ScatterUpdate",
-        Input: [  ref,  indices,  updates, )]
+        Input: [ ref, indices, updates]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Computes fingerprints of the input strings.
 
 
-_inputArg
- input:: . 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sdcaFprint(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func sdcaFprint(scope:Scope,input: tf.Output)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SdcaFprint",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -23837,85 +13738,44 @@ Peter Richtarik, Martin Takac. 2015
 [Stochastic Dual Coordinate Ascent with Adaptive Probabilities](https://arxiv.org/abs/1502.08053).<br>
 Dominik Csiba, Zheng Qu, Peter Richtarik. 2015
 
-_inputArg
- sparse_example_indices:: .  sparse_feature_indices:: .  sparse_feature_values:: .  dense_features:: .  example_weights:: .  example_labels:: .  sparse_indices:: .  sparse_weights:: .  dense_weights:: .  example_state_data:: . 
-_outputArg
-
-_outputArg
- out_example_state_data::  out_delta_sparse_weights::  out_delta_dense_weights:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sdcaOptimizer(scope:Scope,sparse_example_indices: tf.Output, sparse_feature_indices: tf.Output, sparse_feature_values: tf.Output, dense_features: tf.Output, example_weights: tf.Output, example_labels: tf.Output, sparse_indices: tf.Output, sparse_weights: tf.Output, dense_weights: tf.Output, example_state_data: tf.Output)  -> (out_example_state_data: tf.Output, out_delta_sparse_weights: tf.Output, out_delta_dense_weights: tf.Output){
+func sdcaOptimizer(scope:Scope,sparseExampleIndices: tf.Output, sparseFeatureIndices: tf.Output, sparseFeatureValues: tf.Output, denseFeatures: tf.Output, exampleWeights: tf.Output, exampleLabels: tf.Output, sparseIndices: tf.Output, sparseWeights: tf.Output, denseWeights: tf.Output, exampleStateData: tf.Outputloss_type :string, adaptative :bool, num_sparse_features :int, num_sparse_features_with_values :int, num_dense_features :int, l1 :float, l2 :float, num_loss_partitions :int, num_inner_iterations :int)  ->(outExampleStateData: tf.Output, outDeltaSparseWeights: tf.Output, outDeltaDenseWeights: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SdcaOptimizer",
-        Input: [  sparse_example_indices,  sparse_feature_indices,  sparse_feature_values,  dense_features,  example_weights,  example_labels,  sparse_indices,  sparse_weights,  dense_weights,  example_state_data, )]
+        Input: [ sparseExampleIndices, sparseFeatureIndices, sparseFeatureValues, denseFeatures, exampleWeights, exampleLabels, sparseIndices, sparseWeights, denseWeights, exampleStateData]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1))
 }
 
 /*
 Applies L1 regularization shrink step on the parameters.
 
 
-_inputArg
- weights:: . 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sdcaShrinkL1(scope:Scope,weights: tf.Output)  -> (){
+func sdcaShrinkL1(scope:Scope,weights: tf.Outputnum_features :int, l1 :float, l2 :float)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SdcaShrinkL1",
-        Input: [  weights, )]
+        Input: [ weights]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
@@ -23931,44 +13791,23 @@ If the max is empty for a given segment ID `i`, `output[i] = 0`.
 <img style="width:100%" src="https://www.tensorflow.org/images/SegmentMax.png" alt>
 </div>
 
-_inputArg
- data:: .T  segment_ids:: .Tindices 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func segmentMax(scope:Scope,data: tf.Output, segment_ids: tf.Output)  -> (output: tf.Output){
+func segmentMax(scope:Scope,data: tf.Output, segmentIds: tf.OutputT :type, Tindices :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SegmentMax",
-        Input: [  data,  segment_ids, )]
+        Input: [ data, segmentIds]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -23985,44 +13824,23 @@ If the mean is empty for a given segment ID `i`, `output[i] = 0`.
 <img style="width:100%" src="https://www.tensorflow.org/images/SegmentMean.png" alt>
 </div>
 
-_inputArg
- data:: .T  segment_ids:: .Tindices 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func segmentMean(scope:Scope,data: tf.Output, segment_ids: tf.Output)  -> (output: tf.Output){
+func segmentMean(scope:Scope,data: tf.Output, segmentIds: tf.OutputT :type, Tindices :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SegmentMean",
-        Input: [  data,  segment_ids, )]
+        Input: [ data, segmentIds]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -24038,44 +13856,23 @@ If the min is empty for a given segment ID `i`, `output[i] = 0`.
 <img style="width:100%" src="https://www.tensorflow.org/images/SegmentMin.png" alt>
 </div>
 
-_inputArg
- data:: .T  segment_ids:: .Tindices 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func segmentMin(scope:Scope,data: tf.Output, segment_ids: tf.Output)  -> (output: tf.Output){
+func segmentMin(scope:Scope,data: tf.Output, segmentIds: tf.OutputT :type, Tindices :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SegmentMin",
-        Input: [  data,  segment_ids, )]
+        Input: [ data, segmentIds]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -24091,44 +13888,23 @@ If the product is empty for a given segment ID `i`, `output[i] = 1`.
 <img style="width:100%" src="https://www.tensorflow.org/images/SegmentProd.png" alt>
 </div>
 
-_inputArg
- data:: .T  segment_ids:: .Tindices 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func segmentProd(scope:Scope,data: tf.Output, segment_ids: tf.Output)  -> (output: tf.Output){
+func segmentProd(scope:Scope,data: tf.Output, segmentIds: tf.OutputT :type, Tindices :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SegmentProd",
-        Input: [  data,  segment_ids, )]
+        Input: [ data, segmentIds]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -24144,44 +13920,23 @@ If the sum is empty for a given segment ID `i`, `output[i] = 0`.
 <img style="width:100%" src="https://www.tensorflow.org/images/SegmentSum.png" alt>
 </div>
 
-_inputArg
- data:: .T  segment_ids:: .Tindices 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func segmentSum(scope:Scope,data: tf.Output, segment_ids: tf.Output)  -> (output: tf.Output){
+func segmentSum(scope:Scope,data: tf.Output, segmentIds: tf.OutputT :type, Tindices :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SegmentSum",
-        Input: [  data,  segment_ids, )]
+        Input: [ data, segmentIds]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -24218,44 +13973,23 @@ select(condition, t, e) ==> [[1, 2],
                              [7, 8]]
 ```
 
-_inputArg
- condition:: .  t:: .T  e:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func select(scope:Scope,condition: tf.Output, t: tf.Output, e: tf.Output)  -> (output: tf.Output){
+func select(scope:Scope,condition: tf.Output, t: tf.Output, e: tf.OutputT :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Select",
-        Input: [  condition,  t,  e, )]
+        Input: [ condition, t, e]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -24267,44 +14001,23 @@ SelfAdjointEig.
 The result is a [..., M+1, M] matrix with [..., 0,:] containing the
 eigenvalues, and subsequent [...,1:, :] containing the eigenvectors.
 
-_inputArg
- input:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func selfAdjointEig(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func selfAdjointEig(scope:Scope,input: tf.OutputT :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SelfAdjointEig",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -24320,44 +14033,23 @@ e, v = self_adjoint_eig(a)
 e = self_adjoint_eig(a, compute_v=False)
 ```
 
-_inputArg
- input:: .T 
-_outputArg
-
-_outputArg
- e::T  v::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func selfAdjointEigV2(scope:Scope,input: tf.Output)  -> (e: tf.Output, v: tf.Output){
+func selfAdjointEigV2(scope:Scope,input: tf.Outputcompute_v :bool, T :type)  ->(e: tf.Output, v: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SelfAdjointEigV2",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1))
 }
 
 /*
@@ -24370,88 +14062,46 @@ must be sorted in increasing order of this first dimension.  The serialized
 rank `R-1`.
 The minibatch size `N` is extracted from `sparse_shape[0]`.
 
-_inputArg
- sparse_indices:: .  sparse_values:: .T  sparse_shape:: . 
-_outputArg
-
-_outputArg
- serialized_sparse:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func serializeManySparse(scope:Scope,sparse_indices: tf.Output, sparse_values: tf.Output, sparse_shape: tf.Output)  -> (serialized_sparse: tf.Output){
+func serializeManySparse(scope:Scope,sparseIndices: tf.Output, sparseValues: tf.Output, sparseShape: tf.OutputT :type)  ->(serializedSparse: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SerializeManySparse",
-        Input: [  sparse_indices,  sparse_values,  sparse_shape, )]
+        Input: [ sparseIndices, sparseValues, sparseShape]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Serialize a `SparseTensor` into a string 3-vector (1-D `Tensor`) object.
 
 
-_inputArg
- sparse_indices:: .  sparse_values:: .T  sparse_shape:: . 
-_outputArg
-
-_outputArg
- serialized_sparse:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func serializeSparse(scope:Scope,sparse_indices: tf.Output, sparse_values: tf.Output, sparse_shape: tf.Output)  -> (serialized_sparse: tf.Output){
+func serializeSparse(scope:Scope,sparseIndices: tf.Output, sparseValues: tf.Output, sparseShape: tf.OutputT :type)  ->(serializedSparse: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SerializeSparse",
-        Input: [  sparse_indices,  sparse_values,  sparse_shape, )]
+        Input: [ sparseIndices, sparseValues, sparseShape]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -24463,44 +14113,23 @@ allowed but ignored.
 If `validate_indices` is `True`, this op validates the order and range of `set`
 indices.
 
-_inputArg
- set_indices:: .  set_values:: .T  set_shape:: . 
-_outputArg
-
-_outputArg
- size:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func setSize(scope:Scope,set_indices: tf.Output, set_values: tf.Output, set_shape: tf.Output)  -> (size: tf.Output){
+func setSize(scope:Scope,setIndices: tf.Output, setValues: tf.Output, setShape: tf.Outputvalidate_indices :bool, T :type)  ->(size: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SetSize",
-        Input: [  set_indices,  set_values,  set_shape, )]
+        Input: [ setIndices, setValues, setShape]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -24513,44 +14142,23 @@ For example:
 shape(t) ==> [2, 2, 3]
 ```
 
-_inputArg
- input:: .T 
-_outputArg
-
-_outputArg
- output::out_type 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func shape(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func shape(scope:Scope,input: tf.OutputT :type, out_type :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Shape",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -24558,44 +14166,23 @@ Returns shape of tensors.
 
 This operation returns N 1-D integer tensors representing shape of `input[i]s`.
 
-_inputArg
- input:: .T 
-_outputArg
-
-_outputArg
- output::out_type 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func shapeN(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func shapeN(scope:Scope,input: tf.OutputN :int, T :type, out_type :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ShapeN",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -24603,132 +14190,69 @@ Generate a sharded filename. The filename is printf formatted as
 
    %s-%05d-of-%05d, basename, shard, num_shards.
 
-_inputArg
- basename:: .  shard:: .  num_shards:: . 
-_outputArg
-
-_outputArg
- filename:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func shardedFilename(scope:Scope,basename: tf.Output, shard: tf.Output, num_shards: tf.Output)  -> (filename: tf.Output){
+func shardedFilename(scope:Scope,basename: tf.Output, shard: tf.Output, numShards: tf.Output)  ->(filename: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ShardedFilename",
-        Input: [  basename,  shard,  num_shards, )]
+        Input: [ basename, shard, numShards]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Generate a glob pattern matching all sharded file names.
 
 
-_inputArg
- basename:: .  num_shards:: . 
-_outputArg
-
-_outputArg
- filename:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func shardedFilespec(scope:Scope,basename: tf.Output, num_shards: tf.Output)  -> (filename: tf.Output){
+func shardedFilespec(scope:Scope,basename: tf.Output, numShards: tf.Output)  ->(filename: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ShardedFilespec",
-        Input: [  basename,  num_shards, )]
+        Input: [ basename, numShards]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Creates a dataset that shuffles elements from `input_dataset` pseudorandomly.
 
 
-_inputArg
- input_dataset:: .  buffer_size:: .  seed:: .  seed2:: . 
-_outputArg
-
-_outputArg
- handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func shuffleDataset(scope:Scope,input_dataset: tf.Output, buffer_size: tf.Output, seed: tf.Output, seed2: tf.Output)  -> (handle: tf.Output){
+func shuffleDataset(scope:Scope,inputDataset: tf.Output, bufferSize: tf.Output, seed: tf.Output, seed2: tf.Outputoutput_types :list(type), output_shapes :list(shape))  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ShuffleDataset",
-        Input: [  input_dataset,  buffer_size,  seed,  seed2, )]
+        Input: [ inputDataset, bufferSize, seed, seed2]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -24736,44 +14260,23 @@ Computes sigmoid of `x` element-wise.
 
 Specifically, `y = 1 / (1 + exp(-x))`.
 
-_inputArg
- x:: .T 
-_outputArg
-
-_outputArg
- y::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sigmoid(scope:Scope,x: tf.Output)  -> (y: tf.Output){
+func sigmoid(scope:Scope,x: tf.OutputT :type)  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Sigmoid",
-        Input: [  x, )]
+        Input: [ x]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -24782,44 +14285,23 @@ Computes the gradient of the sigmoid of `x` wrt its input.
 Specifically, `grad = dy * y * (1 - y)`, where `y = sigmoid(x)`, and
 `dy` is the corresponding input gradient.
 
-_inputArg
- x:: .T  y:: .T 
-_outputArg
-
-_outputArg
- z::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sigmoidGrad(scope:Scope,x: tf.Output, y: tf.Output)  -> (z: tf.Output){
+func sigmoidGrad(scope:Scope,x: tf.Output, y: tf.OutputT :type)  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SigmoidGrad",
-        Input: [  x,  y, )]
+        Input: [ x, y]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -24828,88 +14310,46 @@ Returns an element-wise indication of the sign of a number.
 `y = sign(x) = -1` if `x < 0`; 0 if `x == 0`; 1 if `x > 0`.
 For complex numbers, `y = sign(x) = x / |x|` if `x != 0`, otherwise `y = 0`.
 
-_inputArg
- x:: .T 
-_outputArg
-
-_outputArg
- y::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sign(scope:Scope,x: tf.Output)  -> (y: tf.Output){
+func sign(scope:Scope,x: tf.OutputT :type)  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Sign",
-        Input: [  x, )]
+        Input: [ x]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Computes sin of x element-wise.
 
 
-_inputArg
- x:: .T 
-_outputArg
-
-_outputArg
- y::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sin(scope:Scope,x: tf.Output)  -> (y: tf.Output){
+func sin(scope:Scope,x: tf.OutputT :type)  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Sin",
-        Input: [  x, )]
+        Input: [ x]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -24923,131 +14363,69 @@ For example:
 size(t) ==> 12
 ```
 
-_inputArg
- input:: .T 
-_outputArg
-
-_outputArg
- output::out_type 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func size(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func size(scope:Scope,input: tf.OutputT :type, out_type :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Size",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Creates a dataset that skips `count` elements from the `input_dataset`.
 
 
-_inputArg
- input_dataset:: .  count:: . 
-_outputArg
-
-_outputArg
- handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func skipDataset(scope:Scope,input_dataset: tf.Output, count: tf.Output)  -> (handle: tf.Output){
+func skipDataset(scope:Scope,inputDataset: tf.Output, count: tf.Outputoutput_types :list(type), output_shapes :list(shape))  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SkipDataset",
-        Input: [  input_dataset,  count, )]
+        Input: [ inputDataset, count]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Parses a text file and creates a batch of examples.
 
 
-_inputArg
-_outputArg
-
-_outputArg
- vocab_word::  vocab_freq::  words_per_epoch::  current_epoch::  total_words_processed::  examples::  labels:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func skipgram(scope:Scope)  -> (vocab_word: tf.Output, vocab_freq: tf.Output, words_per_epoch: tf.Output, current_epoch: tf.Output, total_words_processed: tf.Output, examples: tf.Output, labels: tf.Output){
+func skipgram(scope:Scopefilename :string, batch_size :int, window_size :int, min_count :int, subsample :float)  ->(vocabWord: tf.Output, vocabFreq: tf.Output, wordsPerEpoch: tf.Output, currentEpoch: tf.Output, totalWordsProcessed: tf.Output, examples: tf.Output, labels: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Skipgram",
-        Input: [ )]
+        Input: [ ]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3),op.Output(4),op.Output(5),op.Output(6),op.Output(7))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1),op.Output(4 -1),op.Output(5 -1),op.Output(6 -1),op.Output(7 -1))
 }
 
 /*
@@ -25059,44 +14437,23 @@ whose values are extracted from 'input' starting at the offsets in
 *Requirements*:
   0 <= begin[i] <= begin[i] + size[i] <= Di  for i in [0, n)
 
-_inputArg
- input:: .T  begin:: .Index  size:: .Index 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func slice(scope:Scope,input: tf.Output, begin: tf.Output, size: tf.Output)  -> (output: tf.Output){
+func slice(scope:Scope,input: tf.Output, begin: tf.Output, size: tf.OutputT :type, Index :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Slice",
-        Input: [  input,  begin,  size, )]
+        Input: [ input, begin, size]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -25105,44 +14462,23 @@ Computes softmax activations.
 For each batch `i` and class `j` we have
     softmax[i, j] = exp(logits[i, j]) / sum_j(exp(logits[i, j]))
 
-_inputArg
- logits:: .T 
-_outputArg
-
-_outputArg
- softmax::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func softmax(scope:Scope,logits: tf.Output)  -> (softmax: tf.Output){
+func softmax(scope:Scope,logits: tf.OutputT :type)  ->(softmax: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Softmax",
-        Input: [  logits, )]
+        Input: [ logits]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -25150,220 +14486,115 @@ Computes softmax cross entropy cost and gradients to backpropagate.
 
 Inputs are the logits, not probabilities.
 
-_inputArg
- features:: .T  labels:: .T 
-_outputArg
-
-_outputArg
- loss::T  backprop::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func softmaxCrossEntropyWithLogits(scope:Scope,features: tf.Output, labels: tf.Output)  -> (loss: tf.Output, backprop: tf.Output){
+func softmaxCrossEntropyWithLogits(scope:Scope,features: tf.Output, labels: tf.OutputT :type)  ->(loss: tf.Output, backprop: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SoftmaxCrossEntropyWithLogits",
-        Input: [  features,  labels, )]
+        Input: [ features, labels]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1))
 }
 
 /*
 Computes softplus: `log(exp(features) + 1)`.
 
 
-_inputArg
- features:: .T 
-_outputArg
-
-_outputArg
- activations::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func softplus(scope:Scope,features: tf.Output)  -> (activations: tf.Output){
+func softplus(scope:Scope,features: tf.OutputT :type)  ->(activations: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Softplus",
-        Input: [  features, )]
+        Input: [ features]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Computes softplus gradients for a softplus operation.
 
 
-_inputArg
- gradients:: .T  features:: .T 
-_outputArg
-
-_outputArg
- backprops::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func softplusGrad(scope:Scope,gradients: tf.Output, features: tf.Output)  -> (backprops: tf.Output){
+func softplusGrad(scope:Scope,gradients: tf.Output, features: tf.OutputT :type)  ->(backprops: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SoftplusGrad",
-        Input: [  gradients,  features, )]
+        Input: [ gradients, features]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Computes softsign: `features / (abs(features) + 1)`.
 
 
-_inputArg
- features:: .T 
-_outputArg
-
-_outputArg
- activations::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func softsign(scope:Scope,features: tf.Output)  -> (activations: tf.Output){
+func softsign(scope:Scope,features: tf.OutputT :type)  ->(activations: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Softsign",
-        Input: [  features, )]
+        Input: [ features]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Computes softsign gradients for a softsign operation.
 
 
-_inputArg
- gradients:: .T  features:: .T 
-_outputArg
-
-_outputArg
- backprops::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func softsignGrad(scope:Scope,gradients: tf.Output, features: tf.Output)  -> (backprops: tf.Output){
+func softsignGrad(scope:Scope,gradients: tf.Output, features: tf.OutputT :type)  ->(backprops: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SoftsignGrad",
-        Input: [  gradients,  features, )]
+        Input: [ gradients, features]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -25376,44 +14607,23 @@ the `height` and `width` dimensions are moved to the `batch` dimension. After
 the zero-padding, both `height` and `width` of the input must be divisible by the
 block size.
 
-_inputArg
- input:: .T  paddings:: .Tpaddings 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func spaceToBatch(scope:Scope,input: tf.Output, paddings: tf.Output)  -> (output: tf.Output){
+func spaceToBatch(scope:Scope,input: tf.Output, paddings: tf.OutputT :type, Tpaddings :type, block_size :int)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SpaceToBatch",
-        Input: [  input,  paddings, )]
+        Input: [ input, paddings]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -25428,44 +14638,23 @@ batch position.  Prior to division into blocks, the spatial dimensions of the
 input are optionally zero padded according to `paddings`.  See below for a
 precise description.
 
-_inputArg
- input:: .T  block_shape:: .Tblock_shape  paddings:: .Tpaddings 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func spaceToBatchND(scope:Scope,input: tf.Output, block_shape: tf.Output, paddings: tf.Output)  -> (output: tf.Output){
+func spaceToBatchND(scope:Scope,input: tf.Output, blockShape: tf.Output, paddings: tf.OutputT :type, Tblock_shape :type, Tpaddings :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SpaceToBatchND",
-        Input: [  input,  block_shape,  paddings, )]
+        Input: [ input, blockShape, paddings]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -25526,44 +14715,23 @@ x = [[[[1, 2, 3, 4],
        [13, 14, 15, 16]]]]
 ```
 
-_inputArg
- input:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func spaceToDepth(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func spaceToDepth(scope:Scope,input: tf.OutputT :type, block_size :int)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SpaceToDepth",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -25572,41 +14740,21 @@ Applies a sparse gradient to a given accumulator.
 Does not add if local_step is smaller than the accumulator's
 global_step.
 
-_inputArg
- handle:: .  local_step:: .  gradient_indices:: .  gradient_values:: .dtype  gradient_shape:: . 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sparseAccumulatorApplyGradient(scope:Scope,handle: tf.Output, local_step: tf.Output, gradient_indices: tf.Output, gradient_values: tf.Output, gradient_shape: tf.Output)  -> (){
+func sparseAccumulatorApplyGradient(scope:Scope,handle: tf.Output, localStep: tf.Output, gradientIndices: tf.Output, gradientValues: tf.Output, gradientShape: tf.Outputdtype :type, has_known_shape :bool)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SparseAccumulatorApplyGradient",
-        Input: [  handle,  local_step,  gradient_indices,  gradient_values,  gradient_shape, )]
+        Input: [ handle, localStep, gradientIndices, gradientValues, gradientShape]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
@@ -25619,44 +14767,23 @@ average of the accumulated gradients.  Also automatically increments
 the recorded global_step in the accumulator by 1, and resets the
 aggregate to 0.
 
-_inputArg
- handle:: .  num_required:: . 
-_outputArg
-
-_outputArg
- indices::  values::dtype  shape:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sparseAccumulatorTakeGradient(scope:Scope,handle: tf.Output, num_required: tf.Output)  -> (indices: tf.Output, values: tf.Output, shape: tf.Output){
+func sparseAccumulatorTakeGradient(scope:Scope,handle: tf.Output, numRequired: tf.Outputdtype :type)  ->(indices: tf.Output, values: tf.Output, shape: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SparseAccumulatorTakeGradient",
-        Input: [  handle,  num_required, )]
+        Input: [ handle, numRequired]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1))
 }
 
 /*
@@ -25674,44 +14801,23 @@ corresponding value and index would then not be included.  In particular,
 only for a positive value.
 In the following shapes, `nnz` is the count after taking `thresh` into account.
 
-_inputArg
- a_indices:: .  a_values:: .T  a_shape:: .  b_indices:: .  b_values:: .T  b_shape:: .  thresh:: .Treal 
-_outputArg
-
-_outputArg
- sum_indices::  sum_values::T  sum_shape:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sparseAdd(scope:Scope,a_indices: tf.Output, a_values: tf.Output, a_shape: tf.Output, b_indices: tf.Output, b_values: tf.Output, b_shape: tf.Output, thresh: tf.Output)  -> (sum_indices: tf.Output, sum_values: tf.Output, sum_shape: tf.Output){
+func sparseAdd(scope:Scope,aIndices: tf.Output, aValues: tf.Output, aShape: tf.Output, bIndices: tf.Output, bValues: tf.Output, bShape: tf.Output, thresh: tf.OutputT :type, Treal :type)  ->(sumIndices: tf.Output, sumValues: tf.Output, sumShape: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SparseAdd",
-        Input: [  a_indices,  a_values,  a_shape,  b_indices,  b_values,  b_shape,  thresh, )]
+        Input: [ aIndices, aValues, aShape, bIndices, bValues, bShape, thresh]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1))
 }
 
 /*
@@ -25722,88 +14828,46 @@ as `SparseTensor` objects.  This op takes in the upstream gradient w.r.t.
 non-empty values of the sum, and outputs the gradients w.r.t. the non-empty
 values of A and B.
 
-_inputArg
- backprop_val_grad:: .T  a_indices:: .  b_indices:: .  sum_indices:: . 
-_outputArg
-
-_outputArg
- a_val_grad::T  b_val_grad::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sparseAddGrad(scope:Scope,backprop_val_grad: tf.Output, a_indices: tf.Output, b_indices: tf.Output, sum_indices: tf.Output)  -> (a_val_grad: tf.Output, b_val_grad: tf.Output){
+func sparseAddGrad(scope:Scope,backpropValGrad: tf.Output, aIndices: tf.Output, bIndices: tf.Output, sumIndices: tf.OutputT :type)  ->(aValGrad: tf.Output, bValGrad: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SparseAddGrad",
-        Input: [  backprop_val_grad,  a_indices,  b_indices,  sum_indices, )]
+        Input: [ backpropValGrad, aIndices, bIndices, sumIndices]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1))
 }
 
 /*
 var: Should be from a Variable().
 
 
-_inputArg
- var:: .T  accum:: .T  accum_update:: .T  lr:: .T  rho:: .T  epsilon:: .T  grad:: .T  indices:: .Tindices 
-_outputArg
-
-_outputArg
- out::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sparseApplyAdadelta(scope:Scope,var: tf.Output, accum: tf.Output, accum_update: tf.Output, lr: tf.Output, rho: tf.Output, epsilon: tf.Output, grad: tf.Output, indices: tf.Output)  -> (out: tf.Output){
+func sparseApplyAdadelta(scope:Scope,`var`: tf.Output, accum: tf.Output, accumUpdate: tf.Output, lr: tf.Output, rho: tf.Output, epsilon: tf.Output, grad: tf.Output, indices: tf.OutputT :type, Tindices :type, use_locking :bool)  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SparseApplyAdadelta",
-        Input: [  var,  accum,  accum_update,  lr,  rho,  epsilon,  grad,  indices, )]
+        Input: [ `var`, accum, accumUpdate, lr, rho, epsilon, grad, indices]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -25813,88 +14877,46 @@ That is for rows we have grad for, we update var and accum as follows:
 accum += grad * grad
 var -= lr * grad * (1 / sqrt(accum))
 
-_inputArg
- var:: .T  accum:: .T  lr:: .T  grad:: .T  indices:: .Tindices 
-_outputArg
-
-_outputArg
- out::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sparseApplyAdagrad(scope:Scope,var: tf.Output, accum: tf.Output, lr: tf.Output, grad: tf.Output, indices: tf.Output)  -> (out: tf.Output){
+func sparseApplyAdagrad(scope:Scope,`var`: tf.Output, accum: tf.Output, lr: tf.Output, grad: tf.Output, indices: tf.OutputT :type, Tindices :type, use_locking :bool)  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SparseApplyAdagrad",
-        Input: [  var,  accum,  lr,  grad,  indices, )]
+        Input: [ `var`, accum, lr, grad, indices]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Update entries in '*var' and '*accum' according to the proximal adagrad scheme.
 
 
-_inputArg
- var:: .T  gradient_accumulator:: .T  gradient_squared_accumulator:: .T  grad:: .T  indices:: .Tindices  lr:: .T  l1:: .T  l2:: .T  global_step:: . 
-_outputArg
-
-_outputArg
- out::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sparseApplyAdagradDA(scope:Scope,var: tf.Output, gradient_accumulator: tf.Output, gradient_squared_accumulator: tf.Output, grad: tf.Output, indices: tf.Output, lr: tf.Output, l1: tf.Output, l2: tf.Output, global_step: tf.Output)  -> (out: tf.Output){
+func sparseApplyAdagradDA(scope:Scope,`var`: tf.Output, gradientAccumulator: tf.Output, gradientSquaredAccumulator: tf.Output, grad: tf.Output, indices: tf.Output, lr: tf.Output, l1: tf.Output, l2: tf.Output, globalStep: tf.OutputT :type, Tindices :type, use_locking :bool)  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SparseApplyAdagradDA",
-        Input: [  var,  gradient_accumulator,  gradient_squared_accumulator,  grad,  indices,  lr,  l1,  l2,  global_step, )]
+        Input: [ `var`, gradientAccumulator, gradientSquaredAccumulator, grad, indices, lr, l1, l2, globalStep]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -25914,44 +14936,23 @@ ms <- rho * ms_{t-1} + (1-rho) * grad * grad
 mom <- momentum * mom_{t-1} + lr * grad / sqrt(ms + epsilon)
 var <- var - mom
 
-_inputArg
- var:: .T  mg:: .T  ms:: .T  mom:: .T  lr:: .T  rho:: .T  momentum:: .T  epsilon:: .T  grad:: .T  indices:: .Tindices 
-_outputArg
-
-_outputArg
- out::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sparseApplyCenteredRMSProp(scope:Scope,var: tf.Output, mg: tf.Output, ms: tf.Output, mom: tf.Output, lr: tf.Output, rho: tf.Output, momentum: tf.Output, epsilon: tf.Output, grad: tf.Output, indices: tf.Output)  -> (out: tf.Output){
+func sparseApplyCenteredRMSProp(scope:Scope,`var`: tf.Output, mg: tf.Output, ms: tf.Output, mom: tf.Output, lr: tf.Output, rho: tf.Output, momentum: tf.Output, epsilon: tf.Output, grad: tf.Output, indices: tf.OutputT :type, Tindices :type, use_locking :bool)  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SparseApplyCenteredRMSProp",
-        Input: [  var,  mg,  ms,  mom,  lr,  rho,  momentum,  epsilon,  grad,  indices, )]
+        Input: [ `var`, mg, ms, mom, lr, rho, momentum, epsilon, grad, indices]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -25964,44 +14965,23 @@ quadratic = 1.0 / (accum_new^(lr_power) * lr) + 2 * l2
 var = (sign(linear) * l1 - linear) / quadratic if |linear| > l1 else 0.0
 accum = accum_new
 
-_inputArg
- var:: .T  accum:: .T  linear:: .T  grad:: .T  indices:: .Tindices  lr:: .T  l1:: .T  l2:: .T  lr_power:: .T 
-_outputArg
-
-_outputArg
- out::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sparseApplyFtrl(scope:Scope,var: tf.Output, accum: tf.Output, linear: tf.Output, grad: tf.Output, indices: tf.Output, lr: tf.Output, l1: tf.Output, l2: tf.Output, lr_power: tf.Output)  -> (out: tf.Output){
+func sparseApplyFtrl(scope:Scope,`var`: tf.Output, accum: tf.Output, linear: tf.Output, grad: tf.Output, indices: tf.Output, lr: tf.Output, l1: tf.Output, l2: tf.Output, lrPower: tf.OutputT :type, Tindices :type, use_locking :bool)  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SparseApplyFtrl",
-        Input: [  var,  accum,  linear,  grad,  indices,  lr,  l1,  l2,  lr_power, )]
+        Input: [ `var`, accum, linear, grad, indices, lr, l1, l2, lrPower]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -26012,44 +14992,23 @@ That is for rows we have grad for, we update var and accum as follows:
 accum = accum * momentum + grad
 var -= lr * accum
 
-_inputArg
- var:: .T  accum:: .T  lr:: .T  grad:: .T  indices:: .Tindices  momentum:: .T 
-_outputArg
-
-_outputArg
- out::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sparseApplyMomentum(scope:Scope,var: tf.Output, accum: tf.Output, lr: tf.Output, grad: tf.Output, indices: tf.Output, momentum: tf.Output)  -> (out: tf.Output){
+func sparseApplyMomentum(scope:Scope,`var`: tf.Output, accum: tf.Output, lr: tf.Output, grad: tf.Output, indices: tf.Output, momentum: tf.OutputT :type, Tindices :type, use_locking :bool, use_nesterov :bool)  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SparseApplyMomentum",
-        Input: [  var,  accum,  lr,  grad,  indices,  momentum, )]
+        Input: [ `var`, accum, lr, grad, indices, momentum]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -26061,44 +15020,23 @@ prox_v = var
 prox_v -= lr * grad * (1 / sqrt(accum))
 var = sign(prox_v)/(1+lr*l2) * max{|prox_v|-lr*l1,0}
 
-_inputArg
- var:: .T  accum:: .T  lr:: .T  l1:: .T  l2:: .T  grad:: .T  indices:: .Tindices 
-_outputArg
-
-_outputArg
- out::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sparseApplyProximalAdagrad(scope:Scope,var: tf.Output, accum: tf.Output, lr: tf.Output, l1: tf.Output, l2: tf.Output, grad: tf.Output, indices: tf.Output)  -> (out: tf.Output){
+func sparseApplyProximalAdagrad(scope:Scope,`var`: tf.Output, accum: tf.Output, lr: tf.Output, l1: tf.Output, l2: tf.Output, grad: tf.Output, indices: tf.OutputT :type, Tindices :type, use_locking :bool)  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SparseApplyProximalAdagrad",
-        Input: [  var,  accum,  lr,  l1,  l2,  grad,  indices, )]
+        Input: [ `var`, accum, lr, l1, l2, grad, indices]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -26108,44 +15046,23 @@ That is for rows we have grad for, we update var as follows:
 prox_v = var - alpha * grad
 var = sign(prox_v)/(1+alpha*l2) * max{|prox_v|-alpha*l1,0}
 
-_inputArg
- var:: .T  alpha:: .T  l1:: .T  l2:: .T  grad:: .T  indices:: .Tindices 
-_outputArg
-
-_outputArg
- out::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sparseApplyProximalGradientDescent(scope:Scope,var: tf.Output, alpha: tf.Output, l1: tf.Output, l2: tf.Output, grad: tf.Output, indices: tf.Output)  -> (out: tf.Output){
+func sparseApplyProximalGradientDescent(scope:Scope,`var`: tf.Output, alpha: tf.Output, l1: tf.Output, l2: tf.Output, grad: tf.Output, indices: tf.OutputT :type, Tindices :type, use_locking :bool)  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SparseApplyProximalGradientDescent",
-        Input: [  var,  alpha,  l1,  l2,  grad,  indices, )]
+        Input: [ `var`, alpha, l1, l2, grad, indices]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -26160,44 +15077,23 @@ ms <- rho * ms_{t-1} + (1-rho) * grad * grad
 mom <- momentum * mom_{t-1} + lr * grad / sqrt(ms + epsilon)
 var <- var - mom
 
-_inputArg
- var:: .T  ms:: .T  mom:: .T  lr:: .T  rho:: .T  momentum:: .T  epsilon:: .T  grad:: .T  indices:: .Tindices 
-_outputArg
-
-_outputArg
- out::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sparseApplyRMSProp(scope:Scope,var: tf.Output, ms: tf.Output, mom: tf.Output, lr: tf.Output, rho: tf.Output, momentum: tf.Output, epsilon: tf.Output, grad: tf.Output, indices: tf.Output)  -> (out: tf.Output){
+func sparseApplyRMSProp(scope:Scope,`var`: tf.Output, ms: tf.Output, mom: tf.Output, lr: tf.Output, rho: tf.Output, momentum: tf.Output, epsilon: tf.Output, grad: tf.Output, indices: tf.OutputT :type, Tindices :type, use_locking :bool)  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SparseApplyRMSProp",
-        Input: [  var,  ms,  mom,  lr,  rho,  momentum,  epsilon,  grad,  indices, )]
+        Input: [ `var`, ms, mom, lr, rho, momentum, epsilon, grad, indices]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -26234,44 +15130,23 @@ Graphically this is equivalent to doing
     [    a] concat [  d e  ] = [    a   d e  ]
     [b c  ]        [       ]   [b c          ]
 
-_inputArg
- indices:: .  values:: .T  shapes:: . 
-_outputArg
-
-_outputArg
- output_indices::  output_values::T  output_shape:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sparseConcat(scope:Scope,indices: tf.Output, values: tf.Output, shapes: tf.Output)  -> (output_indices: tf.Output, output_values: tf.Output, output_shape: tf.Output){
+func sparseConcat(scope:Scope,indices: tf.Output, values: tf.Output, shapes: tf.Outputconcat_dim :int, N :int, T :type)  ->(outputIndices: tf.Output, outputValues: tf.Output, outputShape: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SparseConcat",
-        Input: [  indices,  values,  shapes, )]
+        Input: [ indices, values, shapes]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1))
 }
 
 /*
@@ -26284,43 +15159,23 @@ gradients have been accumulated. Extracting the average automatically
 resets the aggregate to 0, and increments the global_step recorded by
 the accumulator.
 
-_inputArg
-_outputArg
-
-_outputArg
- handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sparseConditionalAccumulator(scope:Scope)  -> (handle: tf.Output){
+func sparseConditionalAccumulator(scope:Scopedtype :type, shape :shape, container :string, shared_name :string)  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SparseConditionalAccumulator",
-        Input: [ )]
+        Input: [ ]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -26355,44 +15210,23 @@ if hashed_output=true then the output will be
                 Fingerprint64("g"), FingerprintCat64(
                     Fingerprint64("e"), Fingerprint64("c")))
 
-_inputArg
- indices:: .  values:: .  shapes:: .  dense_inputs:: . 
-_outputArg
-
-_outputArg
- output_indices::  output_values::out_type  output_shape:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sparseCross(scope:Scope,indices: tf.Output, values: tf.Output, shapes: tf.Output, dense_inputs: tf.Output)  -> (output_indices: tf.Output, output_values: tf.Output, output_shape: tf.Output){
+func sparseCross(scope:Scope,indices: tf.Output, values: tf.Output, shapes: tf.Output, denseInputs: tf.OutputN :int, hashed_output :bool, num_buckets :int, hash_key :int, sparse_types :list(type), dense_types :list(type), out_type :type, internal_type :type)  ->(outputIndices: tf.Output, outputValues: tf.Output, outputShape: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SparseCross",
-        Input: [  indices,  values,  shapes,  dense_inputs, )]
+        Input: [ indices, values, shapes, denseInputs]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1))
 }
 
 /*
@@ -26406,44 +15240,23 @@ By these rules, the result is a logical SparseTensor with exactly the same
 indices and shape, but possibly with different non-zero values.  The output of
 this Op is the resultant non-zero values.
 
-_inputArg
- sp_indices:: .  sp_values:: .T  sp_shape:: .  dense:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sparseDenseCwiseAdd(scope:Scope,sp_indices: tf.Output, sp_values: tf.Output, sp_shape: tf.Output, dense: tf.Output)  -> (output: tf.Output){
+func sparseDenseCwiseAdd(scope:Scope,spIndices: tf.Output, spValues: tf.Output, spShape: tf.Output, dense: tf.OutputT :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SparseDenseCwiseAdd",
-        Input: [  sp_indices,  sp_values,  sp_shape,  dense, )]
+        Input: [ spIndices, spValues, spShape, dense]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -26452,44 +15265,23 @@ Component-wise divides a SparseTensor by a dense Tensor.
 *Limitation*: this Op only broadcasts the dense side to the sparse side, but not
 the other direction.
 
-_inputArg
- sp_indices:: .  sp_values:: .T  sp_shape:: .  dense:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sparseDenseCwiseDiv(scope:Scope,sp_indices: tf.Output, sp_values: tf.Output, sp_shape: tf.Output, dense: tf.Output)  -> (output: tf.Output){
+func sparseDenseCwiseDiv(scope:Scope,spIndices: tf.Output, spValues: tf.Output, spShape: tf.Output, dense: tf.OutputT :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SparseDenseCwiseDiv",
-        Input: [  sp_indices,  sp_values,  sp_shape,  dense, )]
+        Input: [ spIndices, spValues, spShape, dense]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -26501,44 +15293,23 @@ contents of the dense tensor (even if it's +/-INF and that INF*0 == NaN).
 *Limitation*: this Op only broadcasts the dense side to the sparse side, but not
 the other direction.
 
-_inputArg
- sp_indices:: .  sp_values:: .T  sp_shape:: .  dense:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sparseDenseCwiseMul(scope:Scope,sp_indices: tf.Output, sp_values: tf.Output, sp_shape: tf.Output, dense: tf.Output)  -> (output: tf.Output){
+func sparseDenseCwiseMul(scope:Scope,spIndices: tf.Output, spValues: tf.Output, spShape: tf.Output, dense: tf.OutputT :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SparseDenseCwiseMul",
-        Input: [  sp_indices,  sp_values,  sp_shape,  dense, )]
+        Input: [ spIndices, spValues, spShape, dense]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -26571,44 +15342,23 @@ And a reverse index map vector shaped `[indices.shape[0]]` that is used during
 backpropagation,
     reverse_index_map[j] = out_j s.t. indices[j, :] == output_indices[out_j, :]
 
-_inputArg
- indices:: .  values:: .T  dense_shape:: .  default_value:: .T 
-_outputArg
-
-_outputArg
- output_indices::  output_values::T  empty_row_indicator::  reverse_index_map:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sparseFillEmptyRows(scope:Scope,indices: tf.Output, values: tf.Output, dense_shape: tf.Output, default_value: tf.Output)  -> (output_indices: tf.Output, output_values: tf.Output, empty_row_indicator: tf.Output, reverse_index_map: tf.Output){
+func sparseFillEmptyRows(scope:Scope,indices: tf.Output, values: tf.Output, denseShape: tf.Output, defaultValue: tf.OutputT :type)  ->(outputIndices: tf.Output, outputValues: tf.Output, emptyRowIndicator: tf.Output, reverseIndexMap: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SparseFillEmptyRows",
-        Input: [  indices,  values,  dense_shape,  default_value, )]
+        Input: [ indices, values, denseShape, defaultValue]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3),op.Output(4))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1),op.Output(4 -1))
 }
 
 /*
@@ -26622,44 +15372,23 @@ shaped `[N_full]`, where `N_full >= N` and copies data into either
   d_default_value = sum_{k : 0 .. N_full - 1} (
      grad_values[k] * 1{k not in reverse_index_map})
 
-_inputArg
- reverse_index_map:: .  grad_values:: .T 
-_outputArg
-
-_outputArg
- d_values::T  d_default_value::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sparseFillEmptyRowsGrad(scope:Scope,reverse_index_map: tf.Output, grad_values: tf.Output)  -> (d_values: tf.Output, d_default_value: tf.Output){
+func sparseFillEmptyRowsGrad(scope:Scope,reverseIndexMap: tf.Output, gradValues: tf.OutputT :type)  ->(dValues: tf.Output, dDefaultValue: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SparseFillEmptyRowsGrad",
-        Input: [  reverse_index_map,  grad_values, )]
+        Input: [ reverseIndexMap, gradValues]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1))
 }
 
 /*
@@ -26670,44 +15399,23 @@ match the outer dimension of "b". This op is optimized for the case where at
 least one of "a" or "b" is sparse. The breakeven for using this versus a dense
 matrix multiply on one platform was 30% zero values in the sparse matrix.
 
-_inputArg
- a:: .Ta  b:: .Tb 
-_outputArg
-
-_outputArg
- product:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sparseMatMul(scope:Scope,a: tf.Output, b: tf.Output)  -> (product: tf.Output){
+func sparseMatMul(scope:Scope,a: tf.Output, b: tf.Outputtranspose_a :bool, transpose_b :bool, a_is_sparse :bool, b_is_sparse :bool, Ta :type, Tb :type)  ->(product: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SparseMatMul",
-        Input: [  a,  b, )]
+        Input: [ a, b]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -26724,44 +15432,23 @@ If `reduction_axes` has no entries, all dimensions are reduced, and a tensor
 with a single element is returned.  Additionally, the axes can be negative,
 which are interpreted according to the indexing rules in Python.
 
-_inputArg
- input_indices:: .  input_values:: .T  input_shape:: .  reduction_axes:: . 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sparseReduceSum(scope:Scope,input_indices: tf.Output, input_values: tf.Output, input_shape: tf.Output, reduction_axes: tf.Output)  -> (output: tf.Output){
+func sparseReduceSum(scope:Scope,inputIndices: tf.Output, inputValues: tf.Output, inputShape: tf.Output, reductionAxes: tf.Outputkeep_dims :bool, T :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SparseReduceSum",
-        Input: [  input_indices,  input_values,  input_shape,  reduction_axes, )]
+        Input: [ inputIndices, inputValues, inputShape, reductionAxes]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -26778,44 +15465,23 @@ If `reduction_axes` has no entries, all dimensions are reduced, and a tensor
 with a single element is returned.  Additionally, the axes can be negative,
 which are interpreted according to the indexing rules in Python.
 
-_inputArg
- input_indices:: .  input_values:: .T  input_shape:: .  reduction_axes:: . 
-_outputArg
-
-_outputArg
- output_indices::  output_values::T  output_shape:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sparseReduceSumSparse(scope:Scope,input_indices: tf.Output, input_values: tf.Output, input_shape: tf.Output, reduction_axes: tf.Output)  -> (output_indices: tf.Output, output_values: tf.Output, output_shape: tf.Output){
+func sparseReduceSumSparse(scope:Scope,inputIndices: tf.Output, inputValues: tf.Output, inputShape: tf.Output, reductionAxes: tf.Outputkeep_dims :bool, T :type)  ->(outputIndices: tf.Output, outputValues: tf.Output, outputShape: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SparseReduceSumSparse",
-        Input: [  input_indices,  input_values,  input_shape,  reduction_axes, )]
+        Input: [ inputIndices, inputValues, inputShape, reductionAxes]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1))
 }
 
 /*
@@ -26828,44 +15494,23 @@ Reordering does not affect the shape of the SparseTensor.
 If the tensor has rank `R` and `N` non-empty values, `input_indices` has
 shape `[N, R]`, input_values has length `N`, and input_shape has length `R`.
 
-_inputArg
- input_indices:: .  input_values:: .T  input_shape:: . 
-_outputArg
-
-_outputArg
- output_indices::  output_values::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sparseReorder(scope:Scope,input_indices: tf.Output, input_values: tf.Output, input_shape: tf.Output)  -> (output_indices: tf.Output, output_values: tf.Output){
+func sparseReorder(scope:Scope,inputIndices: tf.Output, inputValues: tf.Output, inputShape: tf.OutputT :type)  ->(outputIndices: tf.Output, outputValues: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SparseReorder",
-        Input: [  input_indices,  input_values,  input_shape, )]
+        Input: [ inputIndices, inputValues, inputShape]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1))
 }
 
 /*
@@ -26884,44 +15529,23 @@ has length `R_out`, then `input_indices` has shape `[N, R_in]`,
 `input_shape` has length `R_in`, `output_indices` has shape `[N, R_out]`, and
 `output_shape` has length `R_out`.
 
-_inputArg
- input_indices:: .  input_shape:: .  new_shape:: . 
-_outputArg
-
-_outputArg
- output_indices::  output_shape:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sparseReshape(scope:Scope,input_indices: tf.Output, input_shape: tf.Output, new_shape: tf.Output)  -> (output_indices: tf.Output, output_shape: tf.Output){
+func sparseReshape(scope:Scope,inputIndices: tf.Output, inputShape: tf.Output, newShape: tf.Output)  ->(outputIndices: tf.Output, outputShape: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SparseReshape",
-        Input: [  input_indices,  input_shape,  new_shape, )]
+        Input: [ inputIndices, inputShape, newShape]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1))
 }
 
 /*
@@ -26932,44 +15556,23 @@ segments.
 Like `SegmentMean`, but `segment_ids` can have rank less than `data`'s first
 dimension, selecting a subset of dimension 0, specified by `indices`.
 
-_inputArg
- data:: .T  indices:: .Tidx  segment_ids:: . 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sparseSegmentMean(scope:Scope,data: tf.Output, indices: tf.Output, segment_ids: tf.Output)  -> (output: tf.Output){
+func sparseSegmentMean(scope:Scope,data: tf.Output, indices: tf.Output, segmentIds: tf.OutputT :type, Tidx :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SparseSegmentMean",
-        Input: [  data,  indices,  segment_ids, )]
+        Input: [ data, indices, segmentIds]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -26978,44 +15581,23 @@ Computes gradients for SparseSegmentMean.
 Returns tensor "output" with same shape as grad, except for dimension 0 whose
 value is output_dim0.
 
-_inputArg
- grad:: .T  indices:: .Tidx  segment_ids:: .  output_dim0:: . 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sparseSegmentMeanGrad(scope:Scope,grad: tf.Output, indices: tf.Output, segment_ids: tf.Output, output_dim0: tf.Output)  -> (output: tf.Output){
+func sparseSegmentMeanGrad(scope:Scope,grad: tf.Output, indices: tf.Output, segmentIds: tf.Output, outputDim0: tf.OutputT :type, Tidx :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SparseSegmentMeanGrad",
-        Input: [  grad,  indices,  segment_ids,  output_dim0, )]
+        Input: [ grad, indices, segmentIds, outputDim0]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -27025,44 +15607,23 @@ N is the size of the segment being reduced.
 Read @{$math_ops#segmentation$the section on segmentation} for an explanation of
 segments.
 
-_inputArg
- data:: .T  indices:: .Tidx  segment_ids:: . 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sparseSegmentSqrtN(scope:Scope,data: tf.Output, indices: tf.Output, segment_ids: tf.Output)  -> (output: tf.Output){
+func sparseSegmentSqrtN(scope:Scope,data: tf.Output, indices: tf.Output, segmentIds: tf.OutputT :type, Tidx :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SparseSegmentSqrtN",
-        Input: [  data,  indices,  segment_ids, )]
+        Input: [ data, indices, segmentIds]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -27071,44 +15632,23 @@ Computes gradients for SparseSegmentSqrtN.
 Returns tensor "output" with same shape as grad, except for dimension 0 whose
 value is output_dim0.
 
-_inputArg
- grad:: .T  indices:: .Tidx  segment_ids:: .  output_dim0:: . 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sparseSegmentSqrtNGrad(scope:Scope,grad: tf.Output, indices: tf.Output, segment_ids: tf.Output, output_dim0: tf.Output)  -> (output: tf.Output){
+func sparseSegmentSqrtNGrad(scope:Scope,grad: tf.Output, indices: tf.Output, segmentIds: tf.Output, outputDim0: tf.OutputT :type, Tidx :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SparseSegmentSqrtNGrad",
-        Input: [  grad,  indices,  segment_ids,  output_dim0, )]
+        Input: [ grad, indices, segmentIds, outputDim0]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -27136,44 +15676,23 @@ tf.sparse_segment_sum(c, tf.constant([0, 1, 2]), tf.constant([0, 0, 1]))
 tf.segment_sum(c, tf.constant([0, 0, 1]))
 ```
 
-_inputArg
- data:: .T  indices:: .Tidx  segment_ids:: . 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sparseSegmentSum(scope:Scope,data: tf.Output, indices: tf.Output, segment_ids: tf.Output)  -> (output: tf.Output){
+func sparseSegmentSum(scope:Scope,data: tf.Output, indices: tf.Output, segmentIds: tf.OutputT :type, Tidx :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SparseSegmentSum",
-        Input: [  data,  indices,  segment_ids, )]
+        Input: [ data, indices, segmentIds]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -27192,44 +15711,23 @@ to the following:
 Hence, the `SparseTensor` result has exactly the same non-zero indices and
 shape.
 
-_inputArg
- sp_indices:: .  sp_values:: .T  sp_shape:: . 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sparseSoftmax(scope:Scope,sp_indices: tf.Output, sp_values: tf.Output, sp_shape: tf.Output)  -> (output: tf.Output){
+func sparseSoftmax(scope:Scope,spIndices: tf.Output, spValues: tf.Output, spShape: tf.OutputT :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SparseSoftmax",
-        Input: [  sp_indices,  sp_values,  sp_shape, )]
+        Input: [ spIndices, spValues, spShape]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -27241,44 +15739,23 @@ of features.  This label is considered to have probability 1.0 for the
 given row.
 Inputs are the logits, not probabilities.
 
-_inputArg
- features:: .T  labels:: .Tlabels 
-_outputArg
-
-_outputArg
- loss::T  backprop::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sparseSoftmaxCrossEntropyWithLogits(scope:Scope,features: tf.Output, labels: tf.Output)  -> (loss: tf.Output, backprop: tf.Output){
+func sparseSoftmaxCrossEntropyWithLogits(scope:Scope,features: tf.Output, labels: tf.OutputT :type, Tlabels :type)  ->(loss: tf.Output, backprop: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SparseSoftmaxCrossEntropyWithLogits",
-        Input: [  features,  labels, )]
+        Input: [ features, labels]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1))
 }
 
 /*
@@ -27286,44 +15763,23 @@ Returns the element-wise max of two SparseTensors.
 
 Assumes the two SparseTensors have the same shape, i.e., no broadcasting.
 
-_inputArg
- a_indices:: .  a_values:: .T  a_shape:: .  b_indices:: .  b_values:: .T  b_shape:: . 
-_outputArg
-
-_outputArg
- output_indices::  output_values::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sparseSparseMaximum(scope:Scope,a_indices: tf.Output, a_values: tf.Output, a_shape: tf.Output, b_indices: tf.Output, b_values: tf.Output, b_shape: tf.Output)  -> (output_indices: tf.Output, output_values: tf.Output){
+func sparseSparseMaximum(scope:Scope,aIndices: tf.Output, aValues: tf.Output, aShape: tf.Output, bIndices: tf.Output, bValues: tf.Output, bShape: tf.OutputT :type)  ->(outputIndices: tf.Output, outputValues: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SparseSparseMaximum",
-        Input: [  a_indices,  a_values,  a_shape,  b_indices,  b_values,  b_shape, )]
+        Input: [ aIndices, aValues, aShape, bIndices, bValues, bShape]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1))
 }
 
 /*
@@ -27331,44 +15787,23 @@ Returns the element-wise min of two SparseTensors.
 
 Assumes the two SparseTensors have the same shape, i.e., no broadcasting.
 
-_inputArg
- a_indices:: .  a_values:: .T  a_shape:: .  b_indices:: .  b_values:: .T  b_shape:: . 
-_outputArg
-
-_outputArg
- output_indices::  output_values::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sparseSparseMinimum(scope:Scope,a_indices: tf.Output, a_values: tf.Output, a_shape: tf.Output, b_indices: tf.Output, b_values: tf.Output, b_shape: tf.Output)  -> (output_indices: tf.Output, output_values: tf.Output){
+func sparseSparseMinimum(scope:Scope,aIndices: tf.Output, aValues: tf.Output, aShape: tf.Output, bIndices: tf.Output, bValues: tf.Output, bShape: tf.OutputT :type)  ->(outputIndices: tf.Output, outputValues: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SparseSparseMinimum",
-        Input: [  a_indices,  a_values,  a_shape,  b_indices,  b_values,  b_shape, )]
+        Input: [ aIndices, aValues, aShape, bIndices, bValues, bShape]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1))
 }
 
 /*
@@ -27388,44 +15823,23 @@ Graphically the output tensors are:
     [ d e  ]
     [      ]
 
-_inputArg
- split_dim:: .  indices:: .  values:: .T  shape:: . 
-_outputArg
-
-_outputArg
- output_indices::  output_values::T  output_shape:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sparseSplit(scope:Scope,split_dim: tf.Output, indices: tf.Output, values: tf.Output, shape: tf.Output)  -> (output_indices: tf.Output, output_values: tf.Output, output_shape: tf.Output){
+func sparseSplit(scope:Scope,splitDim: tf.Output, indices: tf.Output, values: tf.Output, shape: tf.Outputnum_split :int, T :type)  ->(outputIndices: tf.Output, outputValues: tf.Output, outputShape: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SparseSplit",
-        Input: [  split_dim,  indices,  values,  shape, )]
+        Input: [ splitDim, indices, values, shape]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1))
 }
 
 /*
@@ -27433,44 +15847,23 @@ Adds up a `SparseTensor` and a dense `Tensor`, producing a dense `Tensor`.
 
 This Op does not require `a_indices` be sorted in standard lexicographic order.
 
-_inputArg
- a_indices:: .Tindices  a_values:: .T  a_shape:: .Tindices  b:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sparseTensorDenseAdd(scope:Scope,a_indices: tf.Output, a_values: tf.Output, a_shape: tf.Output, b: tf.Output)  -> (output: tf.Output){
+func sparseTensorDenseAdd(scope:Scope,aIndices: tf.Output, aValues: tf.Output, aShape: tf.Output, b: tf.OutputT :type, Tindices :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SparseTensorDenseAdd",
-        Input: [  a_indices,  a_values,  a_shape,  b, )]
+        Input: [ aIndices, aValues, aShape, b]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -27485,88 +15878,46 @@ if adjoint_a == true:
   A should be sorted in order of increasing dimension 1 (i.e., "column major"
   order instead of "row major" order).
 
-_inputArg
- a_indices:: .Tindices  a_values:: .T  a_shape:: .  b:: .T 
-_outputArg
-
-_outputArg
- product::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sparseTensorDenseMatMul(scope:Scope,a_indices: tf.Output, a_values: tf.Output, a_shape: tf.Output, b: tf.Output)  -> (product: tf.Output){
+func sparseTensorDenseMatMul(scope:Scope,aIndices: tf.Output, aValues: tf.Output, aShape: tf.Output, b: tf.OutputT :type, Tindices :type, adjoint_a :bool, adjoint_b :bool)  ->(product: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SparseTensorDenseMatMul",
-        Input: [  a_indices,  a_values,  a_shape,  b, )]
+        Input: [ aIndices, aValues, aShape, b]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Creates a dataset that splits a SparseTensor into elements row-wise.
 
 
-_inputArg
- indices:: .  values:: .Tvalues  dense_shape:: . 
-_outputArg
-
-_outputArg
- handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sparseTensorSliceDataset(scope:Scope,indices: tf.Output, values: tf.Output, dense_shape: tf.Output)  -> (handle: tf.Output){
+func sparseTensorSliceDataset(scope:Scope,indices: tf.Output, values: tf.Output, denseShape: tf.OutputTvalues :type)  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SparseTensorSliceDataset",
-        Input: [  indices,  values,  dense_shape, )]
+        Input: [ indices, values, denseShape]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -27587,44 +15938,23 @@ Indices should be sorted in lexicographic order, and indices must not
 contain any repeats. If `validate_indices` is true, these properties
 are checked during execution.
 
-_inputArg
- sparse_indices:: .Tindices  output_shape:: .Tindices  sparse_values:: .T  default_value:: .T 
-_outputArg
-
-_outputArg
- dense::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sparseToDense(scope:Scope,sparse_indices: tf.Output, output_shape: tf.Output, sparse_values: tf.Output, default_value: tf.Output)  -> (dense: tf.Output){
+func sparseToDense(scope:Scope,sparseIndices: tf.Output, outputShape: tf.Output, sparseValues: tf.Output, defaultValue: tf.Outputvalidate_indices :bool, T :type, Tindices :type)  ->(dense: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SparseToDense",
-        Input: [  sparse_indices,  output_shape,  sparse_values,  default_value, )]
+        Input: [ sparseIndices, outputShape, sparseValues, defaultValue]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -27649,132 +15979,69 @@ has rank `n` and the same 1st `n-1` dimensions as `set1` and `set2`. The `nth`
 dimension contains the result of `set_operation` applied to the corresponding
 `[0...n-1]` dimension of `set`.
 
-_inputArg
- set1_indices:: .  set1_values:: .T  set1_shape:: .  set2_indices:: .  set2_values:: .T  set2_shape:: . 
-_outputArg
-
-_outputArg
- result_indices::  result_values::T  result_shape:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sparseToSparseSetOperation(scope:Scope,set1_indices: tf.Output, set1_values: tf.Output, set1_shape: tf.Output, set2_indices: tf.Output, set2_values: tf.Output, set2_shape: tf.Output)  -> (result_indices: tf.Output, result_values: tf.Output, result_shape: tf.Output){
+func sparseToSparseSetOperation(scope:Scope,set1Indices: tf.Output, set1Values: tf.Output, set1Shape: tf.Output, set2Indices: tf.Output, set2Values: tf.Output, set2Shape: tf.Outputset_operation :string, validate_indices :bool, T :type)  ->(resultIndices: tf.Output, resultValues: tf.Output, resultShape: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SparseToSparseSetOperation",
-        Input: [  set1_indices,  set1_values,  set1_shape,  set2_indices,  set2_values,  set2_shape, )]
+        Input: [ set1Indices, set1Values, set1Shape, set2Indices, set2Values, set2Shape]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1))
 }
 
 /*
 Splits a tensor into `num_split` tensors along one dimension.
 
 
-_inputArg
- split_dim:: .  value:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func split(scope:Scope,split_dim: tf.Output, value: tf.Output)  -> (output: tf.Output){
+func split(scope:Scope,splitDim: tf.Output, value: tf.Outputnum_split :int, T :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Split",
-        Input: [  split_dim,  value, )]
+        Input: [ splitDim, value]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Splits a tensor into `num_split` tensors along one dimension.
 
 
-_inputArg
- value:: .T  size_splits:: .Tlen  split_dim:: . 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func splitV(scope:Scope,value: tf.Output, size_splits: tf.Output, split_dim: tf.Output)  -> (output: tf.Output){
+func splitV(scope:Scope,value: tf.Output, sizeSplits: tf.Output, splitDim: tf.Outputnum_split :int, T :type, Tlen :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SplitV",
-        Input: [  value,  size_splits,  split_dim, )]
+        Input: [ value, sizeSplits, splitDim]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -27782,44 +16049,23 @@ Computes square root of x element-wise.
 
 I.e., \\(y = \sqrt{x} = x^{1/2}\\).
 
-_inputArg
- x:: .T 
-_outputArg
-
-_outputArg
- y::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sqrt(scope:Scope,x: tf.Output)  -> (y: tf.Output){
+func sqrt(scope:Scope,x: tf.OutputT :type)  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Sqrt",
-        Input: [  x, )]
+        Input: [ x]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -27828,44 +16074,23 @@ Computes the gradient for the sqrt of `x` wrt its input.
 Specifically, `grad = dy * 0.5 / y`, where `y = sqrt(x)`, and `dy`
 is the corresponding input gradient.
 
-_inputArg
- x:: .T  y:: .T 
-_outputArg
-
-_outputArg
- z::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sqrtGrad(scope:Scope,x: tf.Output, y: tf.Output)  -> (z: tf.Output){
+func sqrtGrad(scope:Scope,x: tf.Output, y: tf.OutputT :type)  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SqrtGrad",
-        Input: [  x,  y, )]
+        Input: [ x, y]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -27873,44 +16098,23 @@ Computes square of x element-wise.
 
 I.e., \\(y = x * x = x^2\\).
 
-_inputArg
- x:: .T 
-_outputArg
-
-_outputArg
- y::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func square(scope:Scope,x: tf.Output)  -> (y: tf.Output){
+func square(scope:Scope,x: tf.OutputT :type)  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Square",
-        Input: [  x, )]
+        Input: [ x]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -27919,44 +16123,23 @@ Returns (x - y)(x - y) element-wise.
 *NOTE*: `SquaredDifference` supports broadcasting. More about broadcasting
 [here](http://docs.scipy.org/doc/numpy/user/basics.broadcasting.html)
 
-_inputArg
- x:: .T  y:: .T 
-_outputArg
-
-_outputArg
- z::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func squaredDifference(scope:Scope,x: tf.Output, y: tf.Output)  -> (z: tf.Output){
+func squaredDifference(scope:Scope,x: tf.Output, y: tf.OutputT :type)  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SquaredDifference",
-        Input: [  x,  y, )]
+        Input: [ x, y]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -27977,216 +16160,113 @@ Or, to remove specific size 1 dimensions:
 shape(squeeze(t, [2, 4])) ==> [1, 2, 3, 1]
 ```
 
-_inputArg
- input:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func squeeze(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func squeeze(scope:Scope,input: tf.OutputT :type, squeeze_dims :list(int))  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Squeeze",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 A stack that produces elements in first-in last-out order.
 
 
-_inputArg
-_outputArg
-
-_outputArg
- handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func stack(scope:Scope)  -> (handle: tf.Output){
+func stack(scope:Scopeelem_type :type, stack_name :string)  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Stack",
-        Input: [ )]
+        Input: [ ]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Delete the stack from its resource container.
 
 
-_inputArg
- handle:: . 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func stackClose(scope:Scope,handle: tf.Output)  -> (){
+func stackClose(scope:Scope,handle: tf.Output)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "StackClose",
-        Input: [  handle, )]
+        Input: [ handle]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
 Pop the element at the top of the stack.
 
 
-_inputArg
- handle:: . 
-_outputArg
-
-_outputArg
- elem::elem_type 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func stackPop(scope:Scope,handle: tf.Output)  -> (elem: tf.Output){
+func stackPop(scope:Scope,handle: tf.Outputelem_type :type)  ->(elem: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "StackPop",
-        Input: [  handle, )]
+        Input: [ handle]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Push an element onto the stack.
 
 
-_inputArg
- handle:: .  elem:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func stackPush(scope:Scope,handle: tf.Output, elem: tf.Output)  -> (output: tf.Output){
+func stackPush(scope:Scope,handle: tf.Output, elem: tf.OutputT :type, swap_memory :bool)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "StackPush",
-        Input: [  handle,  elem, )]
+        Input: [ handle, elem]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -28195,41 +16275,21 @@ Stage values similar to a lightweight Enqueue.
 The basic functionality of this Op is similar to a queue with many
 fewer capabilities and options.  This Op is optimized for performance.
 
-_inputArg
- values:: . 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func stage(scope:Scope,values: tf.Output)  -> (){
+func stage(scope:Scope,values: tf.Outputdtypes :list(type), container :string, shared_name :string)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Stage",
-        Input: [  values, )]
+        Input: [ values]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
@@ -28238,44 +16298,23 @@ Outputs deterministic pseudorandom values from a normal distribution.
 The generated values will have mean 0 and standard deviation 1.
 The outputs are a deterministic function of `shape` and `seed`.
 
-_inputArg
- shape:: .T  seed:: . 
-_outputArg
-
-_outputArg
- output::dtype 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func statelessRandomNormal(scope:Scope,shape: tf.Output, seed: tf.Output)  -> (output: tf.Output){
+func statelessRandomNormal(scope:Scope,shape: tf.Output, seed: tf.Outputdtype :type, T :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "StatelessRandomNormal",
-        Input: [  shape,  seed, )]
+        Input: [ shape, seed]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -28285,44 +16324,23 @@ The generated values follow a uniform distribution in the range `[0, 1)`. The
 lower bound 0 is included in the range, while the upper bound 1 is excluded.
 The outputs are a deterministic function of `shape` and `seed`.
 
-_inputArg
- shape:: .T  seed:: . 
-_outputArg
-
-_outputArg
- output::dtype 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func statelessRandomUniform(scope:Scope,shape: tf.Output, seed: tf.Output)  -> (output: tf.Output){
+func statelessRandomUniform(scope:Scope,shape: tf.Output, seed: tf.Outputdtype :type, T :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "StatelessRandomUniform",
-        Input: [  shape,  seed, )]
+        Input: [ shape, seed]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -28333,44 +16351,23 @@ deviation 1, except that values whose magnitude is more than 2 standard
 deviations from the mean are dropped and re-picked.
 The outputs are a deterministic function of `shape` and `seed`.
 
-_inputArg
- shape:: .T  seed:: . 
-_outputArg
-
-_outputArg
- output::dtype 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func statelessTruncatedNormal(scope:Scope,shape: tf.Output, seed: tf.Output)  -> (output: tf.Output){
+func statelessTruncatedNormal(scope:Scope,shape: tf.Output, seed: tf.Outputdtype :type, T :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "StatelessTruncatedNormal",
-        Input: [  shape,  seed, )]
+        Input: [ shape, seed]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -28393,44 +16390,23 @@ to pretend that the value was a constant. Some examples include:
 *  Adversarial training, where no backprop should happen through the adversarial
    example generation process.
 
-_inputArg
- input:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func stopGradient(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func stopGradient(scope:Scope,input: tf.OutputT :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "StopGradient",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -28510,44 +16486,23 @@ receive 0, 0, and 1, respectively. The appropriate bits in `begin_mask` and
   `0 != strides[i] for i in [0, m)`
   `ellipsis_mask must be a power of two (only one ellipsis)`
 
-_inputArg
- input:: .T  begin:: .Index  end:: .Index  strides:: .Index 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func stridedSlice(scope:Scope,input: tf.Output, begin: tf.Output, end: tf.Output, strides: tf.Output)  -> (output: tf.Output){
+func stridedSlice(scope:Scope,input: tf.Output, begin: tf.Output, end: tf.Output, strides: tf.OutputT :type, Index :type, begin_mask :int, end_mask :int, ellipsis_mask :int, new_axis_mask :int, shrink_axis_mask :int)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "StridedSlice",
-        Input: [  input,  begin,  end,  strides, )]
+        Input: [ input, begin, end, strides]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -28559,44 +16514,23 @@ The values of `value` are assigned to the positions in the variable
 NOTE this op currently does not support broadcasting and so `value`'s
 shape must be exactly the shape produced by the slice of `ref`.
 
-_inputArg
- ref:: .T  begin:: .Index  end:: .Index  strides:: .Index  value:: .T 
-_outputArg
-
-_outputArg
- output_ref::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func stridedSliceAssign(scope:Scope,ref: tf.Output, begin: tf.Output, end: tf.Output, strides: tf.Output, value: tf.Output)  -> (output_ref: tf.Output){
+func stridedSliceAssign(scope:Scope,ref: tf.Output, begin: tf.Output, end: tf.Output, strides: tf.Output, value: tf.OutputT :type, Index :type, begin_mask :int, end_mask :int, ellipsis_mask :int, new_axis_mask :int, shrink_axis_mask :int)  ->(outputRef: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "StridedSliceAssign",
-        Input: [  ref,  begin,  end,  strides,  value, )]
+        Input: [ ref, begin, end, strides, value]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -28610,44 +16544,23 @@ Arguments are the same as StridedSliceGrad with the exception that
 `dy` is the input gradient to be propagated and `shape` is the
 shape of `StridedSlice`'s `input`.
 
-_inputArg
- shape:: .Index  begin:: .Index  end:: .Index  strides:: .Index  dy:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func stridedSliceGrad(scope:Scope,shape: tf.Output, begin: tf.Output, end: tf.Output, strides: tf.Output, dy: tf.Output)  -> (output: tf.Output){
+func stridedSliceGrad(scope:Scope,shape: tf.Output, begin: tf.Output, end: tf.Output, strides: tf.Output, dy: tf.OutputT :type, Index :type, begin_mask :int, end_mask :int, ellipsis_mask :int, new_axis_mask :int, shrink_axis_mask :int)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "StridedSliceGrad",
-        Input: [  shape,  begin,  end,  strides,  dy, )]
+        Input: [ shape, begin, end, strides, dy]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -28655,44 +16568,23 @@ Joins the strings in the given list of string tensors into one tensor;
 
 with the given separator (default is an empty separator).
 
-_inputArg
- inputs:: . 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func stringJoin(scope:Scope,inputs: tf.Output)  -> (output: tf.Output){
+func stringJoin(scope:Scope,inputs: tf.OutputN :int, separator :string)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "StringJoin",
-        Input: [  inputs, )]
+        Input: [ inputs]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -28716,44 +16608,23 @@ For example:
   shape = [2, 3]
   values = ['hello', 'world', 'a', 'b', 'c']
 
-_inputArg
- input:: .  delimiter:: . 
-_outputArg
-
-_outputArg
- indices::  values::  shape:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func stringSplit(scope:Scope,input: tf.Output, delimiter: tf.Output)  -> (indices: tf.Output, values: tf.Output, shape: tf.Output){
+func stringSplit(scope:Scope,input: tf.Output, delimiter: tf.Output)  ->(indices: tf.Output, values: tf.Output, shape: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "StringSplit",
-        Input: [  input,  delimiter, )]
+        Input: [ input, delimiter]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1))
 }
 
 /*
@@ -28765,44 +16636,23 @@ Note that the hash function may change from time to time.
 This functionality will be deprecated and it's recommended to use
 `tf.string_to_hash_bucket_fast()` or `tf.string_to_hash_bucket_strong()`.
 
-_inputArg
- string_tensor:: . 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func stringToHashBucket(scope:Scope,string_tensor: tf.Output)  -> (output: tf.Output){
+func stringToHashBucket(scope:Scope,stringTensor: tf.Outputnum_buckets :int)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "StringToHashBucket",
-        Input: [  string_tensor, )]
+        Input: [ stringTensor]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -28815,44 +16665,23 @@ unimportant. There is a risk of adversaries constructing inputs that all hash
 to the same bucket. To prevent this problem, use a strong hash function with
 `tf.string_to_hash_bucket_strong`.
 
-_inputArg
- input:: . 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func stringToHashBucketFast(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func stringToHashBucketFast(scope:Scope,input: tf.Outputnum_buckets :int)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "StringToHashBucketFast",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -28868,44 +16697,23 @@ hash prevents this by making it difficult, if not infeasible, to compute inputs
 that hash to the same bucket. This comes at a cost of roughly 4x higher compute
 time than `tf.string_to_hash_bucket_fast`.
 
-_inputArg
- input:: . 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func stringToHashBucketStrong(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func stringToHashBucketStrong(scope:Scope,input: tf.Outputnum_buckets :int, key :list(int))  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "StringToHashBucketStrong",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -28914,44 +16722,23 @@ Converts each string in the input Tensor to the specified numeric type.
 (Note that int32 overflow results in an error while float overflow
 results in a rounded value.)
 
-_inputArg
- string_tensor:: . 
-_outputArg
-
-_outputArg
- output::out_type 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func stringToNumber(scope:Scope,string_tensor: tf.Output)  -> (output: tf.Output){
+func stringToNumber(scope:Scope,stringTensor: tf.Outputout_type :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "StringToNumber",
-        Input: [  string_tensor, )]
+        Input: [ stringTensor]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -28960,44 +16747,23 @@ Returns x - y element-wise.
 *NOTE*: `Sub` supports broadcasting. More about broadcasting
 [here](http://docs.scipy.org/doc/numpy/user/basics.broadcasting.html)
 
-_inputArg
- x:: .T  y:: .T 
-_outputArg
-
-_outputArg
- z::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sub(scope:Scope,x: tf.Output, y: tf.Output)  -> (z: tf.Output){
+func sub(scope:Scope,x: tf.Output, y: tf.OutputT :type)  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Sub",
-        Input: [  x,  y, )]
+        Input: [ x, y]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -29059,44 +16825,23 @@ length =   [3, 2, 1]
 output = [b'hir', b'ee', b'n"]
 ```
 
-_inputArg
- input:: .  pos:: .T  len:: .T 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func substr(scope:Scope,input: tf.Output, pos: tf.Output, len: tf.Output)  -> (output: tf.Output){
+func substr(scope:Scope,input: tf.Output, pos: tf.Output, len: tf.OutputT :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Substr",
-        Input: [  input,  pos,  len, )]
+        Input: [ input, pos, len]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -29107,44 +16852,23 @@ Reduces `input` along the dimensions given in `reduction_indices`. Unless
 `reduction_indices`. If `keep_dims` is true, the reduced dimensions are
 retained with length 1.
 
-_inputArg
- input:: .T  reduction_indices:: .Tidx 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func sum(scope:Scope,input: tf.Output, reduction_indices: tf.Output)  -> (output: tf.Output){
+func sum(scope:Scope,input: tf.Output, reductionIndices: tf.Outputkeep_dims :bool, T :type, Tidx :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Sum",
-        Input: [  input,  reduction_indices, )]
+        Input: [ input, reductionIndices]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -29161,44 +16885,23 @@ s, u, v = svd(a)
 s, _, _ = svd(a, compute_uv=False)
 ```
 
-_inputArg
- input:: .T 
-_outputArg
-
-_outputArg
- s::T  u::T  v::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func svd(scope:Scope,input: tf.Output)  -> (s: tf.Output, u: tf.Output, v: tf.Output){
+func svd(scope:Scope,input: tf.Outputcompute_uv :bool, full_matrices :bool, T :type)  ->(s: tf.Output, u: tf.Output, v: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Svd",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1))
 }
 
 /*
@@ -29208,262 +16911,138 @@ If `pred` is true, the `data` input is forwarded to `output_true`. Otherwise,
 the data goes to `output_false`.
 See also `RefSwitch` and `Merge`.
 
-_inputArg
- data:: .T  pred:: . 
-_outputArg
-
-_outputArg
- output_false::T  output_true::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func switch(scope:Scope,data: tf.Output, pred: tf.Output)  -> (output_false: tf.Output, output_true: tf.Output){
+func switch(scope:Scope,data: tf.Output, pred: tf.OutputT :type)  ->(outputFalse: tf.Output, outputTrue: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Switch",
-        Input: [  data,  pred, )]
+        Input: [ data, pred]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1))
 }
 
 /*
 Computes the gradient function for function f via backpropagation.
 
 
-_inputArg
- input:: . 
-_outputArg
-
-_outputArg
- output:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func symbolicGradient(scope:Scope,input: tf.Output)  -> (output: tf.Output){
+func symbolicGradient(scope:Scope,input: tf.OutputTin :list(type), Tout :list(type), f :func)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "SymbolicGradient",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Creates a dataset that emits the records from one or more TFRecord files.
 
 
-_inputArg
- filenames:: .  compression_type:: . 
-_outputArg
-
-_outputArg
- handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func tfRecordDataset(scope:Scope,filenames: tf.Output, compression_type: tf.Output)  -> (handle: tf.Output){
+func tfRecordDataset(scope:Scope,filenames: tf.Output, compressionType: tf.Output)  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TFRecordDataset",
-        Input: [  filenames,  compression_type, )]
+        Input: [ filenames, compressionType]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 A Reader that outputs the records from a TensorFlow Records file.
 
 
-_inputArg
-_outputArg
-
-_outputArg
- reader_handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func tfRecordReader(scope:Scope)  -> (reader_handle: tf.Output){
+func tfRecordReader(scope:Scopecontainer :string, shared_name :string, compression_type :string)  ->(readerHandle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TFRecordReader",
-        Input: [ )]
+        Input: [ ]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 A Reader that outputs the records from a TensorFlow Records file.
 
 
-_inputArg
-_outputArg
-
-_outputArg
- reader_handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func tfRecordReaderV2(scope:Scope)  -> (reader_handle: tf.Output){
+func tfRecordReaderV2(scope:Scopecontainer :string, shared_name :string, compression_type :string)  ->(readerHandle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TFRecordReaderV2",
-        Input: [ )]
+        Input: [ ]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Creates a dataset that contains `count` elements from the `input_dataset`.
 
 
-_inputArg
- input_dataset:: .  count:: . 
-_outputArg
-
-_outputArg
- handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func takeDataset(scope:Scope,input_dataset: tf.Output, count: tf.Output)  -> (handle: tf.Output){
+func takeDataset(scope:Scope,inputDataset: tf.Output, count: tf.Outputoutput_types :list(type), output_shapes :list(shape))  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TakeDataset",
-        Input: [  input_dataset,  count, )]
+        Input: [ inputDataset, count]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -29510,132 +17089,69 @@ then the final `SparseTensor` will be:
     shape = [2 50]
 ```
 
-_inputArg
- sparse_handles:: . 
-_outputArg
-
-_outputArg
- sparse_indices::  sparse_values::dtype  sparse_shape:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func takeManySparseFromTensorsMap(scope:Scope,sparse_handles: tf.Output)  -> (sparse_indices: tf.Output, sparse_values: tf.Output, sparse_shape: tf.Output){
+func takeManySparseFromTensorsMap(scope:Scope,sparseHandles: tf.Outputdtype :type, container :string, shared_name :string)  ->(sparseIndices: tf.Output, sparseValues: tf.Output, sparseShape: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TakeManySparseFromTensorsMap",
-        Input: [  sparse_handles, )]
+        Input: [ sparseHandles]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1))
 }
 
 /*
 Computes tan of x element-wise.
 
 
-_inputArg
- x:: .T 
-_outputArg
-
-_outputArg
- y::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func tan(scope:Scope,x: tf.Output)  -> (y: tf.Output){
+func tan(scope:Scope,x: tf.OutputT :type)  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Tan",
-        Input: [  x, )]
+        Input: [ x]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Computes hyperbolic tangent of `x` element-wise.
 
 
-_inputArg
- x:: .T 
-_outputArg
-
-_outputArg
- y::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func tanh(scope:Scope,x: tf.Output)  -> (y: tf.Output){
+func tanh(scope:Scope,x: tf.OutputT :type)  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Tanh",
-        Input: [  x, )]
+        Input: [ x]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -29644,44 +17160,23 @@ Computes the gradient for the tanh of `x` wrt its input.
 Specifically, `grad = dy * (1 - y*y)`, where `y = tanh(x)`, and `dy`
 is the corresponding input gradient.
 
-_inputArg
- x:: .T  y:: .T 
-_outputArg
-
-_outputArg
- z::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func tanhGrad(scope:Scope,x: tf.Output, y: tf.Output)  -> (z: tf.Output){
+func tanhGrad(scope:Scope,x: tf.Output, y: tf.OutputT :type)  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TanhGrad",
-        Input: [  x,  y, )]
+        Input: [ x, y]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -29699,167 +17194,86 @@ Outputs a ref to the tensor state so it may be read or modified.
       var = state_ops.assign_add(var, [[6.0, 7.0]])
       final = state_ops._destroy_temporary_variable(var, var_name=var_name)
 
-_inputArg
-_outputArg
-
-_outputArg
- ref::dtype 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func temporaryVariable(scope:Scope)  -> (ref: tf.Output){
+func temporaryVariable(scope:Scopeshape :shape, dtype :type, var_name :string)  ->(ref: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TemporaryVariable",
-        Input: [ )]
+        Input: [ ]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 
 
-_inputArg
- size:: . 
-_outputArg
-
-_outputArg
- handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func tensorArray(scope:Scope,size: tf.Output)  -> (handle: tf.Output){
+func tensorArray(scope:Scope,size: tf.Outputdtype :type, dynamic_size :bool, clear_after_read :bool, tensor_array_name :string, element_shape :shape)  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TensorArray",
-        Input: [  size, )]
+        Input: [ size]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 
 
-_inputArg
- handle:: . 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func tensorArrayClose(scope:Scope,handle: tf.Output)  -> (){
+func tensorArrayClose(scope:Scope,handle: tf.Output)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TensorArrayClose",
-        Input: [  handle, )]
+        Input: [ handle]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
 Deprecated. Use TensorArrayCloseV3
 
 
-_inputArg
- handle:: . 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func tensorArrayCloseV2(scope:Scope,handle: tf.Output)  -> (){
+func tensorArrayCloseV2(scope:Scope,handle: tf.Output)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TensorArrayCloseV2",
-        Input: [  handle, )]
+        Input: [ handle]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
@@ -29868,128 +17282,66 @@ Delete the TensorArray from its resource container.
 This enables the user to close and release the resource in the middle
 of a step/run.
 
-_inputArg
- handle:: . 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func tensorArrayCloseV3(scope:Scope,handle: tf.Output)  -> (){
+func tensorArrayCloseV3(scope:Scope,handle: tf.Output)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TensorArrayCloseV3",
-        Input: [  handle, )]
+        Input: [ handle]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
 
 
-_inputArg
- handle:: .  flow_in:: . 
-_outputArg
-
-_outputArg
- value::dtype  lengths:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func tensorArrayConcat(scope:Scope,handle: tf.Output, flow_in: tf.Output)  -> (value: tf.Output, lengths: tf.Output){
+func tensorArrayConcat(scope:Scope,handle: tf.Output, flowIn: tf.Outputdtype :type, element_shape_except0 :shape)  ->(value: tf.Output, lengths: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TensorArrayConcat",
-        Input: [  handle,  flow_in, )]
+        Input: [ handle, flowIn]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1))
 }
 
 /*
 Deprecated. Use TensorArrayConcatV3
 
 
-_inputArg
- handle:: .  flow_in:: . 
-_outputArg
-
-_outputArg
- value::dtype  lengths:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func tensorArrayConcatV2(scope:Scope,handle: tf.Output, flow_in: tf.Output)  -> (value: tf.Output, lengths: tf.Output){
+func tensorArrayConcatV2(scope:Scope,handle: tf.Output, flowIn: tf.Outputdtype :type, element_shape_except0 :shape)  ->(value: tf.Output, lengths: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TensorArrayConcatV2",
-        Input: [  handle,  flow_in, )]
+        Input: [ handle, flowIn]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1))
 }
 
 /*
@@ -30003,131 +17355,68 @@ and concatenates them into a Tensor of shape:
   ```(n0 + n1 + ... + n(T-1) x d0 x d1 x ...)```
 All elements must have the same shape (excepting the first dimension).
 
-_inputArg
- handle:: .  flow_in:: . 
-_outputArg
-
-_outputArg
- value::dtype  lengths:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func tensorArrayConcatV3(scope:Scope,handle: tf.Output, flow_in: tf.Output)  -> (value: tf.Output, lengths: tf.Output){
+func tensorArrayConcatV3(scope:Scope,handle: tf.Output, flowIn: tf.Outputdtype :type, element_shape_except0 :shape)  ->(value: tf.Output, lengths: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TensorArrayConcatV3",
-        Input: [  handle,  flow_in, )]
+        Input: [ handle, flowIn]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1))
 }
 
 /*
 
 
-_inputArg
- handle:: .  indices:: .  flow_in:: . 
-_outputArg
-
-_outputArg
- value::dtype 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func tensorArrayGather(scope:Scope,handle: tf.Output, indices: tf.Output, flow_in: tf.Output)  -> (value: tf.Output){
+func tensorArrayGather(scope:Scope,handle: tf.Output, indices: tf.Output, flowIn: tf.Outputdtype :type, element_shape :shape)  ->(value: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TensorArrayGather",
-        Input: [  handle,  indices,  flow_in, )]
+        Input: [ handle, indices, flowIn]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Deprecated. Use TensorArrayGatherV3
 
 
-_inputArg
- handle:: .  indices:: .  flow_in:: . 
-_outputArg
-
-_outputArg
- value::dtype 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func tensorArrayGatherV2(scope:Scope,handle: tf.Output, indices: tf.Output, flow_in: tf.Output)  -> (value: tf.Output){
+func tensorArrayGatherV2(scope:Scope,handle: tf.Output, indices: tf.Output, flowIn: tf.Outputdtype :type, element_shape :shape)  ->(value: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TensorArrayGatherV2",
-        Input: [  handle,  indices,  flow_in, )]
+        Input: [ handle, indices, flowIn]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -30135,131 +17424,68 @@ Gather specific elements from the TensorArray into output `value`.
 
 All elements selected by `indices` must have the same shape.
 
-_inputArg
- handle:: .  indices:: .  flow_in:: . 
-_outputArg
-
-_outputArg
- value::dtype 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func tensorArrayGatherV3(scope:Scope,handle: tf.Output, indices: tf.Output, flow_in: tf.Output)  -> (value: tf.Output){
+func tensorArrayGatherV3(scope:Scope,handle: tf.Output, indices: tf.Output, flowIn: tf.Outputdtype :type, element_shape :shape)  ->(value: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TensorArrayGatherV3",
-        Input: [  handle,  indices,  flow_in, )]
+        Input: [ handle, indices, flowIn]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 
 
-_inputArg
- handle:: .  flow_in:: . 
-_outputArg
-
-_outputArg
- grad_handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func tensorArrayGrad(scope:Scope,handle: tf.Output, flow_in: tf.Output)  -> (grad_handle: tf.Output){
+func tensorArrayGrad(scope:Scope,handle: tf.Output, flowIn: tf.Outputsource :string)  ->(gradHandle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TensorArrayGrad",
-        Input: [  handle,  flow_in, )]
+        Input: [ handle, flowIn]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Deprecated. Use TensorArrayGradV3
 
 
-_inputArg
- handle:: .  flow_in:: . 
-_outputArg
-
-_outputArg
- grad_handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func tensorArrayGradV2(scope:Scope,handle: tf.Output, flow_in: tf.Output)  -> (grad_handle: tf.Output){
+func tensorArrayGradV2(scope:Scope,handle: tf.Output, flowIn: tf.Outputsource :string)  ->(gradHandle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TensorArrayGradV2",
-        Input: [  handle,  flow_in, )]
+        Input: [ handle, flowIn]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -30294,305 +17520,158 @@ The attribute `source` is added as a suffix to the forward TensorArray's
 name when performing the creation / lookup, so that each separate gradient
 calculation gets its own TensorArray accumulator.
 
-_inputArg
- handle:: .  flow_in:: . 
-_outputArg
-
-_outputArg
- grad_handle::  flow_out:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func tensorArrayGradV3(scope:Scope,handle: tf.Output, flow_in: tf.Output)  -> (grad_handle: tf.Output, flow_out: tf.Output){
+func tensorArrayGradV3(scope:Scope,handle: tf.Output, flowIn: tf.Outputsource :string)  ->(gradHandle: tf.Output, flowOut: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TensorArrayGradV3",
-        Input: [  handle,  flow_in, )]
+        Input: [ handle, flowIn]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1))
 }
 
 /*
 
 
-_inputArg
- handle:: .  flow_in:: . 
-_outputArg
-
-_outputArg
- value::dtype 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func tensorArrayPack(scope:Scope,handle: tf.Output, flow_in: tf.Output)  -> (value: tf.Output){
+func tensorArrayPack(scope:Scope,handle: tf.Output, flowIn: tf.Outputdtype :type, element_shape :shape)  ->(value: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TensorArrayPack",
-        Input: [  handle,  flow_in, )]
+        Input: [ handle, flowIn]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 
 
-_inputArg
- handle:: .  index:: .  flow_in:: . 
-_outputArg
-
-_outputArg
- value::dtype 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func tensorArrayRead(scope:Scope,handle: tf.Output, index: tf.Output, flow_in: tf.Output)  -> (value: tf.Output){
+func tensorArrayRead(scope:Scope,handle: tf.Output, index: tf.Output, flowIn: tf.Outputdtype :type)  ->(value: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TensorArrayRead",
-        Input: [  handle,  index,  flow_in, )]
+        Input: [ handle, index, flowIn]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Deprecated. Use TensorArrayReadV3
 
 
-_inputArg
- handle:: .  index:: .  flow_in:: . 
-_outputArg
-
-_outputArg
- value::dtype 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func tensorArrayReadV2(scope:Scope,handle: tf.Output, index: tf.Output, flow_in: tf.Output)  -> (value: tf.Output){
+func tensorArrayReadV2(scope:Scope,handle: tf.Output, index: tf.Output, flowIn: tf.Outputdtype :type)  ->(value: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TensorArrayReadV2",
-        Input: [  handle,  index,  flow_in, )]
+        Input: [ handle, index, flowIn]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Read an element from the TensorArray into output `value`.
 
 
-_inputArg
- handle:: .  index:: .  flow_in:: . 
-_outputArg
-
-_outputArg
- value::dtype 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func tensorArrayReadV3(scope:Scope,handle: tf.Output, index: tf.Output, flow_in: tf.Output)  -> (value: tf.Output){
+func tensorArrayReadV3(scope:Scope,handle: tf.Output, index: tf.Output, flowIn: tf.Outputdtype :type)  ->(value: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TensorArrayReadV3",
-        Input: [  handle,  index,  flow_in, )]
+        Input: [ handle, index, flowIn]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 
 
-_inputArg
- handle:: .  indices:: .  value:: .T  flow_in:: . 
-_outputArg
-
-_outputArg
- flow_out:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func tensorArrayScatter(scope:Scope,handle: tf.Output, indices: tf.Output, value: tf.Output, flow_in: tf.Output)  -> (flow_out: tf.Output){
+func tensorArrayScatter(scope:Scope,handle: tf.Output, indices: tf.Output, value: tf.Output, flowIn: tf.OutputT :type)  ->(flowOut: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TensorArrayScatter",
-        Input: [  handle,  indices,  value,  flow_in, )]
+        Input: [ handle, indices, value, flowIn]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Deprecated. Use TensorArrayScatterV3
 
 
-_inputArg
- handle:: .  indices:: .  value:: .T  flow_in:: . 
-_outputArg
-
-_outputArg
- flow_out:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func tensorArrayScatterV2(scope:Scope,handle: tf.Output, indices: tf.Output, value: tf.Output, flow_in: tf.Output)  -> (flow_out: tf.Output){
+func tensorArrayScatterV2(scope:Scope,handle: tf.Output, indices: tf.Output, value: tf.Output, flowIn: tf.OutputT :type)  ->(flowOut: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TensorArrayScatterV2",
-        Input: [  handle,  indices,  value,  flow_in, )]
+        Input: [ handle, indices, value, flowIn]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -30600,262 +17679,136 @@ Scatter the data from the input value into specific TensorArray elements.
 
 `indices` must be a vector, its length must match the first dim of `value`.
 
-_inputArg
- handle:: .  indices:: .  value:: .T  flow_in:: . 
-_outputArg
-
-_outputArg
- flow_out:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func tensorArrayScatterV3(scope:Scope,handle: tf.Output, indices: tf.Output, value: tf.Output, flow_in: tf.Output)  -> (flow_out: tf.Output){
+func tensorArrayScatterV3(scope:Scope,handle: tf.Output, indices: tf.Output, value: tf.Output, flowIn: tf.OutputT :type)  ->(flowOut: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TensorArrayScatterV3",
-        Input: [  handle,  indices,  value,  flow_in, )]
+        Input: [ handle, indices, value, flowIn]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 
 
-_inputArg
- handle:: .  flow_in:: . 
-_outputArg
-
-_outputArg
- size:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func tensorArraySize(scope:Scope,handle: tf.Output, flow_in: tf.Output)  -> (size: tf.Output){
+func tensorArraySize(scope:Scope,handle: tf.Output, flowIn: tf.Output)  ->(size: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TensorArraySize",
-        Input: [  handle,  flow_in, )]
+        Input: [ handle, flowIn]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Deprecated. Use TensorArraySizeV3
 
 
-_inputArg
- handle:: .  flow_in:: . 
-_outputArg
-
-_outputArg
- size:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func tensorArraySizeV2(scope:Scope,handle: tf.Output, flow_in: tf.Output)  -> (size: tf.Output){
+func tensorArraySizeV2(scope:Scope,handle: tf.Output, flowIn: tf.Output)  ->(size: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TensorArraySizeV2",
-        Input: [  handle,  flow_in, )]
+        Input: [ handle, flowIn]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Get the current size of the TensorArray.
 
 
-_inputArg
- handle:: .  flow_in:: . 
-_outputArg
-
-_outputArg
- size:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func tensorArraySizeV3(scope:Scope,handle: tf.Output, flow_in: tf.Output)  -> (size: tf.Output){
+func tensorArraySizeV3(scope:Scope,handle: tf.Output, flowIn: tf.Output)  ->(size: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TensorArraySizeV3",
-        Input: [  handle,  flow_in, )]
+        Input: [ handle, flowIn]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 
 
-_inputArg
- handle:: .  value:: .T  lengths:: .  flow_in:: . 
-_outputArg
-
-_outputArg
- flow_out:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func tensorArraySplit(scope:Scope,handle: tf.Output, value: tf.Output, lengths: tf.Output, flow_in: tf.Output)  -> (flow_out: tf.Output){
+func tensorArraySplit(scope:Scope,handle: tf.Output, value: tf.Output, lengths: tf.Output, flowIn: tf.OutputT :type)  ->(flowOut: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TensorArraySplit",
-        Input: [  handle,  value,  lengths,  flow_in, )]
+        Input: [ handle, value, lengths, flowIn]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Deprecated. Use TensorArraySplitV3
 
 
-_inputArg
- handle:: .  value:: .T  lengths:: .  flow_in:: . 
-_outputArg
-
-_outputArg
- flow_out:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func tensorArraySplitV2(scope:Scope,handle: tf.Output, value: tf.Output, lengths: tf.Output, flow_in: tf.Output)  -> (flow_out: tf.Output){
+func tensorArraySplitV2(scope:Scope,handle: tf.Output, value: tf.Output, lengths: tf.Output, flowIn: tf.OutputT :type)  ->(flowOut: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TensorArraySplitV2",
-        Input: [  handle,  value,  lengths,  flow_in, )]
+        Input: [ handle, value, lengths, flowIn]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -30871,131 +17824,68 @@ TensorArray index t will be the subtensor of values with starting position
 and having size
   ```nt x d0 x d1 x ...```
 
-_inputArg
- handle:: .  value:: .T  lengths:: .  flow_in:: . 
-_outputArg
-
-_outputArg
- flow_out:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func tensorArraySplitV3(scope:Scope,handle: tf.Output, value: tf.Output, lengths: tf.Output, flow_in: tf.Output)  -> (flow_out: tf.Output){
+func tensorArraySplitV3(scope:Scope,handle: tf.Output, value: tf.Output, lengths: tf.Output, flowIn: tf.OutputT :type)  ->(flowOut: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TensorArraySplitV3",
-        Input: [  handle,  value,  lengths,  flow_in, )]
+        Input: [ handle, value, lengths, flowIn]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 
 
-_inputArg
- handle:: .  value:: .T  flow_in:: . 
-_outputArg
-
-_outputArg
- flow_out:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func tensorArrayUnpack(scope:Scope,handle: tf.Output, value: tf.Output, flow_in: tf.Output)  -> (flow_out: tf.Output){
+func tensorArrayUnpack(scope:Scope,handle: tf.Output, value: tf.Output, flowIn: tf.OutputT :type)  ->(flowOut: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TensorArrayUnpack",
-        Input: [  handle,  value,  flow_in, )]
+        Input: [ handle, value, flowIn]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Deprecated. Use TensorArrayV3
 
 
-_inputArg
- size:: . 
-_outputArg
-
-_outputArg
- handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func tensorArrayV2(scope:Scope,size: tf.Output)  -> (handle: tf.Output){
+func tensorArrayV2(scope:Scope,size: tf.Outputdtype :type, element_shape :shape, dynamic_size :bool, clear_after_read :bool, tensor_array_name :string)  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TensorArrayV2",
-        Input: [  size, )]
+        Input: [ size]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -31003,437 +17893,229 @@ An array of Tensors of given size.
 
 Write data via Write and read via Read or Pack.
 
-_inputArg
- size:: . 
-_outputArg
-
-_outputArg
- handle::  flow:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func tensorArrayV3(scope:Scope,size: tf.Output)  -> (handle: tf.Output, flow: tf.Output){
+func tensorArrayV3(scope:Scope,size: tf.Outputdtype :type, element_shape :shape, dynamic_size :bool, clear_after_read :bool, tensor_array_name :string)  ->(handle: tf.Output, flow: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TensorArrayV3",
-        Input: [  size, )]
+        Input: [ size]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1))
 }
 
 /*
 
 
-_inputArg
- handle:: .  index:: .  value:: .T  flow_in:: . 
-_outputArg
-
-_outputArg
- flow_out:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func tensorArrayWrite(scope:Scope,handle: tf.Output, index: tf.Output, value: tf.Output, flow_in: tf.Output)  -> (flow_out: tf.Output){
+func tensorArrayWrite(scope:Scope,handle: tf.Output, index: tf.Output, value: tf.Output, flowIn: tf.OutputT :type)  ->(flowOut: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TensorArrayWrite",
-        Input: [  handle,  index,  value,  flow_in, )]
+        Input: [ handle, index, value, flowIn]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Deprecated. Use TensorArrayGradV3
 
 
-_inputArg
- handle:: .  index:: .  value:: .T  flow_in:: . 
-_outputArg
-
-_outputArg
- flow_out:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func tensorArrayWriteV2(scope:Scope,handle: tf.Output, index: tf.Output, value: tf.Output, flow_in: tf.Output)  -> (flow_out: tf.Output){
+func tensorArrayWriteV2(scope:Scope,handle: tf.Output, index: tf.Output, value: tf.Output, flowIn: tf.OutputT :type)  ->(flowOut: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TensorArrayWriteV2",
-        Input: [  handle,  index,  value,  flow_in, )]
+        Input: [ handle, index, value, flowIn]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Push an element onto the tensor_array.
 
 
-_inputArg
- handle:: .  index:: .  value:: .T  flow_in:: . 
-_outputArg
-
-_outputArg
- flow_out:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func tensorArrayWriteV3(scope:Scope,handle: tf.Output, index: tf.Output, value: tf.Output, flow_in: tf.Output)  -> (flow_out: tf.Output){
+func tensorArrayWriteV3(scope:Scope,handle: tf.Output, index: tf.Output, value: tf.Output, flowIn: tf.OutputT :type)  ->(flowOut: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TensorArrayWriteV3",
-        Input: [  handle,  index,  value,  flow_in, )]
+        Input: [ handle, index, value, flowIn]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Creates a dataset that emits `components` as a tuple of tensors once.
 
 
-_inputArg
- components:: . 
-_outputArg
-
-_outputArg
- handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func tensorDataset(scope:Scope,components: tf.Output)  -> (handle: tf.Output){
+func tensorDataset(scope:Scope,components: tf.OutputToutput_types :list(type), output_shapes :list(shape))  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TensorDataset",
-        Input: [  components, )]
+        Input: [ components]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Creates a dataset that emits each dim-0 slice of `components` once.
 
 
-_inputArg
- components:: . 
-_outputArg
-
-_outputArg
- handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func tensorSliceDataset(scope:Scope,components: tf.Output)  -> (handle: tf.Output){
+func tensorSliceDataset(scope:Scope,components: tf.OutputToutput_types :list(type), output_shapes :list(shape))  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TensorSliceDataset",
-        Input: [  components, )]
+        Input: [ components]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Outputs a `Summary` protocol buffer with a tensor.
 
 
-_inputArg
- tensor:: .T 
-_outputArg
-
-_outputArg
- summary:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func tensorSummary(scope:Scope,tensor: tf.Output)  -> (summary: tf.Output){
+func tensorSummary(scope:Scope,tensor: tf.OutputT :type, description :string, labels :list(string), display_name :string)  ->(summary: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TensorSummary",
-        Input: [  tensor, )]
+        Input: [ tensor]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Creates a dataset that emits the lines of one or more text files.
 
 
-_inputArg
- filenames:: . 
-_outputArg
-
-_outputArg
- handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func textLineDataset(scope:Scope,filenames: tf.Output)  -> (handle: tf.Output){
+func textLineDataset(scope:Scope,filenames: tf.Output)  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TextLineDataset",
-        Input: [  filenames, )]
+        Input: [ filenames]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 A Reader that outputs the lines of a file delimited by '\n'.
 
 
-_inputArg
-_outputArg
-
-_outputArg
- reader_handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func textLineReader(scope:Scope)  -> (reader_handle: tf.Output){
+func textLineReader(scope:Scopeskip_header_lines :int, container :string, shared_name :string)  ->(readerHandle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TextLineReader",
-        Input: [ )]
+        Input: [ ]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 A Reader that outputs the lines of a file delimited by '\n'.
 
 
-_inputArg
-_outputArg
-
-_outputArg
- reader_handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func textLineReaderV2(scope:Scope)  -> (reader_handle: tf.Output){
+func textLineReaderV2(scope:Scopeskip_header_lines :int, container :string, shared_name :string)  ->(readerHandle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TextLineReaderV2",
-        Input: [ )]
+        Input: [ ]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -31447,44 +18129,23 @@ possibility of efficient dense matrix multiplication. The disadvantage is that
 the sampled candidates must be chosen independently of the context and of the
 true labels.
 
-_inputArg
- true_classes:: . 
-_outputArg
-
-_outputArg
- sampled_candidates::  true_expected_count::  sampled_expected_count:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func threadUnsafeUnigramCandidateSampler(scope:Scope,true_classes: tf.Output)  -> (sampled_candidates: tf.Output, true_expected_count: tf.Output, sampled_expected_count: tf.Output){
+func threadUnsafeUnigramCandidateSampler(scope:Scope,trueClasses: tf.Outputnum_true :int, num_sampled :int, unique :bool, range_max :int, seed :int, seed2 :int)  ->(sampledCandidates: tf.Output, trueExpectedCount: tf.Output, sampledExpectedCount: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ThreadUnsafeUnigramCandidateSampler",
-        Input: [  true_classes, )]
+        Input: [ trueClasses]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1))
 }
 
 /*
@@ -31496,44 +18157,23 @@ and the values of `input` are replicated `multiples[i]` times along the 'i'th
 dimension. For example, tiling `[a b c d]` by `[2]` produces
 `[a b c d a b c d]`.
 
-_inputArg
- input:: .T  multiples:: .Tmultiples 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func tile(scope:Scope,input: tf.Output, multiples: tf.Output)  -> (output: tf.Output){
+func tile(scope:Scope,input: tf.Output, multiples: tf.OutputT :type, Tmultiples :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Tile",
-        Input: [  input,  multiples, )]
+        Input: [ input, multiples]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -31543,44 +18183,23 @@ Since `Tile` takes an input and repeats the input `multiples` times
 along each dimension, `TileGrad` takes in `multiples` and aggregates
 each repeated tile of `input` into `output`.
 
-_inputArg
- input:: .T  multiples:: . 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func tileGrad(scope:Scope,input: tf.Output, multiples: tf.Output)  -> (output: tf.Output){
+func tileGrad(scope:Scope,input: tf.Output, multiples: tf.OutputT :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TileGrad",
-        Input: [  input,  multiples, )]
+        Input: [ input, multiples]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -31595,44 +18214,23 @@ row (resp. vector along the last dimension).  Thus,
 If two elements are equal, the lower-index element appears first.
 If `k` varies dynamically, use `TopKV2` below.
 
-_inputArg
- input:: .T 
-_outputArg
-
-_outputArg
- values::T  indices:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func topK(scope:Scope,input: tf.Output)  -> (values: tf.Output, indices: tf.Output){
+func topK(scope:Scope,input: tf.Outputk :int, sorted :bool, T :type)  ->(values: tf.Output, indices: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TopK",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1))
 }
 
 /*
@@ -31646,44 +18244,23 @@ row (resp. vector along the last dimension).  Thus,
     values.shape = indices.shape = input.shape[:-1] + [k]
 If two elements are equal, the lower-index element appears first.
 
-_inputArg
- input:: .T  k:: . 
-_outputArg
-
-_outputArg
- values::T  indices:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func topKV2(scope:Scope,input: tf.Output, k: tf.Output)  -> (values: tf.Output, indices: tf.Output){
+func topKV2(scope:Scope,input: tf.Output, k: tf.Outputsorted :bool, T :type)  ->(values: tf.Output, indices: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TopKV2",
-        Input: [  input,  k, )]
+        Input: [ input, k]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1))
 }
 
 /*
@@ -31692,44 +18269,23 @@ Shuffle dimensions of x according to a permutation.
 The output `y` has the same rank as `x`. The shapes of `x` and `y` satisfy:
   `y.shape[i] == x.shape[perm[i]] for i in [0, 1, ..., rank(x) - 1]`
 
-_inputArg
- x:: .T  perm:: .Tperm 
-_outputArg
-
-_outputArg
- y::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func transpose(scope:Scope,x: tf.Output, perm: tf.Output)  -> (y: tf.Output){
+func transpose(scope:Scope,x: tf.Output, perm: tf.OutputT :type, Tperm :type)  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Transpose",
-        Input: [  x,  perm, )]
+        Input: [ x, perm]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -31742,44 +18298,23 @@ Python Semantics.
 *NOTE*: `TruncateDiv` supports broadcasting. More about broadcasting
 [here](http://docs.scipy.org/doc/numpy/user/basics.broadcasting.html)
 
-_inputArg
- x:: .T  y:: .T 
-_outputArg
-
-_outputArg
- z::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func truncateDiv(scope:Scope,x: tf.Output, y: tf.Output)  -> (z: tf.Output){
+func truncateDiv(scope:Scope,x: tf.Output, y: tf.OutputT :type)  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TruncateDiv",
-        Input: [  x,  y, )]
+        Input: [ x, y]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -31790,44 +18325,23 @@ y + truncate_mod(x, y) = x`.
 *NOTE*: `TruncateMod` supports broadcasting. More about broadcasting
 [here](http://docs.scipy.org/doc/numpy/user/basics.broadcasting.html)
 
-_inputArg
- x:: .T  y:: .T 
-_outputArg
-
-_outputArg
- z::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func truncateMod(scope:Scope,x: tf.Output, y: tf.Output)  -> (z: tf.Output){
+func truncateMod(scope:Scope,x: tf.Output, y: tf.OutputT :type)  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TruncateMod",
-        Input: [  x,  y, )]
+        Input: [ x, y]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -31837,44 +18351,23 @@ The generated values follow a normal distribution with mean 0 and standard
 deviation 1, except that values whose magnitude is more than 2 standard
 deviations from the mean are dropped and re-picked.
 
-_inputArg
- shape:: .T 
-_outputArg
-
-_outputArg
- output::dtype 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func truncatedNormal(scope:Scope,shape: tf.Output)  -> (output: tf.Output){
+func truncatedNormal(scope:Scope,shape: tf.Outputseed :int, seed2 :int, dtype :type, T :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "TruncatedNormal",
-        Input: [  shape, )]
+        Input: [ shape]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -31888,44 +18381,23 @@ possibility of efficient dense matrix multiplication. The disadvantage is that
 the sampled candidates must be chosen independently of the context and of the
 true labels.
 
-_inputArg
- true_classes:: . 
-_outputArg
-
-_outputArg
- sampled_candidates::  true_expected_count::  sampled_expected_count:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func uniformCandidateSampler(scope:Scope,true_classes: tf.Output)  -> (sampled_candidates: tf.Output, true_expected_count: tf.Output, sampled_expected_count: tf.Output){
+func uniformCandidateSampler(scope:Scope,trueClasses: tf.Outputnum_true :int, num_sampled :int, unique :bool, range_max :int, seed :int, seed2 :int)  ->(sampledCandidates: tf.Output, trueExpectedCount: tf.Output, sampledExpectedCount: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "UniformCandidateSampler",
-        Input: [  true_classes, )]
+        Input: [ trueClasses]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1))
 }
 
 /*
@@ -31944,44 +18416,23 @@ y ==> [1, 2, 4, 7, 8]
 idx ==> [0, 0, 1, 2, 2, 2, 3, 4, 4]
 ```
 
-_inputArg
- x:: .T 
-_outputArg
-
-_outputArg
- y::T  idx::out_idx 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func unique(scope:Scope,x: tf.Output)  -> (y: tf.Output, idx: tf.Output){
+func unique(scope:Scope,x: tf.OutputT :type, out_idx :type)  ->(y: tf.Output, idx: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Unique",
-        Input: [  x, )]
+        Input: [ x]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1))
 }
 
 /*
@@ -32002,44 +18453,23 @@ idx ==> [0, 0, 1, 2, 2, 2, 3, 4, 4]
 count ==> [2, 1, 3, 1, 2]
 ```
 
-_inputArg
- x:: .T 
-_outputArg
-
-_outputArg
- y::T  idx::out_idx  count::out_idx 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func uniqueWithCounts(scope:Scope,x: tf.Output)  -> (y: tf.Output, idx: tf.Output, count: tf.Output){
+func uniqueWithCounts(scope:Scope,x: tf.OutputT :type, out_idx :type)  ->(y: tf.Output, idx: tf.Output, count: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "UniqueWithCounts",
-        Input: [  x, )]
+        Input: [ x]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1),op.Output(2),op.Output(3))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1),op.Output(2 -1),op.Output(3 -1))
 }
 
 /*
@@ -32055,44 +18485,23 @@ If `axis == 1` then the i'th tensor in `output` is the slice `value[:, i, :, :]`
 Etc.
 This is the opposite of `pack`.
 
-_inputArg
- value:: .T 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func unpack(scope:Scope,value: tf.Output)  -> (output: tf.Output){
+func unpack(scope:Scope,value: tf.Outputnum :int, T :type, axis :int)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Unpack",
-        Input: [  value, )]
+        Input: [ value]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -32111,44 +18520,23 @@ If the maximum is empty for a given segment ID `i`, it outputs the smallest poss
 <img style="width:100%" src="https://www.tensorflow.org/images/UnsortedSegmentSum.png" alt>
 </div>
 
-_inputArg
- data:: .T  segment_ids:: .Tindices  num_segments:: . 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func unsortedSegmentMax(scope:Scope,data: tf.Output, segment_ids: tf.Output, num_segments: tf.Output)  -> (output: tf.Output){
+func unsortedSegmentMax(scope:Scope,data: tf.Output, segmentIds: tf.Output, numSegments: tf.OutputT :type, Tindices :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "UnsortedSegmentMax",
-        Input: [  data,  segment_ids,  num_segments, )]
+        Input: [ data, segmentIds, numSegments]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -32167,44 +18555,23 @@ If the sum is empty for a given segment ID `i`, `output[i] = 0`.
 <img style="width:100%" src="https://www.tensorflow.org/images/UnsortedSegmentSum.png" alt>
 </div>
 
-_inputArg
- data:: .T  segment_ids:: .Tindices  num_segments:: . 
-_outputArg
-
-_outputArg
- output::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func unsortedSegmentSum(scope:Scope,data: tf.Output, segment_ids: tf.Output, num_segments: tf.Output)  -> (output: tf.Output){
+func unsortedSegmentSum(scope:Scope,data: tf.Output, segmentIds: tf.Output, numSegments: tf.OutputT :type, Tindices :type)  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "UnsortedSegmentSum",
-        Input: [  data,  segment_ids,  num_segments, )]
+        Input: [ data, segmentIds, numSegments]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -32213,86 +18580,46 @@ Op is similar to a lightweight Dequeue.
 The basic funtionality is similar to dequeue with many fewer
 capabilities and options.  This Op is optimized for performance.
 
-_inputArg
-_outputArg
-
-_outputArg
- values:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func unstage(scope:Scope)  -> (values: tf.Output){
+func unstage(scope:Scopedtypes :list(type), container :string, shared_name :string)  ->(values: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Unstage",
-        Input: [ )]
+        Input: [ ]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Use VariableV2 instead.
 
 
-_inputArg
-_outputArg
-
-_outputArg
- ref::dtype 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func variable(scope:Scope)  -> (ref: tf.Output){
+func variable(scope:Scopeshape :shape, dtype :type, container :string, shared_name :string)  ->(ref: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Variable",
-        Input: [ )]
+        Input: [ ]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -32302,43 +18629,23 @@ Outputs a ref to the tensor state so it may be read or modified.
 TODO(zhifengc/mrry): Adds a pointer to a more detail document
 about sharing states in tensorflow.
 
-_inputArg
-_outputArg
-
-_outputArg
- ref::dtype 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func variableV2(scope:Scope)  -> (ref: tf.Output){
+func variableV2(scope:Scopeshape :shape, dtype :type, container :string, shared_name :string)  ->(ref: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "VariableV2",
-        Input: [ )]
+        Input: [ ]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -32373,44 +18680,23 @@ where(input) ==> [[0, 0, 0],
                   [2, 1, 1]]
 ```
 
-_inputArg
- input:: . 
-_outputArg
-
-_outputArg
- index:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func where(scope:Scope,input: tf.Output)  -> (index: tf.Output){
+func where(scope:Scope,input: tf.Output)  ->(index: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Where",
-        Input: [  input, )]
+        Input: [ input]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -32419,43 +18705,23 @@ A Reader that outputs the entire contents of a file as a value.
 To use, enqueue filenames in a Queue.  The output of ReaderRead will
 be a filename (key) and the contents of that file (value).
 
-_inputArg
-_outputArg
-
-_outputArg
- reader_handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func wholeFileReader(scope:Scope)  -> (reader_handle: tf.Output){
+func wholeFileReader(scope:Scopecontainer :string, shared_name :string)  ->(readerHandle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "WholeFileReader",
-        Input: [ )]
+        Input: [ ]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -32464,128 +18730,67 @@ A Reader that outputs the entire contents of a file as a value.
 To use, enqueue filenames in a Queue.  The output of ReaderRead will
 be a filename (key) and the contents of that file (value).
 
-_inputArg
-_outputArg
-
-_outputArg
- reader_handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func wholeFileReaderV2(scope:Scope)  -> (reader_handle: tf.Output){
+func wholeFileReaderV2(scope:Scopecontainer :string, shared_name :string)  ->(readerHandle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "WholeFileReaderV2",
-        Input: [ )]
+        Input: [ ]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Writes contents to the file at input filename. Creates file if not existing.
 
 
-_inputArg
- filename:: .  contents:: . 
-_outputArg
-
-_outputArg
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func writeFile(scope:Scope,filename: tf.Output, contents: tf.Output)  -> (){
+func writeFile(scope:Scope,filename: tf.Output, contents: tf.Output)  {
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "WriteFile",
-        Input: [  filename,  contents, )]
+        Input: [ filename, contents]
         Attrs: attrs
     )
-
-
-
-
 }
 
 /*
 Returns a tensor of zeros with the same shape and type as x.
 
 
-_inputArg
- x:: .T 
-_outputArg
-
-_outputArg
- y::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func zerosLike(scope:Scope,x: tf.Output)  -> (y: tf.Output){
+func zerosLike(scope:Scope,x: tf.OutputT :type)  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ZerosLike",
-        Input: [  x, )]
+        Input: [ x]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
@@ -32594,87 +18799,45 @@ Compute the Hurwitz zeta function \\(\zeta(x, q)\\).
 The Hurwitz zeta function is defined as:
 \\(\zeta(x, q) = \sum_{n=0}^{\infty} (q + n)^{-x}\\)
 
-_inputArg
- x:: .T  q:: .T 
-_outputArg
-
-_outputArg
- z::T 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func zeta(scope:Scope,x: tf.Output, q: tf.Output)  -> (z: tf.Output){
+func zeta(scope:Scope,x: tf.Output, q: tf.OutputT :type)  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "Zeta",
-        Input: [  x,  q, )]
+        Input: [ x, q]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
 /*
 Creates a dataset that zips together `input_datasets`.
 
 
-_inputArg
- input_datasets:: . 
-_outputArg
-
-_outputArg
- handle:: 
-
 */
 
 
 
-// TODO - in the return parameters use an index Output(0) // output(1) etc
-// TODO - work out a way to skip extroneous , eg. param,param, )
-// TODO - Not all return types are output eg.
-// func ResourceSparseApplyRMSProp(scope *Scope, var_ tf.Output, ms tf.Output, mom tf.Output, lr tf.Output, rho tf.Output, momentum tf.Output, epsilon tf.Output, grad tf.Output, indices tf.Output, optional ...ResourceSparseApplyRMSPropAttr) (o *tf.Operation)
 
 
-
-
-
-
-func zipDataset(scope:Scope,input_datasets: tf.Output)  -> (handle: tf.Output){
+func zipDataset(scope:Scope,inputDatasets: tf.Outputoutput_types :list(type), output_shapes :list(shape), N :int)  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
-
-
     let opspec = tf.OpSpec(
         Type: "ZipDataset",
-        Input: [  input_datasets, )]
+        Input: [ inputDatasets]
         Attrs: attrs
     )
-
-
-
-        let op = scope.AddOperation(opspec)
-        return (op.Output(1))
-
+    let op = scope.AddOperation(opspec)
+    return (op.Output(1 -1))
 }
 
