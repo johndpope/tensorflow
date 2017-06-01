@@ -139,7 +139,7 @@ extension Scope{
     mutating func  UpdateError(op:String, error: NSError) {
         if self.error.error == nil {
             let msg = "failed to add operation \(op.description): \(error) (Stacktrace: ))" //\(debug.Stack()
-            self.error.error = NSError.newIoError("failed to add operation %q: %v (Stacktrace: %s)", code: 111)
+            self.error.error = NSError.newIoError(msg, code: 111)
             
         }
     }
