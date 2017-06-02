@@ -64,6 +64,7 @@ class OperationsStencil{
                 bShouldBreak = false
                 continue;
             }
+            print("op:",op)
             for (indexA,att) in op.attr.enumerated(){
                 print(">",att.type)
                
@@ -72,8 +73,12 @@ class OperationsStencil{
                     bShouldBreak = true
                     break;
                 }
-                if (att.name == "dtypes"){
-                    OperationsStencil.ops[index].attr[indexA].type = "Tensorflow_DataType"
+                
+                if (att.name == "dtype"){
+                    if(att.allowedValues.list.type.count > 0){
+                      OperationsStencil.ops[index].attr[indexA].type = "[Any]"
+                    }
+                    
                 }
                 if (att.type == "int"){
                     OperationsStencil.ops[index].attr[indexA].type = "UInt8"
@@ -85,9 +90,9 @@ class OperationsStencil{
                     OperationsStencil.ops[index].attr[indexA].type = "String"
                 }
                 if (att.type == "list(int)"){
-                    OperationsStencil.ops[index].attr[indexA].type = "[Int]"
+                    OperationsStencil.ops[index].attr[indexA].type = "[Int64]"
                 }
-                
+               
                 if (att.type == "list(shape)"){
                     OperationsStencil.ops[index].attr[indexA].type = "[Shape]"
                 }

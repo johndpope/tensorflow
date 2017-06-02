@@ -65,7 +65,7 @@ an output element, this operation computes \\(y = |x|\\).
 
 
 
-func abs(scope:Scope,x: Tensorflow_DataType )  ->(y: tf.Output){
+func abs(scope:Scope,x: tf.Output )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -91,7 +91,7 @@ Does not add if local_step is lesser than the accumulator's global_step.
 
 
 
-func accumulatorApplyGradient(scope:Scope,handle: Tensorflow_DataType, localStep: Tensorflow_DataType, gradient: Tensorflow_DataType, dtype :Type  )  ->(o:tf.Operation){
+func accumulatorApplyGradient(scope:Scope,handle: tf.Output, localStep: tf.Output, gradient: tf.Output, dtype :Type  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -116,7 +116,7 @@ Returns the number of gradients aggregated in the given accumulators.
 
 
 
-func accumulatorNumAccumulated(scope:Scope,handle: Tensorflow_DataType )  ->(numAccumulated: tf.Output){
+func accumulatorNumAccumulated(scope:Scope,handle: tf.Output )  ->(numAccumulated: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -143,7 +143,7 @@ new_global_step.
 
 
 
-func accumulatorSetGlobalStep(scope:Scope,handle: Tensorflow_DataType, newGlobalStep: Tensorflow_DataType )  ->(o:tf.Operation){
+func accumulatorSetGlobalStep(scope:Scope,handle: tf.Output, newGlobalStep: tf.Output )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -172,7 +172,7 @@ global_step in the accumulator by 1, and resets the aggregate to 0.
 
 
 
-func accumulatorTakeGradient(scope:Scope,handle: Tensorflow_DataType, numRequired: Tensorflow_DataType, dtype :Type  )  ->(average: tf.Output){
+func accumulatorTakeGradient(scope:Scope,handle: tf.Output, numRequired: tf.Output, dtype :[Any]  )  ->(average: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -198,7 +198,7 @@ Computes acos of x element-wise.
 
 
 
-func acos(scope:Scope,x: Tensorflow_DataType )  ->(y: tf.Output){
+func acos(scope:Scope,x: tf.Output )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -225,7 +225,7 @@ Returns x + y element-wise.
 
 
 
-func add(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :Type  )  ->(z: tf.Output){
+func add(scope:Scope,x: tf.Output, y: tf.Output, t :Type  )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -269,7 +269,7 @@ is provided here, instead use the *name* of the Operation created by calling
 
 
 
-func addManySparseToTensorsMap(scope:Scope,sparseIndices: Tensorflow_DataType, sparseValues: Tensorflow_DataType, sparseShape: Tensorflow_DataType, container :String  , sharedName :String  )  ->(sparseHandles: tf.Output){
+func addManySparseToTensorsMap(scope:Scope,sparseIndices: tf.Output, sparseValues: tf.Output, sparseShape: tf.Output, container :String  , sharedName :String  )  ->(sparseHandles: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -296,7 +296,7 @@ Add all input tensors element wise.
 
 
 
-func addN(scope:Scope,inputs: Tensorflow_DataType, n :Int  , t :Type  )  ->(sum: tf.Output){
+func addN(scope:Scope,inputs: tf.Output, n :Int  , t :Type  )  ->(sum: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -335,7 +335,7 @@ is provided here, instead use the *name* of the Operation created by calling
 
 
 
-func addSparseToTensorsMap(scope:Scope,sparseIndices: Tensorflow_DataType, sparseValues: Tensorflow_DataType, sparseShape: Tensorflow_DataType, container :String  , sharedName :String  )  ->(sparseHandle: tf.Output){
+func addSparseToTensorsMap(scope:Scope,sparseIndices: tf.Output, sparseValues: tf.Output, sparseShape: tf.Output, container :String  , sharedName :String  )  ->(sparseHandle: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -362,7 +362,7 @@ Deprecated. Disallowed in GraphDef version >= 2.
 
 
 
-func adjustContrast(scope:Scope,images: Tensorflow_DataType, contrastFactor: Tensorflow_DataType, minValue: Tensorflow_DataType, maxValue: Tensorflow_DataType, t :Type  )  ->(output: tf.Output){
+func adjustContrast(scope:Scope,images: tf.Output, contrastFactor: tf.Output, minValue: tf.Output, maxValue: tf.Output, t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -395,7 +395,7 @@ channel and then adjusts each component of each pixel to
 
 
 
-func adjustContrastv2(scope:Scope,images: Tensorflow_DataType, contrastFactor: Tensorflow_DataType )  ->(output: tf.Output){
+func adjustContrastv2(scope:Scope,images: tf.Output, contrastFactor: tf.Output )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -425,7 +425,7 @@ and then remapped back to RGB colorspace.
 
 
 
-func adjustHue(scope:Scope,images: Tensorflow_DataType, delta: Tensorflow_DataType )  ->(output: tf.Output){
+func adjustHue(scope:Scope,images: tf.Output, delta: tf.Output )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -455,7 +455,7 @@ values, and then remapped back to RGB colorspace.
 
 
 
-func adjustSaturation(scope:Scope,images: Tensorflow_DataType, scale: Tensorflow_DataType )  ->(output: tf.Output){
+func adjustSaturation(scope:Scope,images: tf.Output, scale: tf.Output )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -484,7 +484,7 @@ retained with length 1.
 
 
 
-func all(scope:Scope,input: Tensorflow_DataType, reductionIndices: Tensorflow_DataType, keepDims :Bool  , tidx :Type  )  ->(output: tf.Output){
+func all(scope:Scope,input: tf.Output, reductionIndices: tf.Output, keepDims :Bool  , tidx :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -518,7 +518,7 @@ true labels.
 
 
 
-func allCandidateSampler(scope:Scope,trueClasses: Tensorflow_DataType, numTrue :UInt8  , numSampled :UInt8  , unique :Bool  , seed :UInt8  , seed2 :UInt8  )  ->(sampledCandidates: tf.Output, trueExpectedCount: tf.Output, sampledExpectedCount: tf.Output){
+func allCandidateSampler(scope:Scope,trueClasses: tf.Output, numTrue :UInt8  , numSampled :UInt8  , unique :Bool  , seed :UInt8  , seed2 :UInt8  )  ->(sampledCandidates: tf.Output, trueExpectedCount: tf.Output, sampledExpectedCount: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -552,7 +552,7 @@ retained with length 1.
 
 
 
-func any(scope:Scope,input: Tensorflow_DataType, reductionIndices: Tensorflow_DataType, keepDims :Bool  , tidx :Type  )  ->(output: tf.Output){
+func any(scope:Scope,input: tf.Output, reductionIndices: tf.Output, keepDims :Bool  , tidx :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -583,7 +583,7 @@ var -= update;
 
 
 
-func applyAdadelta(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, accumUpdate: Tensorflow_DataType, lr: Tensorflow_DataType, rho: Tensorflow_DataType, epsilon: Tensorflow_DataType, grad: Tensorflow_DataType, useLocking :Bool  )  ->(out: tf.Output){
+func applyAdadelta(scope:Scope,`var`: tf.Output, accum: tf.Output, accumUpdate: tf.Output, lr: tf.Output, rho: tf.Output, epsilon: tf.Output, grad: tf.Output, useLocking :Bool  )  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -611,7 +611,7 @@ var -= lr * grad * (1 / sqrt(accum))
 
 
 
-func applyAdagrad(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, lr: Tensorflow_DataType, grad: Tensorflow_DataType, t :Type  , useLocking :Bool  )  ->(out: tf.Output){
+func applyAdagrad(scope:Scope,`var`: tf.Output, accum: tf.Output, lr: tf.Output, grad: tf.Output, t :Type  , useLocking :Bool  )  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -638,7 +638,7 @@ Update '*var' according to the proximal adagrad scheme.
 
 
 
-func applyAdagradDA(scope:Scope,`var`: Tensorflow_DataType, gradientAccumulator: Tensorflow_DataType, gradientSquaredAccumulator: Tensorflow_DataType, grad: Tensorflow_DataType, lr: Tensorflow_DataType, l1: Tensorflow_DataType, l2: Tensorflow_DataType, globalStep: Tensorflow_DataType, useLocking :Bool  )  ->(out: tf.Output){
+func applyAdagradDA(scope:Scope,`var`: tf.Output, gradientAccumulator: tf.Output, gradientSquaredAccumulator: tf.Output, grad: tf.Output, lr: tf.Output, l1: tf.Output, l2: tf.Output, globalStep: tf.Output, useLocking :Bool  )  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -668,7 +668,7 @@ variable <- variable - lr_t * m_t / (sqrt(v_t) + epsilon)
 
 
 
-func applyAdam(scope:Scope,`var`: Tensorflow_DataType, m: Tensorflow_DataType, v: Tensorflow_DataType, beta1Power: Tensorflow_DataType, beta2Power: Tensorflow_DataType, lr: Tensorflow_DataType, beta1: Tensorflow_DataType, beta2: Tensorflow_DataType, epsilon: Tensorflow_DataType, grad: Tensorflow_DataType, t :Type  , useLocking :Bool  , useNesterov :Bool  )  ->(out: tf.Output){
+func applyAdam(scope:Scope,`var`: tf.Output, m: tf.Output, v: tf.Output, beta1Power: tf.Output, beta2Power: tf.Output, lr: tf.Output, beta1: tf.Output, beta2: tf.Output, epsilon: tf.Output, grad: tf.Output, t :Type  , useLocking :Bool  , useNesterov :Bool  )  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -710,7 +710,7 @@ var <- var - mom
 
 
 
-func applyCenteredRMSProp(scope:Scope,`var`: Tensorflow_DataType, mg: Tensorflow_DataType, ms: Tensorflow_DataType, mom: Tensorflow_DataType, lr: Tensorflow_DataType, rho: Tensorflow_DataType, momentum: Tensorflow_DataType, epsilon: Tensorflow_DataType, grad: Tensorflow_DataType, useLocking :Bool  )  ->(out: tf.Output){
+func applyCenteredRMSProp(scope:Scope,`var`: tf.Output, mg: tf.Output, ms: tf.Output, mom: tf.Output, lr: tf.Output, rho: tf.Output, momentum: tf.Output, epsilon: tf.Output, grad: tf.Output, useLocking :Bool  )  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -741,7 +741,7 @@ accum = accum_new
 
 
 
-func applyFtrl(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, linear: Tensorflow_DataType, grad: Tensorflow_DataType, lr: Tensorflow_DataType, l1: Tensorflow_DataType, l2: Tensorflow_DataType, lrPower: Tensorflow_DataType, t :Type  , useLocking :Bool  )  ->(out: tf.Output){
+func applyFtrl(scope:Scope,`var`: tf.Output, accum: tf.Output, linear: tf.Output, grad: tf.Output, lr: tf.Output, l1: tf.Output, l2: tf.Output, lrPower: tf.Output, t :Type  , useLocking :Bool  )  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -768,7 +768,7 @@ Update '*var' by subtracting 'alpha' * 'delta' from it.
 
 
 
-func applyGradientDescent(scope:Scope,`var`: Tensorflow_DataType, alpha: Tensorflow_DataType, delta: Tensorflow_DataType, useLocking :Bool  )  ->(out: tf.Output){
+func applyGradientDescent(scope:Scope,`var`: tf.Output, alpha: tf.Output, delta: tf.Output, useLocking :Bool  )  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -797,7 +797,7 @@ var -= lr * accum
 
 
 
-func applyMomentum(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, lr: Tensorflow_DataType, grad: Tensorflow_DataType, momentum: Tensorflow_DataType, t :Type  , useLocking :Bool  , useNesterov :Bool  )  ->(out: tf.Output){
+func applyMomentum(scope:Scope,`var`: tf.Output, accum: tf.Output, lr: tf.Output, grad: tf.Output, momentum: tf.Output, t :Type  , useLocking :Bool  , useNesterov :Bool  )  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -828,7 +828,7 @@ var = sign(prox_v)/(1+lr*l2) * max{|prox_v|-lr*l1,0}
 
 
 
-func applyProximalAdagrad(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, lr: Tensorflow_DataType, l1: Tensorflow_DataType, l2: Tensorflow_DataType, grad: Tensorflow_DataType, useLocking :Bool  )  ->(out: tf.Output){
+func applyProximalAdagrad(scope:Scope,`var`: tf.Output, accum: tf.Output, lr: tf.Output, l1: tf.Output, l2: tf.Output, grad: tf.Output, useLocking :Bool  )  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -856,7 +856,7 @@ var = sign(prox_v)/(1+alpha*l2) * max{|prox_v|-alpha*l1,0}
 
 
 
-func applyProximalGradientDescent(scope:Scope,`var`: Tensorflow_DataType, alpha: Tensorflow_DataType, l1: Tensorflow_DataType, l2: Tensorflow_DataType, delta: Tensorflow_DataType, t :Type  , useLocking :Bool  )  ->(out: tf.Output){
+func applyProximalGradientDescent(scope:Scope,`var`: tf.Output, alpha: tf.Output, l1: tf.Output, l2: tf.Output, delta: tf.Output, t :Type  , useLocking :Bool  )  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -891,7 +891,7 @@ var <- var - mom
 
 
 
-func applyRMSProp(scope:Scope,`var`: Tensorflow_DataType, ms: Tensorflow_DataType, mom: Tensorflow_DataType, lr: Tensorflow_DataType, rho: Tensorflow_DataType, momentum: Tensorflow_DataType, epsilon: Tensorflow_DataType, grad: Tensorflow_DataType, useLocking :Bool  )  ->(out: tf.Output){
+func applyRMSProp(scope:Scope,`var`: tf.Output, ms: tf.Output, mom: tf.Output, lr: tf.Output, rho: tf.Output, momentum: tf.Output, epsilon: tf.Output, grad: tf.Output, useLocking :Bool  )  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -917,7 +917,7 @@ Returns the truth value of abs(x-y) < tolerance element-wise.
 
 
 
-func approximateEqual(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :Type  , tolerance :Float  )  ->(z: tf.Output){
+func approximateEqual(scope:Scope,x: tf.Output, y: tf.Output, t :Type  , tolerance :Float  )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -945,7 +945,7 @@ Note that in case of ties the identity of the return value is not guaranteed.
 
 
 
-func argMax(scope:Scope,input: Tensorflow_DataType, dimension: Tensorflow_DataType, tidx :Type  )  ->(output: tf.Output){
+func argMax(scope:Scope,input: tf.Output, dimension: tf.Output, tidx :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -972,7 +972,7 @@ Note that in case of ties the identity of the return value is not guaranteed.
 
 
 
-func argMin(scope:Scope,input: Tensorflow_DataType, dimension: Tensorflow_DataType, t :Type  , tidx :Type  )  ->(output: tf.Output){
+func argMin(scope:Scope,input: tf.Output, dimension: tf.Output, t :Type  , tidx :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -1000,7 +1000,7 @@ types and boolean.
 
 
 
-func asString(scope:Scope,input: Tensorflow_DataType, precision :Int  , scientific :Bool  , shortest :Bool  , width :Int  , fill :String  )  ->(output: tf.Output){
+func asString(scope:Scope,input: tf.Output, precision :Int  , scientific :Bool  , shortest :Bool  , width :Int  , fill :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -1030,7 +1030,7 @@ Computes asin of x element-wise.
 
 
 
-func asin(scope:Scope,x: Tensorflow_DataType, t :Type  )  ->(y: tf.Output){
+func asin(scope:Scope,x: tf.Output, t :Type  )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -1058,7 +1058,7 @@ If `condition` evaluates to false, print the list of tensors in `data`.
 
 
 
-func assert(scope:Scope,condition: Tensorflow_DataType, data: Tensorflow_DataType, summarize :Int  )  ->(o:tf.Operation){
+func assert(scope:Scope,condition: tf.Output, data: tf.Output, summarize :Int  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -1085,7 +1085,7 @@ This makes it easier to chain operations that need to use the reset value.
 
 
 
-func assign(scope:Scope,ref: Tensorflow_DataType, value: Tensorflow_DataType, t :Type  , validateShape :Bool  , useLocking :Bool  )  ->(outputRef: tf.Output){
+func assign(scope:Scope,ref: tf.Output, value: tf.Output, t :Type  , validateShape :Bool  , useLocking :Bool  )  ->(outputRef: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -1115,7 +1115,7 @@ This makes it easier to chain operations that need to use the reset value.
 
 
 
-func assignAdd(scope:Scope,ref: Tensorflow_DataType, value: Tensorflow_DataType, useLocking :Bool  )  ->(outputRef: tf.Output){
+func assignAdd(scope:Scope,ref: tf.Output, value: tf.Output, useLocking :Bool  )  ->(outputRef: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -1143,7 +1143,7 @@ This makes it easier to chain operations that need to use the reset value.
 
 
 
-func assignSub(scope:Scope,ref: Tensorflow_DataType, value: Tensorflow_DataType, t :Type  , useLocking :Bool  )  ->(outputRef: tf.Output){
+func assignSub(scope:Scope,ref: tf.Output, value: tf.Output, t :Type  , useLocking :Bool  )  ->(outputRef: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -1170,7 +1170,7 @@ Computes atan of x element-wise.
 
 
 
-func atan(scope:Scope,x: Tensorflow_DataType )  ->(y: tf.Output){
+func atan(scope:Scope,x: tf.Output )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -1200,7 +1200,7 @@ where \(r = \sqrt(x^2 + y^2) \).
 
 
 
-func atan2(scope:Scope,y: Tensorflow_DataType, x: Tensorflow_DataType, t :Type  )  ->(z: tf.Output){
+func atan2(scope:Scope,y: tf.Output, x: tf.Output, t :Type  )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -1247,7 +1247,7 @@ resulting spectrogram as a PNG image.
 
 
 
-func audioSpectrogram(scope:Scope,input: Tensorflow_DataType, windowSize :UInt8  , stride :UInt8  , magnitudeSquared :Bool  )  ->(spectrogram: tf.Output){
+func audioSpectrogram(scope:Scope,input: tf.Output, windowSize :UInt8  , stride :UInt8  , magnitudeSquared :Bool  )  ->(spectrogram: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -1284,7 +1284,7 @@ build the `tag` of the summary values:
 
 
 
-func audioSummary(scope:Scope,tag: Tensorflow_DataType, tensor: Tensorflow_DataType, sampleRate :Float  , maxOutputs :UInt8  )  ->(summary: tf.Output){
+func audioSummary(scope:Scope,tag: tf.Output, tensor: tf.Output, sampleRate :Float  , maxOutputs :UInt8  )  ->(summary: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -1320,7 +1320,7 @@ build the `tag` of the summary values:
 
 
 
-func audioSummaryV2(scope:Scope,tag: Tensorflow_DataType, tensor: Tensorflow_DataType, sampleRate: Tensorflow_DataType, maxOutputs :UInt8  )  ->(summary: tf.Output){
+func audioSummaryV2(scope:Scope,tag: tf.Output, tensor: tf.Output, sampleRate: tf.Output, maxOutputs :UInt8  )  ->(summary: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -1348,7 +1348,7 @@ window in `value`.
 
 
 
-func avgPool(scope:Scope,value: Tensorflow_DataType, ksize :[Int]  , strides :[Int]  , padding :String  , dataFormat :String  )  ->(output: tf.Output){
+func avgPool(scope:Scope,value: tf.Output, ksize :[Int64]  , strides :[Int64]  , padding :String  , dataFormat :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -1377,7 +1377,7 @@ Performs 3D average pooling on the input.
 
 
 
-func avgPool3D(scope:Scope,input: Tensorflow_DataType, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  , t :Type  )  ->(output: tf.Output){
+func avgPool3D(scope:Scope,input: tf.Output, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  , t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -1407,7 +1407,7 @@ Computes gradients of average pooling function.
 
 
 
-func avgPool3DGrad(scope:Scope,origInputShape: Tensorflow_DataType, grad: Tensorflow_DataType, ksize :[Int]  , strides :[Int]  , padding :String  , dataFormat :String  )  ->(output: tf.Output){
+func avgPool3DGrad(scope:Scope,origInputShape: tf.Output, grad: tf.Output, ksize :[Int64]  , strides :[Int64]  , padding :String  , dataFormat :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -1436,7 +1436,7 @@ Computes gradients of the average pooling function.
 
 
 
-func avgPoolGrad(scope:Scope,origInputShape: Tensorflow_DataType, grad: Tensorflow_DataType, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  , t :Type  )  ->(output: tf.Output){
+func avgPoolGrad(scope:Scope,origInputShape: tf.Output, grad: tf.Output, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  , t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -1509,7 +1509,7 @@ Subsequent TakeMany operations that would block will fail immediately.
 
 
 
-func barrierClose(scope:Scope,handle: Tensorflow_DataType, cancelPendingEnqueues :Bool  )  ->(o:tf.Operation){
+func barrierClose(scope:Scope,handle: tf.Output, cancelPendingEnqueues :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -1534,7 +1534,7 @@ Computes the number of incomplete elements in the given barrier.
 
 
 
-func barrierIncompleteSize(scope:Scope,handle: Tensorflow_DataType )  ->(size: tf.Output){
+func barrierIncompleteSize(scope:Scope,handle: tf.Output )  ->(size: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -1563,7 +1563,7 @@ INVALID_ARGUMENT, and leave the barrier in an undefined state.
 
 
 
-func barrierInsertMany(scope:Scope,handle: Tensorflow_DataType, keys: Tensorflow_DataType, values: Tensorflow_DataType, componentIndex :Int  )  ->(o:tf.Operation){
+func barrierInsertMany(scope:Scope,handle: tf.Output, keys: tf.Output, values: tf.Output, componentIndex :Int  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -1588,7 +1588,7 @@ Computes the number of complete elements in the given barrier.
 
 
 
-func barrierReadySize(scope:Scope,handle: Tensorflow_DataType )  ->(size: tf.Output){
+func barrierReadySize(scope:Scope,handle: tf.Output )  ->(size: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -1619,7 +1619,7 @@ into the barrier.
 
 
 
-func barrierTakeMany(scope:Scope,handle: Tensorflow_DataType, numElements: Tensorflow_DataType, componentTypes :List(type)  , allowSmallBatch :Bool  , waitForIncomplete :Bool  , timeoutMs :UInt8  )  ->(indices: tf.Output, keys: tf.Output, values: tf.Output){
+func barrierTakeMany(scope:Scope,handle: tf.Output, numElements: tf.Output, componentTypes :List(type)  , allowSmallBatch :Bool  , waitForIncomplete :Bool  , timeoutMs :UInt8  )  ->(indices: tf.Output, keys: tf.Output, values: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -1647,7 +1647,7 @@ func barrierTakeMany(scope:Scope,handle: Tensorflow_DataType, numElements: Tenso
 
 
 
-func batchCholesky(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
+func batchCholesky(scope:Scope,input: tf.Output )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -1671,7 +1671,7 @@ func batchCholesky(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Outpu
 
 
 
-func batchCholeskyGrad(scope:Scope,l: Tensorflow_DataType, grad: Tensorflow_DataType, t :Type  )  ->(output: tf.Output){
+func batchCholeskyGrad(scope:Scope,l: tf.Output, grad: tf.Output, t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -1697,7 +1697,7 @@ Creates a dataset that batches `batch_size` elements from `input_dataset`.
 
 
 
-func batchDataset(scope:Scope,inputDataset: Tensorflow_DataType, batchSize: Tensorflow_DataType, outputTypes :List(type)  , outputShapes :[Shape]  )  ->(handle: tf.Output){
+func batchDataset(scope:Scope,inputDataset: tf.Output, batchSize: tf.Output, outputTypes :List(type)  , outputShapes :[Shape]  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -1723,7 +1723,7 @@ func batchDataset(scope:Scope,inputDataset: Tensorflow_DataType, batchSize: Tens
 
 
 
-func batchFFT(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
+func batchFFT(scope:Scope,input: tf.Output )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -1747,7 +1747,7 @@ func batchFFT(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
 
 
 
-func batchFFT2D(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
+func batchFFT2D(scope:Scope,input: tf.Output )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -1771,7 +1771,7 @@ func batchFFT2D(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
 
 
 
-func batchFFT3D(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
+func batchFFT3D(scope:Scope,input: tf.Output )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -1795,7 +1795,7 @@ func batchFFT3D(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
 
 
 
-func batchIFFT(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
+func batchIFFT(scope:Scope,input: tf.Output )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -1819,7 +1819,7 @@ func batchIFFT(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
 
 
 
-func batchIFFT2D(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
+func batchIFFT2D(scope:Scope,input: tf.Output )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -1843,7 +1843,7 @@ func batchIFFT2D(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output)
 
 
 
-func batchIFFT3D(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
+func batchIFFT3D(scope:Scope,input: tf.Output )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -1881,7 +1881,7 @@ It is computed as:
 
 
 
-func batchMatMul(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, adjX :Bool  , adjY :Bool  )  ->(output: tf.Output){
+func batchMatMul(scope:Scope,x: tf.Output, y: tf.Output, adjX :Bool  , adjY :Bool  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -1907,7 +1907,7 @@ func batchMatMul(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, adj
 
 
 
-func batchMatrixBandPart(scope:Scope,input: Tensorflow_DataType, numLower: Tensorflow_DataType, numUpper: Tensorflow_DataType, t :Type  )  ->(band: tf.Output){
+func batchMatrixBandPart(scope:Scope,input: tf.Output, numLower: tf.Output, numUpper: tf.Output, t :Type  )  ->(band: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -1932,7 +1932,7 @@ func batchMatrixBandPart(scope:Scope,input: Tensorflow_DataType, numLower: Tenso
 
 
 
-func batchMatrixDeterminant(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
+func batchMatrixDeterminant(scope:Scope,input: tf.Output )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -1956,7 +1956,7 @@ func batchMatrixDeterminant(scope:Scope,input: Tensorflow_DataType )  ->(output:
 
 
 
-func batchMatrixDiag(scope:Scope,diagonal: Tensorflow_DataType, t :Type  )  ->(output: tf.Output){
+func batchMatrixDiag(scope:Scope,diagonal: tf.Output, t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -1981,7 +1981,7 @@ func batchMatrixDiag(scope:Scope,diagonal: Tensorflow_DataType, t :Type  )  ->(o
 
 
 
-func batchMatrixDiagPart(scope:Scope,input: Tensorflow_DataType )  ->(diagonal: tf.Output){
+func batchMatrixDiagPart(scope:Scope,input: tf.Output )  ->(diagonal: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -2005,7 +2005,7 @@ func batchMatrixDiagPart(scope:Scope,input: Tensorflow_DataType )  ->(diagonal: 
 
 
 
-func batchMatrixInverse(scope:Scope,input: Tensorflow_DataType, adjoint :Bool  , t :Type  )  ->(output: tf.Output){
+func batchMatrixInverse(scope:Scope,input: tf.Output, adjoint :Bool  , t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -2031,7 +2031,7 @@ func batchMatrixInverse(scope:Scope,input: Tensorflow_DataType, adjoint :Bool  ,
 
 
 
-func batchMatrixSetDiag(scope:Scope,input: Tensorflow_DataType, diagonal: Tensorflow_DataType )  ->(output: tf.Output){
+func batchMatrixSetDiag(scope:Scope,input: tf.Output, diagonal: tf.Output )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -2055,7 +2055,7 @@ func batchMatrixSetDiag(scope:Scope,input: Tensorflow_DataType, diagonal: Tensor
 
 
 
-func batchMatrixSolve(scope:Scope,matrix: Tensorflow_DataType, rhs: Tensorflow_DataType, adjoint :Bool  , t :Type  )  ->(output: tf.Output){
+func batchMatrixSolve(scope:Scope,matrix: tf.Output, rhs: tf.Output, adjoint :Bool  , t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -2081,7 +2081,7 @@ func batchMatrixSolve(scope:Scope,matrix: Tensorflow_DataType, rhs: Tensorflow_D
 
 
 
-func batchMatrixSolveLs(scope:Scope,matrix: Tensorflow_DataType, rhs: Tensorflow_DataType, l2Regularizer: Tensorflow_DataType, fast :Bool  )  ->(output: tf.Output){
+func batchMatrixSolveLs(scope:Scope,matrix: tf.Output, rhs: tf.Output, l2Regularizer: tf.Output, fast :Bool  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -2106,7 +2106,7 @@ func batchMatrixSolveLs(scope:Scope,matrix: Tensorflow_DataType, rhs: Tensorflow
 
 
 
-func batchMatrixTriangularSolve(scope:Scope,matrix: Tensorflow_DataType, rhs: Tensorflow_DataType, lower :Bool  , adjoint :Bool  , t :Type  )  ->(output: tf.Output){
+func batchMatrixTriangularSolve(scope:Scope,matrix: tf.Output, rhs: tf.Output, lower :Bool  , adjoint :Bool  , t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -2135,7 +2135,7 @@ This op is deprecated. Prefer `tf.nn.batch_normalization`.
 
 
 
-func batchNormWithGlobalNormalization(scope:Scope,t: Tensorflow_DataType, m: Tensorflow_DataType, v: Tensorflow_DataType, beta: Tensorflow_DataType, gamma: Tensorflow_DataType, varianceEpsilon :Float  , scaleAfterNormalization :Bool  )  ->(result: tf.Output){
+func batchNormWithGlobalNormalization(scope:Scope,t: tf.Output, m: tf.Output, v: tf.Output, beta: tf.Output, gamma: tf.Output, varianceEpsilon :Float  , scaleAfterNormalization :Bool  )  ->(result: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -2163,7 +2163,7 @@ This op is deprecated. See `tf.nn.batch_normalization`.
 
 
 
-func batchNormWithGlobalNormalizationGrad(scope:Scope,t: Tensorflow_DataType, m: Tensorflow_DataType, v: Tensorflow_DataType, gamma: Tensorflow_DataType, backprop: Tensorflow_DataType, t :Type  , varianceEpsilon :Float  , scaleAfterNormalization :Bool  )  ->(dx: tf.Output, dm: tf.Output, dv: tf.Output, db: tf.Output, dg: tf.Output){
+func batchNormWithGlobalNormalizationGrad(scope:Scope,t: tf.Output, m: tf.Output, v: tf.Output, gamma: tf.Output, backprop: tf.Output, t :Type  , varianceEpsilon :Float  , scaleAfterNormalization :Bool  )  ->(dx: tf.Output, dm: tf.Output, dv: tf.Output, db: tf.Output, dg: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -2190,7 +2190,7 @@ func batchNormWithGlobalNormalizationGrad(scope:Scope,t: Tensorflow_DataType, m:
 
 
 
-func batchSelfAdjointEig(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
+func batchSelfAdjointEig(scope:Scope,input: tf.Output )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -2214,7 +2214,7 @@ func batchSelfAdjointEig(scope:Scope,input: Tensorflow_DataType )  ->(output: tf
 
 
 
-func batchSelfAdjointEigV2(scope:Scope,input: Tensorflow_DataType, computeV :Bool  , t :Type  )  ->(e: tf.Output, v: tf.Output){
+func batchSelfAdjointEigV2(scope:Scope,input: tf.Output, computeV :Bool  , t :Type  )  ->(e: tf.Output, v: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -2240,7 +2240,7 @@ func batchSelfAdjointEigV2(scope:Scope,input: Tensorflow_DataType, computeV :Boo
 
 
 
-func batchSvd(scope:Scope,input: Tensorflow_DataType, computeUv :Bool  , fullMatrices :Bool  )  ->(s: tf.Output, u: tf.Output, v: tf.Output){
+func batchSvd(scope:Scope,input: tf.Output, computeUv :Bool  , fullMatrices :Bool  )  ->(s: tf.Output, u: tf.Output, v: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -2273,7 +2273,7 @@ followed by cropping along the `height` and `width` dimensions.
 
 
 
-func batchToSpace(scope:Scope,input: Tensorflow_DataType, crops: Tensorflow_DataType, t :Type  , blockSize :Int  , tidx :Type  )  ->(output: tf.Output){
+func batchToSpace(scope:Scope,input: tf.Output, crops: tf.Output, t :Type  , blockSize :Int  , tidx :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -2307,7 +2307,7 @@ reverse of SpaceToBatch.  See below for a precise description.
 
 
 
-func batchToSpaceND(scope:Scope,input: Tensorflow_DataType, blockShape: Tensorflow_DataType, crops: Tensorflow_DataType, tblockShape :Type  , tcrops :Type  )  ->(output: tf.Output){
+func batchToSpaceND(scope:Scope,input: tf.Output, blockShape: tf.Output, crops: tf.Output, tblockShape :Type  , tcrops :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -2340,7 +2340,7 @@ beta function.
 
 
 
-func betainc(scope:Scope,a: Tensorflow_DataType, b: Tensorflow_DataType, x: Tensorflow_DataType, t :Type  )  ->(z: tf.Output){
+func betainc(scope:Scope,a: tf.Output, b: tf.Output, x: tf.Output, t :Type  )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -2368,7 +2368,7 @@ Broadcasting is supported, so `value` may have any number of dimensions.
 
 
 
-func biasAdd(scope:Scope,value: Tensorflow_DataType, bias: Tensorflow_DataType, dataFormat :String  )  ->(output: tf.Output){
+func biasAdd(scope:Scope,value: tf.Output, bias: tf.Output, dataFormat :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -2397,7 +2397,7 @@ the feature dimension is the third-to-last.
 
 
 
-func biasAddGrad(scope:Scope,outBackprop: Tensorflow_DataType, t :Type  , dataFormat :String  )  ->(output: tf.Output){
+func biasAddGrad(scope:Scope,outBackprop: tf.Output, t :Type  , dataFormat :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -2427,7 +2427,7 @@ Broadcasting is supported, so `value` may have any number of dimensions.
 
 
 
-func biasAddV1(scope:Scope,value: Tensorflow_DataType, bias: Tensorflow_DataType )  ->(output: tf.Output){
+func biasAddV1(scope:Scope,value: tf.Output, bias: tf.Output )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -2458,7 +2458,7 @@ Values in `arr` outside of the range [0, size) are ignored.
 
 
 
-func bincount(scope:Scope,arr: Tensorflow_DataType, size: Tensorflow_DataType, weights: Tensorflow_DataType, t :Type  )  ->(bins: tf.Output){
+func bincount(scope:Scope,arr: tf.Output, size: tf.Output, weights: tf.Output, t :Type  )  ->(bins: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -2493,7 +2493,7 @@ endian orderings will give different results.
 
 
 
-func bitcast(scope:Scope,input: Tensorflow_DataType, type :Type  )  ->(output: tf.Output){
+func bitcast(scope:Scope,input: tf.Output, type :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -2521,7 +2521,7 @@ broadcasted shape. `s0`, `s1` and `r0` are all integer vectors.
 
 
 
-func broadcastArgs(scope:Scope,s0: Tensorflow_DataType, s1: Tensorflow_DataType, t :Type  )  ->(r0: tf.Output){
+func broadcastArgs(scope:Scope,s0: tf.Output, s1: tf.Output, t :Type  )  ->(r0: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -2548,7 +2548,7 @@ This is typically used by gradient computations for a broadcasting operation.
 
 
 
-func broadcastGradientArgs(scope:Scope,s0: Tensorflow_DataType, s1: Tensorflow_DataType )  ->(r0: tf.Output, r1: tf.Output){
+func broadcastGradientArgs(scope:Scope,s0: tf.Output, s1: tf.Output )  ->(r0: tf.Output, r1: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -2582,7 +2582,7 @@ then the output will be
 
 
 
-func bucketize(scope:Scope,input: Tensorflow_DataType, t :Type  , boundaries :List(float)  )  ->(output: tf.Output){
+func bucketize(scope:Scope,input: tf.Output, t :Type  , boundaries :List(float)  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -2614,7 +2614,7 @@ returned if merge_repeated = False.
 
 
 
-func ctcBeamSearchDecoder(scope:Scope,inputs: Tensorflow_DataType, sequenceLength: Tensorflow_DataType, beamWidth :UInt8  , topPaths :UInt8  , mergeRepeated :Bool  )  ->(decodedIndices: tf.Output, decodedValues: tf.Output, decodedShape: tf.Output, logProbability: tf.Output){
+func ctcBeamSearchDecoder(scope:Scope,inputs: tf.Output, sequenceLength: tf.Output, beamWidth :UInt8  , topPaths :UInt8  , mergeRepeated :Bool  )  ->(decodedIndices: tf.Output, decodedValues: tf.Output, decodedShape: tf.Output, logProbability: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -2650,7 +2650,7 @@ element is emitted.
 
 
 
-func ctcGreedyDecoder(scope:Scope,inputs: Tensorflow_DataType, sequenceLength: Tensorflow_DataType, mergeRepeated :Bool  )  ->(decodedIndices: tf.Output, decodedValues: tf.Output, decodedShape: tf.Output, logProbability: tf.Output){
+func ctcGreedyDecoder(scope:Scope,inputs: tf.Output, sequenceLength: tf.Output, mergeRepeated :Bool  )  ->(decodedIndices: tf.Output, decodedValues: tf.Output, decodedShape: tf.Output, logProbability: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -2678,7 +2678,7 @@ should be e.g. linear projections of outputs by an LSTM.
 
 
 
-func ctcLoss(scope:Scope,inputs: Tensorflow_DataType, labelsIndices: Tensorflow_DataType, labelsValues: Tensorflow_DataType, sequenceLength: Tensorflow_DataType, preprocessCollapseRepeated :Bool  , ctcMergeRepeated :Bool  , ignoreLongerOutputsThanInputs :Bool  )  ->(loss: tf.Output, gradient: tf.Output){
+func ctcLoss(scope:Scope,inputs: tf.Output, labelsIndices: tf.Output, labelsValues: tf.Output, sequenceLength: tf.Output, preprocessCollapseRepeated :Bool  , ctcMergeRepeated :Bool  , ignoreLongerOutputsThanInputs :Bool  )  ->(loss: tf.Output, gradient: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -2706,7 +2706,7 @@ Cast x of type SrcT to y of DstT.
 
 
 
-func cast(scope:Scope,x: Tensorflow_DataType, srcT :Type  , dstT :Type  )  ->(y: tf.Output){
+func cast(scope:Scope,x: tf.Output, srcT :Type  , dstT :Type  )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -2733,7 +2733,7 @@ Returns element-wise smallest integer in not less than x.
 
 
 
-func ceil(scope:Scope,x: Tensorflow_DataType )  ->(y: tf.Output){
+func ceil(scope:Scope,x: tf.Output )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -2760,7 +2760,7 @@ that are not a number (NaN) or infinity (Inf). Otherwise, passes `tensor` as-is.
 
 
 
-func checkNumerics(scope:Scope,tensor: Tensorflow_DataType, t :Type  , message :String  )  ->(output: tf.Output){
+func checkNumerics(scope:Scope,tensor: tf.Output, t :Type  , message :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -2791,7 +2791,7 @@ containing the Cholesky decompositions for all input submatrices `[..., :, :]`.
 
 
 
-func cholesky(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
+func cholesky(scope:Scope,input: tf.Output )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -2818,7 +2818,7 @@ Iain Murray http://arxiv.org/abs/1602.07527.
 
 
 
-func choleskyGrad(scope:Scope,l: Tensorflow_DataType, grad: Tensorflow_DataType, t :Type  )  ->(output: tf.Output){
+func choleskyGrad(scope:Scope,l: tf.Output, grad: tf.Output, t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -2855,7 +2855,7 @@ tf.complex(real, imag) ==> [[2.25 + 4.75j], [3.25 + 5.75j]]
 
 
 
-func complex(scope:Scope,real: Tensorflow_DataType, imag: Tensorflow_DataType, tout :Type  )  ->(out: tf.Output){
+func complex(scope:Scope,real: tf.Output, imag: tf.Output, tout :Type  )  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -2885,7 +2885,7 @@ value is computed as \\( \sqrt{a^2 + b^2}\\).
 
 
 
-func complexAbs(scope:Scope,x: Tensorflow_DataType, t :Type  , tout :Type  )  ->(y: tf.Output){
+func complexAbs(scope:Scope,x: tf.Output, t :Type  , tout :Type  )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -2916,7 +2916,7 @@ making the classifier sure that they are sampled labels.
 
 
 
-func computeAccidentalHits(scope:Scope,trueClasses: Tensorflow_DataType, sampledCandidates: Tensorflow_DataType, numTrue :UInt8  , seed :UInt8  , seed2 :UInt8  )  ->(indices: tf.Output, ids: tf.Output, weights: tf.Output){
+func computeAccidentalHits(scope:Scope,trueClasses: tf.Output, sampledCandidates: tf.Output, numTrue :UInt8  , seed :UInt8  , seed2 :UInt8  )  ->(indices: tf.Output, ids: tf.Output, weights: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -2944,7 +2944,7 @@ Concatenates tensors along one dimension.
 
 
 
-func concat(scope:Scope,concatDim: Tensorflow_DataType, values: Tensorflow_DataType, n :UInt8  )  ->(output: tf.Output){
+func concat(scope:Scope,concatDim: tf.Output, values: tf.Output, n :UInt8  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -2978,7 +2978,7 @@ This is typically used by gradient computations for a concat operation.
 
 
 
-func concatOffset(scope:Scope,concatDim: Tensorflow_DataType, shape: Tensorflow_DataType, n :Int  )  ->(offset: tf.Output){
+func concatOffset(scope:Scope,concatDim: tf.Output, shape: tf.Output, n :Int  )  ->(offset: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -3004,7 +3004,7 @@ Concatenates tensors along one dimension.
 
 
 
-func concatV2(scope:Scope,values: Tensorflow_DataType, axis: Tensorflow_DataType, n :UInt8  , tidx :Type  )  ->(output: tf.Output){
+func concatV2(scope:Scope,values: tf.Output, axis: tf.Output, n :UInt8  , tidx :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -3076,7 +3076,7 @@ tf.conj(input) ==> [-2.25 - 4.75j, 3.25 - 5.75j]
 
 
 
-func conj(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
+func conj(scope:Scope,input: tf.Output )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -3170,7 +3170,7 @@ horizontal and vertices strides, `strides = [1, stride, stride, 1]`.
 
 
 
-func conv2D(scope:Scope,input: Tensorflow_DataType, filter: Tensorflow_DataType, strides :List(int)  , useCudnnOnGpu :Bool  , padding :String  , dataFormat :String  )  ->(output: tf.Output){
+func conv2D(scope:Scope,input: tf.Output, filter: tf.Output, strides :List(int)  , useCudnnOnGpu :Bool  , padding :String  , dataFormat :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -3199,7 +3199,7 @@ Computes the gradients of convolution with respect to the filter.
 
 
 
-func conv2DBackpropFilter(scope:Scope,input: Tensorflow_DataType, filterSizes: Tensorflow_DataType, outBackprop: Tensorflow_DataType, t :Type  , strides :List(int)  , useCudnnOnGpu :Bool  , padding :String  , dataFormat :String  )  ->(output: tf.Output){
+func conv2DBackpropFilter(scope:Scope,input: tf.Output, filterSizes: tf.Output, outBackprop: tf.Output, t :Type  , strides :List(int)  , useCudnnOnGpu :Bool  , padding :String  , dataFormat :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -3229,7 +3229,7 @@ Computes the gradients of convolution with respect to the input.
 
 
 
-func conv2DBackpropInput(scope:Scope,inputSizes: Tensorflow_DataType, filter: Tensorflow_DataType, outBackprop: Tensorflow_DataType, strides :List(int)  , useCudnnOnGpu :Bool  , padding :String  , dataFormat :String  )  ->(output: tf.Output){
+func conv2DBackpropInput(scope:Scope,inputSizes: tf.Output, filter: tf.Output, outBackprop: tf.Output, strides :List(int)  , useCudnnOnGpu :Bool  , padding :String  , dataFormat :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -3262,7 +3262,7 @@ Our Conv3D implements a form of cross-correlation.
 
 
 
-func conv3D(scope:Scope,input: Tensorflow_DataType, filter: Tensorflow_DataType, t :Type  , strides :List(int)  , padding :String  , dataFormat :String  )  ->(output: tf.Output){
+func conv3D(scope:Scope,input: tf.Output, filter: tf.Output, t :Type  , strides :List(int)  , padding :String  , dataFormat :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -3291,7 +3291,7 @@ Computes the gradients of 3-D convolution with respect to the filter.
 
 
 
-func conv3DBackpropFilter(scope:Scope,input: Tensorflow_DataType, filter: Tensorflow_DataType, outBackprop: Tensorflow_DataType, strides :List(int)  , padding :String  )  ->(output: tf.Output){
+func conv3DBackpropFilter(scope:Scope,input: tf.Output, filter: tf.Output, outBackprop: tf.Output, strides :List(int)  , padding :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -3318,7 +3318,7 @@ Computes the gradients of 3-D convolution with respect to the filter.
 
 
 
-func conv3DBackpropFilterV2(scope:Scope,input: Tensorflow_DataType, filterSizes: Tensorflow_DataType, outBackprop: Tensorflow_DataType, t :Type  , strides :List(int)  , padding :String  , dataFormat :String  )  ->(output: tf.Output){
+func conv3DBackpropFilterV2(scope:Scope,input: tf.Output, filterSizes: tf.Output, outBackprop: tf.Output, t :Type  , strides :List(int)  , padding :String  , dataFormat :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -3347,7 +3347,7 @@ Computes the gradients of 3-D convolution with respect to the input.
 
 
 
-func conv3DBackpropInput(scope:Scope,input: Tensorflow_DataType, filter: Tensorflow_DataType, outBackprop: Tensorflow_DataType, strides :List(int)  , padding :String  )  ->(output: tf.Output){
+func conv3DBackpropInput(scope:Scope,input: tf.Output, filter: tf.Output, outBackprop: tf.Output, strides :List(int)  , padding :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -3374,7 +3374,7 @@ Computes the gradients of 3-D convolution with respect to the input.
 
 
 
-func conv3DBackpropInputV2(scope:Scope,inputSizes: Tensorflow_DataType, filter: Tensorflow_DataType, outBackprop: Tensorflow_DataType, t :Type  , strides :List(int)  , padding :String  , dataFormat :String  )  ->(output: tf.Output){
+func conv3DBackpropInputV2(scope:Scope,inputSizes: tf.Output, filter: tf.Output, outBackprop: tf.Output, t :Type  , strides :List(int)  , padding :String  , dataFormat :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -3410,7 +3410,7 @@ input or output.
 
 
 
-func copy(scope:Scope,input: Tensorflow_DataType, tensorName :String  , debugOpsSpec :List(string)  )  ->(output: tf.Output){
+func copy(scope:Scope,input: tf.Output, tensorName :String  , debugOpsSpec :List(string)  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -3442,7 +3442,7 @@ Unlike the Copy Op, this op has HostMemory constraint on its input or output.
 
 
 
-func copyHost(scope:Scope,input: Tensorflow_DataType, t :Type  , tensorName :String  , debugOpsSpec :List(string)  )  ->(output: tf.Output){
+func copyHost(scope:Scope,input: tf.Output, t :Type  , tensorName :String  , debugOpsSpec :List(string)  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -3470,7 +3470,7 @@ Computes cos of x element-wise.
 
 
 
-func cos(scope:Scope,x: Tensorflow_DataType )  ->(y: tf.Output){
+func cos(scope:Scope,x: tf.Output )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -3495,7 +3495,7 @@ Increments 'ref' until it reaches 'limit'.
 
 
 
-func countUpTo(scope:Scope,ref: Tensorflow_DataType, limit :Int  , t :Type  )  ->(output: tf.Output){
+func countUpTo(scope:Scope,ref: tf.Output, limit :Int  , t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -3529,7 +3529,7 @@ result is a 4-D tensor `[num_boxes, crop_height, crop_width, depth]`.
 
 
 
-func cropAndResize(scope:Scope,image: Tensorflow_DataType, boxes: Tensorflow_DataType, boxInd: Tensorflow_DataType, cropSize: Tensorflow_DataType, method :String  , extrapolationValue :Float  )  ->(crops: tf.Output){
+func cropAndResize(scope:Scope,image: tf.Output, boxes: tf.Output, boxInd: tf.Output, cropSize: tf.Output, method :String  , extrapolationValue :Float  )  ->(crops: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -3556,7 +3556,7 @@ Computes the gradient of the crop_and_resize op wrt the input boxes tensor.
 
 
 
-func cropAndResizeGradBoxes(scope:Scope,grads: Tensorflow_DataType, image: Tensorflow_DataType, boxes: Tensorflow_DataType, boxInd: Tensorflow_DataType, t :Type  , method :String  )  ->(output: tf.Output){
+func cropAndResizeGradBoxes(scope:Scope,grads: tf.Output, image: tf.Output, boxes: tf.Output, boxInd: tf.Output, t :Type  , method :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -3583,7 +3583,7 @@ Computes the gradient of the crop_and_resize op wrt the input image tensor.
 
 
 
-func cropAndResizeGradImage(scope:Scope,grads: Tensorflow_DataType, boxes: Tensorflow_DataType, boxInd: Tensorflow_DataType, imageSize: Tensorflow_DataType, method :String  )  ->(output: tf.Output){
+func cropAndResizeGradImage(scope:Scope,grads: tf.Output, boxes: tf.Output, boxInd: tf.Output, imageSize: tf.Output, method :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -3612,7 +3612,7 @@ of corresponding 3-element vectors is cross-multiplied independently.
 
 
 
-func cross(scope:Scope,a: Tensorflow_DataType, b: Tensorflow_DataType, t :Type  )  ->(product: tf.Output){
+func cross(scope:Scope,a: tf.Output, b: tf.Output, t :Type  )  ->(product: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -3658,7 +3658,7 @@ tf.cumprod([a, b, c], exclusive=True, reverse=True)  # => [b * c, c, 1]
 
 
 
-func cumprod(scope:Scope,x: Tensorflow_DataType, axis: Tensorflow_DataType, exclusive :Bool  , reverse :Bool  , tidx :Type  )  ->(out: tf.Output){
+func cumprod(scope:Scope,x: tf.Output, axis: tf.Output, exclusive :Bool  , reverse :Bool  , tidx :Type  )  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -3706,7 +3706,7 @@ tf.cumsum([a, b, c], exclusive=True, reverse=True)  # => [b + c, c, 0]
 
 
 
-func cumsum(scope:Scope,x: Tensorflow_DataType, axis: Tensorflow_DataType, exclusive :Bool  , reverse :Bool  , t :Type  , tidx :Type  )  ->(out: tf.Output){
+func cumsum(scope:Scope,x: tf.Output, axis: tf.Output, exclusive :Bool  , reverse :Bool  , t :Type  , tidx :Type  )  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -3736,7 +3736,7 @@ Provides an identity mapping of the non-Ref type input tensor for debugging.
 
 
 
-func debugIdentity(scope:Scope,input: Tensorflow_DataType, deviceName :String  , tensorName :String  , debugUrls :List(string)  , gatedGrpc :Bool  )  ->(output: tf.Output){
+func debugIdentity(scope:Scope,input: tf.Output, deviceName :String  , tensorName :String  , debugUrls :List(string)  , gatedGrpc :Bool  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -3766,7 +3766,7 @@ Counts number of NaNs in the input tensor, for debugging.
 
 
 
-func debugNanCount(scope:Scope,input: Tensorflow_DataType, t :Type  , deviceName :String  , tensorName :String  , debugUrls :List(string)  , gatedGrpc :Bool  )  ->(output: tf.Output){
+func debugNanCount(scope:Scope,input: tf.Output, t :Type  , deviceName :String  , tensorName :String  , debugUrls :List(string)  , gatedGrpc :Bool  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -3797,7 +3797,7 @@ Provide a basic summary of numeric value types, range and distribution.
 
 
 
-func debugNumericSummary(scope:Scope,input: Tensorflow_DataType, deviceName :String  , tensorName :String  , debugUrls :List(string)  , lowerBound :Float  , upperBound :Float  , muteIfHealthy :Bool  , gatedGrpc :Bool  )  ->(output: tf.Output){
+func debugNumericSummary(scope:Scope,input: tf.Output, deviceName :String  , tensorName :String  , debugUrls :List(string)  , lowerBound :Float  , upperBound :Float  , muteIfHealthy :Bool  , gatedGrpc :Bool  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -3831,7 +3831,7 @@ Web-safe means that input must use - and _ instead of + and /.
 
 
 
-func decodeBase64(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
+func decodeBase64(scope:Scope,input: tf.Output )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -3862,7 +3862,7 @@ Accepted values are:
 
 
 
-func decodeBmp(scope:Scope,contents: Tensorflow_DataType, channels :UInt8  )  ->(image: tf.Output){
+func decodeBmp(scope:Scope,contents: tf.Output, channels :UInt8  )  ->(image: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -3891,7 +3891,7 @@ Note that we allow leading and trailing spaces with int or float field.
 
 
 
-func decodeCSV(scope:Scope,records: Tensorflow_DataType, recordDefaults: Tensorflow_DataType, outType :List(type)  , fieldDelim :String  , useQuoteDelim :Bool  )  ->(output: tf.Output){
+func decodeCSV(scope:Scope,records: tf.Output, recordDefaults: tf.Output, outType :List(type)  , fieldDelim :String  , useQuoteDelim :Bool  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -3924,7 +3924,7 @@ This op also supports decoding JPEGs and PNGs, though it is cleaner to use
 
 
 
-func decodeGif(scope:Scope,contents: Tensorflow_DataType )  ->(image: tf.Output){
+func decodeGif(scope:Scope,contents: tf.Output )  ->(image: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -3955,7 +3955,7 @@ Example-parsing ops.
 
 
 
-func decodeJSONExample(scope:Scope,jsonExamples: Tensorflow_DataType )  ->(binaryExamples: tf.Output){
+func decodeJSONExample(scope:Scope,jsonExamples: tf.Output )  ->(binaryExamples: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -3993,7 +3993,7 @@ the same, though it is cleaner to use `tf.image.decode_image`.
 
 
 
-func decodeJpeg(scope:Scope,contents: Tensorflow_DataType, channels :UInt8  , ratio :UInt8  , fancyUpscaling :Bool  , tryRecoverTruncated :Bool  , acceptableFraction :Float  , dctMethod :String  )  ->(image: tf.Output){
+func decodeJpeg(scope:Scope,contents: tf.Output, channels :UInt8  , ratio :UInt8  , fancyUpscaling :Bool  , tryRecoverTruncated :Bool  , acceptableFraction :Float  , dctMethod :String  )  ->(image: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -4035,7 +4035,7 @@ is the same, though it is cleaner to use `tf.image.decode_image`.
 
 
 
-func decodePng(scope:Scope,contents: Tensorflow_DataType, channels :UInt8  , dtype :Type  )  ->(image: tf.Output){
+func decodePng(scope:Scope,contents: tf.Output, channels :UInt8  , dtype :[Any]  )  ->(image: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -4062,7 +4062,7 @@ Reinterpret the bytes of a string as a vector of numbers.
 
 
 
-func decodeRaw(scope:Scope,bytes: Tensorflow_DataType, outType :Type  , littleEndian :Bool  )  ->(output: tf.Output){
+func decodeRaw(scope:Scope,bytes: tf.Output, outType :Type  , littleEndian :Bool  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -4100,7 +4100,7 @@ output shape of [10, 2].
 
 
 
-func decodeWav(scope:Scope,contents: Tensorflow_DataType, desiredChannels :UInt8  , desiredSamples :UInt8  )  ->(audio: tf.Output, sampleRate: tf.Output){
+func decodeWav(scope:Scope,contents: tf.Output, desiredChannels :UInt8  , desiredSamples :UInt8  )  ->(audio: tf.Output, sampleRate: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -4127,7 +4127,7 @@ Delete the tensor specified by its handle in the session.
 
 
 
-func deleteSessionTensor(scope:Scope,handle: Tensorflow_DataType )  ->(o:tf.Operation){
+func deleteSessionTensor(scope:Scope,handle: tf.Output )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -4157,7 +4157,7 @@ dimension contains the result of `set_operation` applied to the corresponding
 
 
 
-func denseToDenseSetOperation(scope:Scope,set1: Tensorflow_DataType, set2: Tensorflow_DataType, setOperation :String  , validateIndices :Bool  )  ->(resultIndices: tf.Output, resultValues: tf.Output, resultShape: tf.Output){
+func denseToDenseSetOperation(scope:Scope,set1: tf.Output, set2: tf.Output, setOperation :String  , validateIndices :Bool  )  ->(resultIndices: tf.Output, resultValues: tf.Output, resultShape: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -4184,7 +4184,7 @@ Creates a dataset that yields a SparseTensor for each element of the input.
 
 
 
-func denseToSparseBatchDataset(scope:Scope,inputDataset: Tensorflow_DataType, batchSize: Tensorflow_DataType, rowShape: Tensorflow_DataType, outputTypes :List(type)  , outputShapes :List(shape)  )  ->(handle: tf.Output){
+func denseToSparseBatchDataset(scope:Scope,inputDataset: tf.Output, batchSize: tf.Output, rowShape: tf.Output, outputTypes :List(type)  , outputShapes :List(shape)  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -4223,7 +4223,7 @@ dimension contains the result of `set_operation` applied to the corresponding
 
 
 
-func denseToSparseSetOperation(scope:Scope,set1: Tensorflow_DataType, set2Indices: Tensorflow_DataType, set2Values: Tensorflow_DataType, set2Shape: Tensorflow_DataType, setOperation :String  , validateIndices :Bool  )  ->(resultIndices: tf.Output, resultValues: tf.Output, resultShape: tf.Output){
+func denseToSparseSetOperation(scope:Scope,set1: tf.Output, set2Indices: tf.Output, set2Values: tf.Output, set2Shape: tf.Output, setOperation :String  , validateIndices :Bool  )  ->(resultIndices: tf.Output, resultValues: tf.Output, resultShape: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -4308,7 +4308,7 @@ x = [[ [1],   [2],  [5],  [6]],
 
 
 
-func depthToSpace(scope:Scope,input: Tensorflow_DataType, t :Type  , blockSize :Int  )  ->(output: tf.Output){
+func depthToSpace(scope:Scope,input: tf.Output, t :Type  , blockSize :Int  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -4349,7 +4349,7 @@ horizontal and vertices strides, `strides = [1, stride, stride, 1]`.
 
 
 
-func depthwiseConv2dNative(scope:Scope,input: Tensorflow_DataType, filter: Tensorflow_DataType, strides :List(int)  , padding :String  , dataFormat :String  )  ->(output: tf.Output){
+func depthwiseConv2dNative(scope:Scope,input: tf.Output, filter: tf.Output, strides :List(int)  , padding :String  , dataFormat :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -4377,7 +4377,7 @@ Computes the gradients of depthwise convolution with respect to the filter.
 
 
 
-func depthwiseConv2dNativeBackpropFilter(scope:Scope,input: Tensorflow_DataType, filterSizes: Tensorflow_DataType, outBackprop: Tensorflow_DataType, t :Type  , strides :List(int)  , padding :String  , dataFormat :String  )  ->(output: tf.Output){
+func depthwiseConv2dNativeBackpropFilter(scope:Scope,input: tf.Output, filterSizes: tf.Output, outBackprop: tf.Output, t :Type  , strides :List(int)  , padding :String  , dataFormat :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -4406,7 +4406,7 @@ Computes the gradients of depthwise convolution with respect to the input.
 
 
 
-func depthwiseConv2dNativeBackpropInput(scope:Scope,inputSizes: Tensorflow_DataType, filter: Tensorflow_DataType, outBackprop: Tensorflow_DataType, strides :List(int)  , padding :String  , dataFormat :String  )  ->(output: tf.Output){
+func depthwiseConv2dNativeBackpropInput(scope:Scope,inputSizes: tf.Output, filter: tf.Output, outBackprop: tf.Output, strides :List(int)  , padding :String  , dataFormat :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -4460,7 +4460,7 @@ result = range_min + ((input - numeric_limits<T>::min()) * range_scale)
 
 
 
-func dequantize(scope:Scope,input: Tensorflow_DataType, minRange: Tensorflow_DataType, maxRange: Tensorflow_DataType, t :Type  , mode :String  )  ->(output: tf.Output){
+func dequantize(scope:Scope,input: tf.Output, minRange: tf.Output, maxRange: tf.Output, t :Type  , mode :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -4520,7 +4520,7 @@ then the final deserialized `SparseTensor` will be:
 
 
 
-func deserializeManySparse(scope:Scope,serializedSparse: Tensorflow_DataType, dtype :Type  )  ->(sparseIndices: tf.Output, sparseValues: tf.Output, sparseShape: tf.Output){
+func deserializeManySparse(scope:Scope,serializedSparse: tf.Output, dtype :Type  )  ->(sparseIndices: tf.Output, sparseValues: tf.Output, sparseShape: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -4552,7 +4552,7 @@ Outputs the final value of the tensor pointed to by 'ref'.
 
 
 
-func destroyTemporaryVariable(scope:Scope,ref: Tensorflow_DataType, varName :String  )  ->(value: tf.Output){
+func destroyTemporaryVariable(scope:Scope,ref: tf.Output, varName :String  )  ->(value: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -4591,7 +4591,7 @@ tf.diag(diagonal) ==> [[1, 0, 0, 0]
 
 
 
-func diag(scope:Scope,diagonal: Tensorflow_DataType, t :Type  )  ->(output: tf.Output){
+func diag(scope:Scope,diagonal: tf.Output, t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -4630,7 +4630,7 @@ tf.diag_part(input) ==> [1, 2, 3, 4]
 
 
 
-func diagPart(scope:Scope,input: Tensorflow_DataType )  ->(diagonal: tf.Output){
+func diagPart(scope:Scope,input: tf.Output )  ->(diagonal: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -4656,7 +4656,7 @@ Computes Psi, the derivative of Lgamma (the log of the absolute value of
 
 
 
-func digamma(scope:Scope,x: Tensorflow_DataType, t :Type  )  ->(y: tf.Output){
+func digamma(scope:Scope,x: tf.Output, t :Type  )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -4701,7 +4701,7 @@ negation of the erosion of `-input` by the reflected `filter`.
 
 
 
-func dilation2D(scope:Scope,input: Tensorflow_DataType, filter: Tensorflow_DataType, strides :List(int)  , rates :List(int)  , padding :String  )  ->(output: tf.Output){
+func dilation2D(scope:Scope,input: tf.Output, filter: tf.Output, strides :List(int)  , rates :List(int)  , padding :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -4729,7 +4729,7 @@ Computes the gradient of morphological 2-D dilation with respect to the filter.
 
 
 
-func dilation2DBackpropFilter(scope:Scope,input: Tensorflow_DataType, filter: Tensorflow_DataType, outBackprop: Tensorflow_DataType, t :Type  , strides :List(int)  , rates :List(int)  , padding :String  )  ->(filterBackprop: tf.Output){
+func dilation2DBackpropFilter(scope:Scope,input: tf.Output, filter: tf.Output, outBackprop: tf.Output, t :Type  , strides :List(int)  , rates :List(int)  , padding :String  )  ->(filterBackprop: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -4758,7 +4758,7 @@ Computes the gradient of morphological 2-D dilation with respect to the input.
 
 
 
-func dilation2DBackpropInput(scope:Scope,input: Tensorflow_DataType, filter: Tensorflow_DataType, outBackprop: Tensorflow_DataType, strides :List(int)  , rates :List(int)  , padding :String  )  ->(inBackprop: tf.Output){
+func dilation2DBackpropInput(scope:Scope,input: tf.Output, filter: tf.Output, outBackprop: tf.Output, strides :List(int)  , rates :List(int)  , padding :String  )  ->(inBackprop: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -4788,7 +4788,7 @@ Returns x / y element-wise.
 
 
 
-func div(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :Type  )  ->(z: tf.Output){
+func div(scope:Scope,x: tf.Output, y: tf.Output, t :Type  )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -4823,7 +4823,7 @@ Parts of the bounding box may fall outside the image.
 
 
 
-func drawBoundingBoxes(scope:Scope,images: Tensorflow_DataType, boxes: Tensorflow_DataType )  ->(output: tf.Output){
+func drawBoundingBoxes(scope:Scope,images: tf.Output, boxes: tf.Output )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -4877,7 +4877,7 @@ See `dynamic_stitch` for an example on how to merge partitions back.
 
 
 
-func dynamicPartition(scope:Scope,data: Tensorflow_DataType, partitions: Tensorflow_DataType, numPartitions :Int  , t :Type  )  ->(outputs: tf.Output){
+func dynamicPartition(scope:Scope,data: tf.Output, partitions: tf.Output, numPartitions :Int  , t :Type  )  ->(outputs: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -4953,7 +4953,7 @@ as illustrated on the following example:
 
 
 
-func dynamicStitch(scope:Scope,indices: Tensorflow_DataType, data: Tensorflow_DataType, n :UInt8  )  ->(merged: tf.Output){
+func dynamicStitch(scope:Scope,indices: tf.Output, data: tf.Output, n :UInt8  )  ->(merged: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -4984,7 +4984,7 @@ The inputs are:
 
 
 
-func editDistance(scope:Scope,hypothesisIndices: Tensorflow_DataType, hypothesisValues: Tensorflow_DataType, hypothesisShape: Tensorflow_DataType, truthIndices: Tensorflow_DataType, truthValues: Tensorflow_DataType, truthShape: Tensorflow_DataType, normalize :Bool  , t :Type  )  ->(output: tf.Output){
+func editDistance(scope:Scope,hypothesisIndices: tf.Output, hypothesisValues: tf.Output, hypothesisShape: tf.Output, truthIndices: tf.Output, truthValues: tf.Output, truthShape: tf.Output, normalize :Bool  , t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -5013,7 +5013,7 @@ See [Fast and Accurate Deep Network Learning by Exponential Linear Units (ELUs)
 
 
 
-func elu(scope:Scope,features: Tensorflow_DataType )  ->(activations: tf.Output){
+func elu(scope:Scope,features: tf.Output )  ->(activations: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -5038,7 +5038,7 @@ Computes gradients for the exponential linear (Elu) operation.
 
 
 
-func eluGrad(scope:Scope,gradients: Tensorflow_DataType, outputs: Tensorflow_DataType, t :Type  )  ->(backprops: tf.Output){
+func eluGrad(scope:Scope,gradients: tf.Output, outputs: tf.Output, t :Type  )  ->(backprops: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -5069,7 +5069,7 @@ Web-safe means that the encoder uses - and _ instead of + and /.
 
 
 
-func encodeBase64(scope:Scope,input: Tensorflow_DataType, pad :Bool  )  ->(output: tf.Output){
+func encodeBase64(scope:Scope,input: tf.Output, pad :Bool  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -5107,7 +5107,7 @@ in function of the number of channels in `image`:
 
 
 
-func encodeJpeg(scope:Scope,image: Tensorflow_DataType, format :String  , quality :UInt8  , progressive :Bool  , optimizeSize :Bool  , chromaDownsampling :Bool  , densityUnit :String  , xDensity :UInt8  , yDensity :UInt8  , xmpMetadata :String  )  ->(contents: tf.Output){
+func encodeJpeg(scope:Scope,image: tf.Output, format :String  , quality :UInt8  , progressive :Bool  , optimizeSize :Bool  , chromaDownsampling :Bool  , densityUnit :String  , xDensity :UInt8  , yDensity :UInt8  , xmpMetadata :String  )  ->(contents: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -5150,7 +5150,7 @@ the smallest output, but is slower.
 
 
 
-func encodePng(scope:Scope,image: Tensorflow_DataType, compression :UInt8  )  ->(contents: tf.Output){
+func encodePng(scope:Scope,image: tf.Output, compression :UInt8  )  ->(contents: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -5182,7 +5182,7 @@ that range.
 
 
 
-func encodeWav(scope:Scope,audio: Tensorflow_DataType, sampleRate: Tensorflow_DataType )  ->(contents: tf.Output){
+func encodeWav(scope:Scope,audio: tf.Output, sampleRate: tf.Output )  ->(contents: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -5212,7 +5212,7 @@ are run in parallel in the child frame.
 
 
 
-func enter(scope:Scope,data: Tensorflow_DataType, frameName :String  , isConstant :Bool  , parallelIterations :Int  )  ->(output: tf.Output){
+func enter(scope:Scope,data: tf.Output, frameName :String  , isConstant :Bool  , parallelIterations :Int  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -5242,7 +5242,7 @@ Returns the truth value of (x == y) element-wise.
 
 
 
-func equal(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :Type  )  ->(z: tf.Output){
+func equal(scope:Scope,x: tf.Output, y: tf.Output, t :Type  )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -5268,7 +5268,7 @@ Computes the Gauss error function of `x` element-wise.
 
 
 
-func erf(scope:Scope,x: Tensorflow_DataType )  ->(y: tf.Output){
+func erf(scope:Scope,x: tf.Output )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -5293,7 +5293,7 @@ Computes the complementary error function of `x` element-wise.
 
 
 
-func erfc(scope:Scope,x: Tensorflow_DataType, t :Type  )  ->(y: tf.Output){
+func erfc(scope:Scope,x: tf.Output, t :Type  )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -5320,7 +5320,7 @@ Exit makes its input `data` available to the parent frame.
 
 
 
-func exit(scope:Scope,data: Tensorflow_DataType )  ->(output: tf.Output){
+func exit(scope:Scope,data: tf.Output )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -5345,7 +5345,7 @@ Computes exponential of x element-wise.  \\(y = e^x\\).
 
 
 
-func exp(scope:Scope,x: Tensorflow_DataType, t :Type  )  ->(y: tf.Output){
+func exp(scope:Scope,x: tf.Output, t :Type  )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -5394,7 +5394,7 @@ size 1.
 
 
 
-func expandDims(scope:Scope,input: Tensorflow_DataType, dim: Tensorflow_DataType, tdim :Type  )  ->(output: tf.Output){
+func expandDims(scope:Scope,input: tf.Output, dim: tf.Output, tdim :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -5421,7 +5421,7 @@ I.e., \\(y = (\exp x) - 1\\).
 
 
 
-func expm1(scope:Scope,x: Tensorflow_DataType, t :Type  )  ->(y: tf.Output){
+func expm1(scope:Scope,x: tf.Output, t :Type  )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -5465,7 +5465,7 @@ The argument `normalized` and `centered` controls how the windows are built:
 
 
 
-func extractGlimpse(scope:Scope,input: Tensorflow_DataType, size: Tensorflow_DataType, offsets: Tensorflow_DataType, centered :Bool  , normalized :Bool  , uniformNoise :Bool  )  ->(glimpse: tf.Output){
+func extractGlimpse(scope:Scope,input: tf.Output, size: tf.Output, offsets: tf.Output, centered :Bool  , normalized :Bool  , uniformNoise :Bool  )  ->(glimpse: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -5493,7 +5493,7 @@ Extract `patches` from `images` and put them in the "depth" output dimension.
 
 
 
-func extractImagePatches(scope:Scope,images: Tensorflow_DataType, ksizes :[Int]  , strides :[Int]  , rates :[Int]  , padding :String  )  ->(patches: tf.Output){
+func extractImagePatches(scope:Scope,images: tf.Output, ksizes :[Int64]  , strides :[Int64]  , rates :[Int64]  , padding :String  )  ->(patches: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -5524,7 +5524,7 @@ dimension of `input`.
 
 
 
-func fft(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
+func fft(scope:Scope,input: tf.Output )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -5551,7 +5551,7 @@ Computes the 2-dimensional discrete Fourier transform over the inner-most
 
 
 
-func fft2D(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
+func fft2D(scope:Scope,input: tf.Output )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -5578,7 +5578,7 @@ dimensions of `input`.
 
 
 
-func fft3D(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
+func fft3D(scope:Scope,input: tf.Output )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -5693,7 +5693,7 @@ Quantization is called fake since the output is still in floating point.
 
 
 
-func fakeQuantWithMinMaxArgs(scope:Scope,inputs: Tensorflow_DataType, min :Float  , max :Float  , numBits :UInt8  )  ->(outputs: tf.Output){
+func fakeQuantWithMinMaxArgs(scope:Scope,inputs: tf.Output, min :Float  , max :Float  , numBits :UInt8  )  ->(outputs: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -5721,7 +5721,7 @@ Compute gradients for a FakeQuantWithMinMaxArgs operation.
 
 
 
-func fakeQuantWithMinMaxArgsGradient(scope:Scope,gradients: Tensorflow_DataType, inputs: Tensorflow_DataType, min :Float  , max :Float  , numBits :UInt8  )  ->(backprops: tf.Output){
+func fakeQuantWithMinMaxArgsGradient(scope:Scope,gradients: tf.Output, inputs: tf.Output, min :Float  , max :Float  , numBits :UInt8  )  ->(backprops: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -5755,7 +5755,7 @@ This operation has a gradient and thus allows for training `min` and `max` value
 
 
 
-func fakeQuantWithMinMaxVars(scope:Scope,inputs: Tensorflow_DataType, min: Tensorflow_DataType, max: Tensorflow_DataType, numBits :UInt8  )  ->(outputs: tf.Output){
+func fakeQuantWithMinMaxVars(scope:Scope,inputs: tf.Output, min: tf.Output, max: tf.Output, numBits :UInt8  )  ->(outputs: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -5781,7 +5781,7 @@ Compute gradients for a FakeQuantWithMinMaxVars operation.
 
 
 
-func fakeQuantWithMinMaxVarsGradient(scope:Scope,gradients: Tensorflow_DataType, inputs: Tensorflow_DataType, min: Tensorflow_DataType, max: Tensorflow_DataType, numBits :UInt8  )  ->(backpropsWrtInput: tf.Output, backpropWrtMin: tf.Output, backpropWrtMax: tf.Output){
+func fakeQuantWithMinMaxVarsGradient(scope:Scope,gradients: tf.Output, inputs: tf.Output, min: tf.Output, max: tf.Output, numBits :UInt8  )  ->(backpropsWrtInput: tf.Output, backpropWrtMin: tf.Output, backpropWrtMax: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -5814,7 +5814,7 @@ This operation has a gradient and thus allows for training `min` and `max` value
 
 
 
-func fakeQuantWithMinMaxVarsPerChannel(scope:Scope,inputs: Tensorflow_DataType, min: Tensorflow_DataType, max: Tensorflow_DataType, numBits :UInt8  )  ->(outputs: tf.Output){
+func fakeQuantWithMinMaxVarsPerChannel(scope:Scope,inputs: tf.Output, min: tf.Output, max: tf.Output, numBits :UInt8  )  ->(outputs: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -5840,7 +5840,7 @@ Compute gradients for a FakeQuantWithMinMaxVarsPerChannel operation.
 
 
 
-func fakeQuantWithMinMaxVarsPerChannelGradient(scope:Scope,gradients: Tensorflow_DataType, inputs: Tensorflow_DataType, min: Tensorflow_DataType, max: Tensorflow_DataType, numBits :UInt8  )  ->(backpropsWrtInput: tf.Output, backpropWrtMin: tf.Output, backpropWrtMax: tf.Output){
+func fakeQuantWithMinMaxVarsPerChannelGradient(scope:Scope,gradients: tf.Output, inputs: tf.Output, min: tf.Output, max: tf.Output, numBits :UInt8  )  ->(backpropsWrtInput: tf.Output, backpropWrtMin: tf.Output, backpropWrtMax: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -5866,7 +5866,7 @@ Deprecated. Do not use.
 
 
 
-func fakeQueue(scope:Scope,resource: Tensorflow_DataType )  ->(handle: tf.Output){
+func fakeQueue(scope:Scope,resource: tf.Output )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -5898,7 +5898,7 @@ fill([2, 3], 9) ==> [[9, 9, 9]
 
 
 
-func fill(scope:Scope,dims: Tensorflow_DataType, value: Tensorflow_DataType )  ->(output: tf.Output){
+func fill(scope:Scope,dims: tf.Output, value: tf.Output )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -5927,7 +5927,7 @@ following arguments:
 
 
 
-func filterDataset(scope:Scope,inputDataset: Tensorflow_DataType, otherArguments: Tensorflow_DataType, predicate :Func  , targuments :List(type)  , outputTypes :List(type)  , outputShapes :List(shape)  )  ->(handle: tf.Output){
+func filterDataset(scope:Scope,inputDataset: tf.Output, otherArguments: tf.Output, predicate :Func  , targuments :List(type)  , outputTypes :List(type)  , outputShapes :List(shape)  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -5956,7 +5956,7 @@ Creates a dataset that emits the records from one or more binary files.
 
 
 
-func fixedLengthRecordDataset(scope:Scope,filenames: Tensorflow_DataType, headerBytes: Tensorflow_DataType, recordBytes: Tensorflow_DataType, footerBytes: Tensorflow_DataType )  ->(handle: tf.Output){
+func fixedLengthRecordDataset(scope:Scope,filenames: tf.Output, headerBytes: tf.Output, recordBytes: tf.Output, footerBytes: tf.Output )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -6054,7 +6054,7 @@ true labels.
 
 
 
-func fixedUnigramCandidateSampler(scope:Scope,trueClasses: Tensorflow_DataType, numTrue :UInt8  , numSampled :UInt8  , unique :Bool  , rangeMax :UInt8  , vocabFile :String  , distortion :Float  , numReservedIds :UInt8  , numShards :UInt8  , shard :UInt8  , unigrams :List(float)  , seed :UInt8  , seed2 :UInt8  )  ->(sampledCandidates: tf.Output, trueExpectedCount: tf.Output, sampledExpectedCount: tf.Output){
+func fixedUnigramCandidateSampler(scope:Scope,trueClasses: tf.Output, numTrue :UInt8  , numSampled :UInt8  , unique :Bool  , rangeMax :UInt8  , vocabFile :String  , distortion :Float  , numReservedIds :UInt8  , numShards :UInt8  , shard :UInt8  , unigrams :List(float)  , seed :UInt8  , seed2 :UInt8  )  ->(sampledCandidates: tf.Output, trueExpectedCount: tf.Output, sampledExpectedCount: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -6094,7 +6094,7 @@ into a single Dataset.
 
 
 
-func flatMapDataset(scope:Scope,inputDataset: Tensorflow_DataType, otherArguments: Tensorflow_DataType, f :Func  , targuments :List(type)  , outputTypes :List(type)  , outputShapes :[Shape]  )  ->(handle: tf.Output){
+func flatMapDataset(scope:Scope,inputDataset: tf.Output, otherArguments: tf.Output, f :Func  , targuments :List(type)  , outputTypes :List(type)  , outputShapes :[Shape]  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -6123,7 +6123,7 @@ Returns element-wise largest integer not greater than x.
 
 
 
-func floor(scope:Scope,x: Tensorflow_DataType )  ->(y: tf.Output){
+func floor(scope:Scope,x: tf.Output )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -6150,7 +6150,7 @@ Returns x // y element-wise.
 
 
 
-func floorDiv(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :Type  )  ->(z: tf.Output){
+func floorDiv(scope:Scope,x: tf.Output, y: tf.Output, t :Type  )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -6180,7 +6180,7 @@ with a flooring divide. E.g. `floor(x / y) * y + mod(x, y) = x`.
 
 
 
-func floorMod(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType )  ->(z: tf.Output){
+func floorMod(scope:Scope,x: tf.Output, y: tf.Output )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -6209,7 +6209,7 @@ pooling region.
 
 
 
-func fractionalAvgPool(scope:Scope,value: Tensorflow_DataType, poolingRatio :List(float)  , pseudoRandom :Bool  , overlapping :Bool  , deterministic :Bool  , seed :Int  , seed2 :Int  , t :Type  )  ->(output: tf.Output, rowPoolingSequence: tf.Output, colPoolingSequence: tf.Output){
+func fractionalAvgPool(scope:Scope,value: tf.Output, poolingRatio :List(float)  , pseudoRandom :Bool  , overlapping :Bool  , deterministic :Bool  , seed :Int  , seed2 :Int  , t :Type  )  ->(output: tf.Output, rowPoolingSequence: tf.Output, colPoolingSequence: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -6246,7 +6246,7 @@ tensor.
 
 
 
-func fractionalAvgPoolGrad(scope:Scope,origInputTensorShape: Tensorflow_DataType, outBackprop: Tensorflow_DataType, rowPoolingSequence: Tensorflow_DataType, colPoolingSequence: Tensorflow_DataType, overlapping :Bool  )  ->(output: tf.Output){
+func fractionalAvgPoolGrad(scope:Scope,origInputTensorShape: tf.Output, outBackprop: tf.Output, rowPoolingSequence: tf.Output, colPoolingSequence: tf.Output, overlapping :Bool  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -6294,7 +6294,7 @@ For more details on fractional max pooling, see this paper:
 
 
 
-func fractionalMaxPool(scope:Scope,value: Tensorflow_DataType, poolingRatio :List(float)  , pseudoRandom :Bool  , overlapping :Bool  , deterministic :Bool  , seed :Int  , seed2 :Int  , t :Type  )  ->(output: tf.Output, rowPoolingSequence: tf.Output, colPoolingSequence: tf.Output){
+func fractionalMaxPool(scope:Scope,value: tf.Output, poolingRatio :List(float)  , pseudoRandom :Bool  , overlapping :Bool  , deterministic :Bool  , seed :Int  , seed2 :Int  , t :Type  )  ->(output: tf.Output, rowPoolingSequence: tf.Output, colPoolingSequence: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -6326,7 +6326,7 @@ Computes gradient of the FractionalMaxPool function.
 
 
 
-func fractionalMaxPoolGrad(scope:Scope,origInput: Tensorflow_DataType, origOutput: Tensorflow_DataType, outBackprop: Tensorflow_DataType, rowPoolingSequence: Tensorflow_DataType, colPoolingSequence: Tensorflow_DataType, overlapping :Bool  )  ->(output: tf.Output){
+func fractionalMaxPoolGrad(scope:Scope,origInput: tf.Output, origOutput: tf.Output, outBackprop: tf.Output, rowPoolingSequence: tf.Output, colPoolingSequence: tf.Output, overlapping :Bool  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -6354,7 +6354,7 @@ The size of 1D Tensors matches the dimension C of the 4D Tensors.
 
 
 
-func fusedBatchNorm(scope:Scope,x: Tensorflow_DataType, scale: Tensorflow_DataType, offset: Tensorflow_DataType, mean: Tensorflow_DataType, variance: Tensorflow_DataType, t :Type  , epsilon :Float  , dataFormat :String  , isTraining :Bool  )  ->(y: tf.Output, batchMean: tf.Output, batchVariance: tf.Output, reserveSpace1: tf.Output, reserveSpace2: tf.Output){
+func fusedBatchNorm(scope:Scope,x: tf.Output, scale: tf.Output, offset: tf.Output, mean: tf.Output, variance: tf.Output, t :Type  , epsilon :Float  , dataFormat :String  , isTraining :Bool  )  ->(y: tf.Output, batchMean: tf.Output, batchVariance: tf.Output, reserveSpace1: tf.Output, reserveSpace2: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -6385,7 +6385,7 @@ The size of 1D Tensors matches the dimension C of the 4D Tensors.
 
 
 
-func fusedBatchNormGrad(scope:Scope,yBackprop: Tensorflow_DataType, x: Tensorflow_DataType, scale: Tensorflow_DataType, reserveSpace1: Tensorflow_DataType, reserveSpace2: Tensorflow_DataType, epsilon :Float  , dataFormat :String  , isTraining :Bool  )  ->(xBackprop: tf.Output, scaleBackprop: tf.Output, offsetBackprop: tf.Output, reserveSpace3: tf.Output, reserveSpace4: tf.Output){
+func fusedBatchNormGrad(scope:Scope,yBackprop: tf.Output, x: tf.Output, scale: tf.Output, reserveSpace1: tf.Output, reserveSpace2: tf.Output, epsilon :Float  , dataFormat :String  , isTraining :Bool  )  ->(xBackprop: tf.Output, scaleBackprop: tf.Output, offsetBackprop: tf.Output, reserveSpace3: tf.Output, reserveSpace4: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -6424,7 +6424,7 @@ operator is primarily an optimization to minimize memory usage.
 
 
 
-func fusedPadConv2D(scope:Scope,input: Tensorflow_DataType, paddings: Tensorflow_DataType, filter: Tensorflow_DataType, t :Type  , mode :String  , strides :List(int)  , padding :String  )  ->(output: tf.Output){
+func fusedPadConv2D(scope:Scope,input: tf.Output, paddings: tf.Output, filter: tf.Output, t :Type  , mode :String  , strides :List(int)  , padding :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -6463,7 +6463,7 @@ operator is primarily an optimization to minimize memory usage.
 
 
 
-func fusedResizeAndPadConv2D(scope:Scope,input: Tensorflow_DataType, size: Tensorflow_DataType, paddings: Tensorflow_DataType, filter: Tensorflow_DataType, resizeAlignCorners :Bool  , mode :String  , strides :List(int)  , padding :String  )  ->(output: tf.Output){
+func fusedResizeAndPadConv2D(scope:Scope,input: tf.Output, size: tf.Output, paddings: tf.Output, filter: tf.Output, resizeAlignCorners :Bool  , mode :String  , strides :List(int)  , padding :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -6511,7 +6511,7 @@ raising an error.
 
 
 
-func gather(scope:Scope,params: Tensorflow_DataType, indices: Tensorflow_DataType, validateIndices :Bool  , tparams :Type  , tindices :Type  )  ->(output: tf.Output){
+func gather(scope:Scope,params: tf.Output, indices: tf.Output, validateIndices :Bool  , tparams :Type  , tindices :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -6604,7 +6604,7 @@ Batched indexing into a 3-tensor:
 
 
 
-func gatherNd(scope:Scope,params: Tensorflow_DataType, indices: Tensorflow_DataType, tparams :Type  , tindices :Type  )  ->(output: tf.Output){
+func gatherNd(scope:Scope,params: tf.Output, indices: tf.Output, tparams :Type  , tindices :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -6631,7 +6631,7 @@ Store the input tensor in the state of the current session.
 
 
 
-func getSessionHandle(scope:Scope,value: Tensorflow_DataType )  ->(handle: tf.Output){
+func getSessionHandle(scope:Scope,value: tf.Output )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -6656,7 +6656,7 @@ Store the input tensor in the state of the current session.
 
 
 
-func getSessionHandleV2(scope:Scope,value: Tensorflow_DataType, t :Type  )  ->(handle: tf.Output){
+func getSessionHandleV2(scope:Scope,value: tf.Output, t :Type  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -6682,7 +6682,7 @@ Get the value of the tensor specified by its handle.
 
 
 
-func getSessionTensor(scope:Scope,handle: Tensorflow_DataType, dtype :Type  )  ->(value: tf.Output){
+func getSessionTensor(scope:Scope,handle: tf.Output, dtype :Type  )  ->(value: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -6710,7 +6710,7 @@ Returns the truth value of (x > y) element-wise.
 
 
 
-func greater(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType )  ->(z: tf.Output){
+func greater(scope:Scope,x: tf.Output, y: tf.Output )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -6737,7 +6737,7 @@ Returns the truth value of (x >= y) element-wise.
 
 
 
-func greaterEqual(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :Type  )  ->(z: tf.Output){
+func greaterEqual(scope:Scope,x: tf.Output, y: tf.Output, t :Type  )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -6764,7 +6764,7 @@ Creates a dataset that computes a windowed group-by on `input_dataset`.
 
 
 
-func groupByWindowDataset(scope:Scope,inputDataset: Tensorflow_DataType, keyFuncOtherArguments: Tensorflow_DataType, reduceFuncOtherArguments: Tensorflow_DataType, windowSize: Tensorflow_DataType, keyFunc :Func  , reduceFunc :Func  , tkeyFuncOtherArguments :List(type)  , treduceFuncOtherArguments :List(type)  , outputTypes :List(type)  , outputShapes :[Shape]  )  ->(handle: tf.Output){
+func groupByWindowDataset(scope:Scope,inputDataset: tf.Output, keyFuncOtherArguments: tf.Output, reduceFuncOtherArguments: tf.Output, windowSize: tf.Output, keyFunc :Func  , reduceFunc :Func  , tkeyFuncOtherArguments :List(type)  , treduceFuncOtherArguments :List(type)  , outputTypes :List(type)  , outputShapes :[Shape]  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -6799,7 +6799,7 @@ See `rgb_to_hsv` for a description of the HSV encoding.
 
 
 
-func hsvToRGB(scope:Scope,images: Tensorflow_DataType )  ->(output: tf.Output){
+func hsvToRGB(scope:Scope,images: tf.Output )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -6894,7 +6894,7 @@ This op reports an `InvalidArgument` error if any value is not finite.
 
 
 
-func histogramSummary(scope:Scope,tag: Tensorflow_DataType, values: Tensorflow_DataType )  ->(summary: tf.Output){
+func histogramSummary(scope:Scope,tag: tf.Output, values: tf.Output )  ->(summary: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -6921,7 +6921,7 @@ inner-most dimension of `input`.
 
 
 
-func ifft(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
+func ifft(scope:Scope,input: tf.Output )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -6948,7 +6948,7 @@ inner-most 2 dimensions of `input`.
 
 
 
-func ifft2D(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
+func ifft2D(scope:Scope,input: tf.Output )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -6975,7 +6975,7 @@ inner-most 3 dimensions of `input`.
 
 
 
-func ifft3D(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
+func ifft3D(scope:Scope,input: tf.Output )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -7008,7 +7008,7 @@ properly.
 
 
 
-func irfft(scope:Scope,input: Tensorflow_DataType, fftLength: Tensorflow_DataType )  ->(output: tf.Output){
+func irfft(scope:Scope,input: tf.Output, fftLength: tf.Output )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -7041,7 +7041,7 @@ properly.
 
 
 
-func irfft2D(scope:Scope,input: Tensorflow_DataType, fftLength: Tensorflow_DataType )  ->(output: tf.Output){
+func irfft2D(scope:Scope,input: tf.Output, fftLength: tf.Output )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -7074,7 +7074,7 @@ properly.
 
 
 
-func irfft3D(scope:Scope,input: Tensorflow_DataType, fftLength: Tensorflow_DataType )  ->(output: tf.Output){
+func irfft3D(scope:Scope,input: tf.Output, fftLength: tf.Output )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -7099,7 +7099,7 @@ Return a tensor with the same shape and contents as the input tensor or value.
 
 
 
-func identity(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
+func identity(scope:Scope,input: tf.Output )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -7189,7 +7189,7 @@ Gamma function.
 
 
 
-func igamma(scope:Scope,a: Tensorflow_DataType, x: Tensorflow_DataType )  ->(z: tf.Output){
+func igamma(scope:Scope,a: tf.Output, x: tf.Output )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -7221,7 +7221,7 @@ Gamma function.
 
 
 
-func igammac(scope:Scope,a: Tensorflow_DataType, x: Tensorflow_DataType, t :Type  )  ->(z: tf.Output){
+func igammac(scope:Scope,a: tf.Output, x: tf.Output, t :Type  )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -7256,7 +7256,7 @@ tf.imag(input) ==> [4.75, 5.75]
 
 
 
-func imag(scope:Scope,input: Tensorflow_DataType, tout :Type  )  ->(output: tf.Output){
+func imag(scope:Scope,input: tf.Output, tout :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -7308,7 +7308,7 @@ red.
 
 
 
-func imageSummary(scope:Scope,tag: Tensorflow_DataType, tensor: Tensorflow_DataType, maxImages :Int  , t :Type  , badColor :Tensor  )  ->(summary: tf.Output){
+func imageSummary(scope:Scope,tag: tf.Output, tensor: tf.Output, maxImages :Int  , t :Type  , badColor :Tensor  )  ->(summary: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -7376,7 +7376,7 @@ $$out_i = predictions_{i, targets_i} \in TopKIncludingTies(predictions_i)$$
 
 
 
-func inTopK(scope:Scope,predictions: Tensorflow_DataType, targets: Tensorflow_DataType, k :UInt8  )  ->(precision: tf.Output){
+func inTopK(scope:Scope,predictions: tf.Output, targets: tf.Output, k :UInt8  )  ->(precision: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -7402,7 +7402,7 @@ Table initializer that takes two tensors for keys and values respectively.
 
 
 
-func initializeTable(scope:Scope,tableHandle: Tensorflow_DataType, keys: Tensorflow_DataType, values: Tensorflow_DataType, tkey :Type  , tval :Type  )  ->(o:tf.Operation){
+func initializeTable(scope:Scope,tableHandle: tf.Output, keys: tf.Output, values: tf.Output, tkey :Type  , tval :Type  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -7437,7 +7437,7 @@ Where to extract the key and value from a line is specified by `key_index` and
 
 
 
-func initializeTableFromTextFile(scope:Scope,tableHandle: Tensorflow_DataType, filename: Tensorflow_DataType, keyIndex :UInt8  , valueIndex :UInt8  , vocabSize :UInt8  , delimiter :String  )  ->(o:tf.Operation){
+func initializeTableFromTextFile(scope:Scope,tableHandle: tf.Output, filename: tf.Output, keyIndex :UInt8  , valueIndex :UInt8  , vocabSize :UInt8  , delimiter :String  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -7474,7 +7474,7 @@ Where to extract the key and value from a line is specified by `key_index` and
 
 
 
-func initializeTableFromTextFileV2(scope:Scope,tableHandle: Tensorflow_DataType, filename: Tensorflow_DataType, keyIndex :UInt8  , valueIndex :UInt8  , vocabSize :UInt8  , delimiter :String  )  ->(o:tf.Operation){
+func initializeTableFromTextFileV2(scope:Scope,tableHandle: tf.Output, filename: tf.Output, keyIndex :UInt8  , valueIndex :UInt8  , vocabSize :UInt8  , delimiter :String  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -7502,7 +7502,7 @@ Table initializer that takes two tensors for keys and values respectively.
 
 
 
-func initializeTableV2(scope:Scope,tableHandle: Tensorflow_DataType, keys: Tensorflow_DataType, values: Tensorflow_DataType, tkey :Type  , tval :Type  )  ->(o:tf.Operation){
+func initializeTableV2(scope:Scope,tableHandle: tf.Output, keys: tf.Output, values: tf.Output, tkey :Type  , tval :Type  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -7529,7 +7529,7 @@ I.e., \\(y = 1 / x\\).
 
 
 
-func inv(scope:Scope,x: Tensorflow_DataType )  ->(y: tf.Output){
+func inv(scope:Scope,x: tf.Output )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -7556,7 +7556,7 @@ is the corresponding input gradient.
 
 
 
-func invGrad(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :Type  )  ->(z: tf.Output){
+func invGrad(scope:Scope,x: tf.Output, y: tf.Output, t :Type  )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -7593,7 +7593,7 @@ invert_permutation(x) ==> [2, 4, 3, 0, 1]
 
 
 
-func invertPermutation(scope:Scope,x: Tensorflow_DataType )  ->(y: tf.Output){
+func invertPermutation(scope:Scope,x: tf.Output )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -7621,7 +7621,7 @@ Equivalent to np.isfinite
 
 
 
-func isFinite(scope:Scope,x: Tensorflow_DataType, t :Type  )  ->(y: tf.Output){
+func isFinite(scope:Scope,x: tf.Output, t :Type  )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -7650,7 +7650,7 @@ Equivalent to np.isinf
 
 
 
-func isInf(scope:Scope,x: Tensorflow_DataType )  ->(y: tf.Output){
+func isInf(scope:Scope,x: tf.Output )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -7678,7 +7678,7 @@ Equivalent to np.isnan
 
 
 
-func isNan(scope:Scope,x: Tensorflow_DataType, t :Type  )  ->(y: tf.Output){
+func isNan(scope:Scope,x: tf.Output, t :Type  )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -7705,7 +7705,7 @@ Outputs boolean scalar indicating whether the tensor has been initialized.
 
 
 
-func isVariableInitialized(scope:Scope,ref: Tensorflow_DataType, dtype :Type  )  ->(isInitialized: tf.Output){
+func isVariableInitialized(scope:Scope,ref: tf.Output, dtype :Type  )  ->(isInitialized: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -7760,7 +7760,7 @@ Releases any resources used by the given iterator.
 
 
 
-func iteratorDispose(scope:Scope,iterator: Tensorflow_DataType )  ->(o:tf.Operation){
+func iteratorDispose(scope:Scope,iterator: tf.Output )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -7784,7 +7784,7 @@ Gets the next output from the given iterator.
 
 
 
-func iteratorGetNext(scope:Scope,iterator: Tensorflow_DataType, outputTypes :List(type)  , outputShapes :[Shape]  )  ->(components: tf.Output){
+func iteratorGetNext(scope:Scope,iterator: tf.Output, outputTypes :List(type)  , outputShapes :[Shape]  )  ->(components: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -7813,7 +7813,7 @@ Computes half the L2 norm of a tensor without the `sqrt`:
 
 
 
-func l2Loss(scope:Scope,t: Tensorflow_DataType )  ->(output: tf.Output){
+func l2Loss(scope:Scope,t: tf.Output )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -7847,7 +7847,7 @@ convolutional neural networks (NIPS 2012)](http://papers.nips.cc/paper/4824-imag
 
 
 
-func lrn(scope:Scope,input: Tensorflow_DataType, depthRadius :Int  , bias :Float  , alpha :Float  , beta :Float  , t :Type  )  ->(output: tf.Output){
+func lrn(scope:Scope,input: tf.Output, depthRadius :Int  , bias :Float  , alpha :Float  , beta :Float  , t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -7877,7 +7877,7 @@ Gradients for Local Response Normalization.
 
 
 
-func lrnGrad(scope:Scope,inputGrads: Tensorflow_DataType, inputImage: Tensorflow_DataType, outputImage: Tensorflow_DataType, depthRadius :UInt8  , bias :Float  , alpha :Float  , beta :Float  )  ->(output: tf.Output){
+func lrnGrad(scope:Scope,inputGrads: tf.Output, inputImage: tf.Output, outputImage: tf.Output, depthRadius :UInt8  , bias :Float  , alpha :Float  , beta :Float  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -7913,7 +7913,7 @@ true labels.
 
 
 
-func learnedUnigramCandidateSampler(scope:Scope,trueClasses: Tensorflow_DataType, numTrue :Int  , numSampled :Int  , unique :Bool  , rangeMax :Int  , seed :Int  , seed2 :Int  )  ->(sampledCandidates: tf.Output, trueExpectedCount: tf.Output, sampledExpectedCount: tf.Output){
+func learnedUnigramCandidateSampler(scope:Scope,trueClasses: tf.Output, numTrue :Int  , numSampled :Int  , unique :Bool  , rangeMax :Int  , seed :Int  , seed2 :Int  )  ->(sampledCandidates: tf.Output, trueExpectedCount: tf.Output, sampledExpectedCount: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -7946,7 +7946,7 @@ Returns the truth value of (x < y) element-wise.
 
 
 
-func less(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType )  ->(z: tf.Output){
+func less(scope:Scope,x: tf.Output, y: tf.Output )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -7973,7 +7973,7 @@ Returns the truth value of (x <= y) element-wise.
 
 
 
-func lessEqual(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :Type  )  ->(z: tf.Output){
+func lessEqual(scope:Scope,x: tf.Output, y: tf.Output, t :Type  )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -7999,7 +7999,7 @@ Computes the log of the absolute value of `Gamma(x)` element-wise.
 
 
 
-func lgamma(scope:Scope,x: Tensorflow_DataType )  ->(y: tf.Output){
+func lgamma(scope:Scope,x: tf.Output )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -8031,7 +8031,7 @@ tf.linspace(10.0, 12.0, 3, name="linspace") => [ 10.0  11.0  12.0]
 
 
 
-func linSpace(scope:Scope,start: Tensorflow_DataType, stop: Tensorflow_DataType, num: Tensorflow_DataType, t :Type  , tidx :Type  )  ->(output: tf.Output){
+func linSpace(scope:Scope,start: tf.Output, stop: tf.Output, num: tf.Output, t :Type  , tidx :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -8074,7 +8074,7 @@ idx ==> [1, 3, 5]
 
 
 
-func listDiff(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, outIdx :Type  )  ->(out: tf.Output, idx: tf.Output){
+func listDiff(scope:Scope,x: tf.Output, y: tf.Output, outIdx :Type  )  ->(out: tf.Output, idx: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -8101,7 +8101,7 @@ I.e., \\(y = \log_e x\\).
 
 
 
-func log(scope:Scope,x: Tensorflow_DataType, t :Type  )  ->(y: tf.Output){
+func log(scope:Scope,x: tf.Output, t :Type  )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -8128,7 +8128,7 @@ I.e., \\(y = \log_e (1 + x)\\).
 
 
 
-func log1p(scope:Scope,x: Tensorflow_DataType )  ->(y: tf.Output){
+func log1p(scope:Scope,x: tf.Output )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -8155,7 +8155,7 @@ For each batch `i` and class `j` we have
 
 
 
-func logSoftmax(scope:Scope,logits: Tensorflow_DataType, t :Type  )  ->(logsoftmax: tf.Output){
+func logSoftmax(scope:Scope,logits: tf.Output, t :Type  )  ->(logsoftmax: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -8188,7 +8188,7 @@ true labels.
 
 
 
-func logUniformCandidateSampler(scope:Scope,trueClasses: Tensorflow_DataType, numTrue :UInt8  , numSampled :UInt8  , unique :Bool  , rangeMax :UInt8  , seed :UInt8  , seed2 :UInt8  )  ->(sampledCandidates: tf.Output, trueExpectedCount: tf.Output, sampledExpectedCount: tf.Output){
+func logUniformCandidateSampler(scope:Scope,trueClasses: tf.Output, numTrue :UInt8  , numSampled :UInt8  , unique :Bool  , rangeMax :UInt8  , seed :UInt8  , seed2 :UInt8  )  ->(sampledCandidates: tf.Output, trueExpectedCount: tf.Output, sampledExpectedCount: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -8221,7 +8221,7 @@ Returns the truth value of x AND y element-wise.
 
 
 
-func logicalAnd(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType )  ->(z: tf.Output){
+func logicalAnd(scope:Scope,x: tf.Output, y: tf.Output )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -8246,7 +8246,7 @@ Returns the truth value of NOT x element-wise.
 
 
 
-func logicalNot(scope:Scope,x: Tensorflow_DataType )  ->(y: tf.Output){
+func logicalNot(scope:Scope,x: tf.Output )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -8273,7 +8273,7 @@ Returns the truth value of x OR y element-wise.
 
 
 
-func logicalOr(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType )  ->(z: tf.Output){
+func logicalOr(scope:Scope,x: tf.Output, y: tf.Output )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -8298,7 +8298,7 @@ Outputs all keys and values in the table.
 
 
 
-func lookupTableExport(scope:Scope,tableHandle: Tensorflow_DataType, tkeys :Type  , tvalues :Type  )  ->(keys: tf.Output, values: tf.Output){
+func lookupTableExport(scope:Scope,tableHandle: tf.Output, tkeys :Type  , tvalues :Type  )  ->(keys: tf.Output, values: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -8325,7 +8325,7 @@ Outputs all keys and values in the table.
 
 
 
-func lookupTableExportV2(scope:Scope,tableHandle: Tensorflow_DataType, tkeys :Type  , tvalues :Type  )  ->(keys: tf.Output, values: tf.Output){
+func lookupTableExportV2(scope:Scope,tableHandle: tf.Output, tkeys :Type  , tvalues :Type  )  ->(keys: tf.Output, values: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -8356,7 +8356,7 @@ table. It must also be of the same type as the table values.
 
 
 
-func lookupTableFind(scope:Scope,tableHandle: Tensorflow_DataType, keys: Tensorflow_DataType, defaultValue: Tensorflow_DataType, tin :Type  , tout :Type  )  ->(values: tf.Output){
+func lookupTableFind(scope:Scope,tableHandle: tf.Output, keys: tf.Output, defaultValue: tf.Output, tin :Type  , tout :Type  )  ->(values: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -8387,7 +8387,7 @@ table. It must also be of the same type as the table values.
 
 
 
-func lookupTableFindV2(scope:Scope,tableHandle: Tensorflow_DataType, keys: Tensorflow_DataType, defaultValue: Tensorflow_DataType, tin :Type  , tout :Type  )  ->(values: tf.Output){
+func lookupTableFindV2(scope:Scope,tableHandle: tf.Output, keys: tf.Output, defaultValue: tf.Output, tin :Type  , tout :Type  )  ->(values: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -8416,7 +8416,7 @@ The tensor `values` must be of the type of the table values.
 
 
 
-func lookupTableImport(scope:Scope,tableHandle: Tensorflow_DataType, keys: Tensorflow_DataType, values: Tensorflow_DataType, tin :Type  , tout :Type  )  ->(o:tf.Operation){
+func lookupTableImport(scope:Scope,tableHandle: tf.Output, keys: tf.Output, values: tf.Output, tin :Type  , tout :Type  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -8444,7 +8444,7 @@ The tensor `values` must be of the type of the table values.
 
 
 
-func lookupTableImportV2(scope:Scope,tableHandle: Tensorflow_DataType, keys: Tensorflow_DataType, values: Tensorflow_DataType, tin :Type  , tout :Type  )  ->(o:tf.Operation){
+func lookupTableImportV2(scope:Scope,tableHandle: tf.Output, keys: tf.Output, values: tf.Output, tin :Type  , tout :Type  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -8472,7 +8472,7 @@ The tensor `values` must be of the type of the table values.
 
 
 
-func lookupTableInsert(scope:Scope,tableHandle: Tensorflow_DataType, keys: Tensorflow_DataType, values: Tensorflow_DataType, tin :Type  , tout :Type  )  ->(o:tf.Operation){
+func lookupTableInsert(scope:Scope,tableHandle: tf.Output, keys: tf.Output, values: tf.Output, tin :Type  , tout :Type  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -8500,7 +8500,7 @@ The tensor `values` must be of the type of the table values.
 
 
 
-func lookupTableInsertV2(scope:Scope,tableHandle: Tensorflow_DataType, keys: Tensorflow_DataType, values: Tensorflow_DataType, tin :Type  , tout :Type  )  ->(o:tf.Operation){
+func lookupTableInsertV2(scope:Scope,tableHandle: tf.Output, keys: tf.Output, values: tf.Output, tin :Type  , tout :Type  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -8526,7 +8526,7 @@ Computes the number of elements in the given table.
 
 
 
-func lookupTableSize(scope:Scope,tableHandle: Tensorflow_DataType )  ->(size: tf.Output){
+func lookupTableSize(scope:Scope,tableHandle: tf.Output )  ->(size: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -8551,7 +8551,7 @@ Computes the number of elements in the given table.
 
 
 
-func lookupTableSizeV2(scope:Scope,tableHandle: Tensorflow_DataType )  ->(size: tf.Output){
+func lookupTableSizeV2(scope:Scope,tableHandle: tf.Output )  ->(size: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -8578,7 +8578,7 @@ This operator represents the loop termination condition used by the
 
 
 
-func loopCond(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
+func loopCond(scope:Scope,input: tf.Output )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -8605,7 +8605,7 @@ iterator in `iterator` to the first element of `dataset`.
 
 
 
-func makeIterator(scope:Scope,dataset: Tensorflow_DataType, iterator: Tensorflow_DataType )  ->(o:tf.Operation){
+func makeIterator(scope:Scope,dataset: tf.Output, iterator: tf.Output )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -8629,7 +8629,7 @@ Creates a dataset that applies `f` to the outputs of `input_dataset`.
 
 
 
-func mapDataset(scope:Scope,inputDataset: Tensorflow_DataType, otherArguments: Tensorflow_DataType, f :Func  , targuments :List(type)  , outputTypes :List(type)  , outputShapes :[Shape]  )  ->(handle: tf.Output){
+func mapDataset(scope:Scope,inputDataset: tf.Output, otherArguments: tf.Output, f :Func  , targuments :List(type)  , outputTypes :List(type)  , outputShapes :[Shape]  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -8664,7 +8664,7 @@ cublas.
 
 
 
-func matMul(scope:Scope,a: Tensorflow_DataType, b: Tensorflow_DataType, transposeA :Bool  , transposeB :Bool  )  ->(product: tf.Output){
+func matMul(scope:Scope,a: tf.Output, b: tf.Output, transposeA :Bool  , transposeB :Bool  )  ->(product: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -8693,7 +8693,7 @@ basename portion of the pattern, not in the directory portion.
 
 
 
-func matchingFiles(scope:Scope,pattern: Tensorflow_DataType )  ->(filenames: tf.Output){
+func matchingFiles(scope:Scope,pattern: tf.Output )  ->(filenames: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -8747,7 +8747,7 @@ Useful special cases:
 
 
 
-func matrixBandPart(scope:Scope,input: Tensorflow_DataType, numLower: Tensorflow_DataType, numUpper: Tensorflow_DataType )  ->(band: tf.Output){
+func matrixBandPart(scope:Scope,input: tf.Output, numLower: tf.Output, numUpper: tf.Output )  ->(band: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -8775,7 +8775,7 @@ for all input submatrices `[..., :, :]`.
 
 
 
-func matrixDeterminant(scope:Scope,input: Tensorflow_DataType, t :Type  )  ->(output: tf.Output){
+func matrixDeterminant(scope:Scope,input: tf.Output, t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -8820,7 +8820,7 @@ which has shape (2, 4, 4)
 
 
 
-func matrixDiag(scope:Scope,diagonal: Tensorflow_DataType )  ->(output: tf.Output){
+func matrixDiag(scope:Scope,diagonal: tf.Output )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -8865,7 +8865,7 @@ which has shape (2, 4)
 
 
 
-func matrixDiagPart(scope:Scope,input: Tensorflow_DataType, t :Type  )  ->(diagonal: tf.Output){
+func matrixDiagPart(scope:Scope,input: tf.Output, t :Type  )  ->(diagonal: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -8899,7 +8899,7 @@ garbage result.
 
 
 
-func matrixInverse(scope:Scope,input: Tensorflow_DataType, adjoint :Bool  )  ->(output: tf.Output){
+func matrixInverse(scope:Scope,input: tf.Output, adjoint :Bool  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -8934,7 +8934,7 @@ tensor of rank `k+1` with dimensions `[I, J, K, ..., M, N]` where:
 
 
 
-func matrixSetDiag(scope:Scope,input: Tensorflow_DataType, diagonal: Tensorflow_DataType, t :Type  )  ->(output: tf.Output){
+func matrixSetDiag(scope:Scope,input: tf.Output, diagonal: tf.Output, t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -8966,7 +8966,7 @@ If `adjoint` is `True` then each output matrix satisfies
 
 
 
-func matrixSolve(scope:Scope,matrix: Tensorflow_DataType, rhs: Tensorflow_DataType, adjoint :Bool  )  ->(output: tf.Output){
+func matrixSolve(scope:Scope,matrix: tf.Output, rhs: tf.Output, adjoint :Bool  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -9019,7 +9019,7 @@ typically 6-7 times slower than the fast path. If `fast` is `False` then
 
 
 
-func matrixSolveLs(scope:Scope,matrix: Tensorflow_DataType, rhs: Tensorflow_DataType, l2Regularizer: Tensorflow_DataType, t :Type  , fast :Bool  )  ->(output: tf.Output){
+func matrixSolveLs(scope:Scope,matrix: tf.Output, rhs: tf.Output, l2Regularizer: tf.Output, t :Type  , fast :Bool  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -9059,7 +9059,7 @@ If `adjoint` is `False` then the strictly then the  innermost matrices in
 
 
 
-func matrixTriangularSolve(scope:Scope,matrix: Tensorflow_DataType, rhs: Tensorflow_DataType, lower :Bool  , adjoint :Bool  )  ->(output: tf.Output){
+func matrixTriangularSolve(scope:Scope,matrix: tf.Output, rhs: tf.Output, lower :Bool  , adjoint :Bool  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -9090,7 +9090,7 @@ retained with length 1.
 
 
 
-func max(scope:Scope,input: Tensorflow_DataType, reductionIndices: Tensorflow_DataType, keepDims :Bool  , t :Type  , tidx :Type  )  ->(output: tf.Output){
+func max(scope:Scope,input: tf.Output, reductionIndices: tf.Output, keepDims :Bool  , t :Type  , tidx :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -9118,7 +9118,7 @@ Performs max pooling on the input.
 
 
 
-func maxPool(scope:Scope,input: Tensorflow_DataType, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  )  ->(output: tf.Output){
+func maxPool(scope:Scope,input: tf.Output, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -9147,7 +9147,7 @@ Performs 3D max pooling on the input.
 
 
 
-func maxPool3D(scope:Scope,input: Tensorflow_DataType, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  , t :Type  )  ->(output: tf.Output){
+func maxPool3D(scope:Scope,input: tf.Output, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  , t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -9177,7 +9177,7 @@ Computes gradients of max pooling function.
 
 
 
-func maxPool3DGrad(scope:Scope,origInput: Tensorflow_DataType, origOutput: Tensorflow_DataType, grad: Tensorflow_DataType, ksize :[Int]  , strides :[Int]  , padding :String  , dataFormat :String  , tInput :Type  )  ->(output: tf.Output){
+func maxPool3DGrad(scope:Scope,origInput: tf.Output, origOutput: tf.Output, grad: tf.Output, ksize :[Int64]  , strides :[Int64]  , padding :String  , dataFormat :String  , tInput :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -9207,7 +9207,7 @@ Computes second-order gradients of the maxpooling function.
 
 
 
-func maxPool3DGradGrad(scope:Scope,origInput: Tensorflow_DataType, origOutput: Tensorflow_DataType, grad: Tensorflow_DataType, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  , t :Type  )  ->(output: tf.Output){
+func maxPool3DGradGrad(scope:Scope,origInput: tf.Output, origOutput: tf.Output, grad: tf.Output, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  , t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -9237,7 +9237,7 @@ Computes gradients of the maxpooling function.
 
 
 
-func maxPoolGrad(scope:Scope,origInput: Tensorflow_DataType, origOutput: Tensorflow_DataType, grad: Tensorflow_DataType, ksize :[Int]  , strides :[Int]  , padding :String  , dataFormat :String  )  ->(output: tf.Output){
+func maxPoolGrad(scope:Scope,origInput: tf.Output, origOutput: tf.Output, grad: tf.Output, ksize :[Int64]  , strides :[Int64]  , padding :String  , dataFormat :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -9266,7 +9266,7 @@ Computes second-order gradients of the maxpooling function.
 
 
 
-func maxPoolGradGrad(scope:Scope,origInput: Tensorflow_DataType, origOutput: Tensorflow_DataType, grad: Tensorflow_DataType, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  , t :Type  )  ->(output: tf.Output){
+func maxPoolGradGrad(scope:Scope,origInput: tf.Output, origOutput: tf.Output, grad: tf.Output, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  , t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -9296,7 +9296,7 @@ Computes second-order gradients of the maxpooling function.
 
 
 
-func maxPoolGradGradWithArgmax(scope:Scope,input: Tensorflow_DataType, grad: Tensorflow_DataType, argmax: Tensorflow_DataType, ksize :[Int]  , strides :[Int]  , padding :String  , targmax :Type  )  ->(output: tf.Output){
+func maxPoolGradGradWithArgmax(scope:Scope,input: tf.Output, grad: tf.Output, argmax: tf.Output, ksize :[Int64]  , strides :[Int64]  , padding :String  , targmax :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -9325,7 +9325,7 @@ Computes gradients of the maxpooling function.
 
 
 
-func maxPoolGradWithArgmax(scope:Scope,input: Tensorflow_DataType, grad: Tensorflow_DataType, argmax: Tensorflow_DataType, ksize :List(int)  , strides :List(int)  , padding :String  , targmax :Type  , t :Type  )  ->(output: tf.Output){
+func maxPoolGradWithArgmax(scope:Scope,input: tf.Output, grad: tf.Output, argmax: tf.Output, ksize :List(int)  , strides :List(int)  , padding :String  , targmax :Type  , t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -9358,7 +9358,7 @@ The indices in `argmax` are flattened, so that a maximum value at position
 
 
 
-func maxPoolWithArgmax(scope:Scope,input: Tensorflow_DataType, ksize :[Int]  , strides :[Int]  , targmax :Type  , padding :String  )  ->(output: tf.Output, argmax: tf.Output){
+func maxPoolWithArgmax(scope:Scope,input: tf.Output, ksize :[Int64]  , strides :[Int64]  , targmax :Type  , padding :String  )  ->(output: tf.Output, argmax: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -9389,7 +9389,7 @@ Returns the max of x and y (i.e. x > y ? x : y) element-wise.
 
 
 
-func maximum(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :Type  )  ->(z: tf.Output){
+func maximum(scope:Scope,x: tf.Output, y: tf.Output, t :Type  )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -9419,7 +9419,7 @@ retained with length 1.
 
 
 
-func mean(scope:Scope,input: Tensorflow_DataType, reductionIndices: Tensorflow_DataType, keepDims :Bool  , tidx :Type  )  ->(output: tf.Output){
+func mean(scope:Scope,input: tf.Output, reductionIndices: tf.Output, keepDims :Bool  , tidx :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -9450,7 +9450,7 @@ It is usually combined with `Switch` to implement branching.
 
 
 
-func merge(scope:Scope,inputs: Tensorflow_DataType, t :Type  , n :Int  )  ->(output: tf.Output, valueIndex: tf.Output){
+func merge(scope:Scope,inputs: tf.Output, t :Type  , n :Int  )  ->(output: tf.Output, valueIndex: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -9483,7 +9483,7 @@ in the summaries to merge use the same tag.
 
 
 
-func mergeSummary(scope:Scope,inputs: Tensorflow_DataType, n :UInt8  )  ->(summary: tf.Output){
+func mergeSummary(scope:Scope,inputs: tf.Output, n :UInt8  )  ->(summary: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -9515,7 +9515,7 @@ user-facing temporary locations.
 
 
 
-func mergeV2Checkpoints(scope:Scope,checkpointPrefixes: Tensorflow_DataType, destinationPrefix: Tensorflow_DataType, deleteOldDirs :Bool  )  ->(o:tf.Operation){
+func mergeV2Checkpoints(scope:Scope,checkpointPrefixes: tf.Output, destinationPrefix: tf.Output, deleteOldDirs :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -9546,7 +9546,7 @@ is a good resource to learn more.
 
 
 
-func mfcc(scope:Scope,spectrogram: Tensorflow_DataType, sampleRate: Tensorflow_DataType, upperFrequencyLimit :Float  , lowerFrequencyLimit :Float  , filterbankChannelCount :UInt8  , dctCoefficientCount :UInt8  )  ->(output: tf.Output){
+func mfcc(scope:Scope,spectrogram: tf.Output, sampleRate: tf.Output, upperFrequencyLimit :Float  , lowerFrequencyLimit :Float  , filterbankChannelCount :UInt8  , dctCoefficientCount :UInt8  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -9579,7 +9579,7 @@ retained with length 1.
 
 
 
-func min(scope:Scope,input: Tensorflow_DataType, reductionIndices: Tensorflow_DataType, keepDims :Bool  , tidx :Type  )  ->(output: tf.Output){
+func min(scope:Scope,input: tf.Output, reductionIndices: tf.Output, keepDims :Bool  , tidx :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -9608,7 +9608,7 @@ Returns the min of x and y (i.e. x < y ? x : y) element-wise.
 
 
 
-func minimum(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :Type  )  ->(z: tf.Output){
+func minimum(scope:Scope,x: tf.Output, y: tf.Output, t :Type  )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -9655,7 +9655,7 @@ pad(t, paddings) ==> [[2, 1, 1, 2, 3, 3, 2]
 
 
 
-func mirrorPad(scope:Scope,input: Tensorflow_DataType, paddings: Tensorflow_DataType, tpaddings :Type  , mode :String  )  ->(output: tf.Output){
+func mirrorPad(scope:Scope,input: tf.Output, paddings: tf.Output, tpaddings :Type  , mode :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -9696,7 +9696,7 @@ pad(t, paddings) ==> [[ 1,  5]
 
 
 
-func mirrorPadGrad(scope:Scope,input: Tensorflow_DataType, paddings: Tensorflow_DataType, t :Type  , tpaddings :Type  , mode :String  )  ->(output: tf.Output){
+func mirrorPadGrad(scope:Scope,input: tf.Output, paddings: tf.Output, t :Type  , tpaddings :Type  , mode :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -9728,7 +9728,7 @@ y + truncate_mod(x, y) = x`.
 
 
 
-func mod(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType )  ->(z: tf.Output){
+func mod(scope:Scope,x: tf.Output, y: tf.Output )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -9755,7 +9755,7 @@ Returns x * y element-wise.
 
 
 
-func mul(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :Type  )  ->(z: tf.Output){
+func mul(scope:Scope,x: tf.Output, y: tf.Output, t :Type  )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -9781,7 +9781,7 @@ Draws samples from a multinomial distribution.
 
 
 
-func multinomial(scope:Scope,logits: Tensorflow_DataType, numSamples: Tensorflow_DataType, seed :UInt8  , seed2 :UInt8  )  ->(output: tf.Output){
+func multinomial(scope:Scope,logits: tf.Output, numSamples: tf.Output, seed :UInt8  , seed2 :UInt8  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -9813,7 +9813,7 @@ the insert operations. It does not support the initialization operation.
 
 
 
-func mutableDenseHashTable(scope:Scope,emptyKey: Tensorflow_DataType, container :String  , sharedName :String  , useNodeNameSharing :Bool  , keyDtype :Type  , valueDtype :Type  , valueShape :Shape  , initialNumBuckets :Int  , maxLoadFactor :Float  )  ->(tableHandle: tf.Output){
+func mutableDenseHashTable(scope:Scope,emptyKey: tf.Output, container :String  , sharedName :String  , useNodeNameSharing :Bool  , keyDtype :Type  , valueDtype :Type  , valueShape :Shape  , initialNumBuckets :Int  , maxLoadFactor :Float  )  ->(tableHandle: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -9851,7 +9851,7 @@ the insert operations. It does not support the initialization operation.
 
 
 
-func mutableDenseHashTableV2(scope:Scope,emptyKey: Tensorflow_DataType, container :String  , sharedName :String  , useNodeNameSharing :Bool  , keyDtype :Type  , valueDtype :Type  , valueShape :Shape  , initialNumBuckets :UInt8  , maxLoadFactor :Float  )  ->(tableHandle: tf.Output){
+func mutableDenseHashTableV2(scope:Scope,emptyKey: tf.Output, container :String  , sharedName :String  , useNodeNameSharing :Bool  , keyDtype :Type  , valueDtype :Type  , valueShape :Shape  , initialNumBuckets :UInt8  , maxLoadFactor :Float  )  ->(tableHandle: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -10019,7 +10019,7 @@ I.e., \\(y = -x\\).
 
 
 
-func neg(scope:Scope,x: Tensorflow_DataType )  ->(y: tf.Output){
+func neg(scope:Scope,x: tf.Output )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -10044,7 +10044,7 @@ Training via negative sampling.
 
 
 
-func negTrain(scope:Scope,wIn: Tensorflow_DataType, wOut: Tensorflow_DataType, examples: Tensorflow_DataType, labels: Tensorflow_DataType, lr: Tensorflow_DataType, vocabCount :List(int)  , numNegativeSamples :Int  )  ->(o:tf.Operation){
+func negTrain(scope:Scope,wIn: tf.Output, wOut: tf.Output, examples: tf.Output, labels: tf.Output, lr: tf.Output, vocabCount :List(int)  , numNegativeSamples :Int  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -10070,7 +10070,7 @@ Makes its input available to the next iteration.
 
 
 
-func nextIteration(scope:Scope,data: Tensorflow_DataType )  ->(output: tf.Output){
+func nextIteration(scope:Scope,data: tf.Output )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -10135,7 +10135,7 @@ using the `tf.gather operation`.  For example:
 
 
 
-func nonMaxSuppression(scope:Scope,boxes: Tensorflow_DataType, scores: Tensorflow_DataType, maxOutputSize: Tensorflow_DataType, iouThreshold :Float  )  ->(selectedIndices: tf.Output){
+func nonMaxSuppression(scope:Scope,boxes: tf.Output, scores: tf.Output, maxOutputSize: tf.Output, iouThreshold :Float  )  ->(selectedIndices: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -10177,7 +10177,7 @@ using the `tf.gather operation`.  For example:
 
 
 
-func nonMaxSuppressionV2(scope:Scope,boxes: Tensorflow_DataType, scores: Tensorflow_DataType, maxOutputSize: Tensorflow_DataType, iouThreshold: Tensorflow_DataType )  ->(selectedIndices: tf.Output){
+func nonMaxSuppressionV2(scope:Scope,boxes: tf.Output, scores: tf.Output, maxOutputSize: tf.Output, iouThreshold: tf.Output )  ->(selectedIndices: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -10204,7 +10204,7 @@ Returns the truth value of (x != y) element-wise.
 
 
 
-func notEqual(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType )  ->(z: tf.Output){
+func notEqual(scope:Scope,x: tf.Output, y: tf.Output )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -10300,7 +10300,7 @@ Then output is `[2 x 2 x 3]`:
 
 
 
-func oneHot(scope:Scope,indices: Tensorflow_DataType, depth: Tensorflow_DataType, onValue: Tensorflow_DataType, offValue: Tensorflow_DataType, axis :Int  , t :Type  , ti :Type  )  ->(output: tf.Output){
+func oneHot(scope:Scope,indices: tf.Output, depth: tf.Output, onValue: tf.Output, offValue: tf.Output, axis :Int  , t :Type  , ti :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -10372,7 +10372,7 @@ Returns a tensor of ones with the same shape and type as x.
 
 
 
-func onesLike(scope:Scope,x: Tensorflow_DataType )  ->(y: tf.Output){
+func onesLike(scope:Scope,x: tf.Output )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -10412,7 +10412,7 @@ This is the opposite of `unpack`.
 
 
 
-func pack(scope:Scope,values: Tensorflow_DataType, n :Int  , t :Type  , axis :Int  )  ->(output: tf.Output){
+func pack(scope:Scope,values: tf.Output, n :Int  , t :Type  , axis :Int  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -10458,7 +10458,7 @@ pad(t, paddings) ==> [[0, 0, 0, 0, 0, 0]
 
 
 
-func pad(scope:Scope,input: Tensorflow_DataType, paddings: Tensorflow_DataType, tpaddings :Type  )  ->(output: tf.Output){
+func pad(scope:Scope,input: tf.Output, paddings: tf.Output, tpaddings :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -10484,7 +10484,7 @@ Creates a dataset that batches and pads `batch_size` elements from the input.
 
 
 
-func paddedBatchDataset(scope:Scope,inputDataset: Tensorflow_DataType, batchSize: Tensorflow_DataType, paddedShapes: Tensorflow_DataType, paddingValues: Tensorflow_DataType, toutputTypes :List(type)  , outputShapes :List(shape)  , n :Int  )  ->(handle: tf.Output){
+func paddedBatchDataset(scope:Scope,inputDataset: tf.Output, batchSize: tf.Output, paddedShapes: tf.Output, paddingValues: tf.Output, toutputTypes :List(type)  , outputShapes :List(shape)  , n :Int  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -10591,7 +10591,7 @@ some situations this can provide a performance benefit.
 
 
 
-func parallelConcat(scope:Scope,values: Tensorflow_DataType, n :UInt8  , shape :Shape  )  ->(output: tf.Output){
+func parallelConcat(scope:Scope,values: tf.Output, n :UInt8  , shape :Shape  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -10621,7 +10621,7 @@ in parallel.
 
 
 
-func parallelMapDataset(scope:Scope,inputDataset: Tensorflow_DataType, otherArguments: Tensorflow_DataType, numThreads: Tensorflow_DataType, outputBufferSize: Tensorflow_DataType, f :Func  , targuments :List(type)  , outputTypes :List(type)  , outputShapes :List(shape)  )  ->(handle: tf.Output){
+func parallelMapDataset(scope:Scope,inputDataset: tf.Output, otherArguments: tf.Output, numThreads: tf.Output, outputBufferSize: tf.Output, f :Func  , targuments :List(type)  , outputTypes :List(type)  , outputShapes :List(shape)  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -10652,7 +10652,7 @@ stores the parameters for each batch.
 
 
 
-func parameterizedTruncatedNormal(scope:Scope,shape: Tensorflow_DataType, means: Tensorflow_DataType, stdevs: Tensorflow_DataType, minvals: Tensorflow_DataType, maxvals: Tensorflow_DataType, seed :UInt8  , seed2 :UInt8  , dtype :Type  )  ->(output: tf.Output){
+func parameterizedTruncatedNormal(scope:Scope,shape: tf.Output, means: tf.Output, stdevs: tf.Output, minvals: tf.Output, maxvals: tf.Output, seed :UInt8  , seed2 :UInt8  , dtype :[Any]  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -10680,7 +10680,7 @@ Transforms a vector of brain.Example protos (as strings) into typed tensors.
 
 
 
-func parseExample(scope:Scope,serialized: Tensorflow_DataType, names: Tensorflow_DataType, sparseKeys: Tensorflow_DataType, denseKeys: Tensorflow_DataType, denseDefaults: Tensorflow_DataType, nsparse :Int  , ndense :Int  , sparseTypes :List(type)  , tdense :List(type)  , denseShapes :List(shape)  )  ->(sparseIndices: tf.Output, sparseValues: tf.Output, sparseShapes: tf.Output, denseValues: tf.Output){
+func parseExample(scope:Scope,serialized: tf.Output, names: tf.Output, sparseKeys: tf.Output, denseKeys: tf.Output, denseDefaults: tf.Output, nsparse :Int  , ndense :Int  , sparseTypes :List(type)  , tdense :List(type)  , denseShapes :List(shape)  )  ->(sparseIndices: tf.Output, sparseValues: tf.Output, sparseShapes: tf.Output, denseValues: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -10710,7 +10710,7 @@ Transforms a scalar brain.SequenceExample proto (as strings) into typed tensors.
 
 
 
-func parseSingleSequenceExample(scope:Scope,serialized: Tensorflow_DataType, featureListDenseMissingAssumedEmpty: Tensorflow_DataType, contextSparseKeys: Tensorflow_DataType, contextDenseKeys: Tensorflow_DataType, featureListSparseKeys: Tensorflow_DataType, featureListDenseKeys: Tensorflow_DataType, contextDenseDefaults: Tensorflow_DataType, debugName: Tensorflow_DataType, ncontextSparse :UInt8  , ncontextDense :UInt8  , nfeatureListSparse :UInt8  , nfeatureListDense :UInt8  , contextSparseTypes :List(type)  , tcontextDense :List(type)  , featureListDenseTypes :List(type)  , contextDenseShapes :[Shape]  , featureListSparseTypes :List(type)  , featureListDenseShapes :[Shape]  )  ->(contextSparseIndices: tf.Output, contextSparseValues: tf.Output, contextSparseShapes: tf.Output, contextDenseValues: tf.Output, featureListSparseIndices: tf.Output, featureListSparseValues: tf.Output, featureListSparseShapes: tf.Output, featureListDenseValues: tf.Output){
+func parseSingleSequenceExample(scope:Scope,serialized: tf.Output, featureListDenseMissingAssumedEmpty: tf.Output, contextSparseKeys: tf.Output, contextDenseKeys: tf.Output, featureListSparseKeys: tf.Output, featureListDenseKeys: tf.Output, contextDenseDefaults: tf.Output, debugName: tf.Output, ncontextSparse :UInt8  , ncontextDense :UInt8  , nfeatureListSparse :UInt8  , nfeatureListDense :UInt8  , contextSparseTypes :List(type)  , tcontextDense :List(type)  , featureListDenseTypes :List(type)  , contextDenseShapes :[Shape]  , featureListSparseTypes :List(type)  , featureListDenseShapes :[Shape]  )  ->(contextSparseIndices: tf.Output, contextSparseValues: tf.Output, contextSparseShapes: tf.Output, contextDenseValues: tf.Output, featureListSparseIndices: tf.Output, featureListSparseValues: tf.Output, featureListSparseShapes: tf.Output, featureListDenseValues: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -10745,7 +10745,7 @@ Transforms a serialized tensorflow.TensorProto proto into a Tensor.
 
 
 
-func parseTensor(scope:Scope,serialized: Tensorflow_DataType, outType :Type  )  ->(output: tf.Output){
+func parseTensor(scope:Scope,serialized: tf.Output, outType :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -10831,7 +10831,7 @@ A placeholder op that passes through `input` when its output is not fed.
 
 
 
-func placeholderWithDefault(scope:Scope,input: Tensorflow_DataType, dtype :Type  , shape :Shape  )  ->(output: tf.Output){
+func placeholderWithDefault(scope:Scope,input: tf.Output, dtype :Type  , shape :Shape  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -10861,7 +10861,7 @@ where \\(\psi(x)\\) is the digamma function.
 
 
 
-func polygamma(scope:Scope,a: Tensorflow_DataType, x: Tensorflow_DataType )  ->(z: tf.Output){
+func polygamma(scope:Scope,a: tf.Output, x: tf.Output )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -10893,7 +10893,7 @@ tf.pow(x, y) ==> [[256, 65536], [9, 27]]
 
 
 
-func pow(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :Type  )  ->(z: tf.Output){
+func pow(scope:Scope,x: tf.Output, y: tf.Output, t :Type  )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -10925,7 +10925,7 @@ gradients in some corner cases.
 
 
 
-func preventGradient(scope:Scope,input: Tensorflow_DataType, message :String  )  ->(output: tf.Output){
+func preventGradient(scope:Scope,input: tf.Output, message :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -10952,7 +10952,7 @@ Passes `input` through to `output` and prints `data` when evaluating.
 
 
 
-func print(scope:Scope,input: Tensorflow_DataType, data: Tensorflow_DataType, t :Type  , u :List(type)  , message :String  , firstN :Int  , summarize :Int  )  ->(output: tf.Output){
+func print(scope:Scope,input: tf.Output, data: tf.Output, t :Type  , u :List(type)  , message :String  , firstN :Int  , summarize :Int  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -11056,7 +11056,7 @@ retained with length 1.
 
 
 
-func prod(scope:Scope,input: Tensorflow_DataType, reductionIndices: Tensorflow_DataType, keepDims :Bool  , tidx :Type  )  ->(output: tf.Output){
+func prod(scope:Scope,input: tf.Output, reductionIndices: tf.Output, keepDims :Bool  , tidx :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -11085,7 +11085,7 @@ PyFuncStateless.
 
 
 
-func pyFunc(scope:Scope,input: Tensorflow_DataType, token :String  , tin :List(type)  , tout :List(type)  )  ->(output: tf.Output){
+func pyFunc(scope:Scope,input: tf.Output, token :String  , tin :List(type)  , tout :List(type)  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -11113,7 +11113,7 @@ A stateless version of PyFunc.
 
 
 
-func pyFuncStateless(scope:Scope,input: Tensorflow_DataType, token :String  , tin :List(type)  , tout :List(type)  )  ->(output: tf.Output){
+func pyFuncStateless(scope:Scope,input: tf.Output, token :String  , tin :List(type)  , tout :List(type)  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -11150,7 +11150,7 @@ q_full, r_full = qr(a, full_matrices=True)
 
 
 
-func qr(scope:Scope,input: Tensorflow_DataType, fullMatrices :Bool  )  ->(q: tf.Output, r: tf.Output){
+func qr(scope:Scope,input: tf.Output, fullMatrices :Bool  )  ->(q: tf.Output, r: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -11176,7 +11176,7 @@ Use QuantizeAndDequantizeV2 instead.
 
 
 
-func quantizeAndDequantize(scope:Scope,input: Tensorflow_DataType, signedInput :Bool  , numBits :Int  , rangeGiven :Bool  , inputMin :Float  , inputMax :Float  , t :Type  )  ->(output: tf.Output){
+func quantizeAndDequantize(scope:Scope,input: tf.Output, signedInput :Bool  , numBits :Int  , rangeGiven :Bool  , inputMin :Float  , inputMax :Float  , t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -11240,7 +11240,7 @@ Given the vector {-1, -0.5, 0, 0.3}, this is quantized to
 
 
 
-func quantizeAndDequantizeV2(scope:Scope,input: Tensorflow_DataType, inputMin: Tensorflow_DataType, inputMax: Tensorflow_DataType, signedInput :Bool  , numBits :UInt8  , rangeGiven :Bool  )  ->(output: tf.Output){
+func quantizeAndDequantizeV2(scope:Scope,input: tf.Output, inputMin: tf.Output, inputMax: tf.Output, signedInput :Bool  , numBits :UInt8  , rangeGiven :Bool  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -11287,7 +11287,7 @@ minimal loss of accuracy.
 
 
 
-func quantizeDownAndShrinkRange(scope:Scope,input: Tensorflow_DataType, inputMin: Tensorflow_DataType, inputMax: Tensorflow_DataType, tinput :Type  , outType :Type  )  ->(output: tf.Output, outputMin: tf.Output, outputMax: tf.Output){
+func quantizeDownAndShrinkRange(scope:Scope,input: tf.Output, inputMin: tf.Output, inputMax: tf.Output, tinput :Type  , outType :Type  )  ->(output: tf.Output, outputMin: tf.Output, outputMax: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -11354,7 +11354,7 @@ operations that have to perform further calculations on them.
 
 
 
-func quantizeV2(scope:Scope,input: Tensorflow_DataType, minRange: Tensorflow_DataType, maxRange: Tensorflow_DataType, mode :String  )  ->(output: tf.Output, outputMin: tf.Output, outputMax: tf.Output){
+func quantizeV2(scope:Scope,input: tf.Output, minRange: tf.Output, maxRange: tf.Output, mode :String  )  ->(output: tf.Output, outputMin: tf.Output, outputMax: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -11380,7 +11380,7 @@ Returns x + y element-wise, working on quantized buffers.
 
 
 
-func quantizedAdd(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, minX: Tensorflow_DataType, maxX: Tensorflow_DataType, minY: Tensorflow_DataType, maxY: Tensorflow_DataType, t1 :Type  , t2 :Type  , toutput :Type  )  ->(z: tf.Output, minZ: tf.Output, maxZ: tf.Output){
+func quantizedAdd(scope:Scope,x: tf.Output, y: tf.Output, minX: tf.Output, maxX: tf.Output, minY: tf.Output, maxY: tf.Output, t1 :Type  , t2 :Type  , toutput :Type  )  ->(z: tf.Output, minZ: tf.Output, maxZ: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -11408,7 +11408,7 @@ Produces the average pool of the input tensor for quantized types.
 
 
 
-func quantizedAvgPool(scope:Scope,input: Tensorflow_DataType, minInput: Tensorflow_DataType, maxInput: Tensorflow_DataType, ksize :List(int)  , strides :List(int)  , padding :String  )  ->(output: tf.Output, minOutput: tf.Output, maxOutput: tf.Output){
+func quantizedAvgPool(scope:Scope,input: tf.Output, minInput: tf.Output, maxInput: tf.Output, ksize :List(int)  , strides :List(int)  , padding :String  )  ->(output: tf.Output, minOutput: tf.Output, maxOutput: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -11438,7 +11438,7 @@ This op is deprecated and will be removed in the future. Prefer
 
 
 
-func quantizedBatchNormWithGlobalNormalization(scope:Scope,t: Tensorflow_DataType, tMin: Tensorflow_DataType, tMax: Tensorflow_DataType, m: Tensorflow_DataType, mMin: Tensorflow_DataType, mMax: Tensorflow_DataType, v: Tensorflow_DataType, vMin: Tensorflow_DataType, vMax: Tensorflow_DataType, beta: Tensorflow_DataType, betaMin: Tensorflow_DataType, betaMax: Tensorflow_DataType, gamma: Tensorflow_DataType, gammaMin: Tensorflow_DataType, gammaMax: Tensorflow_DataType, tinput :Type  , outType :Type  , varianceEpsilon :Float  , scaleAfterNormalization :Bool  )  ->(result: tf.Output, resultMin: tf.Output, resultMax: tf.Output){
+func quantizedBatchNormWithGlobalNormalization(scope:Scope,t: tf.Output, tMin: tf.Output, tMax: tf.Output, m: tf.Output, mMin: tf.Output, mMax: tf.Output, v: tf.Output, vMin: tf.Output, vMax: tf.Output, beta: tf.Output, betaMin: tf.Output, betaMax: tf.Output, gamma: tf.Output, gammaMin: tf.Output, gammaMax: tf.Output, tinput :Type  , outType :Type  , varianceEpsilon :Float  , scaleAfterNormalization :Bool  )  ->(result: tf.Output, resultMin: tf.Output, resultMax: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -11468,7 +11468,7 @@ Broadcasts the values of bias on dimensions 0..N-2 of 'input'.
 
 
 
-func quantizedBiasAdd(scope:Scope,input: Tensorflow_DataType, bias: Tensorflow_DataType, minInput: Tensorflow_DataType, maxInput: Tensorflow_DataType, minBias: Tensorflow_DataType, maxBias: Tensorflow_DataType, t1 :Type  , t2 :Type  , outType :Type  )  ->(output: tf.Output, minOut: tf.Output, maxOut: tf.Output){
+func quantizedBiasAdd(scope:Scope,input: tf.Output, bias: tf.Output, minInput: tf.Output, maxInput: tf.Output, minBias: tf.Output, maxBias: tf.Output, t1 :Type  , t2 :Type  , outType :Type  )  ->(output: tf.Output, minOut: tf.Output, maxOut: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -11496,7 +11496,7 @@ Concatenates quantized tensors along one dimension.
 
 
 
-func quantizedConcat(scope:Scope,concatDim: Tensorflow_DataType, values: Tensorflow_DataType, inputMins: Tensorflow_DataType, inputMaxes: Tensorflow_DataType, n :UInt8  )  ->(output: tf.Output, outputMin: tf.Output, outputMax: tf.Output){
+func quantizedConcat(scope:Scope,concatDim: tf.Output, values: tf.Output, inputMins: tf.Output, inputMaxes: tf.Output, n :UInt8  )  ->(output: tf.Output, outputMin: tf.Output, outputMax: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -11526,7 +11526,7 @@ taking the returned minimum and maximum values into account.
 
 
 
-func quantizedConv2D(scope:Scope,input: Tensorflow_DataType, filter: Tensorflow_DataType, minInput: Tensorflow_DataType, maxInput: Tensorflow_DataType, minFilter: Tensorflow_DataType, maxFilter: Tensorflow_DataType, tinput :Type  , tfilter :Type  , outType :Type  , strides :List(int)  , padding :String  )  ->(output: tf.Output, minOutput: tf.Output, maxOutput: tf.Output){
+func quantizedConv2D(scope:Scope,input: tf.Output, filter: tf.Output, minInput: tf.Output, maxInput: tf.Output, minFilter: tf.Output, maxFilter: tf.Output, tinput :Type  , tfilter :Type  , outType :Type  , strides :List(int)  , padding :String  )  ->(output: tf.Output, minOutput: tf.Output, maxOutput: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -11556,7 +11556,7 @@ Quantized Instance normalization.
 
 
 
-func quantizedInstanceNorm(scope:Scope,x: Tensorflow_DataType, xMin: Tensorflow_DataType, xMax: Tensorflow_DataType, outputRangeGiven :Bool  , givenYMin :Float  , givenYMax :Float  , varianceEpsilon :Float  , minSeparation :Float  )  ->(y: tf.Output, yMin: tf.Output, yMax: tf.Output){
+func quantizedInstanceNorm(scope:Scope,x: tf.Output, xMin: tf.Output, xMax: tf.Output, outputRangeGiven :Bool  , givenYMin :Float  , givenYMax :Float  , varianceEpsilon :Float  , minSeparation :Float  )  ->(y: tf.Output, yMin: tf.Output, yMax: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -11590,7 +11590,7 @@ non-zero).
 
 
 
-func quantizedMatMul(scope:Scope,a: Tensorflow_DataType, b: Tensorflow_DataType, minA: Tensorflow_DataType, maxA: Tensorflow_DataType, minB: Tensorflow_DataType, maxB: Tensorflow_DataType, t1 :Type  , t2 :Type  , toutput :Type  , transposeA :Bool  , transposeB :Bool  , tactivation :Type  )  ->(out: tf.Output, minOut: tf.Output, maxOut: tf.Output){
+func quantizedMatMul(scope:Scope,a: tf.Output, b: tf.Output, minA: tf.Output, maxA: tf.Output, minB: tf.Output, maxB: tf.Output, t1 :Type  , t2 :Type  , toutput :Type  , transposeA :Bool  , transposeB :Bool  , tactivation :Type  )  ->(out: tf.Output, minOut: tf.Output, maxOut: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -11621,7 +11621,7 @@ Produces the max pool of the input tensor for quantized types.
 
 
 
-func quantizedMaxPool(scope:Scope,input: Tensorflow_DataType, minInput: Tensorflow_DataType, maxInput: Tensorflow_DataType, ksize :List(int)  , strides :List(int)  , padding :String  )  ->(output: tf.Output, minOutput: tf.Output, maxOutput: tf.Output){
+func quantizedMaxPool(scope:Scope,input: tf.Output, minInput: tf.Output, maxInput: tf.Output, ksize :List(int)  , strides :List(int)  , padding :String  )  ->(output: tf.Output, minOutput: tf.Output, maxOutput: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -11649,7 +11649,7 @@ Returns x * y element-wise, working on quantized buffers.
 
 
 
-func quantizedMul(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, minX: Tensorflow_DataType, maxX: Tensorflow_DataType, minY: Tensorflow_DataType, maxY: Tensorflow_DataType, t1 :Type  , t2 :Type  , toutput :Type  )  ->(z: tf.Output, minZ: tf.Output, maxZ: tf.Output){
+func quantizedMul(scope:Scope,x: tf.Output, y: tf.Output, minX: tf.Output, maxX: tf.Output, minY: tf.Output, maxY: tf.Output, t1 :Type  , t2 :Type  , toutput :Type  )  ->(z: tf.Output, minZ: tf.Output, maxZ: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -11677,7 +11677,7 @@ Computes Quantized Rectified Linear: `max(features, 0)`
 
 
 
-func quantizedRelu(scope:Scope,features: Tensorflow_DataType, minFeatures: Tensorflow_DataType, maxFeatures: Tensorflow_DataType, tinput :Type  , outType :Type  )  ->(activations: tf.Output, minActivations: tf.Output, maxActivations: tf.Output){
+func quantizedRelu(scope:Scope,features: tf.Output, minFeatures: tf.Output, maxFeatures: tf.Output, tinput :Type  , outType :Type  )  ->(activations: tf.Output, minActivations: tf.Output, maxActivations: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -11704,7 +11704,7 @@ Computes Quantized Rectified Linear 6: `min(max(features, 0), 6)`
 
 
 
-func quantizedRelu6(scope:Scope,features: Tensorflow_DataType, minFeatures: Tensorflow_DataType, maxFeatures: Tensorflow_DataType, tinput :Type  , outType :Type  )  ->(activations: tf.Output, minActivations: tf.Output, maxActivations: tf.Output){
+func quantizedRelu6(scope:Scope,features: tf.Output, minFeatures: tf.Output, maxFeatures: tf.Output, tinput :Type  , outType :Type  )  ->(activations: tf.Output, minActivations: tf.Output, maxActivations: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -11731,7 +11731,7 @@ Computes Quantized Rectified Linear X: `min(max(features, 0), max_value)`
 
 
 
-func quantizedReluX(scope:Scope,features: Tensorflow_DataType, maxValue: Tensorflow_DataType, minFeatures: Tensorflow_DataType, maxFeatures: Tensorflow_DataType, tinput :Type  , outType :Type  )  ->(activations: tf.Output, minActivations: tf.Output, maxActivations: tf.Output){
+func quantizedReluX(scope:Scope,features: tf.Output, maxValue: tf.Output, minFeatures: tf.Output, maxFeatures: tf.Output, tinput :Type  , outType :Type  )  ->(activations: tf.Output, minActivations: tf.Output, maxActivations: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -11759,7 +11759,7 @@ Reshapes a quantized tensor as per the Reshape op.
 
 
 
-func quantizedReshape(scope:Scope,tensor: Tensorflow_DataType, shape: Tensorflow_DataType, inputMin: Tensorflow_DataType, inputMax: Tensorflow_DataType, tshape :Type  )  ->(output: tf.Output, outputMin: tf.Output, outputMax: tf.Output){
+func quantizedReshape(scope:Scope,tensor: tf.Output, shape: tf.Output, inputMin: tf.Output, inputMax: tf.Output, tshape :Type  )  ->(output: tf.Output, outputMin: tf.Output, outputMax: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -11790,7 +11790,7 @@ operations that would block will fail immediately.
 
 
 
-func queueClose(scope:Scope,handle: Tensorflow_DataType, cancelPendingEnqueues :Bool  )  ->(o:tf.Operation){
+func queueClose(scope:Scope,handle: tf.Output, cancelPendingEnqueues :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -11820,7 +11820,7 @@ operations that would block will fail immediately.
 
 
 
-func queueCloseV2(scope:Scope,handle: Tensorflow_DataType, cancelPendingEnqueues :Bool  )  ->(o:tf.Operation){
+func queueCloseV2(scope:Scope,handle: tf.Output, cancelPendingEnqueues :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -11850,7 +11850,7 @@ has been dequeued (or 'timeout_ms' elapses, if specified).
 
 
 
-func queueDequeue(scope:Scope,handle: Tensorflow_DataType, componentTypes :List(type)  , timeoutMs :UInt8  )  ->(components: tf.Output){
+func queueDequeue(scope:Scope,handle: tf.Output, componentTypes :List(type)  , timeoutMs :UInt8  )  ->(components: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -11887,7 +11887,7 @@ have been dequeued (or 'timeout_ms' elapses, if specified).
 
 
 
-func queueDequeueMany(scope:Scope,handle: Tensorflow_DataType, n: Tensorflow_DataType, componentTypes :List(type)  , timeoutMs :UInt8  )  ->(components: tf.Output){
+func queueDequeueMany(scope:Scope,handle: tf.Output, n: tf.Output, componentTypes :List(type)  , timeoutMs :UInt8  )  ->(components: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -11924,7 +11924,7 @@ have been dequeued (or 'timeout_ms' elapses, if specified).
 
 
 
-func queueDequeueManyV2(scope:Scope,handle: Tensorflow_DataType, n: Tensorflow_DataType, componentTypes :List(type)  , timeoutMs :UInt8  )  ->(components: tf.Output){
+func queueDequeueManyV2(scope:Scope,handle: tf.Output, n: tf.Output, componentTypes :List(type)  , timeoutMs :UInt8  )  ->(components: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -11965,7 +11965,7 @@ component of the dequeued tuple.
 
 
 
-func queueDequeueUpTo(scope:Scope,handle: Tensorflow_DataType, n: Tensorflow_DataType, componentTypes :List(type)  , timeoutMs :UInt8  )  ->(components: tf.Output){
+func queueDequeueUpTo(scope:Scope,handle: tf.Output, n: tf.Output, componentTypes :List(type)  , timeoutMs :UInt8  )  ->(components: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -12006,7 +12006,7 @@ component of the dequeued tuple.
 
 
 
-func queueDequeueUpToV2(scope:Scope,handle: Tensorflow_DataType, n: Tensorflow_DataType, componentTypes :List(type)  , timeoutMs :UInt8  )  ->(components: tf.Output){
+func queueDequeueUpToV2(scope:Scope,handle: tf.Output, n: tf.Output, componentTypes :List(type)  , timeoutMs :UInt8  )  ->(components: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -12038,7 +12038,7 @@ has been dequeued (or 'timeout_ms' elapses, if specified).
 
 
 
-func queueDequeueV2(scope:Scope,handle: Tensorflow_DataType, componentTypes :List(type)  , timeoutMs :UInt8  )  ->(components: tf.Output){
+func queueDequeueV2(scope:Scope,handle: tf.Output, componentTypes :List(type)  , timeoutMs :UInt8  )  ->(components: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -12069,7 +12069,7 @@ element has been enqueued (or 'timeout_ms' elapses, if specified).
 
 
 
-func queueEnqueue(scope:Scope,handle: Tensorflow_DataType, components: Tensorflow_DataType, tcomponents :List(type)  , timeoutMs :UInt8  )  ->(o:tf.Operation){
+func queueEnqueue(scope:Scope,handle: tf.Output, components: tf.Output, tcomponents :List(type)  , timeoutMs :UInt8  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -12102,7 +12102,7 @@ elements have been enqueued (or 'timeout_ms' elapses, if specified).
 
 
 
-func queueEnqueueMany(scope:Scope,handle: Tensorflow_DataType, components: Tensorflow_DataType, tcomponents :List(type)  , timeoutMs :UInt8  )  ->(o:tf.Operation){
+func queueEnqueueMany(scope:Scope,handle: tf.Output, components: tf.Output, tcomponents :List(type)  , timeoutMs :UInt8  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -12135,7 +12135,7 @@ elements have been enqueued (or 'timeout_ms' elapses, if specified).
 
 
 
-func queueEnqueueManyV2(scope:Scope,handle: Tensorflow_DataType, components: Tensorflow_DataType, tcomponents :List(type)  , timeoutMs :UInt8  )  ->(o:tf.Operation){
+func queueEnqueueManyV2(scope:Scope,handle: tf.Output, components: tf.Output, tcomponents :List(type)  , timeoutMs :UInt8  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -12165,7 +12165,7 @@ element has been enqueued (or 'timeout_ms' elapses, if specified).
 
 
 
-func queueEnqueueV2(scope:Scope,handle: Tensorflow_DataType, components: Tensorflow_DataType, tcomponents :List(type)  , timeoutMs :UInt8  )  ->(o:tf.Operation){
+func queueEnqueueV2(scope:Scope,handle: tf.Output, components: tf.Output, tcomponents :List(type)  , timeoutMs :UInt8  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -12191,7 +12191,7 @@ Computes the number of elements in the given queue.
 
 
 
-func queueSize(scope:Scope,handle: Tensorflow_DataType )  ->(size: tf.Output){
+func queueSize(scope:Scope,handle: tf.Output )  ->(size: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -12216,7 +12216,7 @@ Computes the number of elements in the given queue.
 
 
 
-func queueSizeV2(scope:Scope,handle: Tensorflow_DataType )  ->(size: tf.Output){
+func queueSizeV2(scope:Scope,handle: tf.Output )  ->(size: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -12246,7 +12246,7 @@ followed by the `fft_length / 2` positive-frequency terms.
 
 
 
-func rfft(scope:Scope,input: Tensorflow_DataType, fftLength: Tensorflow_DataType )  ->(output: tf.Output){
+func rfft(scope:Scope,input: tf.Output, fftLength: tf.Output )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -12277,7 +12277,7 @@ positive-frequency terms.
 
 
 
-func rfft2D(scope:Scope,input: Tensorflow_DataType, fftLength: Tensorflow_DataType )  ->(output: tf.Output){
+func rfft2D(scope:Scope,input: tf.Output, fftLength: tf.Output )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -12308,7 +12308,7 @@ positive-frequency terms.
 
 
 
-func rfft3D(scope:Scope,input: Tensorflow_DataType, fftLength: Tensorflow_DataType )  ->(output: tf.Output){
+func rfft3D(scope:Scope,input: tf.Output, fftLength: tf.Output )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -12339,7 +12339,7 @@ corresponds to pure red, hue 1/3 is pure green, and 2/3 is pure blue.
 
 
 
-func rgbToHSV(scope:Scope,images: Tensorflow_DataType )  ->(output: tf.Output){
+func rgbToHSV(scope:Scope,images: tf.Output )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -12369,7 +12369,7 @@ area will fit inside the original image.
 
 
 
-func randomCrop(scope:Scope,image: Tensorflow_DataType, size: Tensorflow_DataType, t :Type  , seed :Int  , seed2 :Int  )  ->(output: tf.Output){
+func randomCrop(scope:Scope,image: tf.Output, size: tf.Output, t :Type  , seed :Int  , seed2 :Int  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -12400,7 +12400,7 @@ See http://dl.acm.org/citation.cfm?id=358414
 
 
 
-func randomGamma(scope:Scope,shape: Tensorflow_DataType, alpha: Tensorflow_DataType, seed :UInt8  , seed2 :UInt8  , s :Type  )  ->(output: tf.Output){
+func randomGamma(scope:Scope,shape: tf.Output, alpha: tf.Output, seed :UInt8  , seed2 :UInt8  , s :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -12436,7 +12436,7 @@ Programming, Volume 2. Addison Wesley
 
 
 
-func randomPoisson(scope:Scope,shape: Tensorflow_DataType, rate: Tensorflow_DataType, seed :Int  , seed2 :Int  , s :Type  , dtype :Type  )  ->(output: tf.Output){
+func randomPoisson(scope:Scope,shape: tf.Output, rate: tf.Output, seed :Int  , seed2 :Int  , s :Type  , dtype :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -12473,7 +12473,7 @@ Randomly shuffles a tensor along its first dimension.
 
 
 
-func randomShuffle(scope:Scope,value: Tensorflow_DataType, seed :UInt8  , seed2 :UInt8  )  ->(output: tf.Output){
+func randomShuffle(scope:Scope,value: tf.Output, seed :UInt8  , seed2 :UInt8  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -12567,7 +12567,7 @@ The generated values will have mean 0 and standard deviation 1.
 
 
 
-func randomStandardNormal(scope:Scope,shape: Tensorflow_DataType, seed :UInt8  , seed2 :UInt8  , dtype :Type  )  ->(output: tf.Output){
+func randomStandardNormal(scope:Scope,shape: tf.Output, seed :UInt8  , seed2 :UInt8  , dtype :[Any]  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -12597,7 +12597,7 @@ lower bound 0 is included in the range, while the upper bound 1 is excluded.
 
 
 
-func randomUniform(scope:Scope,shape: Tensorflow_DataType, seed :Int  , seed2 :Int  , dtype :Type  , t :Type  )  ->(output: tf.Output){
+func randomUniform(scope:Scope,shape: tf.Output, seed :Int  , seed2 :Int  , dtype :Type  , t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -12632,7 +12632,7 @@ smaller than the range of the output (either `2^32` or `2^64`).
 
 
 
-func randomUniformInt(scope:Scope,shape: Tensorflow_DataType, minval: Tensorflow_DataType, maxval: Tensorflow_DataType, seed :UInt8  , seed2 :UInt8  , tout :Type  )  ->(output: tf.Output){
+func randomUniformInt(scope:Scope,shape: tf.Output, minval: tf.Output, maxval: tf.Output, seed :UInt8  , seed2 :UInt8  , tout :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -12669,7 +12669,7 @@ tf.range(start, limit, delta) ==> [3, 6, 9, 12, 15]
 
 
 
-func range(scope:Scope,start: Tensorflow_DataType, limit: Tensorflow_DataType, delta: Tensorflow_DataType, tidx :Type  )  ->(output: tf.Output){
+func range(scope:Scope,start: tf.Output, limit: tf.Output, delta: tf.Output, tidx :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -12695,7 +12695,7 @@ Creates a dataset with a range of values. Corresponds to python's xrange.
 
 
 
-func rangeDataset(scope:Scope,start: Tensorflow_DataType, stop: Tensorflow_DataType, step: Tensorflow_DataType, outputTypes :List(type)  , outputShapes :[Shape]  )  ->(handle: tf.Output){
+func rangeDataset(scope:Scope,start: tf.Output, stop: tf.Output, step: tf.Output, outputTypes :List(type)  , outputShapes :[Shape]  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -12732,7 +12732,7 @@ of the tensor. Rank is also known as "order", "degree", or "ndims."
 
 
 
-func rank(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
+func rank(scope:Scope,input: tf.Output )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -12757,7 +12757,7 @@ Reads and outputs the entire contents of the input filename.
 
 
 
-func readFile(scope:Scope,filename: Tensorflow_DataType )  ->(contents: tf.Output){
+func readFile(scope:Scope,filename: tf.Output )  ->(contents: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -12784,7 +12784,7 @@ succeeded.
 
 
 
-func readerNumRecordsProduced(scope:Scope,readerHandle: Tensorflow_DataType )  ->(recordsProduced: tf.Output){
+func readerNumRecordsProduced(scope:Scope,readerHandle: tf.Output )  ->(recordsProduced: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -12811,7 +12811,7 @@ succeeded.
 
 
 
-func readerNumRecordsProducedV2(scope:Scope,readerHandle: Tensorflow_DataType )  ->(recordsProduced: tf.Output){
+func readerNumRecordsProducedV2(scope:Scope,readerHandle: tf.Output )  ->(recordsProduced: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -12836,7 +12836,7 @@ Returns the number of work units this Reader has finished processing.
 
 
 
-func readerNumWorkUnitsCompleted(scope:Scope,readerHandle: Tensorflow_DataType )  ->(unitsCompleted: tf.Output){
+func readerNumWorkUnitsCompleted(scope:Scope,readerHandle: tf.Output )  ->(unitsCompleted: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -12861,7 +12861,7 @@ Returns the number of work units this Reader has finished processing.
 
 
 
-func readerNumWorkUnitsCompletedV2(scope:Scope,readerHandle: Tensorflow_DataType )  ->(unitsCompleted: tf.Output){
+func readerNumWorkUnitsCompletedV2(scope:Scope,readerHandle: tf.Output )  ->(unitsCompleted: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -12889,7 +12889,7 @@ with the previous file).
 
 
 
-func readerRead(scope:Scope,readerHandle: Tensorflow_DataType, queueHandle: Tensorflow_DataType )  ->(key: tf.Output, value: tf.Output){
+func readerRead(scope:Scope,readerHandle: tf.Output, queueHandle: tf.Output )  ->(key: tf.Output, value: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -12918,7 +12918,7 @@ It may return less than `num_records` even before the last batch.
 
 
 
-func readerReadUpTo(scope:Scope,readerHandle: Tensorflow_DataType, queueHandle: Tensorflow_DataType, numRecords: Tensorflow_DataType )  ->(keys: tf.Output, values: tf.Output){
+func readerReadUpTo(scope:Scope,readerHandle: tf.Output, queueHandle: tf.Output, numRecords: tf.Output )  ->(keys: tf.Output, values: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -12947,7 +12947,7 @@ It may return less than `num_records` even before the last batch.
 
 
 
-func readerReadUpToV2(scope:Scope,readerHandle: Tensorflow_DataType, queueHandle: Tensorflow_DataType, numRecords: Tensorflow_DataType )  ->(keys: tf.Output, values: tf.Output){
+func readerReadUpToV2(scope:Scope,readerHandle: tf.Output, queueHandle: tf.Output, numRecords: tf.Output )  ->(keys: tf.Output, values: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -12975,7 +12975,7 @@ with the previous file).
 
 
 
-func readerReadV2(scope:Scope,readerHandle: Tensorflow_DataType, queueHandle: Tensorflow_DataType )  ->(key: tf.Output, value: tf.Output){
+func readerReadV2(scope:Scope,readerHandle: tf.Output, queueHandle: tf.Output )  ->(key: tf.Output, value: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -13000,7 +13000,7 @@ Restore a Reader to its initial clean state.
 
 
 
-func readerReset(scope:Scope,readerHandle: Tensorflow_DataType )  ->(o:tf.Operation){
+func readerReset(scope:Scope,readerHandle: tf.Output )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -13024,7 +13024,7 @@ Restore a Reader to its initial clean state.
 
 
 
-func readerResetV2(scope:Scope,readerHandle: Tensorflow_DataType )  ->(o:tf.Operation){
+func readerResetV2(scope:Scope,readerHandle: tf.Output )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -13050,7 +13050,7 @@ Unimplemented error.
 
 
 
-func readerRestoreState(scope:Scope,readerHandle: Tensorflow_DataType, state: Tensorflow_DataType )  ->(o:tf.Operation){
+func readerRestoreState(scope:Scope,readerHandle: tf.Output, state: tf.Output )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -13076,7 +13076,7 @@ Unimplemented error.
 
 
 
-func readerRestoreStateV2(scope:Scope,readerHandle: Tensorflow_DataType, state: Tensorflow_DataType )  ->(o:tf.Operation){
+func readerRestoreStateV2(scope:Scope,readerHandle: tf.Output, state: tf.Output )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -13102,7 +13102,7 @@ Unimplemented error.
 
 
 
-func readerSerializeState(scope:Scope,readerHandle: Tensorflow_DataType )  ->(state: tf.Output){
+func readerSerializeState(scope:Scope,readerHandle: tf.Output )  ->(state: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -13129,7 +13129,7 @@ Unimplemented error.
 
 
 
-func readerSerializeStateV2(scope:Scope,readerHandle: Tensorflow_DataType )  ->(state: tf.Output){
+func readerSerializeStateV2(scope:Scope,readerHandle: tf.Output )  ->(state: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -13163,7 +13163,7 @@ tf.real(input) ==> [-2.25, 3.25]
 
 
 
-func real(scope:Scope,input: Tensorflow_DataType, tout :Type  )  ->(output: tf.Output){
+func real(scope:Scope,input: tf.Output, tout :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -13192,7 +13192,7 @@ If `x` and `y` are reals, this will return the floating-point division.
 
 
 
-func realDiv(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :Type  )  ->(z: tf.Output){
+func realDiv(scope:Scope,x: tf.Output, y: tf.Output, t :Type  )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -13219,7 +13219,7 @@ I.e., \\(y = 1 / x\\).
 
 
 
-func reciprocal(scope:Scope,x: Tensorflow_DataType )  ->(y: tf.Output){
+func reciprocal(scope:Scope,x: tf.Output )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -13246,7 +13246,7 @@ is the corresponding input gradient.
 
 
 
-func reciprocalGrad(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :Type  )  ->(z: tf.Output){
+func reciprocalGrad(scope:Scope,x: tf.Output, y: tf.Output, t :Type  )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -13321,7 +13321,7 @@ tf.reduce_join(a, []) ==> ["abcd"]
 
 
 
-func reduceJoin(scope:Scope,inputs: Tensorflow_DataType, reductionIndices: Tensorflow_DataType, keepDims :Bool  , separator :String  )  ->(output: tf.Output){
+func reduceJoin(scope:Scope,inputs: tf.Output, reductionIndices: tf.Output, keepDims :Bool  , separator :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -13352,7 +13352,7 @@ are run in parallel in the child frame.
 
 
 
-func refEnter(scope:Scope,data: Tensorflow_DataType, frameName :String  , isConstant :Bool  , parallelIterations :Int  )  ->(output: tf.Output){
+func refEnter(scope:Scope,data: tf.Output, frameName :String  , isConstant :Bool  , parallelIterations :Int  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -13381,7 +13381,7 @@ Exit makes its input `data` available to the parent frame.
 
 
 
-func refExit(scope:Scope,data: Tensorflow_DataType, t :Type  )  ->(output: tf.Output){
+func refExit(scope:Scope,data: tf.Output, t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -13407,7 +13407,7 @@ Return the same ref tensor as the input ref tensor.
 
 
 
-func refIdentity(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
+func refIdentity(scope:Scope,input: tf.Output )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -13436,7 +13436,7 @@ It is usually combined with `Switch` to implement branching.
 
 
 
-func refMerge(scope:Scope,inputs: Tensorflow_DataType, t :Type  , n :Int  )  ->(output: tf.Output, valueIndex: tf.Output){
+func refMerge(scope:Scope,inputs: tf.Output, t :Type  , n :Int  )  ->(output: tf.Output, valueIndex: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -13463,7 +13463,7 @@ Makes its input available to the next iteration.
 
 
 
-func refNextIteration(scope:Scope,data: Tensorflow_DataType )  ->(output: tf.Output){
+func refNextIteration(scope:Scope,data: tf.Output )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -13488,7 +13488,7 @@ Forwards the `index`th element of `inputs` to `output`.
 
 
 
-func refSelect(scope:Scope,index: Tensorflow_DataType, inputs: Tensorflow_DataType, t :Type  , n :Int  )  ->(output: tf.Output){
+func refSelect(scope:Scope,index: tf.Output, inputs: tf.Output, t :Type  , n :Int  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -13518,7 +13518,7 @@ See also `Switch` and `Merge`.
 
 
 
-func refSwitch(scope:Scope,data: Tensorflow_DataType, pred: Tensorflow_DataType )  ->(outputFalse: tf.Output, outputTrue: tf.Output){
+func refSwitch(scope:Scope,data: tf.Output, pred: tf.Output )  ->(outputFalse: tf.Output, outputTrue: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -13543,7 +13543,7 @@ Computes rectified linear: `max(features, 0)`.
 
 
 
-func relu(scope:Scope,features: Tensorflow_DataType, t :Type  )  ->(activations: tf.Output){
+func relu(scope:Scope,features: tf.Output, t :Type  )  ->(activations: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -13569,7 +13569,7 @@ Computes rectified linear 6: `min(max(features, 0), 6)`.
 
 
 
-func relu6(scope:Scope,features: Tensorflow_DataType )  ->(activations: tf.Output){
+func relu6(scope:Scope,features: tf.Output )  ->(activations: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -13594,7 +13594,7 @@ Computes rectified linear 6 gradients for a Relu6 operation.
 
 
 
-func relu6Grad(scope:Scope,gradients: Tensorflow_DataType, features: Tensorflow_DataType, t :Type  )  ->(backprops: tf.Output){
+func relu6Grad(scope:Scope,gradients: tf.Output, features: tf.Output, t :Type  )  ->(backprops: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -13620,7 +13620,7 @@ Computes rectified linear gradients for a Relu operation.
 
 
 
-func reluGrad(scope:Scope,gradients: Tensorflow_DataType, features: Tensorflow_DataType )  ->(backprops: tf.Output){
+func reluGrad(scope:Scope,gradients: tf.Output, features: tf.Output )  ->(backprops: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -13645,7 +13645,7 @@ Creates a dataset that emits the outputs of `input_dataset` `count` times.
 
 
 
-func repeatDataset(scope:Scope,inputDataset: Tensorflow_DataType, count: Tensorflow_DataType, outputTypes :List(type)  , outputShapes :List(shape)  )  ->(handle: tf.Output){
+func repeatDataset(scope:Scope,inputDataset: tf.Output, count: tf.Output, outputTypes :List(type)  , outputShapes :List(shape)  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -13675,7 +13675,7 @@ Requantize.
 
 
 
-func requantizationRange(scope:Scope,input: Tensorflow_DataType, inputMin: Tensorflow_DataType, inputMax: Tensorflow_DataType, tinput :Type  )  ->(outputMin: tf.Output, outputMax: tf.Output){
+func requantizationRange(scope:Scope,input: tf.Output, inputMin: tf.Output, inputMax: tf.Output, tinput :Type  )  ->(outputMin: tf.Output, outputMax: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -13706,7 +13706,7 @@ value in the 16-bit data should be interpreted as -1.0f, and a 65535 means 1.0f.
 
 
 
-func requantize(scope:Scope,input: Tensorflow_DataType, inputMin: Tensorflow_DataType, inputMax: Tensorflow_DataType, requestedOutputMin: Tensorflow_DataType, requestedOutputMax: Tensorflow_DataType, tinput :Type  , outType :Type  )  ->(output: tf.Output, outputMin: tf.Output, outputMax: tf.Output){
+func requantize(scope:Scope,input: tf.Output, inputMin: tf.Output, inputMax: tf.Output, requestedOutputMin: tf.Output, requestedOutputMax: tf.Output, tinput :Type  , outType :Type  )  ->(output: tf.Output, outputMin: tf.Output, outputMax: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -13780,7 +13780,7 @@ reshape(t, []) ==> 7
 
 
 
-func reshape(scope:Scope,tensor: Tensorflow_DataType, shape: Tensorflow_DataType, tshape :Type  )  ->(output: tf.Output){
+func reshape(scope:Scope,tensor: tf.Output, shape: tf.Output, tshape :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -13807,7 +13807,7 @@ Input images can be of different types but output images are always float.
 
 
 
-func resizeArea(scope:Scope,images: Tensorflow_DataType, size: Tensorflow_DataType, t :Type  , alignCorners :Bool  )  ->(resizedImages: tf.Output){
+func resizeArea(scope:Scope,images: tf.Output, size: tf.Output, t :Type  , alignCorners :Bool  )  ->(resizedImages: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -13835,7 +13835,7 @@ Input images can be of different types but output images are always float.
 
 
 
-func resizeBicubic(scope:Scope,images: Tensorflow_DataType, size: Tensorflow_DataType, alignCorners :Bool  )  ->(resizedImages: tf.Output){
+func resizeBicubic(scope:Scope,images: tf.Output, size: tf.Output, alignCorners :Bool  )  ->(resizedImages: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -13862,7 +13862,7 @@ Input images can be of different types but output images are always float.
 
 
 
-func resizeBilinear(scope:Scope,images: Tensorflow_DataType, size: Tensorflow_DataType, t :Type  , alignCorners :Bool  )  ->(resizedImages: tf.Output){
+func resizeBilinear(scope:Scope,images: tf.Output, size: tf.Output, t :Type  , alignCorners :Bool  )  ->(resizedImages: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -13889,7 +13889,7 @@ Computes the gradient of bilinear interpolation.
 
 
 
-func resizeBilinearGrad(scope:Scope,grads: Tensorflow_DataType, originalImage: Tensorflow_DataType, alignCorners :Bool  )  ->(output: tf.Output){
+func resizeBilinearGrad(scope:Scope,grads: tf.Output, originalImage: tf.Output, alignCorners :Bool  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -13915,7 +13915,7 @@ Resize `images` to `size` using nearest neighbor interpolation.
 
 
 
-func resizeNearestNeighbor(scope:Scope,images: Tensorflow_DataType, size: Tensorflow_DataType, t :Type  , alignCorners :Bool  )  ->(resizedImages: tf.Output){
+func resizeNearestNeighbor(scope:Scope,images: tf.Output, size: tf.Output, t :Type  , alignCorners :Bool  )  ->(resizedImages: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -13942,7 +13942,7 @@ Computes the gradient of nearest neighbor interpolation.
 
 
 
-func resizeNearestNeighborGrad(scope:Scope,grads: Tensorflow_DataType, size: Tensorflow_DataType, alignCorners :Bool  )  ->(output: tf.Output){
+func resizeNearestNeighborGrad(scope:Scope,grads: tf.Output, size: tf.Output, alignCorners :Bool  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -13972,7 +13972,7 @@ var -= update;
 
 
 
-func resourceApplyAdadelta(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, accumUpdate: Tensorflow_DataType, lr: Tensorflow_DataType, rho: Tensorflow_DataType, epsilon: Tensorflow_DataType, grad: Tensorflow_DataType, t :Type  , useLocking :Bool  )  ->(o:tf.Operation){
+func resourceApplyAdadelta(scope:Scope,`var`: tf.Output, accum: tf.Output, accumUpdate: tf.Output, lr: tf.Output, rho: tf.Output, epsilon: tf.Output, grad: tf.Output, t :Type  , useLocking :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -14000,7 +14000,7 @@ var -= lr * grad * (1 / sqrt(accum))
 
 
 
-func resourceApplyAdagrad(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, lr: Tensorflow_DataType, grad: Tensorflow_DataType, useLocking :Bool  )  ->(o:tf.Operation){
+func resourceApplyAdagrad(scope:Scope,`var`: tf.Output, accum: tf.Output, lr: tf.Output, grad: tf.Output, useLocking :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -14025,7 +14025,7 @@ Update '*var' according to the proximal adagrad scheme.
 
 
 
-func resourceApplyAdagradDA(scope:Scope,`var`: Tensorflow_DataType, gradientAccumulator: Tensorflow_DataType, gradientSquaredAccumulator: Tensorflow_DataType, grad: Tensorflow_DataType, lr: Tensorflow_DataType, l1: Tensorflow_DataType, l2: Tensorflow_DataType, globalStep: Tensorflow_DataType, t :Type  , useLocking :Bool  )  ->(o:tf.Operation){
+func resourceApplyAdagradDA(scope:Scope,`var`: tf.Output, gradientAccumulator: tf.Output, gradientSquaredAccumulator: tf.Output, grad: tf.Output, lr: tf.Output, l1: tf.Output, l2: tf.Output, globalStep: tf.Output, t :Type  , useLocking :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -14055,7 +14055,7 @@ variable <- variable - lr_t * m_t / (sqrt(v_t) + epsilon)
 
 
 
-func resourceApplyAdam(scope:Scope,`var`: Tensorflow_DataType, m: Tensorflow_DataType, v: Tensorflow_DataType, beta1Power: Tensorflow_DataType, beta2Power: Tensorflow_DataType, lr: Tensorflow_DataType, beta1: Tensorflow_DataType, beta2: Tensorflow_DataType, epsilon: Tensorflow_DataType, grad: Tensorflow_DataType, useLocking :Bool  , useNesterov :Bool  )  ->(o:tf.Operation){
+func resourceApplyAdam(scope:Scope,`var`: tf.Output, m: tf.Output, v: tf.Output, beta1Power: tf.Output, beta2Power: tf.Output, lr: tf.Output, beta1: tf.Output, beta2: tf.Output, epsilon: tf.Output, grad: tf.Output, useLocking :Bool  , useNesterov :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -14095,7 +14095,7 @@ var <- var - mom
 
 
 
-func resourceApplyCenteredRMSProp(scope:Scope,`var`: Tensorflow_DataType, mg: Tensorflow_DataType, ms: Tensorflow_DataType, mom: Tensorflow_DataType, lr: Tensorflow_DataType, rho: Tensorflow_DataType, momentum: Tensorflow_DataType, epsilon: Tensorflow_DataType, grad: Tensorflow_DataType, t :Type  , useLocking :Bool  )  ->(o:tf.Operation){
+func resourceApplyCenteredRMSProp(scope:Scope,`var`: tf.Output, mg: tf.Output, ms: tf.Output, mom: tf.Output, lr: tf.Output, rho: tf.Output, momentum: tf.Output, epsilon: tf.Output, grad: tf.Output, t :Type  , useLocking :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -14126,7 +14126,7 @@ accum = accum_new
 
 
 
-func resourceApplyFtrl(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, linear: Tensorflow_DataType, grad: Tensorflow_DataType, lr: Tensorflow_DataType, l1: Tensorflow_DataType, l2: Tensorflow_DataType, lrPower: Tensorflow_DataType, useLocking :Bool  )  ->(o:tf.Operation){
+func resourceApplyFtrl(scope:Scope,`var`: tf.Output, accum: tf.Output, linear: tf.Output, grad: tf.Output, lr: tf.Output, l1: tf.Output, l2: tf.Output, lrPower: tf.Output, useLocking :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -14151,7 +14151,7 @@ Update '*var' by subtracting 'alpha' * 'delta' from it.
 
 
 
-func resourceApplyGradientDescent(scope:Scope,`var`: Tensorflow_DataType, alpha: Tensorflow_DataType, delta: Tensorflow_DataType, t :Type  , useLocking :Bool  )  ->(o:tf.Operation){
+func resourceApplyGradientDescent(scope:Scope,`var`: tf.Output, alpha: tf.Output, delta: tf.Output, t :Type  , useLocking :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -14180,7 +14180,7 @@ var -= lr * accum
 
 
 
-func resourceApplyMomentum(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, lr: Tensorflow_DataType, grad: Tensorflow_DataType, momentum: Tensorflow_DataType, useLocking :Bool  , useNesterov :Bool  )  ->(o:tf.Operation){
+func resourceApplyMomentum(scope:Scope,`var`: tf.Output, accum: tf.Output, lr: tf.Output, grad: tf.Output, momentum: tf.Output, useLocking :Bool  , useNesterov :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -14209,7 +14209,7 @@ var = sign(prox_v)/(1+lr*l2) * max{|prox_v|-lr*l1,0}
 
 
 
-func resourceApplyProximalAdagrad(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, lr: Tensorflow_DataType, l1: Tensorflow_DataType, l2: Tensorflow_DataType, grad: Tensorflow_DataType, t :Type  , useLocking :Bool  )  ->(o:tf.Operation){
+func resourceApplyProximalAdagrad(scope:Scope,`var`: tf.Output, accum: tf.Output, lr: tf.Output, l1: tf.Output, l2: tf.Output, grad: tf.Output, t :Type  , useLocking :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -14237,7 +14237,7 @@ var = sign(prox_v)/(1+alpha*l2) * max{|prox_v|-alpha*l1,0}
 
 
 
-func resourceApplyProximalGradientDescent(scope:Scope,`var`: Tensorflow_DataType, alpha: Tensorflow_DataType, l1: Tensorflow_DataType, l2: Tensorflow_DataType, delta: Tensorflow_DataType, useLocking :Bool  )  ->(o:tf.Operation){
+func resourceApplyProximalGradientDescent(scope:Scope,`var`: tf.Output, alpha: tf.Output, l1: tf.Output, l2: tf.Output, delta: tf.Output, useLocking :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -14270,7 +14270,7 @@ var <- var - mom
 
 
 
-func resourceApplyRMSProp(scope:Scope,`var`: Tensorflow_DataType, ms: Tensorflow_DataType, mom: Tensorflow_DataType, lr: Tensorflow_DataType, rho: Tensorflow_DataType, momentum: Tensorflow_DataType, epsilon: Tensorflow_DataType, grad: Tensorflow_DataType, t :Type  , useLocking :Bool  )  ->(o:tf.Operation){
+func resourceApplyRMSProp(scope:Scope,`var`: tf.Output, ms: tf.Output, mom: tf.Output, lr: tf.Output, rho: tf.Output, momentum: tf.Output, epsilon: tf.Output, grad: tf.Output, t :Type  , useLocking :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -14296,7 +14296,7 @@ var: Should be from a Variable().
 
 
 
-func resourceSparseApplyAdadelta(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, accumUpdate: Tensorflow_DataType, lr: Tensorflow_DataType, rho: Tensorflow_DataType, epsilon: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, tindices :Type  , useLocking :Bool  )  ->(o:tf.Operation){
+func resourceSparseApplyAdadelta(scope:Scope,`var`: tf.Output, accum: tf.Output, accumUpdate: tf.Output, lr: tf.Output, rho: tf.Output, epsilon: tf.Output, grad: tf.Output, indices: tf.Output, tindices :Type  , useLocking :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -14325,7 +14325,7 @@ var -= lr * grad * (1 / sqrt(accum))
 
 
 
-func resourceSparseApplyAdagrad(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, lr: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, t :Type  , tindices :Type  , useLocking :Bool  )  ->(o:tf.Operation){
+func resourceSparseApplyAdagrad(scope:Scope,`var`: tf.Output, accum: tf.Output, lr: tf.Output, grad: tf.Output, indices: tf.Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -14352,7 +14352,7 @@ Update entries in '*var' and '*accum' according to the proximal adagrad scheme.
 
 
 
-func resourceSparseApplyAdagradDA(scope:Scope,`var`: Tensorflow_DataType, gradientAccumulator: Tensorflow_DataType, gradientSquaredAccumulator: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, lr: Tensorflow_DataType, l1: Tensorflow_DataType, l2: Tensorflow_DataType, globalStep: Tensorflow_DataType, tindices :Type  , useLocking :Bool  )  ->(o:tf.Operation){
+func resourceSparseApplyAdagradDA(scope:Scope,`var`: tf.Output, gradientAccumulator: tf.Output, gradientSquaredAccumulator: tf.Output, grad: tf.Output, indices: tf.Output, lr: tf.Output, l1: tf.Output, l2: tf.Output, globalStep: tf.Output, tindices :Type  , useLocking :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -14391,7 +14391,7 @@ var <- var - mom
 
 
 
-func resourceSparseApplyCenteredRMSProp(scope:Scope,`var`: Tensorflow_DataType, mg: Tensorflow_DataType, ms: Tensorflow_DataType, mom: Tensorflow_DataType, lr: Tensorflow_DataType, rho: Tensorflow_DataType, momentum: Tensorflow_DataType, epsilon: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, t :Type  , tindices :Type  , useLocking :Bool  )  ->(o:tf.Operation){
+func resourceSparseApplyCenteredRMSProp(scope:Scope,`var`: tf.Output, mg: tf.Output, ms: tf.Output, mom: tf.Output, lr: tf.Output, rho: tf.Output, momentum: tf.Output, epsilon: tf.Output, grad: tf.Output, indices: tf.Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -14424,7 +14424,7 @@ accum = accum_new
 
 
 
-func resourceSparseApplyFtrl(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, linear: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, lr: Tensorflow_DataType, l1: Tensorflow_DataType, l2: Tensorflow_DataType, lrPower: Tensorflow_DataType, tindices :Type  , useLocking :Bool  )  ->(o:tf.Operation){
+func resourceSparseApplyFtrl(scope:Scope,`var`: tf.Output, accum: tf.Output, linear: tf.Output, grad: tf.Output, indices: tf.Output, lr: tf.Output, l1: tf.Output, l2: tf.Output, lrPower: tf.Output, tindices :Type  , useLocking :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -14454,7 +14454,7 @@ var -= lr * accum
 
 
 
-func resourceSparseApplyMomentum(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, lr: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, momentum: Tensorflow_DataType, t :Type  , tindices :Type  , useLocking :Bool  , useNesterov :Bool  )  ->(o:tf.Operation){
+func resourceSparseApplyMomentum(scope:Scope,`var`: tf.Output, accum: tf.Output, lr: tf.Output, grad: tf.Output, indices: tf.Output, momentum: tf.Output, t :Type  , tindices :Type  , useLocking :Bool  , useNesterov :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -14487,7 +14487,7 @@ var = sign(prox_v)/(1+lr*l2) * max{|prox_v|-lr*l1,0}
 
 
 
-func resourceSparseApplyProximalAdagrad(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, lr: Tensorflow_DataType, l1: Tensorflow_DataType, l2: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, tindices :Type  , useLocking :Bool  )  ->(o:tf.Operation){
+func resourceSparseApplyProximalAdagrad(scope:Scope,`var`: tf.Output, accum: tf.Output, lr: tf.Output, l1: tf.Output, l2: tf.Output, grad: tf.Output, indices: tf.Output, tindices :Type  , useLocking :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -14516,7 +14516,7 @@ var = sign(prox_v)/(1+alpha*l2) * max{|prox_v|-alpha*l1,0}
 
 
 
-func resourceSparseApplyProximalGradientDescent(scope:Scope,`var`: Tensorflow_DataType, alpha: Tensorflow_DataType, l1: Tensorflow_DataType, l2: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, t :Type  , tindices :Type  , useLocking :Bool  )  ->(o:tf.Operation){
+func resourceSparseApplyProximalGradientDescent(scope:Scope,`var`: tf.Output, alpha: tf.Output, l1: tf.Output, l2: tf.Output, grad: tf.Output, indices: tf.Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -14551,7 +14551,7 @@ var <- var - mom
 
 
 
-func resourceSparseApplyRMSProp(scope:Scope,`var`: Tensorflow_DataType, ms: Tensorflow_DataType, mom: Tensorflow_DataType, lr: Tensorflow_DataType, rho: Tensorflow_DataType, momentum: Tensorflow_DataType, epsilon: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, tindices :Type  , useLocking :Bool  )  ->(o:tf.Operation){
+func resourceSparseApplyRMSProp(scope:Scope,`var`: tf.Output, ms: tf.Output, mom: tf.Output, lr: tf.Output, rho: tf.Output, momentum: tf.Output, epsilon: tf.Output, grad: tf.Output, indices: tf.Output, tindices :Type  , useLocking :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -14582,7 +14582,7 @@ shape must be exactly the shape produced by the slice of `ref`.
 
 
 
-func resourceStridedSliceAssign(scope:Scope,ref: Tensorflow_DataType, begin: Tensorflow_DataType, end: Tensorflow_DataType, strides: Tensorflow_DataType, value: Tensorflow_DataType, t :Type  , index :Type  , beginMask :Int  , endMask :Int  , ellipsisMask :Int  , newAxisMask :Int  , shrinkAxisMask :Int  )  ->(o:tf.Operation){
+func resourceStridedSliceAssign(scope:Scope,ref: tf.Output, begin: tf.Output, end: tf.Output, strides: tf.Output, value: tf.Output, t :Type  , index :Type  , beginMask :Int  , endMask :Int  , ellipsisMask :Int  , newAxisMask :Int  , shrinkAxisMask :Int  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -14627,7 +14627,7 @@ See also `RestoreSlice`.
 
 
 
-func restore(scope:Scope,filePattern: Tensorflow_DataType, tensorName: Tensorflow_DataType, dt :Type  , preferredShard :UInt8  )  ->(tensor: tf.Output){
+func restore(scope:Scope,filePattern: tf.Output, tensorName: tf.Output, dt :Type  , preferredShard :UInt8  )  ->(tensor: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -14659,7 +14659,7 @@ elements of the `shapes_and_slices` input of the `SaveSlices` op.
 
 
 
-func restoreSlice(scope:Scope,filePattern: Tensorflow_DataType, tensorName: Tensorflow_DataType, shapeAndSlice: Tensorflow_DataType, dt :Type  , preferredShard :UInt8  )  ->(tensor: tf.Output){
+func restoreSlice(scope:Scope,filePattern: tf.Output, tensorName: tf.Output, shapeAndSlice: tf.Output, dt :Type  , preferredShard :UInt8  )  ->(tensor: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -14697,7 +14697,7 @@ Callers must ensure all the named tensors are indeed stored in the checkpoint.
 
 
 
-func restoreV2(scope:Scope,`prefix`: Tensorflow_DataType, tensorNames: Tensorflow_DataType, shapeAndSlices: Tensorflow_DataType, dtypes :TensorflowDataType  )  ->(tensors: tf.Output){
+func restoreV2(scope:Scope,`prefix`: tf.Output, tensorNames: tf.Output, shapeAndSlices: tf.Output, dtypes :List(type)  )  ->(tensors: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -14760,7 +14760,7 @@ reverse(t, dims) ==> [[[[8, 9, 10, 11],
 
 
 
-func reverse(scope:Scope,tensor: Tensorflow_DataType, dims: Tensorflow_DataType )  ->(output: tf.Output){
+func reverse(scope:Scope,tensor: tf.Output, dims: tf.Output )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -14829,7 +14829,7 @@ output[2:, :, 3, :, ...] = input[2:, :, 3, :, ...]
 
 
 
-func reverseSequence(scope:Scope,input: Tensorflow_DataType, seqLengths: Tensorflow_DataType, seqDim :Int  , batchDim :Int  , t :Type  , tlen :Type  )  ->(output: tf.Output){
+func reverseSequence(scope:Scope,input: tf.Output, seqLengths: tf.Output, seqDim :Int  , batchDim :Int  , t :Type  , tlen :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -14897,7 +14897,7 @@ reverse(t, dims) ==> [[[[8, 9, 10, 11],
 
 
 
-func reverseV2(scope:Scope,tensor: Tensorflow_DataType, axis: Tensorflow_DataType, tidx :Type  )  ->(output: tf.Output){
+func reverseV2(scope:Scope,tensor: tf.Output, axis: tf.Output, tidx :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -14931,7 +14931,7 @@ rint([-1.7, -1.5, -0.2, 0.2, 1.5, 1.7, 2.0]) ==> [-2., -2., -0., 0., 2., 2., 2.]
 
 
 
-func rint(scope:Scope,x: Tensorflow_DataType, t :Type  )  ->(y: tf.Output){
+func rint(scope:Scope,x: tf.Output, t :Type  )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -14959,7 +14959,7 @@ according to the current system rounding mode use std::cint.
 
 
 
-func round(scope:Scope,x: Tensorflow_DataType )  ->(y: tf.Output){
+func round(scope:Scope,x: tf.Output )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -14985,7 +14985,7 @@ I.e., \\(y = 1 / \sqrt{x}\\).
 
 
 
-func rsqrt(scope:Scope,x: Tensorflow_DataType, t :Type  )  ->(y: tf.Output){
+func rsqrt(scope:Scope,x: tf.Output, t :Type  )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -15013,7 +15013,7 @@ is the corresponding input gradient.
 
 
 
-func rsqrtGrad(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType )  ->(z: tf.Output){
+func rsqrtGrad(scope:Scope,x: tf.Output, y: tf.Output )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -15069,7 +15069,7 @@ false and no bounding boxes are supplied, an error is raised.
 
 
 
-func sampleDistortedBoundingBox(scope:Scope,imageSize: Tensorflow_DataType, boundingBoxes: Tensorflow_DataType, t :Type  , seed :Int  , seed2 :Int  , minObjectCovered :Float  , aspectRatioRange :List(float)  , areaRange :List(float)  , maxAttempts :Int  , useImageIfNoBoundingBoxes :Bool  )  ->(begin: tf.Output, size: tf.Output, bboxes: tf.Output){
+func sampleDistortedBoundingBox(scope:Scope,imageSize: tf.Output, boundingBoxes: tf.Output, t :Type  , seed :Int  , seed2 :Int  , minObjectCovered :Float  , aspectRatioRange :List(float)  , areaRange :List(float)  , maxAttempts :Int  , useImageIfNoBoundingBoxes :Bool  )  ->(begin: tf.Output, size: tf.Output, bboxes: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -15105,7 +15105,7 @@ See also `SaveSlices`.
 
 
 
-func save(scope:Scope,filename: Tensorflow_DataType, tensorNames: Tensorflow_DataType, data: Tensorflow_DataType )  ->(o:tf.Operation){
+func save(scope:Scope,filename: tf.Output, tensorNames: tf.Output, data: tf.Output )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -15145,7 +15145,7 @@ See also `Save`.
 
 
 
-func saveSlices(scope:Scope,filename: Tensorflow_DataType, tensorNames: Tensorflow_DataType, shapesAndSlices: Tensorflow_DataType, data: Tensorflow_DataType, t :List(type)  )  ->(o:tf.Operation){
+func saveSlices(scope:Scope,filename: tf.Output, tensorNames: tf.Output, shapesAndSlices: tf.Output, data: tf.Output, t :List(type)  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -15173,7 +15173,7 @@ and correspondingly well-formed.
 
 
 
-func saveV2(scope:Scope,`prefix`: Tensorflow_DataType, tensorNames: Tensorflow_DataType, shapeAndSlices: Tensorflow_DataType, tensors: Tensorflow_DataType, dtypes :TensorflowDataType  )  ->(o:tf.Operation){
+func saveV2(scope:Scope,`prefix`: tf.Output, tensorNames: tf.Output, shapeAndSlices: tf.Output, tensors: tf.Output, dtypes :List(type)  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -15200,7 +15200,7 @@ has a summary value for each tag-value pair in `tags` and `values`.
 
 
 
-func scalarSummary(scope:Scope,tags: Tensorflow_DataType, values: Tensorflow_DataType )  ->(summary: tf.Output){
+func scalarSummary(scope:Scope,tags: tf.Output, values: tf.Output )  ->(summary: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -15240,7 +15240,7 @@ Requires `updates.shape = indices.shape + ref.shape[1:]`.
 
 
 
-func scatterAdd(scope:Scope,ref: Tensorflow_DataType, indices: Tensorflow_DataType, updates: Tensorflow_DataType, t :Type  , tindices :Type  , useLocking :Bool  )  ->(outputRef: tf.Output){
+func scatterAdd(scope:Scope,ref: tf.Output, indices: tf.Output, updates: tf.Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(outputRef: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -15282,7 +15282,7 @@ Requires `updates.shape = indices.shape + ref.shape[1:]`.
 
 
 
-func scatterDiv(scope:Scope,ref: Tensorflow_DataType, indices: Tensorflow_DataType, updates: Tensorflow_DataType, tindices :Type  , useLocking :Bool  )  ->(outputRef: tf.Output){
+func scatterDiv(scope:Scope,ref: tf.Output, indices: tf.Output, updates: tf.Output, tindices :Type  , useLocking :Bool  )  ->(outputRef: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -15323,7 +15323,7 @@ Requires `updates.shape = indices.shape + ref.shape[1:]`.
 
 
 
-func scatterMul(scope:Scope,ref: Tensorflow_DataType, indices: Tensorflow_DataType, updates: Tensorflow_DataType, t :Type  , tindices :Type  , useLocking :Bool  )  ->(outputRef: tf.Output){
+func scatterMul(scope:Scope,ref: tf.Output, indices: tf.Output, updates: tf.Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(outputRef: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -15405,7 +15405,7 @@ The resulting tensor would look like this:
 
 
 
-func scatterNd(scope:Scope,indices: Tensorflow_DataType, updates: Tensorflow_DataType, shape: Tensorflow_DataType, tindices :Type  )  ->(output: tf.Output){
+func scatterNd(scope:Scope,indices: tf.Output, updates: tf.Output, shape: tf.Output, tindices :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -15454,7 +15454,7 @@ slices.
 
 
 
-func scatterNdAdd(scope:Scope,ref: Tensorflow_DataType, indices: Tensorflow_DataType, updates: Tensorflow_DataType, t :Type  , tindices :Type  , useLocking :Bool  )  ->(outputRef: tf.Output){
+func scatterNdAdd(scope:Scope,ref: tf.Output, indices: tf.Output, updates: tf.Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(outputRef: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -15505,7 +15505,7 @@ slices.
 
 
 
-func scatterNdSub(scope:Scope,ref: Tensorflow_DataType, indices: Tensorflow_DataType, updates: Tensorflow_DataType, tindices :Type  , useLocking :Bool  )  ->(outputRef: tf.Output){
+func scatterNdSub(scope:Scope,ref: tf.Output, indices: tf.Output, updates: tf.Output, tindices :Type  , useLocking :Bool  )  ->(outputRef: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -15557,7 +15557,7 @@ slices.
 
 
 
-func scatterNdUpdate(scope:Scope,ref: Tensorflow_DataType, indices: Tensorflow_DataType, updates: Tensorflow_DataType, t :Type  , tindices :Type  , useLocking :Bool  )  ->(outputRef: tf.Output){
+func scatterNdUpdate(scope:Scope,ref: tf.Output, indices: tf.Output, updates: tf.Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(outputRef: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -15601,7 +15601,7 @@ Requires `updates.shape = indices.shape + ref.shape[1:]`.
 
 
 
-func scatterSub(scope:Scope,ref: Tensorflow_DataType, indices: Tensorflow_DataType, updates: Tensorflow_DataType, tindices :Type  , useLocking :Bool  )  ->(outputRef: tf.Output){
+func scatterSub(scope:Scope,ref: tf.Output, indices: tf.Output, updates: tf.Output, tindices :Type  , useLocking :Bool  )  ->(outputRef: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -15646,7 +15646,7 @@ Requires `updates.shape = indices.shape + ref.shape[1:]`.
 
 
 
-func scatterUpdate(scope:Scope,ref: Tensorflow_DataType, indices: Tensorflow_DataType, updates: Tensorflow_DataType, t :Type  , tindices :Type  , useLocking :Bool  )  ->(outputRef: tf.Output){
+func scatterUpdate(scope:Scope,ref: tf.Output, indices: tf.Output, updates: tf.Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(outputRef: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -15674,7 +15674,7 @@ Computes fingerprints of the input strings.
 
 
 
-func sdcaFprint(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
+func sdcaFprint(scope:Scope,input: tf.Output )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -15712,7 +15712,7 @@ Dominik Csiba, Zheng Qu, Peter Richtarik. 2015
 
 
 
-func sdcaOptimizer(scope:Scope,sparseExampleIndices: Tensorflow_DataType, sparseFeatureIndices: Tensorflow_DataType, sparseFeatureValues: Tensorflow_DataType, denseFeatures: Tensorflow_DataType, exampleWeights: Tensorflow_DataType, exampleLabels: Tensorflow_DataType, sparseIndices: Tensorflow_DataType, sparseWeights: Tensorflow_DataType, denseWeights: Tensorflow_DataType, exampleStateData: Tensorflow_DataType, lossType :String  , adaptative :Bool  , numSparseFeatures :UInt8  , numSparseFeaturesWithValues :UInt8  , numDenseFeatures :UInt8  , l1 :Float  , l2 :Float  , numLossPartitions :UInt8  , numInnerIterations :UInt8  )  ->(outExampleStateData: tf.Output, outDeltaSparseWeights: tf.Output, outDeltaDenseWeights: tf.Output){
+func sdcaOptimizer(scope:Scope,sparseExampleIndices: tf.Output, sparseFeatureIndices: tf.Output, sparseFeatureValues: tf.Output, denseFeatures: tf.Output, exampleWeights: tf.Output, exampleLabels: tf.Output, sparseIndices: tf.Output, sparseWeights: tf.Output, denseWeights: tf.Output, exampleStateData: tf.Output, lossType :String  , adaptative :Bool  , numSparseFeatures :UInt8  , numSparseFeaturesWithValues :UInt8  , numDenseFeatures :UInt8  , l1 :Float  , l2 :Float  , numLossPartitions :UInt8  , numInnerIterations :UInt8  )  ->(outExampleStateData: tf.Output, outDeltaSparseWeights: tf.Output, outDeltaDenseWeights: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -15746,7 +15746,7 @@ Applies L1 regularization shrink step on the parameters.
 
 
 
-func sdcaShrinkL1(scope:Scope,weights: Tensorflow_DataType, numFeatures :UInt8  , l1 :Float  , l2 :Float  )  ->(o:tf.Operation){
+func sdcaShrinkL1(scope:Scope,weights: tf.Output, numFeatures :UInt8  , l1 :Float  , l2 :Float  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -15782,7 +15782,7 @@ If the max is empty for a given segment ID `i`, `output[i] = 0`.
 
 
 
-func segmentMax(scope:Scope,data: Tensorflow_DataType, segmentIds: Tensorflow_DataType, tindices :Type  )  ->(output: tf.Output){
+func segmentMax(scope:Scope,data: tf.Output, segmentIds: tf.Output, tindices :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -15818,7 +15818,7 @@ If the mean is empty for a given segment ID `i`, `output[i] = 0`.
 
 
 
-func segmentMean(scope:Scope,data: Tensorflow_DataType, segmentIds: Tensorflow_DataType, t :Type  , tindices :Type  )  ->(output: tf.Output){
+func segmentMean(scope:Scope,data: tf.Output, segmentIds: tf.Output, t :Type  , tindices :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -15854,7 +15854,7 @@ If the min is empty for a given segment ID `i`, `output[i] = 0`.
 
 
 
-func segmentMin(scope:Scope,data: Tensorflow_DataType, segmentIds: Tensorflow_DataType, tindices :Type  )  ->(output: tf.Output){
+func segmentMin(scope:Scope,data: tf.Output, segmentIds: tf.Output, tindices :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -15889,7 +15889,7 @@ If the product is empty for a given segment ID `i`, `output[i] = 1`.
 
 
 
-func segmentProd(scope:Scope,data: Tensorflow_DataType, segmentIds: Tensorflow_DataType, t :Type  , tindices :Type  )  ->(output: tf.Output){
+func segmentProd(scope:Scope,data: tf.Output, segmentIds: tf.Output, t :Type  , tindices :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -15925,7 +15925,7 @@ If the sum is empty for a given segment ID `i`, `output[i] = 0`.
 
 
 
-func segmentSum(scope:Scope,data: Tensorflow_DataType, segmentIds: Tensorflow_DataType, tindices :Type  )  ->(output: tf.Output){
+func segmentSum(scope:Scope,data: tf.Output, segmentIds: tf.Output, tindices :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -15981,7 +15981,7 @@ select(condition, t, e) ==> [[1, 2],
 
 
 
-func select(scope:Scope,condition: Tensorflow_DataType, t: Tensorflow_DataType, e: Tensorflow_DataType, t :Type  )  ->(output: tf.Output){
+func select(scope:Scope,condition: tf.Output, t: tf.Output, e: tf.Output, t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -16012,7 +16012,7 @@ eigenvalues, and subsequent [...,1:, :] containing the eigenvectors.
 
 
 
-func selfAdjointEig(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
+func selfAdjointEig(scope:Scope,input: tf.Output )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -16046,7 +16046,7 @@ e = self_adjoint_eig(a, compute_v=False)
 
 
 
-func selfAdjointEigV2(scope:Scope,input: Tensorflow_DataType, computeV :Bool  , t :Type  )  ->(e: tf.Output, v: tf.Output){
+func selfAdjointEigV2(scope:Scope,input: tf.Output, computeV :Bool  , t :Type  )  ->(e: tf.Output, v: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -16079,7 +16079,7 @@ The minibatch size `N` is extracted from `sparse_shape[0]`.
 
 
 
-func serializeManySparse(scope:Scope,sparseIndices: Tensorflow_DataType, sparseValues: Tensorflow_DataType, sparseShape: Tensorflow_DataType )  ->(serializedSparse: tf.Output){
+func serializeManySparse(scope:Scope,sparseIndices: tf.Output, sparseValues: tf.Output, sparseShape: tf.Output )  ->(serializedSparse: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -16104,7 +16104,7 @@ Serialize a `SparseTensor` into a string 3-vector (1-D `Tensor`) object.
 
 
 
-func serializeSparse(scope:Scope,sparseIndices: Tensorflow_DataType, sparseValues: Tensorflow_DataType, sparseShape: Tensorflow_DataType, t :Type  )  ->(serializedSparse: tf.Output){
+func serializeSparse(scope:Scope,sparseIndices: tf.Output, sparseValues: tf.Output, sparseShape: tf.Output, t :Type  )  ->(serializedSparse: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -16135,7 +16135,7 @@ indices.
 
 
 
-func setSize(scope:Scope,setIndices: Tensorflow_DataType, setValues: Tensorflow_DataType, setShape: Tensorflow_DataType, validateIndices :Bool  )  ->(size: tf.Output){
+func setSize(scope:Scope,setIndices: tf.Output, setValues: tf.Output, setShape: tf.Output, validateIndices :Bool  )  ->(size: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -16167,7 +16167,7 @@ shape(t) ==> [2, 2, 3]
 
 
 
-func shape(scope:Scope,input: Tensorflow_DataType, t :Type  , outType :Type  )  ->(output: tf.Output){
+func shape(scope:Scope,input: tf.Output, t :Type  , outType :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -16195,7 +16195,7 @@ This operation returns N 1-D integer tensors representing shape of `input[i]s`.
 
 
 
-func shapeN(scope:Scope,input: Tensorflow_DataType, n :UInt8  , outType :Type  )  ->(output: tf.Output){
+func shapeN(scope:Scope,input: tf.Output, n :UInt8  , outType :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -16223,7 +16223,7 @@ Generate a sharded filename. The filename is printf formatted as
 
 
 
-func shardedFilename(scope:Scope,basename: Tensorflow_DataType, shard: Tensorflow_DataType, numShards: Tensorflow_DataType )  ->(filename: tf.Output){
+func shardedFilename(scope:Scope,basename: tf.Output, shard: tf.Output, numShards: tf.Output )  ->(filename: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -16248,7 +16248,7 @@ Generate a glob pattern matching all sharded file names.
 
 
 
-func shardedFilespec(scope:Scope,basename: Tensorflow_DataType, numShards: Tensorflow_DataType )  ->(filename: tf.Output){
+func shardedFilespec(scope:Scope,basename: tf.Output, numShards: tf.Output )  ->(filename: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -16273,7 +16273,7 @@ Creates a dataset that shuffles elements from `input_dataset` pseudorandomly.
 
 
 
-func shuffleDataset(scope:Scope,inputDataset: Tensorflow_DataType, bufferSize: Tensorflow_DataType, seed: Tensorflow_DataType, seed2: Tensorflow_DataType, outputTypes :List(type)  , outputShapes :[Shape]  )  ->(handle: tf.Output){
+func shuffleDataset(scope:Scope,inputDataset: tf.Output, bufferSize: tf.Output, seed: tf.Output, seed2: tf.Output, outputTypes :List(type)  , outputShapes :[Shape]  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -16301,7 +16301,7 @@ Specifically, `y = 1 / (1 + exp(-x))`.
 
 
 
-func sigmoid(scope:Scope,x: Tensorflow_DataType )  ->(y: tf.Output){
+func sigmoid(scope:Scope,x: tf.Output )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -16328,7 +16328,7 @@ Specifically, `grad = dy * y * (1 - y)`, where `y = sigmoid(x)`, and
 
 
 
-func sigmoidGrad(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :Type  )  ->(z: tf.Output){
+func sigmoidGrad(scope:Scope,x: tf.Output, y: tf.Output, t :Type  )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -16356,7 +16356,7 @@ For complex numbers, `y = sign(x) = x / |x|` if `x != 0`, otherwise `y = 0`.
 
 
 
-func sign(scope:Scope,x: Tensorflow_DataType )  ->(y: tf.Output){
+func sign(scope:Scope,x: tf.Output )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -16381,7 +16381,7 @@ Computes sin of x element-wise.
 
 
 
-func sin(scope:Scope,x: Tensorflow_DataType, t :Type  )  ->(y: tf.Output){
+func sin(scope:Scope,x: tf.Output, t :Type  )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -16414,7 +16414,7 @@ size(t) ==> 12
 
 
 
-func size(scope:Scope,input: Tensorflow_DataType, outType :Type  )  ->(output: tf.Output){
+func size(scope:Scope,input: tf.Output, outType :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -16440,7 +16440,7 @@ Creates a dataset that skips `count` elements from the `input_dataset`.
 
 
 
-func skipDataset(scope:Scope,inputDataset: Tensorflow_DataType, count: Tensorflow_DataType, outputTypes :List(type)  , outputShapes :List(shape)  )  ->(handle: tf.Output){
+func skipDataset(scope:Scope,inputDataset: tf.Output, count: tf.Output, outputTypes :List(type)  , outputShapes :List(shape)  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -16502,7 +16502,7 @@ whose values are extracted from 'input' starting at the offsets in
 
 
 
-func slice(scope:Scope,input: Tensorflow_DataType, begin: Tensorflow_DataType, size: Tensorflow_DataType, index :Type  )  ->(output: tf.Output){
+func slice(scope:Scope,input: tf.Output, begin: tf.Output, size: tf.Output, index :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -16530,7 +16530,7 @@ For each batch `i` and class `j` we have
 
 
 
-func softmax(scope:Scope,logits: Tensorflow_DataType, t :Type  )  ->(softmax: tf.Output){
+func softmax(scope:Scope,logits: tf.Output, t :Type  )  ->(softmax: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -16557,7 +16557,7 @@ Inputs are the logits, not probabilities.
 
 
 
-func softmaxCrossEntropyWithLogits(scope:Scope,features: Tensorflow_DataType, labels: Tensorflow_DataType )  ->(loss: tf.Output, backprop: tf.Output){
+func softmaxCrossEntropyWithLogits(scope:Scope,features: tf.Output, labels: tf.Output )  ->(loss: tf.Output, backprop: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -16582,7 +16582,7 @@ Computes softplus: `log(exp(features) + 1)`.
 
 
 
-func softplus(scope:Scope,features: Tensorflow_DataType, t :Type  )  ->(activations: tf.Output){
+func softplus(scope:Scope,features: tf.Output, t :Type  )  ->(activations: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -16608,7 +16608,7 @@ Computes softplus gradients for a softplus operation.
 
 
 
-func softplusGrad(scope:Scope,gradients: Tensorflow_DataType, features: Tensorflow_DataType )  ->(backprops: tf.Output){
+func softplusGrad(scope:Scope,gradients: tf.Output, features: tf.Output )  ->(backprops: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -16633,7 +16633,7 @@ Computes softsign: `features / (abs(features) + 1)`.
 
 
 
-func softsign(scope:Scope,features: Tensorflow_DataType, t :Type  )  ->(activations: tf.Output){
+func softsign(scope:Scope,features: tf.Output, t :Type  )  ->(activations: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -16659,7 +16659,7 @@ Computes softsign gradients for a softsign operation.
 
 
 
-func softsignGrad(scope:Scope,gradients: Tensorflow_DataType, features: Tensorflow_DataType )  ->(backprops: tf.Output){
+func softsignGrad(scope:Scope,gradients: tf.Output, features: tf.Output )  ->(backprops: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -16690,7 +16690,7 @@ block size.
 
 
 
-func spaceToBatch(scope:Scope,input: Tensorflow_DataType, paddings: Tensorflow_DataType, t :Type  , tpaddings :Type  , blockSize :Int  )  ->(output: tf.Output){
+func spaceToBatch(scope:Scope,input: tf.Output, paddings: tf.Output, t :Type  , tpaddings :Type  , blockSize :Int  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -16726,7 +16726,7 @@ precise description.
 
 
 
-func spaceToBatchND(scope:Scope,input: Tensorflow_DataType, blockShape: Tensorflow_DataType, paddings: Tensorflow_DataType, tblockShape :Type  , tpaddings :Type  )  ->(output: tf.Output){
+func spaceToBatchND(scope:Scope,input: tf.Output, blockShape: tf.Output, paddings: tf.Output, tblockShape :Type  , tpaddings :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -16807,7 +16807,7 @@ x = [[[[1, 2, 3, 4],
 
 
 
-func spaceToDepth(scope:Scope,input: Tensorflow_DataType, t :Type  , blockSize :Int  )  ->(output: tf.Output){
+func spaceToDepth(scope:Scope,input: tf.Output, t :Type  , blockSize :Int  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -16836,7 +16836,7 @@ global_step.
 
 
 
-func sparseAccumulatorApplyGradient(scope:Scope,handle: Tensorflow_DataType, localStep: Tensorflow_DataType, gradientIndices: Tensorflow_DataType, gradientValues: Tensorflow_DataType, gradientShape: Tensorflow_DataType, dtype :Type  , hasKnownShape :Bool  )  ->(o:tf.Operation){
+func sparseAccumulatorApplyGradient(scope:Scope,handle: tf.Output, localStep: tf.Output, gradientIndices: tf.Output, gradientValues: tf.Output, gradientShape: tf.Output, dtype :[Any]  , hasKnownShape :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -16868,7 +16868,7 @@ aggregate to 0.
 
 
 
-func sparseAccumulatorTakeGradient(scope:Scope,handle: Tensorflow_DataType, numRequired: Tensorflow_DataType, dtype :Type  )  ->(indices: tf.Output, values: tf.Output, shape: tf.Output){
+func sparseAccumulatorTakeGradient(scope:Scope,handle: tf.Output, numRequired: tf.Output, dtype :[Any]  )  ->(indices: tf.Output, values: tf.Output, shape: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -16905,7 +16905,7 @@ In the following shapes, `nnz` is the count after taking `thresh` into account.
 
 
 
-func sparseAdd(scope:Scope,aIndices: Tensorflow_DataType, aValues: Tensorflow_DataType, aShape: Tensorflow_DataType, bIndices: Tensorflow_DataType, bValues: Tensorflow_DataType, bShape: Tensorflow_DataType, thresh: Tensorflow_DataType, treal :Type  )  ->(sumIndices: tf.Output, sumValues: tf.Output, sumShape: tf.Output){
+func sparseAdd(scope:Scope,aIndices: tf.Output, aValues: tf.Output, aShape: tf.Output, bIndices: tf.Output, bValues: tf.Output, bShape: tf.Output, thresh: tf.Output, treal :Type  )  ->(sumIndices: tf.Output, sumValues: tf.Output, sumShape: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -16935,7 +16935,7 @@ values of A and B.
 
 
 
-func sparseAddGrad(scope:Scope,backpropValGrad: Tensorflow_DataType, aIndices: Tensorflow_DataType, bIndices: Tensorflow_DataType, sumIndices: Tensorflow_DataType, t :Type  )  ->(aValGrad: tf.Output, bValGrad: tf.Output){
+func sparseAddGrad(scope:Scope,backpropValGrad: tf.Output, aIndices: tf.Output, bIndices: tf.Output, sumIndices: tf.Output, t :Type  )  ->(aValGrad: tf.Output, bValGrad: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -16961,7 +16961,7 @@ var: Should be from a Variable().
 
 
 
-func sparseApplyAdadelta(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, accumUpdate: Tensorflow_DataType, lr: Tensorflow_DataType, rho: Tensorflow_DataType, epsilon: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, tindices :Type  , useLocking :Bool  )  ->(out: tf.Output){
+func sparseApplyAdadelta(scope:Scope,`var`: tf.Output, accum: tf.Output, accumUpdate: tf.Output, lr: tf.Output, rho: tf.Output, epsilon: tf.Output, grad: tf.Output, indices: tf.Output, tindices :Type  , useLocking :Bool  )  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -16991,7 +16991,7 @@ var -= lr * grad * (1 / sqrt(accum))
 
 
 
-func sparseApplyAdagrad(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, lr: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, t :Type  , tindices :Type  , useLocking :Bool  )  ->(out: tf.Output){
+func sparseApplyAdagrad(scope:Scope,`var`: tf.Output, accum: tf.Output, lr: tf.Output, grad: tf.Output, indices: tf.Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -17019,7 +17019,7 @@ Update entries in '*var' and '*accum' according to the proximal adagrad scheme.
 
 
 
-func sparseApplyAdagradDA(scope:Scope,`var`: Tensorflow_DataType, gradientAccumulator: Tensorflow_DataType, gradientSquaredAccumulator: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, lr: Tensorflow_DataType, l1: Tensorflow_DataType, l2: Tensorflow_DataType, globalStep: Tensorflow_DataType, tindices :Type  , useLocking :Bool  )  ->(out: tf.Output){
+func sparseApplyAdagradDA(scope:Scope,`var`: tf.Output, gradientAccumulator: tf.Output, gradientSquaredAccumulator: tf.Output, grad: tf.Output, indices: tf.Output, lr: tf.Output, l1: tf.Output, l2: tf.Output, globalStep: tf.Output, tindices :Type  , useLocking :Bool  )  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -17059,7 +17059,7 @@ var <- var - mom
 
 
 
-func sparseApplyCenteredRMSProp(scope:Scope,`var`: Tensorflow_DataType, mg: Tensorflow_DataType, ms: Tensorflow_DataType, mom: Tensorflow_DataType, lr: Tensorflow_DataType, rho: Tensorflow_DataType, momentum: Tensorflow_DataType, epsilon: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, t :Type  , tindices :Type  , useLocking :Bool  )  ->(out: tf.Output){
+func sparseApplyCenteredRMSProp(scope:Scope,`var`: tf.Output, mg: tf.Output, ms: tf.Output, mom: tf.Output, lr: tf.Output, rho: tf.Output, momentum: tf.Output, epsilon: tf.Output, grad: tf.Output, indices: tf.Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -17093,7 +17093,7 @@ accum = accum_new
 
 
 
-func sparseApplyFtrl(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, linear: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, lr: Tensorflow_DataType, l1: Tensorflow_DataType, l2: Tensorflow_DataType, lrPower: Tensorflow_DataType, tindices :Type  , useLocking :Bool  )  ->(out: tf.Output){
+func sparseApplyFtrl(scope:Scope,`var`: tf.Output, accum: tf.Output, linear: tf.Output, grad: tf.Output, indices: tf.Output, lr: tf.Output, l1: tf.Output, l2: tf.Output, lrPower: tf.Output, tindices :Type  , useLocking :Bool  )  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -17124,7 +17124,7 @@ var -= lr * accum
 
 
 
-func sparseApplyMomentum(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, lr: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, momentum: Tensorflow_DataType, t :Type  , tindices :Type  , useLocking :Bool  , useNesterov :Bool  )  ->(out: tf.Output){
+func sparseApplyMomentum(scope:Scope,`var`: tf.Output, accum: tf.Output, lr: tf.Output, grad: tf.Output, indices: tf.Output, momentum: tf.Output, t :Type  , tindices :Type  , useLocking :Bool  , useNesterov :Bool  )  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -17158,7 +17158,7 @@ var = sign(prox_v)/(1+lr*l2) * max{|prox_v|-lr*l1,0}
 
 
 
-func sparseApplyProximalAdagrad(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, lr: Tensorflow_DataType, l1: Tensorflow_DataType, l2: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, tindices :Type  , useLocking :Bool  )  ->(out: tf.Output){
+func sparseApplyProximalAdagrad(scope:Scope,`var`: tf.Output, accum: tf.Output, lr: tf.Output, l1: tf.Output, l2: tf.Output, grad: tf.Output, indices: tf.Output, tindices :Type  , useLocking :Bool  )  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -17188,7 +17188,7 @@ var = sign(prox_v)/(1+alpha*l2) * max{|prox_v|-alpha*l1,0}
 
 
 
-func sparseApplyProximalGradientDescent(scope:Scope,`var`: Tensorflow_DataType, alpha: Tensorflow_DataType, l1: Tensorflow_DataType, l2: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, t :Type  , tindices :Type  , useLocking :Bool  )  ->(out: tf.Output){
+func sparseApplyProximalGradientDescent(scope:Scope,`var`: tf.Output, alpha: tf.Output, l1: tf.Output, l2: tf.Output, grad: tf.Output, indices: tf.Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -17224,7 +17224,7 @@ var <- var - mom
 
 
 
-func sparseApplyRMSProp(scope:Scope,`var`: Tensorflow_DataType, ms: Tensorflow_DataType, mom: Tensorflow_DataType, lr: Tensorflow_DataType, rho: Tensorflow_DataType, momentum: Tensorflow_DataType, epsilon: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, tindices :Type  , useLocking :Bool  )  ->(out: tf.Output){
+func sparseApplyRMSProp(scope:Scope,`var`: tf.Output, ms: tf.Output, mom: tf.Output, lr: tf.Output, rho: tf.Output, momentum: tf.Output, epsilon: tf.Output, grad: tf.Output, indices: tf.Output, tindices :Type  , useLocking :Bool  )  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -17281,7 +17281,7 @@ Graphically this is equivalent to doing
 
 
 
-func sparseConcat(scope:Scope,indices: Tensorflow_DataType, values: Tensorflow_DataType, shapes: Tensorflow_DataType, concatDim :Int  , n :Int  , t :Type  )  ->(outputIndices: tf.Output, outputValues: tf.Output, outputShape: tf.Output){
+func sparseConcat(scope:Scope,indices: tf.Output, values: tf.Output, shapes: tf.Output, concatDim :Int  , n :Int  , t :Type  )  ->(outputIndices: tf.Output, outputValues: tf.Output, outputShape: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -17315,7 +17315,7 @@ the accumulator.
 
 
 
-func sparseConditionalAccumulator(scope:Scope dtype :Type  , shape :Shape  , container :String  , sharedName :String  )  ->(handle: tf.Output){
+func sparseConditionalAccumulator(scope:Scope dtype :[Any]  , shape :Shape  , container :String  , sharedName :String  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -17372,7 +17372,7 @@ if hashed_output=true then the output will be
 
 
 
-func sparseCross(scope:Scope,indices: Tensorflow_DataType, values: Tensorflow_DataType, shapes: Tensorflow_DataType, denseInputs: Tensorflow_DataType, n :UInt8  , hashedOutput :Bool  , numBuckets :UInt8  , hashKey :UInt8  , sparseTypes :List(type)  , denseTypes :List(type)  , outType :Type  , internalType :Type  )  ->(outputIndices: tf.Output, outputValues: tf.Output, outputShape: tf.Output){
+func sparseCross(scope:Scope,indices: tf.Output, values: tf.Output, shapes: tf.Output, denseInputs: tf.Output, n :UInt8  , hashedOutput :Bool  , numBuckets :UInt8  , hashKey :UInt8  , sparseTypes :List(type)  , denseTypes :List(type)  , outType :Type  , internalType :Type  )  ->(outputIndices: tf.Output, outputValues: tf.Output, outputShape: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -17412,7 +17412,7 @@ this Op is the resultant non-zero values.
 
 
 
-func sparseDenseCwiseAdd(scope:Scope,spIndices: Tensorflow_DataType, spValues: Tensorflow_DataType, spShape: Tensorflow_DataType, dense: Tensorflow_DataType )  ->(output: tf.Output){
+func sparseDenseCwiseAdd(scope:Scope,spIndices: tf.Output, spValues: tf.Output, spShape: tf.Output, dense: tf.Output )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -17439,7 +17439,7 @@ the other direction.
 
 
 
-func sparseDenseCwiseDiv(scope:Scope,spIndices: Tensorflow_DataType, spValues: Tensorflow_DataType, spShape: Tensorflow_DataType, dense: Tensorflow_DataType, t :Type  )  ->(output: tf.Output){
+func sparseDenseCwiseDiv(scope:Scope,spIndices: tf.Output, spValues: tf.Output, spShape: tf.Output, dense: tf.Output, t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -17470,7 +17470,7 @@ the other direction.
 
 
 
-func sparseDenseCwiseMul(scope:Scope,spIndices: Tensorflow_DataType, spValues: Tensorflow_DataType, spShape: Tensorflow_DataType, dense: Tensorflow_DataType )  ->(output: tf.Output){
+func sparseDenseCwiseMul(scope:Scope,spIndices: tf.Output, spValues: tf.Output, spShape: tf.Output, dense: tf.Output )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -17521,7 +17521,7 @@ backpropagation,
 
 
 
-func sparseFillEmptyRows(scope:Scope,indices: Tensorflow_DataType, values: Tensorflow_DataType, denseShape: Tensorflow_DataType, defaultValue: Tensorflow_DataType, t :Type  )  ->(outputIndices: tf.Output, outputValues: tf.Output, emptyRowIndicator: tf.Output, reverseIndexMap: tf.Output){
+func sparseFillEmptyRows(scope:Scope,indices: tf.Output, values: tf.Output, denseShape: tf.Output, defaultValue: tf.Output, t :Type  )  ->(outputIndices: tf.Output, outputValues: tf.Output, emptyRowIndicator: tf.Output, reverseIndexMap: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -17554,7 +17554,7 @@ shaped `[N_full]`, where `N_full >= N` and copies data into either
 
 
 
-func sparseFillEmptyRowsGrad(scope:Scope,reverseIndexMap: Tensorflow_DataType, gradValues: Tensorflow_DataType )  ->(dValues: tf.Output, dDefaultValue: tf.Output){
+func sparseFillEmptyRowsGrad(scope:Scope,reverseIndexMap: tf.Output, gradValues: tf.Output )  ->(dValues: tf.Output, dDefaultValue: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -17583,7 +17583,7 @@ matrix multiply on one platform was 30% zero values in the sparse matrix.
 
 
 
-func sparseMatMul(scope:Scope,a: Tensorflow_DataType, b: Tensorflow_DataType, transposeA :Bool  , transposeB :Bool  , aIsSparse :Bool  , bIsSparse :Bool  , ta :Type  , tb :Type  )  ->(product: tf.Output){
+func sparseMatMul(scope:Scope,a: tf.Output, b: tf.Output, transposeA :Bool  , transposeB :Bool  , aIsSparse :Bool  , bIsSparse :Bool  , ta :Type  , tb :Type  )  ->(product: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -17624,7 +17624,7 @@ which are interpreted according to the indexing rules in Python.
 
 
 
-func sparseReduceSum(scope:Scope,inputIndices: Tensorflow_DataType, inputValues: Tensorflow_DataType, inputShape: Tensorflow_DataType, reductionAxes: Tensorflow_DataType, keepDims :Bool  )  ->(output: tf.Output){
+func sparseReduceSum(scope:Scope,inputIndices: tf.Output, inputValues: tf.Output, inputShape: tf.Output, reductionAxes: tf.Output, keepDims :Bool  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -17660,7 +17660,7 @@ which are interpreted according to the indexing rules in Python.
 
 
 
-func sparseReduceSumSparse(scope:Scope,inputIndices: Tensorflow_DataType, inputValues: Tensorflow_DataType, inputShape: Tensorflow_DataType, reductionAxes: Tensorflow_DataType, keepDims :Bool  , t :Type  )  ->(outputIndices: tf.Output, outputValues: tf.Output, outputShape: tf.Output){
+func sparseReduceSumSparse(scope:Scope,inputIndices: tf.Output, inputValues: tf.Output, inputShape: tf.Output, reductionAxes: tf.Output, keepDims :Bool  , t :Type  )  ->(outputIndices: tf.Output, outputValues: tf.Output, outputShape: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -17693,7 +17693,7 @@ shape `[N, R]`, input_values has length `N`, and input_shape has length `R`.
 
 
 
-func sparseReorder(scope:Scope,inputIndices: Tensorflow_DataType, inputValues: Tensorflow_DataType, inputShape: Tensorflow_DataType )  ->(outputIndices: tf.Output, outputValues: tf.Output){
+func sparseReorder(scope:Scope,inputIndices: tf.Output, inputValues: tf.Output, inputShape: tf.Output )  ->(outputIndices: tf.Output, outputValues: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -17730,7 +17730,7 @@ has length `R_out`, then `input_indices` has shape `[N, R_in]`,
 
 
 
-func sparseReshape(scope:Scope,inputIndices: Tensorflow_DataType, inputShape: Tensorflow_DataType, newShape: Tensorflow_DataType )  ->(outputIndices: tf.Output, outputShape: tf.Output){
+func sparseReshape(scope:Scope,inputIndices: tf.Output, inputShape: tf.Output, newShape: tf.Output )  ->(outputIndices: tf.Output, outputShape: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -17759,7 +17759,7 @@ dimension, selecting a subset of dimension 0, specified by `indices`.
 
 
 
-func sparseSegmentMean(scope:Scope,data: Tensorflow_DataType, indices: Tensorflow_DataType, segmentIds: Tensorflow_DataType, tidx :Type  )  ->(output: tf.Output){
+func sparseSegmentMean(scope:Scope,data: tf.Output, indices: tf.Output, segmentIds: tf.Output, tidx :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -17787,7 +17787,7 @@ value is output_dim0.
 
 
 
-func sparseSegmentMeanGrad(scope:Scope,grad: Tensorflow_DataType, indices: Tensorflow_DataType, segmentIds: Tensorflow_DataType, outputDim0: Tensorflow_DataType, t :Type  , tidx :Type  )  ->(output: tf.Output){
+func sparseSegmentMeanGrad(scope:Scope,grad: tf.Output, indices: tf.Output, segmentIds: tf.Output, outputDim0: tf.Output, t :Type  , tidx :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -17817,7 +17817,7 @@ segments.
 
 
 
-func sparseSegmentSqrtN(scope:Scope,data: Tensorflow_DataType, indices: Tensorflow_DataType, segmentIds: Tensorflow_DataType, tidx :Type  )  ->(output: tf.Output){
+func sparseSegmentSqrtN(scope:Scope,data: tf.Output, indices: tf.Output, segmentIds: tf.Output, tidx :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -17845,7 +17845,7 @@ value is output_dim0.
 
 
 
-func sparseSegmentSqrtNGrad(scope:Scope,grad: Tensorflow_DataType, indices: Tensorflow_DataType, segmentIds: Tensorflow_DataType, outputDim0: Tensorflow_DataType, t :Type  , tidx :Type  )  ->(output: tf.Output){
+func sparseSegmentSqrtNGrad(scope:Scope,grad: tf.Output, indices: tf.Output, segmentIds: tf.Output, outputDim0: tf.Output, t :Type  , tidx :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -17893,7 +17893,7 @@ tf.segment_sum(c, tf.constant([0, 0, 1]))
 
 
 
-func sparseSegmentSum(scope:Scope,data: Tensorflow_DataType, indices: Tensorflow_DataType, segmentIds: Tensorflow_DataType, tidx :Type  )  ->(output: tf.Output){
+func sparseSegmentSum(scope:Scope,data: tf.Output, indices: tf.Output, segmentIds: tf.Output, tidx :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -17931,7 +17931,7 @@ shape.
 
 
 
-func sparseSoftmax(scope:Scope,spIndices: Tensorflow_DataType, spValues: Tensorflow_DataType, spShape: Tensorflow_DataType, t :Type  )  ->(output: tf.Output){
+func sparseSoftmax(scope:Scope,spIndices: tf.Output, spValues: tf.Output, spShape: tf.Output, t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -17962,7 +17962,7 @@ Inputs are the logits, not probabilities.
 
 
 
-func sparseSoftmaxCrossEntropyWithLogits(scope:Scope,features: Tensorflow_DataType, labels: Tensorflow_DataType, tlabels :Type  )  ->(loss: tf.Output, backprop: tf.Output){
+func sparseSoftmaxCrossEntropyWithLogits(scope:Scope,features: tf.Output, labels: tf.Output, tlabels :Type  )  ->(loss: tf.Output, backprop: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -17989,7 +17989,7 @@ Assumes the two SparseTensors have the same shape, i.e., no broadcasting.
 
 
 
-func sparseSparseMaximum(scope:Scope,aIndices: Tensorflow_DataType, aValues: Tensorflow_DataType, aShape: Tensorflow_DataType, bIndices: Tensorflow_DataType, bValues: Tensorflow_DataType, bShape: Tensorflow_DataType, t :Type  )  ->(outputIndices: tf.Output, outputValues: tf.Output){
+func sparseSparseMaximum(scope:Scope,aIndices: tf.Output, aValues: tf.Output, aShape: tf.Output, bIndices: tf.Output, bValues: tf.Output, bShape: tf.Output, t :Type  )  ->(outputIndices: tf.Output, outputValues: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -18016,7 +18016,7 @@ Assumes the two SparseTensors have the same shape, i.e., no broadcasting.
 
 
 
-func sparseSparseMinimum(scope:Scope,aIndices: Tensorflow_DataType, aValues: Tensorflow_DataType, aShape: Tensorflow_DataType, bIndices: Tensorflow_DataType, bValues: Tensorflow_DataType, bShape: Tensorflow_DataType )  ->(outputIndices: tf.Output, outputValues: tf.Output){
+func sparseSparseMinimum(scope:Scope,aIndices: tf.Output, aValues: tf.Output, aShape: tf.Output, bIndices: tf.Output, bValues: tf.Output, bShape: tf.Output )  ->(outputIndices: tf.Output, outputValues: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -18054,7 +18054,7 @@ Graphically the output tensors are:
 
 
 
-func sparseSplit(scope:Scope,splitDim: Tensorflow_DataType, indices: Tensorflow_DataType, values: Tensorflow_DataType, shape: Tensorflow_DataType, numSplit :Int  , t :Type  )  ->(outputIndices: tf.Output, outputValues: tf.Output, outputShape: tf.Output){
+func sparseSplit(scope:Scope,splitDim: tf.Output, indices: tf.Output, values: tf.Output, shape: tf.Output, numSplit :Int  , t :Type  )  ->(outputIndices: tf.Output, outputValues: tf.Output, outputShape: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -18082,7 +18082,7 @@ This Op does not require `a_indices` be sorted in standard lexicographic order.
 
 
 
-func sparseTensorDenseAdd(scope:Scope,aIndices: Tensorflow_DataType, aValues: Tensorflow_DataType, aShape: Tensorflow_DataType, b: Tensorflow_DataType, tindices :Type  )  ->(output: tf.Output){
+func sparseTensorDenseAdd(scope:Scope,aIndices: tf.Output, aValues: tf.Output, aShape: tf.Output, b: tf.Output, tindices :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -18116,7 +18116,7 @@ if adjoint_a == true:
 
 
 
-func sparseTensorDenseMatMul(scope:Scope,aIndices: Tensorflow_DataType, aValues: Tensorflow_DataType, aShape: Tensorflow_DataType, b: Tensorflow_DataType, t :Type  , tindices :Type  , adjointA :Bool  , adjointB :Bool  )  ->(product: tf.Output){
+func sparseTensorDenseMatMul(scope:Scope,aIndices: tf.Output, aValues: tf.Output, aShape: tf.Output, b: tf.Output, t :Type  , tindices :Type  , adjointA :Bool  , adjointB :Bool  )  ->(product: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -18145,7 +18145,7 @@ Creates a dataset that splits a SparseTensor into elements row-wise.
 
 
 
-func sparseTensorSliceDataset(scope:Scope,indices: Tensorflow_DataType, values: Tensorflow_DataType, denseShape: Tensorflow_DataType, tvalues :Type  )  ->(handle: tf.Output){
+func sparseTensorSliceDataset(scope:Scope,indices: tf.Output, values: tf.Output, denseShape: tf.Output, tvalues :Type  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -18185,7 +18185,7 @@ are checked during execution.
 
 
 
-func sparseToDense(scope:Scope,sparseIndices: Tensorflow_DataType, outputShape: Tensorflow_DataType, sparseValues: Tensorflow_DataType, defaultValue: Tensorflow_DataType, validateIndices :Bool  , tindices :Type  )  ->(dense: tf.Output){
+func sparseToDense(scope:Scope,sparseIndices: tf.Output, outputShape: tf.Output, sparseValues: tf.Output, defaultValue: tf.Output, validateIndices :Bool  , tindices :Type  )  ->(dense: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -18230,7 +18230,7 @@ dimension contains the result of `set_operation` applied to the corresponding
 
 
 
-func sparseToSparseSetOperation(scope:Scope,set1Indices: Tensorflow_DataType, set1Values: Tensorflow_DataType, set1Shape: Tensorflow_DataType, set2Indices: Tensorflow_DataType, set2Values: Tensorflow_DataType, set2Shape: Tensorflow_DataType, setOperation :String  , validateIndices :Bool  , t :Type  )  ->(resultIndices: tf.Output, resultValues: tf.Output, resultShape: tf.Output){
+func sparseToSparseSetOperation(scope:Scope,set1Indices: tf.Output, set1Values: tf.Output, set1Shape: tf.Output, set2Indices: tf.Output, set2Values: tf.Output, set2Shape: tf.Output, setOperation :String  , validateIndices :Bool  , t :Type  )  ->(resultIndices: tf.Output, resultValues: tf.Output, resultShape: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -18258,7 +18258,7 @@ Splits a tensor into `num_split` tensors along one dimension.
 
 
 
-func split(scope:Scope,splitDim: Tensorflow_DataType, value: Tensorflow_DataType, numSplit :UInt8  )  ->(output: tf.Output){
+func split(scope:Scope,splitDim: tf.Output, value: tf.Output, numSplit :UInt8  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -18284,7 +18284,7 @@ Splits a tensor into `num_split` tensors along one dimension.
 
 
 
-func splitV(scope:Scope,value: Tensorflow_DataType, sizeSplits: Tensorflow_DataType, splitDim: Tensorflow_DataType, numSplit :Int  , t :Type  , tlen :Type  )  ->(output: tf.Output){
+func splitV(scope:Scope,value: tf.Output, sizeSplits: tf.Output, splitDim: tf.Output, numSplit :Int  , t :Type  , tlen :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -18313,7 +18313,7 @@ I.e., \\(y = \sqrt{x} = x^{1/2}\\).
 
 
 
-func sqrt(scope:Scope,x: Tensorflow_DataType )  ->(y: tf.Output){
+func sqrt(scope:Scope,x: tf.Output )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -18340,7 +18340,7 @@ is the corresponding input gradient.
 
 
 
-func sqrtGrad(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :Type  )  ->(z: tf.Output){
+func sqrtGrad(scope:Scope,x: tf.Output, y: tf.Output, t :Type  )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -18367,7 +18367,7 @@ I.e., \\(y = x * x = x^2\\).
 
 
 
-func square(scope:Scope,x: Tensorflow_DataType )  ->(y: tf.Output){
+func square(scope:Scope,x: tf.Output )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -18394,7 +18394,7 @@ Returns (x - y)(x - y) element-wise.
 
 
 
-func squaredDifference(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :Type  )  ->(z: tf.Output){
+func squaredDifference(scope:Scope,x: tf.Output, y: tf.Output, t :Type  )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -18434,7 +18434,7 @@ shape(squeeze(t, [2, 4])) ==> [1, 2, 3, 1]
 
 
 
-func squeeze(scope:Scope,input: Tensorflow_DataType, squeezeDims :List(int)  )  ->(output: tf.Output){
+func squeeze(scope:Scope,input: tf.Output, squeezeDims :List(int)  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -18487,7 +18487,7 @@ Delete the stack from its resource container.
 
 
 
-func stackClose(scope:Scope,handle: Tensorflow_DataType )  ->(o:tf.Operation){
+func stackClose(scope:Scope,handle: tf.Output )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -18511,7 +18511,7 @@ Pop the element at the top of the stack.
 
 
 
-func stackPop(scope:Scope,handle: Tensorflow_DataType, elemType :Type  )  ->(elem: tf.Output){
+func stackPop(scope:Scope,handle: tf.Output, elemType :Type  )  ->(elem: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -18537,7 +18537,7 @@ Push an element onto the stack.
 
 
 
-func stackPush(scope:Scope,handle: Tensorflow_DataType, elem: Tensorflow_DataType, swapMemory :Bool  )  ->(output: tf.Output){
+func stackPush(scope:Scope,handle: tf.Output, elem: tf.Output, swapMemory :Bool  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -18565,7 +18565,7 @@ fewer capabilities and options.  This Op is optimized for performance.
 
 
 
-func stage(scope:Scope,values: Tensorflow_DataType, dtypes :List(type)  , container :String  , sharedName :String  )  ->(o:tf.Operation){
+func stage(scope:Scope,values: tf.Output, dtypes :List(type)  , container :String  , sharedName :String  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -18594,7 +18594,7 @@ The outputs are a deterministic function of `shape` and `seed`.
 
 
 
-func statelessRandomNormal(scope:Scope,shape: Tensorflow_DataType, seed: Tensorflow_DataType, dtype :Type  )  ->(output: tf.Output){
+func statelessRandomNormal(scope:Scope,shape: tf.Output, seed: tf.Output, dtype :[Any]  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -18623,7 +18623,7 @@ The outputs are a deterministic function of `shape` and `seed`.
 
 
 
-func statelessRandomUniform(scope:Scope,shape: Tensorflow_DataType, seed: Tensorflow_DataType, dtype :Type  , t :Type  )  ->(output: tf.Output){
+func statelessRandomUniform(scope:Scope,shape: tf.Output, seed: tf.Output, dtype :Type  , t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -18654,7 +18654,7 @@ The outputs are a deterministic function of `shape` and `seed`.
 
 
 
-func statelessTruncatedNormal(scope:Scope,shape: Tensorflow_DataType, seed: Tensorflow_DataType, dtype :Type  )  ->(output: tf.Output){
+func statelessTruncatedNormal(scope:Scope,shape: tf.Output, seed: tf.Output, dtype :[Any]  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -18696,7 +18696,7 @@ to pretend that the value was a constant. Some examples include:
 
 
 
-func stopGradient(scope:Scope,input: Tensorflow_DataType, t :Type  )  ->(output: tf.Output){
+func stopGradient(scope:Scope,input: tf.Output, t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -18795,7 +18795,7 @@ receive 0, 0, and 1, respectively. The appropriate bits in `begin_mask` and
 
 
 
-func stridedSlice(scope:Scope,input: Tensorflow_DataType, begin: Tensorflow_DataType, end: Tensorflow_DataType, strides: Tensorflow_DataType, index :Type  , beginMask :Int  , endMask :Int  , ellipsisMask :Int  , newAxisMask :Int  , shrinkAxisMask :Int  )  ->(output: tf.Output){
+func stridedSlice(scope:Scope,input: tf.Output, begin: tf.Output, end: tf.Output, strides: tf.Output, index :Type  , beginMask :Int  , endMask :Int  , ellipsisMask :Int  , newAxisMask :Int  , shrinkAxisMask :Int  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -18831,7 +18831,7 @@ shape must be exactly the shape produced by the slice of `ref`.
 
 
 
-func stridedSliceAssign(scope:Scope,ref: Tensorflow_DataType, begin: Tensorflow_DataType, end: Tensorflow_DataType, strides: Tensorflow_DataType, value: Tensorflow_DataType, t :Type  , index :Type  , beginMask :Int  , endMask :Int  , ellipsisMask :Int  , newAxisMask :Int  , shrinkAxisMask :Int  )  ->(outputRef: tf.Output){
+func stridedSliceAssign(scope:Scope,ref: tf.Output, begin: tf.Output, end: tf.Output, strides: tf.Output, value: tf.Output, t :Type  , index :Type  , beginMask :Int  , endMask :Int  , ellipsisMask :Int  , newAxisMask :Int  , shrinkAxisMask :Int  )  ->(outputRef: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -18870,7 +18870,7 @@ shape of `StridedSlice`'s `input`.
 
 
 
-func stridedSliceGrad(scope:Scope,shape: Tensorflow_DataType, begin: Tensorflow_DataType, end: Tensorflow_DataType, strides: Tensorflow_DataType, dy: Tensorflow_DataType, index :Type  , beginMask :Int  , endMask :Int  , ellipsisMask :Int  , newAxisMask :Int  , shrinkAxisMask :Int  )  ->(output: tf.Output){
+func stridedSliceGrad(scope:Scope,shape: tf.Output, begin: tf.Output, end: tf.Output, strides: tf.Output, dy: tf.Output, index :Type  , beginMask :Int  , endMask :Int  , ellipsisMask :Int  , newAxisMask :Int  , shrinkAxisMask :Int  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -18902,7 +18902,7 @@ with the given separator (default is an empty separator).
 
 
 
-func stringJoin(scope:Scope,inputs: Tensorflow_DataType, n :Int  , separator :String  )  ->(output: tf.Output){
+func stringJoin(scope:Scope,inputs: tf.Output, n :Int  , separator :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -18946,7 +18946,7 @@ For example:
 
 
 
-func stringSplit(scope:Scope,input: Tensorflow_DataType, delimiter: Tensorflow_DataType )  ->(indices: tf.Output, values: tf.Output, shape: tf.Output){
+func stringSplit(scope:Scope,input: tf.Output, delimiter: tf.Output )  ->(indices: tf.Output, values: tf.Output, shape: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -18976,7 +18976,7 @@ This functionality will be deprecated and it's recommended to use
 
 
 
-func stringToHashBucket(scope:Scope,stringTensor: Tensorflow_DataType, numBuckets :UInt8  )  ->(output: tf.Output){
+func stringToHashBucket(scope:Scope,stringTensor: tf.Output, numBuckets :UInt8  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -19008,7 +19008,7 @@ to the same bucket. To prevent this problem, use a strong hash function with
 
 
 
-func stringToHashBucketFast(scope:Scope,input: Tensorflow_DataType, numBuckets :UInt8  )  ->(output: tf.Output){
+func stringToHashBucketFast(scope:Scope,input: tf.Output, numBuckets :UInt8  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -19043,7 +19043,7 @@ time than `tf.string_to_hash_bucket_fast`.
 
 
 
-func stringToHashBucketStrong(scope:Scope,input: Tensorflow_DataType, numBuckets :UInt8  , key :[Int]  )  ->(output: tf.Output){
+func stringToHashBucketStrong(scope:Scope,input: tf.Output, numBuckets :UInt8  , key :[Int64]  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -19072,7 +19072,7 @@ results in a rounded value.)
 
 
 
-func stringToNumber(scope:Scope,stringTensor: Tensorflow_DataType, outType :Type  )  ->(output: tf.Output){
+func stringToNumber(scope:Scope,stringTensor: tf.Output, outType :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -19100,7 +19100,7 @@ Returns x - y element-wise.
 
 
 
-func sub(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType )  ->(z: tf.Output){
+func sub(scope:Scope,x: tf.Output, y: tf.Output )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -19180,7 +19180,7 @@ output = [b'hir', b'ee', b'n"]
 
 
 
-func substr(scope:Scope,input: Tensorflow_DataType, pos: Tensorflow_DataType, len: Tensorflow_DataType, t :Type  )  ->(output: tf.Output){
+func substr(scope:Scope,input: tf.Output, pos: tf.Output, len: tf.Output, t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -19210,7 +19210,7 @@ retained with length 1.
 
 
 
-func sum(scope:Scope,input: Tensorflow_DataType, reductionIndices: Tensorflow_DataType, keepDims :Bool  , tidx :Type  )  ->(output: tf.Output){
+func sum(scope:Scope,input: tf.Output, reductionIndices: tf.Output, keepDims :Bool  , tidx :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -19247,7 +19247,7 @@ s, _, _ = svd(a, compute_uv=False)
 
 
 
-func svd(scope:Scope,input: Tensorflow_DataType, computeUv :Bool  , fullMatrices :Bool  , t :Type  )  ->(s: tf.Output, u: tf.Output, v: tf.Output){
+func svd(scope:Scope,input: tf.Output, computeUv :Bool  , fullMatrices :Bool  , t :Type  )  ->(s: tf.Output, u: tf.Output, v: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -19278,7 +19278,7 @@ See also `RefSwitch` and `Merge`.
 
 
 
-func switch(scope:Scope,data: Tensorflow_DataType, pred: Tensorflow_DataType )  ->(outputFalse: tf.Output, outputTrue: tf.Output){
+func switch(scope:Scope,data: tf.Output, pred: tf.Output )  ->(outputFalse: tf.Output, outputTrue: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -19303,7 +19303,7 @@ Computes the gradient function for function f via backpropagation.
 
 
 
-func symbolicGradient(scope:Scope,input: Tensorflow_DataType, tin :List(type)  , tout :List(type)  , f :Func  )  ->(output: tf.Output){
+func symbolicGradient(scope:Scope,input: tf.Output, tin :List(type)  , tout :List(type)  , f :Func  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -19331,7 +19331,7 @@ Creates a dataset that emits the records from one or more TFRecord files.
 
 
 
-func tfRecordDataset(scope:Scope,filenames: Tensorflow_DataType, compressionType: Tensorflow_DataType )  ->(handle: tf.Output){
+func tfRecordDataset(scope:Scope,filenames: tf.Output, compressionType: tf.Output )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -19412,7 +19412,7 @@ Creates a dataset that contains `count` elements from the `input_dataset`.
 
 
 
-func takeDataset(scope:Scope,inputDataset: Tensorflow_DataType, count: Tensorflow_DataType, outputTypes :List(type)  , outputShapes :[Shape]  )  ->(handle: tf.Output){
+func takeDataset(scope:Scope,inputDataset: tf.Output, count: tf.Output, outputTypes :List(type)  , outputShapes :[Shape]  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -19479,7 +19479,7 @@ then the final `SparseTensor` will be:
 
 
 
-func takeManySparseFromTensorsMap(scope:Scope,sparseHandles: Tensorflow_DataType, dtype :Type  , container :String  , sharedName :String  )  ->(sparseIndices: tf.Output, sparseValues: tf.Output, sparseShape: tf.Output){
+func takeManySparseFromTensorsMap(scope:Scope,sparseHandles: tf.Output, dtype :Type  , container :String  , sharedName :String  )  ->(sparseIndices: tf.Output, sparseValues: tf.Output, sparseShape: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -19507,7 +19507,7 @@ Computes tan of x element-wise.
 
 
 
-func tan(scope:Scope,x: Tensorflow_DataType )  ->(y: tf.Output){
+func tan(scope:Scope,x: tf.Output )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -19532,7 +19532,7 @@ Computes hyperbolic tangent of `x` element-wise.
 
 
 
-func tanh(scope:Scope,x: Tensorflow_DataType, t :Type  )  ->(y: tf.Output){
+func tanh(scope:Scope,x: tf.Output, t :Type  )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -19560,7 +19560,7 @@ is the corresponding input gradient.
 
 
 
-func tanhGrad(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType )  ->(z: tf.Output){
+func tanhGrad(scope:Scope,x: tf.Output, y: tf.Output )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -19623,7 +19623,7 @@ func temporaryVariable(scope:Scope shape :Shape  , dtype :Type  , varName :Strin
 
 
 
-func tensorArray(scope:Scope,size: Tensorflow_DataType, dtype :Type  , dynamicSize :Bool  , clearAfterRead :Bool  , tensorArrayName :String  , elementShape :Shape  )  ->(handle: tf.Output){
+func tensorArray(scope:Scope,size: tf.Output, dtype :Type  , dynamicSize :Bool  , clearAfterRead :Bool  , tensorArrayName :String  , elementShape :Shape  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -19652,7 +19652,7 @@ func tensorArray(scope:Scope,size: Tensorflow_DataType, dtype :Type  , dynamicSi
 
 
 
-func tensorArrayClose(scope:Scope,handle: Tensorflow_DataType )  ->(o:tf.Operation){
+func tensorArrayClose(scope:Scope,handle: tf.Output )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -19676,7 +19676,7 @@ Deprecated. Use TensorArrayCloseV3
 
 
 
-func tensorArrayCloseV2(scope:Scope,handle: Tensorflow_DataType )  ->(o:tf.Operation){
+func tensorArrayCloseV2(scope:Scope,handle: tf.Output )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -19702,7 +19702,7 @@ of a step/run.
 
 
 
-func tensorArrayCloseV3(scope:Scope,handle: Tensorflow_DataType )  ->(o:tf.Operation){
+func tensorArrayCloseV3(scope:Scope,handle: tf.Output )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -19725,7 +19725,7 @@ func tensorArrayCloseV3(scope:Scope,handle: Tensorflow_DataType )  ->(o:tf.Opera
 
 
 
-func tensorArrayConcat(scope:Scope,handle: Tensorflow_DataType, flowIn: Tensorflow_DataType, dtype :Type  , elementShapeExcept0 :Shape  )  ->(value: tf.Output, lengths: tf.Output){
+func tensorArrayConcat(scope:Scope,handle: tf.Output, flowIn: tf.Output, dtype :Type  , elementShapeExcept0 :Shape  )  ->(value: tf.Output, lengths: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -19752,7 +19752,7 @@ Deprecated. Use TensorArrayConcatV3
 
 
 
-func tensorArrayConcatV2(scope:Scope,handle: Tensorflow_DataType, flowIn: Tensorflow_DataType, dtype :Type  , elementShapeExcept0 :Shape  )  ->(value: tf.Output, lengths: tf.Output){
+func tensorArrayConcatV2(scope:Scope,handle: tf.Output, flowIn: tf.Output, dtype :Type  , elementShapeExcept0 :Shape  )  ->(value: tf.Output, lengths: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -19786,7 +19786,7 @@ All elements must have the same shape (excepting the first dimension).
 
 
 
-func tensorArrayConcatV3(scope:Scope,handle: Tensorflow_DataType, flowIn: Tensorflow_DataType, dtype :Type  , elementShapeExcept0 :Shape  )  ->(value: tf.Output, lengths: tf.Output){
+func tensorArrayConcatV3(scope:Scope,handle: tf.Output, flowIn: tf.Output, dtype :Type  , elementShapeExcept0 :Shape  )  ->(value: tf.Output, lengths: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -19812,7 +19812,7 @@ func tensorArrayConcatV3(scope:Scope,handle: Tensorflow_DataType, flowIn: Tensor
 
 
 
-func tensorArrayGather(scope:Scope,handle: Tensorflow_DataType, indices: Tensorflow_DataType, flowIn: Tensorflow_DataType, dtype :Type  , elementShape :Shape  )  ->(value: tf.Output){
+func tensorArrayGather(scope:Scope,handle: tf.Output, indices: tf.Output, flowIn: tf.Output, dtype :Type  , elementShape :Shape  )  ->(value: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -19839,7 +19839,7 @@ Deprecated. Use TensorArrayGatherV3
 
 
 
-func tensorArrayGatherV2(scope:Scope,handle: Tensorflow_DataType, indices: Tensorflow_DataType, flowIn: Tensorflow_DataType, dtype :Type  , elementShape :Shape  )  ->(value: tf.Output){
+func tensorArrayGatherV2(scope:Scope,handle: tf.Output, indices: tf.Output, flowIn: tf.Output, dtype :Type  , elementShape :Shape  )  ->(value: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -19867,7 +19867,7 @@ All elements selected by `indices` must have the same shape.
 
 
 
-func tensorArrayGatherV3(scope:Scope,handle: Tensorflow_DataType, indices: Tensorflow_DataType, flowIn: Tensorflow_DataType, dtype :Type  , elementShape :Shape  )  ->(value: tf.Output){
+func tensorArrayGatherV3(scope:Scope,handle: tf.Output, indices: tf.Output, flowIn: tf.Output, dtype :Type  , elementShape :Shape  )  ->(value: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -19893,7 +19893,7 @@ func tensorArrayGatherV3(scope:Scope,handle: Tensorflow_DataType, indices: Tenso
 
 
 
-func tensorArrayGrad(scope:Scope,handle: Tensorflow_DataType, flowIn: Tensorflow_DataType, source :String  )  ->(gradHandle: tf.Output){
+func tensorArrayGrad(scope:Scope,handle: tf.Output, flowIn: tf.Output, source :String  )  ->(gradHandle: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -19919,7 +19919,7 @@ Deprecated. Use TensorArrayGradV3
 
 
 
-func tensorArrayGradV2(scope:Scope,handle: Tensorflow_DataType, flowIn: Tensorflow_DataType, source :String  )  ->(gradHandle: tf.Output){
+func tensorArrayGradV2(scope:Scope,handle: tf.Output, flowIn: tf.Output, source :String  )  ->(gradHandle: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -19973,7 +19973,7 @@ calculation gets its own TensorArray accumulator.
 
 
 
-func tensorArrayGradV3(scope:Scope,handle: Tensorflow_DataType, flowIn: Tensorflow_DataType, source :String  )  ->(gradHandle: tf.Output, flowOut: tf.Output){
+func tensorArrayGradV3(scope:Scope,handle: tf.Output, flowIn: tf.Output, source :String  )  ->(gradHandle: tf.Output, flowOut: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -19998,7 +19998,7 @@ func tensorArrayGradV3(scope:Scope,handle: Tensorflow_DataType, flowIn: Tensorfl
 
 
 
-func tensorArrayPack(scope:Scope,handle: Tensorflow_DataType, flowIn: Tensorflow_DataType, dtype :Type  , elementShape :Shape  )  ->(value: tf.Output){
+func tensorArrayPack(scope:Scope,handle: tf.Output, flowIn: tf.Output, dtype :Type  , elementShape :Shape  )  ->(value: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -20024,7 +20024,7 @@ func tensorArrayPack(scope:Scope,handle: Tensorflow_DataType, flowIn: Tensorflow
 
 
 
-func tensorArrayRead(scope:Scope,handle: Tensorflow_DataType, index: Tensorflow_DataType, flowIn: Tensorflow_DataType, dtype :Type  )  ->(value: tf.Output){
+func tensorArrayRead(scope:Scope,handle: tf.Output, index: tf.Output, flowIn: tf.Output, dtype :Type  )  ->(value: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -20050,7 +20050,7 @@ Deprecated. Use TensorArrayReadV3
 
 
 
-func tensorArrayReadV2(scope:Scope,handle: Tensorflow_DataType, index: Tensorflow_DataType, flowIn: Tensorflow_DataType, dtype :Type  )  ->(value: tf.Output){
+func tensorArrayReadV2(scope:Scope,handle: tf.Output, index: tf.Output, flowIn: tf.Output, dtype :Type  )  ->(value: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -20076,7 +20076,7 @@ Read an element from the TensorArray into output `value`.
 
 
 
-func tensorArrayReadV3(scope:Scope,handle: Tensorflow_DataType, index: Tensorflow_DataType, flowIn: Tensorflow_DataType, dtype :Type  )  ->(value: tf.Output){
+func tensorArrayReadV3(scope:Scope,handle: tf.Output, index: tf.Output, flowIn: tf.Output, dtype :Type  )  ->(value: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -20101,7 +20101,7 @@ func tensorArrayReadV3(scope:Scope,handle: Tensorflow_DataType, index: Tensorflo
 
 
 
-func tensorArrayScatter(scope:Scope,handle: Tensorflow_DataType, indices: Tensorflow_DataType, value: Tensorflow_DataType, flowIn: Tensorflow_DataType )  ->(flowOut: tf.Output){
+func tensorArrayScatter(scope:Scope,handle: tf.Output, indices: tf.Output, value: tf.Output, flowIn: tf.Output )  ->(flowOut: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -20126,7 +20126,7 @@ Deprecated. Use TensorArrayScatterV3
 
 
 
-func tensorArrayScatterV2(scope:Scope,handle: Tensorflow_DataType, indices: Tensorflow_DataType, value: Tensorflow_DataType, flowIn: Tensorflow_DataType, t :Type  )  ->(flowOut: tf.Output){
+func tensorArrayScatterV2(scope:Scope,handle: tf.Output, indices: tf.Output, value: tf.Output, flowIn: tf.Output, t :Type  )  ->(flowOut: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -20153,7 +20153,7 @@ Scatter the data from the input value into specific TensorArray elements.
 
 
 
-func tensorArrayScatterV3(scope:Scope,handle: Tensorflow_DataType, indices: Tensorflow_DataType, value: Tensorflow_DataType, flowIn: Tensorflow_DataType )  ->(flowOut: tf.Output){
+func tensorArrayScatterV3(scope:Scope,handle: tf.Output, indices: tf.Output, value: tf.Output, flowIn: tf.Output )  ->(flowOut: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -20177,7 +20177,7 @@ func tensorArrayScatterV3(scope:Scope,handle: Tensorflow_DataType, indices: Tens
 
 
 
-func tensorArraySize(scope:Scope,handle: Tensorflow_DataType, flowIn: Tensorflow_DataType )  ->(size: tf.Output){
+func tensorArraySize(scope:Scope,handle: tf.Output, flowIn: tf.Output )  ->(size: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -20202,7 +20202,7 @@ Deprecated. Use TensorArraySizeV3
 
 
 
-func tensorArraySizeV2(scope:Scope,handle: Tensorflow_DataType, flowIn: Tensorflow_DataType )  ->(size: tf.Output){
+func tensorArraySizeV2(scope:Scope,handle: tf.Output, flowIn: tf.Output )  ->(size: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -20227,7 +20227,7 @@ Get the current size of the TensorArray.
 
 
 
-func tensorArraySizeV3(scope:Scope,handle: Tensorflow_DataType, flowIn: Tensorflow_DataType )  ->(size: tf.Output){
+func tensorArraySizeV3(scope:Scope,handle: tf.Output, flowIn: tf.Output )  ->(size: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -20251,7 +20251,7 @@ func tensorArraySizeV3(scope:Scope,handle: Tensorflow_DataType, flowIn: Tensorfl
 
 
 
-func tensorArraySplit(scope:Scope,handle: Tensorflow_DataType, value: Tensorflow_DataType, lengths: Tensorflow_DataType, flowIn: Tensorflow_DataType )  ->(flowOut: tf.Output){
+func tensorArraySplit(scope:Scope,handle: tf.Output, value: tf.Output, lengths: tf.Output, flowIn: tf.Output )  ->(flowOut: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -20276,7 +20276,7 @@ Deprecated. Use TensorArraySplitV3
 
 
 
-func tensorArraySplitV2(scope:Scope,handle: Tensorflow_DataType, value: Tensorflow_DataType, lengths: Tensorflow_DataType, flowIn: Tensorflow_DataType, t :Type  )  ->(flowOut: tf.Output){
+func tensorArraySplitV2(scope:Scope,handle: tf.Output, value: tf.Output, lengths: tf.Output, flowIn: tf.Output, t :Type  )  ->(flowOut: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -20311,7 +20311,7 @@ and having size
 
 
 
-func tensorArraySplitV3(scope:Scope,handle: Tensorflow_DataType, value: Tensorflow_DataType, lengths: Tensorflow_DataType, flowIn: Tensorflow_DataType )  ->(flowOut: tf.Output){
+func tensorArraySplitV3(scope:Scope,handle: tf.Output, value: tf.Output, lengths: tf.Output, flowIn: tf.Output )  ->(flowOut: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -20335,7 +20335,7 @@ func tensorArraySplitV3(scope:Scope,handle: Tensorflow_DataType, value: Tensorfl
 
 
 
-func tensorArrayUnpack(scope:Scope,handle: Tensorflow_DataType, value: Tensorflow_DataType, flowIn: Tensorflow_DataType, t :Type  )  ->(flowOut: tf.Output){
+func tensorArrayUnpack(scope:Scope,handle: tf.Output, value: tf.Output, flowIn: tf.Output, t :Type  )  ->(flowOut: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -20361,7 +20361,7 @@ Deprecated. Use TensorArrayV3
 
 
 
-func tensorArrayV2(scope:Scope,size: Tensorflow_DataType, dtype :Type  , elementShape :Shape  , dynamicSize :Bool  , clearAfterRead :Bool  , tensorArrayName :String  )  ->(handle: tf.Output){
+func tensorArrayV2(scope:Scope,size: tf.Output, dtype :Type  , elementShape :Shape  , dynamicSize :Bool  , clearAfterRead :Bool  , tensorArrayName :String  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -20392,7 +20392,7 @@ Write data via Write and read via Read or Pack.
 
 
 
-func tensorArrayV3(scope:Scope,size: Tensorflow_DataType, dtype :Type  , elementShape :Shape  , dynamicSize :Bool  , clearAfterRead :Bool  , tensorArrayName :String  )  ->(handle: tf.Output, flow: tf.Output){
+func tensorArrayV3(scope:Scope,size: tf.Output, dtype :Type  , elementShape :Shape  , dynamicSize :Bool  , clearAfterRead :Bool  , tensorArrayName :String  )  ->(handle: tf.Output, flow: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -20421,7 +20421,7 @@ func tensorArrayV3(scope:Scope,size: Tensorflow_DataType, dtype :Type  , element
 
 
 
-func tensorArrayWrite(scope:Scope,handle: Tensorflow_DataType, index: Tensorflow_DataType, value: Tensorflow_DataType, flowIn: Tensorflow_DataType )  ->(flowOut: tf.Output){
+func tensorArrayWrite(scope:Scope,handle: tf.Output, index: tf.Output, value: tf.Output, flowIn: tf.Output )  ->(flowOut: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -20446,7 +20446,7 @@ Deprecated. Use TensorArrayGradV3
 
 
 
-func tensorArrayWriteV2(scope:Scope,handle: Tensorflow_DataType, index: Tensorflow_DataType, value: Tensorflow_DataType, flowIn: Tensorflow_DataType, t :Type  )  ->(flowOut: tf.Output){
+func tensorArrayWriteV2(scope:Scope,handle: tf.Output, index: tf.Output, value: tf.Output, flowIn: tf.Output, t :Type  )  ->(flowOut: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -20472,7 +20472,7 @@ Push an element onto the tensor_array.
 
 
 
-func tensorArrayWriteV3(scope:Scope,handle: Tensorflow_DataType, index: Tensorflow_DataType, value: Tensorflow_DataType, flowIn: Tensorflow_DataType )  ->(flowOut: tf.Output){
+func tensorArrayWriteV3(scope:Scope,handle: tf.Output, index: tf.Output, value: tf.Output, flowIn: tf.Output )  ->(flowOut: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -20497,7 +20497,7 @@ Creates a dataset that emits `components` as a tuple of tensors once.
 
 
 
-func tensorDataset(scope:Scope,components: Tensorflow_DataType, toutputTypes :List(type)  , outputShapes :List(shape)  )  ->(handle: tf.Output){
+func tensorDataset(scope:Scope,components: tf.Output, toutputTypes :List(type)  , outputShapes :List(shape)  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -20524,7 +20524,7 @@ Creates a dataset that emits each dim-0 slice of `components` once.
 
 
 
-func tensorSliceDataset(scope:Scope,components: Tensorflow_DataType, toutputTypes :List(type)  , outputShapes :[Shape]  )  ->(handle: tf.Output){
+func tensorSliceDataset(scope:Scope,components: tf.Output, toutputTypes :List(type)  , outputShapes :[Shape]  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -20551,7 +20551,7 @@ Outputs a `Summary` protocol buffer with a tensor.
 
 
 
-func tensorSummary(scope:Scope,tensor: Tensorflow_DataType, description :String  , labels :List(string)  , displayName :String  )  ->(summary: tf.Output){
+func tensorSummary(scope:Scope,tensor: tf.Output, description :String  , labels :List(string)  , displayName :String  )  ->(summary: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -20579,7 +20579,7 @@ Creates a dataset that emits the lines of one or more text files.
 
 
 
-func textLineDataset(scope:Scope,filenames: Tensorflow_DataType )  ->(handle: tf.Output){
+func textLineDataset(scope:Scope,filenames: tf.Output )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -20667,7 +20667,7 @@ true labels.
 
 
 
-func threadUnsafeUnigramCandidateSampler(scope:Scope,trueClasses: Tensorflow_DataType, numTrue :UInt8  , numSampled :UInt8  , unique :Bool  , rangeMax :UInt8  , seed :UInt8  , seed2 :UInt8  )  ->(sampledCandidates: tf.Output, trueExpectedCount: tf.Output, sampledExpectedCount: tf.Output){
+func threadUnsafeUnigramCandidateSampler(scope:Scope,trueClasses: tf.Output, numTrue :UInt8  , numSampled :UInt8  , unique :Bool  , rangeMax :UInt8  , seed :UInt8  , seed2 :UInt8  )  ->(sampledCandidates: tf.Output, trueExpectedCount: tf.Output, sampledExpectedCount: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -20703,7 +20703,7 @@ dimension. For example, tiling `[a b c d]` by `[2]` produces
 
 
 
-func tile(scope:Scope,input: Tensorflow_DataType, multiples: Tensorflow_DataType, tmultiples :Type  )  ->(output: tf.Output){
+func tile(scope:Scope,input: tf.Output, multiples: tf.Output, tmultiples :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -20732,7 +20732,7 @@ each repeated tile of `input` into `output`.
 
 
 
-func tileGrad(scope:Scope,input: Tensorflow_DataType, multiples: Tensorflow_DataType, t :Type  )  ->(output: tf.Output){
+func tileGrad(scope:Scope,input: tf.Output, multiples: tf.Output, t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -20766,7 +20766,7 @@ If `k` varies dynamically, use `TopKV2` below.
 
 
 
-func topK(scope:Scope,input: Tensorflow_DataType, k :UInt8  , sorted :Bool  )  ->(values: tf.Output, indices: tf.Output){
+func topK(scope:Scope,input: tf.Output, k :UInt8  , sorted :Bool  )  ->(values: tf.Output, indices: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -20800,7 +20800,7 @@ If two elements are equal, the lower-index element appears first.
 
 
 
-func topKV2(scope:Scope,input: Tensorflow_DataType, k: Tensorflow_DataType, sorted :Bool  , t :Type  )  ->(values: tf.Output, indices: tf.Output){
+func topKV2(scope:Scope,input: tf.Output, k: tf.Output, sorted :Bool  , t :Type  )  ->(values: tf.Output, indices: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -20829,7 +20829,7 @@ The output `y` has the same rank as `x`. The shapes of `x` and `y` satisfy:
 
 
 
-func transpose(scope:Scope,x: Tensorflow_DataType, perm: Tensorflow_DataType, tperm :Type  )  ->(y: tf.Output){
+func transpose(scope:Scope,x: tf.Output, perm: tf.Output, tperm :Type  )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -20861,7 +20861,7 @@ Python Semantics.
 
 
 
-func truncateDiv(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :Type  )  ->(z: tf.Output){
+func truncateDiv(scope:Scope,x: tf.Output, y: tf.Output, t :Type  )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -20891,7 +20891,7 @@ y + truncate_mod(x, y) = x`.
 
 
 
-func truncateMod(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType )  ->(z: tf.Output){
+func truncateMod(scope:Scope,x: tf.Output, y: tf.Output )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -20919,7 +20919,7 @@ deviations from the mean are dropped and re-picked.
 
 
 
-func truncatedNormal(scope:Scope,shape: Tensorflow_DataType, seed :Int  , seed2 :Int  , dtype :Type  , t :Type  )  ->(output: tf.Output){
+func truncatedNormal(scope:Scope,shape: tf.Output, seed :Int  , seed2 :Int  , dtype :Type  , t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -20955,7 +20955,7 @@ true labels.
 
 
 
-func uniformCandidateSampler(scope:Scope,trueClasses: Tensorflow_DataType, numTrue :UInt8  , numSampled :UInt8  , unique :Bool  , rangeMax :UInt8  , seed :UInt8  , seed2 :UInt8  )  ->(sampledCandidates: tf.Output, trueExpectedCount: tf.Output, sampledExpectedCount: tf.Output){
+func uniformCandidateSampler(scope:Scope,trueClasses: tf.Output, numTrue :UInt8  , numSampled :UInt8  , unique :Bool  , rangeMax :UInt8  , seed :UInt8  , seed2 :UInt8  )  ->(sampledCandidates: tf.Output, trueExpectedCount: tf.Output, sampledExpectedCount: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -20998,7 +20998,7 @@ idx ==> [0, 0, 1, 2, 2, 2, 3, 4, 4]
 
 
 
-func unique(scope:Scope,x: Tensorflow_DataType, outIdx :Type  )  ->(y: tf.Output, idx: tf.Output){
+func unique(scope:Scope,x: tf.Output, outIdx :Type  )  ->(y: tf.Output, idx: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -21038,7 +21038,7 @@ count ==> [2, 1, 3, 1, 2]
 
 
 
-func uniqueWithCounts(scope:Scope,x: Tensorflow_DataType, t :Type  , outIdx :Type  )  ->(y: tf.Output, idx: tf.Output, count: tf.Output){
+func uniqueWithCounts(scope:Scope,x: tf.Output, t :Type  , outIdx :Type  )  ->(y: tf.Output, idx: tf.Output, count: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -21074,7 +21074,7 @@ This is the opposite of `pack`.
 
 
 
-func unpack(scope:Scope,value: Tensorflow_DataType, num :UInt8  , axis :Int  )  ->(output: tf.Output){
+func unpack(scope:Scope,value: tf.Output, num :UInt8  , axis :Int  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -21113,7 +21113,7 @@ If the maximum is empty for a given segment ID `i`, it outputs the smallest poss
 
 
 
-func unsortedSegmentMax(scope:Scope,data: Tensorflow_DataType, segmentIds: Tensorflow_DataType, numSegments: Tensorflow_DataType, t :Type  , tindices :Type  )  ->(output: tf.Output){
+func unsortedSegmentMax(scope:Scope,data: tf.Output, segmentIds: tf.Output, numSegments: tf.Output, t :Type  , tindices :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -21152,7 +21152,7 @@ If the sum is empty for a given segment ID `i`, `output[i] = 0`.
 
 
 
-func unsortedSegmentSum(scope:Scope,data: Tensorflow_DataType, segmentIds: Tensorflow_DataType, numSegments: Tensorflow_DataType, tindices :Type  )  ->(output: tf.Output){
+func unsortedSegmentSum(scope:Scope,data: tf.Output, segmentIds: tf.Output, numSegments: tf.Output, tindices :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -21297,7 +21297,7 @@ where(input) ==> [[0, 0, 0],
 
 
 
-func where(scope:Scope,input: Tensorflow_DataType )  ->(index: tf.Output){
+func where(scope:Scope,input: tf.Output )  ->(index: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -21380,7 +21380,7 @@ Writes contents to the file at input filename. Creates file if not existing.
 
 
 
-func writeFile(scope:Scope,filename: Tensorflow_DataType, contents: Tensorflow_DataType )  ->(o:tf.Operation){
+func writeFile(scope:Scope,filename: tf.Output, contents: tf.Output )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
@@ -21404,7 +21404,7 @@ Returns a tensor of zeros with the same shape and type as x.
 
 
 
-func zerosLike(scope:Scope,x: Tensorflow_DataType )  ->(y: tf.Output){
+func zerosLike(scope:Scope,x: tf.Output )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -21431,7 +21431,7 @@ The Hurwitz zeta function is defined as:
 
 
 
-func zeta(scope:Scope,x: Tensorflow_DataType, q: Tensorflow_DataType, t :Type  )  ->(z: tf.Output){
+func zeta(scope:Scope,x: tf.Output, q: tf.Output, t :Type  )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
@@ -21457,7 +21457,7 @@ Creates a dataset that zips together `input_datasets`.
 
 
 
-func zipDataset(scope:Scope,inputDatasets: Tensorflow_DataType, outputTypes :List(type)  , outputShapes :[Shape]  , n :UInt8  )  ->(handle: tf.Output){
+func zipDataset(scope:Scope,inputDatasets: tf.Output, outputTypes :List(type)  , outputShapes :[Shape]  , n :UInt8  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
