@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		17F9352F1EDF565500110E84 /* GenerateOps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F9352D1EDF518200110E84 /* GenerateOps.swift */; };
-		E84D9C941EE19D9B007C802D /* GoOpWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* GoOpWrapper.swift */; };
 		OBJ_321 /* conformance.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_183 /* conformance.pb.swift */; };
 		OBJ_322 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_184 /* main.swift */; };
 		OBJ_323 /* test_messages_proto3.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_185 /* test_messages_proto3.pb.swift */; };
@@ -2110,7 +2109,6 @@
 				OBJ_684 /* TF_Session.swift in Sources */,
 				OBJ_685 /* TF_Status.swift in Sources */,
 				OBJ_686 /* TF_String.swift in Sources */,
-				E84D9C941EE19D9B007C802D /* GoOpWrapper.swift in Sources */,
 				OBJ_687 /* TF_Tensor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
