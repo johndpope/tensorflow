@@ -13,62 +13,7 @@
 # limitations under the License.
 # ==============================================================================
 
-"""Monitors allow user instrumentation of the training process.
-
-Monitors are useful to track training, report progress, request early
-stopping and more. Monitors use the observer pattern and notify at the following
-points:
-
-* when training begins
-* before a training step
-* after a training step
-* when training ends
-
-Monitors are not intended to be reusable.
-
-There are a few pre-defined monitors:
-
-* `CaptureVariable`: saves a variable's values
-* `GraphDump`: intended for debug only - saves all tensor values
-* `PrintTensor`: outputs one or more tensor values to log
-* `SummarySaver`: saves summaries to a summary writer
-* `ValidationMonitor`: runs model validation, by periodically calculating eval
-    metrics on a separate data set; supports optional early stopping
-
-For more specific needs, you can create custom monitors by extending one of the
-following classes:
-
-* `BaseMonitor`: the base class for all monitors
-* `EveryN`: triggers a callback every N training steps
-
-Example:
-
-```python
-  class ExampleMonitor(monitors.BaseMonitor):
-    def __init__(self):
-      print 'Init'
-
-    def begin(self, max_steps):
-      print 'Starting run. Will train until step %d.' % max_steps
-
-    def end(self):
-      print 'Completed run.'
-
-    def step_begin(self, step):
-      print 'About to run step %d...' % step
-      return ['loss_1:0']
-
-    def step_end(self, step, outputs):
-      print 'Done running step %d. The value of "loss" tensor: %s' % (
-        step, outputs['loss_1:0'])
-
-  linear_regressor = LinearRegressor()
-  example_monitor = ExampleMonitor()
-  linear_regressor.fit(
-    x, y, steps=2, batch_size=1, monitors=[example_monitor])
-```
-
-## Ops
+"""Monitors instrument the training process.
 
 @@get_default_monitors
 @@BaseMonitor
@@ -90,24 +35,25 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-import inspect
 import os
 import time
 
 import numpy as np
 import six
 
-from tensorflow.contrib.framework import deprecated_arg_values
+from tensorflow.contrib.framework import deprecated
 from tensorflow.contrib.framework.python.ops import variables as contrib_variables
 from tensorflow.contrib.learn.python.learn import session_run_hook
 from tensorflow.contrib.learn.python.learn.summary_writer_cache import SummaryWriterCache
 from tensorflow.core.framework.summary_pb2 import Summary
 from tensorflow.core.util.event_pb2 import SessionLog
+from tensorflow.python.estimator import estimator as core_estimator
 from tensorflow.python.framework import ops
 from tensorflow.python.platform import tf_logging as logging
 from tensorflow.python.training import saver as saver_lib
 from tensorflow.python.training import summary_io
 from tensorflow.python.util import deprecation
+from tensorflow.python.util import tf_inspect
 
 
 # TODO(ptucker): Split each monitor class into a separate file.
@@ -528,7 +474,7 @@ class LoggingTrainable(EveryN):
 
   def every_n_step_begin(self, step):
     super(LoggingTrainable, self).every_n_step_begin(step)
-    # Get a list of trainable variables at the begining of every N steps.
+    # Get a list of trainable variables at the beginning of every N steps.
     # We cannot get this in __init__ because train_op has not been generated.
     trainables = ops.get_collection(ops.GraphKeys.TRAINABLE_VARIABLES,
                                     scope=self._scope)
@@ -618,7 +564,8 @@ class ValidationMonitor(EveryN):
 
   def __init__(self, x=None, y=None, input_fn=None, batch_size=None,
                eval_steps=None,
-               every_n_steps=100, metrics=None, early_stopping_rounds=None,
+               every_n_steps=100, metrics=None, hooks=None,
+               early_stopping_rounds=None,
                early_stopping_metric="loss",
                early_stopping_metric_minimize=True, name=None):
     """Initializes a ValidationMonitor.
@@ -632,6 +579,8 @@ class ValidationMonitor(EveryN):
       every_n_steps: Check for new checkpoints to evaluate every N steps. If a
           new checkpoint is found, it is evaluated. See `EveryN`.
       metrics: See `BaseEstimator.evaluate`.
+      hooks: A list of `SessionRunHook` hooks to pass to the
+        `Estimator`'s `evaluate` function.
       early_stopping_rounds: `int`. If the metric indicated by
           `early_stopping_metric` does not change according to
           `early_stopping_metric_minimize` for this many steps, then training
@@ -660,6 +609,7 @@ class ValidationMonitor(EveryN):
     self.batch_size = batch_size
     self.eval_steps = eval_steps
     self.metrics = metrics
+    self.hooks = hooks
     self.early_stopping_rounds = early_stopping_rounds
     self.early_stopping_metric = early_stopping_metric
     self.early_stopping_metric_minimize = early_stopping_metric_minimize
@@ -685,6 +635,23 @@ class ValidationMonitor(EveryN):
     """Returns the best early stopping metric value found so far."""
     return self._best_value
 
+  def _evaluate_estimator(self):
+    if isinstance(self._estimator, core_estimator.Estimator):
+      if any((x is not None for x in
+              [self.x, self.y, self.batch_size, self.metrics])):
+        raise ValueError(
+            "tf.estimator.Estimator does not support following "
+            "arguments: x, y, batch_size, metrics. Should set as `None` "
+            "in ValidationMonitor")
+      return self._estimator.evaluate(
+          input_fn=self.input_fn, steps=self.eval_steps, hooks=self.hooks,
+          name=self.name)
+    else:
+      return self._estimator.evaluate(
+          x=self.x, y=self.y, input_fn=self.input_fn,
+          batch_size=self.batch_size, steps=self.eval_steps,
+          metrics=self.metrics, hooks=self.hooks, name=self.name)
+
   def every_n_step_end(self, step, outputs):
     super(ValidationMonitor, self).every_n_step_end(step, outputs)
     # TODO(mdan): The use of step below is probably misleading.
@@ -707,9 +674,7 @@ class ValidationMonitor(EveryN):
     self._latest_path_step = step
 
     # Run evaluation and log it.
-    validation_outputs = self._estimator.evaluate(
-        x=self.x, y=self.y, input_fn=self.input_fn, batch_size=self.batch_size,
-        steps=self.eval_steps, metrics=self.metrics, name=self.name)
+    validation_outputs = self._evaluate_estimator()
     stats = []
     for name in validation_outputs:
       stats.append("%s = %s" % (name, str(validation_outputs[name])))
@@ -897,16 +862,9 @@ class GraphDump(BaseMonitor):
 class ExportMonitor(EveryN):
   """Monitor that exports Estimator every N steps."""
 
-  # TODO(philstahlfeld): Investigate switching export.export_estimator
-  # configuration values to **kwargs so that updates to the export_estimator
-  # function don't have to be reflected here.
-  @deprecated_arg_values(
-      "2016-09-23",
-      "The signature of the input_fn accepted by export is changing to be "
-      "consistent with what's used by tf.Learn Estimator's train/evaluate. "
-      "input_fn (and in most cases, input_feature_key) will both become "
-      "required args.",
-      input_fn=None)
+  @deprecated("2017-03-25",
+              "ExportMonitor is deprecated. Please pass an "
+              "ExportStrategy to Experiment instead.")
   def __init__(self,
                every_n_steps,
                export_dir,
@@ -976,6 +934,10 @@ class ExportMonitor(EveryN):
   def every_n_step_end(self, step, outputs):
     super(ExportMonitor, self).every_n_step_end(step, outputs)
     try:
+      if isinstance(self._estimator, core_estimator.Estimator):
+        raise ValueError(
+            "ExportMonitor does not support `tf.estimator.Estimator. `. "
+            "Please pass an ExportStrategy to Experiment instead.")
       self._last_export_dir = self._estimator.export(
           self.export_dir,
           exports_to_keep=self.exports_to_keep,
@@ -1003,6 +965,10 @@ class ExportMonitor(EveryN):
       logging.info("Skipping export at the end since model has not been saved "
                    "yet.")
       return
+    if isinstance(self._estimator, core_estimator.Estimator):
+      raise ValueError(
+          "ExportMonitor does not support `tf.estimator.Estimator. `. "
+          "Please pass an ExportStrategy to Experiment instead.")
     try:
       self._last_export_dir = self._estimator.export(
           self.export_dir,
@@ -1017,7 +983,7 @@ class ExportMonitor(EveryN):
 
 
 class CheckpointSaver(BaseMonitor):
-  """Saves checkpoints every N steps."""
+  """Saves checkpoints every N steps or N seconds."""
 
   def __init__(self,
                checkpoint_dir,
@@ -1221,7 +1187,7 @@ class RunHookAdapterForMonitors(session_run_hook.SessionRunHook):
   def end(self, session):
     self._last_step = None
     for m in self._monitors:
-      if "session" in inspect.getargspec(m.end).args:
+      if "session" in tf_inspect.getargspec(m.end).args:
         m.end(session=session)
       else:
         m.end()

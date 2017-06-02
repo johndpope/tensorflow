@@ -61,7 +61,7 @@ class SplitVOpBase : public OpKernel {
         context,
         split_tensor.dims() == 1 && split_tensor.NumElements() == num_split,
         errors::InvalidArgument("size of the split_tensor must be 1-D and have "
-                                "the same elements as outputs got",
+                                "the same elements as outputs got ",
                                 split_tensor.dims(), " -D and ",
                                 split_tensor.NumElements(), " elements"));
 
@@ -87,6 +87,12 @@ class SplitVOpBase : public OpKernel {
     // Special case 1: num_split == 1. Nothing to do.
     if (num_split == 1) {
       context->set_output(0, context->input(0));
+      OP_REQUIRES(
+          context, (*split_sizes_vec)[0] == input_size_split_dim,
+          errors::InvalidArgument("If there is only one output, it must have "
+                                  "the same size as the input. Input size: ",
+                                  input_size_split_dim,
+                                  " output size: ", (*split_sizes_vec)[0]));
       *done = true;
       return;
     }
@@ -374,6 +380,8 @@ REGISTER_SPLIT_LEN(bfloat16);
   REGISTER_GPU(type, int64);
 
 TF_CALL_GPU_NUMBER_TYPES(REGISTER_GPU_LEN);
+TF_CALL_complex64(REGISTER_GPU_LEN);
+TF_CALL_complex128(REGISTER_GPU_LEN);
 REGISTER_GPU_LEN(bfloat16);
 #undef REGISTER_GPU_LEN
 #undef REGISTER_GPU

@@ -108,7 +108,6 @@ class FunctionDefHelper {
     std::vector<std::pair<string, AttrValueWrapper>> attr;
     std::vector<string> dep;
 
-    FunctionDef::Node ToProto() const;
     NodeDef ToNodeDef() const;
   };
 
@@ -231,6 +230,10 @@ string DebugString(const GraphDef& instantiated_func_def);
 // its supporting functions defined in its library).
 string DebugStringWhole(const GraphDef& gdef);
 
+// Returns true if f1 == f2. Compares all fields, including descriptions. Order
+// of NodeDefs doesn't matter.
+bool FunctionDefsEqual(const FunctionDef& f1, const FunctionDef& f2);
+
 // Returns a canonicalized string for the instantiation of the
 // function of the given "name" and attributes "attrs".
 //
@@ -256,6 +259,7 @@ class FunctionCallFrame {
   // Caller methods.
   Status SetArgs(gtl::ArraySlice<Tensor> args);
   Status GetRetvals(std::vector<Tensor>* rets) const;
+  Status ConsumeRetvals(std::vector<Tensor>* rets);
 
   // Callee methods.
   Status GetArg(int index, Tensor* val) const;
@@ -296,6 +300,17 @@ class FunctionLibraryDefinition : public OpRegistryInterface {
   // from 'LookUp' and included in the proto returned by 'ToProto'.
   Status AddFunctionDef(const FunctionDef& fdef);
 
+  // Adds gradient definition 'grad' to this function library.
+  // If 'grad' is successfully added, it will be accessible via 'FindGradient'
+  // and included in the proto returned by 'ToProto'.
+  Status AddGradientDef(const GradientDef& grad);
+
+  // Adds the functions and gradients in 'other' to this function library.
+  Status AddLibrary(const FunctionLibraryDefinition& other);
+
+  // Adds the functions and gradients in 'lib_def' to this function library.
+  Status AddLibrary(const FunctionDefLibrary& lib_def);
+
   // If the gradient function for 'func' is specified explicitly in
   // the library, returns the gradient function name.  Otherwise,
   // returns an empty string.
@@ -320,6 +335,10 @@ class FunctionLibraryDefinition : public OpRegistryInterface {
 
   // Returns a proto representation of the state of this function library.
   FunctionDefLibrary ToProto() const;
+
+  const OpRegistryInterface* default_registry() const {
+    return default_registry_;
+  }
 
  private:
   // TODO(cwhipkey): support shape functions in FunctionDefLibrary.

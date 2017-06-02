@@ -88,8 +88,8 @@ string DataTypeString(DataType dtype) {
     case DT_RESOURCE:
       return "resource";
     default:
-      LOG(FATAL) << "Unrecognized DataType enum value " << dtype;
-      return "";
+      LOG(ERROR) << "Unrecognized DataType enum value " << dtype;
+      return strings::StrCat("unknown dtype enum (", dtype, ")");
   }
 }
 
@@ -169,7 +169,9 @@ bool DataTypeFromString(StringPiece sp, DataType* dt) {
   return false;
 }
 
-string DeviceTypeString(DeviceType device_type) { return device_type.type(); }
+string DeviceTypeString(const DeviceType& device_type) {
+  return device_type.type();
+}
 
 string DataTypeSliceString(const DataTypeSlice types) {
   string out;

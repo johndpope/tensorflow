@@ -1,26 +1,26 @@
-CFLAGS := -I../..
-# LDFLAGS := -L/usr/local/lib/tensorflow
-# LDFLAGS := -L../../bazel-bin/tensorflow
-LDFLAGS := -L../../bazel-out/local-fastbuild/bin/tensorflow
+# see https://www.tensorflow.org/versions/master/install/install_c
 
-SFLAGS=-Xcc $(CFLAGS) -Xlinker $(LDFLAGS)
+CFLAGS = -Xcc -I/usr/local/include
+LDFLAGS = -Xlinker "-L/usr/local/lib -ltensorflow"
 
-DBGLIB=.build/debug/TensorFlow.swiftmodule
-RELLIB=.build/release/TensorFlow.swiftmodule
+DBGLIB=.build/debug/TensorFlow1
+RELLIB=.build/release/TensorFlow1
 
 all: $(DBGLIB)
 
 $(DBGLIB): Sources/*
-	swift build $(SFLAGS)
+#	swift package reset
+#	swift package clean
+#	swift build -v $(CFLAGS) $(LDFLAGS) 
+	swift package generate-xcodeproj --xcconfig-overrides settings.xcconfig
 
-release: $(RELLIB)
 
-$(RELLIB): Sources/*
-	swift build -c release $(SFLAGS)
-
-test: $(DBGLIB)
-	swift test $(SFLAGS)
+test:
+	swift build -v $(CFLAGS) $(LDFLAGS)
+	swift test -v $(CFLAGS) $(LDFLAGS) 
 
 clean:
-	rm -rf $(DBGLIB) $(RELLIB)
-	swift build --clean
+	swift package clean
+	rm -rf Packages
+	rm -rf .build
+	rm -rf Package.pins

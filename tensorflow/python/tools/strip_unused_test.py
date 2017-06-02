@@ -43,9 +43,9 @@ class StripUnusedTest(test_util.TensorFlowTestCase):
     # and that then multiplies it by 2.
     with ops.Graph().as_default():
       constant_node = constant_op.constant(1.0, name="constant_node")
-      wanted_input_node = math_ops.sub(constant_node,
-                                       3.0,
-                                       name="wanted_input_node")
+      wanted_input_node = math_ops.subtract(constant_node,
+                                            3.0,
+                                            name="wanted_input_node")
       output_node = math_ops.multiply(
           wanted_input_node, 2.0, name="output_node")
       math_ops.add(output_node, 2.0, name="later_node")
@@ -58,16 +58,25 @@ class StripUnusedTest(test_util.TensorFlowTestCase):
     # routine.
     input_graph_path = os.path.join(self.get_temp_dir(), input_graph_name)
     input_binary = False
-    input_node_names = "wanted_input_node"
     output_binary = True
     output_node_names = "output_node"
     output_graph_path = os.path.join(self.get_temp_dir(), output_graph_name)
 
-    strip_unused_lib.strip_unused_from_files(input_graph_path, input_binary,
-                                             output_graph_path, output_binary,
-                                             input_node_names,
-                                             output_node_names,
-                                             dtypes.float32.as_datatype_enum)
+    def strip(input_node_names):
+      strip_unused_lib.strip_unused_from_files(input_graph_path, input_binary,
+                                               output_graph_path, output_binary,
+                                               input_node_names,
+                                               output_node_names,
+                                               dtypes.float32.as_datatype_enum)
+
+    with self.assertRaises(KeyError):
+      strip("does_not_exist")
+
+    with self.assertRaises(ValueError):
+      strip("wanted_input_node:0")
+
+    input_node_names = "wanted_input_node"
+    strip(input_node_names)
 
     # Now we make sure the variable is now a constant, and that the graph still
     # produces the expected result.
@@ -98,8 +107,8 @@ class StripUnusedTest(test_util.TensorFlowTestCase):
     with ops.Graph().as_default():
       constant_node1 = constant_op.constant(1.0, name="constant_node1")
       constant_node2 = constant_op.constant(2.0, name="constant_node2")
-      input_node1 = math_ops.sub(constant_node1, 3.0, name="input_node1")
-      input_node2 = math_ops.sub(constant_node2, 5.0, name="input_node2")
+      input_node1 = math_ops.subtract(constant_node1, 3.0, name="input_node1")
+      input_node2 = math_ops.subtract(constant_node2, 5.0, name="input_node2")
       output_node = math_ops.multiply(
           input_node1, input_node2, name="output_node")
       math_ops.add(output_node, 2.0, name="later_node")

@@ -23,7 +23,7 @@ limitations under the License.
 
 namespace tensorflow {
 
-static std::unordered_set<SYCLDevice*> live_devices;
+static std::unordered_set<SYCLDevice *> live_devices;
 static bool first_time = true;
 
 void ShutdownSycl() {
@@ -44,17 +44,27 @@ void SYCLDevice::RegisterDevice() {
 SYCLDevice::~SYCLDevice() {
   device_context_->Unref();
   sycl_allocator_->EnterLameDuckMode();
-  delete sycl_device_;
-  delete sycl_queue_;
+  if (sycl_device_) {
+    sycl_device_->synchronize();
+    delete sycl_device_;
+  }
+  if (sycl_queue_) {
+    delete sycl_queue_;
+  }
   live_devices.erase(this);
 }
 
 void SYCLDevice::EnterLameDuckMode() {
   sycl_allocator_->EnterLameDuckMode();
-  delete sycl_device_;
-  sycl_device_ = nullptr;
-  delete sycl_queue_;
-  sycl_queue_ = nullptr;
+  if (sycl_device_) {
+    sycl_device_->synchronize();
+    delete sycl_device_;
+    sycl_device_ = nullptr;
+  }
+  if (sycl_queue_) {
+    delete sycl_queue_;
+    sycl_queue_ = nullptr;
+  }
 }
 
 void SYCLDevice::Compute(OpKernel *op_kernel, OpKernelContext *context) {
@@ -110,7 +120,11 @@ Status SYCLDevice::FillContextMap(const Graph *graph,
 
 Status SYCLDevice::Sync() {
   sycl_device_->synchronize();
-  return Status::OK();
+  if (sycl_device_->ok()) {
+    return Status::OK();
+  } else {
+    return errors::Internal("Unknown error detected on device ", name());
+  }
 }
 
 }  // namespace tensorflow

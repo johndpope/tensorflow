@@ -62,21 +62,17 @@ module Categorizer {
         assert.deepEqual(
             topLevelNamespaceCategorizer(['a']), [{name: 'a', tags: ['a']}]);
       });
-    });
 
-    describe('legacyUnderscoreCategorizer', () => {
-      it('splits by shorter of first _ or /', () => {
-        let tags = [
-          'l0_bar/foo', 'l0_bar/baz', 'l0_foo/wob', 'l1_zoink/bla',
-          'l1_wibble/woz', 'l1/foo_woink', 'l2/wozzle_wizzle'
+      it('only create 1 category per run', () => {
+        // TensorBoard separates runs from tags using the / and _ characters
+        // *only* during sorting. The categorizer should group all tags under
+        // their correct categories - and create only 1 category per run.
+        const tags = ['foo/bar', 'foo_in_between_run/baz', 'foo/quux'];
+        const expected = [
+          {name: 'foo', tags: ['foo/bar', 'foo/quux']},
+          {name: 'foo_in_between_run', tags: ['foo_in_between_run/baz']},
         ];
-        let actual = legacyUnderscoreCategorizer(tags);
-        let expected = [
-          {name: 'l0', tags: ['l0_bar/baz', 'l0_bar/foo', 'l0_foo/wob']},
-          {name: 'l1', tags: ['l1/foo_woink', 'l1_wibble/woz', 'l1_zoink/bla']},
-          {name: 'l2', tags: ['l2/wozzle_wizzle']},
-        ];
-        assert.deepEqual(actual, expected);
+        assert.deepEqual(topLevelNamespaceCategorizer(tags), expected);
       });
     });
 

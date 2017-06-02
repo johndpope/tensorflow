@@ -90,22 +90,23 @@ def _is_tensor(x):
   return isinstance(x, (ops.Tensor, variables.Variable))
 
 
-def _ImageDimensions(image):
+def _ImageDimensions(image, rank):
   """Returns the dimensions of an image tensor.
 
   Args:
-    image: A 3-D Tensor of shape `[height, width, channels]`.
+    image: A rank-D Tensor. For 3-D  of shape: `[height, width, channels]`.
+    rank: The expected rank of the image
 
   Returns:
-    A list of `[height, width, channels]` corresponding to the dimensions of the
+    A list of corresponding to the dimensions of the
     input image.  Dimensions that are statically known are python integers,
     otherwise they are integer scalar tensors.
   """
   if image.get_shape().is_fully_defined():
     return image.get_shape().as_list()
   else:
-    static_shape = image.get_shape().with_rank(3).as_list()
-    dynamic_shape = array_ops.unstack(array_ops.shape(image), 3)
+    static_shape = image.get_shape().with_rank(rank).as_list()
+    dynamic_shape = array_ops.unstack(array_ops.shape(image), rank)
     return [s if s is not None else d
             for s, d in zip(static_shape, dynamic_shape)]
 
@@ -128,9 +129,11 @@ def _Check3DImage(image, require_static=True):
   try:
     image_shape = image.get_shape().with_rank(3)
   except ValueError:
-    raise ValueError("'image' must be three-dimensional.")
+    raise ValueError("'image' (shape %s) must be three-dimensional." %
+                     image.shape)
   if require_static and not image_shape.is_fully_defined():
-    raise ValueError("'image' must be fully defined.")
+    raise ValueError("'image' (shape %s) must be fully defined." %
+                     image_shape)
   if any(x == 0 for x in image_shape):
     raise ValueError("all dims of 'image.shape' must be > 0: %s" %
                      image_shape)
@@ -142,22 +145,39 @@ def _Check3DImage(image, require_static=True):
     return []
 
 
-def _CheckAtLeast3DImage(image):
+def _CheckAtLeast3DImage(image, require_static=True):
   """Assert that we are working with properly shaped image.
 
   Args:
     image: >= 3-D Tensor of size [*, height, width, depth]
+    require_static: If `True`, requires that all dimensions of `image` are
+      known and non-zero.
 
   Raises:
     ValueError: if image.shape is not a [>= 3] vector.
+
+  Returns:
+    An empty list, if `image` has fully defined dimensions. Otherwise, a list
+    containing an assert op is returned.
   """
-  if not image.get_shape().is_fully_defined():
+  try:
+    if image.get_shape().ndims is None:
+      image_shape = image.get_shape().with_rank(3)
+    else:
+      image_shape = image.get_shape().with_rank_at_least(3)
+  except ValueError:
+    raise ValueError("'image' must be at least three-dimensional.")
+  if require_static and not image_shape.is_fully_defined():
     raise ValueError('\'image\' must be fully defined.')
-  if image.get_shape().ndims < 3:
-    raise ValueError('\'image\' must be at least three-dimensional.')
-  if not all(x > 0 for x in image.get_shape()):
+  if any(x == 0 for x in image_shape):
     raise ValueError('all dims of \'image.shape\' must be > 0: %s' %
-                     image.get_shape())
+                     image_shape)
+  if not image_shape.is_fully_defined():
+    return [check_ops.assert_positive(array_ops.shape(image),
+                                      ["all dims of 'image.shape' "
+                                       "must be > 0."])]
+  else:
+    return []
 
 
 def fix_image_flip_shape(image, result):
@@ -188,7 +208,7 @@ def random_flip_up_down(image, seed=None):
   Args:
     image: A 3-D tensor of shape `[height, width, channels].`
     seed: A Python integer. Used to create a random seed. See
-      [`set_random_seed`](../../api_docs/python/constant_op.md#set_random_seed)
+      @{tf.set_random_seed}
       for behavior.
 
   Returns:
@@ -198,11 +218,13 @@ def random_flip_up_down(image, seed=None):
     ValueError: if the shape of `image` not supported.
   """
   image = ops.convert_to_tensor(image, name='image')
-  _Check3DImage(image, require_static=False)
+  image = control_flow_ops.with_dependencies(
+      _Check3DImage(image, require_static=False), image)
   uniform_random = random_ops.random_uniform([], 0, 1.0, seed=seed)
   mirror_cond = math_ops.less(uniform_random, .5)
-  stride = array_ops.where(mirror_cond, -1, 1)
-  result = image[::stride, :, :]
+  result = control_flow_ops.cond(mirror_cond,
+                                 lambda: array_ops.reverse(image, [0]),
+                                 lambda: image)
   return fix_image_flip_shape(image, result)
 
 
@@ -215,7 +237,7 @@ def random_flip_left_right(image, seed=None):
   Args:
     image: A 3-D tensor of shape `[height, width, channels].`
     seed: A Python integer. Used to create a random seed. See
-      [`set_random_seed`](../../api_docs/python/constant_op.md#set_random_seed)
+      @{tf.set_random_seed}
       for behavior.
 
   Returns:
@@ -225,11 +247,13 @@ def random_flip_left_right(image, seed=None):
     ValueError: if the shape of `image` not supported.
   """
   image = ops.convert_to_tensor(image, name='image')
-  _Check3DImage(image, require_static=False)
+  image = control_flow_ops.with_dependencies(
+      _Check3DImage(image, require_static=False), image)
   uniform_random = random_ops.random_uniform([], 0, 1.0, seed=seed)
   mirror_cond = math_ops.less(uniform_random, .5)
-  stride = array_ops.where(mirror_cond, -1, 1)
-  result = image[:, ::stride, :]
+  result = control_flow_ops.cond(mirror_cond,
+                                 lambda: array_ops.reverse(image, [1]),
+                                 lambda: image)
   return fix_image_flip_shape(image, result)
 
 
@@ -251,8 +275,9 @@ def flip_left_right(image):
     ValueError: if the shape of `image` not supported.
   """
   image = ops.convert_to_tensor(image, name='image')
-  _Check3DImage(image, require_static=False)
-  return fix_image_flip_shape(image, image[:, ::-1, :])
+  image = control_flow_ops.with_dependencies(
+      _Check3DImage(image, require_static=False), image)
+  return fix_image_flip_shape(image, array_ops.reverse(image, [1]))
 
 
 def flip_up_down(image):
@@ -273,8 +298,9 @@ def flip_up_down(image):
     ValueError: if the shape of `image` not supported.
   """
   image = ops.convert_to_tensor(image, name='image')
-  _Check3DImage(image, require_static=False)
-  return fix_image_flip_shape(image, array_ops.reverse_v2(image, [0]))
+  image = control_flow_ops.with_dependencies(
+      _Check3DImage(image, require_static=False), image)
+  return fix_image_flip_shape(image, array_ops.reverse(image, [0]))
 
 
 def rot90(image, k=1, name=None):
@@ -290,7 +316,8 @@ def rot90(image, k=1, name=None):
   """
   with ops.name_scope(name, 'rot90', [image, k]) as scope:
     image = ops.convert_to_tensor(image, name='image')
-    _Check3DImage(image, require_static=False)
+    image = control_flow_ops.with_dependencies(
+        _Check3DImage(image, require_static=False), image)
     k = ops.convert_to_tensor(k, dtype=dtypes.int32, name='k')
     k.get_shape().assert_has_rank(0)
     k = math_ops.mod(k, 4)
@@ -328,7 +355,8 @@ def transpose_image(image):
     ValueError: if the shape of `image` not supported.
   """
   image = ops.convert_to_tensor(image, name='image')
-  _Check3DImage(image, require_static=False)
+  image = control_flow_ops.with_dependencies(
+      _Check3DImage(image, require_static=False), image)
   return array_ops.transpose(image, [1, 0, 2], name='transpose_image')
 
 
@@ -357,11 +385,13 @@ def central_crop(image, central_fraction):
     3-D float Tensor
   """
   image = ops.convert_to_tensor(image, name='image')
-  _Check3DImage(image, require_static=False)
   if central_fraction <= 0.0 or central_fraction > 1.0:
     raise ValueError('central_fraction must be within (0, 1]')
   if central_fraction == 1.0:
     return image
+
+  image = control_flow_ops.with_dependencies(
+      _Check3DImage(image, require_static=False), image)
 
   img_shape = array_ops.shape(image)
   depth = image.get_shape()[2]
@@ -393,14 +423,18 @@ def pad_to_bounding_box(image, offset_height, offset_width, target_height,
   `target_height` by `target_width`.
 
   Args:
-    image: 3-D tensor with shape `[height, width, channels]`
+    image: 4-D Tensor of shape `[batch, height, width, channels]` or
+           3-D Tensor of shape `[height, width, channels]`.
     offset_height: Number of rows of zeros to add on top.
     offset_width: Number of columns of zeros to add on the left.
     target_height: Height of output image.
     target_width: Width of output image.
 
   Returns:
-    3-D tensor of shape `[target_height, target_width, channels]`
+    If `image` was 4-D, a 4-D float Tensor of shape
+    `[batch, target_height, target_width, channels]`
+    If `image` was 3-D, a 3-D float Tensor of shape
+    `[target_height, target_width, channels]`
 
   Raises:
     ValueError: If the shape of `image` is incompatible with the `offset_*` or
@@ -409,10 +443,22 @@ def pad_to_bounding_box(image, offset_height, offset_width, target_height,
   """
   image = ops.convert_to_tensor(image, name='image')
 
-  assert_ops = []
-  assert_ops += _Check3DImage(image, require_static=False)
+  is_batch = True
+  image_shape = image.get_shape()
+  if image_shape.ndims == 3:
+    is_batch = False
+    image = array_ops.expand_dims(image, 0)
+  elif image_shape.ndims is None:
+    is_batch = False
+    image = array_ops.expand_dims(image, 0)
+    image.set_shape([None] * 4)
+  elif image_shape.ndims != 4:
+    raise ValueError('\'image\' must have either 3 or 4 dimensions.')
 
-  height, width, depth = _ImageDimensions(image)
+  assert_ops = _CheckAtLeast3DImage(image, require_static=False)
+
+  batch, height, width, depth = _ImageDimensions(image, rank=4)
+
   after_padding_width = target_width - offset_width - width
   after_padding_height = target_height - offset_height - height
 
@@ -429,14 +475,17 @@ def pad_to_bounding_box(image, offset_height, offset_width, target_height,
   # Do not pad on the depth dimensions.
   paddings = array_ops.reshape(
       array_ops.stack([
-          offset_height, after_padding_height, offset_width,
+          0, 0, offset_height, after_padding_height, offset_width,
           after_padding_width, 0, 0
-      ]), [3, 2])
+      ]), [4, 2])
   padded = array_ops.pad(image, paddings)
 
   padded_shape = [None if _is_tensor(i) else i
-                  for i in [target_height, target_width, depth]]
+                  for i in [batch, target_height, target_width, depth]]
   padded.set_shape(padded_shape)
+
+  if not is_batch:
+    padded = array_ops.squeeze(padded, squeeze_dims=[0])
 
   return padded
 
@@ -451,7 +500,8 @@ def crop_to_bounding_box(image, offset_height, offset_width, target_height,
   `offset_height + target_height, offset_width + target_width`.
 
   Args:
-    image: 3-D tensor with shape `[height, width, channels]`
+    image: 4-D Tensor of shape `[batch, height, width, channels]` or
+           3-D Tensor of shape `[height, width, channels]`.
     offset_height: Vertical coordinate of the top-left corner of the result in
                    the input.
     offset_width: Horizontal coordinate of the top-left corner of the result in
@@ -460,7 +510,10 @@ def crop_to_bounding_box(image, offset_height, offset_width, target_height,
     target_width: Width of the result.
 
   Returns:
-    3-D tensor of image with shape `[target_height, target_width, channels]`
+    If `image` was 4-D, a 4-D float Tensor of shape
+    `[batch, target_height, target_width, channels]`
+    If `image` was 3-D, a 3-D float Tensor of shape
+    `[target_height, target_width, channels]`
 
   Raises:
     ValueError: If the shape of `image` is incompatible with the `offset_*` or
@@ -469,10 +522,21 @@ def crop_to_bounding_box(image, offset_height, offset_width, target_height,
   """
   image = ops.convert_to_tensor(image, name='image')
 
-  assert_ops = []
-  assert_ops += _Check3DImage(image, require_static=False)
+  is_batch = True
+  image_shape = image.get_shape()
+  if image_shape.ndims == 3:
+    is_batch = False
+    image = array_ops.expand_dims(image, 0)
+  elif image_shape.ndims is None:
+    is_batch = False
+    image = array_ops.expand_dims(image, 0)
+    image.set_shape([None] * 4)
+  elif image_shape.ndims != 4:
+    raise ValueError('\'image\' must have either 3 or 4 dimensions.')
 
-  height, width, depth = _ImageDimensions(image)
+  assert_ops = _CheckAtLeast3DImage(image, require_static=False)
+
+  batch, height, width, depth = _ImageDimensions(image, rank=4)
 
   assert_ops += _assert(offset_width >= 0, ValueError,
                         'offset_width must be >= 0.')
@@ -488,13 +552,17 @@ def crop_to_bounding_box(image, offset_height, offset_width, target_height,
                         'height must be >= target + offset.')
   image = control_flow_ops.with_dependencies(assert_ops, image)
 
-  cropped = array_ops.slice(image,
-                            array_ops.stack([offset_height, offset_width, 0]),
-                            array_ops.stack([target_height, target_width, -1]))
+  cropped = array_ops.slice(
+      image,
+      array_ops.stack([0, offset_height, offset_width, 0]),
+      array_ops.stack([-1, target_height, target_width, -1]))
 
   cropped_shape = [None if _is_tensor(i) else i
-                   for i in [target_height, target_width, depth]]
+                   for i in [batch, target_height, target_width, depth]]
   cropped.set_shape(cropped_shape)
+
+  if not is_batch:
+    cropped = array_ops.squeeze(cropped, squeeze_dims=[0])
 
   return cropped
 
@@ -512,7 +580,8 @@ def resize_image_with_crop_or_pad(image, target_height, target_width):
   dimension.
 
   Args:
-    image: 3-D tensor of shape `[height, width, channels]`
+    image: 4-D Tensor of shape `[batch, height, width, channels]` or
+           3-D Tensor of shape `[height, width, channels]`.
     target_height: Target height.
     target_width: Target width.
 
@@ -520,13 +589,26 @@ def resize_image_with_crop_or_pad(image, target_height, target_width):
     ValueError: if `target_height` or `target_width` are zero or negative.
 
   Returns:
-    Cropped and/or padded image of shape
-    `[target_height, target_width, channels]`
+    Cropped and/or padded image.
+    If `images` was 4-D, a 4-D float Tensor of shape
+    `[batch, new_height, new_width, channels]`.
+    If `images` was 3-D, a 3-D float Tensor of shape
+    `[new_height, new_width, channels]`.
   """
   image = ops.convert_to_tensor(image, name='image')
+  image_shape = image.get_shape()
+  is_batch = True
+  if image_shape.ndims == 3:
+    is_batch = False
+    image = array_ops.expand_dims(image, 0)
+  elif image_shape.ndims is None:
+    is_batch = False
+    image = array_ops.expand_dims(image, 0)
+    image.set_shape([None] * 4)
+  elif image_shape.ndims != 4:
+    raise ValueError('\'image\' must have either 3 or 4 dimensions.')
 
-  assert_ops = []
-  assert_ops += _Check3DImage(image, require_static=False)
+  assert_ops = _CheckAtLeast3DImage(image, require_static=False)
   assert_ops += _assert(target_width > 0, ValueError,
                         'target_width must be > 0.')
   assert_ops += _assert(target_height > 0, ValueError,
@@ -559,7 +641,7 @@ def resize_image_with_crop_or_pad(image, target_height, target_width):
     else:
       return x == y
 
-  height, width, _ = _ImageDimensions(image)
+  _, height, width, _ = _ImageDimensions(image, rank=4)
   width_diff = target_width - width
   offset_crop_width = max_(-width_diff // 2, 0)
   offset_pad_width = max_(width_diff // 2, 0)
@@ -581,7 +663,7 @@ def resize_image_with_crop_or_pad(image, target_height, target_width):
   if resized.get_shape().ndims is None:
     raise ValueError('resized contains no shape.')
 
-  resized_height, resized_width, _ = _ImageDimensions(resized)
+  _, resized_height, resized_width, _ = _ImageDimensions(resized, rank=4)
 
   assert_ops = []
   assert_ops += _assert(equal_(resized_height, target_height), ValueError,
@@ -590,6 +672,10 @@ def resize_image_with_crop_or_pad(image, target_height, target_width):
                         'resized width is not correct.')
 
   resized = control_flow_ops.with_dependencies(assert_ops, resized)
+
+  if not is_batch:
+    resized = array_ops.squeeze(resized, squeeze_dims=[0])
+
   return resized
 
 
@@ -608,7 +694,7 @@ def resize_images(images,
 
   Resized images will be distorted if their original aspect ratio is not
   the same as `size`.  To avoid distortions see
-  [`resize_image_with_crop_or_pad`](#resize_image_with_crop_or_pad).
+  @{tf.image.resize_image_with_crop_or_pad}.
 
   `method` can be one of:
 
@@ -719,7 +805,8 @@ def per_image_standardization(image):
     ValueError: if the shape of 'image' is incompatible with this function.
   """
   image = ops.convert_to_tensor(image, name='image')
-  _Check3DImage(image, require_static=False)
+  image = control_flow_ops.with_dependencies(
+      _Check3DImage(image, require_static=False), image)
   num_pixels = math_ops.reduce_prod(array_ops.shape(image))
 
   image = math_ops.cast(image, dtype=dtypes.float32)
@@ -735,7 +822,7 @@ def per_image_standardization(image):
   pixel_value_scale = math_ops.maximum(stddev, min_stddev)
   pixel_value_offset = image_mean
 
-  image = math_ops.sub(image, pixel_value_offset)
+  image = math_ops.subtract(image, pixel_value_offset)
   image = math_ops.div(image, pixel_value_scale)
   return image
 
@@ -750,7 +837,7 @@ def random_brightness(image, max_delta, seed=None):
     image: An image.
     max_delta: float, must be non-negative.
     seed: A Python integer. Used to create a random seed. See
-      [`set_random_seed`](../../api_docs/python/constant_op.md#set_random_seed)
+      @{tf.set_random_seed}
       for behavior.
 
   Returns:
@@ -777,7 +864,7 @@ def random_contrast(image, lower, upper, seed=None):
     lower: float.  Lower bound for the random contrast factor.
     upper: float.  Upper bound for the random contrast factor.
     seed: A Python integer. Used to create a random seed. See
-      [`set_random_seed`](../../api_docs/python/constant_op.md#set_random_seed)
+      @{tf.set_random_seed}
       for behavior.
 
   Returns:
@@ -968,7 +1055,7 @@ def convert_image_dtype(image, dtype, saturate=False, name=None):
         else:
           cast = math_ops.cast(image, dtype)
         scale = (scale_out + 1) // (scale_in + 1)
-        return math_ops.mul(cast, scale, name=name)
+        return math_ops.multiply(cast, scale, name=name)
     elif image.dtype.is_floating and dtype.is_floating:
       # Both float: Just cast, no possible overflows in the allowed ranges.
       # Note: We're ignoreing float overflows. If your image dynamic range
@@ -979,11 +1066,11 @@ def convert_image_dtype(image, dtype, saturate=False, name=None):
         # Converting to float: first cast, then scale. No saturation possible.
         cast = math_ops.cast(image, dtype)
         scale = 1. / image.dtype.max
-        return math_ops.mul(cast, scale, name=name)
+        return math_ops.multiply(cast, scale, name=name)
       else:
         # Converting from float: first scale, then cast
         scale = dtype.max + 0.5  # avoid rounding problems in the cast
-        scaled = math_ops.mul(image, scale)
+        scaled = math_ops.multiply(image, scale)
         if saturate:
           return math_ops.saturate_cast(scaled, dtype, name=name)
         else:
@@ -1041,7 +1128,7 @@ def grayscale_to_rgb(images, name=None):
     shape_list = (
         [array_ops.ones(rank_1,
                         dtype=dtypes.int32)] + [array_ops.expand_dims(3, 0)])
-    multiples = array_ops.concat_v2(shape_list, 0)
+    multiples = array_ops.concat(shape_list, 0)
     rgb = array_ops.tile(images, multiples, name=name)
     rgb.set_shape(images.get_shape()[:-1].concatenate([3]))
     return rgb
@@ -1124,7 +1211,7 @@ def adjust_hue(image, delta, name=None):
       # floating point number since delta is [-0.5, 0.5].
       hue = math_ops.mod(hue + (delta + 1.), 1.)
 
-      hsv_altered = array_ops.concat_v2([hue, saturation, value], 2)
+      hsv_altered = array_ops.concat([hue, saturation, value], 2)
       rgb_altered = gen_image_ops.hsv_to_rgb(hsv_altered)
     else:
       rgb_altered = gen_image_ops.adjust_hue(flt_image, delta)
@@ -1191,6 +1278,16 @@ def adjust_saturation(image, saturation_factor, name=None):
     orig_dtype = image.dtype
     flt_image = convert_image_dtype(image, dtypes.float32)
 
+    # TODO(zhengxq): we will switch to the fused version after we add a GPU
+    # kernel for that.
+    fused = os.environ.get('TF_ADJUST_SATURATION_FUSED', '')
+    fused = fused.lower() in ('true', 't', '1')
+
+    if fused:
+      return convert_image_dtype(
+          gen_image_ops.adjust_saturation(flt_image, saturation_factor),
+          orig_dtype)
+
     hsv = gen_image_ops.rgb_to_hsv(flt_image)
 
     hue = array_ops.slice(hsv, [0, 0, 0], [-1, -1, 1])
@@ -1200,7 +1297,7 @@ def adjust_saturation(image, saturation_factor, name=None):
     saturation *= saturation_factor
     saturation = clip_ops.clip_by_value(saturation, 0.0, 1.0)
 
-    hsv_altered = array_ops.concat_v2([hue, saturation, value], 2)
+    hsv_altered = array_ops.concat([hue, saturation, value], 2)
     rgb_altered = gen_image_ops.hsv_to_rgb(hsv_altered)
 
     return convert_image_dtype(rgb_altered, orig_dtype)
@@ -1208,24 +1305,24 @@ def adjust_saturation(image, saturation_factor, name=None):
 
 def decode_image(contents, channels=None, name=None):
   """Convenience function for `decode_gif`, `decode_jpeg`, and `decode_png`.
-  Detects whether an image is a GIF, JPEG, or PNG, and performs the appropriate 
+  Detects whether an image is a GIF, JPEG, or PNG, and performs the appropriate
   operation to convert the input bytes `string` into a `Tensor` of type `uint8`.
 
-  Note: `decode_gif` returns a 4-D array `[num_frames, height, width, 3]`, as 
-  opposed to `decode_jpeg` and `decode_png`, which return 3-D arrays 
-  `[height, width, num_channels]`. Make sure to take this into account when 
-  constructing your graph if you are intermixing GIF files with JPEG and/or PNG 
+  Note: `decode_gif` returns a 4-D array `[num_frames, height, width, 3]`, as
+  opposed to `decode_jpeg` and `decode_png`, which return 3-D arrays
+  `[height, width, num_channels]`. Make sure to take this into account when
+  constructing your graph if you are intermixing GIF files with JPEG and/or PNG
   files.
 
   Args:
     contents: 0-D `string`. The encoded image bytes.
-    channels: An optional `int`. Defaults to `0`. Number of color channels for 
+    channels: An optional `int`. Defaults to `0`. Number of color channels for
       the decoded image.
     name: A name for the operation (optional)
-    
+
   Returns:
-    `Tensor` with type `uint8` with shape `[height, width, num_channels]` for 
-      JPEG and PNG images and shape `[num_frames, height, width, 3]` for GIF 
+    `Tensor` with type `uint8` with shape `[height, width, num_channels]` for
+      JPEG and PNG images and shape `[num_frames, height, width, 3]` for GIF
       images.
   """
   with ops.name_scope(name, 'decode_image') as scope:
@@ -1259,3 +1356,73 @@ def decode_image(contents, channels=None, name=None):
 
     is_jpeg = math_ops.equal(substr, b'\xff\xd8\xff\xe0', name='is_jpeg')
     return control_flow_ops.cond(is_jpeg, _jpeg, check_png, name='cond_jpeg')
+
+
+def total_variation(images, name=None):
+  """Calculate and return the total variation for one or more images.
+
+  The total variation is the sum of the absolute differences for neighboring
+  pixel-values in the input images. This measures how much noise is in the
+  images.
+
+  This can be used as a loss-function during optimization so as to suppress
+  noise in images. If you have a batch of images, then you should calculate
+  the scalar loss-value as the sum:
+  `loss = tf.reduce_sum(tf.image.total_variation(images))`
+
+  This implements the anisotropic 2-D version of the formula described here:
+
+  https://en.wikipedia.org/wiki/Total_variation_denoising
+
+  Args:
+    images: 4-D Tensor of shape `[batch, height, width, channels]` or
+            3-D Tensor of shape `[height, width, channels]`.
+
+    name: A name for the operation (optional).
+
+  Raises:
+    ValueError: if images.shape is not a 3-D or 4-D vector.
+
+  Returns:
+    The total variation of `images`.
+
+    If `images` was 4-D, return a 1-D float Tensor of shape `[batch]` with the
+    total variation for each image in the batch.
+    If `images` was 3-D, return a scalar float with the total variation for
+    that image.
+  """
+
+  with ops.name_scope(name, 'total_variation'):
+    ndims = images.get_shape().ndims
+
+    if ndims == 3:
+      # The input is a single image with shape [height, width, channels].
+
+      # Calculate the difference of neighboring pixel-values.
+      # The images are shifted one pixel along the height and width by slicing.
+      pixel_dif1 = images[1:, :, :] - images[:-1, :, :]
+      pixel_dif2 = images[:, 1:, :] - images[:, :-1, :]
+
+      # Sum for all axis. (None is an alias for all axis.)
+      sum_axis = None
+    elif ndims == 4:
+      # The input is a batch of images with shape:
+      # [batch, height, width, channels].
+
+      # Calculate the difference of neighboring pixel-values.
+      # The images are shifted one pixel along the height and width by slicing.
+      pixel_dif1 = images[:, 1:, :, :] - images[:, :-1, :, :]
+      pixel_dif2 = images[:, :, 1:, :] - images[:, :, :-1, :]
+
+      # Only sum for the last 3 axis.
+      # This results in a 1-D tensor with the total variation for each image.
+      sum_axis = [1, 2, 3]
+    else:
+      raise ValueError('\'images\' must be either 3 or 4-dimensional.')
+
+    # Calculate the total variation by taking the absolute value of the
+    # pixel-differences and summing over the appropriate axis.
+    tot_var = math_ops.reduce_sum(math_ops.abs(pixel_dif1), axis=sum_axis) + \
+              math_ops.reduce_sum(math_ops.abs(pixel_dif2), axis=sum_axis)
+
+  return tot_var

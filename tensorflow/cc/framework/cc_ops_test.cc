@@ -32,7 +32,8 @@ Output Linear(const Scope& scope, Input x, Input w, Input b) {
   return BiasAdd(cop_scopes.last, m, b);
 }
 
-void GetColocationConstraints(Output tensor, std::vector<string>* constraints) {
+void GetColocationConstraints(const Output& tensor,
+                              std::vector<string>* constraints) {
   constraints->clear();
   TF_EXPECT_OK(
       GetNodeAttr(tensor.op().node()->def(), kColocationAttrName, constraints));
@@ -68,7 +69,7 @@ TEST(CCOpTest, Attrs) {
 TEST(CCOpTest, SplitConcat) {
   Scope root = Scope::NewRootScope();
   Split p(root, 0, {{1}, {2}}, 2);
-  auto c = Concat(root, 0, {p[0], p[1]});
+  auto c = Concat(root, {p[0], p[1]}, 0);
   TF_EXPECT_OK(root.status());
   Tensor out;
   test::GetTensor(root, c, &out);

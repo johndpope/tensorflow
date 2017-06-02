@@ -125,7 +125,7 @@ def _ProdGrad(op, grad):
     reduced = math_ops.cast(reduction_indices, dtypes.int32)
     idx = math_ops.range(0, array_ops.rank(op.inputs[0]))
     other, _ = array_ops.setdiff1d(idx, reduced)
-    perm = array_ops.concat_v2([reduced, other], 0)
+    perm = array_ops.concat([reduced, other], 0)
     reduced_num = math_ops.reduce_prod(array_ops.gather(input_shape, reduced))
     other_num = math_ops.reduce_prod(array_ops.gather(input_shape, other))
   permuted = array_ops.transpose(op.inputs[0], perm)
@@ -153,7 +153,7 @@ def _SegmentSumGrad(op, grad):
 def _SegmentMeanGrad(op, grad):
   """Gradient for SegmentMean."""
   input_rank = array_ops.rank(op.inputs[0])
-  ones_shape = array_ops.concat_v2([
+  ones_shape = array_ops.concat([
       array_ops.shape(op.inputs[1]),
       array_ops.fill(array_ops.expand_dims(input_rank - 1, 0), 1)
   ], 0)
@@ -188,41 +188,53 @@ def _SparseSegmentSqrtNGrad(op, grad):
                                               dim0), None, None)
 
 
-def _SegmentMinOrMaxGrad(op, grad):
-  """Gradient for SegmentMin and SegmentMax. Both share the same code."""
-  zeros = array_ops.zeros(
-      array_ops.shape(op.inputs[0]), dtype=op.inputs[0].dtype)
+def _SegmentMinOrMaxGrad(op, grad, is_sorted):
+  """Gradient for SegmentMin and (unsorted) SegmentMax. They share similar code."""
+  zeros = array_ops.zeros(array_ops.shape(op.inputs[0]),
+                          dtype=op.inputs[0].dtype)
 
   # Get the number of selected (minimum or maximum) elements in each segment.
   gathered_outputs = array_ops.gather(op.outputs[0], op.inputs[1])
   is_selected = math_ops.equal(op.inputs[0], gathered_outputs)
-  num_selected = math_ops.segment_sum(
-      math_ops.cast(is_selected, grad.dtype), op.inputs[1])
+  if is_sorted:
+    num_selected = math_ops.segment_sum(math_ops.cast(is_selected, grad.dtype),
+                                        op.inputs[1])
+  else:
+    num_selected = math_ops.unsorted_segment_sum(math_ops.cast(is_selected, grad.dtype),
+                                                 op.inputs[1], op.inputs[2])
 
   # Compute the gradient for each segment. The gradient for the ith segment is
   # divided evenly among the selected elements in that segment.
   weighted_grads = math_ops.div(grad, num_selected)
   gathered_grads = array_ops.gather(weighted_grads, op.inputs[1])
 
-  return array_ops.where(is_selected, gathered_grads, zeros), None
+  if is_sorted:
+    return array_ops.where(is_selected, gathered_grads, zeros), None
+  else:
+    return array_ops.where(is_selected, gathered_grads, zeros), None, None
 
 
 @ops.RegisterGradient("SegmentMin")
 def _SegmentMinGrad(op, grad):
   """Gradient for SegmentMin."""
-  return _SegmentMinOrMaxGrad(op, grad)
+  return _SegmentMinOrMaxGrad(op, grad, True)
 
 
 @ops.RegisterGradient("SegmentMax")
 def _SegmentMaxGrad(op, grad):
   """Gradient for SegmentMax."""
-  return _SegmentMinOrMaxGrad(op, grad)
+  return _SegmentMinOrMaxGrad(op, grad, True)
 
 
 @ops.RegisterGradient("UnsortedSegmentSum")
 def _UnsortedSegmentSumGrad(op, grad):
   """Gradient for SegmentSum."""
   return array_ops.gather(grad, op.inputs[1]), None, None
+
+
+@ops.RegisterGradient("UnsortedSegmentMax")
+def _UnsortedSegmentMaxGrad(op, grad):
+  return _SegmentMinOrMaxGrad(op, grad, False)
 
 
 @ops.RegisterGradient("Abs")
@@ -417,7 +429,7 @@ def _DigammaGrad(op, grad):
 
 @ops.RegisterGradient("Igamma")
 def _IgammaGrad(op, grad):
-  """Returns gradient of igamma(a, x) with respect to a and x."""
+  """Returns gradient of igamma(a, x) with respect to x."""
   # TODO(ebrevdo): Perhaps add the derivative w.r.t. a
   a = op.inputs[0]
   x = op.inputs[1]
@@ -428,14 +440,43 @@ def _IgammaGrad(op, grad):
   # Perform operations in log space before summing, because Gamma(a)
   # and Gamma'(a) can grow large.
   partial_x = math_ops.exp(-x + (a - 1) * math_ops.log(x) - math_ops.lgamma(a))
+  # TODO(b/36815900): Mark None return values as NotImplemented
   return (None,
           array_ops.reshape(math_ops.reduce_sum(partial_x * grad, rx), sx))
 
 
 @ops.RegisterGradient("Igammac")
 def _IgammacGrad(op, grad):
-  """Returns gradient of igammac(a, x) = 1 - igamma(a, x) w.r.t. a and x."""
-  return [-1 * g if g is not None else None for g in _IgammaGrad(op, grad)]
+  """Returns gradient of igammac(a, x) = 1 - igamma(a, x) w.r.t. x."""
+  _, igamma_grad_x = _IgammaGrad(op, grad)
+  return None, -igamma_grad_x
+
+
+@ops.RegisterGradient("Betainc")
+def _BetaincGrad(op, grad):
+  """Returns gradient of betainc(a, b, x) with respect to x."""
+  # TODO(ebrevdo): Perhaps add the derivative w.r.t. a, b
+  a, b, x = op.inputs
+
+  # two cases: x is a scalar and a/b are same-shaped tensors, or vice
+  # versa; so its sufficient to check against shape(a).
+  sa = array_ops.shape(a)
+  sx = array_ops.shape(x)
+  # pylint: disable=protected-access
+  _, rx = gen_array_ops._broadcast_gradient_args(sa, sx)
+  # pylint: enable=protected-access
+
+  # Perform operations in log space before summing, because terms
+  # can grow large.
+  log_beta = (gen_math_ops.lgamma(a) + gen_math_ops.lgamma(b)
+              - gen_math_ops.lgamma(a + b))
+  partial_x = math_ops.exp(
+      (b - 1) * math_ops.log(1 - x) + (a - 1) * math_ops.log(x) - log_beta)
+
+  # TODO(b/36815900): Mark None return values as NotImplemented
+  return (None,  # da
+          None,  # db
+          array_ops.reshape(math_ops.reduce_sum(partial_x * grad, rx), sx))
 
 
 @ops.RegisterGradient("Zeta")
@@ -453,6 +494,7 @@ def _ZetaGrad(op, grad):
     x = math_ops.conj(x)
     q = math_ops.conj(q)
     partial_q = -x * math_ops.zeta(x + 1, q)
+    # TODO(b/36815900): Mark None return values as NotImplemented
     return (None,
             array_ops.reshape(math_ops.reduce_sum(partial_q * grad, rq), sq))
 
@@ -472,6 +514,7 @@ def _PolygammaGrad(op, grad):
     n = math_ops.conj(n)
     x = math_ops.conj(x)
     partial_x = math_ops.polygamma(n + 1, x)
+    # TODO(b/36815900): Mark None return values as NotImplemented
     return (None,
             array_ops.reshape(math_ops.reduce_sum(partial_x * grad, rx), sx))
 
@@ -540,7 +583,7 @@ def _AsinGrad(op, grad):
     x = math_ops.conj(x)
     x2 = math_ops.square(x)
     one = constant_op.constant(1, dtype=grad.dtype)
-    den = math_ops.sqrt(math_ops.sub(one, x2))
+    den = math_ops.sqrt(math_ops.subtract(one, x2))
     inv = math_ops.reciprocal(den)
     return grad * inv
 
@@ -553,7 +596,7 @@ def _AcosGrad(op, grad):
     x = math_ops.conj(x)
     x2 = math_ops.square(x)
     one = constant_op.constant(1, dtype=grad.dtype)
-    den = math_ops.sqrt(math_ops.sub(one, x2))
+    den = math_ops.sqrt(math_ops.subtract(one, x2))
     inv = math_ops.reciprocal(den)
     return -grad * inv
 
@@ -568,6 +611,16 @@ def _AtanGrad(op, grad):
     one = constant_op.constant(1, dtype=grad.dtype)
     inv = math_ops.reciprocal(math_ops.add(one, x2))
     return grad * inv
+
+
+@ops.RegisterGradient("Atan2")
+def _Atan2Grad(op, grad):
+  """Returns grad * x / (x^2 + y^2), grad * -y / (x^2 + y^2)."""
+  y = op.inputs[0]
+  x = op.inputs[1]
+  with ops.control_dependencies([grad.op]):
+    grad_inv = grad / (math_ops.square(x) + math_ops.square(y))
+    return x * grad_inv, -y * grad_inv
 
 
 @ops.RegisterGradient("AddN")
@@ -628,7 +681,7 @@ def _DivGrad(op, grad):
   y = math_ops.conj(y)
   return (array_ops.reshape(math_ops.reduce_sum(math_ops.div(grad, y), rx), sx),
           array_ops.reshape(
-              math_ops.reduce_sum(grad * math_ops.div(-x, math_ops.square(y)),
+              math_ops.reduce_sum(grad * math_ops.div(math_ops.div(-x, y), y),
                                   ry), sy))
 
 
@@ -658,7 +711,7 @@ def _RealDivGrad(op, grad):
   return (array_ops.reshape(
       math_ops.reduce_sum(math_ops.realdiv(grad, y), rx),
       sx), array_ops.reshape(
-          math_ops.reduce_sum(grad * math_ops.realdiv(-x, math_ops.square(y)),
+          math_ops.reduce_sum(grad * math_ops.realdiv(math_ops.realdiv(-x, y), y),
                               ry), sy))
 
 
@@ -743,6 +796,7 @@ ops.NotDifferentiable("LessEqual")
 ops.NotDifferentiable("Greater")
 ops.NotDifferentiable("GreaterEqual")
 ops.NotDifferentiable("Equal")
+ops.NotDifferentiable("ApproximateEqual")
 ops.NotDifferentiable("NotEqual")
 ops.NotDifferentiable("LogicalAnd")
 ops.NotDifferentiable("LogicalOr")
@@ -760,24 +814,25 @@ def _SelectGrad(op, grad):
 
 @ops.RegisterGradient("MatMul")
 def _MatMulGrad(op, grad):
+  """Gradient for MatMul."""
+
   t_a = op.get_attr("transpose_a")
   t_b = op.get_attr("transpose_b")
+  a = math_ops.conj(op.inputs[0])
+  b = math_ops.conj(op.inputs[1])
   if not t_a and not t_b:
-    return (math_ops.matmul(
-        grad, op.inputs[1], transpose_b=True), math_ops.matmul(
-            op.inputs[0], grad, transpose_a=True))
+    grad_a = math_ops.matmul(grad, b, transpose_b=True)
+    grad_b = math_ops.matmul(a, grad, transpose_a=True)
   elif not t_a and t_b:
-    return (math_ops.matmul(grad, op.inputs[1]), math_ops.matmul(
-        grad, op.inputs[0], transpose_a=True))
+    grad_a = math_ops.matmul(grad, b)
+    grad_b = math_ops.matmul(grad, a, transpose_a=True)
   elif t_a and not t_b:
-    return (math_ops.matmul(
-        op.inputs[1], grad, transpose_b=True),
-            math_ops.matmul(op.inputs[0], grad))
+    grad_a = math_ops.matmul(b, grad, transpose_b=True)
+    grad_b = math_ops.matmul(a, grad)
   elif t_a and t_b:
-    return (math_ops.matmul(
-        op.inputs[1], grad, transpose_a=True, transpose_b=True),
-            math_ops.matmul(
-                grad, op.inputs[0], transpose_a=True, transpose_b=True))
+    grad_a = math_ops.matmul(b, grad, transpose_a=True, transpose_b=True)
+    grad_b = math_ops.matmul(grad, a, transpose_a=True, transpose_b=True)
+  return grad_a, grad_b
 
 
 @ops.RegisterGradient("SparseMatMul")
@@ -835,6 +890,16 @@ def _SparseMatMulGrad(op, grad):
 
 @ops.RegisterGradient("Floor")
 def _FloorGrad(_, unused_grad):
+  return [None]
+
+
+@ops.RegisterGradient("Ceil")
+def _CeilGrad(_, unused_grad):
+  return [None]
+
+
+@ops.RegisterGradient("Round")
+def _RoundGrad(_, unused_grad):
   return [None]
 
 
@@ -927,48 +992,6 @@ def _CastGrad(op, grad):
     return math_ops.cast(grad, src_type)
   else:
     return None
-
-
-def _FFTSizeForGrad(grad, rank):
-  return math_ops.reduce_prod(
-      array_ops.slice(
-          array_ops.reverse_v2(array_ops.shape(grad), [0]), (0,), (rank,)))
-
-
-@ops.RegisterGradient("FFT")
-def _FFTGrad(_, grad):
-  size = math_ops.cast(_FFTSizeForGrad(grad, 1), dtypes.float32)
-  return math_ops.ifft(grad) * math_ops.complex(size, 0.)
-
-
-@ops.RegisterGradient("IFFT")
-def _IFFTGrad(_, grad):
-  rsize = 1. / math_ops.cast(_FFTSizeForGrad(grad, 1), dtypes.float32)
-  return math_ops.fft(grad) * math_ops.complex(rsize, 0.)
-
-
-@ops.RegisterGradient("FFT2D")
-def _FFT2DGrad(_, grad):
-  size = math_ops.cast(_FFTSizeForGrad(grad, 2), dtypes.float32)
-  return math_ops.ifft2d(grad) * math_ops.complex(size, 0.)
-
-
-@ops.RegisterGradient("IFFT2D")
-def _IFFT2DGrad(_, grad):
-  rsize = 1. / math_ops.cast(_FFTSizeForGrad(grad, 2), dtypes.float32)
-  return math_ops.fft2d(grad) * math_ops.complex(rsize, 0.)
-
-
-@ops.RegisterGradient("FFT3D")
-def _FFT3DGrad(_, grad):
-  size = math_ops.cast(_FFTSizeForGrad(grad, 3), dtypes.float32)
-  return math_ops.ifft3d(grad) * math_ops.complex(size, 0.)
-
-
-@ops.RegisterGradient("IFFT3D")
-def _IFFT3DGrad(_, grad):
-  rsize = 1. / math_ops.cast(_FFTSizeForGrad(grad, 3), dtypes.float32)
-  return math_ops.fft3d(grad) * math_ops.complex(rsize, 0.)
 
 
 @ops.RegisterGradient("Cross")

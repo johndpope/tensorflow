@@ -24,6 +24,7 @@ import numpy as np
 from six.moves import xrange  # pylint: disable=redefined-builtin
 
 from tensorflow.python.debug.cli import debugger_cli_common
+from tensorflow.python.debug.lib import debug_data
 
 _NUMPY_OMISSION = "...,"
 _NUMPY_DEFAULT_EDGE_ITEMS = 3
@@ -69,7 +70,7 @@ class HighlightOptions(object):
 
 
 def format_tensor(tensor,
-                  tensor_name,
+                  tensor_label,
                   include_metadata=False,
                   np_printoptions=None,
                   highlight_options=None):
@@ -78,8 +79,8 @@ def format_tensor(tensor,
   Args:
     tensor: The tensor to be displayed, as a numpy ndarray or other
       appropriate format (e.g., None representing uninitialized tensors).
-    tensor_name: Name of the tensor, as a str. If set to None, will suppress
-      the tensor name line in the return value.
+    tensor_label: A label for the tensor, as a string. If set to None, will
+      suppress the tensor name line in the return value.
     include_metadata: Whether metadata such as dtype and shape are to be
       included in the formatted text.
     np_printoptions: A dictionary of keyword arguments that are passed to a
@@ -94,14 +95,28 @@ def format_tensor(tensor,
     corresponds to.
   """
   lines = []
+  font_attr_segs = {}
 
-  if tensor_name is not None:
-    lines.append("Tensor \"%s\":" % tensor_name)
+  if tensor_label is not None:
+    lines.append("Tensor \"%s\":" % tensor_label)
+    suffix = tensor_label.split(":")[-1]
+    if suffix.isdigit():
+      # Suffix is a number. Assume it is the output slot index.
+      font_attr_segs[0] = [(8, 8 + len(tensor_label), "bold")]
+    else:
+      # Suffix is not a number. It is auxiliary information such as the debug
+      # op type. In this case, highlight the suffix with a different color.
+      debug_op_len = len(suffix)
+      proper_len = len(tensor_label) - debug_op_len - 1
+      font_attr_segs[0] = [
+          (8, 8 + proper_len, "bold"),
+          (8 + proper_len + 1, 8 + proper_len + 1 + debug_op_len, "yellow")
+      ]
 
-  if tensor is None:
+  if isinstance(tensor, debug_data.InconvertibleTensorProto):
     if lines:
       lines.append("")
-    lines.append("Uninitialized tensor")
+    lines.extend(str(tensor).split("\n"))
     return debugger_cli_common.RichTextLines(lines)
   elif not isinstance(tensor, np.ndarray):
     # If tensor is not a np.ndarray, return simple text-line representation of
@@ -134,7 +149,8 @@ def format_tensor(tensor,
     annotations = _annotate_ndarray_lines(
         array_lines, tensor, np_printoptions=np_printoptions, offset=hlines)
 
-  formatted = debugger_cli_common.RichTextLines(lines, annotations=annotations)
+  formatted = debugger_cli_common.RichTextLines(
+      lines, font_attr_segs=font_attr_segs, annotations=annotations)
 
   # Perform optional highlighting.
   if highlight_options is not None:

@@ -33,13 +33,21 @@ from tensorflow.python.ops import variables
 from tensorflow.python.platform import tf_logging as logging
 
 
+def _do_gather(params, ids, name=None):
+  """Deals with doing gather differently for resource variables."""
+  if isinstance(params, resource_variable_ops.ResourceVariable):
+    return params.sparse_read(ids, name=name)
+  return array_ops.gather(params, ids, name=name)
+
+
 def embedding_lookup(params, ids, partition_strategy="mod", name=None,
-                     validate_indices=True, max_norm=None):
+                     validate_indices=True,  # pylint: disable=unused-argument
+                     max_norm=None):
   """Looks up `ids` in a list of embedding tensors.
 
   This function is used to perform parallel lookups on the list of
   tensors in `params`.  It is a generalization of
-  [`tf.gather()`](../../api_docs/python/array_ops.md#gather), where `params` is
+  @{tf.gather}, where `params` is
   interpreted as a partitioning of a large embedding tensor.  `params` may be
   a `PartitionedVariable` as returned by using `tf.get_variable()` with a
   partitioner.
@@ -74,7 +82,10 @@ def embedding_lookup(params, ids, partition_strategy="mod", name=None,
       if `len(params) > 1`. Currently `"div"` and `"mod"` are supported. Default
       is `"mod"`.
     name: A name for the operation (optional).
-    validate_indices: Whether or not to validate gather indices.
+    validate_indices: DEPRECATED. If this operation is assigned to CPU, values
+      in `indices` are always validated to be within range.  If assigned to GPU,
+      out-of-bound indices result in safe but unspecified behavior, which may
+      include raising an error.
     max_norm: If not None, embedding values are l2-normalized to the value of
      max_norm.
 
@@ -84,7 +95,7 @@ def embedding_lookup(params, ids, partition_strategy="mod", name=None,
   Raises:
     ValueError: If `params` is empty.
   """
-  if params is None or params == []:  # pylint: disable=g-explicit-bool-comparison
+  if params in (None, (), []):
     raise ValueError("Need at least one param")
   if isinstance(params, variables.PartitionedVariable):
     params = list(params)  # Iterate to get the underlying Variables.
@@ -100,16 +111,13 @@ def embedding_lookup(params, ids, partition_strategy="mod", name=None,
     return x
   with ops.name_scope(name, "embedding_lookup", params + [ids]) as name:
     np = len(params)  # Number of partitions
-    params = ops.convert_n_to_tensor_or_indexed_slices(params, name="params")
+    # Preserve the resource variable status to avoid accidental dense reads.
+    if not any(isinstance(p, resource_variable_ops.ResourceVariable)
+               for p in params):
+      params = ops.convert_n_to_tensor_or_indexed_slices(params, name="params")
     if np == 1:
       with ops.colocate_with(params[0]):
-        # TODO(apassos): implement the sharded version as well.
-        if isinstance(params[0], resource_variable_ops.ResourceVariable):
-          ret = params[0].sparse_read(ids, name=name)
-        else:
-          ret = array_ops.gather(params[0], ids, name=name,
-                                 validate_indices=validate_indices)
-      return maybe_normalize(ret)
+        return maybe_normalize(_do_gather(params[0], ids, name=name))
     else:
       ids = ops.convert_to_tensor(ids, name="ids")
       flat_ids = array_ops.reshape(ids, [-1])
@@ -169,9 +177,7 @@ def embedding_lookup(params, ids, partition_strategy="mod", name=None,
       partitioned_result = []
       for p in xrange(np):
         with ops.colocate_with(params[p]):
-          partitioned_result.append(array_ops.gather(
-              params[p], gather_ids[p],
-              validate_indices=validate_indices))
+          partitioned_result.append(_do_gather(params[p], gather_ids[p]))
       # Stitch these back together
       ret = data_flow_ops.dynamic_stitch(pindices, partitioned_result,
                                          name=name)
@@ -181,7 +187,7 @@ def embedding_lookup(params, ids, partition_strategy="mod", name=None,
         element_shape = element_shape.merge_with(p.get_shape()[1:])
       if element_shape.is_fully_defined():
         ret = array_ops.reshape(ret,
-                                array_ops.concat_v2(
+                                array_ops.concat(
                                     [array_ops.shape(ids), element_shape], 0))
       else:
         # It's important that we compute params[0].shape on the right device
@@ -189,7 +195,7 @@ def embedding_lookup(params, ids, partition_strategy="mod", name=None,
         with ops.colocate_with(params[0]):
           params_shape = array_ops.shape(params[0])
         ret = array_ops.reshape(ret,
-                                array_ops.concat_v2([
+                                array_ops.concat([
                                     array_ops.shape(ids),
                                     array_ops.slice(params_shape, [1], [-1])
                                 ], 0))
@@ -321,8 +327,8 @@ def embedding_lookup_sparse(params, sp_ids, sp_weights,
       # Reshape weights to allow broadcast
       ones = array_ops.fill(
           array_ops.expand_dims(array_ops.rank(embeddings) - 1, 0), 1)
-      bcast_weights_shape = array_ops.concat_v2(
-          [array_ops.shape(weights), ones], 0)
+      bcast_weights_shape = array_ops.concat([array_ops.shape(weights), ones],
+                                             0)
 
       orig_weights_shape = weights.get_shape()
       weights = array_ops.reshape(weights, bcast_weights_shape)

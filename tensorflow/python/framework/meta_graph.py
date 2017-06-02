@@ -105,7 +105,7 @@ def _read_file(filename):
   if not file_io.file_exists(filename):
     raise IOError("File %s does not exist." % filename)
   # First try to read it as a binary file.
-  file_content = file_io.read_file_to_string(filename)
+  file_content = file_io.FileIO(filename, "rb").read()
   try:
     graph_def.ParseFromString(file_content)
     return graph_def
@@ -114,7 +114,7 @@ def _read_file(filename):
 
   # Next try to read it as a text file.
   try:
-    text_format.Merge(file_content.decode("utf-8"), graph_def)
+    text_format.Merge(file_content, graph_def)
   except text_format.ParseError as e:
     raise IOError("Cannot parse file %s: %s." % (filename, str(e)))
 
@@ -151,12 +151,8 @@ def ops_used_by_graph_def(graph_def):
     mark_op_as_used(node.op)
   while functions_to_process:
     fun = functions_to_process.pop()
-    if fun.node_def:
-      for node in fun.node_def:
-        mark_op_as_used(node.op)
-    else:  # TODO(josh11b): Eventually remove this case.
-      for node in fun.node:
-        mark_op_as_used(node.op)
+    for node in fun.node_def:
+      mark_op_as_used(node.op)
 
   return [op for op in used_ops if op not in name_to_function]
 
@@ -405,7 +401,7 @@ def read_meta_graph_file(filename):
   if not file_io.file_exists(filename):
     raise IOError("File %s does not exist." % filename)
   # First try to read it as a binary file.
-  file_content = file_io.read_file_to_string(filename)
+  file_content = file_io.FileIO(filename, "rb").read()
   try:
     meta_graph_def.ParseFromString(file_content)
     return meta_graph_def
@@ -426,14 +422,15 @@ def import_scoped_meta_graph(meta_graph_or_file,
                              graph=None,
                              import_scope=None,
                              input_map=None,
-                             unbound_inputs_col_name="unbound_inputs"):
-  """Recreates a`Graph` saved in a `MetaGraphDef` proto.
+                             unbound_inputs_col_name="unbound_inputs",
+                             restore_collections_predicate=(lambda key: True)):
+  """Recreates a `Graph` saved in a `MetaGraphDef` proto.
 
   This function takes a `MetaGraphDef` protocol buffer as input. If
   the argument is a file containing a `MetaGraphDef` protocol buffer ,
   it constructs a protocol buffer from the file content. The function
   then adds all the nodes from the `graph_def` field to the
-  current graph, recreates all the collections, and returns a saver
+  current graph, recreates the desired collections, and returns a saver
   constructed from the `saver_def` field.
 
   In combination with `export_scoped_meta_graph()`, this function can be used to
@@ -457,6 +454,10 @@ def import_scoped_meta_graph(meta_graph_or_file,
       `Tensor` objects. The values of the named input tensors in the imported
       graph will be re-mapped to the respective `Tensor` values.
     unbound_inputs_col_name: Collection name for looking up unbound inputs.
+    restore_collections_predicate: a predicate on collection names. A collection
+      named c (i.e whose key is c) will be restored iff
+      1) `restore_collections_predicate(c)` is True, and
+      2) `c != unbound_inputs_col_name`.
 
   Returns:
     A dictionary of all the `Variables` imported into the name scope.
@@ -480,7 +481,8 @@ def import_scoped_meta_graph(meta_graph_or_file,
             sorted(input_map)):
           raise ValueError("Graph contains unbound inputs: %s. Must "
                            "provide these inputs through input_map." %
-                           ",".join([compat.as_str(v) for v in field.value]))
+                           ",".join([compat.as_str(v) for v in field.value
+                                     if not input_map or v not in input_map]))
         break
 
   # Sets graph to default graph if it's not passed in.
@@ -505,6 +507,8 @@ def import_scoped_meta_graph(meta_graph_or_file,
     for key, col_def in meta_graph_def.collection_def.items():
       # Don't add unbound_inputs to the new graph.
       if key == unbound_inputs_col_name:
+        continue
+      if not restore_collections_predicate(key):
         continue
 
       kind = col_def.WhichOneof("kind")

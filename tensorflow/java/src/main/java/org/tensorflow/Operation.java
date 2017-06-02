@@ -39,8 +39,11 @@ public final class Operation {
 
   /** Returns the full name of the Operation. */
   public String name() {
-    try (Graph.Reference r = graph.ref()) {
+    Graph.Reference r = graph.ref();
+    try {
       return name(unsafeNativeHandle);
+    } finally {
+      r.close();
     }
   }
 
@@ -49,15 +52,43 @@ public final class Operation {
    * operation.
    */
   public String type() {
-    try (Graph.Reference r = graph.ref()) {
+    Graph.Reference r = graph.ref();
+    try {
       return type(unsafeNativeHandle);
+    } finally {
+      r.close();
     }
   }
 
   /** Returns the number of tensors produced by this operation. */
   public int numOutputs() {
-    try (Graph.Reference r = graph.ref()) {
+    Graph.Reference r = graph.ref();
+    try {
       return numOutputs(unsafeNativeHandle);
+    } finally {
+      r.close();
+    }
+  }
+
+  /**
+   * Returns the size of the list of Tensors produced by this operation.
+   *
+   * <p>An Operation has multiple named outputs, each of which produces either
+   * a single tensor or a list of tensors. This method returns the size of
+   * the list of tensors for a specific named output of the operation.
+   *
+   * @param name identifier of the list of tensors (of which there may
+   *        be many) produced by this operation.
+   * @returns the size of the list of Tensors produced by this named output.
+   * @throws IllegalArgumentException if this operation has no output
+   *         with the provided name.
+   */
+  public int outputListLength(final String name) {
+    Graph.Reference r = graph.ref();
+    try {
+      return outputListLength(unsafeNativeHandle, name);
+    } finally {
+      r.close();
     }
   }
 
@@ -70,6 +101,26 @@ public final class Operation {
     return unsafeNativeHandle;
   }
 
+  // Package private, meant primarily for the public Output.shape() method.
+  long[] shape(int output) {
+    Graph.Reference r = graph.ref();
+    try {
+      return shape(r.nativeHandle(), unsafeNativeHandle, output);
+    } finally {
+      r.close();
+    }
+  }
+
+  // Package private, meant primarily for the public Output.dataType() method.
+  DataType dtype(int output) {
+    Graph.Reference r = graph.ref();
+    try {
+      return DataType.fromC(dtype(r.nativeHandle(), unsafeNativeHandle, output));
+    } finally {
+      r.close();
+    }
+  }
+
   private final long unsafeNativeHandle;
   private final Graph graph;
 
@@ -78,4 +129,10 @@ public final class Operation {
   private static native String type(long handle);
 
   private static native int numOutputs(long handle);
+
+  private static native int outputListLength(long handle, String name);
+
+  private static native long[] shape(long graphHandle, long opHandle, int output);
+
+  private static native int dtype(long graphHandle, long opHandle, int output);
 }
