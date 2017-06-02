@@ -64,6 +64,7 @@ import protoTensorFlow
 //   devices of each type.
 
 
+
 public typealias TF_Session = OpaquePointer
 public typealias TF_Tensor = OpaquePointer
 public typealias TF_Status = OpaquePointer

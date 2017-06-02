@@ -21,21 +21,25 @@ import protoTensorFlow
 */
 {% macro hasDefaultValue attribute %}{% if attribute.defaultValue %} = {{attribute.defaultValue}}{% endif %}{% endmacro %}
 
-{% macro returnFunctionBlock types %}{% if op.hasNoOutputArg %}->(GoOperation?){% endif %}{% if op.hasOneOutputArg %}->(GoOperation?){% else %}{% if op.outputArg.count %}->({% for type in types %}{{type.name|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}: Output{% if not forloop.last %}, {% endif %}{% endfor %}){% endif%}{% endif %}{% endmacro %}
+{% macro returnFunctionBlock types %}{% if op.hasNoOutputArg %}->(GoOperation?){% endif %}{% if op.hasOneOutputArg %}->(Output?){% else %}{% if op.outputArg.count %}->({% for type in types %}{{type.name|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}: Output?{% if not forloop.last %}, {% endif %}{% endfor %}){% endif%}{% endif %}{% endmacro %}
 {% macro functionArgumentBlock types %}{% for type in types %}{{type.name|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}: Output{% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
-{% macro functionAttributesBlock types %}{% for type in types %}{{type.name|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}} :{{type.type|snakeToCamelCase}}  {% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
+{% macro functionAttributesBlock types %}{% for type in types %}{{type.name|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}} :{{type.type|snakeToCamelCase|escapeReservedKeywords}}  {% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
 {% macro hasInputArgumentsAndAttribtues %}{% if op.inputArg.count %}{% if op.attr.count %},{% endif %}{% endif %} {%endmacro%}
 
-{% macro returnBlock types %}{% for type in types %}op.output({{forloop.counter}} - 1){% if not forloop.last %},{% endif %}{% endfor %}{% endmacro %}
+{% macro returnBlock types %}{% for type in types %}op?.output({{forloop.counter}} - 1){% if not forloop.last %},{% endif %}{% endfor %}{% endmacro %}
 
 {% macro trimmedInputArgs types %}{% for type in types %}{{type.name|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}{% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
 
 {% macro injectAttributes types %}{% for type in types %}attrs["{{type.name}}"] = {{type.name|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}
     {% endfor %}{% endmacro %}
 
+
+{% macro returnEmptyNilFunctionBlock types %}{% if op.outputArg.count %}return ({% for type in types %}nil{% if not forloop.last %}, {% endif %}{% endfor %}){% endif%}{% endmacro %}
+
+
 func {{ op.name|lowerFirstWord}}({% if op.hasAttributeOrInputArgs %} scope:Scope,{% else %} scope:Scope{% endif %}{% call functionArgumentBlock op.inputArg %}{% call hasInputArgumentsAndAttribtues %}{% call functionAttributesBlock op.attr %})  {% call returnFunctionBlock op.outputArg %}{
     if scope.error.error != nil {
-        return nil
+        {%call returnEmptyNilFunctionBlock op.outputArg %}
     }
 
     var attrs:Dictionary<String,Any> = [:]

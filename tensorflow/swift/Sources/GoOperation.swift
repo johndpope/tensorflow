@@ -131,7 +131,7 @@ struct Output  {
 
 extension GoOperation{
     // Output returns the i-th output of op.
-    func output(i:Int)-> Output {
+    func output(_ i:Int)-> Output {
         return Output(Op: self, Index: i)
     }
 }

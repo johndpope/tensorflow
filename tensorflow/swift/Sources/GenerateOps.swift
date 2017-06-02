@@ -8,7 +8,8 @@ import StencilSwiftKit
 import Stencil
 import Files
 
-
+// hack to allow stencil to correctly generate func types
+public typealias TensorflowNameAttrList = Tensorflow_NameAttrList
 
 // WHY THESE ADDITIONAL Structs? 
 // Needed to store properties for convenience with stencil kit template
@@ -23,6 +24,7 @@ struct MutableAttrDef{
     var minimum: Int64
     var allowedValues: Tensorflow_AttrValue
 
+    
     init(att:Tensorflow_OpDef.AttrDef) {
         self.name = att.name
         self.type = att.type
@@ -78,8 +80,9 @@ struct MutableTensorflow_OpDef{
     
     init(op:Tensorflow_OpDef) {
         self.jsonString = try?  op.jsonString()
-        
+
         self.name = op.name
+        
         var inputArrayArgs = Array<MutableArgDef>()
         
         for arg in op.inputArg{
@@ -100,7 +103,17 @@ struct MutableTensorflow_OpDef{
         var attArray = Array<MutableAttrDef>()
         for att in op.attr{
             let mAttr = MutableAttrDef.init(att:att )
-            attArray.append(mAttr)
+
+            
+            if(att.type == "type"){
+                print("SKIPPING ->>>> ",att.allowedValues.list)
+            }else if(att.type == "list(type)"){
+                print("SKIPPING list ->>>> ",att.allowedValues.list)
+            }else{
+              attArray.append(mAttr)  
+            }
+            
+            
         }
         self.attr = attArray
         
@@ -137,8 +150,8 @@ struct MutableTensorflow_OpDef{
 
 class OperationsStencil{
     
-    static var ops: [Tensorflow_OpDef] = []
-    static var mops: [MutableTensorflow_OpDef] = []
+    //static var ops: [Tensorflow_OpDef] = []
+    static var ops: [MutableTensorflow_OpDef] = []
 
     class func generateClasses(){
         
@@ -172,14 +185,14 @@ class OperationsStencil{
                 let template = StencilSwiftTemplate(templateString:stencilString,environment:stencilSwiftEnvironment())
                 
                 if let operations = opList?.op{
-                     OperationsStencil.ops = operations
+
                     for op in operations{
                         let mOp = MutableTensorflow_OpDef(op: op)
-                         OperationsStencil.mops.append(mOp)
+                         OperationsStencil.ops.append(mOp)
                     }
                     updateOps()
 
-                    let generated = try template.render(["operations": OperationsStencil.mops])
+                    let generated = try template.render(["operations": OperationsStencil.ops])
                     let newURL = URL(fileURLWithPath: projectDir + "/" + generatedFile)
                     try generated.data(using: .utf8)?.write(to: newURL)
                 }
@@ -202,20 +215,27 @@ class OperationsStencil{
             str = str.replacingOccurrences(of: "^", with: "// ^")
             OperationsStencil.ops[index].description_p = str
  
+           
+            if (op.name.lowercased() == "where") {
+               OperationsStencil.ops[index].name = "where_p"
+            }else  if (op.name.lowercased() == "switch") {
+               OperationsStencil.ops[index].name =  "switch_p"
+            }
+            
             
             if (bShouldBreak){
                 bShouldBreak = false
                 continue;
             }
             
-            for (indexB,arg) in op.inputArg.enumerated(){
+            for (_,arg) in op.inputArg.enumerated(){
                print("arg:",arg)
                 
             }
-            print("op:",op)
+            
             for (indexA,att) in op.attr.enumerated(){
-                print(">",att.type)
-               
+                print("attr:",att)
+             
                 if (att.name == "T"){
                     if (att.type == "type"){
                         OperationsStencil.ops[index].attr[indexA].type = "Tensorflow_DataType"
@@ -234,6 +254,11 @@ class OperationsStencil{
                     
                 }
                
+                if (att.type == "func"){
+                    OperationsStencil.ops[index].attr[indexA].type = "Tensorflow_NameAttrList"
+                    
+                }
+                
                 if (att.name == "type"){
                     OperationsStencil.ops[index].attr[indexA].type = "Tensorflow_DataType"
                     
