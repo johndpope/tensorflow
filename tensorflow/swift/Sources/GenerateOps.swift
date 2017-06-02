@@ -21,10 +21,12 @@ class OperationsStencil{
 
     class func generateClasses(){
         
-        let projectDir = "/Users/jp/Documents/tensorflowWorkspace/tensorflow/tensorflow/swift/misc"
-        let opsFile = "ops.pb"
-        let stencilFile = "OperationDefinitions.stencil"
-        let generatedFile = "Operations.swift"
+        let projectDir = "/Users/jp/Documents/tensorflowWorkspace/tensorflow/tensorflow/swift"
+        let generatedFile = "Sources/GoOpWrapper.swift"
+        
+        let opsFile = "misc/ops.pb"
+        let stencilFile = "misc/OperationDefinitions.stencil"
+        
         
         
         do {
@@ -69,6 +71,9 @@ class OperationsStencil{
                 print(">",att.type)
                
                 if (att.name == "T"){
+                    if (att.type == "type"){
+                        OperationsStencil.ops[index].attr[indexA].type = "Tensorflow_DataType"
+                    }
                     OperationsStencil.ops[index].attr.remove(at: indexA)
                     bShouldBreak = true
                     break;
@@ -80,6 +85,8 @@ class OperationsStencil{
                     }
                     
                 }
+               
+
                 if (att.type == "int"){
                     OperationsStencil.ops[index].attr[indexA].type = "UInt8"
                 }

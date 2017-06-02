@@ -33,8 +33,8 @@ var _allowsUninitializedInput: Bool = false
 */
 {% macro hasDefaultValue attribute %}{% if attribute._storage._defaultValue %} = {{attribute._storage._defaultValue}}{% endif %}{% endmacro %}
 
-{% macro returnFunctionBlock types %}{% if op._storage._outputArg.count %}->({% for type in types %}{{type.name|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}: tf.Output{% if not forloop.last %}, {% endif %}{% endfor %}){%else%}->(o:tf.Operation){% endif %}{% endmacro %}
-{% macro functionArgumentBlock types %}{% for type in types %}{{type.name|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}: tf.Output{% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
+{% macro returnFunctionBlock types %}{% if op._storage._outputArg.count %}->({% for type in types %}{{type.name|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}: Output{% if not forloop.last %}, {% endif %}{% endfor %}){%else%}->(o:GoOperation){% endif %}{% endmacro %}
+{% macro functionArgumentBlock types %}{% for type in types %}{{type.name|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}: Output{% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
 {% macro functionAttributesBlock types %}{% for type in types %}{{type._storage._name|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}} :{{type._storage._type|snakeToCamelCase}}  {% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
 {% macro hasInputArgumentsAndAttribtues %}{% if op._storage._inputArg.count %}{% if op._storage._attr.count %},{% endif %}{% endif %} {%endmacro%}
 
@@ -46,14 +46,14 @@ var _allowsUninitializedInput: Bool = false
     {% endfor %}{% endmacro %}
 
 func {{ op._storage._name|lowerFirstWord}}({% call ifArgsCount %}{% call functionArgumentBlock op._storage._inputArg %}{% call hasInputArgumentsAndAttribtues %}{% call functionAttributesBlock op._storage._attr %})  {% call returnFunctionBlock op._storage._outputArg %}{
-    if scope.error() != nil {
+    if scope.error.error() != nil {
         return
     }
 
     var attrs:Dictionary<String,Any> = [:]
     {% call injectAttributes op._storage._attr %}
 
-    let opspec = tf.OpSpec(
+    let opspec = OpSpec(
         OpType: "{{ op._storage._name}}",
         Input: [ {% call trimmedInputArgs op._storage._inputArg %}],
         Attrs: attrs

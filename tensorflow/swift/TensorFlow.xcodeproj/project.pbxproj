@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		17F9352F1EDF565500110E84 /* GenerateOps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F9352D1EDF518200110E84 /* GenerateOps.swift */; };
+		E84D9C941EE19D9B007C802D /* GoOpWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* GoOpWrapper.swift */; };
 		OBJ_321 /* conformance.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_183 /* conformance.pb.swift */; };
 		OBJ_322 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_184 /* main.swift */; };
 		OBJ_323 /* test_messages_proto3.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_185 /* test_messages_proto3.pb.swift */; };
@@ -274,7 +275,6 @@
 		OBJ_661 /* PluginLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_303 /* PluginLibrary.framework */; };
 		OBJ_669 /* GoGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* GoGraph.swift */; };
 		OBJ_670 /* GoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* GoOperation.swift */; };
-		OBJ_671 /* GoOpWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* GoOpWrapper.swift */; };
 		OBJ_672 /* GoSavedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* GoSavedModel.swift */; };
 		OBJ_673 /* GoScope.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* GoScope.swift */; };
 		OBJ_674 /* GoSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* GoSession.swift */; };
@@ -1405,7 +1405,7 @@
 			path = ".build/checkouts/swift-grpc-tensorflow.git--5994516077474897617/Sources";
 			sourceTree = SOURCE_ROOT;
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -1416,7 +1416,6 @@
 				OBJ_33 /* Dependencies */,
 				OBJ_301 /* Products */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_7 /* Configs */ = {
@@ -1729,7 +1728,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_301 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -2095,7 +2094,6 @@
 			files = (
 				OBJ_669 /* GoGraph.swift in Sources */,
 				OBJ_670 /* GoOperation.swift in Sources */,
-				OBJ_671 /* GoOpWrapper.swift in Sources */,
 				OBJ_672 /* GoSavedModel.swift in Sources */,
 				OBJ_673 /* GoScope.swift in Sources */,
 				OBJ_674 /* GoSession.swift in Sources */,
@@ -2112,6 +2110,7 @@
 				OBJ_684 /* TF_Session.swift in Sources */,
 				OBJ_685 /* TF_Status.swift in Sources */,
 				OBJ_686 /* TF_String.swift in Sources */,
+				E84D9C941EE19D9B007C802D /* GoOpWrapper.swift in Sources */,
 				OBJ_687 /* TF_Tensor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
