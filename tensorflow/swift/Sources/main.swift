@@ -3,8 +3,7 @@ import protoTensorFlow
 import Foundation
 import IOSwift
 import ByteTools
-
-
+import Files
 
 // An example for using the TensorFlow Go API for image recognition
 // using a pre-trained inception model (http://arxiv.org/abs/1512.00567).
@@ -51,7 +50,7 @@ do {
 		   curl -L https://storage.googleapis.com/download.tensorflow.org/models/inception5h.zip -o misc/inception5h.zip
 		   unzip misc/inception5h.zip -d /misc
      */
-    let projectDir = "/Users/jp/Documents/tensorflowWorkspace/tensorflow/tensorflow/swift/misc"
+    let projectDir = "\(Folder.home.path)/Documents/tensorflowWorkspace/tensorflow/tensorflow/swift/misc"
     let modelFile  = "tensorflow_inception_graph.pb"
     let imagefile = "grace_hopper.jpg"
 

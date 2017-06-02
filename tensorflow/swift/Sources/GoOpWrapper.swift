@@ -36,7 +36,7 @@ Returns nothing but an exception.
 
 
 
-func abort(scope:Scope,errorMsg :String  , exitWithoutError :Bool  )  ->(o:GoOperation){
+func abort(scope:Scope errorMsg :String  , exitWithoutError :Bool  )  ->(o:GoOperation){
     if scope.error.error() != nil {
         return
     }

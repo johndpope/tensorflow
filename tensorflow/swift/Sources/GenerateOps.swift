@@ -6,7 +6,7 @@ import ByteTools
 import protoTensorFlow
 import StencilSwiftKit
 import Stencil
-
+import Files
 
 extension Tensorflow_OpDef{
     func hasOutputArgs()->Bool{
@@ -21,7 +21,7 @@ class OperationsStencil{
 
     class func generateClasses(){
         
-        let projectDir = "/Users/jp/Documents/tensorflowWorkspace/tensorflow/tensorflow/swift"
+        let projectDir = "\(Folder.home.path)/Documents/tensorflowWorkspace/tensorflow/tensorflow/swift"
         let generatedFile = "Sources/GoOpWrapper.swift"
         
         let opsFile = "misc/ops.pb"
@@ -62,6 +62,10 @@ class OperationsStencil{
     class  func updateOps(){
         var bShouldBreak = false
         for (index,op) in  OperationsStencil.ops.enumerated(){
+            OperationsStencil.ops[index].description_p  = op.description_p.replacingOccurrences(of: "*/", with: "* /")
+            OperationsStencil.ops[index].description_p  = op.description_p.replacingOccurrences(of: "\\*", with: "\\ *")
+ 
+            
             if (bShouldBreak){
                 bShouldBreak = false
                 continue;
