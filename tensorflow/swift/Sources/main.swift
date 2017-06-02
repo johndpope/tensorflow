@@ -51,7 +51,7 @@ do {
 		   curl -L https://storage.googleapis.com/download.tensorflow.org/models/inception5h.zip -o misc/inception5h.zip
 		   unzip misc/inception5h.zip -d /misc
      */
-    let projectDir = "/Users/jpope/Documents/tensorflowWorkspace/tensorflow/tensorflow/swift/misc"
+    let projectDir = "/Users/jp/Documents/tensorflowWorkspace/tensorflow/tensorflow/swift/misc"
     let modelFile  = "tensorflow_inception_graph.pb"
     let imagefile = "grace_hopper.jpg"
 

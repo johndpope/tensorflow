@@ -21,7 +21,7 @@ class OperationsStencil{
 
     class func generateClasses(){
         
-        let projectDir = "/Users/jpope/Documents/tensorflowWorkspace/tensorflow/tensorflow/swift/misc"
+        let projectDir = "/Users/jp/Documents/tensorflowWorkspace/tensorflow/tensorflow/swift/misc"
         let opsFile = "ops.pb"
         let stencilFile = "OperationDefinitions.stencil"
         let generatedFile = "Operations.swift"
@@ -58,9 +58,23 @@ class OperationsStencil{
     }
     
     class  func updateOps(){
+        var bShouldBreak = false
         for (index,op) in  OperationsStencil.ops.enumerated(){
+            if (bShouldBreak){
+                bShouldBreak = false
+                continue;
+            }
             for (indexA,att) in op.attr.enumerated(){
                 print(">",att.type)
+               
+                if (att.name == "T"){
+                    OperationsStencil.ops[index].attr.remove(at: indexA)
+                    bShouldBreak = true
+                    break;
+                }
+                if (att.name == "dtypes"){
+                    OperationsStencil.ops[index].attr[indexA].type = "Tensorflow_DataType"
+                }
                 if (att.type == "int"){
                     OperationsStencil.ops[index].attr[indexA].type = "UInt8"
                 }
@@ -80,6 +94,7 @@ class OperationsStencil{
                 
                 
             }
+            print("op:",OperationsStencil.ops[index].attr)
 
         }
     }

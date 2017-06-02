@@ -36,14 +36,14 @@ Returns nothing but an exception.
 
 
 
-func abort(scope:Scope errorMsg :string  , exitWithoutError :bool  )  ->(o:tf.Operation){
+func abort(scope:Scope errorMsg :String  , exitWithoutError :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("error_msg":errorMsg)
-    attr.append("exit_without_error":exitWithoutError)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("error_msg",errorMsg)
+    attr.append("exit_without_error",exitWithoutError)
 
     let opspec = tf.OpSpec(
         OpType: "Abort",
@@ -65,13 +65,12 @@ an output element, this operation computes \\(y = |x|\\).
 
 
 
-func abs(scope:Scope,x: Tensorflow_DataType, t :type  )  ->(y: tf.Output){
+func abs(scope:Scope,x: Tensorflow_DataType )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "Abs",
@@ -92,13 +91,13 @@ Does not add if local_step is lesser than the accumulator's global_step.
 
 
 
-func accumulatorApplyGradient(scope:Scope,handle: Tensorflow_DataType, localStep: Tensorflow_DataType, gradient: Tensorflow_DataType, dtype :type  )  ->(o:tf.Operation){
+func accumulatorApplyGradient(scope:Scope,handle: Tensorflow_DataType, localStep: Tensorflow_DataType, gradient: Tensorflow_DataType, dtype :Type  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("dtype":dtype)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("dtype",dtype)
 
     let opspec = tf.OpSpec(
         OpType: "AccumulatorApplyGradient",
@@ -122,7 +121,7 @@ func accumulatorNumAccumulated(scope:Scope,handle: Tensorflow_DataType )  ->(num
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "AccumulatorNumAccumulated",
@@ -149,7 +148,7 @@ func accumulatorSetGlobalStep(scope:Scope,handle: Tensorflow_DataType, newGlobal
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "AccumulatorSetGlobalStep",
@@ -173,13 +172,13 @@ global_step in the accumulator by 1, and resets the aggregate to 0.
 
 
 
-func accumulatorTakeGradient(scope:Scope,handle: Tensorflow_DataType, numRequired: Tensorflow_DataType, dtype :type  )  ->(average: tf.Output){
+func accumulatorTakeGradient(scope:Scope,handle: Tensorflow_DataType, numRequired: Tensorflow_DataType, dtype :Type  )  ->(average: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("dtype":dtype)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("dtype",dtype)
 
     let opspec = tf.OpSpec(
         OpType: "AccumulatorTakeGradient",
@@ -199,13 +198,12 @@ Computes acos of x element-wise.
 
 
 
-func acos(scope:Scope,x: Tensorflow_DataType, t :type  )  ->(y: tf.Output){
+func acos(scope:Scope,x: Tensorflow_DataType )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "Acos",
@@ -227,13 +225,13 @@ Returns x + y element-wise.
 
 
 
-func add(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :type  )  ->(z: tf.Output){
+func add(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :Type  )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "Add",
@@ -271,15 +269,14 @@ is provided here, instead use the *name* of the Operation created by calling
 
 
 
-func addManySparseToTensorsMap(scope:Scope,sparseIndices: Tensorflow_DataType, sparseValues: Tensorflow_DataType, sparseShape: Tensorflow_DataType, t :type  , container :string  , sharedName :string  )  ->(sparseHandles: tf.Output){
+func addManySparseToTensorsMap(scope:Scope,sparseIndices: Tensorflow_DataType, sparseValues: Tensorflow_DataType, sparseShape: Tensorflow_DataType, container :String  , sharedName :String  )  ->(sparseHandles: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("container":container)
-    attr.append("shared_name":sharedName)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("container",container)
+    attr.append("shared_name",sharedName)
 
     let opspec = tf.OpSpec(
         OpType: "AddManySparseToTensorsMap",
@@ -299,14 +296,14 @@ Add all input tensors element wise.
 
 
 
-func addN(scope:Scope,inputs: Tensorflow_DataType, n :uInt8  , t :type  )  ->(sum: tf.Output){
+func addN(scope:Scope,inputs: Tensorflow_DataType, n :Int  , t :Type  )  ->(sum: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("N":n)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("N",n)
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "AddN",
@@ -338,15 +335,14 @@ is provided here, instead use the *name* of the Operation created by calling
 
 
 
-func addSparseToTensorsMap(scope:Scope,sparseIndices: Tensorflow_DataType, sparseValues: Tensorflow_DataType, sparseShape: Tensorflow_DataType, t :type  , container :string  , sharedName :string  )  ->(sparseHandle: tf.Output){
+func addSparseToTensorsMap(scope:Scope,sparseIndices: Tensorflow_DataType, sparseValues: Tensorflow_DataType, sparseShape: Tensorflow_DataType, container :String  , sharedName :String  )  ->(sparseHandle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("container":container)
-    attr.append("shared_name":sharedName)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("container",container)
+    attr.append("shared_name",sharedName)
 
     let opspec = tf.OpSpec(
         OpType: "AddSparseToTensorsMap",
@@ -366,13 +362,13 @@ Deprecated. Disallowed in GraphDef version >= 2.
 
 
 
-func adjustContrast(scope:Scope,images: Tensorflow_DataType, contrastFactor: Tensorflow_DataType, minValue: Tensorflow_DataType, maxValue: Tensorflow_DataType, t :type  )  ->(output: tf.Output){
+func adjustContrast(scope:Scope,images: Tensorflow_DataType, contrastFactor: Tensorflow_DataType, minValue: Tensorflow_DataType, maxValue: Tensorflow_DataType, t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "AdjustContrast",
@@ -404,7 +400,7 @@ func adjustContrastv2(scope:Scope,images: Tensorflow_DataType, contrastFactor: T
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "AdjustContrastv2",
@@ -434,7 +430,7 @@ func adjustHue(scope:Scope,images: Tensorflow_DataType, delta: Tensorflow_DataTy
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "AdjustHue",
@@ -464,7 +460,7 @@ func adjustSaturation(scope:Scope,images: Tensorflow_DataType, scale: Tensorflow
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "AdjustSaturation",
@@ -488,14 +484,14 @@ retained with length 1.
 
 
 
-func all(scope:Scope,input: Tensorflow_DataType, reductionIndices: Tensorflow_DataType, keepDims :bool  , tidx :type  )  ->(output: tf.Output){
+func all(scope:Scope,input: Tensorflow_DataType, reductionIndices: Tensorflow_DataType, keepDims :Bool  , tidx :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("keep_dims":keepDims)
-    attr.append("Tidx":tidx)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("keep_dims",keepDims)
+    attr.append("Tidx",tidx)
 
     let opspec = tf.OpSpec(
         OpType: "All",
@@ -522,17 +518,17 @@ true labels.
 
 
 
-func allCandidateSampler(scope:Scope,trueClasses: Tensorflow_DataType, numTrue :uInt8  , numSampled :uInt8  , unique :bool  , seed :uInt8  , seed2 :uInt8  )  ->(sampledCandidates: tf.Output, trueExpectedCount: tf.Output, sampledExpectedCount: tf.Output){
+func allCandidateSampler(scope:Scope,trueClasses: Tensorflow_DataType, numTrue :UInt8  , numSampled :UInt8  , unique :Bool  , seed :UInt8  , seed2 :UInt8  )  ->(sampledCandidates: tf.Output, trueExpectedCount: tf.Output, sampledExpectedCount: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("num_true":numTrue)
-    attr.append("num_sampled":numSampled)
-    attr.append("unique":unique)
-    attr.append("seed":seed)
-    attr.append("seed2":seed2)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("num_true",numTrue)
+    attr.append("num_sampled",numSampled)
+    attr.append("unique",unique)
+    attr.append("seed",seed)
+    attr.append("seed2",seed2)
 
     let opspec = tf.OpSpec(
         OpType: "AllCandidateSampler",
@@ -556,14 +552,14 @@ retained with length 1.
 
 
 
-func any(scope:Scope,input: Tensorflow_DataType, reductionIndices: Tensorflow_DataType, keepDims :bool  , tidx :type  )  ->(output: tf.Output){
+func any(scope:Scope,input: Tensorflow_DataType, reductionIndices: Tensorflow_DataType, keepDims :Bool  , tidx :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("keep_dims":keepDims)
-    attr.append("Tidx":tidx)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("keep_dims",keepDims)
+    attr.append("Tidx",tidx)
 
     let opspec = tf.OpSpec(
         OpType: "Any",
@@ -587,14 +583,13 @@ var -= update;
 
 
 
-func applyAdadelta(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, accumUpdate: Tensorflow_DataType, lr: Tensorflow_DataType, rho: Tensorflow_DataType, epsilon: Tensorflow_DataType, grad: Tensorflow_DataType, t :type  , useLocking :bool  )  ->(out: tf.Output){
+func applyAdadelta(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, accumUpdate: Tensorflow_DataType, lr: Tensorflow_DataType, rho: Tensorflow_DataType, epsilon: Tensorflow_DataType, grad: Tensorflow_DataType, useLocking :Bool  )  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("use_locking":useLocking)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("use_locking",useLocking)
 
     let opspec = tf.OpSpec(
         OpType: "ApplyAdadelta",
@@ -616,14 +611,14 @@ var -= lr * grad * (1 / sqrt(accum))
 
 
 
-func applyAdagrad(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, lr: Tensorflow_DataType, grad: Tensorflow_DataType, t :type  , useLocking :bool  )  ->(out: tf.Output){
+func applyAdagrad(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, lr: Tensorflow_DataType, grad: Tensorflow_DataType, t :Type  , useLocking :Bool  )  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("use_locking":useLocking)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("use_locking",useLocking)
 
     let opspec = tf.OpSpec(
         OpType: "ApplyAdagrad",
@@ -643,14 +638,13 @@ Update '*var' according to the proximal adagrad scheme.
 
 
 
-func applyAdagradDA(scope:Scope,`var`: Tensorflow_DataType, gradientAccumulator: Tensorflow_DataType, gradientSquaredAccumulator: Tensorflow_DataType, grad: Tensorflow_DataType, lr: Tensorflow_DataType, l1: Tensorflow_DataType, l2: Tensorflow_DataType, globalStep: Tensorflow_DataType, t :type  , useLocking :bool  )  ->(out: tf.Output){
+func applyAdagradDA(scope:Scope,`var`: Tensorflow_DataType, gradientAccumulator: Tensorflow_DataType, gradientSquaredAccumulator: Tensorflow_DataType, grad: Tensorflow_DataType, lr: Tensorflow_DataType, l1: Tensorflow_DataType, l2: Tensorflow_DataType, globalStep: Tensorflow_DataType, useLocking :Bool  )  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("use_locking":useLocking)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("use_locking",useLocking)
 
     let opspec = tf.OpSpec(
         OpType: "ApplyAdagradDA",
@@ -674,15 +668,15 @@ variable <- variable - lr_t * m_t / (sqrt(v_t) + epsilon)
 
 
 
-func applyAdam(scope:Scope,`var`: Tensorflow_DataType, m: Tensorflow_DataType, v: Tensorflow_DataType, beta1Power: Tensorflow_DataType, beta2Power: Tensorflow_DataType, lr: Tensorflow_DataType, beta1: Tensorflow_DataType, beta2: Tensorflow_DataType, epsilon: Tensorflow_DataType, grad: Tensorflow_DataType, t :type  , useLocking :bool  , useNesterov :bool  )  ->(out: tf.Output){
+func applyAdam(scope:Scope,`var`: Tensorflow_DataType, m: Tensorflow_DataType, v: Tensorflow_DataType, beta1Power: Tensorflow_DataType, beta2Power: Tensorflow_DataType, lr: Tensorflow_DataType, beta1: Tensorflow_DataType, beta2: Tensorflow_DataType, epsilon: Tensorflow_DataType, grad: Tensorflow_DataType, t :Type  , useLocking :Bool  , useNesterov :Bool  )  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("use_locking":useLocking)
-    attr.append("use_nesterov":useNesterov)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("use_locking",useLocking)
+    attr.append("use_nesterov",useNesterov)
 
     let opspec = tf.OpSpec(
         OpType: "ApplyAdam",
@@ -716,14 +710,13 @@ var <- var - mom
 
 
 
-func applyCenteredRMSProp(scope:Scope,`var`: Tensorflow_DataType, mg: Tensorflow_DataType, ms: Tensorflow_DataType, mom: Tensorflow_DataType, lr: Tensorflow_DataType, rho: Tensorflow_DataType, momentum: Tensorflow_DataType, epsilon: Tensorflow_DataType, grad: Tensorflow_DataType, t :type  , useLocking :bool  )  ->(out: tf.Output){
+func applyCenteredRMSProp(scope:Scope,`var`: Tensorflow_DataType, mg: Tensorflow_DataType, ms: Tensorflow_DataType, mom: Tensorflow_DataType, lr: Tensorflow_DataType, rho: Tensorflow_DataType, momentum: Tensorflow_DataType, epsilon: Tensorflow_DataType, grad: Tensorflow_DataType, useLocking :Bool  )  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("use_locking":useLocking)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("use_locking",useLocking)
 
     let opspec = tf.OpSpec(
         OpType: "ApplyCenteredRMSProp",
@@ -748,14 +741,14 @@ accum = accum_new
 
 
 
-func applyFtrl(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, linear: Tensorflow_DataType, grad: Tensorflow_DataType, lr: Tensorflow_DataType, l1: Tensorflow_DataType, l2: Tensorflow_DataType, lrPower: Tensorflow_DataType, t :type  , useLocking :bool  )  ->(out: tf.Output){
+func applyFtrl(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, linear: Tensorflow_DataType, grad: Tensorflow_DataType, lr: Tensorflow_DataType, l1: Tensorflow_DataType, l2: Tensorflow_DataType, lrPower: Tensorflow_DataType, t :Type  , useLocking :Bool  )  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("use_locking":useLocking)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("use_locking",useLocking)
 
     let opspec = tf.OpSpec(
         OpType: "ApplyFtrl",
@@ -775,14 +768,13 @@ Update '*var' by subtracting 'alpha' * 'delta' from it.
 
 
 
-func applyGradientDescent(scope:Scope,`var`: Tensorflow_DataType, alpha: Tensorflow_DataType, delta: Tensorflow_DataType, t :type  , useLocking :bool  )  ->(out: tf.Output){
+func applyGradientDescent(scope:Scope,`var`: Tensorflow_DataType, alpha: Tensorflow_DataType, delta: Tensorflow_DataType, useLocking :Bool  )  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("use_locking":useLocking)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("use_locking",useLocking)
 
     let opspec = tf.OpSpec(
         OpType: "ApplyGradientDescent",
@@ -805,15 +797,15 @@ var -= lr * accum
 
 
 
-func applyMomentum(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, lr: Tensorflow_DataType, grad: Tensorflow_DataType, momentum: Tensorflow_DataType, t :type  , useLocking :bool  , useNesterov :bool  )  ->(out: tf.Output){
+func applyMomentum(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, lr: Tensorflow_DataType, grad: Tensorflow_DataType, momentum: Tensorflow_DataType, t :Type  , useLocking :Bool  , useNesterov :Bool  )  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("use_locking":useLocking)
-    attr.append("use_nesterov":useNesterov)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("use_locking",useLocking)
+    attr.append("use_nesterov",useNesterov)
 
     let opspec = tf.OpSpec(
         OpType: "ApplyMomentum",
@@ -836,14 +828,13 @@ var = sign(prox_v)/(1+lr*l2) * max{|prox_v|-lr*l1,0}
 
 
 
-func applyProximalAdagrad(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, lr: Tensorflow_DataType, l1: Tensorflow_DataType, l2: Tensorflow_DataType, grad: Tensorflow_DataType, t :type  , useLocking :bool  )  ->(out: tf.Output){
+func applyProximalAdagrad(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, lr: Tensorflow_DataType, l1: Tensorflow_DataType, l2: Tensorflow_DataType, grad: Tensorflow_DataType, useLocking :Bool  )  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("use_locking":useLocking)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("use_locking",useLocking)
 
     let opspec = tf.OpSpec(
         OpType: "ApplyProximalAdagrad",
@@ -865,14 +856,14 @@ var = sign(prox_v)/(1+alpha*l2) * max{|prox_v|-alpha*l1,0}
 
 
 
-func applyProximalGradientDescent(scope:Scope,`var`: Tensorflow_DataType, alpha: Tensorflow_DataType, l1: Tensorflow_DataType, l2: Tensorflow_DataType, delta: Tensorflow_DataType, t :type  , useLocking :bool  )  ->(out: tf.Output){
+func applyProximalGradientDescent(scope:Scope,`var`: Tensorflow_DataType, alpha: Tensorflow_DataType, l1: Tensorflow_DataType, l2: Tensorflow_DataType, delta: Tensorflow_DataType, t :Type  , useLocking :Bool  )  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("use_locking":useLocking)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("use_locking",useLocking)
 
     let opspec = tf.OpSpec(
         OpType: "ApplyProximalGradientDescent",
@@ -900,14 +891,13 @@ var <- var - mom
 
 
 
-func applyRMSProp(scope:Scope,`var`: Tensorflow_DataType, ms: Tensorflow_DataType, mom: Tensorflow_DataType, lr: Tensorflow_DataType, rho: Tensorflow_DataType, momentum: Tensorflow_DataType, epsilon: Tensorflow_DataType, grad: Tensorflow_DataType, t :type  , useLocking :bool  )  ->(out: tf.Output){
+func applyRMSProp(scope:Scope,`var`: Tensorflow_DataType, ms: Tensorflow_DataType, mom: Tensorflow_DataType, lr: Tensorflow_DataType, rho: Tensorflow_DataType, momentum: Tensorflow_DataType, epsilon: Tensorflow_DataType, grad: Tensorflow_DataType, useLocking :Bool  )  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("use_locking":useLocking)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("use_locking",useLocking)
 
     let opspec = tf.OpSpec(
         OpType: "ApplyRMSProp",
@@ -927,14 +917,14 @@ Returns the truth value of abs(x-y) < tolerance element-wise.
 
 
 
-func approximateEqual(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :type  , tolerance :float  )  ->(z: tf.Output){
+func approximateEqual(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :Type  , tolerance :Float  )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("tolerance":tolerance)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("tolerance",tolerance)
 
     let opspec = tf.OpSpec(
         OpType: "ApproximateEqual",
@@ -955,14 +945,13 @@ Note that in case of ties the identity of the return value is not guaranteed.
 
 
 
-func argMax(scope:Scope,input: Tensorflow_DataType, dimension: Tensorflow_DataType, t :type  , tidx :type  )  ->(output: tf.Output){
+func argMax(scope:Scope,input: Tensorflow_DataType, dimension: Tensorflow_DataType, tidx :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tidx":tidx)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tidx",tidx)
 
     let opspec = tf.OpSpec(
         OpType: "ArgMax",
@@ -983,14 +972,14 @@ Note that in case of ties the identity of the return value is not guaranteed.
 
 
 
-func argMin(scope:Scope,input: Tensorflow_DataType, dimension: Tensorflow_DataType, t :type  , tidx :type  )  ->(output: tf.Output){
+func argMin(scope:Scope,input: Tensorflow_DataType, dimension: Tensorflow_DataType, t :Type  , tidx :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tidx":tidx)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("Tidx",tidx)
 
     let opspec = tf.OpSpec(
         OpType: "ArgMin",
@@ -1011,18 +1000,17 @@ types and boolean.
 
 
 
-func asString(scope:Scope,input: Tensorflow_DataType, t :type  , precision :uInt8  , scientific :bool  , shortest :bool  , width :uInt8  , fill :string  )  ->(output: tf.Output){
+func asString(scope:Scope,input: Tensorflow_DataType, precision :Int  , scientific :Bool  , shortest :Bool  , width :Int  , fill :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("precision":precision)
-    attr.append("scientific":scientific)
-    attr.append("shortest":shortest)
-    attr.append("width":width)
-    attr.append("fill":fill)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("precision",precision)
+    attr.append("scientific",scientific)
+    attr.append("shortest",shortest)
+    attr.append("width",width)
+    attr.append("fill",fill)
 
     let opspec = tf.OpSpec(
         OpType: "AsString",
@@ -1042,13 +1030,13 @@ Computes asin of x element-wise.
 
 
 
-func asin(scope:Scope,x: Tensorflow_DataType, t :type  )  ->(y: tf.Output){
+func asin(scope:Scope,x: Tensorflow_DataType, t :Type  )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "Asin",
@@ -1070,14 +1058,13 @@ If `condition` evaluates to false, print the list of tensors in `data`.
 
 
 
-func assert(scope:Scope,condition: Tensorflow_DataType, data: Tensorflow_DataType, t :list(type)  , summarize :uInt8  )  ->(o:tf.Operation){
+func assert(scope:Scope,condition: Tensorflow_DataType, data: Tensorflow_DataType, summarize :Int  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("summarize":summarize)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("summarize",summarize)
 
     let opspec = tf.OpSpec(
         OpType: "Assert",
@@ -1098,15 +1085,15 @@ This makes it easier to chain operations that need to use the reset value.
 
 
 
-func assign(scope:Scope,ref: Tensorflow_DataType, value: Tensorflow_DataType, t :type  , validateShape :bool  , useLocking :bool  )  ->(outputRef: tf.Output){
+func assign(scope:Scope,ref: Tensorflow_DataType, value: Tensorflow_DataType, t :Type  , validateShape :Bool  , useLocking :Bool  )  ->(outputRef: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("validate_shape":validateShape)
-    attr.append("use_locking":useLocking)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("validate_shape",validateShape)
+    attr.append("use_locking",useLocking)
 
     let opspec = tf.OpSpec(
         OpType: "Assign",
@@ -1128,14 +1115,13 @@ This makes it easier to chain operations that need to use the reset value.
 
 
 
-func assignAdd(scope:Scope,ref: Tensorflow_DataType, value: Tensorflow_DataType, t :type  , useLocking :bool  )  ->(outputRef: tf.Output){
+func assignAdd(scope:Scope,ref: Tensorflow_DataType, value: Tensorflow_DataType, useLocking :Bool  )  ->(outputRef: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("use_locking":useLocking)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("use_locking",useLocking)
 
     let opspec = tf.OpSpec(
         OpType: "AssignAdd",
@@ -1157,14 +1143,14 @@ This makes it easier to chain operations that need to use the reset value.
 
 
 
-func assignSub(scope:Scope,ref: Tensorflow_DataType, value: Tensorflow_DataType, t :type  , useLocking :bool  )  ->(outputRef: tf.Output){
+func assignSub(scope:Scope,ref: Tensorflow_DataType, value: Tensorflow_DataType, t :Type  , useLocking :Bool  )  ->(outputRef: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("use_locking":useLocking)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("use_locking",useLocking)
 
     let opspec = tf.OpSpec(
         OpType: "AssignSub",
@@ -1184,13 +1170,12 @@ Computes atan of x element-wise.
 
 
 
-func atan(scope:Scope,x: Tensorflow_DataType, t :type  )  ->(y: tf.Output){
+func atan(scope:Scope,x: Tensorflow_DataType )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "Atan",
@@ -1215,13 +1200,13 @@ where \(r = \sqrt(x^2 + y^2) \).
 
 
 
-func atan2(scope:Scope,y: Tensorflow_DataType, x: Tensorflow_DataType, t :type  )  ->(z: tf.Output){
+func atan2(scope:Scope,y: Tensorflow_DataType, x: Tensorflow_DataType, t :Type  )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "Atan2",
@@ -1262,15 +1247,15 @@ resulting spectrogram as a PNG image.
 
 
 
-func audioSpectrogram(scope:Scope,input: Tensorflow_DataType, windowSize :uInt8  , stride :uInt8  , magnitudeSquared :bool  )  ->(spectrogram: tf.Output){
+func audioSpectrogram(scope:Scope,input: Tensorflow_DataType, windowSize :UInt8  , stride :UInt8  , magnitudeSquared :Bool  )  ->(spectrogram: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("window_size":windowSize)
-    attr.append("stride":stride)
-    attr.append("magnitude_squared":magnitudeSquared)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("window_size",windowSize)
+    attr.append("stride",stride)
+    attr.append("magnitude_squared",magnitudeSquared)
 
     let opspec = tf.OpSpec(
         OpType: "AudioSpectrogram",
@@ -1299,14 +1284,14 @@ build the `tag` of the summary values:
 
 
 
-func audioSummary(scope:Scope,tag: Tensorflow_DataType, tensor: Tensorflow_DataType, sampleRate :float  , maxOutputs :uInt8  )  ->(summary: tf.Output){
+func audioSummary(scope:Scope,tag: Tensorflow_DataType, tensor: Tensorflow_DataType, sampleRate :Float  , maxOutputs :UInt8  )  ->(summary: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("sample_rate":sampleRate)
-    attr.append("max_outputs":maxOutputs)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("sample_rate",sampleRate)
+    attr.append("max_outputs",maxOutputs)
 
     let opspec = tf.OpSpec(
         OpType: "AudioSummary",
@@ -1335,13 +1320,13 @@ build the `tag` of the summary values:
 
 
 
-func audioSummaryV2(scope:Scope,tag: Tensorflow_DataType, tensor: Tensorflow_DataType, sampleRate: Tensorflow_DataType, maxOutputs :uInt8  )  ->(summary: tf.Output){
+func audioSummaryV2(scope:Scope,tag: Tensorflow_DataType, tensor: Tensorflow_DataType, sampleRate: Tensorflow_DataType, maxOutputs :UInt8  )  ->(summary: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("max_outputs":maxOutputs)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("max_outputs",maxOutputs)
 
     let opspec = tf.OpSpec(
         OpType: "AudioSummaryV2",
@@ -1363,17 +1348,16 @@ window in `value`.
 
 
 
-func avgPool(scope:Scope,value: Tensorflow_DataType, ksize :[Int]  , strides :[Int]  , padding :string  , dataFormat :string  , t :type  )  ->(output: tf.Output){
+func avgPool(scope:Scope,value: Tensorflow_DataType, ksize :[Int]  , strides :[Int]  , padding :String  , dataFormat :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("ksize":ksize)
-    attr.append("strides":strides)
-    attr.append("padding":padding)
-    attr.append("data_format":dataFormat)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("ksize",ksize)
+    attr.append("strides",strides)
+    attr.append("padding",padding)
+    attr.append("data_format",dataFormat)
 
     let opspec = tf.OpSpec(
         OpType: "AvgPool",
@@ -1393,17 +1377,17 @@ Performs 3D average pooling on the input.
 
 
 
-func avgPool3D(scope:Scope,input: Tensorflow_DataType, ksize :[Int]  , strides :[Int]  , padding :string  , dataFormat :string  , t :type  )  ->(output: tf.Output){
+func avgPool3D(scope:Scope,input: Tensorflow_DataType, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  , t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("ksize":ksize)
-    attr.append("strides":strides)
-    attr.append("padding":padding)
-    attr.append("data_format":dataFormat)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("ksize",ksize)
+    attr.append("strides",strides)
+    attr.append("padding",padding)
+    attr.append("data_format",dataFormat)
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "AvgPool3D",
@@ -1423,17 +1407,16 @@ Computes gradients of average pooling function.
 
 
 
-func avgPool3DGrad(scope:Scope,origInputShape: Tensorflow_DataType, grad: Tensorflow_DataType, ksize :[Int]  , strides :[Int]  , padding :string  , dataFormat :string  , t :type  )  ->(output: tf.Output){
+func avgPool3DGrad(scope:Scope,origInputShape: Tensorflow_DataType, grad: Tensorflow_DataType, ksize :[Int]  , strides :[Int]  , padding :String  , dataFormat :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("ksize":ksize)
-    attr.append("strides":strides)
-    attr.append("padding":padding)
-    attr.append("data_format":dataFormat)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("ksize",ksize)
+    attr.append("strides",strides)
+    attr.append("padding",padding)
+    attr.append("data_format",dataFormat)
 
     let opspec = tf.OpSpec(
         OpType: "AvgPool3DGrad",
@@ -1453,17 +1436,17 @@ Computes gradients of the average pooling function.
 
 
 
-func avgPoolGrad(scope:Scope,origInputShape: Tensorflow_DataType, grad: Tensorflow_DataType, ksize :[Int]  , strides :[Int]  , padding :string  , dataFormat :string  , t :type  )  ->(output: tf.Output){
+func avgPoolGrad(scope:Scope,origInputShape: Tensorflow_DataType, grad: Tensorflow_DataType, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  , t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("ksize":ksize)
-    attr.append("strides":strides)
-    attr.append("padding":padding)
-    attr.append("data_format":dataFormat)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("ksize",ksize)
+    attr.append("strides",strides)
+    attr.append("padding",padding)
+    attr.append("data_format",dataFormat)
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "AvgPoolGrad",
@@ -1490,17 +1473,17 @@ and may be updated using BarrierInsertMany.
 
 
 
-func barrier(scope:Scope componentTypes :list(type)  , shapes :[Shape]  , capacity :uInt8  , container :string  , sharedName :string  )  ->(handle: tf.Output){
+func barrier(scope:Scope componentTypes :List(type)  , shapes :[Shape]  , capacity :UInt8  , container :String  , sharedName :String  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("component_types":componentTypes)
-    attr.append("shapes":shapes)
-    attr.append("capacity":capacity)
-    attr.append("container":container)
-    attr.append("shared_name":sharedName)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("component_types",componentTypes)
+    attr.append("shapes",shapes)
+    attr.append("capacity",capacity)
+    attr.append("container",container)
+    attr.append("shared_name",sharedName)
 
     let opspec = tf.OpSpec(
         OpType: "Barrier",
@@ -1526,13 +1509,13 @@ Subsequent TakeMany operations that would block will fail immediately.
 
 
 
-func barrierClose(scope:Scope,handle: Tensorflow_DataType, cancelPendingEnqueues :bool  )  ->(o:tf.Operation){
+func barrierClose(scope:Scope,handle: Tensorflow_DataType, cancelPendingEnqueues :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("cancel_pending_enqueues":cancelPendingEnqueues)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("cancel_pending_enqueues",cancelPendingEnqueues)
 
     let opspec = tf.OpSpec(
         OpType: "BarrierClose",
@@ -1556,7 +1539,7 @@ func barrierIncompleteSize(scope:Scope,handle: Tensorflow_DataType )  ->(size: t
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "BarrierIncompleteSize",
@@ -1580,14 +1563,13 @@ INVALID_ARGUMENT, and leave the barrier in an undefined state.
 
 
 
-func barrierInsertMany(scope:Scope,handle: Tensorflow_DataType, keys: Tensorflow_DataType, values: Tensorflow_DataType, t :type  , componentIndex :uInt8  )  ->(o:tf.Operation){
+func barrierInsertMany(scope:Scope,handle: Tensorflow_DataType, keys: Tensorflow_DataType, values: Tensorflow_DataType, componentIndex :Int  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("component_index":componentIndex)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("component_index",componentIndex)
 
     let opspec = tf.OpSpec(
         OpType: "BarrierInsertMany",
@@ -1611,7 +1593,7 @@ func barrierReadySize(scope:Scope,handle: Tensorflow_DataType )  ->(size: tf.Out
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "BarrierReadySize",
@@ -1637,16 +1619,16 @@ into the barrier.
 
 
 
-func barrierTakeMany(scope:Scope,handle: Tensorflow_DataType, numElements: Tensorflow_DataType, componentTypes :list(type)  , allowSmallBatch :bool  , waitForIncomplete :bool  , timeoutMs :uInt8  )  ->(indices: tf.Output, keys: tf.Output, values: tf.Output){
+func barrierTakeMany(scope:Scope,handle: Tensorflow_DataType, numElements: Tensorflow_DataType, componentTypes :List(type)  , allowSmallBatch :Bool  , waitForIncomplete :Bool  , timeoutMs :UInt8  )  ->(indices: tf.Output, keys: tf.Output, values: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("component_types":componentTypes)
-    attr.append("allow_small_batch":allowSmallBatch)
-    attr.append("wait_for_incomplete":waitForIncomplete)
-    attr.append("timeout_ms":timeoutMs)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("component_types",componentTypes)
+    attr.append("allow_small_batch",allowSmallBatch)
+    attr.append("wait_for_incomplete",waitForIncomplete)
+    attr.append("timeout_ms",timeoutMs)
 
     let opspec = tf.OpSpec(
         OpType: "BarrierTakeMany",
@@ -1665,13 +1647,12 @@ func barrierTakeMany(scope:Scope,handle: Tensorflow_DataType, numElements: Tenso
 
 
 
-func batchCholesky(scope:Scope,input: Tensorflow_DataType, t :type  )  ->(output: tf.Output){
+func batchCholesky(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "BatchCholesky",
@@ -1690,13 +1671,13 @@ func batchCholesky(scope:Scope,input: Tensorflow_DataType, t :type  )  ->(output
 
 
 
-func batchCholeskyGrad(scope:Scope,l: Tensorflow_DataType, grad: Tensorflow_DataType, t :type  )  ->(output: tf.Output){
+func batchCholeskyGrad(scope:Scope,l: Tensorflow_DataType, grad: Tensorflow_DataType, t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "BatchCholeskyGrad",
@@ -1716,14 +1697,14 @@ Creates a dataset that batches `batch_size` elements from `input_dataset`.
 
 
 
-func batchDataset(scope:Scope,inputDataset: Tensorflow_DataType, batchSize: Tensorflow_DataType, outputTypes :list(type)  , outputShapes :[Shape]  )  ->(handle: tf.Output){
+func batchDataset(scope:Scope,inputDataset: Tensorflow_DataType, batchSize: Tensorflow_DataType, outputTypes :List(type)  , outputShapes :[Shape]  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("output_types":outputTypes)
-    attr.append("output_shapes":outputShapes)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("output_types",outputTypes)
+    attr.append("output_shapes",outputShapes)
 
     let opspec = tf.OpSpec(
         OpType: "BatchDataset",
@@ -1747,7 +1728,7 @@ func batchFFT(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "BatchFFT",
@@ -1771,7 +1752,7 @@ func batchFFT2D(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "BatchFFT2D",
@@ -1795,7 +1776,7 @@ func batchFFT3D(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "BatchFFT3D",
@@ -1819,7 +1800,7 @@ func batchIFFT(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "BatchIFFT",
@@ -1843,7 +1824,7 @@ func batchIFFT2D(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output)
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "BatchIFFT2D",
@@ -1867,7 +1848,7 @@ func batchIFFT3D(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output)
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "BatchIFFT3D",
@@ -1900,15 +1881,14 @@ It is computed as:
 
 
 
-func batchMatMul(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :type  , adjX :bool  , adjY :bool  )  ->(output: tf.Output){
+func batchMatMul(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, adjX :Bool  , adjY :Bool  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("adj_x":adjX)
-    attr.append("adj_y":adjY)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("adj_x",adjX)
+    attr.append("adj_y",adjY)
 
     let opspec = tf.OpSpec(
         OpType: "BatchMatMul",
@@ -1927,13 +1907,13 @@ func batchMatMul(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :
 
 
 
-func batchMatrixBandPart(scope:Scope,input: Tensorflow_DataType, numLower: Tensorflow_DataType, numUpper: Tensorflow_DataType, t :type  )  ->(band: tf.Output){
+func batchMatrixBandPart(scope:Scope,input: Tensorflow_DataType, numLower: Tensorflow_DataType, numUpper: Tensorflow_DataType, t :Type  )  ->(band: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "BatchMatrixBandPart",
@@ -1952,13 +1932,12 @@ func batchMatrixBandPart(scope:Scope,input: Tensorflow_DataType, numLower: Tenso
 
 
 
-func batchMatrixDeterminant(scope:Scope,input: Tensorflow_DataType, t :type  )  ->(output: tf.Output){
+func batchMatrixDeterminant(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "BatchMatrixDeterminant",
@@ -1977,13 +1956,13 @@ func batchMatrixDeterminant(scope:Scope,input: Tensorflow_DataType, t :type  )  
 
 
 
-func batchMatrixDiag(scope:Scope,diagonal: Tensorflow_DataType, t :type  )  ->(output: tf.Output){
+func batchMatrixDiag(scope:Scope,diagonal: Tensorflow_DataType, t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "BatchMatrixDiag",
@@ -2002,13 +1981,12 @@ func batchMatrixDiag(scope:Scope,diagonal: Tensorflow_DataType, t :type  )  ->(o
 
 
 
-func batchMatrixDiagPart(scope:Scope,input: Tensorflow_DataType, t :type  )  ->(diagonal: tf.Output){
+func batchMatrixDiagPart(scope:Scope,input: Tensorflow_DataType )  ->(diagonal: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "BatchMatrixDiagPart",
@@ -2027,14 +2005,14 @@ func batchMatrixDiagPart(scope:Scope,input: Tensorflow_DataType, t :type  )  ->(
 
 
 
-func batchMatrixInverse(scope:Scope,input: Tensorflow_DataType, adjoint :bool  , t :type  )  ->(output: tf.Output){
+func batchMatrixInverse(scope:Scope,input: Tensorflow_DataType, adjoint :Bool  , t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("adjoint":adjoint)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("adjoint",adjoint)
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "BatchMatrixInverse",
@@ -2053,13 +2031,12 @@ func batchMatrixInverse(scope:Scope,input: Tensorflow_DataType, adjoint :bool  ,
 
 
 
-func batchMatrixSetDiag(scope:Scope,input: Tensorflow_DataType, diagonal: Tensorflow_DataType, t :type  )  ->(output: tf.Output){
+func batchMatrixSetDiag(scope:Scope,input: Tensorflow_DataType, diagonal: Tensorflow_DataType )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "BatchMatrixSetDiag",
@@ -2078,14 +2055,14 @@ func batchMatrixSetDiag(scope:Scope,input: Tensorflow_DataType, diagonal: Tensor
 
 
 
-func batchMatrixSolve(scope:Scope,matrix: Tensorflow_DataType, rhs: Tensorflow_DataType, adjoint :bool  , t :type  )  ->(output: tf.Output){
+func batchMatrixSolve(scope:Scope,matrix: Tensorflow_DataType, rhs: Tensorflow_DataType, adjoint :Bool  , t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("adjoint":adjoint)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("adjoint",adjoint)
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "BatchMatrixSolve",
@@ -2104,14 +2081,13 @@ func batchMatrixSolve(scope:Scope,matrix: Tensorflow_DataType, rhs: Tensorflow_D
 
 
 
-func batchMatrixSolveLs(scope:Scope,matrix: Tensorflow_DataType, rhs: Tensorflow_DataType, l2Regularizer: Tensorflow_DataType, t :type  , fast :bool  )  ->(output: tf.Output){
+func batchMatrixSolveLs(scope:Scope,matrix: Tensorflow_DataType, rhs: Tensorflow_DataType, l2Regularizer: Tensorflow_DataType, fast :Bool  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("fast":fast)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("fast",fast)
 
     let opspec = tf.OpSpec(
         OpType: "BatchMatrixSolveLs",
@@ -2130,15 +2106,15 @@ func batchMatrixSolveLs(scope:Scope,matrix: Tensorflow_DataType, rhs: Tensorflow
 
 
 
-func batchMatrixTriangularSolve(scope:Scope,matrix: Tensorflow_DataType, rhs: Tensorflow_DataType, lower :bool  , adjoint :bool  , t :type  )  ->(output: tf.Output){
+func batchMatrixTriangularSolve(scope:Scope,matrix: Tensorflow_DataType, rhs: Tensorflow_DataType, lower :Bool  , adjoint :Bool  , t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("lower":lower)
-    attr.append("adjoint":adjoint)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("lower",lower)
+    attr.append("adjoint",adjoint)
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "BatchMatrixTriangularSolve",
@@ -2159,15 +2135,14 @@ This op is deprecated. Prefer `tf.nn.batch_normalization`.
 
 
 
-func batchNormWithGlobalNormalization(scope:Scope,t: Tensorflow_DataType, m: Tensorflow_DataType, v: Tensorflow_DataType, beta: Tensorflow_DataType, gamma: Tensorflow_DataType, t :type  , varianceEpsilon :float  , scaleAfterNormalization :bool  )  ->(result: tf.Output){
+func batchNormWithGlobalNormalization(scope:Scope,t: Tensorflow_DataType, m: Tensorflow_DataType, v: Tensorflow_DataType, beta: Tensorflow_DataType, gamma: Tensorflow_DataType, varianceEpsilon :Float  , scaleAfterNormalization :Bool  )  ->(result: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("variance_epsilon":varianceEpsilon)
-    attr.append("scale_after_normalization":scaleAfterNormalization)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("variance_epsilon",varianceEpsilon)
+    attr.append("scale_after_normalization",scaleAfterNormalization)
 
     let opspec = tf.OpSpec(
         OpType: "BatchNormWithGlobalNormalization",
@@ -2188,15 +2163,15 @@ This op is deprecated. See `tf.nn.batch_normalization`.
 
 
 
-func batchNormWithGlobalNormalizationGrad(scope:Scope,t: Tensorflow_DataType, m: Tensorflow_DataType, v: Tensorflow_DataType, gamma: Tensorflow_DataType, backprop: Tensorflow_DataType, t :type  , varianceEpsilon :float  , scaleAfterNormalization :bool  )  ->(dx: tf.Output, dm: tf.Output, dv: tf.Output, db: tf.Output, dg: tf.Output){
+func batchNormWithGlobalNormalizationGrad(scope:Scope,t: Tensorflow_DataType, m: Tensorflow_DataType, v: Tensorflow_DataType, gamma: Tensorflow_DataType, backprop: Tensorflow_DataType, t :Type  , varianceEpsilon :Float  , scaleAfterNormalization :Bool  )  ->(dx: tf.Output, dm: tf.Output, dv: tf.Output, db: tf.Output, dg: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("variance_epsilon":varianceEpsilon)
-    attr.append("scale_after_normalization":scaleAfterNormalization)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("variance_epsilon",varianceEpsilon)
+    attr.append("scale_after_normalization",scaleAfterNormalization)
 
     let opspec = tf.OpSpec(
         OpType: "BatchNormWithGlobalNormalizationGrad",
@@ -2215,13 +2190,12 @@ func batchNormWithGlobalNormalizationGrad(scope:Scope,t: Tensorflow_DataType, m:
 
 
 
-func batchSelfAdjointEig(scope:Scope,input: Tensorflow_DataType, t :type  )  ->(output: tf.Output){
+func batchSelfAdjointEig(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "BatchSelfAdjointEig",
@@ -2240,14 +2214,14 @@ func batchSelfAdjointEig(scope:Scope,input: Tensorflow_DataType, t :type  )  ->(
 
 
 
-func batchSelfAdjointEigV2(scope:Scope,input: Tensorflow_DataType, computeV :bool  , t :type  )  ->(e: tf.Output, v: tf.Output){
+func batchSelfAdjointEigV2(scope:Scope,input: Tensorflow_DataType, computeV :Bool  , t :Type  )  ->(e: tf.Output, v: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("compute_v":computeV)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("compute_v",computeV)
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "BatchSelfAdjointEigV2",
@@ -2266,15 +2240,14 @@ func batchSelfAdjointEigV2(scope:Scope,input: Tensorflow_DataType, computeV :boo
 
 
 
-func batchSvd(scope:Scope,input: Tensorflow_DataType, computeUv :bool  , fullMatrices :bool  , t :type  )  ->(s: tf.Output, u: tf.Output, v: tf.Output){
+func batchSvd(scope:Scope,input: Tensorflow_DataType, computeUv :Bool  , fullMatrices :Bool  )  ->(s: tf.Output, u: tf.Output, v: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("compute_uv":computeUv)
-    attr.append("full_matrices":fullMatrices)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("compute_uv",computeUv)
+    attr.append("full_matrices",fullMatrices)
 
     let opspec = tf.OpSpec(
         OpType: "BatchSvd",
@@ -2300,15 +2273,15 @@ followed by cropping along the `height` and `width` dimensions.
 
 
 
-func batchToSpace(scope:Scope,input: Tensorflow_DataType, crops: Tensorflow_DataType, t :type  , blockSize :uInt8  , tidx :type  )  ->(output: tf.Output){
+func batchToSpace(scope:Scope,input: Tensorflow_DataType, crops: Tensorflow_DataType, t :Type  , blockSize :Int  , tidx :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("block_size":blockSize)
-    attr.append("Tidx":tidx)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("block_size",blockSize)
+    attr.append("Tidx",tidx)
 
     let opspec = tf.OpSpec(
         OpType: "BatchToSpace",
@@ -2334,15 +2307,14 @@ reverse of SpaceToBatch.  See below for a precise description.
 
 
 
-func batchToSpaceND(scope:Scope,input: Tensorflow_DataType, blockShape: Tensorflow_DataType, crops: Tensorflow_DataType, t :type  , tblockShape :type  , tcrops :type  )  ->(output: tf.Output){
+func batchToSpaceND(scope:Scope,input: Tensorflow_DataType, blockShape: Tensorflow_DataType, crops: Tensorflow_DataType, tblockShape :Type  , tcrops :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tblock_shape":tblockShape)
-    attr.append("Tcrops":tcrops)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tblock_shape",tblockShape)
+    attr.append("Tcrops",tcrops)
 
     let opspec = tf.OpSpec(
         OpType: "BatchToSpaceND",
@@ -2368,13 +2340,13 @@ beta function.
 
 
 
-func betainc(scope:Scope,a: Tensorflow_DataType, b: Tensorflow_DataType, x: Tensorflow_DataType, t :type  )  ->(z: tf.Output){
+func betainc(scope:Scope,a: Tensorflow_DataType, b: Tensorflow_DataType, x: Tensorflow_DataType, t :Type  )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "Betainc",
@@ -2396,14 +2368,13 @@ Broadcasting is supported, so `value` may have any number of dimensions.
 
 
 
-func biasAdd(scope:Scope,value: Tensorflow_DataType, bias: Tensorflow_DataType, t :type  , dataFormat :string  )  ->(output: tf.Output){
+func biasAdd(scope:Scope,value: Tensorflow_DataType, bias: Tensorflow_DataType, dataFormat :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("data_format":dataFormat)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("data_format",dataFormat)
 
     let opspec = tf.OpSpec(
         OpType: "BiasAdd",
@@ -2426,14 +2397,14 @@ the feature dimension is the third-to-last.
 
 
 
-func biasAddGrad(scope:Scope,outBackprop: Tensorflow_DataType, t :type  , dataFormat :string  )  ->(output: tf.Output){
+func biasAddGrad(scope:Scope,outBackprop: Tensorflow_DataType, t :Type  , dataFormat :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("data_format":dataFormat)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("data_format",dataFormat)
 
     let opspec = tf.OpSpec(
         OpType: "BiasAddGrad",
@@ -2456,13 +2427,12 @@ Broadcasting is supported, so `value` may have any number of dimensions.
 
 
 
-func biasAddV1(scope:Scope,value: Tensorflow_DataType, bias: Tensorflow_DataType, t :type  )  ->(output: tf.Output){
+func biasAddV1(scope:Scope,value: Tensorflow_DataType, bias: Tensorflow_DataType )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "BiasAddV1",
@@ -2488,13 +2458,13 @@ Values in `arr` outside of the range [0, size) are ignored.
 
 
 
-func bincount(scope:Scope,arr: Tensorflow_DataType, size: Tensorflow_DataType, weights: Tensorflow_DataType, t :type  )  ->(bins: tf.Output){
+func bincount(scope:Scope,arr: Tensorflow_DataType, size: Tensorflow_DataType, weights: Tensorflow_DataType, t :Type  )  ->(bins: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "Bincount",
@@ -2523,14 +2493,13 @@ endian orderings will give different results.
 
 
 
-func bitcast(scope:Scope,input: Tensorflow_DataType, t :type  , type :type  )  ->(output: tf.Output){
+func bitcast(scope:Scope,input: Tensorflow_DataType, type :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("type":type)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("type",type)
 
     let opspec = tf.OpSpec(
         OpType: "Bitcast",
@@ -2552,13 +2521,13 @@ broadcasted shape. `s0`, `s1` and `r0` are all integer vectors.
 
 
 
-func broadcastArgs(scope:Scope,s0: Tensorflow_DataType, s1: Tensorflow_DataType, t :type  )  ->(r0: tf.Output){
+func broadcastArgs(scope:Scope,s0: Tensorflow_DataType, s1: Tensorflow_DataType, t :Type  )  ->(r0: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "BroadcastArgs",
@@ -2579,13 +2548,12 @@ This is typically used by gradient computations for a broadcasting operation.
 
 
 
-func broadcastGradientArgs(scope:Scope,s0: Tensorflow_DataType, s1: Tensorflow_DataType, t :type  )  ->(r0: tf.Output, r1: tf.Output){
+func broadcastGradientArgs(scope:Scope,s0: Tensorflow_DataType, s1: Tensorflow_DataType )  ->(r0: tf.Output, r1: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "BroadcastGradientArgs",
@@ -2614,14 +2582,14 @@ then the output will be
 
 
 
-func bucketize(scope:Scope,input: Tensorflow_DataType, t :type  , boundaries :list(float)  )  ->(output: tf.Output){
+func bucketize(scope:Scope,input: Tensorflow_DataType, t :Type  , boundaries :List(float)  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("boundaries":boundaries)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("boundaries",boundaries)
 
     let opspec = tf.OpSpec(
         OpType: "Bucketize",
@@ -2646,15 +2614,15 @@ returned if merge_repeated = False.
 
 
 
-func ctcBeamSearchDecoder(scope:Scope,inputs: Tensorflow_DataType, sequenceLength: Tensorflow_DataType, beamWidth :uInt8  , topPaths :uInt8  , mergeRepeated :bool  )  ->(decodedIndices: tf.Output, decodedValues: tf.Output, decodedShape: tf.Output, logProbability: tf.Output){
+func ctcBeamSearchDecoder(scope:Scope,inputs: Tensorflow_DataType, sequenceLength: Tensorflow_DataType, beamWidth :UInt8  , topPaths :UInt8  , mergeRepeated :Bool  )  ->(decodedIndices: tf.Output, decodedValues: tf.Output, decodedShape: tf.Output, logProbability: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("beam_width":beamWidth)
-    attr.append("top_paths":topPaths)
-    attr.append("merge_repeated":mergeRepeated)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("beam_width",beamWidth)
+    attr.append("top_paths",topPaths)
+    attr.append("merge_repeated",mergeRepeated)
 
     let opspec = tf.OpSpec(
         OpType: "CTCBeamSearchDecoder",
@@ -2682,13 +2650,13 @@ element is emitted.
 
 
 
-func ctcGreedyDecoder(scope:Scope,inputs: Tensorflow_DataType, sequenceLength: Tensorflow_DataType, mergeRepeated :bool  )  ->(decodedIndices: tf.Output, decodedValues: tf.Output, decodedShape: tf.Output, logProbability: tf.Output){
+func ctcGreedyDecoder(scope:Scope,inputs: Tensorflow_DataType, sequenceLength: Tensorflow_DataType, mergeRepeated :Bool  )  ->(decodedIndices: tf.Output, decodedValues: tf.Output, decodedShape: tf.Output, logProbability: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("merge_repeated":mergeRepeated)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("merge_repeated",mergeRepeated)
 
     let opspec = tf.OpSpec(
         OpType: "CTCGreedyDecoder",
@@ -2710,15 +2678,15 @@ should be e.g. linear projections of outputs by an LSTM.
 
 
 
-func ctcLoss(scope:Scope,inputs: Tensorflow_DataType, labelsIndices: Tensorflow_DataType, labelsValues: Tensorflow_DataType, sequenceLength: Tensorflow_DataType, preprocessCollapseRepeated :bool  , ctcMergeRepeated :bool  , ignoreLongerOutputsThanInputs :bool  )  ->(loss: tf.Output, gradient: tf.Output){
+func ctcLoss(scope:Scope,inputs: Tensorflow_DataType, labelsIndices: Tensorflow_DataType, labelsValues: Tensorflow_DataType, sequenceLength: Tensorflow_DataType, preprocessCollapseRepeated :Bool  , ctcMergeRepeated :Bool  , ignoreLongerOutputsThanInputs :Bool  )  ->(loss: tf.Output, gradient: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("preprocess_collapse_repeated":preprocessCollapseRepeated)
-    attr.append("ctc_merge_repeated":ctcMergeRepeated)
-    attr.append("ignore_longer_outputs_than_inputs":ignoreLongerOutputsThanInputs)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("preprocess_collapse_repeated",preprocessCollapseRepeated)
+    attr.append("ctc_merge_repeated",ctcMergeRepeated)
+    attr.append("ignore_longer_outputs_than_inputs",ignoreLongerOutputsThanInputs)
 
     let opspec = tf.OpSpec(
         OpType: "CTCLoss",
@@ -2738,14 +2706,14 @@ Cast x of type SrcT to y of DstT.
 
 
 
-func cast(scope:Scope,x: Tensorflow_DataType, srcT :type  , dstT :type  )  ->(y: tf.Output){
+func cast(scope:Scope,x: Tensorflow_DataType, srcT :Type  , dstT :Type  )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("SrcT":srcT)
-    attr.append("DstT":dstT)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("SrcT",srcT)
+    attr.append("DstT",dstT)
 
     let opspec = tf.OpSpec(
         OpType: "Cast",
@@ -2765,13 +2733,12 @@ Returns element-wise smallest integer in not less than x.
 
 
 
-func ceil(scope:Scope,x: Tensorflow_DataType, t :type  )  ->(y: tf.Output){
+func ceil(scope:Scope,x: Tensorflow_DataType )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "Ceil",
@@ -2793,14 +2760,14 @@ that are not a number (NaN) or infinity (Inf). Otherwise, passes `tensor` as-is.
 
 
 
-func checkNumerics(scope:Scope,tensor: Tensorflow_DataType, t :type  , message :string  )  ->(output: tf.Output){
+func checkNumerics(scope:Scope,tensor: Tensorflow_DataType, t :Type  , message :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("message":message)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("message",message)
 
     let opspec = tf.OpSpec(
         OpType: "CheckNumerics",
@@ -2824,13 +2791,12 @@ containing the Cholesky decompositions for all input submatrices `[..., :, :]`.
 
 
 
-func cholesky(scope:Scope,input: Tensorflow_DataType, t :type  )  ->(output: tf.Output){
+func cholesky(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "Cholesky",
@@ -2852,13 +2818,13 @@ Iain Murray http://arxiv.org/abs/1602.07527.
 
 
 
-func choleskyGrad(scope:Scope,l: Tensorflow_DataType, grad: Tensorflow_DataType, t :type  )  ->(output: tf.Output){
+func choleskyGrad(scope:Scope,l: Tensorflow_DataType, grad: Tensorflow_DataType, t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "CholeskyGrad",
@@ -2889,14 +2855,13 @@ tf.complex(real, imag) ==> [[2.25 + 4.75j], [3.25 + 5.75j]]
 
 
 
-func complex(scope:Scope,real: Tensorflow_DataType, imag: Tensorflow_DataType, t :type  , tout :type  )  ->(out: tf.Output){
+func complex(scope:Scope,real: Tensorflow_DataType, imag: Tensorflow_DataType, tout :Type  )  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tout":tout)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tout",tout)
 
     let opspec = tf.OpSpec(
         OpType: "Complex",
@@ -2920,14 +2885,14 @@ value is computed as \\( \sqrt{a^2 + b^2}\\).
 
 
 
-func complexAbs(scope:Scope,x: Tensorflow_DataType, t :type  , tout :type  )  ->(y: tf.Output){
+func complexAbs(scope:Scope,x: Tensorflow_DataType, t :Type  , tout :Type  )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tout":tout)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("Tout",tout)
 
     let opspec = tf.OpSpec(
         OpType: "ComplexAbs",
@@ -2951,15 +2916,15 @@ making the classifier sure that they are sampled labels.
 
 
 
-func computeAccidentalHits(scope:Scope,trueClasses: Tensorflow_DataType, sampledCandidates: Tensorflow_DataType, numTrue :uInt8  , seed :uInt8  , seed2 :uInt8  )  ->(indices: tf.Output, ids: tf.Output, weights: tf.Output){
+func computeAccidentalHits(scope:Scope,trueClasses: Tensorflow_DataType, sampledCandidates: Tensorflow_DataType, numTrue :UInt8  , seed :UInt8  , seed2 :UInt8  )  ->(indices: tf.Output, ids: tf.Output, weights: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("num_true":numTrue)
-    attr.append("seed":seed)
-    attr.append("seed2":seed2)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("num_true",numTrue)
+    attr.append("seed",seed)
+    attr.append("seed2",seed2)
 
     let opspec = tf.OpSpec(
         OpType: "ComputeAccidentalHits",
@@ -2979,14 +2944,13 @@ Concatenates tensors along one dimension.
 
 
 
-func concat(scope:Scope,concatDim: Tensorflow_DataType, values: Tensorflow_DataType, n :uInt8  , t :type  )  ->(output: tf.Output){
+func concat(scope:Scope,concatDim: Tensorflow_DataType, values: Tensorflow_DataType, n :UInt8  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("N":n)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("N",n)
 
     let opspec = tf.OpSpec(
         OpType: "Concat",
@@ -3014,13 +2978,13 @@ This is typically used by gradient computations for a concat operation.
 
 
 
-func concatOffset(scope:Scope,concatDim: Tensorflow_DataType, shape: Tensorflow_DataType, n :uInt8  )  ->(offset: tf.Output){
+func concatOffset(scope:Scope,concatDim: Tensorflow_DataType, shape: Tensorflow_DataType, n :Int  )  ->(offset: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("N":n)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("N",n)
 
     let opspec = tf.OpSpec(
         OpType: "ConcatOffset",
@@ -3040,15 +3004,14 @@ Concatenates tensors along one dimension.
 
 
 
-func concatV2(scope:Scope,values: Tensorflow_DataType, axis: Tensorflow_DataType, n :uInt8  , t :type  , tidx :type  )  ->(output: tf.Output){
+func concatV2(scope:Scope,values: Tensorflow_DataType, axis: Tensorflow_DataType, n :UInt8  , tidx :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("N":n)
-    attr.append("T":t)
-    attr.append("Tidx":tidx)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("N",n)
+    attr.append("Tidx",tidx)
 
     let opspec = tf.OpSpec(
         OpType: "ConcatV2",
@@ -3074,16 +3037,16 @@ the accumulator.
 
 
 
-func conditionalAccumulator(scope:Scope dtype :type  , shape :shape  , container :string  , sharedName :string  )  ->(handle: tf.Output){
+func conditionalAccumulator(scope:Scope dtype :Type  , shape :Shape  , container :String  , sharedName :String  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("dtype":dtype)
-    attr.append("shape":shape)
-    attr.append("container":container)
-    attr.append("shared_name":sharedName)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("dtype",dtype)
+    attr.append("shape",shape)
+    attr.append("container",container)
+    attr.append("shared_name",sharedName)
 
     let opspec = tf.OpSpec(
         OpType: "ConditionalAccumulator",
@@ -3113,13 +3076,12 @@ tf.conj(input) ==> [-2.25 - 4.75j, 3.25 - 5.75j]
 
 
 
-func conj(scope:Scope,input: Tensorflow_DataType, t :type  )  ->(output: tf.Output){
+func conj(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "Conj",
@@ -3139,14 +3101,14 @@ Returns a constant tensor.
 
 
 
-func const(scope:Scope value :tensor  , dtype :type  )  ->(output: tf.Output){
+func const(scope:Scope value :Tensor  , dtype :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("value":value)
-    attr.append("dtype":dtype)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("value",value)
+    attr.append("dtype",dtype)
 
     let opspec = tf.OpSpec(
         OpType: "Const",
@@ -3172,7 +3134,7 @@ func controlTrigger(scope:Scope )  ->(o:tf.Operation){
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "ControlTrigger",
@@ -3208,17 +3170,16 @@ horizontal and vertices strides, `strides = [1, stride, stride, 1]`.
 
 
 
-func conv2D(scope:Scope,input: Tensorflow_DataType, filter: Tensorflow_DataType, t :type  , strides :[Int]  , useCudnnOnGpu :bool  , padding :string  , dataFormat :string  )  ->(output: tf.Output){
+func conv2D(scope:Scope,input: Tensorflow_DataType, filter: Tensorflow_DataType, strides :List(int)  , useCudnnOnGpu :Bool  , padding :String  , dataFormat :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("strides":strides)
-    attr.append("use_cudnn_on_gpu":useCudnnOnGpu)
-    attr.append("padding":padding)
-    attr.append("data_format":dataFormat)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("strides",strides)
+    attr.append("use_cudnn_on_gpu",useCudnnOnGpu)
+    attr.append("padding",padding)
+    attr.append("data_format",dataFormat)
 
     let opspec = tf.OpSpec(
         OpType: "Conv2D",
@@ -3238,17 +3199,17 @@ Computes the gradients of convolution with respect to the filter.
 
 
 
-func conv2DBackpropFilter(scope:Scope,input: Tensorflow_DataType, filterSizes: Tensorflow_DataType, outBackprop: Tensorflow_DataType, t :type  , strides :[Int]  , useCudnnOnGpu :bool  , padding :string  , dataFormat :string  )  ->(output: tf.Output){
+func conv2DBackpropFilter(scope:Scope,input: Tensorflow_DataType, filterSizes: Tensorflow_DataType, outBackprop: Tensorflow_DataType, t :Type  , strides :List(int)  , useCudnnOnGpu :Bool  , padding :String  , dataFormat :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("strides":strides)
-    attr.append("use_cudnn_on_gpu":useCudnnOnGpu)
-    attr.append("padding":padding)
-    attr.append("data_format":dataFormat)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("strides",strides)
+    attr.append("use_cudnn_on_gpu",useCudnnOnGpu)
+    attr.append("padding",padding)
+    attr.append("data_format",dataFormat)
 
     let opspec = tf.OpSpec(
         OpType: "Conv2DBackpropFilter",
@@ -3268,17 +3229,16 @@ Computes the gradients of convolution with respect to the input.
 
 
 
-func conv2DBackpropInput(scope:Scope,inputSizes: Tensorflow_DataType, filter: Tensorflow_DataType, outBackprop: Tensorflow_DataType, t :type  , strides :[Int]  , useCudnnOnGpu :bool  , padding :string  , dataFormat :string  )  ->(output: tf.Output){
+func conv2DBackpropInput(scope:Scope,inputSizes: Tensorflow_DataType, filter: Tensorflow_DataType, outBackprop: Tensorflow_DataType, strides :List(int)  , useCudnnOnGpu :Bool  , padding :String  , dataFormat :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("strides":strides)
-    attr.append("use_cudnn_on_gpu":useCudnnOnGpu)
-    attr.append("padding":padding)
-    attr.append("data_format":dataFormat)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("strides",strides)
+    attr.append("use_cudnn_on_gpu",useCudnnOnGpu)
+    attr.append("padding",padding)
+    attr.append("data_format",dataFormat)
 
     let opspec = tf.OpSpec(
         OpType: "Conv2DBackpropInput",
@@ -3302,16 +3262,16 @@ Our Conv3D implements a form of cross-correlation.
 
 
 
-func conv3D(scope:Scope,input: Tensorflow_DataType, filter: Tensorflow_DataType, t :type  , strides :[Int]  , padding :string  , dataFormat :string  )  ->(output: tf.Output){
+func conv3D(scope:Scope,input: Tensorflow_DataType, filter: Tensorflow_DataType, t :Type  , strides :List(int)  , padding :String  , dataFormat :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("strides":strides)
-    attr.append("padding":padding)
-    attr.append("data_format":dataFormat)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("strides",strides)
+    attr.append("padding",padding)
+    attr.append("data_format",dataFormat)
 
     let opspec = tf.OpSpec(
         OpType: "Conv3D",
@@ -3331,15 +3291,14 @@ Computes the gradients of 3-D convolution with respect to the filter.
 
 
 
-func conv3DBackpropFilter(scope:Scope,input: Tensorflow_DataType, filter: Tensorflow_DataType, outBackprop: Tensorflow_DataType, t :type  , strides :[Int]  , padding :string  )  ->(output: tf.Output){
+func conv3DBackpropFilter(scope:Scope,input: Tensorflow_DataType, filter: Tensorflow_DataType, outBackprop: Tensorflow_DataType, strides :List(int)  , padding :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("strides":strides)
-    attr.append("padding":padding)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("strides",strides)
+    attr.append("padding",padding)
 
     let opspec = tf.OpSpec(
         OpType: "Conv3DBackpropFilter",
@@ -3359,16 +3318,16 @@ Computes the gradients of 3-D convolution with respect to the filter.
 
 
 
-func conv3DBackpropFilterV2(scope:Scope,input: Tensorflow_DataType, filterSizes: Tensorflow_DataType, outBackprop: Tensorflow_DataType, t :type  , strides :[Int]  , padding :string  , dataFormat :string  )  ->(output: tf.Output){
+func conv3DBackpropFilterV2(scope:Scope,input: Tensorflow_DataType, filterSizes: Tensorflow_DataType, outBackprop: Tensorflow_DataType, t :Type  , strides :List(int)  , padding :String  , dataFormat :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("strides":strides)
-    attr.append("padding":padding)
-    attr.append("data_format":dataFormat)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("strides",strides)
+    attr.append("padding",padding)
+    attr.append("data_format",dataFormat)
 
     let opspec = tf.OpSpec(
         OpType: "Conv3DBackpropFilterV2",
@@ -3388,15 +3347,14 @@ Computes the gradients of 3-D convolution with respect to the input.
 
 
 
-func conv3DBackpropInput(scope:Scope,input: Tensorflow_DataType, filter: Tensorflow_DataType, outBackprop: Tensorflow_DataType, t :type  , strides :[Int]  , padding :string  )  ->(output: tf.Output){
+func conv3DBackpropInput(scope:Scope,input: Tensorflow_DataType, filter: Tensorflow_DataType, outBackprop: Tensorflow_DataType, strides :List(int)  , padding :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("strides":strides)
-    attr.append("padding":padding)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("strides",strides)
+    attr.append("padding",padding)
 
     let opspec = tf.OpSpec(
         OpType: "Conv3DBackpropInput",
@@ -3416,16 +3374,16 @@ Computes the gradients of 3-D convolution with respect to the input.
 
 
 
-func conv3DBackpropInputV2(scope:Scope,inputSizes: Tensorflow_DataType, filter: Tensorflow_DataType, outBackprop: Tensorflow_DataType, t :type  , strides :[Int]  , padding :string  , dataFormat :string  )  ->(output: tf.Output){
+func conv3DBackpropInputV2(scope:Scope,inputSizes: Tensorflow_DataType, filter: Tensorflow_DataType, outBackprop: Tensorflow_DataType, t :Type  , strides :List(int)  , padding :String  , dataFormat :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("strides":strides)
-    attr.append("padding":padding)
-    attr.append("data_format":dataFormat)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("strides",strides)
+    attr.append("padding",padding)
+    attr.append("data_format",dataFormat)
 
     let opspec = tf.OpSpec(
         OpType: "Conv3DBackpropInputV2",
@@ -3452,15 +3410,14 @@ input or output.
 
 
 
-func copy(scope:Scope,input: Tensorflow_DataType, t :type  , tensorName :string  , debugOpsSpec :list(string)  )  ->(output: tf.Output){
+func copy(scope:Scope,input: Tensorflow_DataType, tensorName :String  , debugOpsSpec :List(string)  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("tensor_name":tensorName)
-    attr.append("debug_ops_spec":debugOpsSpec)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("tensor_name",tensorName)
+    attr.append("debug_ops_spec",debugOpsSpec)
 
     let opspec = tf.OpSpec(
         OpType: "Copy",
@@ -3485,15 +3442,15 @@ Unlike the Copy Op, this op has HostMemory constraint on its input or output.
 
 
 
-func copyHost(scope:Scope,input: Tensorflow_DataType, t :type  , tensorName :string  , debugOpsSpec :list(string)  )  ->(output: tf.Output){
+func copyHost(scope:Scope,input: Tensorflow_DataType, t :Type  , tensorName :String  , debugOpsSpec :List(string)  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("tensor_name":tensorName)
-    attr.append("debug_ops_spec":debugOpsSpec)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("tensor_name",tensorName)
+    attr.append("debug_ops_spec",debugOpsSpec)
 
     let opspec = tf.OpSpec(
         OpType: "CopyHost",
@@ -3513,13 +3470,12 @@ Computes cos of x element-wise.
 
 
 
-func cos(scope:Scope,x: Tensorflow_DataType, t :type  )  ->(y: tf.Output){
+func cos(scope:Scope,x: Tensorflow_DataType )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "Cos",
@@ -3539,14 +3495,14 @@ Increments 'ref' until it reaches 'limit'.
 
 
 
-func countUpTo(scope:Scope,ref: Tensorflow_DataType, limit :uInt8  , t :type  )  ->(output: tf.Output){
+func countUpTo(scope:Scope,ref: Tensorflow_DataType, limit :Int  , t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("limit":limit)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("limit",limit)
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "CountUpTo",
@@ -3573,15 +3529,14 @@ result is a 4-D tensor `[num_boxes, crop_height, crop_width, depth]`.
 
 
 
-func cropAndResize(scope:Scope,image: Tensorflow_DataType, boxes: Tensorflow_DataType, boxInd: Tensorflow_DataType, cropSize: Tensorflow_DataType, t :type  , method :string  , extrapolationValue :float  )  ->(crops: tf.Output){
+func cropAndResize(scope:Scope,image: Tensorflow_DataType, boxes: Tensorflow_DataType, boxInd: Tensorflow_DataType, cropSize: Tensorflow_DataType, method :String  , extrapolationValue :Float  )  ->(crops: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("method":method)
-    attr.append("extrapolation_value":extrapolationValue)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("method",method)
+    attr.append("extrapolation_value",extrapolationValue)
 
     let opspec = tf.OpSpec(
         OpType: "CropAndResize",
@@ -3601,14 +3556,14 @@ Computes the gradient of the crop_and_resize op wrt the input boxes tensor.
 
 
 
-func cropAndResizeGradBoxes(scope:Scope,grads: Tensorflow_DataType, image: Tensorflow_DataType, boxes: Tensorflow_DataType, boxInd: Tensorflow_DataType, t :type  , method :string  )  ->(output: tf.Output){
+func cropAndResizeGradBoxes(scope:Scope,grads: Tensorflow_DataType, image: Tensorflow_DataType, boxes: Tensorflow_DataType, boxInd: Tensorflow_DataType, t :Type  , method :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("method":method)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("method",method)
 
     let opspec = tf.OpSpec(
         OpType: "CropAndResizeGradBoxes",
@@ -3628,14 +3583,13 @@ Computes the gradient of the crop_and_resize op wrt the input image tensor.
 
 
 
-func cropAndResizeGradImage(scope:Scope,grads: Tensorflow_DataType, boxes: Tensorflow_DataType, boxInd: Tensorflow_DataType, imageSize: Tensorflow_DataType, t :type  , method :string  )  ->(output: tf.Output){
+func cropAndResizeGradImage(scope:Scope,grads: Tensorflow_DataType, boxes: Tensorflow_DataType, boxInd: Tensorflow_DataType, imageSize: Tensorflow_DataType, method :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("method":method)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("method",method)
 
     let opspec = tf.OpSpec(
         OpType: "CropAndResizeGradImage",
@@ -3658,13 +3612,13 @@ of corresponding 3-element vectors is cross-multiplied independently.
 
 
 
-func cross(scope:Scope,a: Tensorflow_DataType, b: Tensorflow_DataType, t :type  )  ->(product: tf.Output){
+func cross(scope:Scope,a: Tensorflow_DataType, b: Tensorflow_DataType, t :Type  )  ->(product: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "Cross",
@@ -3704,16 +3658,15 @@ tf.cumprod([a, b, c], exclusive=True, reverse=True)  # => [b * c, c, 1]
 
 
 
-func cumprod(scope:Scope,x: Tensorflow_DataType, axis: Tensorflow_DataType, exclusive :bool  , reverse :bool  , t :type  , tidx :type  )  ->(out: tf.Output){
+func cumprod(scope:Scope,x: Tensorflow_DataType, axis: Tensorflow_DataType, exclusive :Bool  , reverse :Bool  , tidx :Type  )  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("exclusive":exclusive)
-    attr.append("reverse":reverse)
-    attr.append("T":t)
-    attr.append("Tidx":tidx)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("exclusive",exclusive)
+    attr.append("reverse",reverse)
+    attr.append("Tidx",tidx)
 
     let opspec = tf.OpSpec(
         OpType: "Cumprod",
@@ -3753,16 +3706,16 @@ tf.cumsum([a, b, c], exclusive=True, reverse=True)  # => [b + c, c, 0]
 
 
 
-func cumsum(scope:Scope,x: Tensorflow_DataType, axis: Tensorflow_DataType, exclusive :bool  , reverse :bool  , t :type  , tidx :type  )  ->(out: tf.Output){
+func cumsum(scope:Scope,x: Tensorflow_DataType, axis: Tensorflow_DataType, exclusive :Bool  , reverse :Bool  , t :Type  , tidx :Type  )  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("exclusive":exclusive)
-    attr.append("reverse":reverse)
-    attr.append("T":t)
-    attr.append("Tidx":tidx)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("exclusive",exclusive)
+    attr.append("reverse",reverse)
+    attr.append("T",t)
+    attr.append("Tidx",tidx)
 
     let opspec = tf.OpSpec(
         OpType: "Cumsum",
@@ -3783,17 +3736,16 @@ Provides an identity mapping of the non-Ref type input tensor for debugging.
 
 
 
-func debugIdentity(scope:Scope,input: Tensorflow_DataType, t :type  , deviceName :string  , tensorName :string  , debugUrls :list(string)  , gatedGrpc :bool  )  ->(output: tf.Output){
+func debugIdentity(scope:Scope,input: Tensorflow_DataType, deviceName :String  , tensorName :String  , debugUrls :List(string)  , gatedGrpc :Bool  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("device_name":deviceName)
-    attr.append("tensor_name":tensorName)
-    attr.append("debug_urls":debugUrls)
-    attr.append("gated_grpc":gatedGrpc)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("device_name",deviceName)
+    attr.append("tensor_name",tensorName)
+    attr.append("debug_urls",debugUrls)
+    attr.append("gated_grpc",gatedGrpc)
 
     let opspec = tf.OpSpec(
         OpType: "DebugIdentity",
@@ -3814,17 +3766,17 @@ Counts number of NaNs in the input tensor, for debugging.
 
 
 
-func debugNanCount(scope:Scope,input: Tensorflow_DataType, t :type  , deviceName :string  , tensorName :string  , debugUrls :list(string)  , gatedGrpc :bool  )  ->(output: tf.Output){
+func debugNanCount(scope:Scope,input: Tensorflow_DataType, t :Type  , deviceName :String  , tensorName :String  , debugUrls :List(string)  , gatedGrpc :Bool  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("device_name":deviceName)
-    attr.append("tensor_name":tensorName)
-    attr.append("debug_urls":debugUrls)
-    attr.append("gated_grpc":gatedGrpc)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("device_name",deviceName)
+    attr.append("tensor_name",tensorName)
+    attr.append("debug_urls",debugUrls)
+    attr.append("gated_grpc",gatedGrpc)
 
     let opspec = tf.OpSpec(
         OpType: "DebugNanCount",
@@ -3845,20 +3797,19 @@ Provide a basic summary of numeric value types, range and distribution.
 
 
 
-func debugNumericSummary(scope:Scope,input: Tensorflow_DataType, t :type  , deviceName :string  , tensorName :string  , debugUrls :list(string)  , lowerBound :float  , upperBound :float  , muteIfHealthy :bool  , gatedGrpc :bool  )  ->(output: tf.Output){
+func debugNumericSummary(scope:Scope,input: Tensorflow_DataType, deviceName :String  , tensorName :String  , debugUrls :List(string)  , lowerBound :Float  , upperBound :Float  , muteIfHealthy :Bool  , gatedGrpc :Bool  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("device_name":deviceName)
-    attr.append("tensor_name":tensorName)
-    attr.append("debug_urls":debugUrls)
-    attr.append("lower_bound":lowerBound)
-    attr.append("upper_bound":upperBound)
-    attr.append("mute_if_healthy":muteIfHealthy)
-    attr.append("gated_grpc":gatedGrpc)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("device_name",deviceName)
+    attr.append("tensor_name",tensorName)
+    attr.append("debug_urls",debugUrls)
+    attr.append("lower_bound",lowerBound)
+    attr.append("upper_bound",upperBound)
+    attr.append("mute_if_healthy",muteIfHealthy)
+    attr.append("gated_grpc",gatedGrpc)
 
     let opspec = tf.OpSpec(
         OpType: "DebugNumericSummary",
@@ -3885,7 +3836,7 @@ func decodeBase64(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "DecodeBase64",
@@ -3911,13 +3862,13 @@ Accepted values are:
 
 
 
-func decodeBmp(scope:Scope,contents: Tensorflow_DataType, channels :uInt8  )  ->(image: tf.Output){
+func decodeBmp(scope:Scope,contents: Tensorflow_DataType, channels :UInt8  )  ->(image: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("channels":channels)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("channels",channels)
 
     let opspec = tf.OpSpec(
         OpType: "DecodeBmp",
@@ -3940,15 +3891,15 @@ Note that we allow leading and trailing spaces with int or float field.
 
 
 
-func decodeCSV(scope:Scope,records: Tensorflow_DataType, recordDefaults: Tensorflow_DataType, outType :list(type)  , fieldDelim :string  , useQuoteDelim :bool  )  ->(output: tf.Output){
+func decodeCSV(scope:Scope,records: Tensorflow_DataType, recordDefaults: Tensorflow_DataType, outType :List(type)  , fieldDelim :String  , useQuoteDelim :Bool  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("OUT_TYPE":outType)
-    attr.append("field_delim":fieldDelim)
-    attr.append("use_quote_delim":useQuoteDelim)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("OUT_TYPE",outType)
+    attr.append("field_delim",fieldDelim)
+    attr.append("use_quote_delim",useQuoteDelim)
 
     let opspec = tf.OpSpec(
         OpType: "DecodeCSV",
@@ -3978,7 +3929,7 @@ func decodeGif(scope:Scope,contents: Tensorflow_DataType )  ->(image: tf.Output)
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "DecodeGif",
@@ -4009,7 +3960,7 @@ func decodeJSONExample(scope:Scope,jsonExamples: Tensorflow_DataType )  ->(binar
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "DecodeJSONExample",
@@ -4042,18 +3993,18 @@ the same, though it is cleaner to use `tf.image.decode_image`.
 
 
 
-func decodeJpeg(scope:Scope,contents: Tensorflow_DataType, channels :uInt8  , ratio :uInt8  , fancyUpscaling :bool  , tryRecoverTruncated :bool  , acceptableFraction :float  , dctMethod :string  )  ->(image: tf.Output){
+func decodeJpeg(scope:Scope,contents: Tensorflow_DataType, channels :UInt8  , ratio :UInt8  , fancyUpscaling :Bool  , tryRecoverTruncated :Bool  , acceptableFraction :Float  , dctMethod :String  )  ->(image: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("channels":channels)
-    attr.append("ratio":ratio)
-    attr.append("fancy_upscaling":fancyUpscaling)
-    attr.append("try_recover_truncated":tryRecoverTruncated)
-    attr.append("acceptable_fraction":acceptableFraction)
-    attr.append("dct_method":dctMethod)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("channels",channels)
+    attr.append("ratio",ratio)
+    attr.append("fancy_upscaling",fancyUpscaling)
+    attr.append("try_recover_truncated",tryRecoverTruncated)
+    attr.append("acceptable_fraction",acceptableFraction)
+    attr.append("dct_method",dctMethod)
 
     let opspec = tf.OpSpec(
         OpType: "DecodeJpeg",
@@ -4084,14 +4035,14 @@ is the same, though it is cleaner to use `tf.image.decode_image`.
 
 
 
-func decodePng(scope:Scope,contents: Tensorflow_DataType, channels :uInt8  , dtype :type  )  ->(image: tf.Output){
+func decodePng(scope:Scope,contents: Tensorflow_DataType, channels :UInt8  , dtype :Type  )  ->(image: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("channels":channels)
-    attr.append("dtype":dtype)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("channels",channels)
+    attr.append("dtype",dtype)
 
     let opspec = tf.OpSpec(
         OpType: "DecodePng",
@@ -4111,14 +4062,14 @@ Reinterpret the bytes of a string as a vector of numbers.
 
 
 
-func decodeRaw(scope:Scope,bytes: Tensorflow_DataType, outType :type  , littleEndian :bool  )  ->(output: tf.Output){
+func decodeRaw(scope:Scope,bytes: Tensorflow_DataType, outType :Type  , littleEndian :Bool  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("out_type":outType)
-    attr.append("little_endian":littleEndian)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("out_type",outType)
+    attr.append("little_endian",littleEndian)
 
     let opspec = tf.OpSpec(
         OpType: "DecodeRaw",
@@ -4149,14 +4100,14 @@ output shape of [10, 2].
 
 
 
-func decodeWav(scope:Scope,contents: Tensorflow_DataType, desiredChannels :uInt8  , desiredSamples :uInt8  )  ->(audio: tf.Output, sampleRate: tf.Output){
+func decodeWav(scope:Scope,contents: Tensorflow_DataType, desiredChannels :UInt8  , desiredSamples :UInt8  )  ->(audio: tf.Output, sampleRate: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("desired_channels":desiredChannels)
-    attr.append("desired_samples":desiredSamples)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("desired_channels",desiredChannels)
+    attr.append("desired_samples",desiredSamples)
 
     let opspec = tf.OpSpec(
         OpType: "DecodeWav",
@@ -4181,7 +4132,7 @@ func deleteSessionTensor(scope:Scope,handle: Tensorflow_DataType )  ->(o:tf.Oper
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "DeleteSessionTensor",
@@ -4206,15 +4157,14 @@ dimension contains the result of `set_operation` applied to the corresponding
 
 
 
-func denseToDenseSetOperation(scope:Scope,set1: Tensorflow_DataType, set2: Tensorflow_DataType, setOperation :string  , validateIndices :bool  , t :type  )  ->(resultIndices: tf.Output, resultValues: tf.Output, resultShape: tf.Output){
+func denseToDenseSetOperation(scope:Scope,set1: Tensorflow_DataType, set2: Tensorflow_DataType, setOperation :String  , validateIndices :Bool  )  ->(resultIndices: tf.Output, resultValues: tf.Output, resultShape: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("set_operation":setOperation)
-    attr.append("validate_indices":validateIndices)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("set_operation",setOperation)
+    attr.append("validate_indices",validateIndices)
 
     let opspec = tf.OpSpec(
         OpType: "DenseToDenseSetOperation",
@@ -4234,14 +4184,14 @@ Creates a dataset that yields a SparseTensor for each element of the input.
 
 
 
-func denseToSparseBatchDataset(scope:Scope,inputDataset: Tensorflow_DataType, batchSize: Tensorflow_DataType, rowShape: Tensorflow_DataType, outputTypes :list(type)  , outputShapes :[Shape]  )  ->(handle: tf.Output){
+func denseToSparseBatchDataset(scope:Scope,inputDataset: Tensorflow_DataType, batchSize: Tensorflow_DataType, rowShape: Tensorflow_DataType, outputTypes :List(type)  , outputShapes :List(shape)  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("output_types":outputTypes)
-    attr.append("output_shapes":outputShapes)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("output_types",outputTypes)
+    attr.append("output_shapes",outputShapes)
 
     let opspec = tf.OpSpec(
         OpType: "DenseToSparseBatchDataset",
@@ -4273,15 +4223,14 @@ dimension contains the result of `set_operation` applied to the corresponding
 
 
 
-func denseToSparseSetOperation(scope:Scope,set1: Tensorflow_DataType, set2Indices: Tensorflow_DataType, set2Values: Tensorflow_DataType, set2Shape: Tensorflow_DataType, setOperation :string  , validateIndices :bool  , t :type  )  ->(resultIndices: tf.Output, resultValues: tf.Output, resultShape: tf.Output){
+func denseToSparseSetOperation(scope:Scope,set1: Tensorflow_DataType, set2Indices: Tensorflow_DataType, set2Values: Tensorflow_DataType, set2Shape: Tensorflow_DataType, setOperation :String  , validateIndices :Bool  )  ->(resultIndices: tf.Output, resultValues: tf.Output, resultShape: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("set_operation":setOperation)
-    attr.append("validate_indices":validateIndices)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("set_operation",setOperation)
+    attr.append("validate_indices",validateIndices)
 
     let opspec = tf.OpSpec(
         OpType: "DenseToSparseSetOperation",
@@ -4359,14 +4308,14 @@ x = [[ [1],   [2],  [5],  [6]],
 
 
 
-func depthToSpace(scope:Scope,input: Tensorflow_DataType, t :type  , blockSize :uInt8  )  ->(output: tf.Output){
+func depthToSpace(scope:Scope,input: Tensorflow_DataType, t :Type  , blockSize :Int  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("block_size":blockSize)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("block_size",blockSize)
 
     let opspec = tf.OpSpec(
         OpType: "DepthToSpace",
@@ -4400,16 +4349,15 @@ horizontal and vertices strides, `strides = [1, stride, stride, 1]`.
 
 
 
-func depthwiseConv2dNative(scope:Scope,input: Tensorflow_DataType, filter: Tensorflow_DataType, t :type  , strides :[Int]  , padding :string  , dataFormat :string  )  ->(output: tf.Output){
+func depthwiseConv2dNative(scope:Scope,input: Tensorflow_DataType, filter: Tensorflow_DataType, strides :List(int)  , padding :String  , dataFormat :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("strides":strides)
-    attr.append("padding":padding)
-    attr.append("data_format":dataFormat)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("strides",strides)
+    attr.append("padding",padding)
+    attr.append("data_format",dataFormat)
 
     let opspec = tf.OpSpec(
         OpType: "DepthwiseConv2dNative",
@@ -4429,16 +4377,16 @@ Computes the gradients of depthwise convolution with respect to the filter.
 
 
 
-func depthwiseConv2dNativeBackpropFilter(scope:Scope,input: Tensorflow_DataType, filterSizes: Tensorflow_DataType, outBackprop: Tensorflow_DataType, t :type  , strides :[Int]  , padding :string  , dataFormat :string  )  ->(output: tf.Output){
+func depthwiseConv2dNativeBackpropFilter(scope:Scope,input: Tensorflow_DataType, filterSizes: Tensorflow_DataType, outBackprop: Tensorflow_DataType, t :Type  , strides :List(int)  , padding :String  , dataFormat :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("strides":strides)
-    attr.append("padding":padding)
-    attr.append("data_format":dataFormat)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("strides",strides)
+    attr.append("padding",padding)
+    attr.append("data_format",dataFormat)
 
     let opspec = tf.OpSpec(
         OpType: "DepthwiseConv2dNativeBackpropFilter",
@@ -4458,16 +4406,15 @@ Computes the gradients of depthwise convolution with respect to the input.
 
 
 
-func depthwiseConv2dNativeBackpropInput(scope:Scope,inputSizes: Tensorflow_DataType, filter: Tensorflow_DataType, outBackprop: Tensorflow_DataType, t :type  , strides :[Int]  , padding :string  , dataFormat :string  )  ->(output: tf.Output){
+func depthwiseConv2dNativeBackpropInput(scope:Scope,inputSizes: Tensorflow_DataType, filter: Tensorflow_DataType, outBackprop: Tensorflow_DataType, strides :List(int)  , padding :String  , dataFormat :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("strides":strides)
-    attr.append("padding":padding)
-    attr.append("data_format":dataFormat)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("strides",strides)
+    attr.append("padding",padding)
+    attr.append("data_format",dataFormat)
 
     let opspec = tf.OpSpec(
         OpType: "DepthwiseConv2dNativeBackpropInput",
@@ -4513,14 +4460,14 @@ result = range_min + ((input - numeric_limits<T>::min()) * range_scale)
 
 
 
-func dequantize(scope:Scope,input: Tensorflow_DataType, minRange: Tensorflow_DataType, maxRange: Tensorflow_DataType, t :type  , mode :string  )  ->(output: tf.Output){
+func dequantize(scope:Scope,input: Tensorflow_DataType, minRange: Tensorflow_DataType, maxRange: Tensorflow_DataType, t :Type  , mode :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("mode":mode)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("mode",mode)
 
     let opspec = tf.OpSpec(
         OpType: "Dequantize",
@@ -4573,13 +4520,13 @@ then the final deserialized `SparseTensor` will be:
 
 
 
-func deserializeManySparse(scope:Scope,serializedSparse: Tensorflow_DataType, dtype :type  )  ->(sparseIndices: tf.Output, sparseValues: tf.Output, sparseShape: tf.Output){
+func deserializeManySparse(scope:Scope,serializedSparse: Tensorflow_DataType, dtype :Type  )  ->(sparseIndices: tf.Output, sparseValues: tf.Output, sparseShape: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("dtype":dtype)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("dtype",dtype)
 
     let opspec = tf.OpSpec(
         OpType: "DeserializeManySparse",
@@ -4605,14 +4552,13 @@ Outputs the final value of the tensor pointed to by 'ref'.
 
 
 
-func destroyTemporaryVariable(scope:Scope,ref: Tensorflow_DataType, t :type  , varName :string  )  ->(value: tf.Output){
+func destroyTemporaryVariable(scope:Scope,ref: Tensorflow_DataType, varName :String  )  ->(value: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("var_name":varName)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("var_name",varName)
 
     let opspec = tf.OpSpec(
         OpType: "DestroyTemporaryVariable",
@@ -4645,13 +4591,13 @@ tf.diag(diagonal) ==> [[1, 0, 0, 0]
 
 
 
-func diag(scope:Scope,diagonal: Tensorflow_DataType, t :type  )  ->(output: tf.Output){
+func diag(scope:Scope,diagonal: Tensorflow_DataType, t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "Diag",
@@ -4684,13 +4630,12 @@ tf.diag_part(input) ==> [1, 2, 3, 4]
 
 
 
-func diagPart(scope:Scope,input: Tensorflow_DataType, t :type  )  ->(diagonal: tf.Output){
+func diagPart(scope:Scope,input: Tensorflow_DataType )  ->(diagonal: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "DiagPart",
@@ -4711,13 +4656,13 @@ Computes Psi, the derivative of Lgamma (the log of the absolute value of
 
 
 
-func digamma(scope:Scope,x: Tensorflow_DataType, t :type  )  ->(y: tf.Output){
+func digamma(scope:Scope,x: Tensorflow_DataType, t :Type  )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "Digamma",
@@ -4756,16 +4701,15 @@ negation of the erosion of `-input` by the reflected `filter`.
 
 
 
-func dilation2D(scope:Scope,input: Tensorflow_DataType, filter: Tensorflow_DataType, t :type  , strides :[Int]  , rates :[Int]  , padding :string  )  ->(output: tf.Output){
+func dilation2D(scope:Scope,input: Tensorflow_DataType, filter: Tensorflow_DataType, strides :List(int)  , rates :List(int)  , padding :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("strides":strides)
-    attr.append("rates":rates)
-    attr.append("padding":padding)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("strides",strides)
+    attr.append("rates",rates)
+    attr.append("padding",padding)
 
     let opspec = tf.OpSpec(
         OpType: "Dilation2D",
@@ -4785,16 +4729,16 @@ Computes the gradient of morphological 2-D dilation with respect to the filter.
 
 
 
-func dilation2DBackpropFilter(scope:Scope,input: Tensorflow_DataType, filter: Tensorflow_DataType, outBackprop: Tensorflow_DataType, t :type  , strides :[Int]  , rates :[Int]  , padding :string  )  ->(filterBackprop: tf.Output){
+func dilation2DBackpropFilter(scope:Scope,input: Tensorflow_DataType, filter: Tensorflow_DataType, outBackprop: Tensorflow_DataType, t :Type  , strides :List(int)  , rates :List(int)  , padding :String  )  ->(filterBackprop: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("strides":strides)
-    attr.append("rates":rates)
-    attr.append("padding":padding)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("strides",strides)
+    attr.append("rates",rates)
+    attr.append("padding",padding)
 
     let opspec = tf.OpSpec(
         OpType: "Dilation2DBackpropFilter",
@@ -4814,16 +4758,15 @@ Computes the gradient of morphological 2-D dilation with respect to the input.
 
 
 
-func dilation2DBackpropInput(scope:Scope,input: Tensorflow_DataType, filter: Tensorflow_DataType, outBackprop: Tensorflow_DataType, t :type  , strides :[Int]  , rates :[Int]  , padding :string  )  ->(inBackprop: tf.Output){
+func dilation2DBackpropInput(scope:Scope,input: Tensorflow_DataType, filter: Tensorflow_DataType, outBackprop: Tensorflow_DataType, strides :List(int)  , rates :List(int)  , padding :String  )  ->(inBackprop: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("strides":strides)
-    attr.append("rates":rates)
-    attr.append("padding":padding)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("strides",strides)
+    attr.append("rates",rates)
+    attr.append("padding",padding)
 
     let opspec = tf.OpSpec(
         OpType: "Dilation2DBackpropInput",
@@ -4845,13 +4788,13 @@ Returns x / y element-wise.
 
 
 
-func div(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :type  )  ->(z: tf.Output){
+func div(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :Type  )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "Div",
@@ -4880,13 +4823,12 @@ Parts of the bounding box may fall outside the image.
 
 
 
-func drawBoundingBoxes(scope:Scope,images: Tensorflow_DataType, boxes: Tensorflow_DataType, t :type  )  ->(output: tf.Output){
+func drawBoundingBoxes(scope:Scope,images: Tensorflow_DataType, boxes: Tensorflow_DataType )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "DrawBoundingBoxes",
@@ -4935,14 +4877,14 @@ See `dynamic_stitch` for an example on how to merge partitions back.
 
 
 
-func dynamicPartition(scope:Scope,data: Tensorflow_DataType, partitions: Tensorflow_DataType, numPartitions :uInt8  , t :type  )  ->(outputs: tf.Output){
+func dynamicPartition(scope:Scope,data: Tensorflow_DataType, partitions: Tensorflow_DataType, numPartitions :Int  , t :Type  )  ->(outputs: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("num_partitions":numPartitions)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("num_partitions",numPartitions)
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "DynamicPartition",
@@ -5011,14 +4953,13 @@ as illustrated on the following example:
 
 
 
-func dynamicStitch(scope:Scope,indices: Tensorflow_DataType, data: Tensorflow_DataType, n :uInt8  , t :type  )  ->(merged: tf.Output){
+func dynamicStitch(scope:Scope,indices: Tensorflow_DataType, data: Tensorflow_DataType, n :UInt8  )  ->(merged: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("N":n)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("N",n)
 
     let opspec = tf.OpSpec(
         OpType: "DynamicStitch",
@@ -5043,14 +4984,14 @@ The inputs are:
 
 
 
-func editDistance(scope:Scope,hypothesisIndices: Tensorflow_DataType, hypothesisValues: Tensorflow_DataType, hypothesisShape: Tensorflow_DataType, truthIndices: Tensorflow_DataType, truthValues: Tensorflow_DataType, truthShape: Tensorflow_DataType, normalize :bool  , t :type  )  ->(output: tf.Output){
+func editDistance(scope:Scope,hypothesisIndices: Tensorflow_DataType, hypothesisValues: Tensorflow_DataType, hypothesisShape: Tensorflow_DataType, truthIndices: Tensorflow_DataType, truthValues: Tensorflow_DataType, truthShape: Tensorflow_DataType, normalize :Bool  , t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("normalize":normalize)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("normalize",normalize)
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "EditDistance",
@@ -5072,13 +5013,12 @@ See [Fast and Accurate Deep Network Learning by Exponential Linear Units (ELUs)
 
 
 
-func elu(scope:Scope,features: Tensorflow_DataType, t :type  )  ->(activations: tf.Output){
+func elu(scope:Scope,features: Tensorflow_DataType )  ->(activations: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "Elu",
@@ -5098,13 +5038,13 @@ Computes gradients for the exponential linear (Elu) operation.
 
 
 
-func eluGrad(scope:Scope,gradients: Tensorflow_DataType, outputs: Tensorflow_DataType, t :type  )  ->(backprops: tf.Output){
+func eluGrad(scope:Scope,gradients: Tensorflow_DataType, outputs: Tensorflow_DataType, t :Type  )  ->(backprops: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "EluGrad",
@@ -5129,13 +5069,13 @@ Web-safe means that the encoder uses - and _ instead of + and /.
 
 
 
-func encodeBase64(scope:Scope,input: Tensorflow_DataType, pad :bool  )  ->(output: tf.Output){
+func encodeBase64(scope:Scope,input: Tensorflow_DataType, pad :Bool  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("pad":pad)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("pad",pad)
 
     let opspec = tf.OpSpec(
         OpType: "EncodeBase64",
@@ -5167,21 +5107,21 @@ in function of the number of channels in `image`:
 
 
 
-func encodeJpeg(scope:Scope,image: Tensorflow_DataType, format :string  , quality :uInt8  , progressive :bool  , optimizeSize :bool  , chromaDownsampling :bool  , densityUnit :string  , xDensity :uInt8  , yDensity :uInt8  , xmpMetadata :string  )  ->(contents: tf.Output){
+func encodeJpeg(scope:Scope,image: Tensorflow_DataType, format :String  , quality :UInt8  , progressive :Bool  , optimizeSize :Bool  , chromaDownsampling :Bool  , densityUnit :String  , xDensity :UInt8  , yDensity :UInt8  , xmpMetadata :String  )  ->(contents: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("format":format)
-    attr.append("quality":quality)
-    attr.append("progressive":progressive)
-    attr.append("optimize_size":optimizeSize)
-    attr.append("chroma_downsampling":chromaDownsampling)
-    attr.append("density_unit":densityUnit)
-    attr.append("x_density":xDensity)
-    attr.append("y_density":yDensity)
-    attr.append("xmp_metadata":xmpMetadata)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("format",format)
+    attr.append("quality",quality)
+    attr.append("progressive",progressive)
+    attr.append("optimize_size",optimizeSize)
+    attr.append("chroma_downsampling",chromaDownsampling)
+    attr.append("density_unit",densityUnit)
+    attr.append("x_density",xDensity)
+    attr.append("y_density",yDensity)
+    attr.append("xmp_metadata",xmpMetadata)
 
     let opspec = tf.OpSpec(
         OpType: "EncodeJpeg",
@@ -5210,14 +5150,13 @@ the smallest output, but is slower.
 
 
 
-func encodePng(scope:Scope,image: Tensorflow_DataType, compression :uInt8  , t :type  )  ->(contents: tf.Output){
+func encodePng(scope:Scope,image: Tensorflow_DataType, compression :UInt8  )  ->(contents: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("compression":compression)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("compression",compression)
 
     let opspec = tf.OpSpec(
         OpType: "EncodePng",
@@ -5248,7 +5187,7 @@ func encodeWav(scope:Scope,audio: Tensorflow_DataType, sampleRate: Tensorflow_Da
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "EncodeWav",
@@ -5273,16 +5212,15 @@ are run in parallel in the child frame.
 
 
 
-func enter(scope:Scope,data: Tensorflow_DataType, t :type  , frameName :string  , isConstant :bool  , parallelIterations :uInt8  )  ->(output: tf.Output){
+func enter(scope:Scope,data: Tensorflow_DataType, frameName :String  , isConstant :Bool  , parallelIterations :Int  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("frame_name":frameName)
-    attr.append("is_constant":isConstant)
-    attr.append("parallel_iterations":parallelIterations)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("frame_name",frameName)
+    attr.append("is_constant",isConstant)
+    attr.append("parallel_iterations",parallelIterations)
 
     let opspec = tf.OpSpec(
         OpType: "Enter",
@@ -5304,13 +5242,13 @@ Returns the truth value of (x == y) element-wise.
 
 
 
-func equal(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :type  )  ->(z: tf.Output){
+func equal(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :Type  )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "Equal",
@@ -5330,13 +5268,12 @@ Computes the Gauss error function of `x` element-wise.
 
 
 
-func erf(scope:Scope,x: Tensorflow_DataType, t :type  )  ->(y: tf.Output){
+func erf(scope:Scope,x: Tensorflow_DataType )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "Erf",
@@ -5356,13 +5293,13 @@ Computes the complementary error function of `x` element-wise.
 
 
 
-func erfc(scope:Scope,x: Tensorflow_DataType, t :type  )  ->(y: tf.Output){
+func erfc(scope:Scope,x: Tensorflow_DataType, t :Type  )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "Erfc",
@@ -5383,13 +5320,12 @@ Exit makes its input `data` available to the parent frame.
 
 
 
-func exit(scope:Scope,data: Tensorflow_DataType, t :type  )  ->(output: tf.Output){
+func exit(scope:Scope,data: Tensorflow_DataType )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "Exit",
@@ -5409,13 +5345,13 @@ Computes exponential of x element-wise.  \\(y = e^x\\).
 
 
 
-func exp(scope:Scope,x: Tensorflow_DataType, t :type  )  ->(y: tf.Output){
+func exp(scope:Scope,x: Tensorflow_DataType, t :Type  )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "Exp",
@@ -5458,14 +5394,13 @@ size 1.
 
 
 
-func expandDims(scope:Scope,input: Tensorflow_DataType, dim: Tensorflow_DataType, t :type  , tdim :type  )  ->(output: tf.Output){
+func expandDims(scope:Scope,input: Tensorflow_DataType, dim: Tensorflow_DataType, tdim :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tdim":tdim)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tdim",tdim)
 
     let opspec = tf.OpSpec(
         OpType: "ExpandDims",
@@ -5486,13 +5421,13 @@ I.e., \\(y = (\exp x) - 1\\).
 
 
 
-func expm1(scope:Scope,x: Tensorflow_DataType, t :type  )  ->(y: tf.Output){
+func expm1(scope:Scope,x: Tensorflow_DataType, t :Type  )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "Expm1",
@@ -5530,15 +5465,15 @@ The argument `normalized` and `centered` controls how the windows are built:
 
 
 
-func extractGlimpse(scope:Scope,input: Tensorflow_DataType, size: Tensorflow_DataType, offsets: Tensorflow_DataType, centered :bool  , normalized :bool  , uniformNoise :bool  )  ->(glimpse: tf.Output){
+func extractGlimpse(scope:Scope,input: Tensorflow_DataType, size: Tensorflow_DataType, offsets: Tensorflow_DataType, centered :Bool  , normalized :Bool  , uniformNoise :Bool  )  ->(glimpse: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("centered":centered)
-    attr.append("normalized":normalized)
-    attr.append("uniform_noise":uniformNoise)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("centered",centered)
+    attr.append("normalized",normalized)
+    attr.append("uniform_noise",uniformNoise)
 
     let opspec = tf.OpSpec(
         OpType: "ExtractGlimpse",
@@ -5558,17 +5493,16 @@ Extract `patches` from `images` and put them in the "depth" output dimension.
 
 
 
-func extractImagePatches(scope:Scope,images: Tensorflow_DataType, ksizes :[Int]  , strides :[Int]  , rates :[Int]  , t :type  , padding :string  )  ->(patches: tf.Output){
+func extractImagePatches(scope:Scope,images: Tensorflow_DataType, ksizes :[Int]  , strides :[Int]  , rates :[Int]  , padding :String  )  ->(patches: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("ksizes":ksizes)
-    attr.append("strides":strides)
-    attr.append("rates":rates)
-    attr.append("T":t)
-    attr.append("padding":padding)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("ksizes",ksizes)
+    attr.append("strides",strides)
+    attr.append("rates",rates)
+    attr.append("padding",padding)
 
     let opspec = tf.OpSpec(
         OpType: "ExtractImagePatches",
@@ -5595,7 +5529,7 @@ func fft(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "FFT",
@@ -5622,7 +5556,7 @@ func fft2D(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "FFT2D",
@@ -5649,7 +5583,7 @@ func fft3D(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "FFT3D",
@@ -5669,17 +5603,17 @@ A queue that produces elements in first-in first-out order.
 
 
 
-func fifoQueue(scope:Scope componentTypes :list(type)  , shapes :[Shape]  , capacity :uInt8  , container :string  , sharedName :string  )  ->(handle: tf.Output){
+func fifoQueue(scope:Scope componentTypes :List(type)  , shapes :[Shape]  , capacity :UInt8  , container :String  , sharedName :String  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("component_types":componentTypes)
-    attr.append("shapes":shapes)
-    attr.append("capacity":capacity)
-    attr.append("container":container)
-    attr.append("shared_name":sharedName)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("component_types",componentTypes)
+    attr.append("shapes",shapes)
+    attr.append("capacity",capacity)
+    attr.append("container",container)
+    attr.append("shared_name",sharedName)
 
     let opspec = tf.OpSpec(
         OpType: "FIFOQueue",
@@ -5699,17 +5633,17 @@ A queue that produces elements in first-in first-out order.
 
 
 
-func fifoQueueV2(scope:Scope componentTypes :list(type)  , shapes :[Shape]  , capacity :uInt8  , container :string  , sharedName :string  )  ->(handle: tf.Output){
+func fifoQueueV2(scope:Scope componentTypes :List(type)  , shapes :[Shape]  , capacity :UInt8  , container :String  , sharedName :String  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("component_types":componentTypes)
-    attr.append("shapes":shapes)
-    attr.append("capacity":capacity)
-    attr.append("container":container)
-    attr.append("shared_name":sharedName)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("component_types",componentTypes)
+    attr.append("shapes",shapes)
+    attr.append("capacity",capacity)
+    attr.append("container",container)
+    attr.append("shared_name",sharedName)
 
     let opspec = tf.OpSpec(
         OpType: "FIFOQueueV2",
@@ -5734,7 +5668,7 @@ func fact(scope:Scope )  ->(fact: tf.Output){
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "Fact",
@@ -5759,15 +5693,15 @@ Quantization is called fake since the output is still in floating point.
 
 
 
-func fakeQuantWithMinMaxArgs(scope:Scope,inputs: Tensorflow_DataType, min :float  , max :float  , numBits :uInt8  )  ->(outputs: tf.Output){
+func fakeQuantWithMinMaxArgs(scope:Scope,inputs: Tensorflow_DataType, min :Float  , max :Float  , numBits :UInt8  )  ->(outputs: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("min":min)
-    attr.append("max":max)
-    attr.append("num_bits":numBits)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("min",min)
+    attr.append("max",max)
+    attr.append("num_bits",numBits)
 
     let opspec = tf.OpSpec(
         OpType: "FakeQuantWithMinMaxArgs",
@@ -5787,15 +5721,15 @@ Compute gradients for a FakeQuantWithMinMaxArgs operation.
 
 
 
-func fakeQuantWithMinMaxArgsGradient(scope:Scope,gradients: Tensorflow_DataType, inputs: Tensorflow_DataType, min :float  , max :float  , numBits :uInt8  )  ->(backprops: tf.Output){
+func fakeQuantWithMinMaxArgsGradient(scope:Scope,gradients: Tensorflow_DataType, inputs: Tensorflow_DataType, min :Float  , max :Float  , numBits :UInt8  )  ->(backprops: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("min":min)
-    attr.append("max":max)
-    attr.append("num_bits":numBits)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("min",min)
+    attr.append("max",max)
+    attr.append("num_bits",numBits)
 
     let opspec = tf.OpSpec(
         OpType: "FakeQuantWithMinMaxArgsGradient",
@@ -5821,13 +5755,13 @@ This operation has a gradient and thus allows for training `min` and `max` value
 
 
 
-func fakeQuantWithMinMaxVars(scope:Scope,inputs: Tensorflow_DataType, min: Tensorflow_DataType, max: Tensorflow_DataType, numBits :uInt8  )  ->(outputs: tf.Output){
+func fakeQuantWithMinMaxVars(scope:Scope,inputs: Tensorflow_DataType, min: Tensorflow_DataType, max: Tensorflow_DataType, numBits :UInt8  )  ->(outputs: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("num_bits":numBits)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("num_bits",numBits)
 
     let opspec = tf.OpSpec(
         OpType: "FakeQuantWithMinMaxVars",
@@ -5847,13 +5781,13 @@ Compute gradients for a FakeQuantWithMinMaxVars operation.
 
 
 
-func fakeQuantWithMinMaxVarsGradient(scope:Scope,gradients: Tensorflow_DataType, inputs: Tensorflow_DataType, min: Tensorflow_DataType, max: Tensorflow_DataType, numBits :uInt8  )  ->(backpropsWrtInput: tf.Output, backpropWrtMin: tf.Output, backpropWrtMax: tf.Output){
+func fakeQuantWithMinMaxVarsGradient(scope:Scope,gradients: Tensorflow_DataType, inputs: Tensorflow_DataType, min: Tensorflow_DataType, max: Tensorflow_DataType, numBits :UInt8  )  ->(backpropsWrtInput: tf.Output, backpropWrtMin: tf.Output, backpropWrtMax: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("num_bits":numBits)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("num_bits",numBits)
 
     let opspec = tf.OpSpec(
         OpType: "FakeQuantWithMinMaxVarsGradient",
@@ -5880,13 +5814,13 @@ This operation has a gradient and thus allows for training `min` and `max` value
 
 
 
-func fakeQuantWithMinMaxVarsPerChannel(scope:Scope,inputs: Tensorflow_DataType, min: Tensorflow_DataType, max: Tensorflow_DataType, numBits :uInt8  )  ->(outputs: tf.Output){
+func fakeQuantWithMinMaxVarsPerChannel(scope:Scope,inputs: Tensorflow_DataType, min: Tensorflow_DataType, max: Tensorflow_DataType, numBits :UInt8  )  ->(outputs: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("num_bits":numBits)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("num_bits",numBits)
 
     let opspec = tf.OpSpec(
         OpType: "FakeQuantWithMinMaxVarsPerChannel",
@@ -5906,13 +5840,13 @@ Compute gradients for a FakeQuantWithMinMaxVarsPerChannel operation.
 
 
 
-func fakeQuantWithMinMaxVarsPerChannelGradient(scope:Scope,gradients: Tensorflow_DataType, inputs: Tensorflow_DataType, min: Tensorflow_DataType, max: Tensorflow_DataType, numBits :uInt8  )  ->(backpropsWrtInput: tf.Output, backpropWrtMin: tf.Output, backpropWrtMax: tf.Output){
+func fakeQuantWithMinMaxVarsPerChannelGradient(scope:Scope,gradients: Tensorflow_DataType, inputs: Tensorflow_DataType, min: Tensorflow_DataType, max: Tensorflow_DataType, numBits :UInt8  )  ->(backpropsWrtInput: tf.Output, backpropWrtMin: tf.Output, backpropWrtMax: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("num_bits":numBits)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("num_bits",numBits)
 
     let opspec = tf.OpSpec(
         OpType: "FakeQuantWithMinMaxVarsPerChannelGradient",
@@ -5937,7 +5871,7 @@ func fakeQueue(scope:Scope,resource: Tensorflow_DataType )  ->(handle: tf.Output
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "FakeQueue",
@@ -5964,13 +5898,12 @@ fill([2, 3], 9) ==> [[9, 9, 9]
 
 
 
-func fill(scope:Scope,dims: Tensorflow_DataType, value: Tensorflow_DataType, t :type  )  ->(output: tf.Output){
+func fill(scope:Scope,dims: Tensorflow_DataType, value: Tensorflow_DataType )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "Fill",
@@ -5994,16 +5927,16 @@ following arguments:
 
 
 
-func filterDataset(scope:Scope,inputDataset: Tensorflow_DataType, otherArguments: Tensorflow_DataType, predicate :func  , targuments :list(type)  , outputTypes :list(type)  , outputShapes :[Shape]  )  ->(handle: tf.Output){
+func filterDataset(scope:Scope,inputDataset: Tensorflow_DataType, otherArguments: Tensorflow_DataType, predicate :Func  , targuments :List(type)  , outputTypes :List(type)  , outputShapes :List(shape)  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("predicate":predicate)
-    attr.append("Targuments":targuments)
-    attr.append("output_types":outputTypes)
-    attr.append("output_shapes":outputShapes)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("predicate",predicate)
+    attr.append("Targuments",targuments)
+    attr.append("output_types",outputTypes)
+    attr.append("output_shapes",outputShapes)
 
     let opspec = tf.OpSpec(
         OpType: "FilterDataset",
@@ -6028,7 +5961,7 @@ func fixedLengthRecordDataset(scope:Scope,filenames: Tensorflow_DataType, header
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "FixedLengthRecordDataset",
@@ -6048,18 +5981,18 @@ A Reader that outputs fixed-length records from a file.
 
 
 
-func fixedLengthRecordReader(scope:Scope headerBytes :uInt8  , recordBytes :uInt8  , footerBytes :uInt8  , hopBytes :uInt8  , container :string  , sharedName :string  )  ->(readerHandle: tf.Output){
+func fixedLengthRecordReader(scope:Scope headerBytes :UInt8  , recordBytes :UInt8  , footerBytes :UInt8  , hopBytes :UInt8  , container :String  , sharedName :String  )  ->(readerHandle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("header_bytes":headerBytes)
-    attr.append("record_bytes":recordBytes)
-    attr.append("footer_bytes":footerBytes)
-    attr.append("hop_bytes":hopBytes)
-    attr.append("container":container)
-    attr.append("shared_name":sharedName)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("header_bytes",headerBytes)
+    attr.append("record_bytes",recordBytes)
+    attr.append("footer_bytes",footerBytes)
+    attr.append("hop_bytes",hopBytes)
+    attr.append("container",container)
+    attr.append("shared_name",sharedName)
 
     let opspec = tf.OpSpec(
         OpType: "FixedLengthRecordReader",
@@ -6079,18 +6012,18 @@ A Reader that outputs fixed-length records from a file.
 
 
 
-func fixedLengthRecordReaderV2(scope:Scope headerBytes :uInt8  , recordBytes :uInt8  , footerBytes :uInt8  , hopBytes :uInt8  , container :string  , sharedName :string  )  ->(readerHandle: tf.Output){
+func fixedLengthRecordReaderV2(scope:Scope headerBytes :UInt8  , recordBytes :UInt8  , footerBytes :UInt8  , hopBytes :UInt8  , container :String  , sharedName :String  )  ->(readerHandle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("header_bytes":headerBytes)
-    attr.append("record_bytes":recordBytes)
-    attr.append("footer_bytes":footerBytes)
-    attr.append("hop_bytes":hopBytes)
-    attr.append("container":container)
-    attr.append("shared_name":sharedName)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("header_bytes",headerBytes)
+    attr.append("record_bytes",recordBytes)
+    attr.append("footer_bytes",footerBytes)
+    attr.append("hop_bytes",hopBytes)
+    attr.append("container",container)
+    attr.append("shared_name",sharedName)
 
     let opspec = tf.OpSpec(
         OpType: "FixedLengthRecordReaderV2",
@@ -6121,24 +6054,24 @@ true labels.
 
 
 
-func fixedUnigramCandidateSampler(scope:Scope,trueClasses: Tensorflow_DataType, numTrue :uInt8  , numSampled :uInt8  , unique :bool  , rangeMax :uInt8  , vocabFile :string  , distortion :float  , numReservedIds :uInt8  , numShards :uInt8  , shard :uInt8  , unigrams :list(float)  , seed :uInt8  , seed2 :uInt8  )  ->(sampledCandidates: tf.Output, trueExpectedCount: tf.Output, sampledExpectedCount: tf.Output){
+func fixedUnigramCandidateSampler(scope:Scope,trueClasses: Tensorflow_DataType, numTrue :UInt8  , numSampled :UInt8  , unique :Bool  , rangeMax :UInt8  , vocabFile :String  , distortion :Float  , numReservedIds :UInt8  , numShards :UInt8  , shard :UInt8  , unigrams :List(float)  , seed :UInt8  , seed2 :UInt8  )  ->(sampledCandidates: tf.Output, trueExpectedCount: tf.Output, sampledExpectedCount: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("num_true":numTrue)
-    attr.append("num_sampled":numSampled)
-    attr.append("unique":unique)
-    attr.append("range_max":rangeMax)
-    attr.append("vocab_file":vocabFile)
-    attr.append("distortion":distortion)
-    attr.append("num_reserved_ids":numReservedIds)
-    attr.append("num_shards":numShards)
-    attr.append("shard":shard)
-    attr.append("unigrams":unigrams)
-    attr.append("seed":seed)
-    attr.append("seed2":seed2)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("num_true",numTrue)
+    attr.append("num_sampled",numSampled)
+    attr.append("unique",unique)
+    attr.append("range_max",rangeMax)
+    attr.append("vocab_file",vocabFile)
+    attr.append("distortion",distortion)
+    attr.append("num_reserved_ids",numReservedIds)
+    attr.append("num_shards",numShards)
+    attr.append("shard",shard)
+    attr.append("unigrams",unigrams)
+    attr.append("seed",seed)
+    attr.append("seed2",seed2)
 
     let opspec = tf.OpSpec(
         OpType: "FixedUnigramCandidateSampler",
@@ -6161,16 +6094,16 @@ into a single Dataset.
 
 
 
-func flatMapDataset(scope:Scope,inputDataset: Tensorflow_DataType, otherArguments: Tensorflow_DataType, f :func  , targuments :list(type)  , outputTypes :list(type)  , outputShapes :[Shape]  )  ->(handle: tf.Output){
+func flatMapDataset(scope:Scope,inputDataset: Tensorflow_DataType, otherArguments: Tensorflow_DataType, f :Func  , targuments :List(type)  , outputTypes :List(type)  , outputShapes :[Shape]  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("f":f)
-    attr.append("Targuments":targuments)
-    attr.append("output_types":outputTypes)
-    attr.append("output_shapes":outputShapes)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("f",f)
+    attr.append("Targuments",targuments)
+    attr.append("output_types",outputTypes)
+    attr.append("output_shapes",outputShapes)
 
     let opspec = tf.OpSpec(
         OpType: "FlatMapDataset",
@@ -6190,13 +6123,12 @@ Returns element-wise largest integer not greater than x.
 
 
 
-func floor(scope:Scope,x: Tensorflow_DataType, t :type  )  ->(y: tf.Output){
+func floor(scope:Scope,x: Tensorflow_DataType )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "Floor",
@@ -6218,13 +6150,13 @@ Returns x // y element-wise.
 
 
 
-func floorDiv(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :type  )  ->(z: tf.Output){
+func floorDiv(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :Type  )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "FloorDiv",
@@ -6248,13 +6180,12 @@ with a flooring divide. E.g. `floor(x / y) * y + mod(x, y) = x`.
 
 
 
-func floorMod(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :type  )  ->(z: tf.Output){
+func floorMod(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "FloorMod",
@@ -6278,19 +6209,19 @@ pooling region.
 
 
 
-func fractionalAvgPool(scope:Scope,value: Tensorflow_DataType, poolingRatio :list(float)  , pseudoRandom :bool  , overlapping :bool  , deterministic :bool  , seed :uInt8  , seed2 :uInt8  , t :type  )  ->(output: tf.Output, rowPoolingSequence: tf.Output, colPoolingSequence: tf.Output){
+func fractionalAvgPool(scope:Scope,value: Tensorflow_DataType, poolingRatio :List(float)  , pseudoRandom :Bool  , overlapping :Bool  , deterministic :Bool  , seed :Int  , seed2 :Int  , t :Type  )  ->(output: tf.Output, rowPoolingSequence: tf.Output, colPoolingSequence: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("pooling_ratio":poolingRatio)
-    attr.append("pseudo_random":pseudoRandom)
-    attr.append("overlapping":overlapping)
-    attr.append("deterministic":deterministic)
-    attr.append("seed":seed)
-    attr.append("seed2":seed2)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("pooling_ratio",poolingRatio)
+    attr.append("pseudo_random",pseudoRandom)
+    attr.append("overlapping",overlapping)
+    attr.append("deterministic",deterministic)
+    attr.append("seed",seed)
+    attr.append("seed2",seed2)
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "FractionalAvgPool",
@@ -6315,14 +6246,13 @@ tensor.
 
 
 
-func fractionalAvgPoolGrad(scope:Scope,origInputTensorShape: Tensorflow_DataType, outBackprop: Tensorflow_DataType, rowPoolingSequence: Tensorflow_DataType, colPoolingSequence: Tensorflow_DataType, overlapping :bool  , t :type  )  ->(output: tf.Output){
+func fractionalAvgPoolGrad(scope:Scope,origInputTensorShape: Tensorflow_DataType, outBackprop: Tensorflow_DataType, rowPoolingSequence: Tensorflow_DataType, colPoolingSequence: Tensorflow_DataType, overlapping :Bool  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("overlapping":overlapping)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("overlapping",overlapping)
 
     let opspec = tf.OpSpec(
         OpType: "FractionalAvgPoolGrad",
@@ -6364,19 +6294,19 @@ For more details on fractional max pooling, see this paper:
 
 
 
-func fractionalMaxPool(scope:Scope,value: Tensorflow_DataType, poolingRatio :list(float)  , pseudoRandom :bool  , overlapping :bool  , deterministic :bool  , seed :uInt8  , seed2 :uInt8  , t :type  )  ->(output: tf.Output, rowPoolingSequence: tf.Output, colPoolingSequence: tf.Output){
+func fractionalMaxPool(scope:Scope,value: Tensorflow_DataType, poolingRatio :List(float)  , pseudoRandom :Bool  , overlapping :Bool  , deterministic :Bool  , seed :Int  , seed2 :Int  , t :Type  )  ->(output: tf.Output, rowPoolingSequence: tf.Output, colPoolingSequence: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("pooling_ratio":poolingRatio)
-    attr.append("pseudo_random":pseudoRandom)
-    attr.append("overlapping":overlapping)
-    attr.append("deterministic":deterministic)
-    attr.append("seed":seed)
-    attr.append("seed2":seed2)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("pooling_ratio",poolingRatio)
+    attr.append("pseudo_random",pseudoRandom)
+    attr.append("overlapping",overlapping)
+    attr.append("deterministic",deterministic)
+    attr.append("seed",seed)
+    attr.append("seed2",seed2)
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "FractionalMaxPool",
@@ -6396,14 +6326,13 @@ Computes gradient of the FractionalMaxPool function.
 
 
 
-func fractionalMaxPoolGrad(scope:Scope,origInput: Tensorflow_DataType, origOutput: Tensorflow_DataType, outBackprop: Tensorflow_DataType, rowPoolingSequence: Tensorflow_DataType, colPoolingSequence: Tensorflow_DataType, overlapping :bool  , t :type  )  ->(output: tf.Output){
+func fractionalMaxPoolGrad(scope:Scope,origInput: Tensorflow_DataType, origOutput: Tensorflow_DataType, outBackprop: Tensorflow_DataType, rowPoolingSequence: Tensorflow_DataType, colPoolingSequence: Tensorflow_DataType, overlapping :Bool  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("overlapping":overlapping)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("overlapping",overlapping)
 
     let opspec = tf.OpSpec(
         OpType: "FractionalMaxPoolGrad",
@@ -6425,16 +6354,16 @@ The size of 1D Tensors matches the dimension C of the 4D Tensors.
 
 
 
-func fusedBatchNorm(scope:Scope,x: Tensorflow_DataType, scale: Tensorflow_DataType, offset: Tensorflow_DataType, mean: Tensorflow_DataType, variance: Tensorflow_DataType, t :type  , epsilon :float  , dataFormat :string  , isTraining :bool  )  ->(y: tf.Output, batchMean: tf.Output, batchVariance: tf.Output, reserveSpace1: tf.Output, reserveSpace2: tf.Output){
+func fusedBatchNorm(scope:Scope,x: Tensorflow_DataType, scale: Tensorflow_DataType, offset: Tensorflow_DataType, mean: Tensorflow_DataType, variance: Tensorflow_DataType, t :Type  , epsilon :Float  , dataFormat :String  , isTraining :Bool  )  ->(y: tf.Output, batchMean: tf.Output, batchVariance: tf.Output, reserveSpace1: tf.Output, reserveSpace2: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("epsilon":epsilon)
-    attr.append("data_format":dataFormat)
-    attr.append("is_training":isTraining)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("epsilon",epsilon)
+    attr.append("data_format",dataFormat)
+    attr.append("is_training",isTraining)
 
     let opspec = tf.OpSpec(
         OpType: "FusedBatchNorm",
@@ -6456,16 +6385,15 @@ The size of 1D Tensors matches the dimension C of the 4D Tensors.
 
 
 
-func fusedBatchNormGrad(scope:Scope,yBackprop: Tensorflow_DataType, x: Tensorflow_DataType, scale: Tensorflow_DataType, reserveSpace1: Tensorflow_DataType, reserveSpace2: Tensorflow_DataType, t :type  , epsilon :float  , dataFormat :string  , isTraining :bool  )  ->(xBackprop: tf.Output, scaleBackprop: tf.Output, offsetBackprop: tf.Output, reserveSpace3: tf.Output, reserveSpace4: tf.Output){
+func fusedBatchNormGrad(scope:Scope,yBackprop: Tensorflow_DataType, x: Tensorflow_DataType, scale: Tensorflow_DataType, reserveSpace1: Tensorflow_DataType, reserveSpace2: Tensorflow_DataType, epsilon :Float  , dataFormat :String  , isTraining :Bool  )  ->(xBackprop: tf.Output, scaleBackprop: tf.Output, offsetBackprop: tf.Output, reserveSpace3: tf.Output, reserveSpace4: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("epsilon":epsilon)
-    attr.append("data_format":dataFormat)
-    attr.append("is_training":isTraining)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("epsilon",epsilon)
+    attr.append("data_format",dataFormat)
+    attr.append("is_training",isTraining)
 
     let opspec = tf.OpSpec(
         OpType: "FusedBatchNormGrad",
@@ -6496,16 +6424,16 @@ operator is primarily an optimization to minimize memory usage.
 
 
 
-func fusedPadConv2D(scope:Scope,input: Tensorflow_DataType, paddings: Tensorflow_DataType, filter: Tensorflow_DataType, t :type  , mode :string  , strides :[Int]  , padding :string  )  ->(output: tf.Output){
+func fusedPadConv2D(scope:Scope,input: Tensorflow_DataType, paddings: Tensorflow_DataType, filter: Tensorflow_DataType, t :Type  , mode :String  , strides :List(int)  , padding :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("mode":mode)
-    attr.append("strides":strides)
-    attr.append("padding":padding)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("mode",mode)
+    attr.append("strides",strides)
+    attr.append("padding",padding)
 
     let opspec = tf.OpSpec(
         OpType: "FusedPadConv2D",
@@ -6535,17 +6463,16 @@ operator is primarily an optimization to minimize memory usage.
 
 
 
-func fusedResizeAndPadConv2D(scope:Scope,input: Tensorflow_DataType, size: Tensorflow_DataType, paddings: Tensorflow_DataType, filter: Tensorflow_DataType, t :type  , resizeAlignCorners :bool  , mode :string  , strides :[Int]  , padding :string  )  ->(output: tf.Output){
+func fusedResizeAndPadConv2D(scope:Scope,input: Tensorflow_DataType, size: Tensorflow_DataType, paddings: Tensorflow_DataType, filter: Tensorflow_DataType, resizeAlignCorners :Bool  , mode :String  , strides :List(int)  , padding :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("resize_align_corners":resizeAlignCorners)
-    attr.append("mode":mode)
-    attr.append("strides":strides)
-    attr.append("padding":padding)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("resize_align_corners",resizeAlignCorners)
+    attr.append("mode",mode)
+    attr.append("strides",strides)
+    attr.append("padding",padding)
 
     let opspec = tf.OpSpec(
         OpType: "FusedResizeAndPadConv2D",
@@ -6584,15 +6511,15 @@ raising an error.
 
 
 
-func gather(scope:Scope,params: Tensorflow_DataType, indices: Tensorflow_DataType, validateIndices :bool  , tparams :type  , tindices :type  )  ->(output: tf.Output){
+func gather(scope:Scope,params: Tensorflow_DataType, indices: Tensorflow_DataType, validateIndices :Bool  , tparams :Type  , tindices :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("validate_indices":validateIndices)
-    attr.append("Tparams":tparams)
-    attr.append("Tindices":tindices)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("validate_indices",validateIndices)
+    attr.append("Tparams",tparams)
+    attr.append("Tindices",tindices)
 
     let opspec = tf.OpSpec(
         OpType: "Gather",
@@ -6677,14 +6604,14 @@ Batched indexing into a 3-tensor:
 
 
 
-func gatherNd(scope:Scope,params: Tensorflow_DataType, indices: Tensorflow_DataType, tparams :type  , tindices :type  )  ->(output: tf.Output){
+func gatherNd(scope:Scope,params: Tensorflow_DataType, indices: Tensorflow_DataType, tparams :Type  , tindices :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("Tparams":tparams)
-    attr.append("Tindices":tindices)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tparams",tparams)
+    attr.append("Tindices",tindices)
 
     let opspec = tf.OpSpec(
         OpType: "GatherNd",
@@ -6704,13 +6631,12 @@ Store the input tensor in the state of the current session.
 
 
 
-func getSessionHandle(scope:Scope,value: Tensorflow_DataType, t :type  )  ->(handle: tf.Output){
+func getSessionHandle(scope:Scope,value: Tensorflow_DataType )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "GetSessionHandle",
@@ -6730,13 +6656,13 @@ Store the input tensor in the state of the current session.
 
 
 
-func getSessionHandleV2(scope:Scope,value: Tensorflow_DataType, t :type  )  ->(handle: tf.Output){
+func getSessionHandleV2(scope:Scope,value: Tensorflow_DataType, t :Type  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "GetSessionHandleV2",
@@ -6756,13 +6682,13 @@ Get the value of the tensor specified by its handle.
 
 
 
-func getSessionTensor(scope:Scope,handle: Tensorflow_DataType, dtype :type  )  ->(value: tf.Output){
+func getSessionTensor(scope:Scope,handle: Tensorflow_DataType, dtype :Type  )  ->(value: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("dtype":dtype)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("dtype",dtype)
 
     let opspec = tf.OpSpec(
         OpType: "GetSessionTensor",
@@ -6784,13 +6710,12 @@ Returns the truth value of (x > y) element-wise.
 
 
 
-func greater(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :type  )  ->(z: tf.Output){
+func greater(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "Greater",
@@ -6812,13 +6737,13 @@ Returns the truth value of (x >= y) element-wise.
 
 
 
-func greaterEqual(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :type  )  ->(z: tf.Output){
+func greaterEqual(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :Type  )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "GreaterEqual",
@@ -6839,18 +6764,18 @@ Creates a dataset that computes a windowed group-by on `input_dataset`.
 
 
 
-func groupByWindowDataset(scope:Scope,inputDataset: Tensorflow_DataType, keyFuncOtherArguments: Tensorflow_DataType, reduceFuncOtherArguments: Tensorflow_DataType, windowSize: Tensorflow_DataType, keyFunc :func  , reduceFunc :func  , tkeyFuncOtherArguments :list(type)  , treduceFuncOtherArguments :list(type)  , outputTypes :list(type)  , outputShapes :[Shape]  )  ->(handle: tf.Output){
+func groupByWindowDataset(scope:Scope,inputDataset: Tensorflow_DataType, keyFuncOtherArguments: Tensorflow_DataType, reduceFuncOtherArguments: Tensorflow_DataType, windowSize: Tensorflow_DataType, keyFunc :Func  , reduceFunc :Func  , tkeyFuncOtherArguments :List(type)  , treduceFuncOtherArguments :List(type)  , outputTypes :List(type)  , outputShapes :[Shape]  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("key_func":keyFunc)
-    attr.append("reduce_func":reduceFunc)
-    attr.append("Tkey_func_other_arguments":tkeyFuncOtherArguments)
-    attr.append("Treduce_func_other_arguments":treduceFuncOtherArguments)
-    attr.append("output_types":outputTypes)
-    attr.append("output_shapes":outputShapes)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("key_func",keyFunc)
+    attr.append("reduce_func",reduceFunc)
+    attr.append("Tkey_func_other_arguments",tkeyFuncOtherArguments)
+    attr.append("Treduce_func_other_arguments",treduceFuncOtherArguments)
+    attr.append("output_types",outputTypes)
+    attr.append("output_shapes",outputShapes)
 
     let opspec = tf.OpSpec(
         OpType: "GroupByWindowDataset",
@@ -6874,13 +6799,12 @@ See `rgb_to_hsv` for a description of the HSV encoding.
 
 
 
-func hsvToRGB(scope:Scope,images: Tensorflow_DataType, t :type  )  ->(output: tf.Output){
+func hsvToRGB(scope:Scope,images: Tensorflow_DataType )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "HSVToRGB",
@@ -6903,17 +6827,17 @@ table will be immutable.
 
 
 
-func hashTable(scope:Scope container :string  , sharedName :string  , useNodeNameSharing :bool  , keyDtype :type  , valueDtype :type  )  ->(tableHandle: tf.Output){
+func hashTable(scope:Scope container :String  , sharedName :String  , useNodeNameSharing :Bool  , keyDtype :Type  , valueDtype :Type  )  ->(tableHandle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("container":container)
-    attr.append("shared_name":sharedName)
-    attr.append("use_node_name_sharing":useNodeNameSharing)
-    attr.append("key_dtype":keyDtype)
-    attr.append("value_dtype":valueDtype)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("container",container)
+    attr.append("shared_name",sharedName)
+    attr.append("use_node_name_sharing",useNodeNameSharing)
+    attr.append("key_dtype",keyDtype)
+    attr.append("value_dtype",valueDtype)
 
     let opspec = tf.OpSpec(
         OpType: "HashTable",
@@ -6936,17 +6860,17 @@ table will be immutable.
 
 
 
-func hashTableV2(scope:Scope container :string  , sharedName :string  , useNodeNameSharing :bool  , keyDtype :type  , valueDtype :type  )  ->(tableHandle: tf.Output){
+func hashTableV2(scope:Scope container :String  , sharedName :String  , useNodeNameSharing :Bool  , keyDtype :Type  , valueDtype :Type  )  ->(tableHandle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("container":container)
-    attr.append("shared_name":sharedName)
-    attr.append("use_node_name_sharing":useNodeNameSharing)
-    attr.append("key_dtype":keyDtype)
-    attr.append("value_dtype":valueDtype)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("container",container)
+    attr.append("shared_name",sharedName)
+    attr.append("use_node_name_sharing",useNodeNameSharing)
+    attr.append("key_dtype",keyDtype)
+    attr.append("value_dtype",valueDtype)
 
     let opspec = tf.OpSpec(
         OpType: "HashTableV2",
@@ -6970,13 +6894,12 @@ This op reports an `InvalidArgument` error if any value is not finite.
 
 
 
-func histogramSummary(scope:Scope,tag: Tensorflow_DataType, values: Tensorflow_DataType, t :type  )  ->(summary: tf.Output){
+func histogramSummary(scope:Scope,tag: Tensorflow_DataType, values: Tensorflow_DataType )  ->(summary: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "HistogramSummary",
@@ -7003,7 +6926,7 @@ func ifft(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "IFFT",
@@ -7030,7 +6953,7 @@ func ifft2D(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "IFFT2D",
@@ -7057,7 +6980,7 @@ func ifft3D(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "IFFT3D",
@@ -7090,7 +7013,7 @@ func irfft(scope:Scope,input: Tensorflow_DataType, fftLength: Tensorflow_DataTyp
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "IRFFT",
@@ -7123,7 +7046,7 @@ func irfft2D(scope:Scope,input: Tensorflow_DataType, fftLength: Tensorflow_DataT
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "IRFFT2D",
@@ -7156,7 +7079,7 @@ func irfft3D(scope:Scope,input: Tensorflow_DataType, fftLength: Tensorflow_DataT
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "IRFFT3D",
@@ -7176,13 +7099,12 @@ Return a tensor with the same shape and contents as the input tensor or value.
 
 
 
-func identity(scope:Scope,input: Tensorflow_DataType, t :type  )  ->(output: tf.Output){
+func identity(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "Identity",
@@ -7204,14 +7126,14 @@ work string and output (work, work).
 
 
 
-func identityReader(scope:Scope container :string  , sharedName :string  )  ->(readerHandle: tf.Output){
+func identityReader(scope:Scope container :String  , sharedName :String  )  ->(readerHandle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("container":container)
-    attr.append("shared_name":sharedName)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("container",container)
+    attr.append("shared_name",sharedName)
 
     let opspec = tf.OpSpec(
         OpType: "IdentityReader",
@@ -7233,14 +7155,14 @@ work string and output (work, work).
 
 
 
-func identityReaderV2(scope:Scope container :string  , sharedName :string  )  ->(readerHandle: tf.Output){
+func identityReaderV2(scope:Scope container :String  , sharedName :String  )  ->(readerHandle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("container":container)
-    attr.append("shared_name":sharedName)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("container",container)
+    attr.append("shared_name",sharedName)
 
     let opspec = tf.OpSpec(
         OpType: "IdentityReaderV2",
@@ -7267,13 +7189,12 @@ Gamma function.
 
 
 
-func igamma(scope:Scope,a: Tensorflow_DataType, x: Tensorflow_DataType, t :type  )  ->(z: tf.Output){
+func igamma(scope:Scope,a: Tensorflow_DataType, x: Tensorflow_DataType )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "Igamma",
@@ -7300,13 +7221,13 @@ Gamma function.
 
 
 
-func igammac(scope:Scope,a: Tensorflow_DataType, x: Tensorflow_DataType, t :type  )  ->(z: tf.Output){
+func igammac(scope:Scope,a: Tensorflow_DataType, x: Tensorflow_DataType, t :Type  )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "Igammac",
@@ -7335,14 +7256,13 @@ tf.imag(input) ==> [4.75, 5.75]
 
 
 
-func imag(scope:Scope,input: Tensorflow_DataType, t :type  , tout :type  )  ->(output: tf.Output){
+func imag(scope:Scope,input: Tensorflow_DataType, tout :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tout":tout)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tout",tout)
 
     let opspec = tf.OpSpec(
         OpType: "Imag",
@@ -7388,15 +7308,15 @@ red.
 
 
 
-func imageSummary(scope:Scope,tag: Tensorflow_DataType, tensor: Tensorflow_DataType, maxImages :uInt8  , t :type  , badColor :tensor  )  ->(summary: tf.Output){
+func imageSummary(scope:Scope,tag: Tensorflow_DataType, tensor: Tensorflow_DataType, maxImages :Int  , t :Type  , badColor :Tensor  )  ->(summary: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("max_images":maxImages)
-    attr.append("T":t)
-    attr.append("bad_color":badColor)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("max_images",maxImages)
+    attr.append("T",t)
+    attr.append("bad_color",badColor)
 
     let opspec = tf.OpSpec(
         OpType: "ImageSummary",
@@ -7417,15 +7337,15 @@ The current implementation memmaps the tensor from a file.
 
 
 
-func immutableConst(scope:Scope dtype :type  , shape :shape  , memoryRegionName :string  )  ->(tensor: tf.Output){
+func immutableConst(scope:Scope dtype :Type  , shape :Shape  , memoryRegionName :String  )  ->(tensor: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("dtype":dtype)
-    attr.append("shape":shape)
-    attr.append("memory_region_name":memoryRegionName)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("dtype",dtype)
+    attr.append("shape",shape)
+    attr.append("memory_region_name",memoryRegionName)
 
     let opspec = tf.OpSpec(
         OpType: "ImmutableConst",
@@ -7456,14 +7376,13 @@ $$out_i = predictions_{i, targets_i} \in TopKIncludingTies(predictions_i)$$
 
 
 
-func inTopK(scope:Scope,predictions: Tensorflow_DataType, targets: Tensorflow_DataType, k :uInt8  , t :type  )  ->(precision: tf.Output){
+func inTopK(scope:Scope,predictions: Tensorflow_DataType, targets: Tensorflow_DataType, k :UInt8  )  ->(precision: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("k":k)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("k",k)
 
     let opspec = tf.OpSpec(
         OpType: "InTopK",
@@ -7483,14 +7402,14 @@ Table initializer that takes two tensors for keys and values respectively.
 
 
 
-func initializeTable(scope:Scope,tableHandle: Tensorflow_DataType, keys: Tensorflow_DataType, values: Tensorflow_DataType, tkey :type  , tval :type  )  ->(o:tf.Operation){
+func initializeTable(scope:Scope,tableHandle: Tensorflow_DataType, keys: Tensorflow_DataType, values: Tensorflow_DataType, tkey :Type  , tval :Type  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("Tkey":tkey)
-    attr.append("Tval":tval)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tkey",tkey)
+    attr.append("Tval",tval)
 
     let opspec = tf.OpSpec(
         OpType: "InitializeTable",
@@ -7518,16 +7437,16 @@ Where to extract the key and value from a line is specified by `key_index` and
 
 
 
-func initializeTableFromTextFile(scope:Scope,tableHandle: Tensorflow_DataType, filename: Tensorflow_DataType, keyIndex :uInt8  , valueIndex :uInt8  , vocabSize :uInt8  , delimiter :string  )  ->(o:tf.Operation){
+func initializeTableFromTextFile(scope:Scope,tableHandle: Tensorflow_DataType, filename: Tensorflow_DataType, keyIndex :UInt8  , valueIndex :UInt8  , vocabSize :UInt8  , delimiter :String  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("key_index":keyIndex)
-    attr.append("value_index":valueIndex)
-    attr.append("vocab_size":vocabSize)
-    attr.append("delimiter":delimiter)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("key_index",keyIndex)
+    attr.append("value_index",valueIndex)
+    attr.append("vocab_size",vocabSize)
+    attr.append("delimiter",delimiter)
 
     let opspec = tf.OpSpec(
         OpType: "InitializeTableFromTextFile",
@@ -7555,16 +7474,16 @@ Where to extract the key and value from a line is specified by `key_index` and
 
 
 
-func initializeTableFromTextFileV2(scope:Scope,tableHandle: Tensorflow_DataType, filename: Tensorflow_DataType, keyIndex :uInt8  , valueIndex :uInt8  , vocabSize :uInt8  , delimiter :string  )  ->(o:tf.Operation){
+func initializeTableFromTextFileV2(scope:Scope,tableHandle: Tensorflow_DataType, filename: Tensorflow_DataType, keyIndex :UInt8  , valueIndex :UInt8  , vocabSize :UInt8  , delimiter :String  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("key_index":keyIndex)
-    attr.append("value_index":valueIndex)
-    attr.append("vocab_size":vocabSize)
-    attr.append("delimiter":delimiter)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("key_index",keyIndex)
+    attr.append("value_index",valueIndex)
+    attr.append("vocab_size",vocabSize)
+    attr.append("delimiter",delimiter)
 
     let opspec = tf.OpSpec(
         OpType: "InitializeTableFromTextFileV2",
@@ -7583,14 +7502,14 @@ Table initializer that takes two tensors for keys and values respectively.
 
 
 
-func initializeTableV2(scope:Scope,tableHandle: Tensorflow_DataType, keys: Tensorflow_DataType, values: Tensorflow_DataType, tkey :type  , tval :type  )  ->(o:tf.Operation){
+func initializeTableV2(scope:Scope,tableHandle: Tensorflow_DataType, keys: Tensorflow_DataType, values: Tensorflow_DataType, tkey :Type  , tval :Type  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("Tkey":tkey)
-    attr.append("Tval":tval)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tkey",tkey)
+    attr.append("Tval",tval)
 
     let opspec = tf.OpSpec(
         OpType: "InitializeTableV2",
@@ -7610,13 +7529,12 @@ I.e., \\(y = 1 / x\\).
 
 
 
-func inv(scope:Scope,x: Tensorflow_DataType, t :type  )  ->(y: tf.Output){
+func inv(scope:Scope,x: Tensorflow_DataType )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "Inv",
@@ -7638,13 +7556,13 @@ is the corresponding input gradient.
 
 
 
-func invGrad(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :type  )  ->(z: tf.Output){
+func invGrad(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :Type  )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "InvGrad",
@@ -7675,13 +7593,12 @@ invert_permutation(x) ==> [2, 4, 3, 0, 1]
 
 
 
-func invertPermutation(scope:Scope,x: Tensorflow_DataType, t :type  )  ->(y: tf.Output){
+func invertPermutation(scope:Scope,x: Tensorflow_DataType )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "InvertPermutation",
@@ -7704,13 +7621,13 @@ Equivalent to np.isfinite
 
 
 
-func isFinite(scope:Scope,x: Tensorflow_DataType, t :type  )  ->(y: tf.Output){
+func isFinite(scope:Scope,x: Tensorflow_DataType, t :Type  )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "IsFinite",
@@ -7733,13 +7650,12 @@ Equivalent to np.isinf
 
 
 
-func isInf(scope:Scope,x: Tensorflow_DataType, t :type  )  ->(y: tf.Output){
+func isInf(scope:Scope,x: Tensorflow_DataType )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "IsInf",
@@ -7762,13 +7678,13 @@ Equivalent to np.isnan
 
 
 
-func isNan(scope:Scope,x: Tensorflow_DataType, t :type  )  ->(y: tf.Output){
+func isNan(scope:Scope,x: Tensorflow_DataType, t :Type  )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "IsNan",
@@ -7789,13 +7705,13 @@ Outputs boolean scalar indicating whether the tensor has been initialized.
 
 
 
-func isVariableInitialized(scope:Scope,ref: Tensorflow_DataType, dtype :type  )  ->(isInitialized: tf.Output){
+func isVariableInitialized(scope:Scope,ref: Tensorflow_DataType, dtype :Type  )  ->(isInitialized: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("dtype":dtype)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("dtype",dtype)
 
     let opspec = tf.OpSpec(
         OpType: "IsVariableInitialized",
@@ -7815,16 +7731,16 @@ A container for an iterator resource.
 
 
 
-func iterator(scope:Scope sharedName :string  , container :string  , outputTypes :list(type)  , outputShapes :[Shape]  )  ->(handle: tf.Output){
+func iterator(scope:Scope sharedName :String  , container :String  , outputTypes :List(type)  , outputShapes :[Shape]  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("shared_name":sharedName)
-    attr.append("container":container)
-    attr.append("output_types":outputTypes)
-    attr.append("output_shapes":outputShapes)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("shared_name",sharedName)
+    attr.append("container",container)
+    attr.append("output_types",outputTypes)
+    attr.append("output_shapes",outputShapes)
 
     let opspec = tf.OpSpec(
         OpType: "Iterator",
@@ -7849,7 +7765,7 @@ func iteratorDispose(scope:Scope,iterator: Tensorflow_DataType )  ->(o:tf.Operat
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "IteratorDispose",
@@ -7868,14 +7784,14 @@ Gets the next output from the given iterator.
 
 
 
-func iteratorGetNext(scope:Scope,iterator: Tensorflow_DataType, outputTypes :list(type)  , outputShapes :[Shape]  )  ->(components: tf.Output){
+func iteratorGetNext(scope:Scope,iterator: Tensorflow_DataType, outputTypes :List(type)  , outputShapes :[Shape]  )  ->(components: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("output_types":outputTypes)
-    attr.append("output_shapes":outputShapes)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("output_types",outputTypes)
+    attr.append("output_shapes",outputShapes)
 
     let opspec = tf.OpSpec(
         OpType: "IteratorGetNext",
@@ -7897,13 +7813,12 @@ Computes half the L2 norm of a tensor without the `sqrt`:
 
 
 
-func l2Loss(scope:Scope,t: Tensorflow_DataType, t :type  )  ->(output: tf.Output){
+func l2Loss(scope:Scope,t: Tensorflow_DataType )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "L2Loss",
@@ -7932,17 +7847,17 @@ convolutional neural networks (NIPS 2012)](http://papers.nips.cc/paper/4824-imag
 
 
 
-func lrn(scope:Scope,input: Tensorflow_DataType, depthRadius :uInt8  , bias :float  , alpha :float  , beta :float  , t :type  )  ->(output: tf.Output){
+func lrn(scope:Scope,input: Tensorflow_DataType, depthRadius :Int  , bias :Float  , alpha :Float  , beta :Float  , t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("depth_radius":depthRadius)
-    attr.append("bias":bias)
-    attr.append("alpha":alpha)
-    attr.append("beta":beta)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("depth_radius",depthRadius)
+    attr.append("bias",bias)
+    attr.append("alpha",alpha)
+    attr.append("beta",beta)
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "LRN",
@@ -7962,17 +7877,16 @@ Gradients for Local Response Normalization.
 
 
 
-func lrnGrad(scope:Scope,inputGrads: Tensorflow_DataType, inputImage: Tensorflow_DataType, outputImage: Tensorflow_DataType, depthRadius :uInt8  , bias :float  , alpha :float  , beta :float  , t :type  )  ->(output: tf.Output){
+func lrnGrad(scope:Scope,inputGrads: Tensorflow_DataType, inputImage: Tensorflow_DataType, outputImage: Tensorflow_DataType, depthRadius :UInt8  , bias :Float  , alpha :Float  , beta :Float  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("depth_radius":depthRadius)
-    attr.append("bias":bias)
-    attr.append("alpha":alpha)
-    attr.append("beta":beta)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("depth_radius",depthRadius)
+    attr.append("bias",bias)
+    attr.append("alpha",alpha)
+    attr.append("beta",beta)
 
     let opspec = tf.OpSpec(
         OpType: "LRNGrad",
@@ -7999,18 +7913,18 @@ true labels.
 
 
 
-func learnedUnigramCandidateSampler(scope:Scope,trueClasses: Tensorflow_DataType, numTrue :uInt8  , numSampled :uInt8  , unique :bool  , rangeMax :uInt8  , seed :uInt8  , seed2 :uInt8  )  ->(sampledCandidates: tf.Output, trueExpectedCount: tf.Output, sampledExpectedCount: tf.Output){
+func learnedUnigramCandidateSampler(scope:Scope,trueClasses: Tensorflow_DataType, numTrue :Int  , numSampled :Int  , unique :Bool  , rangeMax :Int  , seed :Int  , seed2 :Int  )  ->(sampledCandidates: tf.Output, trueExpectedCount: tf.Output, sampledExpectedCount: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("num_true":numTrue)
-    attr.append("num_sampled":numSampled)
-    attr.append("unique":unique)
-    attr.append("range_max":rangeMax)
-    attr.append("seed":seed)
-    attr.append("seed2":seed2)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("num_true",numTrue)
+    attr.append("num_sampled",numSampled)
+    attr.append("unique",unique)
+    attr.append("range_max",rangeMax)
+    attr.append("seed",seed)
+    attr.append("seed2",seed2)
 
     let opspec = tf.OpSpec(
         OpType: "LearnedUnigramCandidateSampler",
@@ -8032,13 +7946,12 @@ Returns the truth value of (x < y) element-wise.
 
 
 
-func less(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :type  )  ->(z: tf.Output){
+func less(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "Less",
@@ -8060,13 +7973,13 @@ Returns the truth value of (x <= y) element-wise.
 
 
 
-func lessEqual(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :type  )  ->(z: tf.Output){
+func lessEqual(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :Type  )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "LessEqual",
@@ -8086,13 +7999,12 @@ Computes the log of the absolute value of `Gamma(x)` element-wise.
 
 
 
-func lgamma(scope:Scope,x: Tensorflow_DataType, t :type  )  ->(y: tf.Output){
+func lgamma(scope:Scope,x: Tensorflow_DataType )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "Lgamma",
@@ -8119,14 +8031,14 @@ tf.linspace(10.0, 12.0, 3, name="linspace") => [ 10.0  11.0  12.0]
 
 
 
-func linSpace(scope:Scope,start: Tensorflow_DataType, stop: Tensorflow_DataType, num: Tensorflow_DataType, t :type  , tidx :type  )  ->(output: tf.Output){
+func linSpace(scope:Scope,start: Tensorflow_DataType, stop: Tensorflow_DataType, num: Tensorflow_DataType, t :Type  , tidx :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tidx":tidx)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("Tidx",tidx)
 
     let opspec = tf.OpSpec(
         OpType: "LinSpace",
@@ -8162,14 +8074,13 @@ idx ==> [1, 3, 5]
 
 
 
-func listDiff(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :type  , outIdx :type  )  ->(out: tf.Output, idx: tf.Output){
+func listDiff(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, outIdx :Type  )  ->(out: tf.Output, idx: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("out_idx":outIdx)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("out_idx",outIdx)
 
     let opspec = tf.OpSpec(
         OpType: "ListDiff",
@@ -8190,13 +8101,13 @@ I.e., \\(y = \log_e x\\).
 
 
 
-func log(scope:Scope,x: Tensorflow_DataType, t :type  )  ->(y: tf.Output){
+func log(scope:Scope,x: Tensorflow_DataType, t :Type  )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "Log",
@@ -8217,13 +8128,12 @@ I.e., \\(y = \log_e (1 + x)\\).
 
 
 
-func log1p(scope:Scope,x: Tensorflow_DataType, t :type  )  ->(y: tf.Output){
+func log1p(scope:Scope,x: Tensorflow_DataType )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "Log1p",
@@ -8245,13 +8155,13 @@ For each batch `i` and class `j` we have
 
 
 
-func logSoftmax(scope:Scope,logits: Tensorflow_DataType, t :type  )  ->(logsoftmax: tf.Output){
+func logSoftmax(scope:Scope,logits: Tensorflow_DataType, t :Type  )  ->(logsoftmax: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "LogSoftmax",
@@ -8278,18 +8188,18 @@ true labels.
 
 
 
-func logUniformCandidateSampler(scope:Scope,trueClasses: Tensorflow_DataType, numTrue :uInt8  , numSampled :uInt8  , unique :bool  , rangeMax :uInt8  , seed :uInt8  , seed2 :uInt8  )  ->(sampledCandidates: tf.Output, trueExpectedCount: tf.Output, sampledExpectedCount: tf.Output){
+func logUniformCandidateSampler(scope:Scope,trueClasses: Tensorflow_DataType, numTrue :UInt8  , numSampled :UInt8  , unique :Bool  , rangeMax :UInt8  , seed :UInt8  , seed2 :UInt8  )  ->(sampledCandidates: tf.Output, trueExpectedCount: tf.Output, sampledExpectedCount: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("num_true":numTrue)
-    attr.append("num_sampled":numSampled)
-    attr.append("unique":unique)
-    attr.append("range_max":rangeMax)
-    attr.append("seed":seed)
-    attr.append("seed2":seed2)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("num_true",numTrue)
+    attr.append("num_sampled",numSampled)
+    attr.append("unique",unique)
+    attr.append("range_max",rangeMax)
+    attr.append("seed",seed)
+    attr.append("seed2",seed2)
 
     let opspec = tf.OpSpec(
         OpType: "LogUniformCandidateSampler",
@@ -8316,7 +8226,7 @@ func logicalAnd(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType )  ->
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "LogicalAnd",
@@ -8341,7 +8251,7 @@ func logicalNot(scope:Scope,x: Tensorflow_DataType )  ->(y: tf.Output){
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "LogicalNot",
@@ -8368,7 +8278,7 @@ func logicalOr(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType )  ->(
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "LogicalOr",
@@ -8388,14 +8298,14 @@ Outputs all keys and values in the table.
 
 
 
-func lookupTableExport(scope:Scope,tableHandle: Tensorflow_DataType, tkeys :type  , tvalues :type  )  ->(keys: tf.Output, values: tf.Output){
+func lookupTableExport(scope:Scope,tableHandle: Tensorflow_DataType, tkeys :Type  , tvalues :Type  )  ->(keys: tf.Output, values: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("Tkeys":tkeys)
-    attr.append("Tvalues":tvalues)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tkeys",tkeys)
+    attr.append("Tvalues",tvalues)
 
     let opspec = tf.OpSpec(
         OpType: "LookupTableExport",
@@ -8415,14 +8325,14 @@ Outputs all keys and values in the table.
 
 
 
-func lookupTableExportV2(scope:Scope,tableHandle: Tensorflow_DataType, tkeys :type  , tvalues :type  )  ->(keys: tf.Output, values: tf.Output){
+func lookupTableExportV2(scope:Scope,tableHandle: Tensorflow_DataType, tkeys :Type  , tvalues :Type  )  ->(keys: tf.Output, values: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("Tkeys":tkeys)
-    attr.append("Tvalues":tvalues)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tkeys",tkeys)
+    attr.append("Tvalues",tvalues)
 
     let opspec = tf.OpSpec(
         OpType: "LookupTableExportV2",
@@ -8446,14 +8356,14 @@ table. It must also be of the same type as the table values.
 
 
 
-func lookupTableFind(scope:Scope,tableHandle: Tensorflow_DataType, keys: Tensorflow_DataType, defaultValue: Tensorflow_DataType, tin :type  , tout :type  )  ->(values: tf.Output){
+func lookupTableFind(scope:Scope,tableHandle: Tensorflow_DataType, keys: Tensorflow_DataType, defaultValue: Tensorflow_DataType, tin :Type  , tout :Type  )  ->(values: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("Tin":tin)
-    attr.append("Tout":tout)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tin",tin)
+    attr.append("Tout",tout)
 
     let opspec = tf.OpSpec(
         OpType: "LookupTableFind",
@@ -8477,14 +8387,14 @@ table. It must also be of the same type as the table values.
 
 
 
-func lookupTableFindV2(scope:Scope,tableHandle: Tensorflow_DataType, keys: Tensorflow_DataType, defaultValue: Tensorflow_DataType, tin :type  , tout :type  )  ->(values: tf.Output){
+func lookupTableFindV2(scope:Scope,tableHandle: Tensorflow_DataType, keys: Tensorflow_DataType, defaultValue: Tensorflow_DataType, tin :Type  , tout :Type  )  ->(values: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("Tin":tin)
-    attr.append("Tout":tout)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tin",tin)
+    attr.append("Tout",tout)
 
     let opspec = tf.OpSpec(
         OpType: "LookupTableFindV2",
@@ -8506,14 +8416,14 @@ The tensor `values` must be of the type of the table values.
 
 
 
-func lookupTableImport(scope:Scope,tableHandle: Tensorflow_DataType, keys: Tensorflow_DataType, values: Tensorflow_DataType, tin :type  , tout :type  )  ->(o:tf.Operation){
+func lookupTableImport(scope:Scope,tableHandle: Tensorflow_DataType, keys: Tensorflow_DataType, values: Tensorflow_DataType, tin :Type  , tout :Type  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("Tin":tin)
-    attr.append("Tout":tout)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tin",tin)
+    attr.append("Tout",tout)
 
     let opspec = tf.OpSpec(
         OpType: "LookupTableImport",
@@ -8534,14 +8444,14 @@ The tensor `values` must be of the type of the table values.
 
 
 
-func lookupTableImportV2(scope:Scope,tableHandle: Tensorflow_DataType, keys: Tensorflow_DataType, values: Tensorflow_DataType, tin :type  , tout :type  )  ->(o:tf.Operation){
+func lookupTableImportV2(scope:Scope,tableHandle: Tensorflow_DataType, keys: Tensorflow_DataType, values: Tensorflow_DataType, tin :Type  , tout :Type  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("Tin":tin)
-    attr.append("Tout":tout)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tin",tin)
+    attr.append("Tout",tout)
 
     let opspec = tf.OpSpec(
         OpType: "LookupTableImportV2",
@@ -8562,14 +8472,14 @@ The tensor `values` must be of the type of the table values.
 
 
 
-func lookupTableInsert(scope:Scope,tableHandle: Tensorflow_DataType, keys: Tensorflow_DataType, values: Tensorflow_DataType, tin :type  , tout :type  )  ->(o:tf.Operation){
+func lookupTableInsert(scope:Scope,tableHandle: Tensorflow_DataType, keys: Tensorflow_DataType, values: Tensorflow_DataType, tin :Type  , tout :Type  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("Tin":tin)
-    attr.append("Tout":tout)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tin",tin)
+    attr.append("Tout",tout)
 
     let opspec = tf.OpSpec(
         OpType: "LookupTableInsert",
@@ -8590,14 +8500,14 @@ The tensor `values` must be of the type of the table values.
 
 
 
-func lookupTableInsertV2(scope:Scope,tableHandle: Tensorflow_DataType, keys: Tensorflow_DataType, values: Tensorflow_DataType, tin :type  , tout :type  )  ->(o:tf.Operation){
+func lookupTableInsertV2(scope:Scope,tableHandle: Tensorflow_DataType, keys: Tensorflow_DataType, values: Tensorflow_DataType, tin :Type  , tout :Type  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("Tin":tin)
-    attr.append("Tout":tout)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tin",tin)
+    attr.append("Tout",tout)
 
     let opspec = tf.OpSpec(
         OpType: "LookupTableInsertV2",
@@ -8621,7 +8531,7 @@ func lookupTableSize(scope:Scope,tableHandle: Tensorflow_DataType )  ->(size: tf
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "LookupTableSize",
@@ -8646,7 +8556,7 @@ func lookupTableSizeV2(scope:Scope,tableHandle: Tensorflow_DataType )  ->(size: 
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "LookupTableSizeV2",
@@ -8673,7 +8583,7 @@ func loopCond(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "LoopCond",
@@ -8700,7 +8610,7 @@ func makeIterator(scope:Scope,dataset: Tensorflow_DataType, iterator: Tensorflow
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "MakeIterator",
@@ -8719,16 +8629,16 @@ Creates a dataset that applies `f` to the outputs of `input_dataset`.
 
 
 
-func mapDataset(scope:Scope,inputDataset: Tensorflow_DataType, otherArguments: Tensorflow_DataType, f :func  , targuments :list(type)  , outputTypes :list(type)  , outputShapes :[Shape]  )  ->(handle: tf.Output){
+func mapDataset(scope:Scope,inputDataset: Tensorflow_DataType, otherArguments: Tensorflow_DataType, f :Func  , targuments :List(type)  , outputTypes :List(type)  , outputShapes :[Shape]  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("f":f)
-    attr.append("Targuments":targuments)
-    attr.append("output_types":outputTypes)
-    attr.append("output_shapes":outputShapes)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("f",f)
+    attr.append("Targuments",targuments)
+    attr.append("output_types",outputTypes)
+    attr.append("output_shapes",outputShapes)
 
     let opspec = tf.OpSpec(
         OpType: "MapDataset",
@@ -8754,15 +8664,14 @@ cublas.
 
 
 
-func matMul(scope:Scope,a: Tensorflow_DataType, b: Tensorflow_DataType, transposeA :bool  , transposeB :bool  , t :type  )  ->(product: tf.Output){
+func matMul(scope:Scope,a: Tensorflow_DataType, b: Tensorflow_DataType, transposeA :Bool  , transposeB :Bool  )  ->(product: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("transpose_a":transposeA)
-    attr.append("transpose_b":transposeB)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("transpose_a",transposeA)
+    attr.append("transpose_b",transposeB)
 
     let opspec = tf.OpSpec(
         OpType: "MatMul",
@@ -8789,7 +8698,7 @@ func matchingFiles(scope:Scope,pattern: Tensorflow_DataType )  ->(filenames: tf.
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "MatchingFiles",
@@ -8838,13 +8747,12 @@ Useful special cases:
 
 
 
-func matrixBandPart(scope:Scope,input: Tensorflow_DataType, numLower: Tensorflow_DataType, numUpper: Tensorflow_DataType, t :type  )  ->(band: tf.Output){
+func matrixBandPart(scope:Scope,input: Tensorflow_DataType, numLower: Tensorflow_DataType, numUpper: Tensorflow_DataType )  ->(band: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "MatrixBandPart",
@@ -8867,13 +8775,13 @@ for all input submatrices `[..., :, :]`.
 
 
 
-func matrixDeterminant(scope:Scope,input: Tensorflow_DataType, t :type  )  ->(output: tf.Output){
+func matrixDeterminant(scope:Scope,input: Tensorflow_DataType, t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "MatrixDeterminant",
@@ -8912,13 +8820,12 @@ which has shape (2, 4, 4)
 
 
 
-func matrixDiag(scope:Scope,diagonal: Tensorflow_DataType, t :type  )  ->(output: tf.Output){
+func matrixDiag(scope:Scope,diagonal: Tensorflow_DataType )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "MatrixDiag",
@@ -8958,13 +8865,13 @@ which has shape (2, 4)
 
 
 
-func matrixDiagPart(scope:Scope,input: Tensorflow_DataType, t :type  )  ->(diagonal: tf.Output){
+func matrixDiagPart(scope:Scope,input: Tensorflow_DataType, t :Type  )  ->(diagonal: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "MatrixDiagPart",
@@ -8992,14 +8899,13 @@ garbage result.
 
 
 
-func matrixInverse(scope:Scope,input: Tensorflow_DataType, adjoint :bool  , t :type  )  ->(output: tf.Output){
+func matrixInverse(scope:Scope,input: Tensorflow_DataType, adjoint :Bool  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("adjoint":adjoint)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("adjoint",adjoint)
 
     let opspec = tf.OpSpec(
         OpType: "MatrixInverse",
@@ -9028,13 +8934,13 @@ tensor of rank `k+1` with dimensions `[I, J, K, ..., M, N]` where:
 
 
 
-func matrixSetDiag(scope:Scope,input: Tensorflow_DataType, diagonal: Tensorflow_DataType, t :type  )  ->(output: tf.Output){
+func matrixSetDiag(scope:Scope,input: Tensorflow_DataType, diagonal: Tensorflow_DataType, t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "MatrixSetDiag",
@@ -9060,14 +8966,13 @@ If `adjoint` is `True` then each output matrix satisfies
 
 
 
-func matrixSolve(scope:Scope,matrix: Tensorflow_DataType, rhs: Tensorflow_DataType, adjoint :bool  , t :type  )  ->(output: tf.Output){
+func matrixSolve(scope:Scope,matrix: Tensorflow_DataType, rhs: Tensorflow_DataType, adjoint :Bool  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("adjoint":adjoint)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("adjoint",adjoint)
 
     let opspec = tf.OpSpec(
         OpType: "MatrixSolve",
@@ -9114,14 +9019,14 @@ typically 6-7 times slower than the fast path. If `fast` is `False` then
 
 
 
-func matrixSolveLs(scope:Scope,matrix: Tensorflow_DataType, rhs: Tensorflow_DataType, l2Regularizer: Tensorflow_DataType, t :type  , fast :bool  )  ->(output: tf.Output){
+func matrixSolveLs(scope:Scope,matrix: Tensorflow_DataType, rhs: Tensorflow_DataType, l2Regularizer: Tensorflow_DataType, t :Type  , fast :Bool  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("fast":fast)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("fast",fast)
 
     let opspec = tf.OpSpec(
         OpType: "MatrixSolveLs",
@@ -9154,15 +9059,14 @@ If `adjoint` is `False` then the strictly then the  innermost matrices in
 
 
 
-func matrixTriangularSolve(scope:Scope,matrix: Tensorflow_DataType, rhs: Tensorflow_DataType, lower :bool  , adjoint :bool  , t :type  )  ->(output: tf.Output){
+func matrixTriangularSolve(scope:Scope,matrix: Tensorflow_DataType, rhs: Tensorflow_DataType, lower :Bool  , adjoint :Bool  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("lower":lower)
-    attr.append("adjoint":adjoint)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("lower",lower)
+    attr.append("adjoint",adjoint)
 
     let opspec = tf.OpSpec(
         OpType: "MatrixTriangularSolve",
@@ -9186,15 +9090,15 @@ retained with length 1.
 
 
 
-func max(scope:Scope,input: Tensorflow_DataType, reductionIndices: Tensorflow_DataType, keepDims :bool  , t :type  , tidx :type  )  ->(output: tf.Output){
+func max(scope:Scope,input: Tensorflow_DataType, reductionIndices: Tensorflow_DataType, keepDims :Bool  , t :Type  , tidx :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("keep_dims":keepDims)
-    attr.append("T":t)
-    attr.append("Tidx":tidx)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("keep_dims",keepDims)
+    attr.append("T",t)
+    attr.append("Tidx",tidx)
 
     let opspec = tf.OpSpec(
         OpType: "Max",
@@ -9214,17 +9118,16 @@ Performs max pooling on the input.
 
 
 
-func maxPool(scope:Scope,input: Tensorflow_DataType, t :type  , ksize :[Int]  , strides :[Int]  , padding :string  , dataFormat :string  )  ->(output: tf.Output){
+func maxPool(scope:Scope,input: Tensorflow_DataType, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("ksize":ksize)
-    attr.append("strides":strides)
-    attr.append("padding":padding)
-    attr.append("data_format":dataFormat)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("ksize",ksize)
+    attr.append("strides",strides)
+    attr.append("padding",padding)
+    attr.append("data_format",dataFormat)
 
     let opspec = tf.OpSpec(
         OpType: "MaxPool",
@@ -9244,17 +9147,17 @@ Performs 3D max pooling on the input.
 
 
 
-func maxPool3D(scope:Scope,input: Tensorflow_DataType, ksize :[Int]  , strides :[Int]  , padding :string  , dataFormat :string  , t :type  )  ->(output: tf.Output){
+func maxPool3D(scope:Scope,input: Tensorflow_DataType, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  , t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("ksize":ksize)
-    attr.append("strides":strides)
-    attr.append("padding":padding)
-    attr.append("data_format":dataFormat)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("ksize",ksize)
+    attr.append("strides",strides)
+    attr.append("padding",padding)
+    attr.append("data_format",dataFormat)
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "MaxPool3D",
@@ -9274,18 +9177,17 @@ Computes gradients of max pooling function.
 
 
 
-func maxPool3DGrad(scope:Scope,origInput: Tensorflow_DataType, origOutput: Tensorflow_DataType, grad: Tensorflow_DataType, ksize :[Int]  , strides :[Int]  , padding :string  , dataFormat :string  , t :type  , tInput :type  )  ->(output: tf.Output){
+func maxPool3DGrad(scope:Scope,origInput: Tensorflow_DataType, origOutput: Tensorflow_DataType, grad: Tensorflow_DataType, ksize :[Int]  , strides :[Int]  , padding :String  , dataFormat :String  , tInput :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("ksize":ksize)
-    attr.append("strides":strides)
-    attr.append("padding":padding)
-    attr.append("data_format":dataFormat)
-    attr.append("T":t)
-    attr.append("TInput":tInput)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("ksize",ksize)
+    attr.append("strides",strides)
+    attr.append("padding",padding)
+    attr.append("data_format",dataFormat)
+    attr.append("TInput",tInput)
 
     let opspec = tf.OpSpec(
         OpType: "MaxPool3DGrad",
@@ -9305,17 +9207,17 @@ Computes second-order gradients of the maxpooling function.
 
 
 
-func maxPool3DGradGrad(scope:Scope,origInput: Tensorflow_DataType, origOutput: Tensorflow_DataType, grad: Tensorflow_DataType, ksize :[Int]  , strides :[Int]  , padding :string  , dataFormat :string  , t :type  )  ->(output: tf.Output){
+func maxPool3DGradGrad(scope:Scope,origInput: Tensorflow_DataType, origOutput: Tensorflow_DataType, grad: Tensorflow_DataType, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  , t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("ksize":ksize)
-    attr.append("strides":strides)
-    attr.append("padding":padding)
-    attr.append("data_format":dataFormat)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("ksize",ksize)
+    attr.append("strides",strides)
+    attr.append("padding",padding)
+    attr.append("data_format",dataFormat)
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "MaxPool3DGradGrad",
@@ -9335,17 +9237,16 @@ Computes gradients of the maxpooling function.
 
 
 
-func maxPoolGrad(scope:Scope,origInput: Tensorflow_DataType, origOutput: Tensorflow_DataType, grad: Tensorflow_DataType, ksize :[Int]  , strides :[Int]  , padding :string  , dataFormat :string  , t :type  )  ->(output: tf.Output){
+func maxPoolGrad(scope:Scope,origInput: Tensorflow_DataType, origOutput: Tensorflow_DataType, grad: Tensorflow_DataType, ksize :[Int]  , strides :[Int]  , padding :String  , dataFormat :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("ksize":ksize)
-    attr.append("strides":strides)
-    attr.append("padding":padding)
-    attr.append("data_format":dataFormat)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("ksize",ksize)
+    attr.append("strides",strides)
+    attr.append("padding",padding)
+    attr.append("data_format",dataFormat)
 
     let opspec = tf.OpSpec(
         OpType: "MaxPoolGrad",
@@ -9365,17 +9266,17 @@ Computes second-order gradients of the maxpooling function.
 
 
 
-func maxPoolGradGrad(scope:Scope,origInput: Tensorflow_DataType, origOutput: Tensorflow_DataType, grad: Tensorflow_DataType, ksize :[Int]  , strides :[Int]  , padding :string  , dataFormat :string  , t :type  )  ->(output: tf.Output){
+func maxPoolGradGrad(scope:Scope,origInput: Tensorflow_DataType, origOutput: Tensorflow_DataType, grad: Tensorflow_DataType, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  , t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("ksize":ksize)
-    attr.append("strides":strides)
-    attr.append("padding":padding)
-    attr.append("data_format":dataFormat)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("ksize",ksize)
+    attr.append("strides",strides)
+    attr.append("padding",padding)
+    attr.append("data_format",dataFormat)
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "MaxPoolGradGrad",
@@ -9395,17 +9296,16 @@ Computes second-order gradients of the maxpooling function.
 
 
 
-func maxPoolGradGradWithArgmax(scope:Scope,input: Tensorflow_DataType, grad: Tensorflow_DataType, argmax: Tensorflow_DataType, ksize :[Int]  , strides :[Int]  , padding :string  , targmax :type  , t :type  )  ->(output: tf.Output){
+func maxPoolGradGradWithArgmax(scope:Scope,input: Tensorflow_DataType, grad: Tensorflow_DataType, argmax: Tensorflow_DataType, ksize :[Int]  , strides :[Int]  , padding :String  , targmax :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("ksize":ksize)
-    attr.append("strides":strides)
-    attr.append("padding":padding)
-    attr.append("Targmax":targmax)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("ksize",ksize)
+    attr.append("strides",strides)
+    attr.append("padding",padding)
+    attr.append("Targmax",targmax)
 
     let opspec = tf.OpSpec(
         OpType: "MaxPoolGradGradWithArgmax",
@@ -9425,17 +9325,17 @@ Computes gradients of the maxpooling function.
 
 
 
-func maxPoolGradWithArgmax(scope:Scope,input: Tensorflow_DataType, grad: Tensorflow_DataType, argmax: Tensorflow_DataType, ksize :[Int]  , strides :[Int]  , padding :string  , targmax :type  , t :type  )  ->(output: tf.Output){
+func maxPoolGradWithArgmax(scope:Scope,input: Tensorflow_DataType, grad: Tensorflow_DataType, argmax: Tensorflow_DataType, ksize :List(int)  , strides :List(int)  , padding :String  , targmax :Type  , t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("ksize":ksize)
-    attr.append("strides":strides)
-    attr.append("padding":padding)
-    attr.append("Targmax":targmax)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("ksize",ksize)
+    attr.append("strides",strides)
+    attr.append("padding",padding)
+    attr.append("Targmax",targmax)
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "MaxPoolGradWithArgmax",
@@ -9458,17 +9358,16 @@ The indices in `argmax` are flattened, so that a maximum value at position
 
 
 
-func maxPoolWithArgmax(scope:Scope,input: Tensorflow_DataType, ksize :[Int]  , strides :[Int]  , targmax :type  , padding :string  , t :type  )  ->(output: tf.Output, argmax: tf.Output){
+func maxPoolWithArgmax(scope:Scope,input: Tensorflow_DataType, ksize :[Int]  , strides :[Int]  , targmax :Type  , padding :String  )  ->(output: tf.Output, argmax: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("ksize":ksize)
-    attr.append("strides":strides)
-    attr.append("Targmax":targmax)
-    attr.append("padding":padding)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("ksize",ksize)
+    attr.append("strides",strides)
+    attr.append("Targmax",targmax)
+    attr.append("padding",padding)
 
     let opspec = tf.OpSpec(
         OpType: "MaxPoolWithArgmax",
@@ -9490,13 +9389,13 @@ Returns the max of x and y (i.e. x > y ? x : y) element-wise.
 
 
 
-func maximum(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :type  )  ->(z: tf.Output){
+func maximum(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :Type  )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "Maximum",
@@ -9520,15 +9419,14 @@ retained with length 1.
 
 
 
-func mean(scope:Scope,input: Tensorflow_DataType, reductionIndices: Tensorflow_DataType, keepDims :bool  , t :type  , tidx :type  )  ->(output: tf.Output){
+func mean(scope:Scope,input: Tensorflow_DataType, reductionIndices: Tensorflow_DataType, keepDims :Bool  , tidx :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("keep_dims":keepDims)
-    attr.append("T":t)
-    attr.append("Tidx":tidx)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("keep_dims",keepDims)
+    attr.append("Tidx",tidx)
 
     let opspec = tf.OpSpec(
         OpType: "Mean",
@@ -9552,14 +9450,14 @@ It is usually combined with `Switch` to implement branching.
 
 
 
-func merge(scope:Scope,inputs: Tensorflow_DataType, t :type  , n :uInt8  )  ->(output: tf.Output, valueIndex: tf.Output){
+func merge(scope:Scope,inputs: Tensorflow_DataType, t :Type  , n :Int  )  ->(output: tf.Output, valueIndex: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("N":n)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("N",n)
 
     let opspec = tf.OpSpec(
         OpType: "Merge",
@@ -9585,13 +9483,13 @@ in the summaries to merge use the same tag.
 
 
 
-func mergeSummary(scope:Scope,inputs: Tensorflow_DataType, n :uInt8  )  ->(summary: tf.Output){
+func mergeSummary(scope:Scope,inputs: Tensorflow_DataType, n :UInt8  )  ->(summary: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("N":n)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("N",n)
 
     let opspec = tf.OpSpec(
         OpType: "MergeSummary",
@@ -9617,13 +9515,13 @@ user-facing temporary locations.
 
 
 
-func mergeV2Checkpoints(scope:Scope,checkpointPrefixes: Tensorflow_DataType, destinationPrefix: Tensorflow_DataType, deleteOldDirs :bool  )  ->(o:tf.Operation){
+func mergeV2Checkpoints(scope:Scope,checkpointPrefixes: Tensorflow_DataType, destinationPrefix: Tensorflow_DataType, deleteOldDirs :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("delete_old_dirs":deleteOldDirs)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("delete_old_dirs",deleteOldDirs)
 
     let opspec = tf.OpSpec(
         OpType: "MergeV2Checkpoints",
@@ -9648,16 +9546,16 @@ is a good resource to learn more.
 
 
 
-func mfcc(scope:Scope,spectrogram: Tensorflow_DataType, sampleRate: Tensorflow_DataType, upperFrequencyLimit :float  , lowerFrequencyLimit :float  , filterbankChannelCount :uInt8  , dctCoefficientCount :uInt8  )  ->(output: tf.Output){
+func mfcc(scope:Scope,spectrogram: Tensorflow_DataType, sampleRate: Tensorflow_DataType, upperFrequencyLimit :Float  , lowerFrequencyLimit :Float  , filterbankChannelCount :UInt8  , dctCoefficientCount :UInt8  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("upper_frequency_limit":upperFrequencyLimit)
-    attr.append("lower_frequency_limit":lowerFrequencyLimit)
-    attr.append("filterbank_channel_count":filterbankChannelCount)
-    attr.append("dct_coefficient_count":dctCoefficientCount)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("upper_frequency_limit",upperFrequencyLimit)
+    attr.append("lower_frequency_limit",lowerFrequencyLimit)
+    attr.append("filterbank_channel_count",filterbankChannelCount)
+    attr.append("dct_coefficient_count",dctCoefficientCount)
 
     let opspec = tf.OpSpec(
         OpType: "Mfcc",
@@ -9681,15 +9579,14 @@ retained with length 1.
 
 
 
-func min(scope:Scope,input: Tensorflow_DataType, reductionIndices: Tensorflow_DataType, keepDims :bool  , t :type  , tidx :type  )  ->(output: tf.Output){
+func min(scope:Scope,input: Tensorflow_DataType, reductionIndices: Tensorflow_DataType, keepDims :Bool  , tidx :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("keep_dims":keepDims)
-    attr.append("T":t)
-    attr.append("Tidx":tidx)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("keep_dims",keepDims)
+    attr.append("Tidx",tidx)
 
     let opspec = tf.OpSpec(
         OpType: "Min",
@@ -9711,13 +9608,13 @@ Returns the min of x and y (i.e. x < y ? x : y) element-wise.
 
 
 
-func minimum(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :type  )  ->(z: tf.Output){
+func minimum(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :Type  )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "Minimum",
@@ -9758,15 +9655,14 @@ pad(t, paddings) ==> [[2, 1, 1, 2, 3, 3, 2]
 
 
 
-func mirrorPad(scope:Scope,input: Tensorflow_DataType, paddings: Tensorflow_DataType, t :type  , tpaddings :type  , mode :string  )  ->(output: tf.Output){
+func mirrorPad(scope:Scope,input: Tensorflow_DataType, paddings: Tensorflow_DataType, tpaddings :Type  , mode :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tpaddings":tpaddings)
-    attr.append("mode":mode)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tpaddings",tpaddings)
+    attr.append("mode",mode)
 
     let opspec = tf.OpSpec(
         OpType: "MirrorPad",
@@ -9800,15 +9696,15 @@ pad(t, paddings) ==> [[ 1,  5]
 
 
 
-func mirrorPadGrad(scope:Scope,input: Tensorflow_DataType, paddings: Tensorflow_DataType, t :type  , tpaddings :type  , mode :string  )  ->(output: tf.Output){
+func mirrorPadGrad(scope:Scope,input: Tensorflow_DataType, paddings: Tensorflow_DataType, t :Type  , tpaddings :Type  , mode :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tpaddings":tpaddings)
-    attr.append("mode":mode)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("Tpaddings",tpaddings)
+    attr.append("mode",mode)
 
     let opspec = tf.OpSpec(
         OpType: "MirrorPadGrad",
@@ -9832,13 +9728,12 @@ y + truncate_mod(x, y) = x`.
 
 
 
-func mod(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :type  )  ->(z: tf.Output){
+func mod(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "Mod",
@@ -9860,13 +9755,13 @@ Returns x * y element-wise.
 
 
 
-func mul(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :type  )  ->(z: tf.Output){
+func mul(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :Type  )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "Mul",
@@ -9886,15 +9781,14 @@ Draws samples from a multinomial distribution.
 
 
 
-func multinomial(scope:Scope,logits: Tensorflow_DataType, numSamples: Tensorflow_DataType, seed :uInt8  , seed2 :uInt8  , t :type  )  ->(output: tf.Output){
+func multinomial(scope:Scope,logits: Tensorflow_DataType, numSamples: Tensorflow_DataType, seed :UInt8  , seed2 :UInt8  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("seed":seed)
-    attr.append("seed2":seed2)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("seed",seed)
+    attr.append("seed2",seed2)
 
     let opspec = tf.OpSpec(
         OpType: "Multinomial",
@@ -9919,20 +9813,20 @@ the insert operations. It does not support the initialization operation.
 
 
 
-func mutableDenseHashTable(scope:Scope,emptyKey: Tensorflow_DataType, container :string  , sharedName :string  , useNodeNameSharing :bool  , keyDtype :type  , valueDtype :type  , valueShape :shape  , initialNumBuckets :uInt8  , maxLoadFactor :float  )  ->(tableHandle: tf.Output){
+func mutableDenseHashTable(scope:Scope,emptyKey: Tensorflow_DataType, container :String  , sharedName :String  , useNodeNameSharing :Bool  , keyDtype :Type  , valueDtype :Type  , valueShape :Shape  , initialNumBuckets :Int  , maxLoadFactor :Float  )  ->(tableHandle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("container":container)
-    attr.append("shared_name":sharedName)
-    attr.append("use_node_name_sharing":useNodeNameSharing)
-    attr.append("key_dtype":keyDtype)
-    attr.append("value_dtype":valueDtype)
-    attr.append("value_shape":valueShape)
-    attr.append("initial_num_buckets":initialNumBuckets)
-    attr.append("max_load_factor":maxLoadFactor)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("container",container)
+    attr.append("shared_name",sharedName)
+    attr.append("use_node_name_sharing",useNodeNameSharing)
+    attr.append("key_dtype",keyDtype)
+    attr.append("value_dtype",valueDtype)
+    attr.append("value_shape",valueShape)
+    attr.append("initial_num_buckets",initialNumBuckets)
+    attr.append("max_load_factor",maxLoadFactor)
 
     let opspec = tf.OpSpec(
         OpType: "MutableDenseHashTable",
@@ -9957,20 +9851,20 @@ the insert operations. It does not support the initialization operation.
 
 
 
-func mutableDenseHashTableV2(scope:Scope,emptyKey: Tensorflow_DataType, container :string  , sharedName :string  , useNodeNameSharing :bool  , keyDtype :type  , valueDtype :type  , valueShape :shape  , initialNumBuckets :uInt8  , maxLoadFactor :float  )  ->(tableHandle: tf.Output){
+func mutableDenseHashTableV2(scope:Scope,emptyKey: Tensorflow_DataType, container :String  , sharedName :String  , useNodeNameSharing :Bool  , keyDtype :Type  , valueDtype :Type  , valueShape :Shape  , initialNumBuckets :UInt8  , maxLoadFactor :Float  )  ->(tableHandle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("container":container)
-    attr.append("shared_name":sharedName)
-    attr.append("use_node_name_sharing":useNodeNameSharing)
-    attr.append("key_dtype":keyDtype)
-    attr.append("value_dtype":valueDtype)
-    attr.append("value_shape":valueShape)
-    attr.append("initial_num_buckets":initialNumBuckets)
-    attr.append("max_load_factor":maxLoadFactor)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("container",container)
+    attr.append("shared_name",sharedName)
+    attr.append("use_node_name_sharing",useNodeNameSharing)
+    attr.append("key_dtype",keyDtype)
+    attr.append("value_dtype",valueDtype)
+    attr.append("value_shape",valueShape)
+    attr.append("initial_num_buckets",initialNumBuckets)
+    attr.append("max_load_factor",maxLoadFactor)
 
     let opspec = tf.OpSpec(
         OpType: "MutableDenseHashTableV2",
@@ -9993,17 +9887,17 @@ the insert operations. It does not support the initialization operation.
 
 
 
-func mutableHashTable(scope:Scope container :string  , sharedName :string  , useNodeNameSharing :bool  , keyDtype :type  , valueDtype :type  )  ->(tableHandle: tf.Output){
+func mutableHashTable(scope:Scope container :String  , sharedName :String  , useNodeNameSharing :Bool  , keyDtype :Type  , valueDtype :Type  )  ->(tableHandle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("container":container)
-    attr.append("shared_name":sharedName)
-    attr.append("use_node_name_sharing":useNodeNameSharing)
-    attr.append("key_dtype":keyDtype)
-    attr.append("value_dtype":valueDtype)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("container",container)
+    attr.append("shared_name",sharedName)
+    attr.append("use_node_name_sharing",useNodeNameSharing)
+    attr.append("key_dtype",keyDtype)
+    attr.append("value_dtype",valueDtype)
 
     let opspec = tf.OpSpec(
         OpType: "MutableHashTable",
@@ -10026,18 +9920,18 @@ the insert operations. It does not support the initialization operation.
 
 
 
-func mutableHashTableOfTensors(scope:Scope container :string  , sharedName :string  , useNodeNameSharing :bool  , keyDtype :type  , valueDtype :type  , valueShape :shape  )  ->(tableHandle: tf.Output){
+func mutableHashTableOfTensors(scope:Scope container :String  , sharedName :String  , useNodeNameSharing :Bool  , keyDtype :Type  , valueDtype :Type  , valueShape :Shape  )  ->(tableHandle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("container":container)
-    attr.append("shared_name":sharedName)
-    attr.append("use_node_name_sharing":useNodeNameSharing)
-    attr.append("key_dtype":keyDtype)
-    attr.append("value_dtype":valueDtype)
-    attr.append("value_shape":valueShape)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("container",container)
+    attr.append("shared_name",sharedName)
+    attr.append("use_node_name_sharing",useNodeNameSharing)
+    attr.append("key_dtype",keyDtype)
+    attr.append("value_dtype",valueDtype)
+    attr.append("value_shape",valueShape)
 
     let opspec = tf.OpSpec(
         OpType: "MutableHashTableOfTensors",
@@ -10060,18 +9954,18 @@ the insert operations. It does not support the initialization operation.
 
 
 
-func mutableHashTableOfTensorsV2(scope:Scope container :string  , sharedName :string  , useNodeNameSharing :bool  , keyDtype :type  , valueDtype :type  , valueShape :shape  )  ->(tableHandle: tf.Output){
+func mutableHashTableOfTensorsV2(scope:Scope container :String  , sharedName :String  , useNodeNameSharing :Bool  , keyDtype :Type  , valueDtype :Type  , valueShape :Shape  )  ->(tableHandle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("container":container)
-    attr.append("shared_name":sharedName)
-    attr.append("use_node_name_sharing":useNodeNameSharing)
-    attr.append("key_dtype":keyDtype)
-    attr.append("value_dtype":valueDtype)
-    attr.append("value_shape":valueShape)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("container",container)
+    attr.append("shared_name",sharedName)
+    attr.append("use_node_name_sharing",useNodeNameSharing)
+    attr.append("key_dtype",keyDtype)
+    attr.append("value_dtype",valueDtype)
+    attr.append("value_shape",valueShape)
 
     let opspec = tf.OpSpec(
         OpType: "MutableHashTableOfTensorsV2",
@@ -10094,17 +9988,17 @@ the insert operations. It does not support the initialization operation.
 
 
 
-func mutableHashTableV2(scope:Scope container :string  , sharedName :string  , useNodeNameSharing :bool  , keyDtype :type  , valueDtype :type  )  ->(tableHandle: tf.Output){
+func mutableHashTableV2(scope:Scope container :String  , sharedName :String  , useNodeNameSharing :Bool  , keyDtype :Type  , valueDtype :Type  )  ->(tableHandle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("container":container)
-    attr.append("shared_name":sharedName)
-    attr.append("use_node_name_sharing":useNodeNameSharing)
-    attr.append("key_dtype":keyDtype)
-    attr.append("value_dtype":valueDtype)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("container",container)
+    attr.append("shared_name",sharedName)
+    attr.append("use_node_name_sharing",useNodeNameSharing)
+    attr.append("key_dtype",keyDtype)
+    attr.append("value_dtype",valueDtype)
 
     let opspec = tf.OpSpec(
         OpType: "MutableHashTableV2",
@@ -10125,13 +10019,12 @@ I.e., \\(y = -x\\).
 
 
 
-func neg(scope:Scope,x: Tensorflow_DataType, t :type  )  ->(y: tf.Output){
+func neg(scope:Scope,x: Tensorflow_DataType )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "Neg",
@@ -10151,14 +10044,14 @@ Training via negative sampling.
 
 
 
-func negTrain(scope:Scope,wIn: Tensorflow_DataType, wOut: Tensorflow_DataType, examples: Tensorflow_DataType, labels: Tensorflow_DataType, lr: Tensorflow_DataType, vocabCount :[Int]  , numNegativeSamples :uInt8  )  ->(o:tf.Operation){
+func negTrain(scope:Scope,wIn: Tensorflow_DataType, wOut: Tensorflow_DataType, examples: Tensorflow_DataType, labels: Tensorflow_DataType, lr: Tensorflow_DataType, vocabCount :List(int)  , numNegativeSamples :Int  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("vocab_count":vocabCount)
-    attr.append("num_negative_samples":numNegativeSamples)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("vocab_count",vocabCount)
+    attr.append("num_negative_samples",numNegativeSamples)
 
     let opspec = tf.OpSpec(
         OpType: "NegTrain",
@@ -10177,13 +10070,12 @@ Makes its input available to the next iteration.
 
 
 
-func nextIteration(scope:Scope,data: Tensorflow_DataType, t :type  )  ->(output: tf.Output){
+func nextIteration(scope:Scope,data: Tensorflow_DataType )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "NextIteration",
@@ -10208,7 +10100,7 @@ func noOp(scope:Scope )  ->(o:tf.Operation){
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "NoOp",
@@ -10243,13 +10135,13 @@ using the `tf.gather operation`.  For example:
 
 
 
-func nonMaxSuppression(scope:Scope,boxes: Tensorflow_DataType, scores: Tensorflow_DataType, maxOutputSize: Tensorflow_DataType, iouThreshold :float  )  ->(selectedIndices: tf.Output){
+func nonMaxSuppression(scope:Scope,boxes: Tensorflow_DataType, scores: Tensorflow_DataType, maxOutputSize: Tensorflow_DataType, iouThreshold :Float  )  ->(selectedIndices: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("iou_threshold":iouThreshold)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("iou_threshold",iouThreshold)
 
     let opspec = tf.OpSpec(
         OpType: "NonMaxSuppression",
@@ -10290,7 +10182,7 @@ func nonMaxSuppressionV2(scope:Scope,boxes: Tensorflow_DataType, scores: Tensorf
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "NonMaxSuppressionV2",
@@ -10312,13 +10204,12 @@ Returns the truth value of (x != y) element-wise.
 
 
 
-func notEqual(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :type  )  ->(z: tf.Output){
+func notEqual(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "NotEqual",
@@ -10409,15 +10300,15 @@ Then output is `[2 x 2 x 3]`:
 
 
 
-func oneHot(scope:Scope,indices: Tensorflow_DataType, depth: Tensorflow_DataType, onValue: Tensorflow_DataType, offValue: Tensorflow_DataType, axis :uInt8  , t :type  , ti :type  )  ->(output: tf.Output){
+func oneHot(scope:Scope,indices: Tensorflow_DataType, depth: Tensorflow_DataType, onValue: Tensorflow_DataType, offValue: Tensorflow_DataType, axis :Int  , t :Type  , ti :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("axis":axis)
-    attr.append("T":t)
-    attr.append("TI":ti)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("axis",axis)
+    attr.append("T",t)
+    attr.append("TI",ti)
 
     let opspec = tf.OpSpec(
         OpType: "OneHot",
@@ -10451,17 +10342,17 @@ times by rerunning "MakeIterator".
 
 
 
-func oneShotIterator(scope:Scope datasetFactory :func  , outputTypes :list(type)  , outputShapes :[Shape]  , container :string  , sharedName :string  )  ->(handle: tf.Output){
+func oneShotIterator(scope:Scope datasetFactory :Func  , outputTypes :List(type)  , outputShapes :[Shape]  , container :String  , sharedName :String  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("dataset_factory":datasetFactory)
-    attr.append("output_types":outputTypes)
-    attr.append("output_shapes":outputShapes)
-    attr.append("container":container)
-    attr.append("shared_name":sharedName)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("dataset_factory",datasetFactory)
+    attr.append("output_types",outputTypes)
+    attr.append("output_shapes",outputShapes)
+    attr.append("container",container)
+    attr.append("shared_name",sharedName)
 
     let opspec = tf.OpSpec(
         OpType: "OneShotIterator",
@@ -10481,13 +10372,12 @@ Returns a tensor of ones with the same shape and type as x.
 
 
 
-func onesLike(scope:Scope,x: Tensorflow_DataType, t :type  )  ->(y: tf.Output){
+func onesLike(scope:Scope,x: Tensorflow_DataType )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "OnesLike",
@@ -10522,15 +10412,15 @@ This is the opposite of `unpack`.
 
 
 
-func pack(scope:Scope,values: Tensorflow_DataType, n :uInt8  , t :type  , axis :uInt8  )  ->(output: tf.Output){
+func pack(scope:Scope,values: Tensorflow_DataType, n :Int  , t :Type  , axis :Int  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("N":n)
-    attr.append("T":t)
-    attr.append("axis":axis)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("N",n)
+    attr.append("T",t)
+    attr.append("axis",axis)
 
     let opspec = tf.OpSpec(
         OpType: "Pack",
@@ -10568,14 +10458,13 @@ pad(t, paddings) ==> [[0, 0, 0, 0, 0, 0]
 
 
 
-func pad(scope:Scope,input: Tensorflow_DataType, paddings: Tensorflow_DataType, t :type  , tpaddings :type  )  ->(output: tf.Output){
+func pad(scope:Scope,input: Tensorflow_DataType, paddings: Tensorflow_DataType, tpaddings :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tpaddings":tpaddings)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tpaddings",tpaddings)
 
     let opspec = tf.OpSpec(
         OpType: "Pad",
@@ -10595,15 +10484,15 @@ Creates a dataset that batches and pads `batch_size` elements from the input.
 
 
 
-func paddedBatchDataset(scope:Scope,inputDataset: Tensorflow_DataType, batchSize: Tensorflow_DataType, paddedShapes: Tensorflow_DataType, paddingValues: Tensorflow_DataType, toutputTypes :list(type)  , outputShapes :[Shape]  , n :uInt8  )  ->(handle: tf.Output){
+func paddedBatchDataset(scope:Scope,inputDataset: Tensorflow_DataType, batchSize: Tensorflow_DataType, paddedShapes: Tensorflow_DataType, paddingValues: Tensorflow_DataType, toutputTypes :List(type)  , outputShapes :List(shape)  , n :Int  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("Toutput_types":toutputTypes)
-    attr.append("output_shapes":outputShapes)
-    attr.append("N":n)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Toutput_types",toutputTypes)
+    attr.append("output_shapes",outputShapes)
+    attr.append("N",n)
 
     let opspec = tf.OpSpec(
         OpType: "PaddedBatchDataset",
@@ -10626,17 +10515,17 @@ size of any given element in the minibatch.  See below for details.
 
 
 
-func paddingFIFOQueue(scope:Scope componentTypes :list(type)  , shapes :[Shape]  , capacity :uInt8  , container :string  , sharedName :string  )  ->(handle: tf.Output){
+func paddingFIFOQueue(scope:Scope componentTypes :List(type)  , shapes :[Shape]  , capacity :UInt8  , container :String  , sharedName :String  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("component_types":componentTypes)
-    attr.append("shapes":shapes)
-    attr.append("capacity":capacity)
-    attr.append("container":container)
-    attr.append("shared_name":sharedName)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("component_types",componentTypes)
+    attr.append("shapes",shapes)
+    attr.append("capacity",capacity)
+    attr.append("container",container)
+    attr.append("shared_name",sharedName)
 
     let opspec = tf.OpSpec(
         OpType: "PaddingFIFOQueue",
@@ -10659,17 +10548,17 @@ size of any given element in the minibatch.  See below for details.
 
 
 
-func paddingFIFOQueueV2(scope:Scope componentTypes :list(type)  , shapes :[Shape]  , capacity :uInt8  , container :string  , sharedName :string  )  ->(handle: tf.Output){
+func paddingFIFOQueueV2(scope:Scope componentTypes :List(type)  , shapes :[Shape]  , capacity :UInt8  , container :String  , sharedName :String  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("component_types":componentTypes)
-    attr.append("shapes":shapes)
-    attr.append("capacity":capacity)
-    attr.append("container":container)
-    attr.append("shared_name":sharedName)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("component_types",componentTypes)
+    attr.append("shapes",shapes)
+    attr.append("capacity",capacity)
+    attr.append("container",container)
+    attr.append("shared_name",sharedName)
 
     let opspec = tf.OpSpec(
         OpType: "PaddingFIFOQueueV2",
@@ -10702,15 +10591,14 @@ some situations this can provide a performance benefit.
 
 
 
-func parallelConcat(scope:Scope,values: Tensorflow_DataType, n :uInt8  , t :type  , shape :shape  )  ->(output: tf.Output){
+func parallelConcat(scope:Scope,values: Tensorflow_DataType, n :UInt8  , shape :Shape  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("N":n)
-    attr.append("T":t)
-    attr.append("shape":shape)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("N",n)
+    attr.append("shape",shape)
 
     let opspec = tf.OpSpec(
         OpType: "ParallelConcat",
@@ -10733,16 +10621,16 @@ in parallel.
 
 
 
-func parallelMapDataset(scope:Scope,inputDataset: Tensorflow_DataType, otherArguments: Tensorflow_DataType, numThreads: Tensorflow_DataType, outputBufferSize: Tensorflow_DataType, f :func  , targuments :list(type)  , outputTypes :list(type)  , outputShapes :[Shape]  )  ->(handle: tf.Output){
+func parallelMapDataset(scope:Scope,inputDataset: Tensorflow_DataType, otherArguments: Tensorflow_DataType, numThreads: Tensorflow_DataType, outputBufferSize: Tensorflow_DataType, f :Func  , targuments :List(type)  , outputTypes :List(type)  , outputShapes :List(shape)  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("f":f)
-    attr.append("Targuments":targuments)
-    attr.append("output_types":outputTypes)
-    attr.append("output_shapes":outputShapes)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("f",f)
+    attr.append("Targuments",targuments)
+    attr.append("output_types",outputTypes)
+    attr.append("output_shapes",outputShapes)
 
     let opspec = tf.OpSpec(
         OpType: "ParallelMapDataset",
@@ -10764,16 +10652,15 @@ stores the parameters for each batch.
 
 
 
-func parameterizedTruncatedNormal(scope:Scope,shape: Tensorflow_DataType, means: Tensorflow_DataType, stdevs: Tensorflow_DataType, minvals: Tensorflow_DataType, maxvals: Tensorflow_DataType, seed :uInt8  , seed2 :uInt8  , dtype :type  , t :type  )  ->(output: tf.Output){
+func parameterizedTruncatedNormal(scope:Scope,shape: Tensorflow_DataType, means: Tensorflow_DataType, stdevs: Tensorflow_DataType, minvals: Tensorflow_DataType, maxvals: Tensorflow_DataType, seed :UInt8  , seed2 :UInt8  , dtype :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("seed":seed)
-    attr.append("seed2":seed2)
-    attr.append("dtype":dtype)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("seed",seed)
+    attr.append("seed2",seed2)
+    attr.append("dtype",dtype)
 
     let opspec = tf.OpSpec(
         OpType: "ParameterizedTruncatedNormal",
@@ -10793,17 +10680,17 @@ Transforms a vector of brain.Example protos (as strings) into typed tensors.
 
 
 
-func parseExample(scope:Scope,serialized: Tensorflow_DataType, names: Tensorflow_DataType, sparseKeys: Tensorflow_DataType, denseKeys: Tensorflow_DataType, denseDefaults: Tensorflow_DataType, nsparse :uInt8  , ndense :uInt8  , sparseTypes :list(type)  , tdense :list(type)  , denseShapes :[Shape]  )  ->(sparseIndices: tf.Output, sparseValues: tf.Output, sparseShapes: tf.Output, denseValues: tf.Output){
+func parseExample(scope:Scope,serialized: Tensorflow_DataType, names: Tensorflow_DataType, sparseKeys: Tensorflow_DataType, denseKeys: Tensorflow_DataType, denseDefaults: Tensorflow_DataType, nsparse :Int  , ndense :Int  , sparseTypes :List(type)  , tdense :List(type)  , denseShapes :List(shape)  )  ->(sparseIndices: tf.Output, sparseValues: tf.Output, sparseShapes: tf.Output, denseValues: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("Nsparse":nsparse)
-    attr.append("Ndense":ndense)
-    attr.append("sparse_types":sparseTypes)
-    attr.append("Tdense":tdense)
-    attr.append("dense_shapes":denseShapes)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Nsparse",nsparse)
+    attr.append("Ndense",ndense)
+    attr.append("sparse_types",sparseTypes)
+    attr.append("Tdense",tdense)
+    attr.append("dense_shapes",denseShapes)
 
     let opspec = tf.OpSpec(
         OpType: "ParseExample",
@@ -10823,22 +10710,22 @@ Transforms a scalar brain.SequenceExample proto (as strings) into typed tensors.
 
 
 
-func parseSingleSequenceExample(scope:Scope,serialized: Tensorflow_DataType, featureListDenseMissingAssumedEmpty: Tensorflow_DataType, contextSparseKeys: Tensorflow_DataType, contextDenseKeys: Tensorflow_DataType, featureListSparseKeys: Tensorflow_DataType, featureListDenseKeys: Tensorflow_DataType, contextDenseDefaults: Tensorflow_DataType, debugName: Tensorflow_DataType, ncontextSparse :uInt8  , ncontextDense :uInt8  , nfeatureListSparse :uInt8  , nfeatureListDense :uInt8  , contextSparseTypes :list(type)  , tcontextDense :list(type)  , featureListDenseTypes :list(type)  , contextDenseShapes :[Shape]  , featureListSparseTypes :list(type)  , featureListDenseShapes :[Shape]  )  ->(contextSparseIndices: tf.Output, contextSparseValues: tf.Output, contextSparseShapes: tf.Output, contextDenseValues: tf.Output, featureListSparseIndices: tf.Output, featureListSparseValues: tf.Output, featureListSparseShapes: tf.Output, featureListDenseValues: tf.Output){
+func parseSingleSequenceExample(scope:Scope,serialized: Tensorflow_DataType, featureListDenseMissingAssumedEmpty: Tensorflow_DataType, contextSparseKeys: Tensorflow_DataType, contextDenseKeys: Tensorflow_DataType, featureListSparseKeys: Tensorflow_DataType, featureListDenseKeys: Tensorflow_DataType, contextDenseDefaults: Tensorflow_DataType, debugName: Tensorflow_DataType, ncontextSparse :UInt8  , ncontextDense :UInt8  , nfeatureListSparse :UInt8  , nfeatureListDense :UInt8  , contextSparseTypes :List(type)  , tcontextDense :List(type)  , featureListDenseTypes :List(type)  , contextDenseShapes :[Shape]  , featureListSparseTypes :List(type)  , featureListDenseShapes :[Shape]  )  ->(contextSparseIndices: tf.Output, contextSparseValues: tf.Output, contextSparseShapes: tf.Output, contextDenseValues: tf.Output, featureListSparseIndices: tf.Output, featureListSparseValues: tf.Output, featureListSparseShapes: tf.Output, featureListDenseValues: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("Ncontext_sparse":ncontextSparse)
-    attr.append("Ncontext_dense":ncontextDense)
-    attr.append("Nfeature_list_sparse":nfeatureListSparse)
-    attr.append("Nfeature_list_dense":nfeatureListDense)
-    attr.append("context_sparse_types":contextSparseTypes)
-    attr.append("Tcontext_dense":tcontextDense)
-    attr.append("feature_list_dense_types":featureListDenseTypes)
-    attr.append("context_dense_shapes":contextDenseShapes)
-    attr.append("feature_list_sparse_types":featureListSparseTypes)
-    attr.append("feature_list_dense_shapes":featureListDenseShapes)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Ncontext_sparse",ncontextSparse)
+    attr.append("Ncontext_dense",ncontextDense)
+    attr.append("Nfeature_list_sparse",nfeatureListSparse)
+    attr.append("Nfeature_list_dense",nfeatureListDense)
+    attr.append("context_sparse_types",contextSparseTypes)
+    attr.append("Tcontext_dense",tcontextDense)
+    attr.append("feature_list_dense_types",featureListDenseTypes)
+    attr.append("context_dense_shapes",contextDenseShapes)
+    attr.append("feature_list_sparse_types",featureListSparseTypes)
+    attr.append("feature_list_dense_shapes",featureListDenseShapes)
 
     let opspec = tf.OpSpec(
         OpType: "ParseSingleSequenceExample",
@@ -10858,13 +10745,13 @@ Transforms a serialized tensorflow.TensorProto proto into a Tensor.
 
 
 
-func parseTensor(scope:Scope,serialized: Tensorflow_DataType, outType :type  )  ->(output: tf.Output){
+func parseTensor(scope:Scope,serialized: Tensorflow_DataType, outType :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("out_type":outType)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("out_type",outType)
 
     let opspec = tf.OpSpec(
         OpType: "ParseTensor",
@@ -10887,14 +10774,14 @@ provide attrs that enable the fed value to be checked at runtime.
 
 
 
-func placeholder(scope:Scope dtype :type  , shape :shape  )  ->(output: tf.Output){
+func placeholder(scope:Scope dtype :Type  , shape :Shape  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("dtype":dtype)
-    attr.append("shape":shape)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("dtype",dtype)
+    attr.append("shape",shape)
 
     let opspec = tf.OpSpec(
         OpType: "Placeholder",
@@ -10917,14 +10804,14 @@ provide attrs that enable the fed value to be checked at runtime.
 
 
 
-func placeholderV2(scope:Scope dtype :type  , shape :shape  )  ->(output: tf.Output){
+func placeholderV2(scope:Scope dtype :Type  , shape :Shape  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("dtype":dtype)
-    attr.append("shape":shape)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("dtype",dtype)
+    attr.append("shape",shape)
 
     let opspec = tf.OpSpec(
         OpType: "PlaceholderV2",
@@ -10944,14 +10831,14 @@ A placeholder op that passes through `input` when its output is not fed.
 
 
 
-func placeholderWithDefault(scope:Scope,input: Tensorflow_DataType, dtype :type  , shape :shape  )  ->(output: tf.Output){
+func placeholderWithDefault(scope:Scope,input: Tensorflow_DataType, dtype :Type  , shape :Shape  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("dtype":dtype)
-    attr.append("shape":shape)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("dtype",dtype)
+    attr.append("shape",shape)
 
     let opspec = tf.OpSpec(
         OpType: "PlaceholderWithDefault",
@@ -10974,13 +10861,12 @@ where \\(\psi(x)\\) is the digamma function.
 
 
 
-func polygamma(scope:Scope,a: Tensorflow_DataType, x: Tensorflow_DataType, t :type  )  ->(z: tf.Output){
+func polygamma(scope:Scope,a: Tensorflow_DataType, x: Tensorflow_DataType )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "Polygamma",
@@ -11007,13 +10893,13 @@ tf.pow(x, y) ==> [[256, 65536], [9, 27]]
 
 
 
-func pow(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :type  )  ->(z: tf.Output){
+func pow(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :Type  )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "Pow",
@@ -11039,14 +10925,13 @@ gradients in some corner cases.
 
 
 
-func preventGradient(scope:Scope,input: Tensorflow_DataType, t :type  , message :string  )  ->(output: tf.Output){
+func preventGradient(scope:Scope,input: Tensorflow_DataType, message :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("message":message)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("message",message)
 
     let opspec = tf.OpSpec(
         OpType: "PreventGradient",
@@ -11067,17 +10952,17 @@ Passes `input` through to `output` and prints `data` when evaluating.
 
 
 
-func print(scope:Scope,input: Tensorflow_DataType, data: Tensorflow_DataType, t :type  , u :list(type)  , message :string  , firstN :uInt8  , summarize :uInt8  )  ->(output: tf.Output){
+func print(scope:Scope,input: Tensorflow_DataType, data: Tensorflow_DataType, t :Type  , u :List(type)  , message :String  , firstN :Int  , summarize :Int  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("U":u)
-    attr.append("message":message)
-    attr.append("first_n":firstN)
-    attr.append("summarize":summarize)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("U",u)
+    attr.append("message",message)
+    attr.append("first_n",firstN)
+    attr.append("summarize",summarize)
 
     let opspec = tf.OpSpec(
         OpType: "Print",
@@ -11102,17 +10987,17 @@ entry in their input (resp. output) lists.
 
 
 
-func priorityQueue(scope:Scope componentTypes :list(type)  , shapes :[Shape]  , capacity :uInt8  , container :string  , sharedName :string  )  ->(handle: tf.Output){
+func priorityQueue(scope:Scope componentTypes :List(type)  , shapes :[Shape]  , capacity :UInt8  , container :String  , sharedName :String  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("component_types":componentTypes)
-    attr.append("shapes":shapes)
-    attr.append("capacity":capacity)
-    attr.append("container":container)
-    attr.append("shared_name":sharedName)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("component_types",componentTypes)
+    attr.append("shapes",shapes)
+    attr.append("capacity",capacity)
+    attr.append("container",container)
+    attr.append("shared_name",sharedName)
 
     let opspec = tf.OpSpec(
         OpType: "PriorityQueue",
@@ -11137,17 +11022,17 @@ entry in their input (resp. output) lists.
 
 
 
-func priorityQueueV2(scope:Scope componentTypes :list(type)  , shapes :[Shape]  , capacity :uInt8  , container :string  , sharedName :string  )  ->(handle: tf.Output){
+func priorityQueueV2(scope:Scope componentTypes :List(type)  , shapes :[Shape]  , capacity :UInt8  , container :String  , sharedName :String  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("component_types":componentTypes)
-    attr.append("shapes":shapes)
-    attr.append("capacity":capacity)
-    attr.append("container":container)
-    attr.append("shared_name":sharedName)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("component_types",componentTypes)
+    attr.append("shapes",shapes)
+    attr.append("capacity",capacity)
+    attr.append("container",container)
+    attr.append("shared_name",sharedName)
 
     let opspec = tf.OpSpec(
         OpType: "PriorityQueueV2",
@@ -11171,15 +11056,14 @@ retained with length 1.
 
 
 
-func prod(scope:Scope,input: Tensorflow_DataType, reductionIndices: Tensorflow_DataType, keepDims :bool  , t :type  , tidx :type  )  ->(output: tf.Output){
+func prod(scope:Scope,input: Tensorflow_DataType, reductionIndices: Tensorflow_DataType, keepDims :Bool  , tidx :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("keep_dims":keepDims)
-    attr.append("T":t)
-    attr.append("Tidx":tidx)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("keep_dims",keepDims)
+    attr.append("Tidx",tidx)
 
     let opspec = tf.OpSpec(
         OpType: "Prod",
@@ -11201,15 +11085,15 @@ PyFuncStateless.
 
 
 
-func pyFunc(scope:Scope,input: Tensorflow_DataType, token :string  , tin :list(type)  , tout :list(type)  )  ->(output: tf.Output){
+func pyFunc(scope:Scope,input: Tensorflow_DataType, token :String  , tin :List(type)  , tout :List(type)  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("token":token)
-    attr.append("Tin":tin)
-    attr.append("Tout":tout)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("token",token)
+    attr.append("Tin",tin)
+    attr.append("Tout",tout)
 
     let opspec = tf.OpSpec(
         OpType: "PyFunc",
@@ -11229,15 +11113,15 @@ A stateless version of PyFunc.
 
 
 
-func pyFuncStateless(scope:Scope,input: Tensorflow_DataType, token :string  , tin :list(type)  , tout :list(type)  )  ->(output: tf.Output){
+func pyFuncStateless(scope:Scope,input: Tensorflow_DataType, token :String  , tin :List(type)  , tout :List(type)  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("token":token)
-    attr.append("Tin":tin)
-    attr.append("Tout":tout)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("token",token)
+    attr.append("Tin",tin)
+    attr.append("Tout",tout)
 
     let opspec = tf.OpSpec(
         OpType: "PyFuncStateless",
@@ -11266,14 +11150,13 @@ q_full, r_full = qr(a, full_matrices=True)
 
 
 
-func qr(scope:Scope,input: Tensorflow_DataType, fullMatrices :bool  , t :type  )  ->(q: tf.Output, r: tf.Output){
+func qr(scope:Scope,input: Tensorflow_DataType, fullMatrices :Bool  )  ->(q: tf.Output, r: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("full_matrices":fullMatrices)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("full_matrices",fullMatrices)
 
     let opspec = tf.OpSpec(
         OpType: "Qr",
@@ -11293,18 +11176,18 @@ Use QuantizeAndDequantizeV2 instead.
 
 
 
-func quantizeAndDequantize(scope:Scope,input: Tensorflow_DataType, signedInput :bool  , numBits :uInt8  , rangeGiven :bool  , inputMin :float  , inputMax :float  , t :type  )  ->(output: tf.Output){
+func quantizeAndDequantize(scope:Scope,input: Tensorflow_DataType, signedInput :Bool  , numBits :Int  , rangeGiven :Bool  , inputMin :Float  , inputMax :Float  , t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("signed_input":signedInput)
-    attr.append("num_bits":numBits)
-    attr.append("range_given":rangeGiven)
-    attr.append("input_min":inputMin)
-    attr.append("input_max":inputMax)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("signed_input",signedInput)
+    attr.append("num_bits",numBits)
+    attr.append("range_given",rangeGiven)
+    attr.append("input_min",inputMin)
+    attr.append("input_max",inputMax)
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "QuantizeAndDequantize",
@@ -11357,16 +11240,15 @@ Given the vector {-1, -0.5, 0, 0.3}, this is quantized to
 
 
 
-func quantizeAndDequantizeV2(scope:Scope,input: Tensorflow_DataType, inputMin: Tensorflow_DataType, inputMax: Tensorflow_DataType, signedInput :bool  , numBits :uInt8  , rangeGiven :bool  , t :type  )  ->(output: tf.Output){
+func quantizeAndDequantizeV2(scope:Scope,input: Tensorflow_DataType, inputMin: Tensorflow_DataType, inputMax: Tensorflow_DataType, signedInput :Bool  , numBits :UInt8  , rangeGiven :Bool  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("signed_input":signedInput)
-    attr.append("num_bits":numBits)
-    attr.append("range_given":rangeGiven)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("signed_input",signedInput)
+    attr.append("num_bits",numBits)
+    attr.append("range_given",rangeGiven)
 
     let opspec = tf.OpSpec(
         OpType: "QuantizeAndDequantizeV2",
@@ -11405,14 +11287,14 @@ minimal loss of accuracy.
 
 
 
-func quantizeDownAndShrinkRange(scope:Scope,input: Tensorflow_DataType, inputMin: Tensorflow_DataType, inputMax: Tensorflow_DataType, tinput :type  , outType :type  )  ->(output: tf.Output, outputMin: tf.Output, outputMax: tf.Output){
+func quantizeDownAndShrinkRange(scope:Scope,input: Tensorflow_DataType, inputMin: Tensorflow_DataType, inputMax: Tensorflow_DataType, tinput :Type  , outType :Type  )  ->(output: tf.Output, outputMin: tf.Output, outputMax: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("Tinput":tinput)
-    attr.append("out_type":outType)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tinput",tinput)
+    attr.append("out_type",outType)
 
     let opspec = tf.OpSpec(
         OpType: "QuantizeDownAndShrinkRange",
@@ -11472,14 +11354,13 @@ operations that have to perform further calculations on them.
 
 
 
-func quantizeV2(scope:Scope,input: Tensorflow_DataType, minRange: Tensorflow_DataType, maxRange: Tensorflow_DataType, t :type  , mode :string  )  ->(output: tf.Output, outputMin: tf.Output, outputMax: tf.Output){
+func quantizeV2(scope:Scope,input: Tensorflow_DataType, minRange: Tensorflow_DataType, maxRange: Tensorflow_DataType, mode :String  )  ->(output: tf.Output, outputMin: tf.Output, outputMax: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("mode":mode)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("mode",mode)
 
     let opspec = tf.OpSpec(
         OpType: "QuantizeV2",
@@ -11499,15 +11380,15 @@ Returns x + y element-wise, working on quantized buffers.
 
 
 
-func quantizedAdd(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, minX: Tensorflow_DataType, maxX: Tensorflow_DataType, minY: Tensorflow_DataType, maxY: Tensorflow_DataType, t1 :type  , t2 :type  , toutput :type  )  ->(z: tf.Output, minZ: tf.Output, maxZ: tf.Output){
+func quantizedAdd(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, minX: Tensorflow_DataType, maxX: Tensorflow_DataType, minY: Tensorflow_DataType, maxY: Tensorflow_DataType, t1 :Type  , t2 :Type  , toutput :Type  )  ->(z: tf.Output, minZ: tf.Output, maxZ: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T1":t1)
-    attr.append("T2":t2)
-    attr.append("Toutput":toutput)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T1",t1)
+    attr.append("T2",t2)
+    attr.append("Toutput",toutput)
 
     let opspec = tf.OpSpec(
         OpType: "QuantizedAdd",
@@ -11527,16 +11408,15 @@ Produces the average pool of the input tensor for quantized types.
 
 
 
-func quantizedAvgPool(scope:Scope,input: Tensorflow_DataType, minInput: Tensorflow_DataType, maxInput: Tensorflow_DataType, t :type  , ksize :[Int]  , strides :[Int]  , padding :string  )  ->(output: tf.Output, minOutput: tf.Output, maxOutput: tf.Output){
+func quantizedAvgPool(scope:Scope,input: Tensorflow_DataType, minInput: Tensorflow_DataType, maxInput: Tensorflow_DataType, ksize :List(int)  , strides :List(int)  , padding :String  )  ->(output: tf.Output, minOutput: tf.Output, maxOutput: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("ksize":ksize)
-    attr.append("strides":strides)
-    attr.append("padding":padding)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("ksize",ksize)
+    attr.append("strides",strides)
+    attr.append("padding",padding)
 
     let opspec = tf.OpSpec(
         OpType: "QuantizedAvgPool",
@@ -11558,16 +11438,16 @@ This op is deprecated and will be removed in the future. Prefer
 
 
 
-func quantizedBatchNormWithGlobalNormalization(scope:Scope,t: Tensorflow_DataType, tMin: Tensorflow_DataType, tMax: Tensorflow_DataType, m: Tensorflow_DataType, mMin: Tensorflow_DataType, mMax: Tensorflow_DataType, v: Tensorflow_DataType, vMin: Tensorflow_DataType, vMax: Tensorflow_DataType, beta: Tensorflow_DataType, betaMin: Tensorflow_DataType, betaMax: Tensorflow_DataType, gamma: Tensorflow_DataType, gammaMin: Tensorflow_DataType, gammaMax: Tensorflow_DataType, tinput :type  , outType :type  , varianceEpsilon :float  , scaleAfterNormalization :bool  )  ->(result: tf.Output, resultMin: tf.Output, resultMax: tf.Output){
+func quantizedBatchNormWithGlobalNormalization(scope:Scope,t: Tensorflow_DataType, tMin: Tensorflow_DataType, tMax: Tensorflow_DataType, m: Tensorflow_DataType, mMin: Tensorflow_DataType, mMax: Tensorflow_DataType, v: Tensorflow_DataType, vMin: Tensorflow_DataType, vMax: Tensorflow_DataType, beta: Tensorflow_DataType, betaMin: Tensorflow_DataType, betaMax: Tensorflow_DataType, gamma: Tensorflow_DataType, gammaMin: Tensorflow_DataType, gammaMax: Tensorflow_DataType, tinput :Type  , outType :Type  , varianceEpsilon :Float  , scaleAfterNormalization :Bool  )  ->(result: tf.Output, resultMin: tf.Output, resultMax: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("Tinput":tinput)
-    attr.append("out_type":outType)
-    attr.append("variance_epsilon":varianceEpsilon)
-    attr.append("scale_after_normalization":scaleAfterNormalization)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tinput",tinput)
+    attr.append("out_type",outType)
+    attr.append("variance_epsilon",varianceEpsilon)
+    attr.append("scale_after_normalization",scaleAfterNormalization)
 
     let opspec = tf.OpSpec(
         OpType: "QuantizedBatchNormWithGlobalNormalization",
@@ -11588,15 +11468,15 @@ Broadcasts the values of bias on dimensions 0..N-2 of 'input'.
 
 
 
-func quantizedBiasAdd(scope:Scope,input: Tensorflow_DataType, bias: Tensorflow_DataType, minInput: Tensorflow_DataType, maxInput: Tensorflow_DataType, minBias: Tensorflow_DataType, maxBias: Tensorflow_DataType, t1 :type  , t2 :type  , outType :type  )  ->(output: tf.Output, minOut: tf.Output, maxOut: tf.Output){
+func quantizedBiasAdd(scope:Scope,input: Tensorflow_DataType, bias: Tensorflow_DataType, minInput: Tensorflow_DataType, maxInput: Tensorflow_DataType, minBias: Tensorflow_DataType, maxBias: Tensorflow_DataType, t1 :Type  , t2 :Type  , outType :Type  )  ->(output: tf.Output, minOut: tf.Output, maxOut: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T1":t1)
-    attr.append("T2":t2)
-    attr.append("out_type":outType)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T1",t1)
+    attr.append("T2",t2)
+    attr.append("out_type",outType)
 
     let opspec = tf.OpSpec(
         OpType: "QuantizedBiasAdd",
@@ -11616,14 +11496,13 @@ Concatenates quantized tensors along one dimension.
 
 
 
-func quantizedConcat(scope:Scope,concatDim: Tensorflow_DataType, values: Tensorflow_DataType, inputMins: Tensorflow_DataType, inputMaxes: Tensorflow_DataType, n :uInt8  , t :type  )  ->(output: tf.Output, outputMin: tf.Output, outputMax: tf.Output){
+func quantizedConcat(scope:Scope,concatDim: Tensorflow_DataType, values: Tensorflow_DataType, inputMins: Tensorflow_DataType, inputMaxes: Tensorflow_DataType, n :UInt8  )  ->(output: tf.Output, outputMin: tf.Output, outputMax: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("N":n)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("N",n)
 
     let opspec = tf.OpSpec(
         OpType: "QuantizedConcat",
@@ -11647,17 +11526,17 @@ taking the returned minimum and maximum values into account.
 
 
 
-func quantizedConv2D(scope:Scope,input: Tensorflow_DataType, filter: Tensorflow_DataType, minInput: Tensorflow_DataType, maxInput: Tensorflow_DataType, minFilter: Tensorflow_DataType, maxFilter: Tensorflow_DataType, tinput :type  , tfilter :type  , outType :type  , strides :[Int]  , padding :string  )  ->(output: tf.Output, minOutput: tf.Output, maxOutput: tf.Output){
+func quantizedConv2D(scope:Scope,input: Tensorflow_DataType, filter: Tensorflow_DataType, minInput: Tensorflow_DataType, maxInput: Tensorflow_DataType, minFilter: Tensorflow_DataType, maxFilter: Tensorflow_DataType, tinput :Type  , tfilter :Type  , outType :Type  , strides :List(int)  , padding :String  )  ->(output: tf.Output, minOutput: tf.Output, maxOutput: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("Tinput":tinput)
-    attr.append("Tfilter":tfilter)
-    attr.append("out_type":outType)
-    attr.append("strides":strides)
-    attr.append("padding":padding)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tinput",tinput)
+    attr.append("Tfilter",tfilter)
+    attr.append("out_type",outType)
+    attr.append("strides",strides)
+    attr.append("padding",padding)
 
     let opspec = tf.OpSpec(
         OpType: "QuantizedConv2D",
@@ -11677,18 +11556,17 @@ Quantized Instance normalization.
 
 
 
-func quantizedInstanceNorm(scope:Scope,x: Tensorflow_DataType, xMin: Tensorflow_DataType, xMax: Tensorflow_DataType, t :type  , outputRangeGiven :bool  , givenYMin :float  , givenYMax :float  , varianceEpsilon :float  , minSeparation :float  )  ->(y: tf.Output, yMin: tf.Output, yMax: tf.Output){
+func quantizedInstanceNorm(scope:Scope,x: Tensorflow_DataType, xMin: Tensorflow_DataType, xMax: Tensorflow_DataType, outputRangeGiven :Bool  , givenYMin :Float  , givenYMax :Float  , varianceEpsilon :Float  , minSeparation :Float  )  ->(y: tf.Output, yMin: tf.Output, yMax: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("output_range_given":outputRangeGiven)
-    attr.append("given_y_min":givenYMin)
-    attr.append("given_y_max":givenYMax)
-    attr.append("variance_epsilon":varianceEpsilon)
-    attr.append("min_separation":minSeparation)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("output_range_given",outputRangeGiven)
+    attr.append("given_y_min",givenYMin)
+    attr.append("given_y_max",givenYMax)
+    attr.append("variance_epsilon",varianceEpsilon)
+    attr.append("min_separation",minSeparation)
 
     let opspec = tf.OpSpec(
         OpType: "QuantizedInstanceNorm",
@@ -11712,18 +11590,18 @@ non-zero).
 
 
 
-func quantizedMatMul(scope:Scope,a: Tensorflow_DataType, b: Tensorflow_DataType, minA: Tensorflow_DataType, maxA: Tensorflow_DataType, minB: Tensorflow_DataType, maxB: Tensorflow_DataType, t1 :type  , t2 :type  , toutput :type  , transposeA :bool  , transposeB :bool  , tactivation :type  )  ->(out: tf.Output, minOut: tf.Output, maxOut: tf.Output){
+func quantizedMatMul(scope:Scope,a: Tensorflow_DataType, b: Tensorflow_DataType, minA: Tensorflow_DataType, maxA: Tensorflow_DataType, minB: Tensorflow_DataType, maxB: Tensorflow_DataType, t1 :Type  , t2 :Type  , toutput :Type  , transposeA :Bool  , transposeB :Bool  , tactivation :Type  )  ->(out: tf.Output, minOut: tf.Output, maxOut: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T1":t1)
-    attr.append("T2":t2)
-    attr.append("Toutput":toutput)
-    attr.append("transpose_a":transposeA)
-    attr.append("transpose_b":transposeB)
-    attr.append("Tactivation":tactivation)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T1",t1)
+    attr.append("T2",t2)
+    attr.append("Toutput",toutput)
+    attr.append("transpose_a",transposeA)
+    attr.append("transpose_b",transposeB)
+    attr.append("Tactivation",tactivation)
 
     let opspec = tf.OpSpec(
         OpType: "QuantizedMatMul",
@@ -11743,16 +11621,15 @@ Produces the max pool of the input tensor for quantized types.
 
 
 
-func quantizedMaxPool(scope:Scope,input: Tensorflow_DataType, minInput: Tensorflow_DataType, maxInput: Tensorflow_DataType, t :type  , ksize :[Int]  , strides :[Int]  , padding :string  )  ->(output: tf.Output, minOutput: tf.Output, maxOutput: tf.Output){
+func quantizedMaxPool(scope:Scope,input: Tensorflow_DataType, minInput: Tensorflow_DataType, maxInput: Tensorflow_DataType, ksize :List(int)  , strides :List(int)  , padding :String  )  ->(output: tf.Output, minOutput: tf.Output, maxOutput: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("ksize":ksize)
-    attr.append("strides":strides)
-    attr.append("padding":padding)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("ksize",ksize)
+    attr.append("strides",strides)
+    attr.append("padding",padding)
 
     let opspec = tf.OpSpec(
         OpType: "QuantizedMaxPool",
@@ -11772,15 +11649,15 @@ Returns x * y element-wise, working on quantized buffers.
 
 
 
-func quantizedMul(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, minX: Tensorflow_DataType, maxX: Tensorflow_DataType, minY: Tensorflow_DataType, maxY: Tensorflow_DataType, t1 :type  , t2 :type  , toutput :type  )  ->(z: tf.Output, minZ: tf.Output, maxZ: tf.Output){
+func quantizedMul(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, minX: Tensorflow_DataType, maxX: Tensorflow_DataType, minY: Tensorflow_DataType, maxY: Tensorflow_DataType, t1 :Type  , t2 :Type  , toutput :Type  )  ->(z: tf.Output, minZ: tf.Output, maxZ: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T1":t1)
-    attr.append("T2":t2)
-    attr.append("Toutput":toutput)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T1",t1)
+    attr.append("T2",t2)
+    attr.append("Toutput",toutput)
 
     let opspec = tf.OpSpec(
         OpType: "QuantizedMul",
@@ -11800,14 +11677,14 @@ Computes Quantized Rectified Linear: `max(features, 0)`
 
 
 
-func quantizedRelu(scope:Scope,features: Tensorflow_DataType, minFeatures: Tensorflow_DataType, maxFeatures: Tensorflow_DataType, tinput :type  , outType :type  )  ->(activations: tf.Output, minActivations: tf.Output, maxActivations: tf.Output){
+func quantizedRelu(scope:Scope,features: Tensorflow_DataType, minFeatures: Tensorflow_DataType, maxFeatures: Tensorflow_DataType, tinput :Type  , outType :Type  )  ->(activations: tf.Output, minActivations: tf.Output, maxActivations: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("Tinput":tinput)
-    attr.append("out_type":outType)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tinput",tinput)
+    attr.append("out_type",outType)
 
     let opspec = tf.OpSpec(
         OpType: "QuantizedRelu",
@@ -11827,14 +11704,14 @@ Computes Quantized Rectified Linear 6: `min(max(features, 0), 6)`
 
 
 
-func quantizedRelu6(scope:Scope,features: Tensorflow_DataType, minFeatures: Tensorflow_DataType, maxFeatures: Tensorflow_DataType, tinput :type  , outType :type  )  ->(activations: tf.Output, minActivations: tf.Output, maxActivations: tf.Output){
+func quantizedRelu6(scope:Scope,features: Tensorflow_DataType, minFeatures: Tensorflow_DataType, maxFeatures: Tensorflow_DataType, tinput :Type  , outType :Type  )  ->(activations: tf.Output, minActivations: tf.Output, maxActivations: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("Tinput":tinput)
-    attr.append("out_type":outType)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tinput",tinput)
+    attr.append("out_type",outType)
 
     let opspec = tf.OpSpec(
         OpType: "QuantizedRelu6",
@@ -11854,14 +11731,14 @@ Computes Quantized Rectified Linear X: `min(max(features, 0), max_value)`
 
 
 
-func quantizedReluX(scope:Scope,features: Tensorflow_DataType, maxValue: Tensorflow_DataType, minFeatures: Tensorflow_DataType, maxFeatures: Tensorflow_DataType, tinput :type  , outType :type  )  ->(activations: tf.Output, minActivations: tf.Output, maxActivations: tf.Output){
+func quantizedReluX(scope:Scope,features: Tensorflow_DataType, maxValue: Tensorflow_DataType, minFeatures: Tensorflow_DataType, maxFeatures: Tensorflow_DataType, tinput :Type  , outType :Type  )  ->(activations: tf.Output, minActivations: tf.Output, maxActivations: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("Tinput":tinput)
-    attr.append("out_type":outType)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tinput",tinput)
+    attr.append("out_type",outType)
 
     let opspec = tf.OpSpec(
         OpType: "QuantizedReluX",
@@ -11882,14 +11759,13 @@ Reshapes a quantized tensor as per the Reshape op.
 
 
 
-func quantizedReshape(scope:Scope,tensor: Tensorflow_DataType, shape: Tensorflow_DataType, inputMin: Tensorflow_DataType, inputMax: Tensorflow_DataType, t :type  , tshape :type  )  ->(output: tf.Output, outputMin: tf.Output, outputMax: tf.Output){
+func quantizedReshape(scope:Scope,tensor: Tensorflow_DataType, shape: Tensorflow_DataType, inputMin: Tensorflow_DataType, inputMax: Tensorflow_DataType, tshape :Type  )  ->(output: tf.Output, outputMin: tf.Output, outputMax: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tshape":tshape)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tshape",tshape)
 
     let opspec = tf.OpSpec(
         OpType: "QuantizedReshape",
@@ -11914,13 +11790,13 @@ operations that would block will fail immediately.
 
 
 
-func queueClose(scope:Scope,handle: Tensorflow_DataType, cancelPendingEnqueues :bool  )  ->(o:tf.Operation){
+func queueClose(scope:Scope,handle: Tensorflow_DataType, cancelPendingEnqueues :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("cancel_pending_enqueues":cancelPendingEnqueues)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("cancel_pending_enqueues",cancelPendingEnqueues)
 
     let opspec = tf.OpSpec(
         OpType: "QueueClose",
@@ -11944,13 +11820,13 @@ operations that would block will fail immediately.
 
 
 
-func queueCloseV2(scope:Scope,handle: Tensorflow_DataType, cancelPendingEnqueues :bool  )  ->(o:tf.Operation){
+func queueCloseV2(scope:Scope,handle: Tensorflow_DataType, cancelPendingEnqueues :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("cancel_pending_enqueues":cancelPendingEnqueues)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("cancel_pending_enqueues",cancelPendingEnqueues)
 
     let opspec = tf.OpSpec(
         OpType: "QueueCloseV2",
@@ -11974,14 +11850,14 @@ has been dequeued (or 'timeout_ms' elapses, if specified).
 
 
 
-func queueDequeue(scope:Scope,handle: Tensorflow_DataType, componentTypes :list(type)  , timeoutMs :uInt8  )  ->(components: tf.Output){
+func queueDequeue(scope:Scope,handle: Tensorflow_DataType, componentTypes :List(type)  , timeoutMs :UInt8  )  ->(components: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("component_types":componentTypes)
-    attr.append("timeout_ms":timeoutMs)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("component_types",componentTypes)
+    attr.append("timeout_ms",timeoutMs)
 
     let opspec = tf.OpSpec(
         OpType: "QueueDequeue",
@@ -12011,14 +11887,14 @@ have been dequeued (or 'timeout_ms' elapses, if specified).
 
 
 
-func queueDequeueMany(scope:Scope,handle: Tensorflow_DataType, n: Tensorflow_DataType, componentTypes :list(type)  , timeoutMs :uInt8  )  ->(components: tf.Output){
+func queueDequeueMany(scope:Scope,handle: Tensorflow_DataType, n: Tensorflow_DataType, componentTypes :List(type)  , timeoutMs :UInt8  )  ->(components: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("component_types":componentTypes)
-    attr.append("timeout_ms":timeoutMs)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("component_types",componentTypes)
+    attr.append("timeout_ms",timeoutMs)
 
     let opspec = tf.OpSpec(
         OpType: "QueueDequeueMany",
@@ -12048,14 +11924,14 @@ have been dequeued (or 'timeout_ms' elapses, if specified).
 
 
 
-func queueDequeueManyV2(scope:Scope,handle: Tensorflow_DataType, n: Tensorflow_DataType, componentTypes :list(type)  , timeoutMs :uInt8  )  ->(components: tf.Output){
+func queueDequeueManyV2(scope:Scope,handle: Tensorflow_DataType, n: Tensorflow_DataType, componentTypes :List(type)  , timeoutMs :UInt8  )  ->(components: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("component_types":componentTypes)
-    attr.append("timeout_ms":timeoutMs)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("component_types",componentTypes)
+    attr.append("timeout_ms",timeoutMs)
 
     let opspec = tf.OpSpec(
         OpType: "QueueDequeueManyV2",
@@ -12089,14 +11965,14 @@ component of the dequeued tuple.
 
 
 
-func queueDequeueUpTo(scope:Scope,handle: Tensorflow_DataType, n: Tensorflow_DataType, componentTypes :list(type)  , timeoutMs :uInt8  )  ->(components: tf.Output){
+func queueDequeueUpTo(scope:Scope,handle: Tensorflow_DataType, n: Tensorflow_DataType, componentTypes :List(type)  , timeoutMs :UInt8  )  ->(components: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("component_types":componentTypes)
-    attr.append("timeout_ms":timeoutMs)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("component_types",componentTypes)
+    attr.append("timeout_ms",timeoutMs)
 
     let opspec = tf.OpSpec(
         OpType: "QueueDequeueUpTo",
@@ -12130,14 +12006,14 @@ component of the dequeued tuple.
 
 
 
-func queueDequeueUpToV2(scope:Scope,handle: Tensorflow_DataType, n: Tensorflow_DataType, componentTypes :list(type)  , timeoutMs :uInt8  )  ->(components: tf.Output){
+func queueDequeueUpToV2(scope:Scope,handle: Tensorflow_DataType, n: Tensorflow_DataType, componentTypes :List(type)  , timeoutMs :UInt8  )  ->(components: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("component_types":componentTypes)
-    attr.append("timeout_ms":timeoutMs)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("component_types",componentTypes)
+    attr.append("timeout_ms",timeoutMs)
 
     let opspec = tf.OpSpec(
         OpType: "QueueDequeueUpToV2",
@@ -12162,14 +12038,14 @@ has been dequeued (or 'timeout_ms' elapses, if specified).
 
 
 
-func queueDequeueV2(scope:Scope,handle: Tensorflow_DataType, componentTypes :list(type)  , timeoutMs :uInt8  )  ->(components: tf.Output){
+func queueDequeueV2(scope:Scope,handle: Tensorflow_DataType, componentTypes :List(type)  , timeoutMs :UInt8  )  ->(components: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("component_types":componentTypes)
-    attr.append("timeout_ms":timeoutMs)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("component_types",componentTypes)
+    attr.append("timeout_ms",timeoutMs)
 
     let opspec = tf.OpSpec(
         OpType: "QueueDequeueV2",
@@ -12193,14 +12069,14 @@ element has been enqueued (or 'timeout_ms' elapses, if specified).
 
 
 
-func queueEnqueue(scope:Scope,handle: Tensorflow_DataType, components: Tensorflow_DataType, tcomponents :list(type)  , timeoutMs :uInt8  )  ->(o:tf.Operation){
+func queueEnqueue(scope:Scope,handle: Tensorflow_DataType, components: Tensorflow_DataType, tcomponents :List(type)  , timeoutMs :UInt8  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("Tcomponents":tcomponents)
-    attr.append("timeout_ms":timeoutMs)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tcomponents",tcomponents)
+    attr.append("timeout_ms",timeoutMs)
 
     let opspec = tf.OpSpec(
         OpType: "QueueEnqueue",
@@ -12226,14 +12102,14 @@ elements have been enqueued (or 'timeout_ms' elapses, if specified).
 
 
 
-func queueEnqueueMany(scope:Scope,handle: Tensorflow_DataType, components: Tensorflow_DataType, tcomponents :list(type)  , timeoutMs :uInt8  )  ->(o:tf.Operation){
+func queueEnqueueMany(scope:Scope,handle: Tensorflow_DataType, components: Tensorflow_DataType, tcomponents :List(type)  , timeoutMs :UInt8  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("Tcomponents":tcomponents)
-    attr.append("timeout_ms":timeoutMs)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tcomponents",tcomponents)
+    attr.append("timeout_ms",timeoutMs)
 
     let opspec = tf.OpSpec(
         OpType: "QueueEnqueueMany",
@@ -12259,14 +12135,14 @@ elements have been enqueued (or 'timeout_ms' elapses, if specified).
 
 
 
-func queueEnqueueManyV2(scope:Scope,handle: Tensorflow_DataType, components: Tensorflow_DataType, tcomponents :list(type)  , timeoutMs :uInt8  )  ->(o:tf.Operation){
+func queueEnqueueManyV2(scope:Scope,handle: Tensorflow_DataType, components: Tensorflow_DataType, tcomponents :List(type)  , timeoutMs :UInt8  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("Tcomponents":tcomponents)
-    attr.append("timeout_ms":timeoutMs)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tcomponents",tcomponents)
+    attr.append("timeout_ms",timeoutMs)
 
     let opspec = tf.OpSpec(
         OpType: "QueueEnqueueManyV2",
@@ -12289,14 +12165,14 @@ element has been enqueued (or 'timeout_ms' elapses, if specified).
 
 
 
-func queueEnqueueV2(scope:Scope,handle: Tensorflow_DataType, components: Tensorflow_DataType, tcomponents :list(type)  , timeoutMs :uInt8  )  ->(o:tf.Operation){
+func queueEnqueueV2(scope:Scope,handle: Tensorflow_DataType, components: Tensorflow_DataType, tcomponents :List(type)  , timeoutMs :UInt8  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("Tcomponents":tcomponents)
-    attr.append("timeout_ms":timeoutMs)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tcomponents",tcomponents)
+    attr.append("timeout_ms",timeoutMs)
 
     let opspec = tf.OpSpec(
         OpType: "QueueEnqueueV2",
@@ -12320,7 +12196,7 @@ func queueSize(scope:Scope,handle: Tensorflow_DataType )  ->(size: tf.Output){
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "QueueSize",
@@ -12345,7 +12221,7 @@ func queueSizeV2(scope:Scope,handle: Tensorflow_DataType )  ->(size: tf.Output){
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "QueueSizeV2",
@@ -12375,7 +12251,7 @@ func rfft(scope:Scope,input: Tensorflow_DataType, fftLength: Tensorflow_DataType
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "RFFT",
@@ -12406,7 +12282,7 @@ func rfft2D(scope:Scope,input: Tensorflow_DataType, fftLength: Tensorflow_DataTy
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "RFFT2D",
@@ -12437,7 +12313,7 @@ func rfft3D(scope:Scope,input: Tensorflow_DataType, fftLength: Tensorflow_DataTy
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "RFFT3D",
@@ -12463,13 +12339,12 @@ corresponds to pure red, hue 1/3 is pure green, and 2/3 is pure blue.
 
 
 
-func rgbToHSV(scope:Scope,images: Tensorflow_DataType, t :type  )  ->(output: tf.Output){
+func rgbToHSV(scope:Scope,images: Tensorflow_DataType )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "RGBToHSV",
@@ -12494,15 +12369,15 @@ area will fit inside the original image.
 
 
 
-func randomCrop(scope:Scope,image: Tensorflow_DataType, size: Tensorflow_DataType, t :type  , seed :uInt8  , seed2 :uInt8  )  ->(output: tf.Output){
+func randomCrop(scope:Scope,image: Tensorflow_DataType, size: Tensorflow_DataType, t :Type  , seed :Int  , seed2 :Int  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("seed":seed)
-    attr.append("seed2":seed2)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("seed",seed)
+    attr.append("seed2",seed2)
 
     let opspec = tf.OpSpec(
         OpType: "RandomCrop",
@@ -12525,16 +12400,15 @@ See http://dl.acm.org/citation.cfm?id=358414
 
 
 
-func randomGamma(scope:Scope,shape: Tensorflow_DataType, alpha: Tensorflow_DataType, seed :uInt8  , seed2 :uInt8  , s :type  , t :type  )  ->(output: tf.Output){
+func randomGamma(scope:Scope,shape: Tensorflow_DataType, alpha: Tensorflow_DataType, seed :UInt8  , seed2 :UInt8  , s :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("seed":seed)
-    attr.append("seed2":seed2)
-    attr.append("S":s)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("seed",seed)
+    attr.append("seed2",seed2)
+    attr.append("S",s)
 
     let opspec = tf.OpSpec(
         OpType: "RandomGamma",
@@ -12562,16 +12436,16 @@ Programming, Volume 2. Addison Wesley
 
 
 
-func randomPoisson(scope:Scope,shape: Tensorflow_DataType, rate: Tensorflow_DataType, seed :uInt8  , seed2 :uInt8  , s :type  , dtype :type  )  ->(output: tf.Output){
+func randomPoisson(scope:Scope,shape: Tensorflow_DataType, rate: Tensorflow_DataType, seed :Int  , seed2 :Int  , s :Type  , dtype :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("seed":seed)
-    attr.append("seed2":seed2)
-    attr.append("S":s)
-    attr.append("dtype":dtype)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("seed",seed)
+    attr.append("seed2",seed2)
+    attr.append("S",s)
+    attr.append("dtype",dtype)
 
     let opspec = tf.OpSpec(
         OpType: "RandomPoisson",
@@ -12599,15 +12473,14 @@ Randomly shuffles a tensor along its first dimension.
 
 
 
-func randomShuffle(scope:Scope,value: Tensorflow_DataType, seed :uInt8  , seed2 :uInt8  , t :type  )  ->(output: tf.Output){
+func randomShuffle(scope:Scope,value: Tensorflow_DataType, seed :UInt8  , seed2 :UInt8  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("seed":seed)
-    attr.append("seed2":seed2)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("seed",seed)
+    attr.append("seed2",seed2)
 
     let opspec = tf.OpSpec(
         OpType: "RandomShuffle",
@@ -12627,20 +12500,20 @@ A queue that randomizes the order of elements.
 
 
 
-func randomShuffleQueue(scope:Scope componentTypes :list(type)  , shapes :[Shape]  , capacity :uInt8  , minAfterDequeue :uInt8  , seed :uInt8  , seed2 :uInt8  , container :string  , sharedName :string  )  ->(handle: tf.Output){
+func randomShuffleQueue(scope:Scope componentTypes :List(type)  , shapes :List(shape)  , capacity :Int  , minAfterDequeue :Int  , seed :Int  , seed2 :Int  , container :String  , sharedName :String  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("component_types":componentTypes)
-    attr.append("shapes":shapes)
-    attr.append("capacity":capacity)
-    attr.append("min_after_dequeue":minAfterDequeue)
-    attr.append("seed":seed)
-    attr.append("seed2":seed2)
-    attr.append("container":container)
-    attr.append("shared_name":sharedName)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("component_types",componentTypes)
+    attr.append("shapes",shapes)
+    attr.append("capacity",capacity)
+    attr.append("min_after_dequeue",minAfterDequeue)
+    attr.append("seed",seed)
+    attr.append("seed2",seed2)
+    attr.append("container",container)
+    attr.append("shared_name",sharedName)
 
     let opspec = tf.OpSpec(
         OpType: "RandomShuffleQueue",
@@ -12660,20 +12533,20 @@ A queue that randomizes the order of elements.
 
 
 
-func randomShuffleQueueV2(scope:Scope componentTypes :list(type)  , shapes :[Shape]  , capacity :uInt8  , minAfterDequeue :uInt8  , seed :uInt8  , seed2 :uInt8  , container :string  , sharedName :string  )  ->(handle: tf.Output){
+func randomShuffleQueueV2(scope:Scope componentTypes :List(type)  , shapes :[Shape]  , capacity :UInt8  , minAfterDequeue :UInt8  , seed :UInt8  , seed2 :UInt8  , container :String  , sharedName :String  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("component_types":componentTypes)
-    attr.append("shapes":shapes)
-    attr.append("capacity":capacity)
-    attr.append("min_after_dequeue":minAfterDequeue)
-    attr.append("seed":seed)
-    attr.append("seed2":seed2)
-    attr.append("container":container)
-    attr.append("shared_name":sharedName)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("component_types",componentTypes)
+    attr.append("shapes",shapes)
+    attr.append("capacity",capacity)
+    attr.append("min_after_dequeue",minAfterDequeue)
+    attr.append("seed",seed)
+    attr.append("seed2",seed2)
+    attr.append("container",container)
+    attr.append("shared_name",sharedName)
 
     let opspec = tf.OpSpec(
         OpType: "RandomShuffleQueueV2",
@@ -12694,16 +12567,15 @@ The generated values will have mean 0 and standard deviation 1.
 
 
 
-func randomStandardNormal(scope:Scope,shape: Tensorflow_DataType, seed :uInt8  , seed2 :uInt8  , dtype :type  , t :type  )  ->(output: tf.Output){
+func randomStandardNormal(scope:Scope,shape: Tensorflow_DataType, seed :UInt8  , seed2 :UInt8  , dtype :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("seed":seed)
-    attr.append("seed2":seed2)
-    attr.append("dtype":dtype)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("seed",seed)
+    attr.append("seed2",seed2)
+    attr.append("dtype",dtype)
 
     let opspec = tf.OpSpec(
         OpType: "RandomStandardNormal",
@@ -12725,16 +12597,16 @@ lower bound 0 is included in the range, while the upper bound 1 is excluded.
 
 
 
-func randomUniform(scope:Scope,shape: Tensorflow_DataType, seed :uInt8  , seed2 :uInt8  , dtype :type  , t :type  )  ->(output: tf.Output){
+func randomUniform(scope:Scope,shape: Tensorflow_DataType, seed :Int  , seed2 :Int  , dtype :Type  , t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("seed":seed)
-    attr.append("seed2":seed2)
-    attr.append("dtype":dtype)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("seed",seed)
+    attr.append("seed2",seed2)
+    attr.append("dtype",dtype)
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "RandomUniform",
@@ -12760,16 +12632,15 @@ smaller than the range of the output (either `2^32` or `2^64`).
 
 
 
-func randomUniformInt(scope:Scope,shape: Tensorflow_DataType, minval: Tensorflow_DataType, maxval: Tensorflow_DataType, seed :uInt8  , seed2 :uInt8  , tout :type  , t :type  )  ->(output: tf.Output){
+func randomUniformInt(scope:Scope,shape: Tensorflow_DataType, minval: Tensorflow_DataType, maxval: Tensorflow_DataType, seed :UInt8  , seed2 :UInt8  , tout :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("seed":seed)
-    attr.append("seed2":seed2)
-    attr.append("Tout":tout)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("seed",seed)
+    attr.append("seed2",seed2)
+    attr.append("Tout",tout)
 
     let opspec = tf.OpSpec(
         OpType: "RandomUniformInt",
@@ -12798,13 +12669,13 @@ tf.range(start, limit, delta) ==> [3, 6, 9, 12, 15]
 
 
 
-func range(scope:Scope,start: Tensorflow_DataType, limit: Tensorflow_DataType, delta: Tensorflow_DataType, tidx :type  )  ->(output: tf.Output){
+func range(scope:Scope,start: Tensorflow_DataType, limit: Tensorflow_DataType, delta: Tensorflow_DataType, tidx :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("Tidx":tidx)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tidx",tidx)
 
     let opspec = tf.OpSpec(
         OpType: "Range",
@@ -12824,14 +12695,14 @@ Creates a dataset with a range of values. Corresponds to python's xrange.
 
 
 
-func rangeDataset(scope:Scope,start: Tensorflow_DataType, stop: Tensorflow_DataType, step: Tensorflow_DataType, outputTypes :list(type)  , outputShapes :[Shape]  )  ->(handle: tf.Output){
+func rangeDataset(scope:Scope,start: Tensorflow_DataType, stop: Tensorflow_DataType, step: Tensorflow_DataType, outputTypes :List(type)  , outputShapes :[Shape]  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("output_types":outputTypes)
-    attr.append("output_shapes":outputShapes)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("output_types",outputTypes)
+    attr.append("output_shapes",outputShapes)
 
     let opspec = tf.OpSpec(
         OpType: "RangeDataset",
@@ -12861,13 +12732,12 @@ of the tensor. Rank is also known as "order", "degree", or "ndims."
 
 
 
-func rank(scope:Scope,input: Tensorflow_DataType, t :type  )  ->(output: tf.Output){
+func rank(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "Rank",
@@ -12892,7 +12762,7 @@ func readFile(scope:Scope,filename: Tensorflow_DataType )  ->(contents: tf.Outpu
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "ReadFile",
@@ -12919,7 +12789,7 @@ func readerNumRecordsProduced(scope:Scope,readerHandle: Tensorflow_DataType )  -
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "ReaderNumRecordsProduced",
@@ -12946,7 +12816,7 @@ func readerNumRecordsProducedV2(scope:Scope,readerHandle: Tensorflow_DataType ) 
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "ReaderNumRecordsProducedV2",
@@ -12971,7 +12841,7 @@ func readerNumWorkUnitsCompleted(scope:Scope,readerHandle: Tensorflow_DataType )
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "ReaderNumWorkUnitsCompleted",
@@ -12996,7 +12866,7 @@ func readerNumWorkUnitsCompletedV2(scope:Scope,readerHandle: Tensorflow_DataType
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "ReaderNumWorkUnitsCompletedV2",
@@ -13024,7 +12894,7 @@ func readerRead(scope:Scope,readerHandle: Tensorflow_DataType, queueHandle: Tens
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "ReaderRead",
@@ -13053,7 +12923,7 @@ func readerReadUpTo(scope:Scope,readerHandle: Tensorflow_DataType, queueHandle: 
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "ReaderReadUpTo",
@@ -13082,7 +12952,7 @@ func readerReadUpToV2(scope:Scope,readerHandle: Tensorflow_DataType, queueHandle
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "ReaderReadUpToV2",
@@ -13110,7 +12980,7 @@ func readerReadV2(scope:Scope,readerHandle: Tensorflow_DataType, queueHandle: Te
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "ReaderReadV2",
@@ -13135,7 +13005,7 @@ func readerReset(scope:Scope,readerHandle: Tensorflow_DataType )  ->(o:tf.Operat
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "ReaderReset",
@@ -13159,7 +13029,7 @@ func readerResetV2(scope:Scope,readerHandle: Tensorflow_DataType )  ->(o:tf.Oper
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "ReaderResetV2",
@@ -13185,7 +13055,7 @@ func readerRestoreState(scope:Scope,readerHandle: Tensorflow_DataType, state: Te
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "ReaderRestoreState",
@@ -13211,7 +13081,7 @@ func readerRestoreStateV2(scope:Scope,readerHandle: Tensorflow_DataType, state: 
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "ReaderRestoreStateV2",
@@ -13237,7 +13107,7 @@ func readerSerializeState(scope:Scope,readerHandle: Tensorflow_DataType )  ->(st
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "ReaderSerializeState",
@@ -13264,7 +13134,7 @@ func readerSerializeStateV2(scope:Scope,readerHandle: Tensorflow_DataType )  ->(
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "ReaderSerializeStateV2",
@@ -13293,14 +13163,13 @@ tf.real(input) ==> [-2.25, 3.25]
 
 
 
-func real(scope:Scope,input: Tensorflow_DataType, t :type  , tout :type  )  ->(output: tf.Output){
+func real(scope:Scope,input: Tensorflow_DataType, tout :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tout":tout)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tout",tout)
 
     let opspec = tf.OpSpec(
         OpType: "Real",
@@ -13323,13 +13192,13 @@ If `x` and `y` are reals, this will return the floating-point division.
 
 
 
-func realDiv(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :type  )  ->(z: tf.Output){
+func realDiv(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :Type  )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "RealDiv",
@@ -13350,13 +13219,12 @@ I.e., \\(y = 1 / x\\).
 
 
 
-func reciprocal(scope:Scope,x: Tensorflow_DataType, t :type  )  ->(y: tf.Output){
+func reciprocal(scope:Scope,x: Tensorflow_DataType )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "Reciprocal",
@@ -13378,13 +13246,13 @@ is the corresponding input gradient.
 
 
 
-func reciprocalGrad(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :type  )  ->(z: tf.Output){
+func reciprocalGrad(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :Type  )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "ReciprocalGrad",
@@ -13404,18 +13272,18 @@ Emits randomized records.
 
 
 
-func recordInput(scope:Scope filePattern :string  , fileRandomSeed :uInt8  , fileShuffleShiftRatio :float  , fileBufferSize :uInt8  , fileParallelism :uInt8  , batchSize :uInt8  )  ->(records: tf.Output){
+func recordInput(scope:Scope filePattern :String  , fileRandomSeed :UInt8  , fileShuffleShiftRatio :Float  , fileBufferSize :UInt8  , fileParallelism :UInt8  , batchSize :UInt8  )  ->(records: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("file_pattern":filePattern)
-    attr.append("file_random_seed":fileRandomSeed)
-    attr.append("file_shuffle_shift_ratio":fileShuffleShiftRatio)
-    attr.append("file_buffer_size":fileBufferSize)
-    attr.append("file_parallelism":fileParallelism)
-    attr.append("batch_size":batchSize)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("file_pattern",filePattern)
+    attr.append("file_random_seed",fileRandomSeed)
+    attr.append("file_shuffle_shift_ratio",fileShuffleShiftRatio)
+    attr.append("file_buffer_size",fileBufferSize)
+    attr.append("file_parallelism",fileParallelism)
+    attr.append("batch_size",batchSize)
 
     let opspec = tf.OpSpec(
         OpType: "RecordInput",
@@ -13453,14 +13321,14 @@ tf.reduce_join(a, []) ==> ["abcd"]
 
 
 
-func reduceJoin(scope:Scope,inputs: Tensorflow_DataType, reductionIndices: Tensorflow_DataType, keepDims :bool  , separator :string  )  ->(output: tf.Output){
+func reduceJoin(scope:Scope,inputs: Tensorflow_DataType, reductionIndices: Tensorflow_DataType, keepDims :Bool  , separator :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("keep_dims":keepDims)
-    attr.append("separator":separator)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("keep_dims",keepDims)
+    attr.append("separator",separator)
 
     let opspec = tf.OpSpec(
         OpType: "ReduceJoin",
@@ -13484,16 +13352,15 @@ are run in parallel in the child frame.
 
 
 
-func refEnter(scope:Scope,data: Tensorflow_DataType, t :type  , frameName :string  , isConstant :bool  , parallelIterations :uInt8  )  ->(output: tf.Output){
+func refEnter(scope:Scope,data: Tensorflow_DataType, frameName :String  , isConstant :Bool  , parallelIterations :Int  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("frame_name":frameName)
-    attr.append("is_constant":isConstant)
-    attr.append("parallel_iterations":parallelIterations)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("frame_name",frameName)
+    attr.append("is_constant",isConstant)
+    attr.append("parallel_iterations",parallelIterations)
 
     let opspec = tf.OpSpec(
         OpType: "RefEnter",
@@ -13514,13 +13381,13 @@ Exit makes its input `data` available to the parent frame.
 
 
 
-func refExit(scope:Scope,data: Tensorflow_DataType, t :type  )  ->(output: tf.Output){
+func refExit(scope:Scope,data: Tensorflow_DataType, t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "RefExit",
@@ -13540,13 +13407,12 @@ Return the same ref tensor as the input ref tensor.
 
 
 
-func refIdentity(scope:Scope,input: Tensorflow_DataType, t :type  )  ->(output: tf.Output){
+func refIdentity(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "RefIdentity",
@@ -13570,14 +13436,14 @@ It is usually combined with `Switch` to implement branching.
 
 
 
-func refMerge(scope:Scope,inputs: Tensorflow_DataType, t :type  , n :uInt8  )  ->(output: tf.Output, valueIndex: tf.Output){
+func refMerge(scope:Scope,inputs: Tensorflow_DataType, t :Type  , n :Int  )  ->(output: tf.Output, valueIndex: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("N":n)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("N",n)
 
     let opspec = tf.OpSpec(
         OpType: "RefMerge",
@@ -13597,13 +13463,12 @@ Makes its input available to the next iteration.
 
 
 
-func refNextIteration(scope:Scope,data: Tensorflow_DataType, t :type  )  ->(output: tf.Output){
+func refNextIteration(scope:Scope,data: Tensorflow_DataType )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "RefNextIteration",
@@ -13623,14 +13488,14 @@ Forwards the `index`th element of `inputs` to `output`.
 
 
 
-func refSelect(scope:Scope,index: Tensorflow_DataType, inputs: Tensorflow_DataType, t :type  , n :uInt8  )  ->(output: tf.Output){
+func refSelect(scope:Scope,index: Tensorflow_DataType, inputs: Tensorflow_DataType, t :Type  , n :Int  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("N":n)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("N",n)
 
     let opspec = tf.OpSpec(
         OpType: "RefSelect",
@@ -13653,13 +13518,12 @@ See also `Switch` and `Merge`.
 
 
 
-func refSwitch(scope:Scope,data: Tensorflow_DataType, pred: Tensorflow_DataType, t :type  )  ->(outputFalse: tf.Output, outputTrue: tf.Output){
+func refSwitch(scope:Scope,data: Tensorflow_DataType, pred: Tensorflow_DataType )  ->(outputFalse: tf.Output, outputTrue: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "RefSwitch",
@@ -13679,13 +13543,13 @@ Computes rectified linear: `max(features, 0)`.
 
 
 
-func relu(scope:Scope,features: Tensorflow_DataType, t :type  )  ->(activations: tf.Output){
+func relu(scope:Scope,features: Tensorflow_DataType, t :Type  )  ->(activations: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "Relu",
@@ -13705,13 +13569,12 @@ Computes rectified linear 6: `min(max(features, 0), 6)`.
 
 
 
-func relu6(scope:Scope,features: Tensorflow_DataType, t :type  )  ->(activations: tf.Output){
+func relu6(scope:Scope,features: Tensorflow_DataType )  ->(activations: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "Relu6",
@@ -13731,13 +13594,13 @@ Computes rectified linear 6 gradients for a Relu6 operation.
 
 
 
-func relu6Grad(scope:Scope,gradients: Tensorflow_DataType, features: Tensorflow_DataType, t :type  )  ->(backprops: tf.Output){
+func relu6Grad(scope:Scope,gradients: Tensorflow_DataType, features: Tensorflow_DataType, t :Type  )  ->(backprops: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "Relu6Grad",
@@ -13757,13 +13620,12 @@ Computes rectified linear gradients for a Relu operation.
 
 
 
-func reluGrad(scope:Scope,gradients: Tensorflow_DataType, features: Tensorflow_DataType, t :type  )  ->(backprops: tf.Output){
+func reluGrad(scope:Scope,gradients: Tensorflow_DataType, features: Tensorflow_DataType )  ->(backprops: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "ReluGrad",
@@ -13783,14 +13645,14 @@ Creates a dataset that emits the outputs of `input_dataset` `count` times.
 
 
 
-func repeatDataset(scope:Scope,inputDataset: Tensorflow_DataType, count: Tensorflow_DataType, outputTypes :list(type)  , outputShapes :[Shape]  )  ->(handle: tf.Output){
+func repeatDataset(scope:Scope,inputDataset: Tensorflow_DataType, count: Tensorflow_DataType, outputTypes :List(type)  , outputShapes :List(shape)  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("output_types":outputTypes)
-    attr.append("output_shapes":outputShapes)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("output_types",outputTypes)
+    attr.append("output_shapes",outputShapes)
 
     let opspec = tf.OpSpec(
         OpType: "RepeatDataset",
@@ -13813,13 +13675,13 @@ Requantize.
 
 
 
-func requantizationRange(scope:Scope,input: Tensorflow_DataType, inputMin: Tensorflow_DataType, inputMax: Tensorflow_DataType, tinput :type  )  ->(outputMin: tf.Output, outputMax: tf.Output){
+func requantizationRange(scope:Scope,input: Tensorflow_DataType, inputMin: Tensorflow_DataType, inputMax: Tensorflow_DataType, tinput :Type  )  ->(outputMin: tf.Output, outputMax: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("Tinput":tinput)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tinput",tinput)
 
     let opspec = tf.OpSpec(
         OpType: "RequantizationRange",
@@ -13844,14 +13706,14 @@ value in the 16-bit data should be interpreted as -1.0f, and a 65535 means 1.0f.
 
 
 
-func requantize(scope:Scope,input: Tensorflow_DataType, inputMin: Tensorflow_DataType, inputMax: Tensorflow_DataType, requestedOutputMin: Tensorflow_DataType, requestedOutputMax: Tensorflow_DataType, tinput :type  , outType :type  )  ->(output: tf.Output, outputMin: tf.Output, outputMax: tf.Output){
+func requantize(scope:Scope,input: Tensorflow_DataType, inputMin: Tensorflow_DataType, inputMax: Tensorflow_DataType, requestedOutputMin: Tensorflow_DataType, requestedOutputMax: Tensorflow_DataType, tinput :Type  , outType :Type  )  ->(output: tf.Output, outputMin: tf.Output, outputMax: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("Tinput":tinput)
-    attr.append("out_type":outType)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tinput",tinput)
+    attr.append("out_type",outType)
 
     let opspec = tf.OpSpec(
         OpType: "Requantize",
@@ -13918,14 +13780,13 @@ reshape(t, []) ==> 7
 
 
 
-func reshape(scope:Scope,tensor: Tensorflow_DataType, shape: Tensorflow_DataType, t :type  , tshape :type  )  ->(output: tf.Output){
+func reshape(scope:Scope,tensor: Tensorflow_DataType, shape: Tensorflow_DataType, tshape :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tshape":tshape)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tshape",tshape)
 
     let opspec = tf.OpSpec(
         OpType: "Reshape",
@@ -13946,14 +13807,14 @@ Input images can be of different types but output images are always float.
 
 
 
-func resizeArea(scope:Scope,images: Tensorflow_DataType, size: Tensorflow_DataType, t :type  , alignCorners :bool  )  ->(resizedImages: tf.Output){
+func resizeArea(scope:Scope,images: Tensorflow_DataType, size: Tensorflow_DataType, t :Type  , alignCorners :Bool  )  ->(resizedImages: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("align_corners":alignCorners)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("align_corners",alignCorners)
 
     let opspec = tf.OpSpec(
         OpType: "ResizeArea",
@@ -13974,14 +13835,13 @@ Input images can be of different types but output images are always float.
 
 
 
-func resizeBicubic(scope:Scope,images: Tensorflow_DataType, size: Tensorflow_DataType, t :type  , alignCorners :bool  )  ->(resizedImages: tf.Output){
+func resizeBicubic(scope:Scope,images: Tensorflow_DataType, size: Tensorflow_DataType, alignCorners :Bool  )  ->(resizedImages: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("align_corners":alignCorners)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("align_corners",alignCorners)
 
     let opspec = tf.OpSpec(
         OpType: "ResizeBicubic",
@@ -14002,14 +13862,14 @@ Input images can be of different types but output images are always float.
 
 
 
-func resizeBilinear(scope:Scope,images: Tensorflow_DataType, size: Tensorflow_DataType, t :type  , alignCorners :bool  )  ->(resizedImages: tf.Output){
+func resizeBilinear(scope:Scope,images: Tensorflow_DataType, size: Tensorflow_DataType, t :Type  , alignCorners :Bool  )  ->(resizedImages: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("align_corners":alignCorners)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("align_corners",alignCorners)
 
     let opspec = tf.OpSpec(
         OpType: "ResizeBilinear",
@@ -14029,14 +13889,13 @@ Computes the gradient of bilinear interpolation.
 
 
 
-func resizeBilinearGrad(scope:Scope,grads: Tensorflow_DataType, originalImage: Tensorflow_DataType, t :type  , alignCorners :bool  )  ->(output: tf.Output){
+func resizeBilinearGrad(scope:Scope,grads: Tensorflow_DataType, originalImage: Tensorflow_DataType, alignCorners :Bool  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("align_corners":alignCorners)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("align_corners",alignCorners)
 
     let opspec = tf.OpSpec(
         OpType: "ResizeBilinearGrad",
@@ -14056,14 +13915,14 @@ Resize `images` to `size` using nearest neighbor interpolation.
 
 
 
-func resizeNearestNeighbor(scope:Scope,images: Tensorflow_DataType, size: Tensorflow_DataType, t :type  , alignCorners :bool  )  ->(resizedImages: tf.Output){
+func resizeNearestNeighbor(scope:Scope,images: Tensorflow_DataType, size: Tensorflow_DataType, t :Type  , alignCorners :Bool  )  ->(resizedImages: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("align_corners":alignCorners)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("align_corners",alignCorners)
 
     let opspec = tf.OpSpec(
         OpType: "ResizeNearestNeighbor",
@@ -14083,14 +13942,13 @@ Computes the gradient of nearest neighbor interpolation.
 
 
 
-func resizeNearestNeighborGrad(scope:Scope,grads: Tensorflow_DataType, size: Tensorflow_DataType, t :type  , alignCorners :bool  )  ->(output: tf.Output){
+func resizeNearestNeighborGrad(scope:Scope,grads: Tensorflow_DataType, size: Tensorflow_DataType, alignCorners :Bool  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("align_corners":alignCorners)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("align_corners",alignCorners)
 
     let opspec = tf.OpSpec(
         OpType: "ResizeNearestNeighborGrad",
@@ -14114,14 +13972,14 @@ var -= update;
 
 
 
-func resourceApplyAdadelta(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, accumUpdate: Tensorflow_DataType, lr: Tensorflow_DataType, rho: Tensorflow_DataType, epsilon: Tensorflow_DataType, grad: Tensorflow_DataType, t :type  , useLocking :bool  )  ->(o:tf.Operation){
+func resourceApplyAdadelta(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, accumUpdate: Tensorflow_DataType, lr: Tensorflow_DataType, rho: Tensorflow_DataType, epsilon: Tensorflow_DataType, grad: Tensorflow_DataType, t :Type  , useLocking :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("use_locking":useLocking)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("use_locking",useLocking)
 
     let opspec = tf.OpSpec(
         OpType: "ResourceApplyAdadelta",
@@ -14142,14 +14000,13 @@ var -= lr * grad * (1 / sqrt(accum))
 
 
 
-func resourceApplyAdagrad(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, lr: Tensorflow_DataType, grad: Tensorflow_DataType, t :type  , useLocking :bool  )  ->(o:tf.Operation){
+func resourceApplyAdagrad(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, lr: Tensorflow_DataType, grad: Tensorflow_DataType, useLocking :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("use_locking":useLocking)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("use_locking",useLocking)
 
     let opspec = tf.OpSpec(
         OpType: "ResourceApplyAdagrad",
@@ -14168,14 +14025,14 @@ Update '*var' according to the proximal adagrad scheme.
 
 
 
-func resourceApplyAdagradDA(scope:Scope,`var`: Tensorflow_DataType, gradientAccumulator: Tensorflow_DataType, gradientSquaredAccumulator: Tensorflow_DataType, grad: Tensorflow_DataType, lr: Tensorflow_DataType, l1: Tensorflow_DataType, l2: Tensorflow_DataType, globalStep: Tensorflow_DataType, t :type  , useLocking :bool  )  ->(o:tf.Operation){
+func resourceApplyAdagradDA(scope:Scope,`var`: Tensorflow_DataType, gradientAccumulator: Tensorflow_DataType, gradientSquaredAccumulator: Tensorflow_DataType, grad: Tensorflow_DataType, lr: Tensorflow_DataType, l1: Tensorflow_DataType, l2: Tensorflow_DataType, globalStep: Tensorflow_DataType, t :Type  , useLocking :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("use_locking":useLocking)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("use_locking",useLocking)
 
     let opspec = tf.OpSpec(
         OpType: "ResourceApplyAdagradDA",
@@ -14198,15 +14055,14 @@ variable <- variable - lr_t * m_t / (sqrt(v_t) + epsilon)
 
 
 
-func resourceApplyAdam(scope:Scope,`var`: Tensorflow_DataType, m: Tensorflow_DataType, v: Tensorflow_DataType, beta1Power: Tensorflow_DataType, beta2Power: Tensorflow_DataType, lr: Tensorflow_DataType, beta1: Tensorflow_DataType, beta2: Tensorflow_DataType, epsilon: Tensorflow_DataType, grad: Tensorflow_DataType, t :type  , useLocking :bool  , useNesterov :bool  )  ->(o:tf.Operation){
+func resourceApplyAdam(scope:Scope,`var`: Tensorflow_DataType, m: Tensorflow_DataType, v: Tensorflow_DataType, beta1Power: Tensorflow_DataType, beta2Power: Tensorflow_DataType, lr: Tensorflow_DataType, beta1: Tensorflow_DataType, beta2: Tensorflow_DataType, epsilon: Tensorflow_DataType, grad: Tensorflow_DataType, useLocking :Bool  , useNesterov :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("use_locking":useLocking)
-    attr.append("use_nesterov":useNesterov)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("use_locking",useLocking)
+    attr.append("use_nesterov",useNesterov)
 
     let opspec = tf.OpSpec(
         OpType: "ResourceApplyAdam",
@@ -14239,14 +14095,14 @@ var <- var - mom
 
 
 
-func resourceApplyCenteredRMSProp(scope:Scope,`var`: Tensorflow_DataType, mg: Tensorflow_DataType, ms: Tensorflow_DataType, mom: Tensorflow_DataType, lr: Tensorflow_DataType, rho: Tensorflow_DataType, momentum: Tensorflow_DataType, epsilon: Tensorflow_DataType, grad: Tensorflow_DataType, t :type  , useLocking :bool  )  ->(o:tf.Operation){
+func resourceApplyCenteredRMSProp(scope:Scope,`var`: Tensorflow_DataType, mg: Tensorflow_DataType, ms: Tensorflow_DataType, mom: Tensorflow_DataType, lr: Tensorflow_DataType, rho: Tensorflow_DataType, momentum: Tensorflow_DataType, epsilon: Tensorflow_DataType, grad: Tensorflow_DataType, t :Type  , useLocking :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("use_locking":useLocking)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("use_locking",useLocking)
 
     let opspec = tf.OpSpec(
         OpType: "ResourceApplyCenteredRMSProp",
@@ -14270,14 +14126,13 @@ accum = accum_new
 
 
 
-func resourceApplyFtrl(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, linear: Tensorflow_DataType, grad: Tensorflow_DataType, lr: Tensorflow_DataType, l1: Tensorflow_DataType, l2: Tensorflow_DataType, lrPower: Tensorflow_DataType, t :type  , useLocking :bool  )  ->(o:tf.Operation){
+func resourceApplyFtrl(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, linear: Tensorflow_DataType, grad: Tensorflow_DataType, lr: Tensorflow_DataType, l1: Tensorflow_DataType, l2: Tensorflow_DataType, lrPower: Tensorflow_DataType, useLocking :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("use_locking":useLocking)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("use_locking",useLocking)
 
     let opspec = tf.OpSpec(
         OpType: "ResourceApplyFtrl",
@@ -14296,14 +14151,14 @@ Update '*var' by subtracting 'alpha' * 'delta' from it.
 
 
 
-func resourceApplyGradientDescent(scope:Scope,`var`: Tensorflow_DataType, alpha: Tensorflow_DataType, delta: Tensorflow_DataType, t :type  , useLocking :bool  )  ->(o:tf.Operation){
+func resourceApplyGradientDescent(scope:Scope,`var`: Tensorflow_DataType, alpha: Tensorflow_DataType, delta: Tensorflow_DataType, t :Type  , useLocking :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("use_locking":useLocking)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("use_locking",useLocking)
 
     let opspec = tf.OpSpec(
         OpType: "ResourceApplyGradientDescent",
@@ -14325,15 +14180,14 @@ var -= lr * accum
 
 
 
-func resourceApplyMomentum(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, lr: Tensorflow_DataType, grad: Tensorflow_DataType, momentum: Tensorflow_DataType, t :type  , useLocking :bool  , useNesterov :bool  )  ->(o:tf.Operation){
+func resourceApplyMomentum(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, lr: Tensorflow_DataType, grad: Tensorflow_DataType, momentum: Tensorflow_DataType, useLocking :Bool  , useNesterov :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("use_locking":useLocking)
-    attr.append("use_nesterov":useNesterov)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("use_locking",useLocking)
+    attr.append("use_nesterov",useNesterov)
 
     let opspec = tf.OpSpec(
         OpType: "ResourceApplyMomentum",
@@ -14355,14 +14209,14 @@ var = sign(prox_v)/(1+lr*l2) * max{|prox_v|-lr*l1,0}
 
 
 
-func resourceApplyProximalAdagrad(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, lr: Tensorflow_DataType, l1: Tensorflow_DataType, l2: Tensorflow_DataType, grad: Tensorflow_DataType, t :type  , useLocking :bool  )  ->(o:tf.Operation){
+func resourceApplyProximalAdagrad(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, lr: Tensorflow_DataType, l1: Tensorflow_DataType, l2: Tensorflow_DataType, grad: Tensorflow_DataType, t :Type  , useLocking :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("use_locking":useLocking)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("use_locking",useLocking)
 
     let opspec = tf.OpSpec(
         OpType: "ResourceApplyProximalAdagrad",
@@ -14383,14 +14237,13 @@ var = sign(prox_v)/(1+alpha*l2) * max{|prox_v|-alpha*l1,0}
 
 
 
-func resourceApplyProximalGradientDescent(scope:Scope,`var`: Tensorflow_DataType, alpha: Tensorflow_DataType, l1: Tensorflow_DataType, l2: Tensorflow_DataType, delta: Tensorflow_DataType, t :type  , useLocking :bool  )  ->(o:tf.Operation){
+func resourceApplyProximalGradientDescent(scope:Scope,`var`: Tensorflow_DataType, alpha: Tensorflow_DataType, l1: Tensorflow_DataType, l2: Tensorflow_DataType, delta: Tensorflow_DataType, useLocking :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("use_locking":useLocking)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("use_locking",useLocking)
 
     let opspec = tf.OpSpec(
         OpType: "ResourceApplyProximalGradientDescent",
@@ -14417,14 +14270,14 @@ var <- var - mom
 
 
 
-func resourceApplyRMSProp(scope:Scope,`var`: Tensorflow_DataType, ms: Tensorflow_DataType, mom: Tensorflow_DataType, lr: Tensorflow_DataType, rho: Tensorflow_DataType, momentum: Tensorflow_DataType, epsilon: Tensorflow_DataType, grad: Tensorflow_DataType, t :type  , useLocking :bool  )  ->(o:tf.Operation){
+func resourceApplyRMSProp(scope:Scope,`var`: Tensorflow_DataType, ms: Tensorflow_DataType, mom: Tensorflow_DataType, lr: Tensorflow_DataType, rho: Tensorflow_DataType, momentum: Tensorflow_DataType, epsilon: Tensorflow_DataType, grad: Tensorflow_DataType, t :Type  , useLocking :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("use_locking":useLocking)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("use_locking",useLocking)
 
     let opspec = tf.OpSpec(
         OpType: "ResourceApplyRMSProp",
@@ -14443,15 +14296,14 @@ var: Should be from a Variable().
 
 
 
-func resourceSparseApplyAdadelta(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, accumUpdate: Tensorflow_DataType, lr: Tensorflow_DataType, rho: Tensorflow_DataType, epsilon: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, t :type  , tindices :type  , useLocking :bool  )  ->(o:tf.Operation){
+func resourceSparseApplyAdadelta(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, accumUpdate: Tensorflow_DataType, lr: Tensorflow_DataType, rho: Tensorflow_DataType, epsilon: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, tindices :Type  , useLocking :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tindices":tindices)
-    attr.append("use_locking":useLocking)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tindices",tindices)
+    attr.append("use_locking",useLocking)
 
     let opspec = tf.OpSpec(
         OpType: "ResourceSparseApplyAdadelta",
@@ -14473,15 +14325,15 @@ var -= lr * grad * (1 / sqrt(accum))
 
 
 
-func resourceSparseApplyAdagrad(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, lr: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, t :type  , tindices :type  , useLocking :bool  )  ->(o:tf.Operation){
+func resourceSparseApplyAdagrad(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, lr: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, t :Type  , tindices :Type  , useLocking :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tindices":tindices)
-    attr.append("use_locking":useLocking)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("Tindices",tindices)
+    attr.append("use_locking",useLocking)
 
     let opspec = tf.OpSpec(
         OpType: "ResourceSparseApplyAdagrad",
@@ -14500,15 +14352,14 @@ Update entries in '*var' and '*accum' according to the proximal adagrad scheme.
 
 
 
-func resourceSparseApplyAdagradDA(scope:Scope,`var`: Tensorflow_DataType, gradientAccumulator: Tensorflow_DataType, gradientSquaredAccumulator: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, lr: Tensorflow_DataType, l1: Tensorflow_DataType, l2: Tensorflow_DataType, globalStep: Tensorflow_DataType, t :type  , tindices :type  , useLocking :bool  )  ->(o:tf.Operation){
+func resourceSparseApplyAdagradDA(scope:Scope,`var`: Tensorflow_DataType, gradientAccumulator: Tensorflow_DataType, gradientSquaredAccumulator: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, lr: Tensorflow_DataType, l1: Tensorflow_DataType, l2: Tensorflow_DataType, globalStep: Tensorflow_DataType, tindices :Type  , useLocking :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tindices":tindices)
-    attr.append("use_locking":useLocking)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tindices",tindices)
+    attr.append("use_locking",useLocking)
 
     let opspec = tf.OpSpec(
         OpType: "ResourceSparseApplyAdagradDA",
@@ -14540,15 +14391,15 @@ var <- var - mom
 
 
 
-func resourceSparseApplyCenteredRMSProp(scope:Scope,`var`: Tensorflow_DataType, mg: Tensorflow_DataType, ms: Tensorflow_DataType, mom: Tensorflow_DataType, lr: Tensorflow_DataType, rho: Tensorflow_DataType, momentum: Tensorflow_DataType, epsilon: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, t :type  , tindices :type  , useLocking :bool  )  ->(o:tf.Operation){
+func resourceSparseApplyCenteredRMSProp(scope:Scope,`var`: Tensorflow_DataType, mg: Tensorflow_DataType, ms: Tensorflow_DataType, mom: Tensorflow_DataType, lr: Tensorflow_DataType, rho: Tensorflow_DataType, momentum: Tensorflow_DataType, epsilon: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, t :Type  , tindices :Type  , useLocking :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tindices":tindices)
-    attr.append("use_locking":useLocking)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("Tindices",tindices)
+    attr.append("use_locking",useLocking)
 
     let opspec = tf.OpSpec(
         OpType: "ResourceSparseApplyCenteredRMSProp",
@@ -14573,15 +14424,14 @@ accum = accum_new
 
 
 
-func resourceSparseApplyFtrl(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, linear: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, lr: Tensorflow_DataType, l1: Tensorflow_DataType, l2: Tensorflow_DataType, lrPower: Tensorflow_DataType, t :type  , tindices :type  , useLocking :bool  )  ->(o:tf.Operation){
+func resourceSparseApplyFtrl(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, linear: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, lr: Tensorflow_DataType, l1: Tensorflow_DataType, l2: Tensorflow_DataType, lrPower: Tensorflow_DataType, tindices :Type  , useLocking :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tindices":tindices)
-    attr.append("use_locking":useLocking)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tindices",tindices)
+    attr.append("use_locking",useLocking)
 
     let opspec = tf.OpSpec(
         OpType: "ResourceSparseApplyFtrl",
@@ -14604,16 +14454,16 @@ var -= lr * accum
 
 
 
-func resourceSparseApplyMomentum(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, lr: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, momentum: Tensorflow_DataType, t :type  , tindices :type  , useLocking :bool  , useNesterov :bool  )  ->(o:tf.Operation){
+func resourceSparseApplyMomentum(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, lr: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, momentum: Tensorflow_DataType, t :Type  , tindices :Type  , useLocking :Bool  , useNesterov :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tindices":tindices)
-    attr.append("use_locking":useLocking)
-    attr.append("use_nesterov":useNesterov)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("Tindices",tindices)
+    attr.append("use_locking",useLocking)
+    attr.append("use_nesterov",useNesterov)
 
     let opspec = tf.OpSpec(
         OpType: "ResourceSparseApplyMomentum",
@@ -14637,15 +14487,14 @@ var = sign(prox_v)/(1+lr*l2) * max{|prox_v|-lr*l1,0}
 
 
 
-func resourceSparseApplyProximalAdagrad(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, lr: Tensorflow_DataType, l1: Tensorflow_DataType, l2: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, t :type  , tindices :type  , useLocking :bool  )  ->(o:tf.Operation){
+func resourceSparseApplyProximalAdagrad(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, lr: Tensorflow_DataType, l1: Tensorflow_DataType, l2: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, tindices :Type  , useLocking :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tindices":tindices)
-    attr.append("use_locking":useLocking)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tindices",tindices)
+    attr.append("use_locking",useLocking)
 
     let opspec = tf.OpSpec(
         OpType: "ResourceSparseApplyProximalAdagrad",
@@ -14667,15 +14516,15 @@ var = sign(prox_v)/(1+alpha*l2) * max{|prox_v|-alpha*l1,0}
 
 
 
-func resourceSparseApplyProximalGradientDescent(scope:Scope,`var`: Tensorflow_DataType, alpha: Tensorflow_DataType, l1: Tensorflow_DataType, l2: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, t :type  , tindices :type  , useLocking :bool  )  ->(o:tf.Operation){
+func resourceSparseApplyProximalGradientDescent(scope:Scope,`var`: Tensorflow_DataType, alpha: Tensorflow_DataType, l1: Tensorflow_DataType, l2: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, t :Type  , tindices :Type  , useLocking :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tindices":tindices)
-    attr.append("use_locking":useLocking)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("Tindices",tindices)
+    attr.append("use_locking",useLocking)
 
     let opspec = tf.OpSpec(
         OpType: "ResourceSparseApplyProximalGradientDescent",
@@ -14702,15 +14551,14 @@ var <- var - mom
 
 
 
-func resourceSparseApplyRMSProp(scope:Scope,`var`: Tensorflow_DataType, ms: Tensorflow_DataType, mom: Tensorflow_DataType, lr: Tensorflow_DataType, rho: Tensorflow_DataType, momentum: Tensorflow_DataType, epsilon: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, t :type  , tindices :type  , useLocking :bool  )  ->(o:tf.Operation){
+func resourceSparseApplyRMSProp(scope:Scope,`var`: Tensorflow_DataType, ms: Tensorflow_DataType, mom: Tensorflow_DataType, lr: Tensorflow_DataType, rho: Tensorflow_DataType, momentum: Tensorflow_DataType, epsilon: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, tindices :Type  , useLocking :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tindices":tindices)
-    attr.append("use_locking":useLocking)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tindices",tindices)
+    attr.append("use_locking",useLocking)
 
     let opspec = tf.OpSpec(
         OpType: "ResourceSparseApplyRMSProp",
@@ -14734,19 +14582,19 @@ shape must be exactly the shape produced by the slice of `ref`.
 
 
 
-func resourceStridedSliceAssign(scope:Scope,ref: Tensorflow_DataType, begin: Tensorflow_DataType, end: Tensorflow_DataType, strides: Tensorflow_DataType, value: Tensorflow_DataType, t :type  , index :type  , beginMask :uInt8  , endMask :uInt8  , ellipsisMask :uInt8  , newAxisMask :uInt8  , shrinkAxisMask :uInt8  )  ->(o:tf.Operation){
+func resourceStridedSliceAssign(scope:Scope,ref: Tensorflow_DataType, begin: Tensorflow_DataType, end: Tensorflow_DataType, strides: Tensorflow_DataType, value: Tensorflow_DataType, t :Type  , index :Type  , beginMask :Int  , endMask :Int  , ellipsisMask :Int  , newAxisMask :Int  , shrinkAxisMask :Int  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Index":index)
-    attr.append("begin_mask":beginMask)
-    attr.append("end_mask":endMask)
-    attr.append("ellipsis_mask":ellipsisMask)
-    attr.append("new_axis_mask":newAxisMask)
-    attr.append("shrink_axis_mask":shrinkAxisMask)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("Index",index)
+    attr.append("begin_mask",beginMask)
+    attr.append("end_mask",endMask)
+    attr.append("ellipsis_mask",ellipsisMask)
+    attr.append("new_axis_mask",newAxisMask)
+    attr.append("shrink_axis_mask",shrinkAxisMask)
 
     let opspec = tf.OpSpec(
         OpType: "ResourceStridedSliceAssign",
@@ -14779,14 +14627,14 @@ See also `RestoreSlice`.
 
 
 
-func restore(scope:Scope,filePattern: Tensorflow_DataType, tensorName: Tensorflow_DataType, dt :type  , preferredShard :uInt8  )  ->(tensor: tf.Output){
+func restore(scope:Scope,filePattern: Tensorflow_DataType, tensorName: Tensorflow_DataType, dt :Type  , preferredShard :UInt8  )  ->(tensor: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("dt":dt)
-    attr.append("preferred_shard":preferredShard)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("dt",dt)
+    attr.append("preferred_shard",preferredShard)
 
     let opspec = tf.OpSpec(
         OpType: "Restore",
@@ -14811,14 +14659,14 @@ elements of the `shapes_and_slices` input of the `SaveSlices` op.
 
 
 
-func restoreSlice(scope:Scope,filePattern: Tensorflow_DataType, tensorName: Tensorflow_DataType, shapeAndSlice: Tensorflow_DataType, dt :type  , preferredShard :uInt8  )  ->(tensor: tf.Output){
+func restoreSlice(scope:Scope,filePattern: Tensorflow_DataType, tensorName: Tensorflow_DataType, shapeAndSlice: Tensorflow_DataType, dt :Type  , preferredShard :UInt8  )  ->(tensor: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("dt":dt)
-    attr.append("preferred_shard":preferredShard)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("dt",dt)
+    attr.append("preferred_shard",preferredShard)
 
     let opspec = tf.OpSpec(
         OpType: "RestoreSlice",
@@ -14849,13 +14697,13 @@ Callers must ensure all the named tensors are indeed stored in the checkpoint.
 
 
 
-func restoreV2(scope:Scope,`prefix`: Tensorflow_DataType, tensorNames: Tensorflow_DataType, shapeAndSlices: Tensorflow_DataType, dtypes :list(type)  )  ->(tensors: tf.Output){
+func restoreV2(scope:Scope,`prefix`: Tensorflow_DataType, tensorNames: Tensorflow_DataType, shapeAndSlices: Tensorflow_DataType, dtypes :TensorflowDataType  )  ->(tensors: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("dtypes":dtypes)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("dtypes",dtypes)
 
     let opspec = tf.OpSpec(
         OpType: "RestoreV2",
@@ -14912,13 +14760,12 @@ reverse(t, dims) ==> [[[[8, 9, 10, 11],
 
 
 
-func reverse(scope:Scope,tensor: Tensorflow_DataType, dims: Tensorflow_DataType, t :type  )  ->(output: tf.Output){
+func reverse(scope:Scope,tensor: Tensorflow_DataType, dims: Tensorflow_DataType )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "Reverse",
@@ -14982,16 +14829,16 @@ output[2:, :, 3, :, ...] = input[2:, :, 3, :, ...]
 
 
 
-func reverseSequence(scope:Scope,input: Tensorflow_DataType, seqLengths: Tensorflow_DataType, seqDim :uInt8  , batchDim :uInt8  , t :type  , tlen :type  )  ->(output: tf.Output){
+func reverseSequence(scope:Scope,input: Tensorflow_DataType, seqLengths: Tensorflow_DataType, seqDim :Int  , batchDim :Int  , t :Type  , tlen :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("seq_dim":seqDim)
-    attr.append("batch_dim":batchDim)
-    attr.append("T":t)
-    attr.append("Tlen":tlen)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("seq_dim",seqDim)
+    attr.append("batch_dim",batchDim)
+    attr.append("T",t)
+    attr.append("Tlen",tlen)
 
     let opspec = tf.OpSpec(
         OpType: "ReverseSequence",
@@ -15050,14 +14897,13 @@ reverse(t, dims) ==> [[[[8, 9, 10, 11],
 
 
 
-func reverseV2(scope:Scope,tensor: Tensorflow_DataType, axis: Tensorflow_DataType, tidx :type  , t :type  )  ->(output: tf.Output){
+func reverseV2(scope:Scope,tensor: Tensorflow_DataType, axis: Tensorflow_DataType, tidx :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("Tidx":tidx)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tidx",tidx)
 
     let opspec = tf.OpSpec(
         OpType: "ReverseV2",
@@ -15085,13 +14931,13 @@ rint([-1.7, -1.5, -0.2, 0.2, 1.5, 1.7, 2.0]) ==> [-2., -2., -0., 0., 2., 2., 2.]
 
 
 
-func rint(scope:Scope,x: Tensorflow_DataType, t :type  )  ->(y: tf.Output){
+func rint(scope:Scope,x: Tensorflow_DataType, t :Type  )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "Rint",
@@ -15113,13 +14959,12 @@ according to the current system rounding mode use std::cint.
 
 
 
-func round(scope:Scope,x: Tensorflow_DataType, t :type  )  ->(y: tf.Output){
+func round(scope:Scope,x: Tensorflow_DataType )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "Round",
@@ -15140,13 +14985,13 @@ I.e., \\(y = 1 / \sqrt{x}\\).
 
 
 
-func rsqrt(scope:Scope,x: Tensorflow_DataType, t :type  )  ->(y: tf.Output){
+func rsqrt(scope:Scope,x: Tensorflow_DataType, t :Type  )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "Rsqrt",
@@ -15168,13 +15013,12 @@ is the corresponding input gradient.
 
 
 
-func rsqrtGrad(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :type  )  ->(z: tf.Output){
+func rsqrtGrad(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "RsqrtGrad",
@@ -15225,20 +15069,20 @@ false and no bounding boxes are supplied, an error is raised.
 
 
 
-func sampleDistortedBoundingBox(scope:Scope,imageSize: Tensorflow_DataType, boundingBoxes: Tensorflow_DataType, t :type  , seed :uInt8  , seed2 :uInt8  , minObjectCovered :float  , aspectRatioRange :list(float)  , areaRange :list(float)  , maxAttempts :uInt8  , useImageIfNoBoundingBoxes :bool  )  ->(begin: tf.Output, size: tf.Output, bboxes: tf.Output){
+func sampleDistortedBoundingBox(scope:Scope,imageSize: Tensorflow_DataType, boundingBoxes: Tensorflow_DataType, t :Type  , seed :Int  , seed2 :Int  , minObjectCovered :Float  , aspectRatioRange :List(float)  , areaRange :List(float)  , maxAttempts :Int  , useImageIfNoBoundingBoxes :Bool  )  ->(begin: tf.Output, size: tf.Output, bboxes: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("seed":seed)
-    attr.append("seed2":seed2)
-    attr.append("min_object_covered":minObjectCovered)
-    attr.append("aspect_ratio_range":aspectRatioRange)
-    attr.append("area_range":areaRange)
-    attr.append("max_attempts":maxAttempts)
-    attr.append("use_image_if_no_bounding_boxes":useImageIfNoBoundingBoxes)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("seed",seed)
+    attr.append("seed2",seed2)
+    attr.append("min_object_covered",minObjectCovered)
+    attr.append("aspect_ratio_range",aspectRatioRange)
+    attr.append("area_range",areaRange)
+    attr.append("max_attempts",maxAttempts)
+    attr.append("use_image_if_no_bounding_boxes",useImageIfNoBoundingBoxes)
 
     let opspec = tf.OpSpec(
         OpType: "SampleDistortedBoundingBox",
@@ -15261,13 +15105,12 @@ See also `SaveSlices`.
 
 
 
-func save(scope:Scope,filename: Tensorflow_DataType, tensorNames: Tensorflow_DataType, data: Tensorflow_DataType, t :list(type)  )  ->(o:tf.Operation){
+func save(scope:Scope,filename: Tensorflow_DataType, tensorNames: Tensorflow_DataType, data: Tensorflow_DataType )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "Save",
@@ -15302,13 +15145,13 @@ See also `Save`.
 
 
 
-func saveSlices(scope:Scope,filename: Tensorflow_DataType, tensorNames: Tensorflow_DataType, shapesAndSlices: Tensorflow_DataType, data: Tensorflow_DataType, t :list(type)  )  ->(o:tf.Operation){
+func saveSlices(scope:Scope,filename: Tensorflow_DataType, tensorNames: Tensorflow_DataType, shapesAndSlices: Tensorflow_DataType, data: Tensorflow_DataType, t :List(type)  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "SaveSlices",
@@ -15330,13 +15173,13 @@ and correspondingly well-formed.
 
 
 
-func saveV2(scope:Scope,`prefix`: Tensorflow_DataType, tensorNames: Tensorflow_DataType, shapeAndSlices: Tensorflow_DataType, tensors: Tensorflow_DataType, dtypes :list(type)  )  ->(o:tf.Operation){
+func saveV2(scope:Scope,`prefix`: Tensorflow_DataType, tensorNames: Tensorflow_DataType, shapeAndSlices: Tensorflow_DataType, tensors: Tensorflow_DataType, dtypes :TensorflowDataType  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("dtypes":dtypes)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("dtypes",dtypes)
 
     let opspec = tf.OpSpec(
         OpType: "SaveV2",
@@ -15357,13 +15200,12 @@ has a summary value for each tag-value pair in `tags` and `values`.
 
 
 
-func scalarSummary(scope:Scope,tags: Tensorflow_DataType, values: Tensorflow_DataType, t :type  )  ->(summary: tf.Output){
+func scalarSummary(scope:Scope,tags: Tensorflow_DataType, values: Tensorflow_DataType )  ->(summary: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "ScalarSummary",
@@ -15398,15 +15240,15 @@ Requires `updates.shape = indices.shape + ref.shape[1:]`.
 
 
 
-func scatterAdd(scope:Scope,ref: Tensorflow_DataType, indices: Tensorflow_DataType, updates: Tensorflow_DataType, t :type  , tindices :type  , useLocking :bool  )  ->(outputRef: tf.Output){
+func scatterAdd(scope:Scope,ref: Tensorflow_DataType, indices: Tensorflow_DataType, updates: Tensorflow_DataType, t :Type  , tindices :Type  , useLocking :Bool  )  ->(outputRef: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tindices":tindices)
-    attr.append("use_locking":useLocking)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("Tindices",tindices)
+    attr.append("use_locking",useLocking)
 
     let opspec = tf.OpSpec(
         OpType: "ScatterAdd",
@@ -15440,15 +15282,14 @@ Requires `updates.shape = indices.shape + ref.shape[1:]`.
 
 
 
-func scatterDiv(scope:Scope,ref: Tensorflow_DataType, indices: Tensorflow_DataType, updates: Tensorflow_DataType, t :type  , tindices :type  , useLocking :bool  )  ->(outputRef: tf.Output){
+func scatterDiv(scope:Scope,ref: Tensorflow_DataType, indices: Tensorflow_DataType, updates: Tensorflow_DataType, tindices :Type  , useLocking :Bool  )  ->(outputRef: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tindices":tindices)
-    attr.append("use_locking":useLocking)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tindices",tindices)
+    attr.append("use_locking",useLocking)
 
     let opspec = tf.OpSpec(
         OpType: "ScatterDiv",
@@ -15482,15 +15323,15 @@ Requires `updates.shape = indices.shape + ref.shape[1:]`.
 
 
 
-func scatterMul(scope:Scope,ref: Tensorflow_DataType, indices: Tensorflow_DataType, updates: Tensorflow_DataType, t :type  , tindices :type  , useLocking :bool  )  ->(outputRef: tf.Output){
+func scatterMul(scope:Scope,ref: Tensorflow_DataType, indices: Tensorflow_DataType, updates: Tensorflow_DataType, t :Type  , tindices :Type  , useLocking :Bool  )  ->(outputRef: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tindices":tindices)
-    attr.append("use_locking":useLocking)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("Tindices",tindices)
+    attr.append("use_locking",useLocking)
 
     let opspec = tf.OpSpec(
         OpType: "ScatterMul",
@@ -15564,14 +15405,13 @@ The resulting tensor would look like this:
 
 
 
-func scatterNd(scope:Scope,indices: Tensorflow_DataType, updates: Tensorflow_DataType, shape: Tensorflow_DataType, t :type  , tindices :type  )  ->(output: tf.Output){
+func scatterNd(scope:Scope,indices: Tensorflow_DataType, updates: Tensorflow_DataType, shape: Tensorflow_DataType, tindices :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tindices":tindices)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tindices",tindices)
 
     let opspec = tf.OpSpec(
         OpType: "ScatterNd",
@@ -15614,15 +15454,15 @@ slices.
 
 
 
-func scatterNdAdd(scope:Scope,ref: Tensorflow_DataType, indices: Tensorflow_DataType, updates: Tensorflow_DataType, t :type  , tindices :type  , useLocking :bool  )  ->(outputRef: tf.Output){
+func scatterNdAdd(scope:Scope,ref: Tensorflow_DataType, indices: Tensorflow_DataType, updates: Tensorflow_DataType, t :Type  , tindices :Type  , useLocking :Bool  )  ->(outputRef: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tindices":tindices)
-    attr.append("use_locking":useLocking)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("Tindices",tindices)
+    attr.append("use_locking",useLocking)
 
     let opspec = tf.OpSpec(
         OpType: "ScatterNdAdd",
@@ -15665,15 +15505,14 @@ slices.
 
 
 
-func scatterNdSub(scope:Scope,ref: Tensorflow_DataType, indices: Tensorflow_DataType, updates: Tensorflow_DataType, t :type  , tindices :type  , useLocking :bool  )  ->(outputRef: tf.Output){
+func scatterNdSub(scope:Scope,ref: Tensorflow_DataType, indices: Tensorflow_DataType, updates: Tensorflow_DataType, tindices :Type  , useLocking :Bool  )  ->(outputRef: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tindices":tindices)
-    attr.append("use_locking":useLocking)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tindices",tindices)
+    attr.append("use_locking",useLocking)
 
     let opspec = tf.OpSpec(
         OpType: "ScatterNdSub",
@@ -15718,15 +15557,15 @@ slices.
 
 
 
-func scatterNdUpdate(scope:Scope,ref: Tensorflow_DataType, indices: Tensorflow_DataType, updates: Tensorflow_DataType, t :type  , tindices :type  , useLocking :bool  )  ->(outputRef: tf.Output){
+func scatterNdUpdate(scope:Scope,ref: Tensorflow_DataType, indices: Tensorflow_DataType, updates: Tensorflow_DataType, t :Type  , tindices :Type  , useLocking :Bool  )  ->(outputRef: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tindices":tindices)
-    attr.append("use_locking":useLocking)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("Tindices",tindices)
+    attr.append("use_locking",useLocking)
 
     let opspec = tf.OpSpec(
         OpType: "ScatterNdUpdate",
@@ -15762,15 +15601,14 @@ Requires `updates.shape = indices.shape + ref.shape[1:]`.
 
 
 
-func scatterSub(scope:Scope,ref: Tensorflow_DataType, indices: Tensorflow_DataType, updates: Tensorflow_DataType, t :type  , tindices :type  , useLocking :bool  )  ->(outputRef: tf.Output){
+func scatterSub(scope:Scope,ref: Tensorflow_DataType, indices: Tensorflow_DataType, updates: Tensorflow_DataType, tindices :Type  , useLocking :Bool  )  ->(outputRef: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tindices":tindices)
-    attr.append("use_locking":useLocking)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tindices",tindices)
+    attr.append("use_locking",useLocking)
 
     let opspec = tf.OpSpec(
         OpType: "ScatterSub",
@@ -15808,15 +15646,15 @@ Requires `updates.shape = indices.shape + ref.shape[1:]`.
 
 
 
-func scatterUpdate(scope:Scope,ref: Tensorflow_DataType, indices: Tensorflow_DataType, updates: Tensorflow_DataType, t :type  , tindices :type  , useLocking :bool  )  ->(outputRef: tf.Output){
+func scatterUpdate(scope:Scope,ref: Tensorflow_DataType, indices: Tensorflow_DataType, updates: Tensorflow_DataType, t :Type  , tindices :Type  , useLocking :Bool  )  ->(outputRef: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tindices":tindices)
-    attr.append("use_locking":useLocking)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("Tindices",tindices)
+    attr.append("use_locking",useLocking)
 
     let opspec = tf.OpSpec(
         OpType: "ScatterUpdate",
@@ -15841,7 +15679,7 @@ func sdcaFprint(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "SdcaFprint",
@@ -15874,21 +15712,21 @@ Dominik Csiba, Zheng Qu, Peter Richtarik. 2015
 
 
 
-func sdcaOptimizer(scope:Scope,sparseExampleIndices: Tensorflow_DataType, sparseFeatureIndices: Tensorflow_DataType, sparseFeatureValues: Tensorflow_DataType, denseFeatures: Tensorflow_DataType, exampleWeights: Tensorflow_DataType, exampleLabels: Tensorflow_DataType, sparseIndices: Tensorflow_DataType, sparseWeights: Tensorflow_DataType, denseWeights: Tensorflow_DataType, exampleStateData: Tensorflow_DataType, lossType :string  , adaptative :bool  , numSparseFeatures :uInt8  , numSparseFeaturesWithValues :uInt8  , numDenseFeatures :uInt8  , l1 :float  , l2 :float  , numLossPartitions :uInt8  , numInnerIterations :uInt8  )  ->(outExampleStateData: tf.Output, outDeltaSparseWeights: tf.Output, outDeltaDenseWeights: tf.Output){
+func sdcaOptimizer(scope:Scope,sparseExampleIndices: Tensorflow_DataType, sparseFeatureIndices: Tensorflow_DataType, sparseFeatureValues: Tensorflow_DataType, denseFeatures: Tensorflow_DataType, exampleWeights: Tensorflow_DataType, exampleLabels: Tensorflow_DataType, sparseIndices: Tensorflow_DataType, sparseWeights: Tensorflow_DataType, denseWeights: Tensorflow_DataType, exampleStateData: Tensorflow_DataType, lossType :String  , adaptative :Bool  , numSparseFeatures :UInt8  , numSparseFeaturesWithValues :UInt8  , numDenseFeatures :UInt8  , l1 :Float  , l2 :Float  , numLossPartitions :UInt8  , numInnerIterations :UInt8  )  ->(outExampleStateData: tf.Output, outDeltaSparseWeights: tf.Output, outDeltaDenseWeights: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("loss_type":lossType)
-    attr.append("adaptative":adaptative)
-    attr.append("num_sparse_features":numSparseFeatures)
-    attr.append("num_sparse_features_with_values":numSparseFeaturesWithValues)
-    attr.append("num_dense_features":numDenseFeatures)
-    attr.append("l1":l1)
-    attr.append("l2":l2)
-    attr.append("num_loss_partitions":numLossPartitions)
-    attr.append("num_inner_iterations":numInnerIterations)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("loss_type",lossType)
+    attr.append("adaptative",adaptative)
+    attr.append("num_sparse_features",numSparseFeatures)
+    attr.append("num_sparse_features_with_values",numSparseFeaturesWithValues)
+    attr.append("num_dense_features",numDenseFeatures)
+    attr.append("l1",l1)
+    attr.append("l2",l2)
+    attr.append("num_loss_partitions",numLossPartitions)
+    attr.append("num_inner_iterations",numInnerIterations)
 
     let opspec = tf.OpSpec(
         OpType: "SdcaOptimizer",
@@ -15908,15 +15746,15 @@ Applies L1 regularization shrink step on the parameters.
 
 
 
-func sdcaShrinkL1(scope:Scope,weights: Tensorflow_DataType, numFeatures :uInt8  , l1 :float  , l2 :float  )  ->(o:tf.Operation){
+func sdcaShrinkL1(scope:Scope,weights: Tensorflow_DataType, numFeatures :UInt8  , l1 :Float  , l2 :Float  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("num_features":numFeatures)
-    attr.append("l1":l1)
-    attr.append("l2":l2)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("num_features",numFeatures)
+    attr.append("l1",l1)
+    attr.append("l2",l2)
 
     let opspec = tf.OpSpec(
         OpType: "SdcaShrinkL1",
@@ -15944,14 +15782,13 @@ If the max is empty for a given segment ID `i`, `output[i] = 0`.
 
 
 
-func segmentMax(scope:Scope,data: Tensorflow_DataType, segmentIds: Tensorflow_DataType, t :type  , tindices :type  )  ->(output: tf.Output){
+func segmentMax(scope:Scope,data: Tensorflow_DataType, segmentIds: Tensorflow_DataType, tindices :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tindices":tindices)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tindices",tindices)
 
     let opspec = tf.OpSpec(
         OpType: "SegmentMax",
@@ -15981,14 +15818,14 @@ If the mean is empty for a given segment ID `i`, `output[i] = 0`.
 
 
 
-func segmentMean(scope:Scope,data: Tensorflow_DataType, segmentIds: Tensorflow_DataType, t :type  , tindices :type  )  ->(output: tf.Output){
+func segmentMean(scope:Scope,data: Tensorflow_DataType, segmentIds: Tensorflow_DataType, t :Type  , tindices :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tindices":tindices)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("Tindices",tindices)
 
     let opspec = tf.OpSpec(
         OpType: "SegmentMean",
@@ -16017,14 +15854,13 @@ If the min is empty for a given segment ID `i`, `output[i] = 0`.
 
 
 
-func segmentMin(scope:Scope,data: Tensorflow_DataType, segmentIds: Tensorflow_DataType, t :type  , tindices :type  )  ->(output: tf.Output){
+func segmentMin(scope:Scope,data: Tensorflow_DataType, segmentIds: Tensorflow_DataType, tindices :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tindices":tindices)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tindices",tindices)
 
     let opspec = tf.OpSpec(
         OpType: "SegmentMin",
@@ -16053,14 +15889,14 @@ If the product is empty for a given segment ID `i`, `output[i] = 1`.
 
 
 
-func segmentProd(scope:Scope,data: Tensorflow_DataType, segmentIds: Tensorflow_DataType, t :type  , tindices :type  )  ->(output: tf.Output){
+func segmentProd(scope:Scope,data: Tensorflow_DataType, segmentIds: Tensorflow_DataType, t :Type  , tindices :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tindices":tindices)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("Tindices",tindices)
 
     let opspec = tf.OpSpec(
         OpType: "SegmentProd",
@@ -16089,14 +15925,13 @@ If the sum is empty for a given segment ID `i`, `output[i] = 0`.
 
 
 
-func segmentSum(scope:Scope,data: Tensorflow_DataType, segmentIds: Tensorflow_DataType, t :type  , tindices :type  )  ->(output: tf.Output){
+func segmentSum(scope:Scope,data: Tensorflow_DataType, segmentIds: Tensorflow_DataType, tindices :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tindices":tindices)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tindices",tindices)
 
     let opspec = tf.OpSpec(
         OpType: "SegmentSum",
@@ -16146,13 +15981,13 @@ select(condition, t, e) ==> [[1, 2],
 
 
 
-func select(scope:Scope,condition: Tensorflow_DataType, t: Tensorflow_DataType, e: Tensorflow_DataType, t :type  )  ->(output: tf.Output){
+func select(scope:Scope,condition: Tensorflow_DataType, t: Tensorflow_DataType, e: Tensorflow_DataType, t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "Select",
@@ -16177,13 +16012,12 @@ eigenvalues, and subsequent [...,1:, :] containing the eigenvectors.
 
 
 
-func selfAdjointEig(scope:Scope,input: Tensorflow_DataType, t :type  )  ->(output: tf.Output){
+func selfAdjointEig(scope:Scope,input: Tensorflow_DataType )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "SelfAdjointEig",
@@ -16212,14 +16046,14 @@ e = self_adjoint_eig(a, compute_v=False)
 
 
 
-func selfAdjointEigV2(scope:Scope,input: Tensorflow_DataType, computeV :bool  , t :type  )  ->(e: tf.Output, v: tf.Output){
+func selfAdjointEigV2(scope:Scope,input: Tensorflow_DataType, computeV :Bool  , t :Type  )  ->(e: tf.Output, v: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("compute_v":computeV)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("compute_v",computeV)
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "SelfAdjointEigV2",
@@ -16245,13 +16079,12 @@ The minibatch size `N` is extracted from `sparse_shape[0]`.
 
 
 
-func serializeManySparse(scope:Scope,sparseIndices: Tensorflow_DataType, sparseValues: Tensorflow_DataType, sparseShape: Tensorflow_DataType, t :type  )  ->(serializedSparse: tf.Output){
+func serializeManySparse(scope:Scope,sparseIndices: Tensorflow_DataType, sparseValues: Tensorflow_DataType, sparseShape: Tensorflow_DataType )  ->(serializedSparse: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "SerializeManySparse",
@@ -16271,13 +16104,13 @@ Serialize a `SparseTensor` into a string 3-vector (1-D `Tensor`) object.
 
 
 
-func serializeSparse(scope:Scope,sparseIndices: Tensorflow_DataType, sparseValues: Tensorflow_DataType, sparseShape: Tensorflow_DataType, t :type  )  ->(serializedSparse: tf.Output){
+func serializeSparse(scope:Scope,sparseIndices: Tensorflow_DataType, sparseValues: Tensorflow_DataType, sparseShape: Tensorflow_DataType, t :Type  )  ->(serializedSparse: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "SerializeSparse",
@@ -16302,14 +16135,13 @@ indices.
 
 
 
-func setSize(scope:Scope,setIndices: Tensorflow_DataType, setValues: Tensorflow_DataType, setShape: Tensorflow_DataType, validateIndices :bool  , t :type  )  ->(size: tf.Output){
+func setSize(scope:Scope,setIndices: Tensorflow_DataType, setValues: Tensorflow_DataType, setShape: Tensorflow_DataType, validateIndices :Bool  )  ->(size: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("validate_indices":validateIndices)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("validate_indices",validateIndices)
 
     let opspec = tf.OpSpec(
         OpType: "SetSize",
@@ -16335,14 +16167,14 @@ shape(t) ==> [2, 2, 3]
 
 
 
-func shape(scope:Scope,input: Tensorflow_DataType, t :type  , outType :type  )  ->(output: tf.Output){
+func shape(scope:Scope,input: Tensorflow_DataType, t :Type  , outType :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("out_type":outType)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("out_type",outType)
 
     let opspec = tf.OpSpec(
         OpType: "Shape",
@@ -16363,15 +16195,14 @@ This operation returns N 1-D integer tensors representing shape of `input[i]s`.
 
 
 
-func shapeN(scope:Scope,input: Tensorflow_DataType, n :uInt8  , t :type  , outType :type  )  ->(output: tf.Output){
+func shapeN(scope:Scope,input: Tensorflow_DataType, n :UInt8  , outType :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("N":n)
-    attr.append("T":t)
-    attr.append("out_type":outType)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("N",n)
+    attr.append("out_type",outType)
 
     let opspec = tf.OpSpec(
         OpType: "ShapeN",
@@ -16397,7 +16228,7 @@ func shardedFilename(scope:Scope,basename: Tensorflow_DataType, shard: Tensorflo
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "ShardedFilename",
@@ -16422,7 +16253,7 @@ func shardedFilespec(scope:Scope,basename: Tensorflow_DataType, numShards: Tenso
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "ShardedFilespec",
@@ -16442,14 +16273,14 @@ Creates a dataset that shuffles elements from `input_dataset` pseudorandomly.
 
 
 
-func shuffleDataset(scope:Scope,inputDataset: Tensorflow_DataType, bufferSize: Tensorflow_DataType, seed: Tensorflow_DataType, seed2: Tensorflow_DataType, outputTypes :list(type)  , outputShapes :[Shape]  )  ->(handle: tf.Output){
+func shuffleDataset(scope:Scope,inputDataset: Tensorflow_DataType, bufferSize: Tensorflow_DataType, seed: Tensorflow_DataType, seed2: Tensorflow_DataType, outputTypes :List(type)  , outputShapes :[Shape]  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("output_types":outputTypes)
-    attr.append("output_shapes":outputShapes)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("output_types",outputTypes)
+    attr.append("output_shapes",outputShapes)
 
     let opspec = tf.OpSpec(
         OpType: "ShuffleDataset",
@@ -16470,13 +16301,12 @@ Specifically, `y = 1 / (1 + exp(-x))`.
 
 
 
-func sigmoid(scope:Scope,x: Tensorflow_DataType, t :type  )  ->(y: tf.Output){
+func sigmoid(scope:Scope,x: Tensorflow_DataType )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "Sigmoid",
@@ -16498,13 +16328,13 @@ Specifically, `grad = dy * y * (1 - y)`, where `y = sigmoid(x)`, and
 
 
 
-func sigmoidGrad(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :type  )  ->(z: tf.Output){
+func sigmoidGrad(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :Type  )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "SigmoidGrad",
@@ -16526,13 +16356,12 @@ For complex numbers, `y = sign(x) = x / |x|` if `x != 0`, otherwise `y = 0`.
 
 
 
-func sign(scope:Scope,x: Tensorflow_DataType, t :type  )  ->(y: tf.Output){
+func sign(scope:Scope,x: Tensorflow_DataType )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "Sign",
@@ -16552,13 +16381,13 @@ Computes sin of x element-wise.
 
 
 
-func sin(scope:Scope,x: Tensorflow_DataType, t :type  )  ->(y: tf.Output){
+func sin(scope:Scope,x: Tensorflow_DataType, t :Type  )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "Sin",
@@ -16585,14 +16414,13 @@ size(t) ==> 12
 
 
 
-func size(scope:Scope,input: Tensorflow_DataType, t :type  , outType :type  )  ->(output: tf.Output){
+func size(scope:Scope,input: Tensorflow_DataType, outType :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("out_type":outType)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("out_type",outType)
 
     let opspec = tf.OpSpec(
         OpType: "Size",
@@ -16612,14 +16440,14 @@ Creates a dataset that skips `count` elements from the `input_dataset`.
 
 
 
-func skipDataset(scope:Scope,inputDataset: Tensorflow_DataType, count: Tensorflow_DataType, outputTypes :list(type)  , outputShapes :[Shape]  )  ->(handle: tf.Output){
+func skipDataset(scope:Scope,inputDataset: Tensorflow_DataType, count: Tensorflow_DataType, outputTypes :List(type)  , outputShapes :List(shape)  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("output_types":outputTypes)
-    attr.append("output_shapes":outputShapes)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("output_types",outputTypes)
+    attr.append("output_shapes",outputShapes)
 
     let opspec = tf.OpSpec(
         OpType: "SkipDataset",
@@ -16639,17 +16467,17 @@ Parses a text file and creates a batch of examples.
 
 
 
-func skipgram(scope:Scope filename :string  , batchSize :uInt8  , windowSize :uInt8  , minCount :uInt8  , subsample :float  )  ->(vocabWord: tf.Output, vocabFreq: tf.Output, wordsPerEpoch: tf.Output, currentEpoch: tf.Output, totalWordsProcessed: tf.Output, examples: tf.Output, labels: tf.Output){
+func skipgram(scope:Scope filename :String  , batchSize :UInt8  , windowSize :UInt8  , minCount :UInt8  , subsample :Float  )  ->(vocabWord: tf.Output, vocabFreq: tf.Output, wordsPerEpoch: tf.Output, currentEpoch: tf.Output, totalWordsProcessed: tf.Output, examples: tf.Output, labels: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("filename":filename)
-    attr.append("batch_size":batchSize)
-    attr.append("window_size":windowSize)
-    attr.append("min_count":minCount)
-    attr.append("subsample":subsample)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("filename",filename)
+    attr.append("batch_size",batchSize)
+    attr.append("window_size",windowSize)
+    attr.append("min_count",minCount)
+    attr.append("subsample",subsample)
 
     let opspec = tf.OpSpec(
         OpType: "Skipgram",
@@ -16674,14 +16502,13 @@ whose values are extracted from 'input' starting at the offsets in
 
 
 
-func slice(scope:Scope,input: Tensorflow_DataType, begin: Tensorflow_DataType, size: Tensorflow_DataType, t :type  , index :type  )  ->(output: tf.Output){
+func slice(scope:Scope,input: Tensorflow_DataType, begin: Tensorflow_DataType, size: Tensorflow_DataType, index :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Index":index)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Index",index)
 
     let opspec = tf.OpSpec(
         OpType: "Slice",
@@ -16703,13 +16530,13 @@ For each batch `i` and class `j` we have
 
 
 
-func softmax(scope:Scope,logits: Tensorflow_DataType, t :type  )  ->(softmax: tf.Output){
+func softmax(scope:Scope,logits: Tensorflow_DataType, t :Type  )  ->(softmax: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "Softmax",
@@ -16730,13 +16557,12 @@ Inputs are the logits, not probabilities.
 
 
 
-func softmaxCrossEntropyWithLogits(scope:Scope,features: Tensorflow_DataType, labels: Tensorflow_DataType, t :type  )  ->(loss: tf.Output, backprop: tf.Output){
+func softmaxCrossEntropyWithLogits(scope:Scope,features: Tensorflow_DataType, labels: Tensorflow_DataType )  ->(loss: tf.Output, backprop: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "SoftmaxCrossEntropyWithLogits",
@@ -16756,13 +16582,13 @@ Computes softplus: `log(exp(features) + 1)`.
 
 
 
-func softplus(scope:Scope,features: Tensorflow_DataType, t :type  )  ->(activations: tf.Output){
+func softplus(scope:Scope,features: Tensorflow_DataType, t :Type  )  ->(activations: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "Softplus",
@@ -16782,13 +16608,12 @@ Computes softplus gradients for a softplus operation.
 
 
 
-func softplusGrad(scope:Scope,gradients: Tensorflow_DataType, features: Tensorflow_DataType, t :type  )  ->(backprops: tf.Output){
+func softplusGrad(scope:Scope,gradients: Tensorflow_DataType, features: Tensorflow_DataType )  ->(backprops: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "SoftplusGrad",
@@ -16808,13 +16633,13 @@ Computes softsign: `features / (abs(features) + 1)`.
 
 
 
-func softsign(scope:Scope,features: Tensorflow_DataType, t :type  )  ->(activations: tf.Output){
+func softsign(scope:Scope,features: Tensorflow_DataType, t :Type  )  ->(activations: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "Softsign",
@@ -16834,13 +16659,12 @@ Computes softsign gradients for a softsign operation.
 
 
 
-func softsignGrad(scope:Scope,gradients: Tensorflow_DataType, features: Tensorflow_DataType, t :type  )  ->(backprops: tf.Output){
+func softsignGrad(scope:Scope,gradients: Tensorflow_DataType, features: Tensorflow_DataType )  ->(backprops: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "SoftsignGrad",
@@ -16866,15 +16690,15 @@ block size.
 
 
 
-func spaceToBatch(scope:Scope,input: Tensorflow_DataType, paddings: Tensorflow_DataType, t :type  , tpaddings :type  , blockSize :uInt8  )  ->(output: tf.Output){
+func spaceToBatch(scope:Scope,input: Tensorflow_DataType, paddings: Tensorflow_DataType, t :Type  , tpaddings :Type  , blockSize :Int  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tpaddings":tpaddings)
-    attr.append("block_size":blockSize)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("Tpaddings",tpaddings)
+    attr.append("block_size",blockSize)
 
     let opspec = tf.OpSpec(
         OpType: "SpaceToBatch",
@@ -16902,15 +16726,14 @@ precise description.
 
 
 
-func spaceToBatchND(scope:Scope,input: Tensorflow_DataType, blockShape: Tensorflow_DataType, paddings: Tensorflow_DataType, t :type  , tblockShape :type  , tpaddings :type  )  ->(output: tf.Output){
+func spaceToBatchND(scope:Scope,input: Tensorflow_DataType, blockShape: Tensorflow_DataType, paddings: Tensorflow_DataType, tblockShape :Type  , tpaddings :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tblock_shape":tblockShape)
-    attr.append("Tpaddings":tpaddings)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tblock_shape",tblockShape)
+    attr.append("Tpaddings",tpaddings)
 
     let opspec = tf.OpSpec(
         OpType: "SpaceToBatchND",
@@ -16984,14 +16807,14 @@ x = [[[[1, 2, 3, 4],
 
 
 
-func spaceToDepth(scope:Scope,input: Tensorflow_DataType, t :type  , blockSize :uInt8  )  ->(output: tf.Output){
+func spaceToDepth(scope:Scope,input: Tensorflow_DataType, t :Type  , blockSize :Int  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("block_size":blockSize)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("block_size",blockSize)
 
     let opspec = tf.OpSpec(
         OpType: "SpaceToDepth",
@@ -17013,14 +16836,14 @@ global_step.
 
 
 
-func sparseAccumulatorApplyGradient(scope:Scope,handle: Tensorflow_DataType, localStep: Tensorflow_DataType, gradientIndices: Tensorflow_DataType, gradientValues: Tensorflow_DataType, gradientShape: Tensorflow_DataType, dtype :type  , hasKnownShape :bool  )  ->(o:tf.Operation){
+func sparseAccumulatorApplyGradient(scope:Scope,handle: Tensorflow_DataType, localStep: Tensorflow_DataType, gradientIndices: Tensorflow_DataType, gradientValues: Tensorflow_DataType, gradientShape: Tensorflow_DataType, dtype :Type  , hasKnownShape :Bool  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("dtype":dtype)
-    attr.append("has_known_shape":hasKnownShape)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("dtype",dtype)
+    attr.append("has_known_shape",hasKnownShape)
 
     let opspec = tf.OpSpec(
         OpType: "SparseAccumulatorApplyGradient",
@@ -17045,13 +16868,13 @@ aggregate to 0.
 
 
 
-func sparseAccumulatorTakeGradient(scope:Scope,handle: Tensorflow_DataType, numRequired: Tensorflow_DataType, dtype :type  )  ->(indices: tf.Output, values: tf.Output, shape: tf.Output){
+func sparseAccumulatorTakeGradient(scope:Scope,handle: Tensorflow_DataType, numRequired: Tensorflow_DataType, dtype :Type  )  ->(indices: tf.Output, values: tf.Output, shape: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("dtype":dtype)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("dtype",dtype)
 
     let opspec = tf.OpSpec(
         OpType: "SparseAccumulatorTakeGradient",
@@ -17082,14 +16905,13 @@ In the following shapes, `nnz` is the count after taking `thresh` into account.
 
 
 
-func sparseAdd(scope:Scope,aIndices: Tensorflow_DataType, aValues: Tensorflow_DataType, aShape: Tensorflow_DataType, bIndices: Tensorflow_DataType, bValues: Tensorflow_DataType, bShape: Tensorflow_DataType, thresh: Tensorflow_DataType, t :type  , treal :type  )  ->(sumIndices: tf.Output, sumValues: tf.Output, sumShape: tf.Output){
+func sparseAdd(scope:Scope,aIndices: Tensorflow_DataType, aValues: Tensorflow_DataType, aShape: Tensorflow_DataType, bIndices: Tensorflow_DataType, bValues: Tensorflow_DataType, bShape: Tensorflow_DataType, thresh: Tensorflow_DataType, treal :Type  )  ->(sumIndices: tf.Output, sumValues: tf.Output, sumShape: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Treal":treal)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Treal",treal)
 
     let opspec = tf.OpSpec(
         OpType: "SparseAdd",
@@ -17113,13 +16935,13 @@ values of A and B.
 
 
 
-func sparseAddGrad(scope:Scope,backpropValGrad: Tensorflow_DataType, aIndices: Tensorflow_DataType, bIndices: Tensorflow_DataType, sumIndices: Tensorflow_DataType, t :type  )  ->(aValGrad: tf.Output, bValGrad: tf.Output){
+func sparseAddGrad(scope:Scope,backpropValGrad: Tensorflow_DataType, aIndices: Tensorflow_DataType, bIndices: Tensorflow_DataType, sumIndices: Tensorflow_DataType, t :Type  )  ->(aValGrad: tf.Output, bValGrad: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "SparseAddGrad",
@@ -17139,15 +16961,14 @@ var: Should be from a Variable().
 
 
 
-func sparseApplyAdadelta(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, accumUpdate: Tensorflow_DataType, lr: Tensorflow_DataType, rho: Tensorflow_DataType, epsilon: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, t :type  , tindices :type  , useLocking :bool  )  ->(out: tf.Output){
+func sparseApplyAdadelta(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, accumUpdate: Tensorflow_DataType, lr: Tensorflow_DataType, rho: Tensorflow_DataType, epsilon: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, tindices :Type  , useLocking :Bool  )  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tindices":tindices)
-    attr.append("use_locking":useLocking)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tindices",tindices)
+    attr.append("use_locking",useLocking)
 
     let opspec = tf.OpSpec(
         OpType: "SparseApplyAdadelta",
@@ -17170,15 +16991,15 @@ var -= lr * grad * (1 / sqrt(accum))
 
 
 
-func sparseApplyAdagrad(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, lr: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, t :type  , tindices :type  , useLocking :bool  )  ->(out: tf.Output){
+func sparseApplyAdagrad(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, lr: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, t :Type  , tindices :Type  , useLocking :Bool  )  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tindices":tindices)
-    attr.append("use_locking":useLocking)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("Tindices",tindices)
+    attr.append("use_locking",useLocking)
 
     let opspec = tf.OpSpec(
         OpType: "SparseApplyAdagrad",
@@ -17198,15 +17019,14 @@ Update entries in '*var' and '*accum' according to the proximal adagrad scheme.
 
 
 
-func sparseApplyAdagradDA(scope:Scope,`var`: Tensorflow_DataType, gradientAccumulator: Tensorflow_DataType, gradientSquaredAccumulator: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, lr: Tensorflow_DataType, l1: Tensorflow_DataType, l2: Tensorflow_DataType, globalStep: Tensorflow_DataType, t :type  , tindices :type  , useLocking :bool  )  ->(out: tf.Output){
+func sparseApplyAdagradDA(scope:Scope,`var`: Tensorflow_DataType, gradientAccumulator: Tensorflow_DataType, gradientSquaredAccumulator: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, lr: Tensorflow_DataType, l1: Tensorflow_DataType, l2: Tensorflow_DataType, globalStep: Tensorflow_DataType, tindices :Type  , useLocking :Bool  )  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tindices":tindices)
-    attr.append("use_locking":useLocking)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tindices",tindices)
+    attr.append("use_locking",useLocking)
 
     let opspec = tf.OpSpec(
         OpType: "SparseApplyAdagradDA",
@@ -17239,15 +17059,15 @@ var <- var - mom
 
 
 
-func sparseApplyCenteredRMSProp(scope:Scope,`var`: Tensorflow_DataType, mg: Tensorflow_DataType, ms: Tensorflow_DataType, mom: Tensorflow_DataType, lr: Tensorflow_DataType, rho: Tensorflow_DataType, momentum: Tensorflow_DataType, epsilon: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, t :type  , tindices :type  , useLocking :bool  )  ->(out: tf.Output){
+func sparseApplyCenteredRMSProp(scope:Scope,`var`: Tensorflow_DataType, mg: Tensorflow_DataType, ms: Tensorflow_DataType, mom: Tensorflow_DataType, lr: Tensorflow_DataType, rho: Tensorflow_DataType, momentum: Tensorflow_DataType, epsilon: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, t :Type  , tindices :Type  , useLocking :Bool  )  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tindices":tindices)
-    attr.append("use_locking":useLocking)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("Tindices",tindices)
+    attr.append("use_locking",useLocking)
 
     let opspec = tf.OpSpec(
         OpType: "SparseApplyCenteredRMSProp",
@@ -17273,15 +17093,14 @@ accum = accum_new
 
 
 
-func sparseApplyFtrl(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, linear: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, lr: Tensorflow_DataType, l1: Tensorflow_DataType, l2: Tensorflow_DataType, lrPower: Tensorflow_DataType, t :type  , tindices :type  , useLocking :bool  )  ->(out: tf.Output){
+func sparseApplyFtrl(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, linear: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, lr: Tensorflow_DataType, l1: Tensorflow_DataType, l2: Tensorflow_DataType, lrPower: Tensorflow_DataType, tindices :Type  , useLocking :Bool  )  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tindices":tindices)
-    attr.append("use_locking":useLocking)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tindices",tindices)
+    attr.append("use_locking",useLocking)
 
     let opspec = tf.OpSpec(
         OpType: "SparseApplyFtrl",
@@ -17305,16 +17124,16 @@ var -= lr * accum
 
 
 
-func sparseApplyMomentum(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, lr: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, momentum: Tensorflow_DataType, t :type  , tindices :type  , useLocking :bool  , useNesterov :bool  )  ->(out: tf.Output){
+func sparseApplyMomentum(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, lr: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, momentum: Tensorflow_DataType, t :Type  , tindices :Type  , useLocking :Bool  , useNesterov :Bool  )  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tindices":tindices)
-    attr.append("use_locking":useLocking)
-    attr.append("use_nesterov":useNesterov)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("Tindices",tindices)
+    attr.append("use_locking",useLocking)
+    attr.append("use_nesterov",useNesterov)
 
     let opspec = tf.OpSpec(
         OpType: "SparseApplyMomentum",
@@ -17339,15 +17158,14 @@ var = sign(prox_v)/(1+lr*l2) * max{|prox_v|-lr*l1,0}
 
 
 
-func sparseApplyProximalAdagrad(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, lr: Tensorflow_DataType, l1: Tensorflow_DataType, l2: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, t :type  , tindices :type  , useLocking :bool  )  ->(out: tf.Output){
+func sparseApplyProximalAdagrad(scope:Scope,`var`: Tensorflow_DataType, accum: Tensorflow_DataType, lr: Tensorflow_DataType, l1: Tensorflow_DataType, l2: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, tindices :Type  , useLocking :Bool  )  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tindices":tindices)
-    attr.append("use_locking":useLocking)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tindices",tindices)
+    attr.append("use_locking",useLocking)
 
     let opspec = tf.OpSpec(
         OpType: "SparseApplyProximalAdagrad",
@@ -17370,15 +17188,15 @@ var = sign(prox_v)/(1+alpha*l2) * max{|prox_v|-alpha*l1,0}
 
 
 
-func sparseApplyProximalGradientDescent(scope:Scope,`var`: Tensorflow_DataType, alpha: Tensorflow_DataType, l1: Tensorflow_DataType, l2: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, t :type  , tindices :type  , useLocking :bool  )  ->(out: tf.Output){
+func sparseApplyProximalGradientDescent(scope:Scope,`var`: Tensorflow_DataType, alpha: Tensorflow_DataType, l1: Tensorflow_DataType, l2: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, t :Type  , tindices :Type  , useLocking :Bool  )  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tindices":tindices)
-    attr.append("use_locking":useLocking)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("Tindices",tindices)
+    attr.append("use_locking",useLocking)
 
     let opspec = tf.OpSpec(
         OpType: "SparseApplyProximalGradientDescent",
@@ -17406,15 +17224,14 @@ var <- var - mom
 
 
 
-func sparseApplyRMSProp(scope:Scope,`var`: Tensorflow_DataType, ms: Tensorflow_DataType, mom: Tensorflow_DataType, lr: Tensorflow_DataType, rho: Tensorflow_DataType, momentum: Tensorflow_DataType, epsilon: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, t :type  , tindices :type  , useLocking :bool  )  ->(out: tf.Output){
+func sparseApplyRMSProp(scope:Scope,`var`: Tensorflow_DataType, ms: Tensorflow_DataType, mom: Tensorflow_DataType, lr: Tensorflow_DataType, rho: Tensorflow_DataType, momentum: Tensorflow_DataType, epsilon: Tensorflow_DataType, grad: Tensorflow_DataType, indices: Tensorflow_DataType, tindices :Type  , useLocking :Bool  )  ->(out: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tindices":tindices)
-    attr.append("use_locking":useLocking)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tindices",tindices)
+    attr.append("use_locking",useLocking)
 
     let opspec = tf.OpSpec(
         OpType: "SparseApplyRMSProp",
@@ -17464,15 +17281,15 @@ Graphically this is equivalent to doing
 
 
 
-func sparseConcat(scope:Scope,indices: Tensorflow_DataType, values: Tensorflow_DataType, shapes: Tensorflow_DataType, concatDim :uInt8  , n :uInt8  , t :type  )  ->(outputIndices: tf.Output, outputValues: tf.Output, outputShape: tf.Output){
+func sparseConcat(scope:Scope,indices: Tensorflow_DataType, values: Tensorflow_DataType, shapes: Tensorflow_DataType, concatDim :Int  , n :Int  , t :Type  )  ->(outputIndices: tf.Output, outputValues: tf.Output, outputShape: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("concat_dim":concatDim)
-    attr.append("N":n)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("concat_dim",concatDim)
+    attr.append("N",n)
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "SparseConcat",
@@ -17498,16 +17315,16 @@ the accumulator.
 
 
 
-func sparseConditionalAccumulator(scope:Scope dtype :type  , shape :shape  , container :string  , sharedName :string  )  ->(handle: tf.Output){
+func sparseConditionalAccumulator(scope:Scope dtype :Type  , shape :Shape  , container :String  , sharedName :String  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("dtype":dtype)
-    attr.append("shape":shape)
-    attr.append("container":container)
-    attr.append("shared_name":sharedName)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("dtype",dtype)
+    attr.append("shape",shape)
+    attr.append("container",container)
+    attr.append("shared_name",sharedName)
 
     let opspec = tf.OpSpec(
         OpType: "SparseConditionalAccumulator",
@@ -17555,20 +17372,20 @@ if hashed_output=true then the output will be
 
 
 
-func sparseCross(scope:Scope,indices: Tensorflow_DataType, values: Tensorflow_DataType, shapes: Tensorflow_DataType, denseInputs: Tensorflow_DataType, n :uInt8  , hashedOutput :bool  , numBuckets :uInt8  , hashKey :uInt8  , sparseTypes :list(type)  , denseTypes :list(type)  , outType :type  , internalType :type  )  ->(outputIndices: tf.Output, outputValues: tf.Output, outputShape: tf.Output){
+func sparseCross(scope:Scope,indices: Tensorflow_DataType, values: Tensorflow_DataType, shapes: Tensorflow_DataType, denseInputs: Tensorflow_DataType, n :UInt8  , hashedOutput :Bool  , numBuckets :UInt8  , hashKey :UInt8  , sparseTypes :List(type)  , denseTypes :List(type)  , outType :Type  , internalType :Type  )  ->(outputIndices: tf.Output, outputValues: tf.Output, outputShape: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("N":n)
-    attr.append("hashed_output":hashedOutput)
-    attr.append("num_buckets":numBuckets)
-    attr.append("hash_key":hashKey)
-    attr.append("sparse_types":sparseTypes)
-    attr.append("dense_types":denseTypes)
-    attr.append("out_type":outType)
-    attr.append("internal_type":internalType)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("N",n)
+    attr.append("hashed_output",hashedOutput)
+    attr.append("num_buckets",numBuckets)
+    attr.append("hash_key",hashKey)
+    attr.append("sparse_types",sparseTypes)
+    attr.append("dense_types",denseTypes)
+    attr.append("out_type",outType)
+    attr.append("internal_type",internalType)
 
     let opspec = tf.OpSpec(
         OpType: "SparseCross",
@@ -17595,13 +17412,12 @@ this Op is the resultant non-zero values.
 
 
 
-func sparseDenseCwiseAdd(scope:Scope,spIndices: Tensorflow_DataType, spValues: Tensorflow_DataType, spShape: Tensorflow_DataType, dense: Tensorflow_DataType, t :type  )  ->(output: tf.Output){
+func sparseDenseCwiseAdd(scope:Scope,spIndices: Tensorflow_DataType, spValues: Tensorflow_DataType, spShape: Tensorflow_DataType, dense: Tensorflow_DataType )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "SparseDenseCwiseAdd",
@@ -17623,13 +17439,13 @@ the other direction.
 
 
 
-func sparseDenseCwiseDiv(scope:Scope,spIndices: Tensorflow_DataType, spValues: Tensorflow_DataType, spShape: Tensorflow_DataType, dense: Tensorflow_DataType, t :type  )  ->(output: tf.Output){
+func sparseDenseCwiseDiv(scope:Scope,spIndices: Tensorflow_DataType, spValues: Tensorflow_DataType, spShape: Tensorflow_DataType, dense: Tensorflow_DataType, t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "SparseDenseCwiseDiv",
@@ -17654,13 +17470,12 @@ the other direction.
 
 
 
-func sparseDenseCwiseMul(scope:Scope,spIndices: Tensorflow_DataType, spValues: Tensorflow_DataType, spShape: Tensorflow_DataType, dense: Tensorflow_DataType, t :type  )  ->(output: tf.Output){
+func sparseDenseCwiseMul(scope:Scope,spIndices: Tensorflow_DataType, spValues: Tensorflow_DataType, spShape: Tensorflow_DataType, dense: Tensorflow_DataType )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "SparseDenseCwiseMul",
@@ -17706,13 +17521,13 @@ backpropagation,
 
 
 
-func sparseFillEmptyRows(scope:Scope,indices: Tensorflow_DataType, values: Tensorflow_DataType, denseShape: Tensorflow_DataType, defaultValue: Tensorflow_DataType, t :type  )  ->(outputIndices: tf.Output, outputValues: tf.Output, emptyRowIndicator: tf.Output, reverseIndexMap: tf.Output){
+func sparseFillEmptyRows(scope:Scope,indices: Tensorflow_DataType, values: Tensorflow_DataType, denseShape: Tensorflow_DataType, defaultValue: Tensorflow_DataType, t :Type  )  ->(outputIndices: tf.Output, outputValues: tf.Output, emptyRowIndicator: tf.Output, reverseIndexMap: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "SparseFillEmptyRows",
@@ -17739,13 +17554,12 @@ shaped `[N_full]`, where `N_full >= N` and copies data into either
 
 
 
-func sparseFillEmptyRowsGrad(scope:Scope,reverseIndexMap: Tensorflow_DataType, gradValues: Tensorflow_DataType, t :type  )  ->(dValues: tf.Output, dDefaultValue: tf.Output){
+func sparseFillEmptyRowsGrad(scope:Scope,reverseIndexMap: Tensorflow_DataType, gradValues: Tensorflow_DataType )  ->(dValues: tf.Output, dDefaultValue: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "SparseFillEmptyRowsGrad",
@@ -17769,18 +17583,18 @@ matrix multiply on one platform was 30% zero values in the sparse matrix.
 
 
 
-func sparseMatMul(scope:Scope,a: Tensorflow_DataType, b: Tensorflow_DataType, transposeA :bool  , transposeB :bool  , aIsSparse :bool  , bIsSparse :bool  , ta :type  , tb :type  )  ->(product: tf.Output){
+func sparseMatMul(scope:Scope,a: Tensorflow_DataType, b: Tensorflow_DataType, transposeA :Bool  , transposeB :Bool  , aIsSparse :Bool  , bIsSparse :Bool  , ta :Type  , tb :Type  )  ->(product: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("transpose_a":transposeA)
-    attr.append("transpose_b":transposeB)
-    attr.append("a_is_sparse":aIsSparse)
-    attr.append("b_is_sparse":bIsSparse)
-    attr.append("Ta":ta)
-    attr.append("Tb":tb)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("transpose_a",transposeA)
+    attr.append("transpose_b",transposeB)
+    attr.append("a_is_sparse",aIsSparse)
+    attr.append("b_is_sparse",bIsSparse)
+    attr.append("Ta",ta)
+    attr.append("Tb",tb)
 
     let opspec = tf.OpSpec(
         OpType: "SparseMatMul",
@@ -17810,14 +17624,13 @@ which are interpreted according to the indexing rules in Python.
 
 
 
-func sparseReduceSum(scope:Scope,inputIndices: Tensorflow_DataType, inputValues: Tensorflow_DataType, inputShape: Tensorflow_DataType, reductionAxes: Tensorflow_DataType, keepDims :bool  , t :type  )  ->(output: tf.Output){
+func sparseReduceSum(scope:Scope,inputIndices: Tensorflow_DataType, inputValues: Tensorflow_DataType, inputShape: Tensorflow_DataType, reductionAxes: Tensorflow_DataType, keepDims :Bool  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("keep_dims":keepDims)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("keep_dims",keepDims)
 
     let opspec = tf.OpSpec(
         OpType: "SparseReduceSum",
@@ -17847,14 +17660,14 @@ which are interpreted according to the indexing rules in Python.
 
 
 
-func sparseReduceSumSparse(scope:Scope,inputIndices: Tensorflow_DataType, inputValues: Tensorflow_DataType, inputShape: Tensorflow_DataType, reductionAxes: Tensorflow_DataType, keepDims :bool  , t :type  )  ->(outputIndices: tf.Output, outputValues: tf.Output, outputShape: tf.Output){
+func sparseReduceSumSparse(scope:Scope,inputIndices: Tensorflow_DataType, inputValues: Tensorflow_DataType, inputShape: Tensorflow_DataType, reductionAxes: Tensorflow_DataType, keepDims :Bool  , t :Type  )  ->(outputIndices: tf.Output, outputValues: tf.Output, outputShape: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("keep_dims":keepDims)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("keep_dims",keepDims)
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "SparseReduceSumSparse",
@@ -17880,13 +17693,12 @@ shape `[N, R]`, input_values has length `N`, and input_shape has length `R`.
 
 
 
-func sparseReorder(scope:Scope,inputIndices: Tensorflow_DataType, inputValues: Tensorflow_DataType, inputShape: Tensorflow_DataType, t :type  )  ->(outputIndices: tf.Output, outputValues: tf.Output){
+func sparseReorder(scope:Scope,inputIndices: Tensorflow_DataType, inputValues: Tensorflow_DataType, inputShape: Tensorflow_DataType )  ->(outputIndices: tf.Output, outputValues: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "SparseReorder",
@@ -17923,7 +17735,7 @@ func sparseReshape(scope:Scope,inputIndices: Tensorflow_DataType, inputShape: Te
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "SparseReshape",
@@ -17947,14 +17759,13 @@ dimension, selecting a subset of dimension 0, specified by `indices`.
 
 
 
-func sparseSegmentMean(scope:Scope,data: Tensorflow_DataType, indices: Tensorflow_DataType, segmentIds: Tensorflow_DataType, t :type  , tidx :type  )  ->(output: tf.Output){
+func sparseSegmentMean(scope:Scope,data: Tensorflow_DataType, indices: Tensorflow_DataType, segmentIds: Tensorflow_DataType, tidx :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tidx":tidx)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tidx",tidx)
 
     let opspec = tf.OpSpec(
         OpType: "SparseSegmentMean",
@@ -17976,14 +17787,14 @@ value is output_dim0.
 
 
 
-func sparseSegmentMeanGrad(scope:Scope,grad: Tensorflow_DataType, indices: Tensorflow_DataType, segmentIds: Tensorflow_DataType, outputDim0: Tensorflow_DataType, t :type  , tidx :type  )  ->(output: tf.Output){
+func sparseSegmentMeanGrad(scope:Scope,grad: Tensorflow_DataType, indices: Tensorflow_DataType, segmentIds: Tensorflow_DataType, outputDim0: Tensorflow_DataType, t :Type  , tidx :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tidx":tidx)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("Tidx",tidx)
 
     let opspec = tf.OpSpec(
         OpType: "SparseSegmentMeanGrad",
@@ -18006,14 +17817,13 @@ segments.
 
 
 
-func sparseSegmentSqrtN(scope:Scope,data: Tensorflow_DataType, indices: Tensorflow_DataType, segmentIds: Tensorflow_DataType, t :type  , tidx :type  )  ->(output: tf.Output){
+func sparseSegmentSqrtN(scope:Scope,data: Tensorflow_DataType, indices: Tensorflow_DataType, segmentIds: Tensorflow_DataType, tidx :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tidx":tidx)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tidx",tidx)
 
     let opspec = tf.OpSpec(
         OpType: "SparseSegmentSqrtN",
@@ -18035,14 +17845,14 @@ value is output_dim0.
 
 
 
-func sparseSegmentSqrtNGrad(scope:Scope,grad: Tensorflow_DataType, indices: Tensorflow_DataType, segmentIds: Tensorflow_DataType, outputDim0: Tensorflow_DataType, t :type  , tidx :type  )  ->(output: tf.Output){
+func sparseSegmentSqrtNGrad(scope:Scope,grad: Tensorflow_DataType, indices: Tensorflow_DataType, segmentIds: Tensorflow_DataType, outputDim0: Tensorflow_DataType, t :Type  , tidx :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tidx":tidx)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("Tidx",tidx)
 
     let opspec = tf.OpSpec(
         OpType: "SparseSegmentSqrtNGrad",
@@ -18083,14 +17893,13 @@ tf.segment_sum(c, tf.constant([0, 0, 1]))
 
 
 
-func sparseSegmentSum(scope:Scope,data: Tensorflow_DataType, indices: Tensorflow_DataType, segmentIds: Tensorflow_DataType, t :type  , tidx :type  )  ->(output: tf.Output){
+func sparseSegmentSum(scope:Scope,data: Tensorflow_DataType, indices: Tensorflow_DataType, segmentIds: Tensorflow_DataType, tidx :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tidx":tidx)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tidx",tidx)
 
     let opspec = tf.OpSpec(
         OpType: "SparseSegmentSum",
@@ -18122,13 +17931,13 @@ shape.
 
 
 
-func sparseSoftmax(scope:Scope,spIndices: Tensorflow_DataType, spValues: Tensorflow_DataType, spShape: Tensorflow_DataType, t :type  )  ->(output: tf.Output){
+func sparseSoftmax(scope:Scope,spIndices: Tensorflow_DataType, spValues: Tensorflow_DataType, spShape: Tensorflow_DataType, t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "SparseSoftmax",
@@ -18153,14 +17962,13 @@ Inputs are the logits, not probabilities.
 
 
 
-func sparseSoftmaxCrossEntropyWithLogits(scope:Scope,features: Tensorflow_DataType, labels: Tensorflow_DataType, t :type  , tlabels :type  )  ->(loss: tf.Output, backprop: tf.Output){
+func sparseSoftmaxCrossEntropyWithLogits(scope:Scope,features: Tensorflow_DataType, labels: Tensorflow_DataType, tlabels :Type  )  ->(loss: tf.Output, backprop: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tlabels":tlabels)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tlabels",tlabels)
 
     let opspec = tf.OpSpec(
         OpType: "SparseSoftmaxCrossEntropyWithLogits",
@@ -18181,13 +17989,13 @@ Assumes the two SparseTensors have the same shape, i.e., no broadcasting.
 
 
 
-func sparseSparseMaximum(scope:Scope,aIndices: Tensorflow_DataType, aValues: Tensorflow_DataType, aShape: Tensorflow_DataType, bIndices: Tensorflow_DataType, bValues: Tensorflow_DataType, bShape: Tensorflow_DataType, t :type  )  ->(outputIndices: tf.Output, outputValues: tf.Output){
+func sparseSparseMaximum(scope:Scope,aIndices: Tensorflow_DataType, aValues: Tensorflow_DataType, aShape: Tensorflow_DataType, bIndices: Tensorflow_DataType, bValues: Tensorflow_DataType, bShape: Tensorflow_DataType, t :Type  )  ->(outputIndices: tf.Output, outputValues: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "SparseSparseMaximum",
@@ -18208,13 +18016,12 @@ Assumes the two SparseTensors have the same shape, i.e., no broadcasting.
 
 
 
-func sparseSparseMinimum(scope:Scope,aIndices: Tensorflow_DataType, aValues: Tensorflow_DataType, aShape: Tensorflow_DataType, bIndices: Tensorflow_DataType, bValues: Tensorflow_DataType, bShape: Tensorflow_DataType, t :type  )  ->(outputIndices: tf.Output, outputValues: tf.Output){
+func sparseSparseMinimum(scope:Scope,aIndices: Tensorflow_DataType, aValues: Tensorflow_DataType, aShape: Tensorflow_DataType, bIndices: Tensorflow_DataType, bValues: Tensorflow_DataType, bShape: Tensorflow_DataType )  ->(outputIndices: tf.Output, outputValues: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "SparseSparseMinimum",
@@ -18247,14 +18054,14 @@ Graphically the output tensors are:
 
 
 
-func sparseSplit(scope:Scope,splitDim: Tensorflow_DataType, indices: Tensorflow_DataType, values: Tensorflow_DataType, shape: Tensorflow_DataType, numSplit :uInt8  , t :type  )  ->(outputIndices: tf.Output, outputValues: tf.Output, outputShape: tf.Output){
+func sparseSplit(scope:Scope,splitDim: Tensorflow_DataType, indices: Tensorflow_DataType, values: Tensorflow_DataType, shape: Tensorflow_DataType, numSplit :Int  , t :Type  )  ->(outputIndices: tf.Output, outputValues: tf.Output, outputShape: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("num_split":numSplit)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("num_split",numSplit)
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "SparseSplit",
@@ -18275,14 +18082,13 @@ This Op does not require `a_indices` be sorted in standard lexicographic order.
 
 
 
-func sparseTensorDenseAdd(scope:Scope,aIndices: Tensorflow_DataType, aValues: Tensorflow_DataType, aShape: Tensorflow_DataType, b: Tensorflow_DataType, t :type  , tindices :type  )  ->(output: tf.Output){
+func sparseTensorDenseAdd(scope:Scope,aIndices: Tensorflow_DataType, aValues: Tensorflow_DataType, aShape: Tensorflow_DataType, b: Tensorflow_DataType, tindices :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tindices":tindices)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tindices",tindices)
 
     let opspec = tf.OpSpec(
         OpType: "SparseTensorDenseAdd",
@@ -18310,16 +18116,16 @@ if adjoint_a == true:
 
 
 
-func sparseTensorDenseMatMul(scope:Scope,aIndices: Tensorflow_DataType, aValues: Tensorflow_DataType, aShape: Tensorflow_DataType, b: Tensorflow_DataType, t :type  , tindices :type  , adjointA :bool  , adjointB :bool  )  ->(product: tf.Output){
+func sparseTensorDenseMatMul(scope:Scope,aIndices: Tensorflow_DataType, aValues: Tensorflow_DataType, aShape: Tensorflow_DataType, b: Tensorflow_DataType, t :Type  , tindices :Type  , adjointA :Bool  , adjointB :Bool  )  ->(product: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tindices":tindices)
-    attr.append("adjoint_a":adjointA)
-    attr.append("adjoint_b":adjointB)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("Tindices",tindices)
+    attr.append("adjoint_a",adjointA)
+    attr.append("adjoint_b",adjointB)
 
     let opspec = tf.OpSpec(
         OpType: "SparseTensorDenseMatMul",
@@ -18339,13 +18145,13 @@ Creates a dataset that splits a SparseTensor into elements row-wise.
 
 
 
-func sparseTensorSliceDataset(scope:Scope,indices: Tensorflow_DataType, values: Tensorflow_DataType, denseShape: Tensorflow_DataType, tvalues :type  )  ->(handle: tf.Output){
+func sparseTensorSliceDataset(scope:Scope,indices: Tensorflow_DataType, values: Tensorflow_DataType, denseShape: Tensorflow_DataType, tvalues :Type  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("Tvalues":tvalues)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tvalues",tvalues)
 
     let opspec = tf.OpSpec(
         OpType: "SparseTensorSliceDataset",
@@ -18379,15 +18185,14 @@ are checked during execution.
 
 
 
-func sparseToDense(scope:Scope,sparseIndices: Tensorflow_DataType, outputShape: Tensorflow_DataType, sparseValues: Tensorflow_DataType, defaultValue: Tensorflow_DataType, validateIndices :bool  , t :type  , tindices :type  )  ->(dense: tf.Output){
+func sparseToDense(scope:Scope,sparseIndices: Tensorflow_DataType, outputShape: Tensorflow_DataType, sparseValues: Tensorflow_DataType, defaultValue: Tensorflow_DataType, validateIndices :Bool  , tindices :Type  )  ->(dense: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("validate_indices":validateIndices)
-    attr.append("T":t)
-    attr.append("Tindices":tindices)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("validate_indices",validateIndices)
+    attr.append("Tindices",tindices)
 
     let opspec = tf.OpSpec(
         OpType: "SparseToDense",
@@ -18425,15 +18230,15 @@ dimension contains the result of `set_operation` applied to the corresponding
 
 
 
-func sparseToSparseSetOperation(scope:Scope,set1Indices: Tensorflow_DataType, set1Values: Tensorflow_DataType, set1Shape: Tensorflow_DataType, set2Indices: Tensorflow_DataType, set2Values: Tensorflow_DataType, set2Shape: Tensorflow_DataType, setOperation :string  , validateIndices :bool  , t :type  )  ->(resultIndices: tf.Output, resultValues: tf.Output, resultShape: tf.Output){
+func sparseToSparseSetOperation(scope:Scope,set1Indices: Tensorflow_DataType, set1Values: Tensorflow_DataType, set1Shape: Tensorflow_DataType, set2Indices: Tensorflow_DataType, set2Values: Tensorflow_DataType, set2Shape: Tensorflow_DataType, setOperation :String  , validateIndices :Bool  , t :Type  )  ->(resultIndices: tf.Output, resultValues: tf.Output, resultShape: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("set_operation":setOperation)
-    attr.append("validate_indices":validateIndices)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("set_operation",setOperation)
+    attr.append("validate_indices",validateIndices)
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "SparseToSparseSetOperation",
@@ -18453,14 +18258,13 @@ Splits a tensor into `num_split` tensors along one dimension.
 
 
 
-func split(scope:Scope,splitDim: Tensorflow_DataType, value: Tensorflow_DataType, numSplit :uInt8  , t :type  )  ->(output: tf.Output){
+func split(scope:Scope,splitDim: Tensorflow_DataType, value: Tensorflow_DataType, numSplit :UInt8  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("num_split":numSplit)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("num_split",numSplit)
 
     let opspec = tf.OpSpec(
         OpType: "Split",
@@ -18480,15 +18284,15 @@ Splits a tensor into `num_split` tensors along one dimension.
 
 
 
-func splitV(scope:Scope,value: Tensorflow_DataType, sizeSplits: Tensorflow_DataType, splitDim: Tensorflow_DataType, numSplit :uInt8  , t :type  , tlen :type  )  ->(output: tf.Output){
+func splitV(scope:Scope,value: Tensorflow_DataType, sizeSplits: Tensorflow_DataType, splitDim: Tensorflow_DataType, numSplit :Int  , t :Type  , tlen :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("num_split":numSplit)
-    attr.append("T":t)
-    attr.append("Tlen":tlen)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("num_split",numSplit)
+    attr.append("T",t)
+    attr.append("Tlen",tlen)
 
     let opspec = tf.OpSpec(
         OpType: "SplitV",
@@ -18509,13 +18313,12 @@ I.e., \\(y = \sqrt{x} = x^{1/2}\\).
 
 
 
-func sqrt(scope:Scope,x: Tensorflow_DataType, t :type  )  ->(y: tf.Output){
+func sqrt(scope:Scope,x: Tensorflow_DataType )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "Sqrt",
@@ -18537,13 +18340,13 @@ is the corresponding input gradient.
 
 
 
-func sqrtGrad(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :type  )  ->(z: tf.Output){
+func sqrtGrad(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :Type  )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "SqrtGrad",
@@ -18564,13 +18367,12 @@ I.e., \\(y = x * x = x^2\\).
 
 
 
-func square(scope:Scope,x: Tensorflow_DataType, t :type  )  ->(y: tf.Output){
+func square(scope:Scope,x: Tensorflow_DataType )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "Square",
@@ -18592,13 +18394,13 @@ Returns (x - y)(x - y) element-wise.
 
 
 
-func squaredDifference(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :type  )  ->(z: tf.Output){
+func squaredDifference(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :Type  )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "SquaredDifference",
@@ -18632,14 +18434,13 @@ shape(squeeze(t, [2, 4])) ==> [1, 2, 3, 1]
 
 
 
-func squeeze(scope:Scope,input: Tensorflow_DataType, t :type  , squeezeDims :[Int]  )  ->(output: tf.Output){
+func squeeze(scope:Scope,input: Tensorflow_DataType, squeezeDims :List(int)  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("squeeze_dims":squeezeDims)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("squeeze_dims",squeezeDims)
 
     let opspec = tf.OpSpec(
         OpType: "Squeeze",
@@ -18659,14 +18460,14 @@ A stack that produces elements in first-in last-out order.
 
 
 
-func stack(scope:Scope elemType :type  , stackName :string  )  ->(handle: tf.Output){
+func stack(scope:Scope elemType :Type  , stackName :String  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("elem_type":elemType)
-    attr.append("stack_name":stackName)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("elem_type",elemType)
+    attr.append("stack_name",stackName)
 
     let opspec = tf.OpSpec(
         OpType: "Stack",
@@ -18691,7 +18492,7 @@ func stackClose(scope:Scope,handle: Tensorflow_DataType )  ->(o:tf.Operation){
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "StackClose",
@@ -18710,13 +18511,13 @@ Pop the element at the top of the stack.
 
 
 
-func stackPop(scope:Scope,handle: Tensorflow_DataType, elemType :type  )  ->(elem: tf.Output){
+func stackPop(scope:Scope,handle: Tensorflow_DataType, elemType :Type  )  ->(elem: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("elem_type":elemType)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("elem_type",elemType)
 
     let opspec = tf.OpSpec(
         OpType: "StackPop",
@@ -18736,14 +18537,13 @@ Push an element onto the stack.
 
 
 
-func stackPush(scope:Scope,handle: Tensorflow_DataType, elem: Tensorflow_DataType, t :type  , swapMemory :bool  )  ->(output: tf.Output){
+func stackPush(scope:Scope,handle: Tensorflow_DataType, elem: Tensorflow_DataType, swapMemory :Bool  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("swap_memory":swapMemory)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("swap_memory",swapMemory)
 
     let opspec = tf.OpSpec(
         OpType: "StackPush",
@@ -18765,15 +18565,15 @@ fewer capabilities and options.  This Op is optimized for performance.
 
 
 
-func stage(scope:Scope,values: Tensorflow_DataType, dtypes :list(type)  , container :string  , sharedName :string  )  ->(o:tf.Operation){
+func stage(scope:Scope,values: Tensorflow_DataType, dtypes :List(type)  , container :String  , sharedName :String  )  ->(o:tf.Operation){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("dtypes":dtypes)
-    attr.append("container":container)
-    attr.append("shared_name":sharedName)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("dtypes",dtypes)
+    attr.append("container",container)
+    attr.append("shared_name",sharedName)
 
     let opspec = tf.OpSpec(
         OpType: "Stage",
@@ -18794,14 +18594,13 @@ The outputs are a deterministic function of `shape` and `seed`.
 
 
 
-func statelessRandomNormal(scope:Scope,shape: Tensorflow_DataType, seed: Tensorflow_DataType, dtype :type  , t :type  )  ->(output: tf.Output){
+func statelessRandomNormal(scope:Scope,shape: Tensorflow_DataType, seed: Tensorflow_DataType, dtype :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("dtype":dtype)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("dtype",dtype)
 
     let opspec = tf.OpSpec(
         OpType: "StatelessRandomNormal",
@@ -18824,14 +18623,14 @@ The outputs are a deterministic function of `shape` and `seed`.
 
 
 
-func statelessRandomUniform(scope:Scope,shape: Tensorflow_DataType, seed: Tensorflow_DataType, dtype :type  , t :type  )  ->(output: tf.Output){
+func statelessRandomUniform(scope:Scope,shape: Tensorflow_DataType, seed: Tensorflow_DataType, dtype :Type  , t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("dtype":dtype)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("dtype",dtype)
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "StatelessRandomUniform",
@@ -18855,14 +18654,13 @@ The outputs are a deterministic function of `shape` and `seed`.
 
 
 
-func statelessTruncatedNormal(scope:Scope,shape: Tensorflow_DataType, seed: Tensorflow_DataType, dtype :type  , t :type  )  ->(output: tf.Output){
+func statelessTruncatedNormal(scope:Scope,shape: Tensorflow_DataType, seed: Tensorflow_DataType, dtype :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("dtype":dtype)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("dtype",dtype)
 
     let opspec = tf.OpSpec(
         OpType: "StatelessTruncatedNormal",
@@ -18898,13 +18696,13 @@ to pretend that the value was a constant. Some examples include:
 
 
 
-func stopGradient(scope:Scope,input: Tensorflow_DataType, t :type  )  ->(output: tf.Output){
+func stopGradient(scope:Scope,input: Tensorflow_DataType, t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "StopGradient",
@@ -18997,19 +18795,18 @@ receive 0, 0, and 1, respectively. The appropriate bits in `begin_mask` and
 
 
 
-func stridedSlice(scope:Scope,input: Tensorflow_DataType, begin: Tensorflow_DataType, end: Tensorflow_DataType, strides: Tensorflow_DataType, t :type  , index :type  , beginMask :uInt8  , endMask :uInt8  , ellipsisMask :uInt8  , newAxisMask :uInt8  , shrinkAxisMask :uInt8  )  ->(output: tf.Output){
+func stridedSlice(scope:Scope,input: Tensorflow_DataType, begin: Tensorflow_DataType, end: Tensorflow_DataType, strides: Tensorflow_DataType, index :Type  , beginMask :Int  , endMask :Int  , ellipsisMask :Int  , newAxisMask :Int  , shrinkAxisMask :Int  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Index":index)
-    attr.append("begin_mask":beginMask)
-    attr.append("end_mask":endMask)
-    attr.append("ellipsis_mask":ellipsisMask)
-    attr.append("new_axis_mask":newAxisMask)
-    attr.append("shrink_axis_mask":shrinkAxisMask)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Index",index)
+    attr.append("begin_mask",beginMask)
+    attr.append("end_mask",endMask)
+    attr.append("ellipsis_mask",ellipsisMask)
+    attr.append("new_axis_mask",newAxisMask)
+    attr.append("shrink_axis_mask",shrinkAxisMask)
 
     let opspec = tf.OpSpec(
         OpType: "StridedSlice",
@@ -19034,19 +18831,19 @@ shape must be exactly the shape produced by the slice of `ref`.
 
 
 
-func stridedSliceAssign(scope:Scope,ref: Tensorflow_DataType, begin: Tensorflow_DataType, end: Tensorflow_DataType, strides: Tensorflow_DataType, value: Tensorflow_DataType, t :type  , index :type  , beginMask :uInt8  , endMask :uInt8  , ellipsisMask :uInt8  , newAxisMask :uInt8  , shrinkAxisMask :uInt8  )  ->(outputRef: tf.Output){
+func stridedSliceAssign(scope:Scope,ref: Tensorflow_DataType, begin: Tensorflow_DataType, end: Tensorflow_DataType, strides: Tensorflow_DataType, value: Tensorflow_DataType, t :Type  , index :Type  , beginMask :Int  , endMask :Int  , ellipsisMask :Int  , newAxisMask :Int  , shrinkAxisMask :Int  )  ->(outputRef: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Index":index)
-    attr.append("begin_mask":beginMask)
-    attr.append("end_mask":endMask)
-    attr.append("ellipsis_mask":ellipsisMask)
-    attr.append("new_axis_mask":newAxisMask)
-    attr.append("shrink_axis_mask":shrinkAxisMask)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("Index",index)
+    attr.append("begin_mask",beginMask)
+    attr.append("end_mask",endMask)
+    attr.append("ellipsis_mask",ellipsisMask)
+    attr.append("new_axis_mask",newAxisMask)
+    attr.append("shrink_axis_mask",shrinkAxisMask)
 
     let opspec = tf.OpSpec(
         OpType: "StridedSliceAssign",
@@ -19073,19 +18870,18 @@ shape of `StridedSlice`'s `input`.
 
 
 
-func stridedSliceGrad(scope:Scope,shape: Tensorflow_DataType, begin: Tensorflow_DataType, end: Tensorflow_DataType, strides: Tensorflow_DataType, dy: Tensorflow_DataType, t :type  , index :type  , beginMask :uInt8  , endMask :uInt8  , ellipsisMask :uInt8  , newAxisMask :uInt8  , shrinkAxisMask :uInt8  )  ->(output: tf.Output){
+func stridedSliceGrad(scope:Scope,shape: Tensorflow_DataType, begin: Tensorflow_DataType, end: Tensorflow_DataType, strides: Tensorflow_DataType, dy: Tensorflow_DataType, index :Type  , beginMask :Int  , endMask :Int  , ellipsisMask :Int  , newAxisMask :Int  , shrinkAxisMask :Int  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Index":index)
-    attr.append("begin_mask":beginMask)
-    attr.append("end_mask":endMask)
-    attr.append("ellipsis_mask":ellipsisMask)
-    attr.append("new_axis_mask":newAxisMask)
-    attr.append("shrink_axis_mask":shrinkAxisMask)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Index",index)
+    attr.append("begin_mask",beginMask)
+    attr.append("end_mask",endMask)
+    attr.append("ellipsis_mask",ellipsisMask)
+    attr.append("new_axis_mask",newAxisMask)
+    attr.append("shrink_axis_mask",shrinkAxisMask)
 
     let opspec = tf.OpSpec(
         OpType: "StridedSliceGrad",
@@ -19106,14 +18902,14 @@ with the given separator (default is an empty separator).
 
 
 
-func stringJoin(scope:Scope,inputs: Tensorflow_DataType, n :uInt8  , separator :string  )  ->(output: tf.Output){
+func stringJoin(scope:Scope,inputs: Tensorflow_DataType, n :Int  , separator :String  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("N":n)
-    attr.append("separator":separator)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("N",n)
+    attr.append("separator",separator)
 
     let opspec = tf.OpSpec(
         OpType: "StringJoin",
@@ -19155,7 +18951,7 @@ func stringSplit(scope:Scope,input: Tensorflow_DataType, delimiter: Tensorflow_D
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "StringSplit",
@@ -19180,13 +18976,13 @@ This functionality will be deprecated and it's recommended to use
 
 
 
-func stringToHashBucket(scope:Scope,stringTensor: Tensorflow_DataType, numBuckets :uInt8  )  ->(output: tf.Output){
+func stringToHashBucket(scope:Scope,stringTensor: Tensorflow_DataType, numBuckets :UInt8  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("num_buckets":numBuckets)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("num_buckets",numBuckets)
 
     let opspec = tf.OpSpec(
         OpType: "StringToHashBucket",
@@ -19212,13 +19008,13 @@ to the same bucket. To prevent this problem, use a strong hash function with
 
 
 
-func stringToHashBucketFast(scope:Scope,input: Tensorflow_DataType, numBuckets :uInt8  )  ->(output: tf.Output){
+func stringToHashBucketFast(scope:Scope,input: Tensorflow_DataType, numBuckets :UInt8  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("num_buckets":numBuckets)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("num_buckets",numBuckets)
 
     let opspec = tf.OpSpec(
         OpType: "StringToHashBucketFast",
@@ -19247,14 +19043,14 @@ time than `tf.string_to_hash_bucket_fast`.
 
 
 
-func stringToHashBucketStrong(scope:Scope,input: Tensorflow_DataType, numBuckets :uInt8  , key :[Int]  )  ->(output: tf.Output){
+func stringToHashBucketStrong(scope:Scope,input: Tensorflow_DataType, numBuckets :UInt8  , key :[Int]  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("num_buckets":numBuckets)
-    attr.append("key":key)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("num_buckets",numBuckets)
+    attr.append("key",key)
 
     let opspec = tf.OpSpec(
         OpType: "StringToHashBucketStrong",
@@ -19276,13 +19072,13 @@ results in a rounded value.)
 
 
 
-func stringToNumber(scope:Scope,stringTensor: Tensorflow_DataType, outType :type  )  ->(output: tf.Output){
+func stringToNumber(scope:Scope,stringTensor: Tensorflow_DataType, outType :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("out_type":outType)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("out_type",outType)
 
     let opspec = tf.OpSpec(
         OpType: "StringToNumber",
@@ -19304,13 +19100,12 @@ Returns x - y element-wise.
 
 
 
-func sub(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :type  )  ->(z: tf.Output){
+func sub(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "Sub",
@@ -19385,13 +19180,13 @@ output = [b'hir', b'ee', b'n"]
 
 
 
-func substr(scope:Scope,input: Tensorflow_DataType, pos: Tensorflow_DataType, len: Tensorflow_DataType, t :type  )  ->(output: tf.Output){
+func substr(scope:Scope,input: Tensorflow_DataType, pos: Tensorflow_DataType, len: Tensorflow_DataType, t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "Substr",
@@ -19415,15 +19210,14 @@ retained with length 1.
 
 
 
-func sum(scope:Scope,input: Tensorflow_DataType, reductionIndices: Tensorflow_DataType, keepDims :bool  , t :type  , tidx :type  )  ->(output: tf.Output){
+func sum(scope:Scope,input: Tensorflow_DataType, reductionIndices: Tensorflow_DataType, keepDims :Bool  , tidx :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("keep_dims":keepDims)
-    attr.append("T":t)
-    attr.append("Tidx":tidx)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("keep_dims",keepDims)
+    attr.append("Tidx",tidx)
 
     let opspec = tf.OpSpec(
         OpType: "Sum",
@@ -19453,15 +19247,15 @@ s, _, _ = svd(a, compute_uv=False)
 
 
 
-func svd(scope:Scope,input: Tensorflow_DataType, computeUv :bool  , fullMatrices :bool  , t :type  )  ->(s: tf.Output, u: tf.Output, v: tf.Output){
+func svd(scope:Scope,input: Tensorflow_DataType, computeUv :Bool  , fullMatrices :Bool  , t :Type  )  ->(s: tf.Output, u: tf.Output, v: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("compute_uv":computeUv)
-    attr.append("full_matrices":fullMatrices)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("compute_uv",computeUv)
+    attr.append("full_matrices",fullMatrices)
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "Svd",
@@ -19484,13 +19278,12 @@ See also `RefSwitch` and `Merge`.
 
 
 
-func switch(scope:Scope,data: Tensorflow_DataType, pred: Tensorflow_DataType, t :type  )  ->(outputFalse: tf.Output, outputTrue: tf.Output){
+func switch(scope:Scope,data: Tensorflow_DataType, pred: Tensorflow_DataType )  ->(outputFalse: tf.Output, outputTrue: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "Switch",
@@ -19510,15 +19303,15 @@ Computes the gradient function for function f via backpropagation.
 
 
 
-func symbolicGradient(scope:Scope,input: Tensorflow_DataType, tin :list(type)  , tout :list(type)  , f :func  )  ->(output: tf.Output){
+func symbolicGradient(scope:Scope,input: Tensorflow_DataType, tin :List(type)  , tout :List(type)  , f :Func  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("Tin":tin)
-    attr.append("Tout":tout)
-    attr.append("f":f)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tin",tin)
+    attr.append("Tout",tout)
+    attr.append("f",f)
 
     let opspec = tf.OpSpec(
         OpType: "SymbolicGradient",
@@ -19543,7 +19336,7 @@ func tfRecordDataset(scope:Scope,filenames: Tensorflow_DataType, compressionType
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "TFRecordDataset",
@@ -19563,15 +19356,15 @@ A Reader that outputs the records from a TensorFlow Records file.
 
 
 
-func tfRecordReader(scope:Scope container :string  , sharedName :string  , compressionType :string  )  ->(readerHandle: tf.Output){
+func tfRecordReader(scope:Scope container :String  , sharedName :String  , compressionType :String  )  ->(readerHandle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("container":container)
-    attr.append("shared_name":sharedName)
-    attr.append("compression_type":compressionType)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("container",container)
+    attr.append("shared_name",sharedName)
+    attr.append("compression_type",compressionType)
 
     let opspec = tf.OpSpec(
         OpType: "TFRecordReader",
@@ -19591,15 +19384,15 @@ A Reader that outputs the records from a TensorFlow Records file.
 
 
 
-func tfRecordReaderV2(scope:Scope container :string  , sharedName :string  , compressionType :string  )  ->(readerHandle: tf.Output){
+func tfRecordReaderV2(scope:Scope container :String  , sharedName :String  , compressionType :String  )  ->(readerHandle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("container":container)
-    attr.append("shared_name":sharedName)
-    attr.append("compression_type":compressionType)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("container",container)
+    attr.append("shared_name",sharedName)
+    attr.append("compression_type",compressionType)
 
     let opspec = tf.OpSpec(
         OpType: "TFRecordReaderV2",
@@ -19619,14 +19412,14 @@ Creates a dataset that contains `count` elements from the `input_dataset`.
 
 
 
-func takeDataset(scope:Scope,inputDataset: Tensorflow_DataType, count: Tensorflow_DataType, outputTypes :list(type)  , outputShapes :[Shape]  )  ->(handle: tf.Output){
+func takeDataset(scope:Scope,inputDataset: Tensorflow_DataType, count: Tensorflow_DataType, outputTypes :List(type)  , outputShapes :[Shape]  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("output_types":outputTypes)
-    attr.append("output_shapes":outputShapes)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("output_types",outputTypes)
+    attr.append("output_shapes",outputShapes)
 
     let opspec = tf.OpSpec(
         OpType: "TakeDataset",
@@ -19686,15 +19479,15 @@ then the final `SparseTensor` will be:
 
 
 
-func takeManySparseFromTensorsMap(scope:Scope,sparseHandles: Tensorflow_DataType, dtype :type  , container :string  , sharedName :string  )  ->(sparseIndices: tf.Output, sparseValues: tf.Output, sparseShape: tf.Output){
+func takeManySparseFromTensorsMap(scope:Scope,sparseHandles: Tensorflow_DataType, dtype :Type  , container :String  , sharedName :String  )  ->(sparseIndices: tf.Output, sparseValues: tf.Output, sparseShape: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("dtype":dtype)
-    attr.append("container":container)
-    attr.append("shared_name":sharedName)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("dtype",dtype)
+    attr.append("container",container)
+    attr.append("shared_name",sharedName)
 
     let opspec = tf.OpSpec(
         OpType: "TakeManySparseFromTensorsMap",
@@ -19714,13 +19507,12 @@ Computes tan of x element-wise.
 
 
 
-func tan(scope:Scope,x: Tensorflow_DataType, t :type  )  ->(y: tf.Output){
+func tan(scope:Scope,x: Tensorflow_DataType )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "Tan",
@@ -19740,13 +19532,13 @@ Computes hyperbolic tangent of `x` element-wise.
 
 
 
-func tanh(scope:Scope,x: Tensorflow_DataType, t :type  )  ->(y: tf.Output){
+func tanh(scope:Scope,x: Tensorflow_DataType, t :Type  )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "Tanh",
@@ -19768,13 +19560,12 @@ is the corresponding input gradient.
 
 
 
-func tanhGrad(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :type  )  ->(z: tf.Output){
+func tanhGrad(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "TanhGrad",
@@ -19805,15 +19596,15 @@ Outputs a ref to the tensor state so it may be read or modified.
 
 
 
-func temporaryVariable(scope:Scope shape :shape  , dtype :type  , varName :string  )  ->(ref: tf.Output){
+func temporaryVariable(scope:Scope shape :Shape  , dtype :Type  , varName :String  )  ->(ref: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("shape":shape)
-    attr.append("dtype":dtype)
-    attr.append("var_name":varName)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("shape",shape)
+    attr.append("dtype",dtype)
+    attr.append("var_name",varName)
 
     let opspec = tf.OpSpec(
         OpType: "TemporaryVariable",
@@ -19832,17 +19623,17 @@ func temporaryVariable(scope:Scope shape :shape  , dtype :type  , varName :strin
 
 
 
-func tensorArray(scope:Scope,size: Tensorflow_DataType, dtype :type  , dynamicSize :bool  , clearAfterRead :bool  , tensorArrayName :string  , elementShape :shape  )  ->(handle: tf.Output){
+func tensorArray(scope:Scope,size: Tensorflow_DataType, dtype :Type  , dynamicSize :Bool  , clearAfterRead :Bool  , tensorArrayName :String  , elementShape :Shape  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("dtype":dtype)
-    attr.append("dynamic_size":dynamicSize)
-    attr.append("clear_after_read":clearAfterRead)
-    attr.append("tensor_array_name":tensorArrayName)
-    attr.append("element_shape":elementShape)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("dtype",dtype)
+    attr.append("dynamic_size",dynamicSize)
+    attr.append("clear_after_read",clearAfterRead)
+    attr.append("tensor_array_name",tensorArrayName)
+    attr.append("element_shape",elementShape)
 
     let opspec = tf.OpSpec(
         OpType: "TensorArray",
@@ -19866,7 +19657,7 @@ func tensorArrayClose(scope:Scope,handle: Tensorflow_DataType )  ->(o:tf.Operati
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "TensorArrayClose",
@@ -19890,7 +19681,7 @@ func tensorArrayCloseV2(scope:Scope,handle: Tensorflow_DataType )  ->(o:tf.Opera
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "TensorArrayCloseV2",
@@ -19916,7 +19707,7 @@ func tensorArrayCloseV3(scope:Scope,handle: Tensorflow_DataType )  ->(o:tf.Opera
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "TensorArrayCloseV3",
@@ -19934,14 +19725,14 @@ func tensorArrayCloseV3(scope:Scope,handle: Tensorflow_DataType )  ->(o:tf.Opera
 
 
 
-func tensorArrayConcat(scope:Scope,handle: Tensorflow_DataType, flowIn: Tensorflow_DataType, dtype :type  , elementShapeExcept0 :shape  )  ->(value: tf.Output, lengths: tf.Output){
+func tensorArrayConcat(scope:Scope,handle: Tensorflow_DataType, flowIn: Tensorflow_DataType, dtype :Type  , elementShapeExcept0 :Shape  )  ->(value: tf.Output, lengths: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("dtype":dtype)
-    attr.append("element_shape_except0":elementShapeExcept0)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("dtype",dtype)
+    attr.append("element_shape_except0",elementShapeExcept0)
 
     let opspec = tf.OpSpec(
         OpType: "TensorArrayConcat",
@@ -19961,14 +19752,14 @@ Deprecated. Use TensorArrayConcatV3
 
 
 
-func tensorArrayConcatV2(scope:Scope,handle: Tensorflow_DataType, flowIn: Tensorflow_DataType, dtype :type  , elementShapeExcept0 :shape  )  ->(value: tf.Output, lengths: tf.Output){
+func tensorArrayConcatV2(scope:Scope,handle: Tensorflow_DataType, flowIn: Tensorflow_DataType, dtype :Type  , elementShapeExcept0 :Shape  )  ->(value: tf.Output, lengths: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("dtype":dtype)
-    attr.append("element_shape_except0":elementShapeExcept0)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("dtype",dtype)
+    attr.append("element_shape_except0",elementShapeExcept0)
 
     let opspec = tf.OpSpec(
         OpType: "TensorArrayConcatV2",
@@ -19995,14 +19786,14 @@ All elements must have the same shape (excepting the first dimension).
 
 
 
-func tensorArrayConcatV3(scope:Scope,handle: Tensorflow_DataType, flowIn: Tensorflow_DataType, dtype :type  , elementShapeExcept0 :shape  )  ->(value: tf.Output, lengths: tf.Output){
+func tensorArrayConcatV3(scope:Scope,handle: Tensorflow_DataType, flowIn: Tensorflow_DataType, dtype :Type  , elementShapeExcept0 :Shape  )  ->(value: tf.Output, lengths: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("dtype":dtype)
-    attr.append("element_shape_except0":elementShapeExcept0)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("dtype",dtype)
+    attr.append("element_shape_except0",elementShapeExcept0)
 
     let opspec = tf.OpSpec(
         OpType: "TensorArrayConcatV3",
@@ -20021,14 +19812,14 @@ func tensorArrayConcatV3(scope:Scope,handle: Tensorflow_DataType, flowIn: Tensor
 
 
 
-func tensorArrayGather(scope:Scope,handle: Tensorflow_DataType, indices: Tensorflow_DataType, flowIn: Tensorflow_DataType, dtype :type  , elementShape :shape  )  ->(value: tf.Output){
+func tensorArrayGather(scope:Scope,handle: Tensorflow_DataType, indices: Tensorflow_DataType, flowIn: Tensorflow_DataType, dtype :Type  , elementShape :Shape  )  ->(value: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("dtype":dtype)
-    attr.append("element_shape":elementShape)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("dtype",dtype)
+    attr.append("element_shape",elementShape)
 
     let opspec = tf.OpSpec(
         OpType: "TensorArrayGather",
@@ -20048,14 +19839,14 @@ Deprecated. Use TensorArrayGatherV3
 
 
 
-func tensorArrayGatherV2(scope:Scope,handle: Tensorflow_DataType, indices: Tensorflow_DataType, flowIn: Tensorflow_DataType, dtype :type  , elementShape :shape  )  ->(value: tf.Output){
+func tensorArrayGatherV2(scope:Scope,handle: Tensorflow_DataType, indices: Tensorflow_DataType, flowIn: Tensorflow_DataType, dtype :Type  , elementShape :Shape  )  ->(value: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("dtype":dtype)
-    attr.append("element_shape":elementShape)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("dtype",dtype)
+    attr.append("element_shape",elementShape)
 
     let opspec = tf.OpSpec(
         OpType: "TensorArrayGatherV2",
@@ -20076,14 +19867,14 @@ All elements selected by `indices` must have the same shape.
 
 
 
-func tensorArrayGatherV3(scope:Scope,handle: Tensorflow_DataType, indices: Tensorflow_DataType, flowIn: Tensorflow_DataType, dtype :type  , elementShape :shape  )  ->(value: tf.Output){
+func tensorArrayGatherV3(scope:Scope,handle: Tensorflow_DataType, indices: Tensorflow_DataType, flowIn: Tensorflow_DataType, dtype :Type  , elementShape :Shape  )  ->(value: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("dtype":dtype)
-    attr.append("element_shape":elementShape)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("dtype",dtype)
+    attr.append("element_shape",elementShape)
 
     let opspec = tf.OpSpec(
         OpType: "TensorArrayGatherV3",
@@ -20102,13 +19893,13 @@ func tensorArrayGatherV3(scope:Scope,handle: Tensorflow_DataType, indices: Tenso
 
 
 
-func tensorArrayGrad(scope:Scope,handle: Tensorflow_DataType, flowIn: Tensorflow_DataType, source :string  )  ->(gradHandle: tf.Output){
+func tensorArrayGrad(scope:Scope,handle: Tensorflow_DataType, flowIn: Tensorflow_DataType, source :String  )  ->(gradHandle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("source":source)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("source",source)
 
     let opspec = tf.OpSpec(
         OpType: "TensorArrayGrad",
@@ -20128,13 +19919,13 @@ Deprecated. Use TensorArrayGradV3
 
 
 
-func tensorArrayGradV2(scope:Scope,handle: Tensorflow_DataType, flowIn: Tensorflow_DataType, source :string  )  ->(gradHandle: tf.Output){
+func tensorArrayGradV2(scope:Scope,handle: Tensorflow_DataType, flowIn: Tensorflow_DataType, source :String  )  ->(gradHandle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("source":source)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("source",source)
 
     let opspec = tf.OpSpec(
         OpType: "TensorArrayGradV2",
@@ -20182,13 +19973,13 @@ calculation gets its own TensorArray accumulator.
 
 
 
-func tensorArrayGradV3(scope:Scope,handle: Tensorflow_DataType, flowIn: Tensorflow_DataType, source :string  )  ->(gradHandle: tf.Output, flowOut: tf.Output){
+func tensorArrayGradV3(scope:Scope,handle: Tensorflow_DataType, flowIn: Tensorflow_DataType, source :String  )  ->(gradHandle: tf.Output, flowOut: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("source":source)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("source",source)
 
     let opspec = tf.OpSpec(
         OpType: "TensorArrayGradV3",
@@ -20207,14 +19998,14 @@ func tensorArrayGradV3(scope:Scope,handle: Tensorflow_DataType, flowIn: Tensorfl
 
 
 
-func tensorArrayPack(scope:Scope,handle: Tensorflow_DataType, flowIn: Tensorflow_DataType, dtype :type  , elementShape :shape  )  ->(value: tf.Output){
+func tensorArrayPack(scope:Scope,handle: Tensorflow_DataType, flowIn: Tensorflow_DataType, dtype :Type  , elementShape :Shape  )  ->(value: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("dtype":dtype)
-    attr.append("element_shape":elementShape)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("dtype",dtype)
+    attr.append("element_shape",elementShape)
 
     let opspec = tf.OpSpec(
         OpType: "TensorArrayPack",
@@ -20233,13 +20024,13 @@ func tensorArrayPack(scope:Scope,handle: Tensorflow_DataType, flowIn: Tensorflow
 
 
 
-func tensorArrayRead(scope:Scope,handle: Tensorflow_DataType, index: Tensorflow_DataType, flowIn: Tensorflow_DataType, dtype :type  )  ->(value: tf.Output){
+func tensorArrayRead(scope:Scope,handle: Tensorflow_DataType, index: Tensorflow_DataType, flowIn: Tensorflow_DataType, dtype :Type  )  ->(value: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("dtype":dtype)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("dtype",dtype)
 
     let opspec = tf.OpSpec(
         OpType: "TensorArrayRead",
@@ -20259,13 +20050,13 @@ Deprecated. Use TensorArrayReadV3
 
 
 
-func tensorArrayReadV2(scope:Scope,handle: Tensorflow_DataType, index: Tensorflow_DataType, flowIn: Tensorflow_DataType, dtype :type  )  ->(value: tf.Output){
+func tensorArrayReadV2(scope:Scope,handle: Tensorflow_DataType, index: Tensorflow_DataType, flowIn: Tensorflow_DataType, dtype :Type  )  ->(value: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("dtype":dtype)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("dtype",dtype)
 
     let opspec = tf.OpSpec(
         OpType: "TensorArrayReadV2",
@@ -20285,13 +20076,13 @@ Read an element from the TensorArray into output `value`.
 
 
 
-func tensorArrayReadV3(scope:Scope,handle: Tensorflow_DataType, index: Tensorflow_DataType, flowIn: Tensorflow_DataType, dtype :type  )  ->(value: tf.Output){
+func tensorArrayReadV3(scope:Scope,handle: Tensorflow_DataType, index: Tensorflow_DataType, flowIn: Tensorflow_DataType, dtype :Type  )  ->(value: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("dtype":dtype)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("dtype",dtype)
 
     let opspec = tf.OpSpec(
         OpType: "TensorArrayReadV3",
@@ -20310,13 +20101,12 @@ func tensorArrayReadV3(scope:Scope,handle: Tensorflow_DataType, index: Tensorflo
 
 
 
-func tensorArrayScatter(scope:Scope,handle: Tensorflow_DataType, indices: Tensorflow_DataType, value: Tensorflow_DataType, flowIn: Tensorflow_DataType, t :type  )  ->(flowOut: tf.Output){
+func tensorArrayScatter(scope:Scope,handle: Tensorflow_DataType, indices: Tensorflow_DataType, value: Tensorflow_DataType, flowIn: Tensorflow_DataType )  ->(flowOut: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "TensorArrayScatter",
@@ -20336,13 +20126,13 @@ Deprecated. Use TensorArrayScatterV3
 
 
 
-func tensorArrayScatterV2(scope:Scope,handle: Tensorflow_DataType, indices: Tensorflow_DataType, value: Tensorflow_DataType, flowIn: Tensorflow_DataType, t :type  )  ->(flowOut: tf.Output){
+func tensorArrayScatterV2(scope:Scope,handle: Tensorflow_DataType, indices: Tensorflow_DataType, value: Tensorflow_DataType, flowIn: Tensorflow_DataType, t :Type  )  ->(flowOut: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "TensorArrayScatterV2",
@@ -20363,13 +20153,12 @@ Scatter the data from the input value into specific TensorArray elements.
 
 
 
-func tensorArrayScatterV3(scope:Scope,handle: Tensorflow_DataType, indices: Tensorflow_DataType, value: Tensorflow_DataType, flowIn: Tensorflow_DataType, t :type  )  ->(flowOut: tf.Output){
+func tensorArrayScatterV3(scope:Scope,handle: Tensorflow_DataType, indices: Tensorflow_DataType, value: Tensorflow_DataType, flowIn: Tensorflow_DataType )  ->(flowOut: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "TensorArrayScatterV3",
@@ -20393,7 +20182,7 @@ func tensorArraySize(scope:Scope,handle: Tensorflow_DataType, flowIn: Tensorflow
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "TensorArraySize",
@@ -20418,7 +20207,7 @@ func tensorArraySizeV2(scope:Scope,handle: Tensorflow_DataType, flowIn: Tensorfl
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "TensorArraySizeV2",
@@ -20443,7 +20232,7 @@ func tensorArraySizeV3(scope:Scope,handle: Tensorflow_DataType, flowIn: Tensorfl
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "TensorArraySizeV3",
@@ -20462,13 +20251,12 @@ func tensorArraySizeV3(scope:Scope,handle: Tensorflow_DataType, flowIn: Tensorfl
 
 
 
-func tensorArraySplit(scope:Scope,handle: Tensorflow_DataType, value: Tensorflow_DataType, lengths: Tensorflow_DataType, flowIn: Tensorflow_DataType, t :type  )  ->(flowOut: tf.Output){
+func tensorArraySplit(scope:Scope,handle: Tensorflow_DataType, value: Tensorflow_DataType, lengths: Tensorflow_DataType, flowIn: Tensorflow_DataType )  ->(flowOut: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "TensorArraySplit",
@@ -20488,13 +20276,13 @@ Deprecated. Use TensorArraySplitV3
 
 
 
-func tensorArraySplitV2(scope:Scope,handle: Tensorflow_DataType, value: Tensorflow_DataType, lengths: Tensorflow_DataType, flowIn: Tensorflow_DataType, t :type  )  ->(flowOut: tf.Output){
+func tensorArraySplitV2(scope:Scope,handle: Tensorflow_DataType, value: Tensorflow_DataType, lengths: Tensorflow_DataType, flowIn: Tensorflow_DataType, t :Type  )  ->(flowOut: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "TensorArraySplitV2",
@@ -20523,13 +20311,12 @@ and having size
 
 
 
-func tensorArraySplitV3(scope:Scope,handle: Tensorflow_DataType, value: Tensorflow_DataType, lengths: Tensorflow_DataType, flowIn: Tensorflow_DataType, t :type  )  ->(flowOut: tf.Output){
+func tensorArraySplitV3(scope:Scope,handle: Tensorflow_DataType, value: Tensorflow_DataType, lengths: Tensorflow_DataType, flowIn: Tensorflow_DataType )  ->(flowOut: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "TensorArraySplitV3",
@@ -20548,13 +20335,13 @@ func tensorArraySplitV3(scope:Scope,handle: Tensorflow_DataType, value: Tensorfl
 
 
 
-func tensorArrayUnpack(scope:Scope,handle: Tensorflow_DataType, value: Tensorflow_DataType, flowIn: Tensorflow_DataType, t :type  )  ->(flowOut: tf.Output){
+func tensorArrayUnpack(scope:Scope,handle: Tensorflow_DataType, value: Tensorflow_DataType, flowIn: Tensorflow_DataType, t :Type  )  ->(flowOut: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "TensorArrayUnpack",
@@ -20574,17 +20361,17 @@ Deprecated. Use TensorArrayV3
 
 
 
-func tensorArrayV2(scope:Scope,size: Tensorflow_DataType, dtype :type  , elementShape :shape  , dynamicSize :bool  , clearAfterRead :bool  , tensorArrayName :string  )  ->(handle: tf.Output){
+func tensorArrayV2(scope:Scope,size: Tensorflow_DataType, dtype :Type  , elementShape :Shape  , dynamicSize :Bool  , clearAfterRead :Bool  , tensorArrayName :String  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("dtype":dtype)
-    attr.append("element_shape":elementShape)
-    attr.append("dynamic_size":dynamicSize)
-    attr.append("clear_after_read":clearAfterRead)
-    attr.append("tensor_array_name":tensorArrayName)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("dtype",dtype)
+    attr.append("element_shape",elementShape)
+    attr.append("dynamic_size",dynamicSize)
+    attr.append("clear_after_read",clearAfterRead)
+    attr.append("tensor_array_name",tensorArrayName)
 
     let opspec = tf.OpSpec(
         OpType: "TensorArrayV2",
@@ -20605,17 +20392,17 @@ Write data via Write and read via Read or Pack.
 
 
 
-func tensorArrayV3(scope:Scope,size: Tensorflow_DataType, dtype :type  , elementShape :shape  , dynamicSize :bool  , clearAfterRead :bool  , tensorArrayName :string  )  ->(handle: tf.Output, flow: tf.Output){
+func tensorArrayV3(scope:Scope,size: Tensorflow_DataType, dtype :Type  , elementShape :Shape  , dynamicSize :Bool  , clearAfterRead :Bool  , tensorArrayName :String  )  ->(handle: tf.Output, flow: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("dtype":dtype)
-    attr.append("element_shape":elementShape)
-    attr.append("dynamic_size":dynamicSize)
-    attr.append("clear_after_read":clearAfterRead)
-    attr.append("tensor_array_name":tensorArrayName)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("dtype",dtype)
+    attr.append("element_shape",elementShape)
+    attr.append("dynamic_size",dynamicSize)
+    attr.append("clear_after_read",clearAfterRead)
+    attr.append("tensor_array_name",tensorArrayName)
 
     let opspec = tf.OpSpec(
         OpType: "TensorArrayV3",
@@ -20634,13 +20421,12 @@ func tensorArrayV3(scope:Scope,size: Tensorflow_DataType, dtype :type  , element
 
 
 
-func tensorArrayWrite(scope:Scope,handle: Tensorflow_DataType, index: Tensorflow_DataType, value: Tensorflow_DataType, flowIn: Tensorflow_DataType, t :type  )  ->(flowOut: tf.Output){
+func tensorArrayWrite(scope:Scope,handle: Tensorflow_DataType, index: Tensorflow_DataType, value: Tensorflow_DataType, flowIn: Tensorflow_DataType )  ->(flowOut: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "TensorArrayWrite",
@@ -20660,13 +20446,13 @@ Deprecated. Use TensorArrayGradV3
 
 
 
-func tensorArrayWriteV2(scope:Scope,handle: Tensorflow_DataType, index: Tensorflow_DataType, value: Tensorflow_DataType, flowIn: Tensorflow_DataType, t :type  )  ->(flowOut: tf.Output){
+func tensorArrayWriteV2(scope:Scope,handle: Tensorflow_DataType, index: Tensorflow_DataType, value: Tensorflow_DataType, flowIn: Tensorflow_DataType, t :Type  )  ->(flowOut: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "TensorArrayWriteV2",
@@ -20686,13 +20472,12 @@ Push an element onto the tensor_array.
 
 
 
-func tensorArrayWriteV3(scope:Scope,handle: Tensorflow_DataType, index: Tensorflow_DataType, value: Tensorflow_DataType, flowIn: Tensorflow_DataType, t :type  )  ->(flowOut: tf.Output){
+func tensorArrayWriteV3(scope:Scope,handle: Tensorflow_DataType, index: Tensorflow_DataType, value: Tensorflow_DataType, flowIn: Tensorflow_DataType )  ->(flowOut: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "TensorArrayWriteV3",
@@ -20712,14 +20497,14 @@ Creates a dataset that emits `components` as a tuple of tensors once.
 
 
 
-func tensorDataset(scope:Scope,components: Tensorflow_DataType, toutputTypes :list(type)  , outputShapes :[Shape]  )  ->(handle: tf.Output){
+func tensorDataset(scope:Scope,components: Tensorflow_DataType, toutputTypes :List(type)  , outputShapes :List(shape)  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("Toutput_types":toutputTypes)
-    attr.append("output_shapes":outputShapes)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Toutput_types",toutputTypes)
+    attr.append("output_shapes",outputShapes)
 
     let opspec = tf.OpSpec(
         OpType: "TensorDataset",
@@ -20739,14 +20524,14 @@ Creates a dataset that emits each dim-0 slice of `components` once.
 
 
 
-func tensorSliceDataset(scope:Scope,components: Tensorflow_DataType, toutputTypes :list(type)  , outputShapes :[Shape]  )  ->(handle: tf.Output){
+func tensorSliceDataset(scope:Scope,components: Tensorflow_DataType, toutputTypes :List(type)  , outputShapes :[Shape]  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("Toutput_types":toutputTypes)
-    attr.append("output_shapes":outputShapes)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Toutput_types",toutputTypes)
+    attr.append("output_shapes",outputShapes)
 
     let opspec = tf.OpSpec(
         OpType: "TensorSliceDataset",
@@ -20766,16 +20551,15 @@ Outputs a `Summary` protocol buffer with a tensor.
 
 
 
-func tensorSummary(scope:Scope,tensor: Tensorflow_DataType, t :type  , description :string  , labels :list(string)  , displayName :string  )  ->(summary: tf.Output){
+func tensorSummary(scope:Scope,tensor: Tensorflow_DataType, description :String  , labels :List(string)  , displayName :String  )  ->(summary: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("description":description)
-    attr.append("labels":labels)
-    attr.append("display_name":displayName)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("description",description)
+    attr.append("labels",labels)
+    attr.append("display_name",displayName)
 
     let opspec = tf.OpSpec(
         OpType: "TensorSummary",
@@ -20800,7 +20584,7 @@ func textLineDataset(scope:Scope,filenames: Tensorflow_DataType )  ->(handle: tf
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "TextLineDataset",
@@ -20820,15 +20604,15 @@ A Reader that outputs the lines of a file delimited by '\n'.
 
 
 
-func textLineReader(scope:Scope skipHeaderLines :uInt8  , container :string  , sharedName :string  )  ->(readerHandle: tf.Output){
+func textLineReader(scope:Scope skipHeaderLines :UInt8  , container :String  , sharedName :String  )  ->(readerHandle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("skip_header_lines":skipHeaderLines)
-    attr.append("container":container)
-    attr.append("shared_name":sharedName)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("skip_header_lines",skipHeaderLines)
+    attr.append("container",container)
+    attr.append("shared_name",sharedName)
 
     let opspec = tf.OpSpec(
         OpType: "TextLineReader",
@@ -20848,15 +20632,15 @@ A Reader that outputs the lines of a file delimited by '\n'.
 
 
 
-func textLineReaderV2(scope:Scope skipHeaderLines :uInt8  , container :string  , sharedName :string  )  ->(readerHandle: tf.Output){
+func textLineReaderV2(scope:Scope skipHeaderLines :UInt8  , container :String  , sharedName :String  )  ->(readerHandle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("skip_header_lines":skipHeaderLines)
-    attr.append("container":container)
-    attr.append("shared_name":sharedName)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("skip_header_lines",skipHeaderLines)
+    attr.append("container",container)
+    attr.append("shared_name",sharedName)
 
     let opspec = tf.OpSpec(
         OpType: "TextLineReaderV2",
@@ -20883,18 +20667,18 @@ true labels.
 
 
 
-func threadUnsafeUnigramCandidateSampler(scope:Scope,trueClasses: Tensorflow_DataType, numTrue :uInt8  , numSampled :uInt8  , unique :bool  , rangeMax :uInt8  , seed :uInt8  , seed2 :uInt8  )  ->(sampledCandidates: tf.Output, trueExpectedCount: tf.Output, sampledExpectedCount: tf.Output){
+func threadUnsafeUnigramCandidateSampler(scope:Scope,trueClasses: Tensorflow_DataType, numTrue :UInt8  , numSampled :UInt8  , unique :Bool  , rangeMax :UInt8  , seed :UInt8  , seed2 :UInt8  )  ->(sampledCandidates: tf.Output, trueExpectedCount: tf.Output, sampledExpectedCount: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("num_true":numTrue)
-    attr.append("num_sampled":numSampled)
-    attr.append("unique":unique)
-    attr.append("range_max":rangeMax)
-    attr.append("seed":seed)
-    attr.append("seed2":seed2)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("num_true",numTrue)
+    attr.append("num_sampled",numSampled)
+    attr.append("unique",unique)
+    attr.append("range_max",rangeMax)
+    attr.append("seed",seed)
+    attr.append("seed2",seed2)
 
     let opspec = tf.OpSpec(
         OpType: "ThreadUnsafeUnigramCandidateSampler",
@@ -20919,14 +20703,13 @@ dimension. For example, tiling `[a b c d]` by `[2]` produces
 
 
 
-func tile(scope:Scope,input: Tensorflow_DataType, multiples: Tensorflow_DataType, t :type  , tmultiples :type  )  ->(output: tf.Output){
+func tile(scope:Scope,input: Tensorflow_DataType, multiples: Tensorflow_DataType, tmultiples :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tmultiples":tmultiples)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tmultiples",tmultiples)
 
     let opspec = tf.OpSpec(
         OpType: "Tile",
@@ -20949,13 +20732,13 @@ each repeated tile of `input` into `output`.
 
 
 
-func tileGrad(scope:Scope,input: Tensorflow_DataType, multiples: Tensorflow_DataType, t :type  )  ->(output: tf.Output){
+func tileGrad(scope:Scope,input: Tensorflow_DataType, multiples: Tensorflow_DataType, t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "TileGrad",
@@ -20983,15 +20766,14 @@ If `k` varies dynamically, use `TopKV2` below.
 
 
 
-func topK(scope:Scope,input: Tensorflow_DataType, k :uInt8  , sorted :bool  , t :type  )  ->(values: tf.Output, indices: tf.Output){
+func topK(scope:Scope,input: Tensorflow_DataType, k :UInt8  , sorted :Bool  )  ->(values: tf.Output, indices: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("k":k)
-    attr.append("sorted":sorted)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("k",k)
+    attr.append("sorted",sorted)
 
     let opspec = tf.OpSpec(
         OpType: "TopK",
@@ -21018,14 +20800,14 @@ If two elements are equal, the lower-index element appears first.
 
 
 
-func topKV2(scope:Scope,input: Tensorflow_DataType, k: Tensorflow_DataType, sorted :bool  , t :type  )  ->(values: tf.Output, indices: tf.Output){
+func topKV2(scope:Scope,input: Tensorflow_DataType, k: Tensorflow_DataType, sorted :Bool  , t :Type  )  ->(values: tf.Output, indices: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("sorted":sorted)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("sorted",sorted)
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "TopKV2",
@@ -21047,14 +20829,13 @@ The output `y` has the same rank as `x`. The shapes of `x` and `y` satisfy:
 
 
 
-func transpose(scope:Scope,x: Tensorflow_DataType, perm: Tensorflow_DataType, t :type  , tperm :type  )  ->(y: tf.Output){
+func transpose(scope:Scope,x: Tensorflow_DataType, perm: Tensorflow_DataType, tperm :Type  )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tperm":tperm)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tperm",tperm)
 
     let opspec = tf.OpSpec(
         OpType: "Transpose",
@@ -21080,13 +20861,13 @@ Python Semantics.
 
 
 
-func truncateDiv(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :type  )  ->(z: tf.Output){
+func truncateDiv(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :Type  )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "TruncateDiv",
@@ -21110,13 +20891,12 @@ y + truncate_mod(x, y) = x`.
 
 
 
-func truncateMod(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType, t :type  )  ->(z: tf.Output){
+func truncateMod(scope:Scope,x: Tensorflow_DataType, y: Tensorflow_DataType )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "TruncateMod",
@@ -21139,16 +20919,16 @@ deviations from the mean are dropped and re-picked.
 
 
 
-func truncatedNormal(scope:Scope,shape: Tensorflow_DataType, seed :uInt8  , seed2 :uInt8  , dtype :type  , t :type  )  ->(output: tf.Output){
+func truncatedNormal(scope:Scope,shape: Tensorflow_DataType, seed :Int  , seed2 :Int  , dtype :Type  , t :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("seed":seed)
-    attr.append("seed2":seed2)
-    attr.append("dtype":dtype)
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("seed",seed)
+    attr.append("seed2",seed2)
+    attr.append("dtype",dtype)
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "TruncatedNormal",
@@ -21175,18 +20955,18 @@ true labels.
 
 
 
-func uniformCandidateSampler(scope:Scope,trueClasses: Tensorflow_DataType, numTrue :uInt8  , numSampled :uInt8  , unique :bool  , rangeMax :uInt8  , seed :uInt8  , seed2 :uInt8  )  ->(sampledCandidates: tf.Output, trueExpectedCount: tf.Output, sampledExpectedCount: tf.Output){
+func uniformCandidateSampler(scope:Scope,trueClasses: Tensorflow_DataType, numTrue :UInt8  , numSampled :UInt8  , unique :Bool  , rangeMax :UInt8  , seed :UInt8  , seed2 :UInt8  )  ->(sampledCandidates: tf.Output, trueExpectedCount: tf.Output, sampledExpectedCount: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("num_true":numTrue)
-    attr.append("num_sampled":numSampled)
-    attr.append("unique":unique)
-    attr.append("range_max":rangeMax)
-    attr.append("seed":seed)
-    attr.append("seed2":seed2)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("num_true",numTrue)
+    attr.append("num_sampled",numSampled)
+    attr.append("unique",unique)
+    attr.append("range_max",rangeMax)
+    attr.append("seed",seed)
+    attr.append("seed2",seed2)
 
     let opspec = tf.OpSpec(
         OpType: "UniformCandidateSampler",
@@ -21218,14 +20998,13 @@ idx ==> [0, 0, 1, 2, 2, 2, 3, 4, 4]
 
 
 
-func unique(scope:Scope,x: Tensorflow_DataType, t :type  , outIdx :type  )  ->(y: tf.Output, idx: tf.Output){
+func unique(scope:Scope,x: Tensorflow_DataType, outIdx :Type  )  ->(y: tf.Output, idx: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("out_idx":outIdx)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("out_idx",outIdx)
 
     let opspec = tf.OpSpec(
         OpType: "Unique",
@@ -21259,14 +21038,14 @@ count ==> [2, 1, 3, 1, 2]
 
 
 
-func uniqueWithCounts(scope:Scope,x: Tensorflow_DataType, t :type  , outIdx :type  )  ->(y: tf.Output, idx: tf.Output, count: tf.Output){
+func uniqueWithCounts(scope:Scope,x: Tensorflow_DataType, t :Type  , outIdx :Type  )  ->(y: tf.Output, idx: tf.Output, count: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("out_idx":outIdx)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("out_idx",outIdx)
 
     let opspec = tf.OpSpec(
         OpType: "UniqueWithCounts",
@@ -21295,15 +21074,14 @@ This is the opposite of `pack`.
 
 
 
-func unpack(scope:Scope,value: Tensorflow_DataType, num :uInt8  , t :type  , axis :uInt8  )  ->(output: tf.Output){
+func unpack(scope:Scope,value: Tensorflow_DataType, num :UInt8  , axis :Int  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("num":num)
-    attr.append("T":t)
-    attr.append("axis":axis)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("num",num)
+    attr.append("axis",axis)
 
     let opspec = tf.OpSpec(
         OpType: "Unpack",
@@ -21335,14 +21113,14 @@ If the maximum is empty for a given segment ID `i`, it outputs the smallest poss
 
 
 
-func unsortedSegmentMax(scope:Scope,data: Tensorflow_DataType, segmentIds: Tensorflow_DataType, numSegments: Tensorflow_DataType, t :type  , tindices :type  )  ->(output: tf.Output){
+func unsortedSegmentMax(scope:Scope,data: Tensorflow_DataType, segmentIds: Tensorflow_DataType, numSegments: Tensorflow_DataType, t :Type  , tindices :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tindices":tindices)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
+    attr.append("Tindices",tindices)
 
     let opspec = tf.OpSpec(
         OpType: "UnsortedSegmentMax",
@@ -21374,14 +21152,13 @@ If the sum is empty for a given segment ID `i`, `output[i] = 0`.
 
 
 
-func unsortedSegmentSum(scope:Scope,data: Tensorflow_DataType, segmentIds: Tensorflow_DataType, numSegments: Tensorflow_DataType, t :type  , tindices :type  )  ->(output: tf.Output){
+func unsortedSegmentSum(scope:Scope,data: Tensorflow_DataType, segmentIds: Tensorflow_DataType, numSegments: Tensorflow_DataType, tindices :Type  )  ->(output: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
-    attr.append("Tindices":tindices)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("Tindices",tindices)
 
     let opspec = tf.OpSpec(
         OpType: "UnsortedSegmentSum",
@@ -21403,15 +21180,15 @@ capabilities and options.  This Op is optimized for performance.
 
 
 
-func unstage(scope:Scope dtypes :list(type)  , container :string  , sharedName :string  )  ->(values: tf.Output){
+func unstage(scope:Scope dtypes :List(type)  , container :String  , sharedName :String  )  ->(values: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("dtypes":dtypes)
-    attr.append("container":container)
-    attr.append("shared_name":sharedName)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("dtypes",dtypes)
+    attr.append("container",container)
+    attr.append("shared_name",sharedName)
 
     let opspec = tf.OpSpec(
         OpType: "Unstage",
@@ -21431,16 +21208,16 @@ Use VariableV2 instead.
 
 
 
-func variable(scope:Scope shape :shape  , dtype :type  , container :string  , sharedName :string  )  ->(ref: tf.Output){
+func variable(scope:Scope shape :Shape  , dtype :Type  , container :String  , sharedName :String  )  ->(ref: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("shape":shape)
-    attr.append("dtype":dtype)
-    attr.append("container":container)
-    attr.append("shared_name":sharedName)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("shape",shape)
+    attr.append("dtype",dtype)
+    attr.append("container",container)
+    attr.append("shared_name",sharedName)
 
     let opspec = tf.OpSpec(
         OpType: "Variable",
@@ -21463,16 +21240,16 @@ about sharing states in tensorflow.
 
 
 
-func variableV2(scope:Scope shape :shape  , dtype :type  , container :string  , sharedName :string  )  ->(ref: tf.Output){
+func variableV2(scope:Scope shape :Shape  , dtype :Type  , container :String  , sharedName :String  )  ->(ref: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("shape":shape)
-    attr.append("dtype":dtype)
-    attr.append("container":container)
-    attr.append("shared_name":sharedName)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("shape",shape)
+    attr.append("dtype",dtype)
+    attr.append("container",container)
+    attr.append("shared_name",sharedName)
 
     let opspec = tf.OpSpec(
         OpType: "VariableV2",
@@ -21525,7 +21302,7 @@ func where(scope:Scope,input: Tensorflow_DataType )  ->(index: tf.Output){
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "Where",
@@ -21547,14 +21324,14 @@ be a filename (key) and the contents of that file (value).
 
 
 
-func wholeFileReader(scope:Scope container :string  , sharedName :string  )  ->(readerHandle: tf.Output){
+func wholeFileReader(scope:Scope container :String  , sharedName :String  )  ->(readerHandle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("container":container)
-    attr.append("shared_name":sharedName)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("container",container)
+    attr.append("shared_name",sharedName)
 
     let opspec = tf.OpSpec(
         OpType: "WholeFileReader",
@@ -21576,14 +21353,14 @@ be a filename (key) and the contents of that file (value).
 
 
 
-func wholeFileReaderV2(scope:Scope container :string  , sharedName :string  )  ->(readerHandle: tf.Output){
+func wholeFileReaderV2(scope:Scope container :String  , sharedName :String  )  ->(readerHandle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("container":container)
-    attr.append("shared_name":sharedName)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("container",container)
+    attr.append("shared_name",sharedName)
 
     let opspec = tf.OpSpec(
         OpType: "WholeFileReaderV2",
@@ -21608,7 +21385,7 @@ func writeFile(scope:Scope,filename: Tensorflow_DataType, contents: Tensorflow_D
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "WriteFile",
@@ -21627,13 +21404,12 @@ Returns a tensor of zeros with the same shape and type as x.
 
 
 
-func zerosLike(scope:Scope,x: Tensorflow_DataType, t :type  )  ->(y: tf.Output){
+func zerosLike(scope:Scope,x: Tensorflow_DataType )  ->(y: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
 
     let opspec = tf.OpSpec(
         OpType: "ZerosLike",
@@ -21655,13 +21431,13 @@ The Hurwitz zeta function is defined as:
 
 
 
-func zeta(scope:Scope,x: Tensorflow_DataType, q: Tensorflow_DataType, t :type  )  ->(z: tf.Output){
+func zeta(scope:Scope,x: Tensorflow_DataType, q: Tensorflow_DataType, t :Type  )  ->(z: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("T":t)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("T",t)
 
     let opspec = tf.OpSpec(
         OpType: "Zeta",
@@ -21681,15 +21457,15 @@ Creates a dataset that zips together `input_datasets`.
 
 
 
-func zipDataset(scope:Scope,inputDatasets: Tensorflow_DataType, outputTypes :list(type)  , outputShapes :[Shape]  , n :uInt8  )  ->(handle: tf.Output){
+func zipDataset(scope:Scope,inputDatasets: Tensorflow_DataType, outputTypes :List(type)  , outputShapes :[Shape]  , n :UInt8  )  ->(handle: tf.Output){
     if scope.error() != nil {
         return
     }
 
-    var attrs:Dictionary<String,Tensorflow_AttrValue> = [:]
-    attr.append("output_types":outputTypes)
-    attr.append("output_shapes":outputShapes)
-    attr.append("N":n)
+    var attrs:Dictionary<String,Any> = [:]
+    attr.append("output_types",outputTypes)
+    attr.append("output_shapes",outputShapes)
+    attr.append("N",n)
 
     let opspec = tf.OpSpec(
         OpType: "ZipDataset",
