@@ -10,57 +10,46 @@ import Darwin.C.stdint
 import CTensorFlow
 import protoTensorFlow
 
-/*
-var _inputArg: [Tensorflow_OpDef.ArgDef] = []
-var _outputArg: [Tensorflow_OpDef.ArgDef] = []
-var _attr: [Tensorflow_OpDef.AttrDef] = []
-var _deprecation: Tensorflow_OpDeprecation? = nil
-var _summary: String = String()
-var _description_p: String = String()
-var _isCommutative: Bool = false
-var _isAggregate: Bool = false
-var _isStateful: Bool = false
-var _allowsUninitializedInput: Bool = false
-*/
 
 {% for op in operations %}
 
 /*
-{{op._storage._summary}}
+{{op.summary}}
 
-{{op._storage._description_p}}
+{{op.description_p}}
 
 */
-{% macro hasDefaultValue attribute %}{% if attribute._storage._defaultValue %} = {{attribute._storage._defaultValue}}{% endif %}{% endmacro %}
+{% macro hasDefaultValue attribute %}{% if attribute.defaultValue %} = {{attribute.defaultValue}}{% endif %}{% endmacro %}
 
-{% macro returnFunctionBlock types %}{% if op._storage._outputArg.count %}->({% for type in types %}{{type.name|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}: Output{% if not forloop.last %}, {% endif %}{% endfor %}){%else%}->(o:GoOperation){% endif %}{% endmacro %}
+{% macro returnFunctionBlock types %}{% if op.hasNoOutputArg %}->(GoOperation?){% endif %}{% if op.hasOneOutputArg %}->(GoOperation?){% else %}{% if op.outputArg.count %}->({% for type in types %}{{type.name|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}: Output{% if not forloop.last %}, {% endif %}{% endfor %}){% endif%}{% endif %}{% endmacro %}
 {% macro functionArgumentBlock types %}{% for type in types %}{{type.name|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}: Output{% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
-{% macro functionAttributesBlock types %}{% for type in types %}{{type._storage._name|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}} :{{type._storage._type|snakeToCamelCase}}  {% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
-{% macro hasInputArgumentsAndAttribtues %}{% if op._storage._inputArg.count %}{% if op._storage._attr.count %},{% endif %}{% endif %} {%endmacro%}
+{% macro functionAttributesBlock types %}{% for type in types %}{{type.name|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}} :{{type.type|snakeToCamelCase}}  {% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
+{% macro hasInputArgumentsAndAttribtues %}{% if op.inputArg.count %}{% if op.attr.count %},{% endif %}{% endif %} {%endmacro%}
 
 {% macro returnBlock types %}{% for type in types %}op.Output({{forloop.counter}} - 1){% if not forloop.last %},{% endif %}{% endfor %}{% endmacro %}
-{% macro ifArgsCount %}{% if op._storage._inputArg.count %}scope:Scope,{% else %}scope:Scope{% endif %}{% endmacro %}
+
 {% macro trimmedInputArgs types %}{% for type in types %}{{type.name|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}{% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
 
-{% macro injectAttributes types %}{% for type in types %}attr.append("{{type._storage._name}}",{{type._storage._name|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}})
+{% macro injectAttributes types %}{% for type in types %}attrs["{{type.name}}"] = {{type.name|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}
     {% endfor %}{% endmacro %}
 
-func {{ op._storage._name|lowerFirstWord}}({% call ifArgsCount %}{% call functionArgumentBlock op._storage._inputArg %}{% call hasInputArgumentsAndAttribtues %}{% call functionAttributesBlock op._storage._attr %})  {% call returnFunctionBlock op._storage._outputArg %}{
-    if scope.error.error() != nil {
-        return
+func {{ op.name|lowerFirstWord}}({% if op.hasAttributeOrInputArgs %}scope:Scope,{% else %}scope:Scope{% endif %}{% call functionArgumentBlock op.inputArg %}{% call hasInputArgumentsAndAttribtues %}{% call functionAttributesBlock op.attr %})  {% call returnFunctionBlock op.outputArg %}{
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    {% call injectAttributes op._storage._attr %}
+    {% call injectAttributes op.attr %}
 
     let opspec = OpSpec(
-        OpType: "{{ op._storage._name}}",
-        Input: [ {% call trimmedInputArgs op._storage._inputArg %}],
+        OpType: "{{ op.name}}",
+        Name: "Type",
+        Input: [ {% call trimmedInputArgs op.inputArg %}],
         Attrs: attrs
     )
-    {% if op._storage._outputArg.count %}
+    {% if op.outputArg.count %}
     let op = scope.AddOperation(opspec)
-    return ({% call returnBlock op._storage._outputArg %})
+    return ({% call returnBlock op.outputArg %})
     {%else%}
     return scope.AddOperation(opspec)
     {% endif %}

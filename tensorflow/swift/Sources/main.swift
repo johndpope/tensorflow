@@ -123,7 +123,16 @@ do {
     if error != nil {
         print(error.debugDescription)
     }
-   
+    var attrs:Dictionary<String,Tensorflow_AttrValue.OneOf_Value> = [:]
+    
+    let opspec = OpSpec(
+        
+        OpType: "AccumulatorApplyGradient",
+        Name: "Type",
+        Input: [],
+        Attrs: attrs
+    )
+    
     
 //     Run inference on *imageFile.
 //     For multiple images, session.Run() can be called in a loop (and
@@ -157,6 +166,7 @@ do {
 
     
     print("error: \(error)")
+    print("desc: \(error.localizedDescription)")
     exit(1)
 }
 

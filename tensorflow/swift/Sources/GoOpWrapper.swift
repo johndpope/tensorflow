@@ -10,18 +10,6 @@ import Darwin.C.stdint
 import CTensorFlow
 import protoTensorFlow
 
-/*
-var _inputArg: [Tensorflow_OpDef.ArgDef] = []
-var _outputArg: [Tensorflow_OpDef.ArgDef] = []
-var _attr: [Tensorflow_OpDef.AttrDef] = []
-var _deprecation: Tensorflow_OpDeprecation? = nil
-var _summary: String = String()
-var _description_p: String = String()
-var _isCommutative: Bool = false
-var _isAggregate: Bool = false
-var _isStateful: Bool = false
-var _allowsUninitializedInput: Bool = false
-*/
 
 
 /*
@@ -36,17 +24,19 @@ Returns nothing but an exception.
 
 
 
-func abort(scope:Scope errorMsg :String  , exitWithoutError :Bool  )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func abort(scope:Scope, errorMsg :String  , exitWithoutError :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("error_msg",errorMsg)
-    attr.append("exit_without_error",exitWithoutError)
+    attrs["error_msg"] = errorMsg
+    attrs["exit_without_error"] = exitWithoutError
 
     let opspec = OpSpec(
         OpType: "Abort",
+        Name: "Type",
         Input: [ ],
         Attrs: attrs
     )
@@ -65,15 +55,18 @@ an output element, this operation computes \\(y = |x|\\).
 
 
 
-func abs(scope:Scope,x: Output )  ->(y: Output){
-    if scope.error.error() != nil {
-        return
+
+func abs(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Abs",
+        Name: "Type",
         Input: [ x],
         Attrs: attrs
     )
@@ -91,16 +84,18 @@ Does not add if local_step is lesser than the accumulator's global_step.
 
 
 
-func accumulatorApplyGradient(scope:Scope,handle: Output, localStep: Output, gradient: Output, dtype :Type  )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func accumulatorApplyGradient(scope:Scope,handle: Output, localStep: Output, gradient: Output, dtype :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("dtype",dtype)
+    attrs["dtype"] = dtype
 
     let opspec = OpSpec(
         OpType: "AccumulatorApplyGradient",
+        Name: "Type",
         Input: [ handle, localStep, gradient],
         Attrs: attrs
     )
@@ -116,15 +111,17 @@ Returns the number of gradients aggregated in the given accumulators.
 
 
 
-func accumulatorNumAccumulated(scope:Scope,handle: Output )  ->(numAccumulated: Output){
-    if scope.error.error() != nil {
-        return
+
+func accumulatorNumAccumulated(scope:Scope,handle: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "AccumulatorNumAccumulated",
+        Name: "Type",
         Input: [ handle],
         Attrs: attrs
     )
@@ -143,15 +140,17 @@ new_global_step.
 
 
 
-func accumulatorSetGlobalStep(scope:Scope,handle: Output, newGlobalStep: Output )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func accumulatorSetGlobalStep(scope:Scope,handle: Output, newGlobalStep: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "AccumulatorSetGlobalStep",
+        Name: "Type",
         Input: [ handle, newGlobalStep],
         Attrs: attrs
     )
@@ -172,16 +171,18 @@ global_step in the accumulator by 1, and resets the aggregate to 0.
 
 
 
-func accumulatorTakeGradient(scope:Scope,handle: Output, numRequired: Output, dtype :[Any]  )  ->(average: Output){
-    if scope.error.error() != nil {
-        return
+
+func accumulatorTakeGradient(scope:Scope,handle: Output, numRequired: Output, dtype :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("dtype",dtype)
+    attrs["dtype"] = dtype
 
     let opspec = OpSpec(
         OpType: "AccumulatorTakeGradient",
+        Name: "Type",
         Input: [ handle, numRequired],
         Attrs: attrs
     )
@@ -198,15 +199,18 @@ Computes acos of x element-wise.
 
 
 
-func acos(scope:Scope,x: Output )  ->(y: Output){
-    if scope.error.error() != nil {
-        return
+
+func acos(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Acos",
+        Name: "Type",
         Input: [ x],
         Attrs: attrs
     )
@@ -225,16 +229,18 @@ Returns x + y element-wise.
 
 
 
-func add(scope:Scope,x: Output, y: Output, t :Type  )  ->(z: Output){
-    if scope.error.error() != nil {
-        return
+
+func add(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Add",
+        Name: "Type",
         Input: [ x, y],
         Attrs: attrs
     )
@@ -269,17 +275,20 @@ is provided here, instead use the *name* of the Operation created by calling
 
 
 
-func addManySparseToTensorsMap(scope:Scope,sparseIndices: Output, sparseValues: Output, sparseShape: Output, container :String  , sharedName :String  )  ->(sparseHandles: Output){
-    if scope.error.error() != nil {
-        return
+
+func addManySparseToTensorsMap(scope:Scope,sparseIndices: Output, sparseValues: Output, sparseShape: Output, t :Type  , container :String  , sharedName :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("container",container)
-    attr.append("shared_name",sharedName)
+    attrs["T"] = t
+    attrs["container"] = container
+    attrs["shared_name"] = sharedName
 
     let opspec = OpSpec(
         OpType: "AddManySparseToTensorsMap",
+        Name: "Type",
         Input: [ sparseIndices, sparseValues, sparseShape],
         Attrs: attrs
     )
@@ -296,17 +305,19 @@ Add all input tensors element wise.
 
 
 
-func addN(scope:Scope,inputs: Output, n :Int  , t :Type  )  ->(sum: Output){
-    if scope.error.error() != nil {
-        return
+
+func addN(scope:Scope,inputs: Output, n :Int  , t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("N",n)
-    attr.append("T",t)
+    attrs["N"] = n
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "AddN",
+        Name: "Type",
         Input: [ inputs],
         Attrs: attrs
     )
@@ -335,17 +346,20 @@ is provided here, instead use the *name* of the Operation created by calling
 
 
 
-func addSparseToTensorsMap(scope:Scope,sparseIndices: Output, sparseValues: Output, sparseShape: Output, container :String  , sharedName :String  )  ->(sparseHandle: Output){
-    if scope.error.error() != nil {
-        return
+
+func addSparseToTensorsMap(scope:Scope,sparseIndices: Output, sparseValues: Output, sparseShape: Output, t :Type  , container :String  , sharedName :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("container",container)
-    attr.append("shared_name",sharedName)
+    attrs["T"] = t
+    attrs["container"] = container
+    attrs["shared_name"] = sharedName
 
     let opspec = OpSpec(
         OpType: "AddSparseToTensorsMap",
+        Name: "Type",
         Input: [ sparseIndices, sparseValues, sparseShape],
         Attrs: attrs
     )
@@ -362,16 +376,18 @@ Deprecated. Disallowed in GraphDef version >= 2.
 
 
 
-func adjustContrast(scope:Scope,images: Output, contrastFactor: Output, minValue: Output, maxValue: Output, t :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func adjustContrast(scope:Scope,images: Output, contrastFactor: Output, minValue: Output, maxValue: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "AdjustContrast",
+        Name: "Type",
         Input: [ images, contrastFactor, minValue, maxValue],
         Attrs: attrs
     )
@@ -395,15 +411,17 @@ channel and then adjusts each component of each pixel to
 
 
 
-func adjustContrastv2(scope:Scope,images: Output, contrastFactor: Output )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func adjustContrastv2(scope:Scope,images: Output, contrastFactor: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "AdjustContrastv2",
+        Name: "Type",
         Input: [ images, contrastFactor],
         Attrs: attrs
     )
@@ -425,15 +443,17 @@ and then remapped back to RGB colorspace.
 
 
 
-func adjustHue(scope:Scope,images: Output, delta: Output )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func adjustHue(scope:Scope,images: Output, delta: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "AdjustHue",
+        Name: "Type",
         Input: [ images, delta],
         Attrs: attrs
     )
@@ -455,15 +475,17 @@ values, and then remapped back to RGB colorspace.
 
 
 
-func adjustSaturation(scope:Scope,images: Output, scale: Output )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func adjustSaturation(scope:Scope,images: Output, scale: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "AdjustSaturation",
+        Name: "Type",
         Input: [ images, scale],
         Attrs: attrs
     )
@@ -484,17 +506,19 @@ retained with length 1.
 
 
 
-func all(scope:Scope,input: Output, reductionIndices: Output, keepDims :Bool  , tidx :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func all(scope:Scope,input: Output, reductionIndices: Output, keepDims :Bool  , tidx :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("keep_dims",keepDims)
-    attr.append("Tidx",tidx)
+    attrs["keep_dims"] = keepDims
+    attrs["Tidx"] = tidx
 
     let opspec = OpSpec(
         OpType: "All",
+        Name: "Type",
         Input: [ input, reductionIndices],
         Attrs: attrs
     )
@@ -518,20 +542,22 @@ true labels.
 
 
 
-func allCandidateSampler(scope:Scope,trueClasses: Output, numTrue :UInt8  , numSampled :UInt8  , unique :Bool  , seed :UInt8  , seed2 :UInt8  )  ->(sampledCandidates: Output, trueExpectedCount: Output, sampledExpectedCount: Output){
-    if scope.error.error() != nil {
-        return
+
+func allCandidateSampler(scope:Scope,trueClasses: Output, numTrue :Int  , numSampled :Int  , unique :Bool  , seed :Int  , seed2 :Int  )  ->(sampledCandidates: Output, trueExpectedCount: Output, sampledExpectedCount: Output){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("num_true",numTrue)
-    attr.append("num_sampled",numSampled)
-    attr.append("unique",unique)
-    attr.append("seed",seed)
-    attr.append("seed2",seed2)
+    attrs["num_true"] = numTrue
+    attrs["num_sampled"] = numSampled
+    attrs["unique"] = unique
+    attrs["seed"] = seed
+    attrs["seed2"] = seed2
 
     let opspec = OpSpec(
         OpType: "AllCandidateSampler",
+        Name: "Type",
         Input: [ trueClasses],
         Attrs: attrs
     )
@@ -552,17 +578,19 @@ retained with length 1.
 
 
 
-func any(scope:Scope,input: Output, reductionIndices: Output, keepDims :Bool  , tidx :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func any(scope:Scope,input: Output, reductionIndices: Output, keepDims :Bool  , tidx :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("keep_dims",keepDims)
-    attr.append("Tidx",tidx)
+    attrs["keep_dims"] = keepDims
+    attrs["Tidx"] = tidx
 
     let opspec = OpSpec(
         OpType: "Any",
+        Name: "Type",
         Input: [ input, reductionIndices],
         Attrs: attrs
     )
@@ -583,16 +611,19 @@ var -= update;
 
 
 
-func applyAdadelta(scope:Scope,`var`: Output, accum: Output, accumUpdate: Output, lr: Output, rho: Output, epsilon: Output, grad: Output, useLocking :Bool  )  ->(out: Output){
-    if scope.error.error() != nil {
-        return
+
+func applyAdadelta(scope:Scope,`var`: Output, accum: Output, accumUpdate: Output, lr: Output, rho: Output, epsilon: Output, grad: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("use_locking",useLocking)
+    attrs["T"] = t
+    attrs["use_locking"] = useLocking
 
     let opspec = OpSpec(
         OpType: "ApplyAdadelta",
+        Name: "Type",
         Input: [ `var`, accum, accumUpdate, lr, rho, epsilon, grad],
         Attrs: attrs
     )
@@ -611,17 +642,19 @@ var -= lr * grad * (1 / sqrt(accum))
 
 
 
-func applyAdagrad(scope:Scope,`var`: Output, accum: Output, lr: Output, grad: Output, t :Type  , useLocking :Bool  )  ->(out: Output){
-    if scope.error.error() != nil {
-        return
+
+func applyAdagrad(scope:Scope,`var`: Output, accum: Output, lr: Output, grad: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("use_locking",useLocking)
+    attrs["T"] = t
+    attrs["use_locking"] = useLocking
 
     let opspec = OpSpec(
         OpType: "ApplyAdagrad",
+        Name: "Type",
         Input: [ `var`, accum, lr, grad],
         Attrs: attrs
     )
@@ -638,16 +671,19 @@ Update '*var' according to the proximal adagrad scheme.
 
 
 
-func applyAdagradDA(scope:Scope,`var`: Output, gradientAccumulator: Output, gradientSquaredAccumulator: Output, grad: Output, lr: Output, l1: Output, l2: Output, globalStep: Output, useLocking :Bool  )  ->(out: Output){
-    if scope.error.error() != nil {
-        return
+
+func applyAdagradDA(scope:Scope,`var`: Output, gradientAccumulator: Output, gradientSquaredAccumulator: Output, grad: Output, lr: Output, l1: Output, l2: Output, globalStep: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("use_locking",useLocking)
+    attrs["T"] = t
+    attrs["use_locking"] = useLocking
 
     let opspec = OpSpec(
         OpType: "ApplyAdagradDA",
+        Name: "Type",
         Input: [ `var`, gradientAccumulator, gradientSquaredAccumulator, grad, lr, l1, l2, globalStep],
         Attrs: attrs
     )
@@ -668,18 +704,20 @@ variable <- variable - lr_t * m_t / (sqrt(v_t) + epsilon)
 
 
 
-func applyAdam(scope:Scope,`var`: Output, m: Output, v: Output, beta1Power: Output, beta2Power: Output, lr: Output, beta1: Output, beta2: Output, epsilon: Output, grad: Output, t :Type  , useLocking :Bool  , useNesterov :Bool  )  ->(out: Output){
-    if scope.error.error() != nil {
-        return
+
+func applyAdam(scope:Scope,`var`: Output, m: Output, v: Output, beta1Power: Output, beta2Power: Output, lr: Output, beta1: Output, beta2: Output, epsilon: Output, grad: Output, t :Type  , useLocking :Bool  , useNesterov :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("use_locking",useLocking)
-    attr.append("use_nesterov",useNesterov)
+    attrs["T"] = t
+    attrs["use_locking"] = useLocking
+    attrs["use_nesterov"] = useNesterov
 
     let opspec = OpSpec(
         OpType: "ApplyAdam",
+        Name: "Type",
         Input: [ `var`, m, v, beta1Power, beta2Power, lr, beta1, beta2, epsilon, grad],
         Attrs: attrs
     )
@@ -710,16 +748,19 @@ var <- var - mom
 
 
 
-func applyCenteredRMSProp(scope:Scope,`var`: Output, mg: Output, ms: Output, mom: Output, lr: Output, rho: Output, momentum: Output, epsilon: Output, grad: Output, useLocking :Bool  )  ->(out: Output){
-    if scope.error.error() != nil {
-        return
+
+func applyCenteredRMSProp(scope:Scope,`var`: Output, mg: Output, ms: Output, mom: Output, lr: Output, rho: Output, momentum: Output, epsilon: Output, grad: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("use_locking",useLocking)
+    attrs["T"] = t
+    attrs["use_locking"] = useLocking
 
     let opspec = OpSpec(
         OpType: "ApplyCenteredRMSProp",
+        Name: "Type",
         Input: [ `var`, mg, ms, mom, lr, rho, momentum, epsilon, grad],
         Attrs: attrs
     )
@@ -741,17 +782,19 @@ accum = accum_new
 
 
 
-func applyFtrl(scope:Scope,`var`: Output, accum: Output, linear: Output, grad: Output, lr: Output, l1: Output, l2: Output, lrPower: Output, t :Type  , useLocking :Bool  )  ->(out: Output){
-    if scope.error.error() != nil {
-        return
+
+func applyFtrl(scope:Scope,`var`: Output, accum: Output, linear: Output, grad: Output, lr: Output, l1: Output, l2: Output, lrPower: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("use_locking",useLocking)
+    attrs["T"] = t
+    attrs["use_locking"] = useLocking
 
     let opspec = OpSpec(
         OpType: "ApplyFtrl",
+        Name: "Type",
         Input: [ `var`, accum, linear, grad, lr, l1, l2, lrPower],
         Attrs: attrs
     )
@@ -768,16 +811,19 @@ Update '*var' by subtracting 'alpha' * 'delta' from it.
 
 
 
-func applyGradientDescent(scope:Scope,`var`: Output, alpha: Output, delta: Output, useLocking :Bool  )  ->(out: Output){
-    if scope.error.error() != nil {
-        return
+
+func applyGradientDescent(scope:Scope,`var`: Output, alpha: Output, delta: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("use_locking",useLocking)
+    attrs["T"] = t
+    attrs["use_locking"] = useLocking
 
     let opspec = OpSpec(
         OpType: "ApplyGradientDescent",
+        Name: "Type",
         Input: [ `var`, alpha, delta],
         Attrs: attrs
     )
@@ -797,18 +843,20 @@ var -= lr * accum
 
 
 
-func applyMomentum(scope:Scope,`var`: Output, accum: Output, lr: Output, grad: Output, momentum: Output, t :Type  , useLocking :Bool  , useNesterov :Bool  )  ->(out: Output){
-    if scope.error.error() != nil {
-        return
+
+func applyMomentum(scope:Scope,`var`: Output, accum: Output, lr: Output, grad: Output, momentum: Output, t :Type  , useLocking :Bool  , useNesterov :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("use_locking",useLocking)
-    attr.append("use_nesterov",useNesterov)
+    attrs["T"] = t
+    attrs["use_locking"] = useLocking
+    attrs["use_nesterov"] = useNesterov
 
     let opspec = OpSpec(
         OpType: "ApplyMomentum",
+        Name: "Type",
         Input: [ `var`, accum, lr, grad, momentum],
         Attrs: attrs
     )
@@ -828,16 +876,19 @@ var = sign(prox_v)/(1+lr*l2) * max{|prox_v|-lr*l1,0}
 
 
 
-func applyProximalAdagrad(scope:Scope,`var`: Output, accum: Output, lr: Output, l1: Output, l2: Output, grad: Output, useLocking :Bool  )  ->(out: Output){
-    if scope.error.error() != nil {
-        return
+
+func applyProximalAdagrad(scope:Scope,`var`: Output, accum: Output, lr: Output, l1: Output, l2: Output, grad: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("use_locking",useLocking)
+    attrs["T"] = t
+    attrs["use_locking"] = useLocking
 
     let opspec = OpSpec(
         OpType: "ApplyProximalAdagrad",
+        Name: "Type",
         Input: [ `var`, accum, lr, l1, l2, grad],
         Attrs: attrs
     )
@@ -856,17 +907,19 @@ var = sign(prox_v)/(1+alpha*l2) * max{|prox_v|-alpha*l1,0}
 
 
 
-func applyProximalGradientDescent(scope:Scope,`var`: Output, alpha: Output, l1: Output, l2: Output, delta: Output, t :Type  , useLocking :Bool  )  ->(out: Output){
-    if scope.error.error() != nil {
-        return
+
+func applyProximalGradientDescent(scope:Scope,`var`: Output, alpha: Output, l1: Output, l2: Output, delta: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("use_locking",useLocking)
+    attrs["T"] = t
+    attrs["use_locking"] = useLocking
 
     let opspec = OpSpec(
         OpType: "ApplyProximalGradientDescent",
+        Name: "Type",
         Input: [ `var`, alpha, l1, l2, delta],
         Attrs: attrs
     )
@@ -891,16 +944,19 @@ var <- var - mom
 
 
 
-func applyRMSProp(scope:Scope,`var`: Output, ms: Output, mom: Output, lr: Output, rho: Output, momentum: Output, epsilon: Output, grad: Output, useLocking :Bool  )  ->(out: Output){
-    if scope.error.error() != nil {
-        return
+
+func applyRMSProp(scope:Scope,`var`: Output, ms: Output, mom: Output, lr: Output, rho: Output, momentum: Output, epsilon: Output, grad: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("use_locking",useLocking)
+    attrs["T"] = t
+    attrs["use_locking"] = useLocking
 
     let opspec = OpSpec(
         OpType: "ApplyRMSProp",
+        Name: "Type",
         Input: [ `var`, ms, mom, lr, rho, momentum, epsilon, grad],
         Attrs: attrs
     )
@@ -917,17 +973,19 @@ Returns the truth value of abs(x-y) < tolerance element-wise.
 
 
 
-func approximateEqual(scope:Scope,x: Output, y: Output, t :Type  , tolerance :Float  )  ->(z: Output){
-    if scope.error.error() != nil {
-        return
+
+func approximateEqual(scope:Scope,x: Output, y: Output, t :Type  , tolerance :Float  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("tolerance",tolerance)
+    attrs["T"] = t
+    attrs["tolerance"] = tolerance
 
     let opspec = OpSpec(
         OpType: "ApproximateEqual",
+        Name: "Type",
         Input: [ x, y],
         Attrs: attrs
     )
@@ -945,16 +1003,19 @@ Note that in case of ties the identity of the return value is not guaranteed.
 
 
 
-func argMax(scope:Scope,input: Output, dimension: Output, tidx :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func argMax(scope:Scope,input: Output, dimension: Output, t :Type  , tidx :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tidx",tidx)
+    attrs["T"] = t
+    attrs["Tidx"] = tidx
 
     let opspec = OpSpec(
         OpType: "ArgMax",
+        Name: "Type",
         Input: [ input, dimension],
         Attrs: attrs
     )
@@ -972,17 +1033,19 @@ Note that in case of ties the identity of the return value is not guaranteed.
 
 
 
-func argMin(scope:Scope,input: Output, dimension: Output, t :Type  , tidx :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func argMin(scope:Scope,input: Output, dimension: Output, t :Type  , tidx :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("Tidx",tidx)
+    attrs["T"] = t
+    attrs["Tidx"] = tidx
 
     let opspec = OpSpec(
         OpType: "ArgMin",
+        Name: "Type",
         Input: [ input, dimension],
         Attrs: attrs
     )
@@ -1000,20 +1063,23 @@ types and boolean.
 
 
 
-func asString(scope:Scope,input: Output, precision :Int  , scientific :Bool  , shortest :Bool  , width :Int  , fill :String  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func asString(scope:Scope,input: Output, t :Type  , precision :Int  , scientific :Bool  , shortest :Bool  , width :Int  , fill :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("precision",precision)
-    attr.append("scientific",scientific)
-    attr.append("shortest",shortest)
-    attr.append("width",width)
-    attr.append("fill",fill)
+    attrs["T"] = t
+    attrs["precision"] = precision
+    attrs["scientific"] = scientific
+    attrs["shortest"] = shortest
+    attrs["width"] = width
+    attrs["fill"] = fill
 
     let opspec = OpSpec(
         OpType: "AsString",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -1030,16 +1096,18 @@ Computes asin of x element-wise.
 
 
 
-func asin(scope:Scope,x: Output, t :Type  )  ->(y: Output){
-    if scope.error.error() != nil {
-        return
+
+func asin(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Asin",
+        Name: "Type",
         Input: [ x],
         Attrs: attrs
     )
@@ -1058,16 +1126,19 @@ If `condition` evaluates to false, print the list of tensors in `data`.
 
 
 
-func assert(scope:Scope,condition: Output, data: Output, summarize :Int  )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func assert(scope:Scope,condition: Output, data: Output, t :List(type)  , summarize :Int  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("summarize",summarize)
+    attrs["T"] = t
+    attrs["summarize"] = summarize
 
     let opspec = OpSpec(
         OpType: "Assert",
+        Name: "Type",
         Input: [ condition, data],
         Attrs: attrs
     )
@@ -1085,18 +1156,20 @@ This makes it easier to chain operations that need to use the reset value.
 
 
 
-func assign(scope:Scope,ref: Output, value: Output, t :Type  , validateShape :Bool  , useLocking :Bool  )  ->(outputRef: Output){
-    if scope.error.error() != nil {
-        return
+
+func assign(scope:Scope,ref: Output, value: Output, t :Type  , validateShape :Bool  , useLocking :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("validate_shape",validateShape)
-    attr.append("use_locking",useLocking)
+    attrs["T"] = t
+    attrs["validate_shape"] = validateShape
+    attrs["use_locking"] = useLocking
 
     let opspec = OpSpec(
         OpType: "Assign",
+        Name: "Type",
         Input: [ ref, value],
         Attrs: attrs
     )
@@ -1115,16 +1188,19 @@ This makes it easier to chain operations that need to use the reset value.
 
 
 
-func assignAdd(scope:Scope,ref: Output, value: Output, useLocking :Bool  )  ->(outputRef: Output){
-    if scope.error.error() != nil {
-        return
+
+func assignAdd(scope:Scope,ref: Output, value: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("use_locking",useLocking)
+    attrs["T"] = t
+    attrs["use_locking"] = useLocking
 
     let opspec = OpSpec(
         OpType: "AssignAdd",
+        Name: "Type",
         Input: [ ref, value],
         Attrs: attrs
     )
@@ -1143,17 +1219,19 @@ This makes it easier to chain operations that need to use the reset value.
 
 
 
-func assignSub(scope:Scope,ref: Output, value: Output, t :Type  , useLocking :Bool  )  ->(outputRef: Output){
-    if scope.error.error() != nil {
-        return
+
+func assignSub(scope:Scope,ref: Output, value: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("use_locking",useLocking)
+    attrs["T"] = t
+    attrs["use_locking"] = useLocking
 
     let opspec = OpSpec(
         OpType: "AssignSub",
+        Name: "Type",
         Input: [ ref, value],
         Attrs: attrs
     )
@@ -1170,15 +1248,18 @@ Computes atan of x element-wise.
 
 
 
-func atan(scope:Scope,x: Output )  ->(y: Output){
-    if scope.error.error() != nil {
-        return
+
+func atan(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Atan",
+        Name: "Type",
         Input: [ x],
         Attrs: attrs
     )
@@ -1200,16 +1281,18 @@ where \(r = \sqrt(x^2 + y^2) \).
 
 
 
-func atan2(scope:Scope,y: Output, x: Output, t :Type  )  ->(z: Output){
-    if scope.error.error() != nil {
-        return
+
+func atan2(scope:Scope,y: Output, x: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Atan2",
+        Name: "Type",
         Input: [ y, x],
         Attrs: attrs
     )
@@ -1247,18 +1330,20 @@ resulting spectrogram as a PNG image.
 
 
 
-func audioSpectrogram(scope:Scope,input: Output, windowSize :UInt8  , stride :UInt8  , magnitudeSquared :Bool  )  ->(spectrogram: Output){
-    if scope.error.error() != nil {
-        return
+
+func audioSpectrogram(scope:Scope,input: Output, windowSize :Int  , stride :Int  , magnitudeSquared :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("window_size",windowSize)
-    attr.append("stride",stride)
-    attr.append("magnitude_squared",magnitudeSquared)
+    attrs["window_size"] = windowSize
+    attrs["stride"] = stride
+    attrs["magnitude_squared"] = magnitudeSquared
 
     let opspec = OpSpec(
         OpType: "AudioSpectrogram",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -1284,17 +1369,19 @@ build the `tag` of the summary values:
 
 
 
-func audioSummary(scope:Scope,tag: Output, tensor: Output, sampleRate :Float  , maxOutputs :UInt8  )  ->(summary: Output){
-    if scope.error.error() != nil {
-        return
+
+func audioSummary(scope:Scope,tag: Output, tensor: Output, sampleRate :Float  , maxOutputs :Int  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("sample_rate",sampleRate)
-    attr.append("max_outputs",maxOutputs)
+    attrs["sample_rate"] = sampleRate
+    attrs["max_outputs"] = maxOutputs
 
     let opspec = OpSpec(
         OpType: "AudioSummary",
+        Name: "Type",
         Input: [ tag, tensor],
         Attrs: attrs
     )
@@ -1320,16 +1407,18 @@ build the `tag` of the summary values:
 
 
 
-func audioSummaryV2(scope:Scope,tag: Output, tensor: Output, sampleRate: Output, maxOutputs :UInt8  )  ->(summary: Output){
-    if scope.error.error() != nil {
-        return
+
+func audioSummaryV2(scope:Scope,tag: Output, tensor: Output, sampleRate: Output, maxOutputs :Int  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("max_outputs",maxOutputs)
+    attrs["max_outputs"] = maxOutputs
 
     let opspec = OpSpec(
         OpType: "AudioSummaryV2",
+        Name: "Type",
         Input: [ tag, tensor, sampleRate],
         Attrs: attrs
     )
@@ -1348,19 +1437,22 @@ window in `value`.
 
 
 
-func avgPool(scope:Scope,value: Output, ksize :[Int64]  , strides :[Int64]  , padding :String  , dataFormat :String  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func avgPool(scope:Scope,value: Output, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  , t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("ksize",ksize)
-    attr.append("strides",strides)
-    attr.append("padding",padding)
-    attr.append("data_format",dataFormat)
+    attrs["ksize"] = ksize
+    attrs["strides"] = strides
+    attrs["padding"] = padding
+    attrs["data_format"] = dataFormat
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "AvgPool",
+        Name: "Type",
         Input: [ value],
         Attrs: attrs
     )
@@ -1377,20 +1469,22 @@ Performs 3D average pooling on the input.
 
 
 
-func avgPool3D(scope:Scope,input: Output, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  , t :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func avgPool3D(scope:Scope,input: Output, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  , t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("ksize",ksize)
-    attr.append("strides",strides)
-    attr.append("padding",padding)
-    attr.append("data_format",dataFormat)
-    attr.append("T",t)
+    attrs["ksize"] = ksize
+    attrs["strides"] = strides
+    attrs["padding"] = padding
+    attrs["data_format"] = dataFormat
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "AvgPool3D",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -1407,19 +1501,22 @@ Computes gradients of average pooling function.
 
 
 
-func avgPool3DGrad(scope:Scope,origInputShape: Output, grad: Output, ksize :[Int64]  , strides :[Int64]  , padding :String  , dataFormat :String  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func avgPool3DGrad(scope:Scope,origInputShape: Output, grad: Output, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  , t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("ksize",ksize)
-    attr.append("strides",strides)
-    attr.append("padding",padding)
-    attr.append("data_format",dataFormat)
+    attrs["ksize"] = ksize
+    attrs["strides"] = strides
+    attrs["padding"] = padding
+    attrs["data_format"] = dataFormat
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "AvgPool3DGrad",
+        Name: "Type",
         Input: [ origInputShape, grad],
         Attrs: attrs
     )
@@ -1436,20 +1533,22 @@ Computes gradients of the average pooling function.
 
 
 
-func avgPoolGrad(scope:Scope,origInputShape: Output, grad: Output, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  , t :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func avgPoolGrad(scope:Scope,origInputShape: Output, grad: Output, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  , t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("ksize",ksize)
-    attr.append("strides",strides)
-    attr.append("padding",padding)
-    attr.append("data_format",dataFormat)
-    attr.append("T",t)
+    attrs["ksize"] = ksize
+    attrs["strides"] = strides
+    attrs["padding"] = padding
+    attrs["data_format"] = dataFormat
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "AvgPoolGrad",
+        Name: "Type",
         Input: [ origInputShape, grad],
         Attrs: attrs
     )
@@ -1473,20 +1572,22 @@ and may be updated using BarrierInsertMany.
 
 
 
-func barrier(scope:Scope componentTypes :List(type)  , shapes :[Shape]  , capacity :UInt8  , container :String  , sharedName :String  )  ->(handle: Output){
-    if scope.error.error() != nil {
-        return
+
+func barrier(scope:Scope, componentTypes :List(type)  , shapes :List(shape)  , capacity :Int  , container :String  , sharedName :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("component_types",componentTypes)
-    attr.append("shapes",shapes)
-    attr.append("capacity",capacity)
-    attr.append("container",container)
-    attr.append("shared_name",sharedName)
+    attrs["component_types"] = componentTypes
+    attrs["shapes"] = shapes
+    attrs["capacity"] = capacity
+    attrs["container"] = container
+    attrs["shared_name"] = sharedName
 
     let opspec = OpSpec(
         OpType: "Barrier",
+        Name: "Type",
         Input: [ ],
         Attrs: attrs
     )
@@ -1509,16 +1610,18 @@ Subsequent TakeMany operations that would block will fail immediately.
 
 
 
-func barrierClose(scope:Scope,handle: Output, cancelPendingEnqueues :Bool  )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func barrierClose(scope:Scope,handle: Output, cancelPendingEnqueues :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("cancel_pending_enqueues",cancelPendingEnqueues)
+    attrs["cancel_pending_enqueues"] = cancelPendingEnqueues
 
     let opspec = OpSpec(
         OpType: "BarrierClose",
+        Name: "Type",
         Input: [ handle],
         Attrs: attrs
     )
@@ -1534,15 +1637,17 @@ Computes the number of incomplete elements in the given barrier.
 
 
 
-func barrierIncompleteSize(scope:Scope,handle: Output )  ->(size: Output){
-    if scope.error.error() != nil {
-        return
+
+func barrierIncompleteSize(scope:Scope,handle: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "BarrierIncompleteSize",
+        Name: "Type",
         Input: [ handle],
         Attrs: attrs
     )
@@ -1563,16 +1668,19 @@ INVALID_ARGUMENT, and leave the barrier in an undefined state.
 
 
 
-func barrierInsertMany(scope:Scope,handle: Output, keys: Output, values: Output, componentIndex :Int  )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func barrierInsertMany(scope:Scope,handle: Output, keys: Output, values: Output, t :Type  , componentIndex :Int  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("component_index",componentIndex)
+    attrs["T"] = t
+    attrs["component_index"] = componentIndex
 
     let opspec = OpSpec(
         OpType: "BarrierInsertMany",
+        Name: "Type",
         Input: [ handle, keys, values],
         Attrs: attrs
     )
@@ -1588,15 +1696,17 @@ Computes the number of complete elements in the given barrier.
 
 
 
-func barrierReadySize(scope:Scope,handle: Output )  ->(size: Output){
-    if scope.error.error() != nil {
-        return
+
+func barrierReadySize(scope:Scope,handle: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "BarrierReadySize",
+        Name: "Type",
         Input: [ handle],
         Attrs: attrs
     )
@@ -1619,19 +1729,21 @@ into the barrier.
 
 
 
-func barrierTakeMany(scope:Scope,handle: Output, numElements: Output, componentTypes :List(type)  , allowSmallBatch :Bool  , waitForIncomplete :Bool  , timeoutMs :UInt8  )  ->(indices: Output, keys: Output, values: Output){
-    if scope.error.error() != nil {
-        return
+
+func barrierTakeMany(scope:Scope,handle: Output, numElements: Output, componentTypes :List(type)  , allowSmallBatch :Bool  , waitForIncomplete :Bool  , timeoutMs :Int  )  ->(indices: Output, keys: Output, values: Output){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("component_types",componentTypes)
-    attr.append("allow_small_batch",allowSmallBatch)
-    attr.append("wait_for_incomplete",waitForIncomplete)
-    attr.append("timeout_ms",timeoutMs)
+    attrs["component_types"] = componentTypes
+    attrs["allow_small_batch"] = allowSmallBatch
+    attrs["wait_for_incomplete"] = waitForIncomplete
+    attrs["timeout_ms"] = timeoutMs
 
     let opspec = OpSpec(
         OpType: "BarrierTakeMany",
+        Name: "Type",
         Input: [ handle, numElements],
         Attrs: attrs
     )
@@ -1647,15 +1759,18 @@ func barrierTakeMany(scope:Scope,handle: Output, numElements: Output, componentT
 
 
 
-func batchCholesky(scope:Scope,input: Output )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func batchCholesky(scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "BatchCholesky",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -1671,16 +1786,18 @@ func batchCholesky(scope:Scope,input: Output )  ->(output: Output){
 
 
 
-func batchCholeskyGrad(scope:Scope,l: Output, grad: Output, t :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func batchCholeskyGrad(scope:Scope,l: Output, grad: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "BatchCholeskyGrad",
+        Name: "Type",
         Input: [ l, grad],
         Attrs: attrs
     )
@@ -1697,17 +1814,19 @@ Creates a dataset that batches `batch_size` elements from `input_dataset`.
 
 
 
-func batchDataset(scope:Scope,inputDataset: Output, batchSize: Output, outputTypes :List(type)  , outputShapes :[Shape]  )  ->(handle: Output){
-    if scope.error.error() != nil {
-        return
+
+func batchDataset(scope:Scope,inputDataset: Output, batchSize: Output, outputTypes :List(type)  , outputShapes :List(shape)  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("output_types",outputTypes)
-    attr.append("output_shapes",outputShapes)
+    attrs["output_types"] = outputTypes
+    attrs["output_shapes"] = outputShapes
 
     let opspec = OpSpec(
         OpType: "BatchDataset",
+        Name: "Type",
         Input: [ inputDataset, batchSize],
         Attrs: attrs
     )
@@ -1723,15 +1842,17 @@ func batchDataset(scope:Scope,inputDataset: Output, batchSize: Output, outputTyp
 
 
 
-func batchFFT(scope:Scope,input: Output )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func batchFFT(scope:Scope,input: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "BatchFFT",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -1747,15 +1868,17 @@ func batchFFT(scope:Scope,input: Output )  ->(output: Output){
 
 
 
-func batchFFT2D(scope:Scope,input: Output )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func batchFFT2D(scope:Scope,input: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "BatchFFT2D",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -1771,15 +1894,17 @@ func batchFFT2D(scope:Scope,input: Output )  ->(output: Output){
 
 
 
-func batchFFT3D(scope:Scope,input: Output )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func batchFFT3D(scope:Scope,input: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "BatchFFT3D",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -1795,15 +1920,17 @@ func batchFFT3D(scope:Scope,input: Output )  ->(output: Output){
 
 
 
-func batchIFFT(scope:Scope,input: Output )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func batchIFFT(scope:Scope,input: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "BatchIFFT",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -1819,15 +1946,17 @@ func batchIFFT(scope:Scope,input: Output )  ->(output: Output){
 
 
 
-func batchIFFT2D(scope:Scope,input: Output )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func batchIFFT2D(scope:Scope,input: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "BatchIFFT2D",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -1843,15 +1972,17 @@ func batchIFFT2D(scope:Scope,input: Output )  ->(output: Output){
 
 
 
-func batchIFFT3D(scope:Scope,input: Output )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func batchIFFT3D(scope:Scope,input: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "BatchIFFT3D",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -1881,17 +2012,20 @@ It is computed as:
 
 
 
-func batchMatMul(scope:Scope,x: Output, y: Output, adjX :Bool  , adjY :Bool  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func batchMatMul(scope:Scope,x: Output, y: Output, t :Type  , adjX :Bool  , adjY :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("adj_x",adjX)
-    attr.append("adj_y",adjY)
+    attrs["T"] = t
+    attrs["adj_x"] = adjX
+    attrs["adj_y"] = adjY
 
     let opspec = OpSpec(
         OpType: "BatchMatMul",
+        Name: "Type",
         Input: [ x, y],
         Attrs: attrs
     )
@@ -1907,16 +2041,18 @@ func batchMatMul(scope:Scope,x: Output, y: Output, adjX :Bool  , adjY :Bool  )  
 
 
 
-func batchMatrixBandPart(scope:Scope,input: Output, numLower: Output, numUpper: Output, t :Type  )  ->(band: Output){
-    if scope.error.error() != nil {
-        return
+
+func batchMatrixBandPart(scope:Scope,input: Output, numLower: Output, numUpper: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "BatchMatrixBandPart",
+        Name: "Type",
         Input: [ input, numLower, numUpper],
         Attrs: attrs
     )
@@ -1932,15 +2068,18 @@ func batchMatrixBandPart(scope:Scope,input: Output, numLower: Output, numUpper: 
 
 
 
-func batchMatrixDeterminant(scope:Scope,input: Output )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func batchMatrixDeterminant(scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "BatchMatrixDeterminant",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -1956,16 +2095,18 @@ func batchMatrixDeterminant(scope:Scope,input: Output )  ->(output: Output){
 
 
 
-func batchMatrixDiag(scope:Scope,diagonal: Output, t :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func batchMatrixDiag(scope:Scope,diagonal: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "BatchMatrixDiag",
+        Name: "Type",
         Input: [ diagonal],
         Attrs: attrs
     )
@@ -1981,15 +2122,18 @@ func batchMatrixDiag(scope:Scope,diagonal: Output, t :Type  )  ->(output: Output
 
 
 
-func batchMatrixDiagPart(scope:Scope,input: Output )  ->(diagonal: Output){
-    if scope.error.error() != nil {
-        return
+
+func batchMatrixDiagPart(scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "BatchMatrixDiagPart",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -2005,17 +2149,19 @@ func batchMatrixDiagPart(scope:Scope,input: Output )  ->(diagonal: Output){
 
 
 
-func batchMatrixInverse(scope:Scope,input: Output, adjoint :Bool  , t :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func batchMatrixInverse(scope:Scope,input: Output, adjoint :Bool  , t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("adjoint",adjoint)
-    attr.append("T",t)
+    attrs["adjoint"] = adjoint
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "BatchMatrixInverse",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -2031,15 +2177,18 @@ func batchMatrixInverse(scope:Scope,input: Output, adjoint :Bool  , t :Type  )  
 
 
 
-func batchMatrixSetDiag(scope:Scope,input: Output, diagonal: Output )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func batchMatrixSetDiag(scope:Scope,input: Output, diagonal: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "BatchMatrixSetDiag",
+        Name: "Type",
         Input: [ input, diagonal],
         Attrs: attrs
     )
@@ -2055,17 +2204,19 @@ func batchMatrixSetDiag(scope:Scope,input: Output, diagonal: Output )  ->(output
 
 
 
-func batchMatrixSolve(scope:Scope,matrix: Output, rhs: Output, adjoint :Bool  , t :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func batchMatrixSolve(scope:Scope,matrix: Output, rhs: Output, adjoint :Bool  , t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("adjoint",adjoint)
-    attr.append("T",t)
+    attrs["adjoint"] = adjoint
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "BatchMatrixSolve",
+        Name: "Type",
         Input: [ matrix, rhs],
         Attrs: attrs
     )
@@ -2081,16 +2232,19 @@ func batchMatrixSolve(scope:Scope,matrix: Output, rhs: Output, adjoint :Bool  , 
 
 
 
-func batchMatrixSolveLs(scope:Scope,matrix: Output, rhs: Output, l2Regularizer: Output, fast :Bool  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func batchMatrixSolveLs(scope:Scope,matrix: Output, rhs: Output, l2Regularizer: Output, t :Type  , fast :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("fast",fast)
+    attrs["T"] = t
+    attrs["fast"] = fast
 
     let opspec = OpSpec(
         OpType: "BatchMatrixSolveLs",
+        Name: "Type",
         Input: [ matrix, rhs, l2Regularizer],
         Attrs: attrs
     )
@@ -2106,18 +2260,20 @@ func batchMatrixSolveLs(scope:Scope,matrix: Output, rhs: Output, l2Regularizer: 
 
 
 
-func batchMatrixTriangularSolve(scope:Scope,matrix: Output, rhs: Output, lower :Bool  , adjoint :Bool  , t :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func batchMatrixTriangularSolve(scope:Scope,matrix: Output, rhs: Output, lower :Bool  , adjoint :Bool  , t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("lower",lower)
-    attr.append("adjoint",adjoint)
-    attr.append("T",t)
+    attrs["lower"] = lower
+    attrs["adjoint"] = adjoint
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "BatchMatrixTriangularSolve",
+        Name: "Type",
         Input: [ matrix, rhs],
         Attrs: attrs
     )
@@ -2135,17 +2291,20 @@ This op is deprecated. Prefer `tf.nn.batch_normalization`.
 
 
 
-func batchNormWithGlobalNormalization(scope:Scope,t: Output, m: Output, v: Output, beta: Output, gamma: Output, varianceEpsilon :Float  , scaleAfterNormalization :Bool  )  ->(result: Output){
-    if scope.error.error() != nil {
-        return
+
+func batchNormWithGlobalNormalization(scope:Scope,t: Output, m: Output, v: Output, beta: Output, gamma: Output, t :Type  , varianceEpsilon :Float  , scaleAfterNormalization :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("variance_epsilon",varianceEpsilon)
-    attr.append("scale_after_normalization",scaleAfterNormalization)
+    attrs["T"] = t
+    attrs["variance_epsilon"] = varianceEpsilon
+    attrs["scale_after_normalization"] = scaleAfterNormalization
 
     let opspec = OpSpec(
         OpType: "BatchNormWithGlobalNormalization",
+        Name: "Type",
         Input: [ t, m, v, beta, gamma],
         Attrs: attrs
     )
@@ -2163,18 +2322,20 @@ This op is deprecated. See `tf.nn.batch_normalization`.
 
 
 
+
 func batchNormWithGlobalNormalizationGrad(scope:Scope,t: Output, m: Output, v: Output, gamma: Output, backprop: Output, t :Type  , varianceEpsilon :Float  , scaleAfterNormalization :Bool  )  ->(dx: Output, dm: Output, dv: Output, db: Output, dg: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("variance_epsilon",varianceEpsilon)
-    attr.append("scale_after_normalization",scaleAfterNormalization)
+    attrs["T"] = t
+    attrs["variance_epsilon"] = varianceEpsilon
+    attrs["scale_after_normalization"] = scaleAfterNormalization
 
     let opspec = OpSpec(
         OpType: "BatchNormWithGlobalNormalizationGrad",
+        Name: "Type",
         Input: [ t, m, v, gamma, backprop],
         Attrs: attrs
     )
@@ -2190,15 +2351,18 @@ func batchNormWithGlobalNormalizationGrad(scope:Scope,t: Output, m: Output, v: O
 
 
 
-func batchSelfAdjointEig(scope:Scope,input: Output )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func batchSelfAdjointEig(scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "BatchSelfAdjointEig",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -2214,17 +2378,19 @@ func batchSelfAdjointEig(scope:Scope,input: Output )  ->(output: Output){
 
 
 
+
 func batchSelfAdjointEigV2(scope:Scope,input: Output, computeV :Bool  , t :Type  )  ->(e: Output, v: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("compute_v",computeV)
-    attr.append("T",t)
+    attrs["compute_v"] = computeV
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "BatchSelfAdjointEigV2",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -2240,17 +2406,20 @@ func batchSelfAdjointEigV2(scope:Scope,input: Output, computeV :Bool  , t :Type 
 
 
 
-func batchSvd(scope:Scope,input: Output, computeUv :Bool  , fullMatrices :Bool  )  ->(s: Output, u: Output, v: Output){
-    if scope.error.error() != nil {
-        return
+
+func batchSvd(scope:Scope,input: Output, computeUv :Bool  , fullMatrices :Bool  , t :Type  )  ->(s: Output, u: Output, v: Output){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("compute_uv",computeUv)
-    attr.append("full_matrices",fullMatrices)
+    attrs["compute_uv"] = computeUv
+    attrs["full_matrices"] = fullMatrices
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "BatchSvd",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -2273,18 +2442,20 @@ followed by cropping along the `height` and `width` dimensions.
 
 
 
-func batchToSpace(scope:Scope,input: Output, crops: Output, t :Type  , blockSize :Int  , tidx :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func batchToSpace(scope:Scope,input: Output, crops: Output, t :Type  , blockSize :Int  , tidx :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("block_size",blockSize)
-    attr.append("Tidx",tidx)
+    attrs["T"] = t
+    attrs["block_size"] = blockSize
+    attrs["Tidx"] = tidx
 
     let opspec = OpSpec(
         OpType: "BatchToSpace",
+        Name: "Type",
         Input: [ input, crops],
         Attrs: attrs
     )
@@ -2307,17 +2478,20 @@ reverse of SpaceToBatch.  See below for a precise description.
 
 
 
-func batchToSpaceND(scope:Scope,input: Output, blockShape: Output, crops: Output, tblockShape :Type  , tcrops :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func batchToSpaceND(scope:Scope,input: Output, blockShape: Output, crops: Output, t :Type  , tblockShape :Type  , tcrops :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tblock_shape",tblockShape)
-    attr.append("Tcrops",tcrops)
+    attrs["T"] = t
+    attrs["Tblock_shape"] = tblockShape
+    attrs["Tcrops"] = tcrops
 
     let opspec = OpSpec(
         OpType: "BatchToSpaceND",
+        Name: "Type",
         Input: [ input, blockShape, crops],
         Attrs: attrs
     )
@@ -2340,16 +2514,18 @@ beta function.
 
 
 
-func betainc(scope:Scope,a: Output, b: Output, x: Output, t :Type  )  ->(z: Output){
-    if scope.error.error() != nil {
-        return
+
+func betainc(scope:Scope,a: Output, b: Output, x: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Betainc",
+        Name: "Type",
         Input: [ a, b, x],
         Attrs: attrs
     )
@@ -2368,16 +2544,19 @@ Broadcasting is supported, so `value` may have any number of dimensions.
 
 
 
-func biasAdd(scope:Scope,value: Output, bias: Output, dataFormat :String  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func biasAdd(scope:Scope,value: Output, bias: Output, t :Type  , dataFormat :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("data_format",dataFormat)
+    attrs["T"] = t
+    attrs["data_format"] = dataFormat
 
     let opspec = OpSpec(
         OpType: "BiasAdd",
+        Name: "Type",
         Input: [ value, bias],
         Attrs: attrs
     )
@@ -2397,17 +2576,19 @@ the feature dimension is the third-to-last.
 
 
 
-func biasAddGrad(scope:Scope,outBackprop: Output, t :Type  , dataFormat :String  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func biasAddGrad(scope:Scope,outBackprop: Output, t :Type  , dataFormat :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("data_format",dataFormat)
+    attrs["T"] = t
+    attrs["data_format"] = dataFormat
 
     let opspec = OpSpec(
         OpType: "BiasAddGrad",
+        Name: "Type",
         Input: [ outBackprop],
         Attrs: attrs
     )
@@ -2427,15 +2608,18 @@ Broadcasting is supported, so `value` may have any number of dimensions.
 
 
 
-func biasAddV1(scope:Scope,value: Output, bias: Output )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func biasAddV1(scope:Scope,value: Output, bias: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "BiasAddV1",
+        Name: "Type",
         Input: [ value, bias],
         Attrs: attrs
     )
@@ -2458,16 +2642,18 @@ Values in `arr` outside of the range [0, size) are ignored.
 
 
 
-func bincount(scope:Scope,arr: Output, size: Output, weights: Output, t :Type  )  ->(bins: Output){
-    if scope.error.error() != nil {
-        return
+
+func bincount(scope:Scope,arr: Output, size: Output, weights: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Bincount",
+        Name: "Type",
         Input: [ arr, size, weights],
         Attrs: attrs
     )
@@ -2493,16 +2679,19 @@ endian orderings will give different results.
 
 
 
-func bitcast(scope:Scope,input: Output, type :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func bitcast(scope:Scope,input: Output, t :Type  , type :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("type",type)
+    attrs["T"] = t
+    attrs["type"] = type
 
     let opspec = OpSpec(
         OpType: "Bitcast",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -2521,16 +2710,18 @@ broadcasted shape. `s0`, `s1` and `r0` are all integer vectors.
 
 
 
-func broadcastArgs(scope:Scope,s0: Output, s1: Output, t :Type  )  ->(r0: Output){
-    if scope.error.error() != nil {
-        return
+
+func broadcastArgs(scope:Scope,s0: Output, s1: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "BroadcastArgs",
+        Name: "Type",
         Input: [ s0, s1],
         Attrs: attrs
     )
@@ -2548,15 +2739,18 @@ This is typically used by gradient computations for a broadcasting operation.
 
 
 
-func broadcastGradientArgs(scope:Scope,s0: Output, s1: Output )  ->(r0: Output, r1: Output){
-    if scope.error.error() != nil {
-        return
+
+func broadcastGradientArgs(scope:Scope,s0: Output, s1: Output, t :Type  )  ->(r0: Output, r1: Output){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "BroadcastGradientArgs",
+        Name: "Type",
         Input: [ s0, s1],
         Attrs: attrs
     )
@@ -2582,17 +2776,19 @@ then the output will be
 
 
 
-func bucketize(scope:Scope,input: Output, t :Type  , boundaries :List(float)  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func bucketize(scope:Scope,input: Output, t :Type  , boundaries :List(float)  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("boundaries",boundaries)
+    attrs["T"] = t
+    attrs["boundaries"] = boundaries
 
     let opspec = OpSpec(
         OpType: "Bucketize",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -2614,18 +2810,20 @@ returned if merge_repeated = False.
 
 
 
-func ctcBeamSearchDecoder(scope:Scope,inputs: Output, sequenceLength: Output, beamWidth :UInt8  , topPaths :UInt8  , mergeRepeated :Bool  )  ->(decodedIndices: Output, decodedValues: Output, decodedShape: Output, logProbability: Output){
-    if scope.error.error() != nil {
-        return
+
+func ctcBeamSearchDecoder(scope:Scope,inputs: Output, sequenceLength: Output, beamWidth :Int  , topPaths :Int  , mergeRepeated :Bool  )  ->(decodedIndices: Output, decodedValues: Output, decodedShape: Output, logProbability: Output){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("beam_width",beamWidth)
-    attr.append("top_paths",topPaths)
-    attr.append("merge_repeated",mergeRepeated)
+    attrs["beam_width"] = beamWidth
+    attrs["top_paths"] = topPaths
+    attrs["merge_repeated"] = mergeRepeated
 
     let opspec = OpSpec(
         OpType: "CTCBeamSearchDecoder",
+        Name: "Type",
         Input: [ inputs, sequenceLength],
         Attrs: attrs
     )
@@ -2650,16 +2848,18 @@ element is emitted.
 
 
 
+
 func ctcGreedyDecoder(scope:Scope,inputs: Output, sequenceLength: Output, mergeRepeated :Bool  )  ->(decodedIndices: Output, decodedValues: Output, decodedShape: Output, logProbability: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("merge_repeated",mergeRepeated)
+    attrs["merge_repeated"] = mergeRepeated
 
     let opspec = OpSpec(
         OpType: "CTCGreedyDecoder",
+        Name: "Type",
         Input: [ inputs, sequenceLength],
         Attrs: attrs
     )
@@ -2678,18 +2878,20 @@ should be e.g. linear projections of outputs by an LSTM.
 
 
 
+
 func ctcLoss(scope:Scope,inputs: Output, labelsIndices: Output, labelsValues: Output, sequenceLength: Output, preprocessCollapseRepeated :Bool  , ctcMergeRepeated :Bool  , ignoreLongerOutputsThanInputs :Bool  )  ->(loss: Output, gradient: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("preprocess_collapse_repeated",preprocessCollapseRepeated)
-    attr.append("ctc_merge_repeated",ctcMergeRepeated)
-    attr.append("ignore_longer_outputs_than_inputs",ignoreLongerOutputsThanInputs)
+    attrs["preprocess_collapse_repeated"] = preprocessCollapseRepeated
+    attrs["ctc_merge_repeated"] = ctcMergeRepeated
+    attrs["ignore_longer_outputs_than_inputs"] = ignoreLongerOutputsThanInputs
 
     let opspec = OpSpec(
         OpType: "CTCLoss",
+        Name: "Type",
         Input: [ inputs, labelsIndices, labelsValues, sequenceLength],
         Attrs: attrs
     )
@@ -2706,17 +2908,19 @@ Cast x of type SrcT to y of DstT.
 
 
 
-func cast(scope:Scope,x: Output, srcT :Type  , dstT :Type  )  ->(y: Output){
-    if scope.error.error() != nil {
-        return
+
+func cast(scope:Scope,x: Output, srcT :Type  , dstT :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("SrcT",srcT)
-    attr.append("DstT",dstT)
+    attrs["SrcT"] = srcT
+    attrs["DstT"] = dstT
 
     let opspec = OpSpec(
         OpType: "Cast",
+        Name: "Type",
         Input: [ x],
         Attrs: attrs
     )
@@ -2733,15 +2937,18 @@ Returns element-wise smallest integer in not less than x.
 
 
 
-func ceil(scope:Scope,x: Output )  ->(y: Output){
-    if scope.error.error() != nil {
-        return
+
+func ceil(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Ceil",
+        Name: "Type",
         Input: [ x],
         Attrs: attrs
     )
@@ -2760,17 +2967,19 @@ that are not a number (NaN) or infinity (Inf). Otherwise, passes `tensor` as-is.
 
 
 
-func checkNumerics(scope:Scope,tensor: Output, t :Type  , message :String  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func checkNumerics(scope:Scope,tensor: Output, t :Type  , message :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("message",message)
+    attrs["T"] = t
+    attrs["message"] = message
 
     let opspec = OpSpec(
         OpType: "CheckNumerics",
+        Name: "Type",
         Input: [ tensor],
         Attrs: attrs
     )
@@ -2791,15 +3000,18 @@ containing the Cholesky decompositions for all input submatrices `[..., :, :]`.
 
 
 
-func cholesky(scope:Scope,input: Output )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func cholesky(scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Cholesky",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -2818,16 +3030,18 @@ Iain Murray http://arxiv.org/abs/1602.07527.
 
 
 
-func choleskyGrad(scope:Scope,l: Output, grad: Output, t :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func choleskyGrad(scope:Scope,l: Output, grad: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "CholeskyGrad",
+        Name: "Type",
         Input: [ l, grad],
         Attrs: attrs
     )
@@ -2855,16 +3069,19 @@ tf.complex(real, imag) ==> [[2.25 + 4.75j], [3.25 + 5.75j]]
 
 
 
-func complex(scope:Scope,real: Output, imag: Output, tout :Type  )  ->(out: Output){
-    if scope.error.error() != nil {
-        return
+
+func complex(scope:Scope,real: Output, imag: Output, t :Type  , tout :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tout",tout)
+    attrs["T"] = t
+    attrs["Tout"] = tout
 
     let opspec = OpSpec(
         OpType: "Complex",
+        Name: "Type",
         Input: [ real, imag],
         Attrs: attrs
     )
@@ -2885,17 +3102,19 @@ value is computed as \\( \sqrt{a^2 + b^2}\\).
 
 
 
-func complexAbs(scope:Scope,x: Output, t :Type  , tout :Type  )  ->(y: Output){
-    if scope.error.error() != nil {
-        return
+
+func complexAbs(scope:Scope,x: Output, t :Type  , tout :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("Tout",tout)
+    attrs["T"] = t
+    attrs["Tout"] = tout
 
     let opspec = OpSpec(
         OpType: "ComplexAbs",
+        Name: "Type",
         Input: [ x],
         Attrs: attrs
     )
@@ -2916,18 +3135,20 @@ making the classifier sure that they are sampled labels.
 
 
 
-func computeAccidentalHits(scope:Scope,trueClasses: Output, sampledCandidates: Output, numTrue :UInt8  , seed :UInt8  , seed2 :UInt8  )  ->(indices: Output, ids: Output, weights: Output){
-    if scope.error.error() != nil {
-        return
+
+func computeAccidentalHits(scope:Scope,trueClasses: Output, sampledCandidates: Output, numTrue :Int  , seed :Int  , seed2 :Int  )  ->(indices: Output, ids: Output, weights: Output){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("num_true",numTrue)
-    attr.append("seed",seed)
-    attr.append("seed2",seed2)
+    attrs["num_true"] = numTrue
+    attrs["seed"] = seed
+    attrs["seed2"] = seed2
 
     let opspec = OpSpec(
         OpType: "ComputeAccidentalHits",
+        Name: "Type",
         Input: [ trueClasses, sampledCandidates],
         Attrs: attrs
     )
@@ -2944,16 +3165,19 @@ Concatenates tensors along one dimension.
 
 
 
-func concat(scope:Scope,concatDim: Output, values: Output, n :UInt8  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func concat(scope:Scope,concatDim: Output, values: Output, n :Int  , t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("N",n)
+    attrs["N"] = n
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Concat",
+        Name: "Type",
         Input: [ concatDim, values],
         Attrs: attrs
     )
@@ -2978,16 +3202,18 @@ This is typically used by gradient computations for a concat operation.
 
 
 
-func concatOffset(scope:Scope,concatDim: Output, shape: Output, n :Int  )  ->(offset: Output){
-    if scope.error.error() != nil {
-        return
+
+func concatOffset(scope:Scope,concatDim: Output, shape: Output, n :Int  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("N",n)
+    attrs["N"] = n
 
     let opspec = OpSpec(
         OpType: "ConcatOffset",
+        Name: "Type",
         Input: [ concatDim, shape],
         Attrs: attrs
     )
@@ -3004,17 +3230,20 @@ Concatenates tensors along one dimension.
 
 
 
-func concatV2(scope:Scope,values: Output, axis: Output, n :UInt8  , tidx :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func concatV2(scope:Scope,values: Output, axis: Output, n :Int  , t :Type  , tidx :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("N",n)
-    attr.append("Tidx",tidx)
+    attrs["N"] = n
+    attrs["T"] = t
+    attrs["Tidx"] = tidx
 
     let opspec = OpSpec(
         OpType: "ConcatV2",
+        Name: "Type",
         Input: [ values, axis],
         Attrs: attrs
     )
@@ -3037,19 +3266,21 @@ the accumulator.
 
 
 
-func conditionalAccumulator(scope:Scope dtype :Type  , shape :Shape  , container :String  , sharedName :String  )  ->(handle: Output){
-    if scope.error.error() != nil {
-        return
+
+func conditionalAccumulator(scope:Scope, dtype :Type  , shape :Shape  , container :String  , sharedName :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("dtype",dtype)
-    attr.append("shape",shape)
-    attr.append("container",container)
-    attr.append("shared_name",sharedName)
+    attrs["dtype"] = dtype
+    attrs["shape"] = shape
+    attrs["container"] = container
+    attrs["shared_name"] = sharedName
 
     let opspec = OpSpec(
         OpType: "ConditionalAccumulator",
+        Name: "Type",
         Input: [ ],
         Attrs: attrs
     )
@@ -3076,15 +3307,18 @@ tf.conj(input) ==> [-2.25 - 4.75j, 3.25 - 5.75j]
 
 
 
-func conj(scope:Scope,input: Output )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func conj(scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Conj",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -3101,17 +3335,19 @@ Returns a constant tensor.
 
 
 
-func const(scope:Scope value :Tensor  , dtype :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func const(scope:Scope, value :Tensor  , dtype :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("value",value)
-    attr.append("dtype",dtype)
+    attrs["value"] = value
+    attrs["dtype"] = dtype
 
     let opspec = OpSpec(
         OpType: "Const",
+        Name: "Type",
         Input: [ ],
         Attrs: attrs
     )
@@ -3129,15 +3365,17 @@ Only useful as a placeholder for control edges.
 
 
 
-func controlTrigger(scope:Scope )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func controlTrigger(scope:Scope )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "ControlTrigger",
+        Name: "Type",
         Input: [ ],
         Attrs: attrs
     )
@@ -3170,19 +3408,22 @@ horizontal and vertices strides, `strides = [1, stride, stride, 1]`.
 
 
 
-func conv2D(scope:Scope,input: Output, filter: Output, strides :List(int)  , useCudnnOnGpu :Bool  , padding :String  , dataFormat :String  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func conv2D(scope:Scope,input: Output, filter: Output, t :Type  , strides :List(int)  , useCudnnOnGpu :Bool  , padding :String  , dataFormat :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("strides",strides)
-    attr.append("use_cudnn_on_gpu",useCudnnOnGpu)
-    attr.append("padding",padding)
-    attr.append("data_format",dataFormat)
+    attrs["T"] = t
+    attrs["strides"] = strides
+    attrs["use_cudnn_on_gpu"] = useCudnnOnGpu
+    attrs["padding"] = padding
+    attrs["data_format"] = dataFormat
 
     let opspec = OpSpec(
         OpType: "Conv2D",
+        Name: "Type",
         Input: [ input, filter],
         Attrs: attrs
     )
@@ -3199,20 +3440,22 @@ Computes the gradients of convolution with respect to the filter.
 
 
 
-func conv2DBackpropFilter(scope:Scope,input: Output, filterSizes: Output, outBackprop: Output, t :Type  , strides :List(int)  , useCudnnOnGpu :Bool  , padding :String  , dataFormat :String  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func conv2DBackpropFilter(scope:Scope,input: Output, filterSizes: Output, outBackprop: Output, t :Type  , strides :List(int)  , useCudnnOnGpu :Bool  , padding :String  , dataFormat :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("strides",strides)
-    attr.append("use_cudnn_on_gpu",useCudnnOnGpu)
-    attr.append("padding",padding)
-    attr.append("data_format",dataFormat)
+    attrs["T"] = t
+    attrs["strides"] = strides
+    attrs["use_cudnn_on_gpu"] = useCudnnOnGpu
+    attrs["padding"] = padding
+    attrs["data_format"] = dataFormat
 
     let opspec = OpSpec(
         OpType: "Conv2DBackpropFilter",
+        Name: "Type",
         Input: [ input, filterSizes, outBackprop],
         Attrs: attrs
     )
@@ -3229,19 +3472,22 @@ Computes the gradients of convolution with respect to the input.
 
 
 
-func conv2DBackpropInput(scope:Scope,inputSizes: Output, filter: Output, outBackprop: Output, strides :List(int)  , useCudnnOnGpu :Bool  , padding :String  , dataFormat :String  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func conv2DBackpropInput(scope:Scope,inputSizes: Output, filter: Output, outBackprop: Output, t :Type  , strides :List(int)  , useCudnnOnGpu :Bool  , padding :String  , dataFormat :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("strides",strides)
-    attr.append("use_cudnn_on_gpu",useCudnnOnGpu)
-    attr.append("padding",padding)
-    attr.append("data_format",dataFormat)
+    attrs["T"] = t
+    attrs["strides"] = strides
+    attrs["use_cudnn_on_gpu"] = useCudnnOnGpu
+    attrs["padding"] = padding
+    attrs["data_format"] = dataFormat
 
     let opspec = OpSpec(
         OpType: "Conv2DBackpropInput",
+        Name: "Type",
         Input: [ inputSizes, filter, outBackprop],
         Attrs: attrs
     )
@@ -3262,19 +3508,21 @@ Our Conv3D implements a form of cross-correlation.
 
 
 
-func conv3D(scope:Scope,input: Output, filter: Output, t :Type  , strides :List(int)  , padding :String  , dataFormat :String  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func conv3D(scope:Scope,input: Output, filter: Output, t :Type  , strides :List(int)  , padding :String  , dataFormat :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("strides",strides)
-    attr.append("padding",padding)
-    attr.append("data_format",dataFormat)
+    attrs["T"] = t
+    attrs["strides"] = strides
+    attrs["padding"] = padding
+    attrs["data_format"] = dataFormat
 
     let opspec = OpSpec(
         OpType: "Conv3D",
+        Name: "Type",
         Input: [ input, filter],
         Attrs: attrs
     )
@@ -3291,17 +3539,20 @@ Computes the gradients of 3-D convolution with respect to the filter.
 
 
 
-func conv3DBackpropFilter(scope:Scope,input: Output, filter: Output, outBackprop: Output, strides :List(int)  , padding :String  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func conv3DBackpropFilter(scope:Scope,input: Output, filter: Output, outBackprop: Output, t :Type  , strides :List(int)  , padding :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("strides",strides)
-    attr.append("padding",padding)
+    attrs["T"] = t
+    attrs["strides"] = strides
+    attrs["padding"] = padding
 
     let opspec = OpSpec(
         OpType: "Conv3DBackpropFilter",
+        Name: "Type",
         Input: [ input, filter, outBackprop],
         Attrs: attrs
     )
@@ -3318,19 +3569,21 @@ Computes the gradients of 3-D convolution with respect to the filter.
 
 
 
-func conv3DBackpropFilterV2(scope:Scope,input: Output, filterSizes: Output, outBackprop: Output, t :Type  , strides :List(int)  , padding :String  , dataFormat :String  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func conv3DBackpropFilterV2(scope:Scope,input: Output, filterSizes: Output, outBackprop: Output, t :Type  , strides :List(int)  , padding :String  , dataFormat :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("strides",strides)
-    attr.append("padding",padding)
-    attr.append("data_format",dataFormat)
+    attrs["T"] = t
+    attrs["strides"] = strides
+    attrs["padding"] = padding
+    attrs["data_format"] = dataFormat
 
     let opspec = OpSpec(
         OpType: "Conv3DBackpropFilterV2",
+        Name: "Type",
         Input: [ input, filterSizes, outBackprop],
         Attrs: attrs
     )
@@ -3347,17 +3600,20 @@ Computes the gradients of 3-D convolution with respect to the input.
 
 
 
-func conv3DBackpropInput(scope:Scope,input: Output, filter: Output, outBackprop: Output, strides :List(int)  , padding :String  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func conv3DBackpropInput(scope:Scope,input: Output, filter: Output, outBackprop: Output, t :Type  , strides :List(int)  , padding :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("strides",strides)
-    attr.append("padding",padding)
+    attrs["T"] = t
+    attrs["strides"] = strides
+    attrs["padding"] = padding
 
     let opspec = OpSpec(
         OpType: "Conv3DBackpropInput",
+        Name: "Type",
         Input: [ input, filter, outBackprop],
         Attrs: attrs
     )
@@ -3374,19 +3630,21 @@ Computes the gradients of 3-D convolution with respect to the input.
 
 
 
-func conv3DBackpropInputV2(scope:Scope,inputSizes: Output, filter: Output, outBackprop: Output, t :Type  , strides :List(int)  , padding :String  , dataFormat :String  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func conv3DBackpropInputV2(scope:Scope,inputSizes: Output, filter: Output, outBackprop: Output, t :Type  , strides :List(int)  , padding :String  , dataFormat :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("strides",strides)
-    attr.append("padding",padding)
-    attr.append("data_format",dataFormat)
+    attrs["T"] = t
+    attrs["strides"] = strides
+    attrs["padding"] = padding
+    attrs["data_format"] = dataFormat
 
     let opspec = OpSpec(
         OpType: "Conv3DBackpropInputV2",
+        Name: "Type",
         Input: [ inputSizes, filter, outBackprop],
         Attrs: attrs
     )
@@ -3410,17 +3668,20 @@ input or output.
 
 
 
-func copy(scope:Scope,input: Output, tensorName :String  , debugOpsSpec :List(string)  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func copy(scope:Scope,input: Output, t :Type  , tensorName :String  , debugOpsSpec :List(string)  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("tensor_name",tensorName)
-    attr.append("debug_ops_spec",debugOpsSpec)
+    attrs["T"] = t
+    attrs["tensor_name"] = tensorName
+    attrs["debug_ops_spec"] = debugOpsSpec
 
     let opspec = OpSpec(
         OpType: "Copy",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -3442,18 +3703,20 @@ Unlike the Copy Op, this op has HostMemory constraint on its input or output.
 
 
 
-func copyHost(scope:Scope,input: Output, t :Type  , tensorName :String  , debugOpsSpec :List(string)  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func copyHost(scope:Scope,input: Output, t :Type  , tensorName :String  , debugOpsSpec :List(string)  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("tensor_name",tensorName)
-    attr.append("debug_ops_spec",debugOpsSpec)
+    attrs["T"] = t
+    attrs["tensor_name"] = tensorName
+    attrs["debug_ops_spec"] = debugOpsSpec
 
     let opspec = OpSpec(
         OpType: "CopyHost",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -3470,15 +3733,18 @@ Computes cos of x element-wise.
 
 
 
-func cos(scope:Scope,x: Output )  ->(y: Output){
-    if scope.error.error() != nil {
-        return
+
+func cos(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Cos",
+        Name: "Type",
         Input: [ x],
         Attrs: attrs
     )
@@ -3495,17 +3761,19 @@ Increments 'ref' until it reaches 'limit'.
 
 
 
-func countUpTo(scope:Scope,ref: Output, limit :Int  , t :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func countUpTo(scope:Scope,ref: Output, limit :Int  , t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("limit",limit)
-    attr.append("T",t)
+    attrs["limit"] = limit
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "CountUpTo",
+        Name: "Type",
         Input: [ ref],
         Attrs: attrs
     )
@@ -3529,17 +3797,20 @@ result is a 4-D tensor `[num_boxes, crop_height, crop_width, depth]`.
 
 
 
-func cropAndResize(scope:Scope,image: Output, boxes: Output, boxInd: Output, cropSize: Output, method :String  , extrapolationValue :Float  )  ->(crops: Output){
-    if scope.error.error() != nil {
-        return
+
+func cropAndResize(scope:Scope,image: Output, boxes: Output, boxInd: Output, cropSize: Output, t :Type  , method :String  , extrapolationValue :Float  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("method",method)
-    attr.append("extrapolation_value",extrapolationValue)
+    attrs["T"] = t
+    attrs["method"] = method
+    attrs["extrapolation_value"] = extrapolationValue
 
     let opspec = OpSpec(
         OpType: "CropAndResize",
+        Name: "Type",
         Input: [ image, boxes, boxInd, cropSize],
         Attrs: attrs
     )
@@ -3556,17 +3827,19 @@ Computes the gradient of the crop_and_resize op wrt the input boxes tensor.
 
 
 
-func cropAndResizeGradBoxes(scope:Scope,grads: Output, image: Output, boxes: Output, boxInd: Output, t :Type  , method :String  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func cropAndResizeGradBoxes(scope:Scope,grads: Output, image: Output, boxes: Output, boxInd: Output, t :Type  , method :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("method",method)
+    attrs["T"] = t
+    attrs["method"] = method
 
     let opspec = OpSpec(
         OpType: "CropAndResizeGradBoxes",
+        Name: "Type",
         Input: [ grads, image, boxes, boxInd],
         Attrs: attrs
     )
@@ -3583,16 +3856,19 @@ Computes the gradient of the crop_and_resize op wrt the input image tensor.
 
 
 
-func cropAndResizeGradImage(scope:Scope,grads: Output, boxes: Output, boxInd: Output, imageSize: Output, method :String  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func cropAndResizeGradImage(scope:Scope,grads: Output, boxes: Output, boxInd: Output, imageSize: Output, t :Type  , method :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("method",method)
+    attrs["T"] = t
+    attrs["method"] = method
 
     let opspec = OpSpec(
         OpType: "CropAndResizeGradImage",
+        Name: "Type",
         Input: [ grads, boxes, boxInd, imageSize],
         Attrs: attrs
     )
@@ -3612,16 +3888,18 @@ of corresponding 3-element vectors is cross-multiplied independently.
 
 
 
-func cross(scope:Scope,a: Output, b: Output, t :Type  )  ->(product: Output){
-    if scope.error.error() != nil {
-        return
+
+func cross(scope:Scope,a: Output, b: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Cross",
+        Name: "Type",
         Input: [ a, b],
         Attrs: attrs
     )
@@ -3658,18 +3936,21 @@ tf.cumprod([a, b, c], exclusive=True, reverse=True)  # => [b * c, c, 1]
 
 
 
-func cumprod(scope:Scope,x: Output, axis: Output, exclusive :Bool  , reverse :Bool  , tidx :Type  )  ->(out: Output){
-    if scope.error.error() != nil {
-        return
+
+func cumprod(scope:Scope,x: Output, axis: Output, exclusive :Bool  , reverse :Bool  , t :Type  , tidx :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("exclusive",exclusive)
-    attr.append("reverse",reverse)
-    attr.append("Tidx",tidx)
+    attrs["exclusive"] = exclusive
+    attrs["reverse"] = reverse
+    attrs["T"] = t
+    attrs["Tidx"] = tidx
 
     let opspec = OpSpec(
         OpType: "Cumprod",
+        Name: "Type",
         Input: [ x, axis],
         Attrs: attrs
     )
@@ -3706,19 +3987,21 @@ tf.cumsum([a, b, c], exclusive=True, reverse=True)  # => [b + c, c, 0]
 
 
 
-func cumsum(scope:Scope,x: Output, axis: Output, exclusive :Bool  , reverse :Bool  , t :Type  , tidx :Type  )  ->(out: Output){
-    if scope.error.error() != nil {
-        return
+
+func cumsum(scope:Scope,x: Output, axis: Output, exclusive :Bool  , reverse :Bool  , t :Type  , tidx :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("exclusive",exclusive)
-    attr.append("reverse",reverse)
-    attr.append("T",t)
-    attr.append("Tidx",tidx)
+    attrs["exclusive"] = exclusive
+    attrs["reverse"] = reverse
+    attrs["T"] = t
+    attrs["Tidx"] = tidx
 
     let opspec = OpSpec(
         OpType: "Cumsum",
+        Name: "Type",
         Input: [ x, axis],
         Attrs: attrs
     )
@@ -3736,19 +4019,22 @@ Provides an identity mapping of the non-Ref type input tensor for debugging.
 
 
 
-func debugIdentity(scope:Scope,input: Output, deviceName :String  , tensorName :String  , debugUrls :List(string)  , gatedGrpc :Bool  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func debugIdentity(scope:Scope,input: Output, t :Type  , deviceName :String  , tensorName :String  , debugUrls :List(string)  , gatedGrpc :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("device_name",deviceName)
-    attr.append("tensor_name",tensorName)
-    attr.append("debug_urls",debugUrls)
-    attr.append("gated_grpc",gatedGrpc)
+    attrs["T"] = t
+    attrs["device_name"] = deviceName
+    attrs["tensor_name"] = tensorName
+    attrs["debug_urls"] = debugUrls
+    attrs["gated_grpc"] = gatedGrpc
 
     let opspec = OpSpec(
         OpType: "DebugIdentity",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -3766,20 +4052,22 @@ Counts number of NaNs in the input tensor, for debugging.
 
 
 
-func debugNanCount(scope:Scope,input: Output, t :Type  , deviceName :String  , tensorName :String  , debugUrls :List(string)  , gatedGrpc :Bool  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func debugNanCount(scope:Scope,input: Output, t :Type  , deviceName :String  , tensorName :String  , debugUrls :List(string)  , gatedGrpc :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("device_name",deviceName)
-    attr.append("tensor_name",tensorName)
-    attr.append("debug_urls",debugUrls)
-    attr.append("gated_grpc",gatedGrpc)
+    attrs["T"] = t
+    attrs["device_name"] = deviceName
+    attrs["tensor_name"] = tensorName
+    attrs["debug_urls"] = debugUrls
+    attrs["gated_grpc"] = gatedGrpc
 
     let opspec = OpSpec(
         OpType: "DebugNanCount",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -3797,22 +4085,25 @@ Provide a basic summary of numeric value types, range and distribution.
 
 
 
-func debugNumericSummary(scope:Scope,input: Output, deviceName :String  , tensorName :String  , debugUrls :List(string)  , lowerBound :Float  , upperBound :Float  , muteIfHealthy :Bool  , gatedGrpc :Bool  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func debugNumericSummary(scope:Scope,input: Output, t :Type  , deviceName :String  , tensorName :String  , debugUrls :List(string)  , lowerBound :Float  , upperBound :Float  , muteIfHealthy :Bool  , gatedGrpc :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("device_name",deviceName)
-    attr.append("tensor_name",tensorName)
-    attr.append("debug_urls",debugUrls)
-    attr.append("lower_bound",lowerBound)
-    attr.append("upper_bound",upperBound)
-    attr.append("mute_if_healthy",muteIfHealthy)
-    attr.append("gated_grpc",gatedGrpc)
+    attrs["T"] = t
+    attrs["device_name"] = deviceName
+    attrs["tensor_name"] = tensorName
+    attrs["debug_urls"] = debugUrls
+    attrs["lower_bound"] = lowerBound
+    attrs["upper_bound"] = upperBound
+    attrs["mute_if_healthy"] = muteIfHealthy
+    attrs["gated_grpc"] = gatedGrpc
 
     let opspec = OpSpec(
         OpType: "DebugNumericSummary",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -3831,15 +4122,17 @@ Web-safe means that input must use - and _ instead of + and /.
 
 
 
-func decodeBase64(scope:Scope,input: Output )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func decodeBase64(scope:Scope,input: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "DecodeBase64",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -3862,16 +4155,18 @@ Accepted values are:
 
 
 
-func decodeBmp(scope:Scope,contents: Output, channels :UInt8  )  ->(image: Output){
-    if scope.error.error() != nil {
-        return
+
+func decodeBmp(scope:Scope,contents: Output, channels :Int  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("channels",channels)
+    attrs["channels"] = channels
 
     let opspec = OpSpec(
         OpType: "DecodeBmp",
+        Name: "Type",
         Input: [ contents],
         Attrs: attrs
     )
@@ -3891,18 +4186,20 @@ Note that we allow leading and trailing spaces with int or float field.
 
 
 
-func decodeCSV(scope:Scope,records: Output, recordDefaults: Output, outType :List(type)  , fieldDelim :String  , useQuoteDelim :Bool  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func decodeCSV(scope:Scope,records: Output, recordDefaults: Output, outType :List(type)  , fieldDelim :String  , useQuoteDelim :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("OUT_TYPE",outType)
-    attr.append("field_delim",fieldDelim)
-    attr.append("use_quote_delim",useQuoteDelim)
+    attrs["OUT_TYPE"] = outType
+    attrs["field_delim"] = fieldDelim
+    attrs["use_quote_delim"] = useQuoteDelim
 
     let opspec = OpSpec(
         OpType: "DecodeCSV",
+        Name: "Type",
         Input: [ records, recordDefaults],
         Attrs: attrs
     )
@@ -3924,15 +4221,17 @@ This op also supports decoding JPEGs and PNGs, though it is cleaner to use
 
 
 
-func decodeGif(scope:Scope,contents: Output )  ->(image: Output){
-    if scope.error.error() != nil {
-        return
+
+func decodeGif(scope:Scope,contents: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "DecodeGif",
+        Name: "Type",
         Input: [ contents],
         Attrs: attrs
     )
@@ -3955,15 +4254,17 @@ Example-parsing ops.
 
 
 
-func decodeJSONExample(scope:Scope,jsonExamples: Output )  ->(binaryExamples: Output){
-    if scope.error.error() != nil {
-        return
+
+func decodeJSONExample(scope:Scope,jsonExamples: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "DecodeJSONExample",
+        Name: "Type",
         Input: [ jsonExamples],
         Attrs: attrs
     )
@@ -3993,21 +4294,23 @@ the same, though it is cleaner to use `tf.image.decode_image`.
 
 
 
-func decodeJpeg(scope:Scope,contents: Output, channels :UInt8  , ratio :UInt8  , fancyUpscaling :Bool  , tryRecoverTruncated :Bool  , acceptableFraction :Float  , dctMethod :String  )  ->(image: Output){
-    if scope.error.error() != nil {
-        return
+
+func decodeJpeg(scope:Scope,contents: Output, channels :Int  , ratio :Int  , fancyUpscaling :Bool  , tryRecoverTruncated :Bool  , acceptableFraction :Float  , dctMethod :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("channels",channels)
-    attr.append("ratio",ratio)
-    attr.append("fancy_upscaling",fancyUpscaling)
-    attr.append("try_recover_truncated",tryRecoverTruncated)
-    attr.append("acceptable_fraction",acceptableFraction)
-    attr.append("dct_method",dctMethod)
+    attrs["channels"] = channels
+    attrs["ratio"] = ratio
+    attrs["fancy_upscaling"] = fancyUpscaling
+    attrs["try_recover_truncated"] = tryRecoverTruncated
+    attrs["acceptable_fraction"] = acceptableFraction
+    attrs["dct_method"] = dctMethod
 
     let opspec = OpSpec(
         OpType: "DecodeJpeg",
+        Name: "Type",
         Input: [ contents],
         Attrs: attrs
     )
@@ -4035,17 +4338,19 @@ is the same, though it is cleaner to use `tf.image.decode_image`.
 
 
 
-func decodePng(scope:Scope,contents: Output, channels :UInt8  , dtype :[Any]  )  ->(image: Output){
-    if scope.error.error() != nil {
-        return
+
+func decodePng(scope:Scope,contents: Output, channels :Int  , dtype :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("channels",channels)
-    attr.append("dtype",dtype)
+    attrs["channels"] = channels
+    attrs["dtype"] = dtype
 
     let opspec = OpSpec(
         OpType: "DecodePng",
+        Name: "Type",
         Input: [ contents],
         Attrs: attrs
     )
@@ -4062,17 +4367,19 @@ Reinterpret the bytes of a string as a vector of numbers.
 
 
 
-func decodeRaw(scope:Scope,bytes: Output, outType :Type  , littleEndian :Bool  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func decodeRaw(scope:Scope,bytes: Output, outType :Type  , littleEndian :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("out_type",outType)
-    attr.append("little_endian",littleEndian)
+    attrs["out_type"] = outType
+    attrs["little_endian"] = littleEndian
 
     let opspec = OpSpec(
         OpType: "DecodeRaw",
+        Name: "Type",
         Input: [ bytes],
         Attrs: attrs
     )
@@ -4100,17 +4407,19 @@ output shape of [10, 2].
 
 
 
-func decodeWav(scope:Scope,contents: Output, desiredChannels :UInt8  , desiredSamples :UInt8  )  ->(audio: Output, sampleRate: Output){
-    if scope.error.error() != nil {
-        return
+
+func decodeWav(scope:Scope,contents: Output, desiredChannels :Int  , desiredSamples :Int  )  ->(audio: Output, sampleRate: Output){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("desired_channels",desiredChannels)
-    attr.append("desired_samples",desiredSamples)
+    attrs["desired_channels"] = desiredChannels
+    attrs["desired_samples"] = desiredSamples
 
     let opspec = OpSpec(
         OpType: "DecodeWav",
+        Name: "Type",
         Input: [ contents],
         Attrs: attrs
     )
@@ -4127,15 +4436,17 @@ Delete the tensor specified by its handle in the session.
 
 
 
-func deleteSessionTensor(scope:Scope,handle: Output )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func deleteSessionTensor(scope:Scope,handle: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "DeleteSessionTensor",
+        Name: "Type",
         Input: [ handle],
         Attrs: attrs
     )
@@ -4157,17 +4468,20 @@ dimension contains the result of `set_operation` applied to the corresponding
 
 
 
-func denseToDenseSetOperation(scope:Scope,set1: Output, set2: Output, setOperation :String  , validateIndices :Bool  )  ->(resultIndices: Output, resultValues: Output, resultShape: Output){
-    if scope.error.error() != nil {
-        return
+
+func denseToDenseSetOperation(scope:Scope,set1: Output, set2: Output, setOperation :String  , validateIndices :Bool  , t :Type  )  ->(resultIndices: Output, resultValues: Output, resultShape: Output){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("set_operation",setOperation)
-    attr.append("validate_indices",validateIndices)
+    attrs["set_operation"] = setOperation
+    attrs["validate_indices"] = validateIndices
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "DenseToDenseSetOperation",
+        Name: "Type",
         Input: [ set1, set2],
         Attrs: attrs
     )
@@ -4184,17 +4498,19 @@ Creates a dataset that yields a SparseTensor for each element of the input.
 
 
 
-func denseToSparseBatchDataset(scope:Scope,inputDataset: Output, batchSize: Output, rowShape: Output, outputTypes :List(type)  , outputShapes :List(shape)  )  ->(handle: Output){
-    if scope.error.error() != nil {
-        return
+
+func denseToSparseBatchDataset(scope:Scope,inputDataset: Output, batchSize: Output, rowShape: Output, outputTypes :List(type)  , outputShapes :List(shape)  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("output_types",outputTypes)
-    attr.append("output_shapes",outputShapes)
+    attrs["output_types"] = outputTypes
+    attrs["output_shapes"] = outputShapes
 
     let opspec = OpSpec(
         OpType: "DenseToSparseBatchDataset",
+        Name: "Type",
         Input: [ inputDataset, batchSize, rowShape],
         Attrs: attrs
     )
@@ -4223,17 +4539,20 @@ dimension contains the result of `set_operation` applied to the corresponding
 
 
 
-func denseToSparseSetOperation(scope:Scope,set1: Output, set2Indices: Output, set2Values: Output, set2Shape: Output, setOperation :String  , validateIndices :Bool  )  ->(resultIndices: Output, resultValues: Output, resultShape: Output){
-    if scope.error.error() != nil {
-        return
+
+func denseToSparseSetOperation(scope:Scope,set1: Output, set2Indices: Output, set2Values: Output, set2Shape: Output, setOperation :String  , validateIndices :Bool  , t :Type  )  ->(resultIndices: Output, resultValues: Output, resultShape: Output){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("set_operation",setOperation)
-    attr.append("validate_indices",validateIndices)
+    attrs["set_operation"] = setOperation
+    attrs["validate_indices"] = validateIndices
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "DenseToSparseSetOperation",
+        Name: "Type",
         Input: [ set1, set2Indices, set2Values, set2Shape],
         Attrs: attrs
     )
@@ -4308,17 +4627,19 @@ x = [[ [1],   [2],  [5],  [6]],
 
 
 
-func depthToSpace(scope:Scope,input: Output, t :Type  , blockSize :Int  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func depthToSpace(scope:Scope,input: Output, t :Type  , blockSize :Int  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("block_size",blockSize)
+    attrs["T"] = t
+    attrs["block_size"] = blockSize
 
     let opspec = OpSpec(
         OpType: "DepthToSpace",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -4349,18 +4670,21 @@ horizontal and vertices strides, `strides = [1, stride, stride, 1]`.
 
 
 
-func depthwiseConv2dNative(scope:Scope,input: Output, filter: Output, strides :List(int)  , padding :String  , dataFormat :String  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func depthwiseConv2dNative(scope:Scope,input: Output, filter: Output, t :Type  , strides :List(int)  , padding :String  , dataFormat :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("strides",strides)
-    attr.append("padding",padding)
-    attr.append("data_format",dataFormat)
+    attrs["T"] = t
+    attrs["strides"] = strides
+    attrs["padding"] = padding
+    attrs["data_format"] = dataFormat
 
     let opspec = OpSpec(
         OpType: "DepthwiseConv2dNative",
+        Name: "Type",
         Input: [ input, filter],
         Attrs: attrs
     )
@@ -4377,19 +4701,21 @@ Computes the gradients of depthwise convolution with respect to the filter.
 
 
 
-func depthwiseConv2dNativeBackpropFilter(scope:Scope,input: Output, filterSizes: Output, outBackprop: Output, t :Type  , strides :List(int)  , padding :String  , dataFormat :String  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func depthwiseConv2dNativeBackpropFilter(scope:Scope,input: Output, filterSizes: Output, outBackprop: Output, t :Type  , strides :List(int)  , padding :String  , dataFormat :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("strides",strides)
-    attr.append("padding",padding)
-    attr.append("data_format",dataFormat)
+    attrs["T"] = t
+    attrs["strides"] = strides
+    attrs["padding"] = padding
+    attrs["data_format"] = dataFormat
 
     let opspec = OpSpec(
         OpType: "DepthwiseConv2dNativeBackpropFilter",
+        Name: "Type",
         Input: [ input, filterSizes, outBackprop],
         Attrs: attrs
     )
@@ -4406,18 +4732,21 @@ Computes the gradients of depthwise convolution with respect to the input.
 
 
 
-func depthwiseConv2dNativeBackpropInput(scope:Scope,inputSizes: Output, filter: Output, outBackprop: Output, strides :List(int)  , padding :String  , dataFormat :String  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func depthwiseConv2dNativeBackpropInput(scope:Scope,inputSizes: Output, filter: Output, outBackprop: Output, t :Type  , strides :List(int)  , padding :String  , dataFormat :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("strides",strides)
-    attr.append("padding",padding)
-    attr.append("data_format",dataFormat)
+    attrs["T"] = t
+    attrs["strides"] = strides
+    attrs["padding"] = padding
+    attrs["data_format"] = dataFormat
 
     let opspec = OpSpec(
         OpType: "DepthwiseConv2dNativeBackpropInput",
+        Name: "Type",
         Input: [ inputSizes, filter, outBackprop],
         Attrs: attrs
     )
@@ -4460,17 +4789,19 @@ result = range_min + ((input - numeric_limits<T>::min()) * range_scale)
 
 
 
-func dequantize(scope:Scope,input: Output, minRange: Output, maxRange: Output, t :Type  , mode :String  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func dequantize(scope:Scope,input: Output, minRange: Output, maxRange: Output, t :Type  , mode :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("mode",mode)
+    attrs["T"] = t
+    attrs["mode"] = mode
 
     let opspec = OpSpec(
         OpType: "Dequantize",
+        Name: "Type",
         Input: [ input, minRange, maxRange],
         Attrs: attrs
     )
@@ -4520,16 +4851,18 @@ then the final deserialized `SparseTensor` will be:
 
 
 
+
 func deserializeManySparse(scope:Scope,serializedSparse: Output, dtype :Type  )  ->(sparseIndices: Output, sparseValues: Output, sparseShape: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("dtype",dtype)
+    attrs["dtype"] = dtype
 
     let opspec = OpSpec(
         OpType: "DeserializeManySparse",
+        Name: "Type",
         Input: [ serializedSparse],
         Attrs: attrs
     )
@@ -4552,16 +4885,19 @@ Outputs the final value of the tensor pointed to by 'ref'.
 
 
 
-func destroyTemporaryVariable(scope:Scope,ref: Output, varName :String  )  ->(value: Output){
-    if scope.error.error() != nil {
-        return
+
+func destroyTemporaryVariable(scope:Scope,ref: Output, t :Type  , varName :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("var_name",varName)
+    attrs["T"] = t
+    attrs["var_name"] = varName
 
     let opspec = OpSpec(
         OpType: "DestroyTemporaryVariable",
+        Name: "Type",
         Input: [ ref],
         Attrs: attrs
     )
@@ -4591,16 +4927,18 @@ tf.diag(diagonal) ==> [[1, 0, 0, 0]
 
 
 
-func diag(scope:Scope,diagonal: Output, t :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func diag(scope:Scope,diagonal: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Diag",
+        Name: "Type",
         Input: [ diagonal],
         Attrs: attrs
     )
@@ -4630,15 +4968,18 @@ tf.diag_part(input) ==> [1, 2, 3, 4]
 
 
 
-func diagPart(scope:Scope,input: Output )  ->(diagonal: Output){
-    if scope.error.error() != nil {
-        return
+
+func diagPart(scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "DiagPart",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -4656,16 +4997,18 @@ Computes Psi, the derivative of Lgamma (the log of the absolute value of
 
 
 
-func digamma(scope:Scope,x: Output, t :Type  )  ->(y: Output){
-    if scope.error.error() != nil {
-        return
+
+func digamma(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Digamma",
+        Name: "Type",
         Input: [ x],
         Attrs: attrs
     )
@@ -4701,18 +5044,21 @@ negation of the erosion of `-input` by the reflected `filter`.
 
 
 
-func dilation2D(scope:Scope,input: Output, filter: Output, strides :List(int)  , rates :List(int)  , padding :String  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func dilation2D(scope:Scope,input: Output, filter: Output, t :Type  , strides :List(int)  , rates :List(int)  , padding :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("strides",strides)
-    attr.append("rates",rates)
-    attr.append("padding",padding)
+    attrs["T"] = t
+    attrs["strides"] = strides
+    attrs["rates"] = rates
+    attrs["padding"] = padding
 
     let opspec = OpSpec(
         OpType: "Dilation2D",
+        Name: "Type",
         Input: [ input, filter],
         Attrs: attrs
     )
@@ -4729,19 +5075,21 @@ Computes the gradient of morphological 2-D dilation with respect to the filter.
 
 
 
-func dilation2DBackpropFilter(scope:Scope,input: Output, filter: Output, outBackprop: Output, t :Type  , strides :List(int)  , rates :List(int)  , padding :String  )  ->(filterBackprop: Output){
-    if scope.error.error() != nil {
-        return
+
+func dilation2DBackpropFilter(scope:Scope,input: Output, filter: Output, outBackprop: Output, t :Type  , strides :List(int)  , rates :List(int)  , padding :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("strides",strides)
-    attr.append("rates",rates)
-    attr.append("padding",padding)
+    attrs["T"] = t
+    attrs["strides"] = strides
+    attrs["rates"] = rates
+    attrs["padding"] = padding
 
     let opspec = OpSpec(
         OpType: "Dilation2DBackpropFilter",
+        Name: "Type",
         Input: [ input, filter, outBackprop],
         Attrs: attrs
     )
@@ -4758,18 +5106,21 @@ Computes the gradient of morphological 2-D dilation with respect to the input.
 
 
 
-func dilation2DBackpropInput(scope:Scope,input: Output, filter: Output, outBackprop: Output, strides :List(int)  , rates :List(int)  , padding :String  )  ->(inBackprop: Output){
-    if scope.error.error() != nil {
-        return
+
+func dilation2DBackpropInput(scope:Scope,input: Output, filter: Output, outBackprop: Output, t :Type  , strides :List(int)  , rates :List(int)  , padding :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("strides",strides)
-    attr.append("rates",rates)
-    attr.append("padding",padding)
+    attrs["T"] = t
+    attrs["strides"] = strides
+    attrs["rates"] = rates
+    attrs["padding"] = padding
 
     let opspec = OpSpec(
         OpType: "Dilation2DBackpropInput",
+        Name: "Type",
         Input: [ input, filter, outBackprop],
         Attrs: attrs
     )
@@ -4788,16 +5139,18 @@ Returns x / y element-wise.
 
 
 
-func div(scope:Scope,x: Output, y: Output, t :Type  )  ->(z: Output){
-    if scope.error.error() != nil {
-        return
+
+func div(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Div",
+        Name: "Type",
         Input: [ x, y],
         Attrs: attrs
     )
@@ -4823,15 +5176,18 @@ Parts of the bounding box may fall outside the image.
 
 
 
-func drawBoundingBoxes(scope:Scope,images: Output, boxes: Output )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func drawBoundingBoxes(scope:Scope,images: Output, boxes: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "DrawBoundingBoxes",
+        Name: "Type",
         Input: [ images, boxes],
         Attrs: attrs
     )
@@ -4877,17 +5233,19 @@ See `dynamic_stitch` for an example on how to merge partitions back.
 
 
 
-func dynamicPartition(scope:Scope,data: Output, partitions: Output, numPartitions :Int  , t :Type  )  ->(outputs: Output){
-    if scope.error.error() != nil {
-        return
+
+func dynamicPartition(scope:Scope,data: Output, partitions: Output, numPartitions :Int  , t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("num_partitions",numPartitions)
-    attr.append("T",t)
+    attrs["num_partitions"] = numPartitions
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "DynamicPartition",
+        Name: "Type",
         Input: [ data, partitions],
         Attrs: attrs
     )
@@ -4953,16 +5311,19 @@ as illustrated on the following example:
 
 
 
-func dynamicStitch(scope:Scope,indices: Output, data: Output, n :UInt8  )  ->(merged: Output){
-    if scope.error.error() != nil {
-        return
+
+func dynamicStitch(scope:Scope,indices: Output, data: Output, n :Int  , t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("N",n)
+    attrs["N"] = n
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "DynamicStitch",
+        Name: "Type",
         Input: [ indices, data],
         Attrs: attrs
     )
@@ -4984,17 +5345,19 @@ The inputs are:
 
 
 
-func editDistance(scope:Scope,hypothesisIndices: Output, hypothesisValues: Output, hypothesisShape: Output, truthIndices: Output, truthValues: Output, truthShape: Output, normalize :Bool  , t :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func editDistance(scope:Scope,hypothesisIndices: Output, hypothesisValues: Output, hypothesisShape: Output, truthIndices: Output, truthValues: Output, truthShape: Output, normalize :Bool  , t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("normalize",normalize)
-    attr.append("T",t)
+    attrs["normalize"] = normalize
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "EditDistance",
+        Name: "Type",
         Input: [ hypothesisIndices, hypothesisValues, hypothesisShape, truthIndices, truthValues, truthShape],
         Attrs: attrs
     )
@@ -5013,15 +5376,18 @@ See [Fast and Accurate Deep Network Learning by Exponential Linear Units (ELUs)
 
 
 
-func elu(scope:Scope,features: Output )  ->(activations: Output){
-    if scope.error.error() != nil {
-        return
+
+func elu(scope:Scope,features: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Elu",
+        Name: "Type",
         Input: [ features],
         Attrs: attrs
     )
@@ -5038,16 +5404,18 @@ Computes gradients for the exponential linear (Elu) operation.
 
 
 
-func eluGrad(scope:Scope,gradients: Output, outputs: Output, t :Type  )  ->(backprops: Output){
-    if scope.error.error() != nil {
-        return
+
+func eluGrad(scope:Scope,gradients: Output, outputs: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "EluGrad",
+        Name: "Type",
         Input: [ gradients, outputs],
         Attrs: attrs
     )
@@ -5069,16 +5437,18 @@ Web-safe means that the encoder uses - and _ instead of + and /.
 
 
 
-func encodeBase64(scope:Scope,input: Output, pad :Bool  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func encodeBase64(scope:Scope,input: Output, pad :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("pad",pad)
+    attrs["pad"] = pad
 
     let opspec = OpSpec(
         OpType: "EncodeBase64",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -5107,24 +5477,26 @@ in function of the number of channels in `image`:
 
 
 
-func encodeJpeg(scope:Scope,image: Output, format :String  , quality :UInt8  , progressive :Bool  , optimizeSize :Bool  , chromaDownsampling :Bool  , densityUnit :String  , xDensity :UInt8  , yDensity :UInt8  , xmpMetadata :String  )  ->(contents: Output){
-    if scope.error.error() != nil {
-        return
+
+func encodeJpeg(scope:Scope,image: Output, format :String  , quality :Int  , progressive :Bool  , optimizeSize :Bool  , chromaDownsampling :Bool  , densityUnit :String  , xDensity :Int  , yDensity :Int  , xmpMetadata :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("format",format)
-    attr.append("quality",quality)
-    attr.append("progressive",progressive)
-    attr.append("optimize_size",optimizeSize)
-    attr.append("chroma_downsampling",chromaDownsampling)
-    attr.append("density_unit",densityUnit)
-    attr.append("x_density",xDensity)
-    attr.append("y_density",yDensity)
-    attr.append("xmp_metadata",xmpMetadata)
+    attrs["format"] = format
+    attrs["quality"] = quality
+    attrs["progressive"] = progressive
+    attrs["optimize_size"] = optimizeSize
+    attrs["chroma_downsampling"] = chromaDownsampling
+    attrs["density_unit"] = densityUnit
+    attrs["x_density"] = xDensity
+    attrs["y_density"] = yDensity
+    attrs["xmp_metadata"] = xmpMetadata
 
     let opspec = OpSpec(
         OpType: "EncodeJpeg",
+        Name: "Type",
         Input: [ image],
         Attrs: attrs
     )
@@ -5150,16 +5522,19 @@ the smallest output, but is slower.
 
 
 
-func encodePng(scope:Scope,image: Output, compression :UInt8  )  ->(contents: Output){
-    if scope.error.error() != nil {
-        return
+
+func encodePng(scope:Scope,image: Output, compression :Int  , t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("compression",compression)
+    attrs["compression"] = compression
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "EncodePng",
+        Name: "Type",
         Input: [ image],
         Attrs: attrs
     )
@@ -5182,15 +5557,17 @@ that range.
 
 
 
-func encodeWav(scope:Scope,audio: Output, sampleRate: Output )  ->(contents: Output){
-    if scope.error.error() != nil {
-        return
+
+func encodeWav(scope:Scope,audio: Output, sampleRate: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "EncodeWav",
+        Name: "Type",
         Input: [ audio, sampleRate],
         Attrs: attrs
     )
@@ -5212,18 +5589,21 @@ are run in parallel in the child frame.
 
 
 
-func enter(scope:Scope,data: Output, frameName :String  , isConstant :Bool  , parallelIterations :Int  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func enter(scope:Scope,data: Output, t :Type  , frameName :String  , isConstant :Bool  , parallelIterations :Int  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("frame_name",frameName)
-    attr.append("is_constant",isConstant)
-    attr.append("parallel_iterations",parallelIterations)
+    attrs["T"] = t
+    attrs["frame_name"] = frameName
+    attrs["is_constant"] = isConstant
+    attrs["parallel_iterations"] = parallelIterations
 
     let opspec = OpSpec(
         OpType: "Enter",
+        Name: "Type",
         Input: [ data],
         Attrs: attrs
     )
@@ -5242,16 +5622,18 @@ Returns the truth value of (x == y) element-wise.
 
 
 
-func equal(scope:Scope,x: Output, y: Output, t :Type  )  ->(z: Output){
-    if scope.error.error() != nil {
-        return
+
+func equal(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Equal",
+        Name: "Type",
         Input: [ x, y],
         Attrs: attrs
     )
@@ -5268,15 +5650,18 @@ Computes the Gauss error function of `x` element-wise.
 
 
 
-func erf(scope:Scope,x: Output )  ->(y: Output){
-    if scope.error.error() != nil {
-        return
+
+func erf(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Erf",
+        Name: "Type",
         Input: [ x],
         Attrs: attrs
     )
@@ -5293,16 +5678,18 @@ Computes the complementary error function of `x` element-wise.
 
 
 
-func erfc(scope:Scope,x: Output, t :Type  )  ->(y: Output){
-    if scope.error.error() != nil {
-        return
+
+func erfc(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Erfc",
+        Name: "Type",
         Input: [ x],
         Attrs: attrs
     )
@@ -5320,15 +5707,18 @@ Exit makes its input `data` available to the parent frame.
 
 
 
-func exit(scope:Scope,data: Output )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func exit(scope:Scope,data: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Exit",
+        Name: "Type",
         Input: [ data],
         Attrs: attrs
     )
@@ -5345,16 +5735,18 @@ Computes exponential of x element-wise.  \\(y = e^x\\).
 
 
 
-func exp(scope:Scope,x: Output, t :Type  )  ->(y: Output){
-    if scope.error.error() != nil {
-        return
+
+func exp(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Exp",
+        Name: "Type",
         Input: [ x],
         Attrs: attrs
     )
@@ -5394,16 +5786,19 @@ size 1.
 
 
 
-func expandDims(scope:Scope,input: Output, dim: Output, tdim :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func expandDims(scope:Scope,input: Output, dim: Output, t :Type  , tdim :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tdim",tdim)
+    attrs["T"] = t
+    attrs["Tdim"] = tdim
 
     let opspec = OpSpec(
         OpType: "ExpandDims",
+        Name: "Type",
         Input: [ input, dim],
         Attrs: attrs
     )
@@ -5421,16 +5816,18 @@ I.e., \\(y = (\exp x) - 1\\).
 
 
 
-func expm1(scope:Scope,x: Output, t :Type  )  ->(y: Output){
-    if scope.error.error() != nil {
-        return
+
+func expm1(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Expm1",
+        Name: "Type",
         Input: [ x],
         Attrs: attrs
     )
@@ -5465,18 +5862,20 @@ The argument `normalized` and `centered` controls how the windows are built:
 
 
 
-func extractGlimpse(scope:Scope,input: Output, size: Output, offsets: Output, centered :Bool  , normalized :Bool  , uniformNoise :Bool  )  ->(glimpse: Output){
-    if scope.error.error() != nil {
-        return
+
+func extractGlimpse(scope:Scope,input: Output, size: Output, offsets: Output, centered :Bool  , normalized :Bool  , uniformNoise :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("centered",centered)
-    attr.append("normalized",normalized)
-    attr.append("uniform_noise",uniformNoise)
+    attrs["centered"] = centered
+    attrs["normalized"] = normalized
+    attrs["uniform_noise"] = uniformNoise
 
     let opspec = OpSpec(
         OpType: "ExtractGlimpse",
+        Name: "Type",
         Input: [ input, size, offsets],
         Attrs: attrs
     )
@@ -5493,19 +5892,22 @@ Extract `patches` from `images` and put them in the "depth" output dimension.
 
 
 
-func extractImagePatches(scope:Scope,images: Output, ksizes :[Int64]  , strides :[Int64]  , rates :[Int64]  , padding :String  )  ->(patches: Output){
-    if scope.error.error() != nil {
-        return
+
+func extractImagePatches(scope:Scope,images: Output, ksizes :List(int)  , strides :List(int)  , rates :List(int)  , t :Type  , padding :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("ksizes",ksizes)
-    attr.append("strides",strides)
-    attr.append("rates",rates)
-    attr.append("padding",padding)
+    attrs["ksizes"] = ksizes
+    attrs["strides"] = strides
+    attrs["rates"] = rates
+    attrs["T"] = t
+    attrs["padding"] = padding
 
     let opspec = OpSpec(
         OpType: "ExtractImagePatches",
+        Name: "Type",
         Input: [ images],
         Attrs: attrs
     )
@@ -5524,15 +5926,17 @@ dimension of `input`.
 
 
 
-func fft(scope:Scope,input: Output )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func fft(scope:Scope,input: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "FFT",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -5551,15 +5955,17 @@ Computes the 2-dimensional discrete Fourier transform over the inner-most
 
 
 
-func fft2D(scope:Scope,input: Output )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func fft2D(scope:Scope,input: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "FFT2D",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -5578,15 +5984,17 @@ dimensions of `input`.
 
 
 
-func fft3D(scope:Scope,input: Output )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func fft3D(scope:Scope,input: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "FFT3D",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -5603,20 +6011,22 @@ A queue that produces elements in first-in first-out order.
 
 
 
-func fifoQueue(scope:Scope componentTypes :List(type)  , shapes :[Shape]  , capacity :UInt8  , container :String  , sharedName :String  )  ->(handle: Output){
-    if scope.error.error() != nil {
-        return
+
+func fifoQueue(scope:Scope, componentTypes :List(type)  , shapes :List(shape)  , capacity :Int  , container :String  , sharedName :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("component_types",componentTypes)
-    attr.append("shapes",shapes)
-    attr.append("capacity",capacity)
-    attr.append("container",container)
-    attr.append("shared_name",sharedName)
+    attrs["component_types"] = componentTypes
+    attrs["shapes"] = shapes
+    attrs["capacity"] = capacity
+    attrs["container"] = container
+    attrs["shared_name"] = sharedName
 
     let opspec = OpSpec(
         OpType: "FIFOQueue",
+        Name: "Type",
         Input: [ ],
         Attrs: attrs
     )
@@ -5633,20 +6043,22 @@ A queue that produces elements in first-in first-out order.
 
 
 
-func fifoQueueV2(scope:Scope componentTypes :List(type)  , shapes :[Shape]  , capacity :UInt8  , container :String  , sharedName :String  )  ->(handle: Output){
-    if scope.error.error() != nil {
-        return
+
+func fifoQueueV2(scope:Scope, componentTypes :List(type)  , shapes :List(shape)  , capacity :Int  , container :String  , sharedName :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("component_types",componentTypes)
-    attr.append("shapes",shapes)
-    attr.append("capacity",capacity)
-    attr.append("container",container)
-    attr.append("shared_name",sharedName)
+    attrs["component_types"] = componentTypes
+    attrs["shapes"] = shapes
+    attrs["capacity"] = capacity
+    attrs["container"] = container
+    attrs["shared_name"] = sharedName
 
     let opspec = OpSpec(
         OpType: "FIFOQueueV2",
+        Name: "Type",
         Input: [ ],
         Attrs: attrs
     )
@@ -5663,15 +6075,17 @@ Output a fact about factorials.
 
 
 
-func fact(scope:Scope )  ->(fact: Output){
-    if scope.error.error() != nil {
-        return
+
+func fact(scope:Scope )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "Fact",
+        Name: "Type",
         Input: [ ],
         Attrs: attrs
     )
@@ -5693,18 +6107,20 @@ Quantization is called fake since the output is still in floating point.
 
 
 
-func fakeQuantWithMinMaxArgs(scope:Scope,inputs: Output, min :Float  , max :Float  , numBits :UInt8  )  ->(outputs: Output){
-    if scope.error.error() != nil {
-        return
+
+func fakeQuantWithMinMaxArgs(scope:Scope,inputs: Output, min :Float  , max :Float  , numBits :Int  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("min",min)
-    attr.append("max",max)
-    attr.append("num_bits",numBits)
+    attrs["min"] = min
+    attrs["max"] = max
+    attrs["num_bits"] = numBits
 
     let opspec = OpSpec(
         OpType: "FakeQuantWithMinMaxArgs",
+        Name: "Type",
         Input: [ inputs],
         Attrs: attrs
     )
@@ -5721,18 +6137,20 @@ Compute gradients for a FakeQuantWithMinMaxArgs operation.
 
 
 
-func fakeQuantWithMinMaxArgsGradient(scope:Scope,gradients: Output, inputs: Output, min :Float  , max :Float  , numBits :UInt8  )  ->(backprops: Output){
-    if scope.error.error() != nil {
-        return
+
+func fakeQuantWithMinMaxArgsGradient(scope:Scope,gradients: Output, inputs: Output, min :Float  , max :Float  , numBits :Int  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("min",min)
-    attr.append("max",max)
-    attr.append("num_bits",numBits)
+    attrs["min"] = min
+    attrs["max"] = max
+    attrs["num_bits"] = numBits
 
     let opspec = OpSpec(
         OpType: "FakeQuantWithMinMaxArgsGradient",
+        Name: "Type",
         Input: [ gradients, inputs],
         Attrs: attrs
     )
@@ -5755,16 +6173,18 @@ This operation has a gradient and thus allows for training `min` and `max` value
 
 
 
-func fakeQuantWithMinMaxVars(scope:Scope,inputs: Output, min: Output, max: Output, numBits :UInt8  )  ->(outputs: Output){
-    if scope.error.error() != nil {
-        return
+
+func fakeQuantWithMinMaxVars(scope:Scope,inputs: Output, min: Output, max: Output, numBits :Int  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("num_bits",numBits)
+    attrs["num_bits"] = numBits
 
     let opspec = OpSpec(
         OpType: "FakeQuantWithMinMaxVars",
+        Name: "Type",
         Input: [ inputs, min, max],
         Attrs: attrs
     )
@@ -5781,16 +6201,18 @@ Compute gradients for a FakeQuantWithMinMaxVars operation.
 
 
 
-func fakeQuantWithMinMaxVarsGradient(scope:Scope,gradients: Output, inputs: Output, min: Output, max: Output, numBits :UInt8  )  ->(backpropsWrtInput: Output, backpropWrtMin: Output, backpropWrtMax: Output){
-    if scope.error.error() != nil {
-        return
+
+func fakeQuantWithMinMaxVarsGradient(scope:Scope,gradients: Output, inputs: Output, min: Output, max: Output, numBits :Int  )  ->(backpropsWrtInput: Output, backpropWrtMin: Output, backpropWrtMax: Output){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("num_bits",numBits)
+    attrs["num_bits"] = numBits
 
     let opspec = OpSpec(
         OpType: "FakeQuantWithMinMaxVarsGradient",
+        Name: "Type",
         Input: [ gradients, inputs, min, max],
         Attrs: attrs
     )
@@ -5814,16 +6236,18 @@ This operation has a gradient and thus allows for training `min` and `max` value
 
 
 
-func fakeQuantWithMinMaxVarsPerChannel(scope:Scope,inputs: Output, min: Output, max: Output, numBits :UInt8  )  ->(outputs: Output){
-    if scope.error.error() != nil {
-        return
+
+func fakeQuantWithMinMaxVarsPerChannel(scope:Scope,inputs: Output, min: Output, max: Output, numBits :Int  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("num_bits",numBits)
+    attrs["num_bits"] = numBits
 
     let opspec = OpSpec(
         OpType: "FakeQuantWithMinMaxVarsPerChannel",
+        Name: "Type",
         Input: [ inputs, min, max],
         Attrs: attrs
     )
@@ -5840,16 +6264,18 @@ Compute gradients for a FakeQuantWithMinMaxVarsPerChannel operation.
 
 
 
-func fakeQuantWithMinMaxVarsPerChannelGradient(scope:Scope,gradients: Output, inputs: Output, min: Output, max: Output, numBits :UInt8  )  ->(backpropsWrtInput: Output, backpropWrtMin: Output, backpropWrtMax: Output){
-    if scope.error.error() != nil {
-        return
+
+func fakeQuantWithMinMaxVarsPerChannelGradient(scope:Scope,gradients: Output, inputs: Output, min: Output, max: Output, numBits :Int  )  ->(backpropsWrtInput: Output, backpropWrtMin: Output, backpropWrtMax: Output){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("num_bits",numBits)
+    attrs["num_bits"] = numBits
 
     let opspec = OpSpec(
         OpType: "FakeQuantWithMinMaxVarsPerChannelGradient",
+        Name: "Type",
         Input: [ gradients, inputs, min, max],
         Attrs: attrs
     )
@@ -5866,15 +6292,17 @@ Deprecated. Do not use.
 
 
 
-func fakeQueue(scope:Scope,resource: Output )  ->(handle: Output){
-    if scope.error.error() != nil {
-        return
+
+func fakeQueue(scope:Scope,resource: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "FakeQueue",
+        Name: "Type",
         Input: [ resource],
         Attrs: attrs
     )
@@ -5898,15 +6326,18 @@ fill([2, 3], 9) ==> [[9, 9, 9]
 
 
 
-func fill(scope:Scope,dims: Output, value: Output )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func fill(scope:Scope,dims: Output, value: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Fill",
+        Name: "Type",
         Input: [ dims, value],
         Attrs: attrs
     )
@@ -5927,19 +6358,21 @@ following arguments:
 
 
 
-func filterDataset(scope:Scope,inputDataset: Output, otherArguments: Output, predicate :Func  , targuments :List(type)  , outputTypes :List(type)  , outputShapes :List(shape)  )  ->(handle: Output){
-    if scope.error.error() != nil {
-        return
+
+func filterDataset(scope:Scope,inputDataset: Output, otherArguments: Output, predicate :Func  , targuments :List(type)  , outputTypes :List(type)  , outputShapes :List(shape)  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("predicate",predicate)
-    attr.append("Targuments",targuments)
-    attr.append("output_types",outputTypes)
-    attr.append("output_shapes",outputShapes)
+    attrs["predicate"] = predicate
+    attrs["Targuments"] = targuments
+    attrs["output_types"] = outputTypes
+    attrs["output_shapes"] = outputShapes
 
     let opspec = OpSpec(
         OpType: "FilterDataset",
+        Name: "Type",
         Input: [ inputDataset, otherArguments],
         Attrs: attrs
     )
@@ -5956,15 +6389,17 @@ Creates a dataset that emits the records from one or more binary files.
 
 
 
-func fixedLengthRecordDataset(scope:Scope,filenames: Output, headerBytes: Output, recordBytes: Output, footerBytes: Output )  ->(handle: Output){
-    if scope.error.error() != nil {
-        return
+
+func fixedLengthRecordDataset(scope:Scope,filenames: Output, headerBytes: Output, recordBytes: Output, footerBytes: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "FixedLengthRecordDataset",
+        Name: "Type",
         Input: [ filenames, headerBytes, recordBytes, footerBytes],
         Attrs: attrs
     )
@@ -5981,21 +6416,23 @@ A Reader that outputs fixed-length records from a file.
 
 
 
-func fixedLengthRecordReader(scope:Scope headerBytes :UInt8  , recordBytes :UInt8  , footerBytes :UInt8  , hopBytes :UInt8  , container :String  , sharedName :String  )  ->(readerHandle: Output){
-    if scope.error.error() != nil {
-        return
+
+func fixedLengthRecordReader(scope:Scope, headerBytes :Int  , recordBytes :Int  , footerBytes :Int  , hopBytes :Int  , container :String  , sharedName :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("header_bytes",headerBytes)
-    attr.append("record_bytes",recordBytes)
-    attr.append("footer_bytes",footerBytes)
-    attr.append("hop_bytes",hopBytes)
-    attr.append("container",container)
-    attr.append("shared_name",sharedName)
+    attrs["header_bytes"] = headerBytes
+    attrs["record_bytes"] = recordBytes
+    attrs["footer_bytes"] = footerBytes
+    attrs["hop_bytes"] = hopBytes
+    attrs["container"] = container
+    attrs["shared_name"] = sharedName
 
     let opspec = OpSpec(
         OpType: "FixedLengthRecordReader",
+        Name: "Type",
         Input: [ ],
         Attrs: attrs
     )
@@ -6012,21 +6449,23 @@ A Reader that outputs fixed-length records from a file.
 
 
 
-func fixedLengthRecordReaderV2(scope:Scope headerBytes :UInt8  , recordBytes :UInt8  , footerBytes :UInt8  , hopBytes :UInt8  , container :String  , sharedName :String  )  ->(readerHandle: Output){
-    if scope.error.error() != nil {
-        return
+
+func fixedLengthRecordReaderV2(scope:Scope, headerBytes :Int  , recordBytes :Int  , footerBytes :Int  , hopBytes :Int  , container :String  , sharedName :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("header_bytes",headerBytes)
-    attr.append("record_bytes",recordBytes)
-    attr.append("footer_bytes",footerBytes)
-    attr.append("hop_bytes",hopBytes)
-    attr.append("container",container)
-    attr.append("shared_name",sharedName)
+    attrs["header_bytes"] = headerBytes
+    attrs["record_bytes"] = recordBytes
+    attrs["footer_bytes"] = footerBytes
+    attrs["hop_bytes"] = hopBytes
+    attrs["container"] = container
+    attrs["shared_name"] = sharedName
 
     let opspec = OpSpec(
         OpType: "FixedLengthRecordReaderV2",
+        Name: "Type",
         Input: [ ],
         Attrs: attrs
     )
@@ -6054,27 +6493,29 @@ true labels.
 
 
 
-func fixedUnigramCandidateSampler(scope:Scope,trueClasses: Output, numTrue :UInt8  , numSampled :UInt8  , unique :Bool  , rangeMax :UInt8  , vocabFile :String  , distortion :Float  , numReservedIds :UInt8  , numShards :UInt8  , shard :UInt8  , unigrams :List(float)  , seed :UInt8  , seed2 :UInt8  )  ->(sampledCandidates: Output, trueExpectedCount: Output, sampledExpectedCount: Output){
-    if scope.error.error() != nil {
-        return
+
+func fixedUnigramCandidateSampler(scope:Scope,trueClasses: Output, numTrue :Int  , numSampled :Int  , unique :Bool  , rangeMax :Int  , vocabFile :String  , distortion :Float  , numReservedIds :Int  , numShards :Int  , shard :Int  , unigrams :List(float)  , seed :Int  , seed2 :Int  )  ->(sampledCandidates: Output, trueExpectedCount: Output, sampledExpectedCount: Output){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("num_true",numTrue)
-    attr.append("num_sampled",numSampled)
-    attr.append("unique",unique)
-    attr.append("range_max",rangeMax)
-    attr.append("vocab_file",vocabFile)
-    attr.append("distortion",distortion)
-    attr.append("num_reserved_ids",numReservedIds)
-    attr.append("num_shards",numShards)
-    attr.append("shard",shard)
-    attr.append("unigrams",unigrams)
-    attr.append("seed",seed)
-    attr.append("seed2",seed2)
+    attrs["num_true"] = numTrue
+    attrs["num_sampled"] = numSampled
+    attrs["unique"] = unique
+    attrs["range_max"] = rangeMax
+    attrs["vocab_file"] = vocabFile
+    attrs["distortion"] = distortion
+    attrs["num_reserved_ids"] = numReservedIds
+    attrs["num_shards"] = numShards
+    attrs["shard"] = shard
+    attrs["unigrams"] = unigrams
+    attrs["seed"] = seed
+    attrs["seed2"] = seed2
 
     let opspec = OpSpec(
         OpType: "FixedUnigramCandidateSampler",
+        Name: "Type",
         Input: [ trueClasses],
         Attrs: attrs
     )
@@ -6094,19 +6535,21 @@ into a single Dataset.
 
 
 
-func flatMapDataset(scope:Scope,inputDataset: Output, otherArguments: Output, f :Func  , targuments :List(type)  , outputTypes :List(type)  , outputShapes :[Shape]  )  ->(handle: Output){
-    if scope.error.error() != nil {
-        return
+
+func flatMapDataset(scope:Scope,inputDataset: Output, otherArguments: Output, f :Func  , targuments :List(type)  , outputTypes :List(type)  , outputShapes :List(shape)  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("f",f)
-    attr.append("Targuments",targuments)
-    attr.append("output_types",outputTypes)
-    attr.append("output_shapes",outputShapes)
+    attrs["f"] = f
+    attrs["Targuments"] = targuments
+    attrs["output_types"] = outputTypes
+    attrs["output_shapes"] = outputShapes
 
     let opspec = OpSpec(
         OpType: "FlatMapDataset",
+        Name: "Type",
         Input: [ inputDataset, otherArguments],
         Attrs: attrs
     )
@@ -6123,15 +6566,18 @@ Returns element-wise largest integer not greater than x.
 
 
 
-func floor(scope:Scope,x: Output )  ->(y: Output){
-    if scope.error.error() != nil {
-        return
+
+func floor(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Floor",
+        Name: "Type",
         Input: [ x],
         Attrs: attrs
     )
@@ -6150,16 +6596,18 @@ Returns x // y element-wise.
 
 
 
-func floorDiv(scope:Scope,x: Output, y: Output, t :Type  )  ->(z: Output){
-    if scope.error.error() != nil {
-        return
+
+func floorDiv(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "FloorDiv",
+        Name: "Type",
         Input: [ x, y],
         Attrs: attrs
     )
@@ -6180,15 +6628,18 @@ with a flooring divide. E.g. `floor(x / y) * y + mod(x, y) = x`.
 
 
 
-func floorMod(scope:Scope,x: Output, y: Output )  ->(z: Output){
-    if scope.error.error() != nil {
-        return
+
+func floorMod(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "FloorMod",
+        Name: "Type",
         Input: [ x, y],
         Attrs: attrs
     )
@@ -6209,22 +6660,24 @@ pooling region.
 
 
 
+
 func fractionalAvgPool(scope:Scope,value: Output, poolingRatio :List(float)  , pseudoRandom :Bool  , overlapping :Bool  , deterministic :Bool  , seed :Int  , seed2 :Int  , t :Type  )  ->(output: Output, rowPoolingSequence: Output, colPoolingSequence: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("pooling_ratio",poolingRatio)
-    attr.append("pseudo_random",pseudoRandom)
-    attr.append("overlapping",overlapping)
-    attr.append("deterministic",deterministic)
-    attr.append("seed",seed)
-    attr.append("seed2",seed2)
-    attr.append("T",t)
+    attrs["pooling_ratio"] = poolingRatio
+    attrs["pseudo_random"] = pseudoRandom
+    attrs["overlapping"] = overlapping
+    attrs["deterministic"] = deterministic
+    attrs["seed"] = seed
+    attrs["seed2"] = seed2
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "FractionalAvgPool",
+        Name: "Type",
         Input: [ value],
         Attrs: attrs
     )
@@ -6246,16 +6699,19 @@ tensor.
 
 
 
-func fractionalAvgPoolGrad(scope:Scope,origInputTensorShape: Output, outBackprop: Output, rowPoolingSequence: Output, colPoolingSequence: Output, overlapping :Bool  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func fractionalAvgPoolGrad(scope:Scope,origInputTensorShape: Output, outBackprop: Output, rowPoolingSequence: Output, colPoolingSequence: Output, overlapping :Bool  , t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("overlapping",overlapping)
+    attrs["overlapping"] = overlapping
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "FractionalAvgPoolGrad",
+        Name: "Type",
         Input: [ origInputTensorShape, outBackprop, rowPoolingSequence, colPoolingSequence],
         Attrs: attrs
     )
@@ -6294,22 +6750,24 @@ For more details on fractional max pooling, see this paper:
 
 
 
+
 func fractionalMaxPool(scope:Scope,value: Output, poolingRatio :List(float)  , pseudoRandom :Bool  , overlapping :Bool  , deterministic :Bool  , seed :Int  , seed2 :Int  , t :Type  )  ->(output: Output, rowPoolingSequence: Output, colPoolingSequence: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("pooling_ratio",poolingRatio)
-    attr.append("pseudo_random",pseudoRandom)
-    attr.append("overlapping",overlapping)
-    attr.append("deterministic",deterministic)
-    attr.append("seed",seed)
-    attr.append("seed2",seed2)
-    attr.append("T",t)
+    attrs["pooling_ratio"] = poolingRatio
+    attrs["pseudo_random"] = pseudoRandom
+    attrs["overlapping"] = overlapping
+    attrs["deterministic"] = deterministic
+    attrs["seed"] = seed
+    attrs["seed2"] = seed2
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "FractionalMaxPool",
+        Name: "Type",
         Input: [ value],
         Attrs: attrs
     )
@@ -6326,16 +6784,19 @@ Computes gradient of the FractionalMaxPool function.
 
 
 
-func fractionalMaxPoolGrad(scope:Scope,origInput: Output, origOutput: Output, outBackprop: Output, rowPoolingSequence: Output, colPoolingSequence: Output, overlapping :Bool  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func fractionalMaxPoolGrad(scope:Scope,origInput: Output, origOutput: Output, outBackprop: Output, rowPoolingSequence: Output, colPoolingSequence: Output, overlapping :Bool  , t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("overlapping",overlapping)
+    attrs["overlapping"] = overlapping
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "FractionalMaxPoolGrad",
+        Name: "Type",
         Input: [ origInput, origOutput, outBackprop, rowPoolingSequence, colPoolingSequence],
         Attrs: attrs
     )
@@ -6354,19 +6815,21 @@ The size of 1D Tensors matches the dimension C of the 4D Tensors.
 
 
 
+
 func fusedBatchNorm(scope:Scope,x: Output, scale: Output, offset: Output, mean: Output, variance: Output, t :Type  , epsilon :Float  , dataFormat :String  , isTraining :Bool  )  ->(y: Output, batchMean: Output, batchVariance: Output, reserveSpace1: Output, reserveSpace2: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("epsilon",epsilon)
-    attr.append("data_format",dataFormat)
-    attr.append("is_training",isTraining)
+    attrs["T"] = t
+    attrs["epsilon"] = epsilon
+    attrs["data_format"] = dataFormat
+    attrs["is_training"] = isTraining
 
     let opspec = OpSpec(
         OpType: "FusedBatchNorm",
+        Name: "Type",
         Input: [ x, scale, offset, mean, variance],
         Attrs: attrs
     )
@@ -6385,18 +6848,21 @@ The size of 1D Tensors matches the dimension C of the 4D Tensors.
 
 
 
-func fusedBatchNormGrad(scope:Scope,yBackprop: Output, x: Output, scale: Output, reserveSpace1: Output, reserveSpace2: Output, epsilon :Float  , dataFormat :String  , isTraining :Bool  )  ->(xBackprop: Output, scaleBackprop: Output, offsetBackprop: Output, reserveSpace3: Output, reserveSpace4: Output){
-    if scope.error.error() != nil {
-        return
+
+func fusedBatchNormGrad(scope:Scope,yBackprop: Output, x: Output, scale: Output, reserveSpace1: Output, reserveSpace2: Output, t :Type  , epsilon :Float  , dataFormat :String  , isTraining :Bool  )  ->(xBackprop: Output, scaleBackprop: Output, offsetBackprop: Output, reserveSpace3: Output, reserveSpace4: Output){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("epsilon",epsilon)
-    attr.append("data_format",dataFormat)
-    attr.append("is_training",isTraining)
+    attrs["T"] = t
+    attrs["epsilon"] = epsilon
+    attrs["data_format"] = dataFormat
+    attrs["is_training"] = isTraining
 
     let opspec = OpSpec(
         OpType: "FusedBatchNormGrad",
+        Name: "Type",
         Input: [ yBackprop, x, scale, reserveSpace1, reserveSpace2],
         Attrs: attrs
     )
@@ -6424,19 +6890,21 @@ operator is primarily an optimization to minimize memory usage.
 
 
 
-func fusedPadConv2D(scope:Scope,input: Output, paddings: Output, filter: Output, t :Type  , mode :String  , strides :List(int)  , padding :String  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func fusedPadConv2D(scope:Scope,input: Output, paddings: Output, filter: Output, t :Type  , mode :String  , strides :List(int)  , padding :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("mode",mode)
-    attr.append("strides",strides)
-    attr.append("padding",padding)
+    attrs["T"] = t
+    attrs["mode"] = mode
+    attrs["strides"] = strides
+    attrs["padding"] = padding
 
     let opspec = OpSpec(
         OpType: "FusedPadConv2D",
+        Name: "Type",
         Input: [ input, paddings, filter],
         Attrs: attrs
     )
@@ -6463,19 +6931,22 @@ operator is primarily an optimization to minimize memory usage.
 
 
 
-func fusedResizeAndPadConv2D(scope:Scope,input: Output, size: Output, paddings: Output, filter: Output, resizeAlignCorners :Bool  , mode :String  , strides :List(int)  , padding :String  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func fusedResizeAndPadConv2D(scope:Scope,input: Output, size: Output, paddings: Output, filter: Output, t :Type  , resizeAlignCorners :Bool  , mode :String  , strides :List(int)  , padding :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("resize_align_corners",resizeAlignCorners)
-    attr.append("mode",mode)
-    attr.append("strides",strides)
-    attr.append("padding",padding)
+    attrs["T"] = t
+    attrs["resize_align_corners"] = resizeAlignCorners
+    attrs["mode"] = mode
+    attrs["strides"] = strides
+    attrs["padding"] = padding
 
     let opspec = OpSpec(
         OpType: "FusedResizeAndPadConv2D",
+        Name: "Type",
         Input: [ input, size, paddings, filter],
         Attrs: attrs
     )
@@ -6511,18 +6982,20 @@ raising an error.
 
 
 
-func gather(scope:Scope,params: Output, indices: Output, validateIndices :Bool  , tparams :Type  , tindices :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func gather(scope:Scope,params: Output, indices: Output, validateIndices :Bool  , tparams :Type  , tindices :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("validate_indices",validateIndices)
-    attr.append("Tparams",tparams)
-    attr.append("Tindices",tindices)
+    attrs["validate_indices"] = validateIndices
+    attrs["Tparams"] = tparams
+    attrs["Tindices"] = tindices
 
     let opspec = OpSpec(
         OpType: "Gather",
+        Name: "Type",
         Input: [ params, indices],
         Attrs: attrs
     )
@@ -6604,17 +7077,19 @@ Batched indexing into a 3-tensor:
 
 
 
-func gatherNd(scope:Scope,params: Output, indices: Output, tparams :Type  , tindices :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func gatherNd(scope:Scope,params: Output, indices: Output, tparams :Type  , tindices :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tparams",tparams)
-    attr.append("Tindices",tindices)
+    attrs["Tparams"] = tparams
+    attrs["Tindices"] = tindices
 
     let opspec = OpSpec(
         OpType: "GatherNd",
+        Name: "Type",
         Input: [ params, indices],
         Attrs: attrs
     )
@@ -6631,15 +7106,18 @@ Store the input tensor in the state of the current session.
 
 
 
-func getSessionHandle(scope:Scope,value: Output )  ->(handle: Output){
-    if scope.error.error() != nil {
-        return
+
+func getSessionHandle(scope:Scope,value: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "GetSessionHandle",
+        Name: "Type",
         Input: [ value],
         Attrs: attrs
     )
@@ -6656,16 +7134,18 @@ Store the input tensor in the state of the current session.
 
 
 
-func getSessionHandleV2(scope:Scope,value: Output, t :Type  )  ->(handle: Output){
-    if scope.error.error() != nil {
-        return
+
+func getSessionHandleV2(scope:Scope,value: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "GetSessionHandleV2",
+        Name: "Type",
         Input: [ value],
         Attrs: attrs
     )
@@ -6682,16 +7162,18 @@ Get the value of the tensor specified by its handle.
 
 
 
-func getSessionTensor(scope:Scope,handle: Output, dtype :Type  )  ->(value: Output){
-    if scope.error.error() != nil {
-        return
+
+func getSessionTensor(scope:Scope,handle: Output, dtype :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("dtype",dtype)
+    attrs["dtype"] = dtype
 
     let opspec = OpSpec(
         OpType: "GetSessionTensor",
+        Name: "Type",
         Input: [ handle],
         Attrs: attrs
     )
@@ -6710,15 +7192,18 @@ Returns the truth value of (x > y) element-wise.
 
 
 
-func greater(scope:Scope,x: Output, y: Output )  ->(z: Output){
-    if scope.error.error() != nil {
-        return
+
+func greater(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Greater",
+        Name: "Type",
         Input: [ x, y],
         Attrs: attrs
     )
@@ -6737,16 +7222,18 @@ Returns the truth value of (x >= y) element-wise.
 
 
 
-func greaterEqual(scope:Scope,x: Output, y: Output, t :Type  )  ->(z: Output){
-    if scope.error.error() != nil {
-        return
+
+func greaterEqual(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "GreaterEqual",
+        Name: "Type",
         Input: [ x, y],
         Attrs: attrs
     )
@@ -6764,21 +7251,23 @@ Creates a dataset that computes a windowed group-by on `input_dataset`.
 
 
 
-func groupByWindowDataset(scope:Scope,inputDataset: Output, keyFuncOtherArguments: Output, reduceFuncOtherArguments: Output, windowSize: Output, keyFunc :Func  , reduceFunc :Func  , tkeyFuncOtherArguments :List(type)  , treduceFuncOtherArguments :List(type)  , outputTypes :List(type)  , outputShapes :[Shape]  )  ->(handle: Output){
-    if scope.error.error() != nil {
-        return
+
+func groupByWindowDataset(scope:Scope,inputDataset: Output, keyFuncOtherArguments: Output, reduceFuncOtherArguments: Output, windowSize: Output, keyFunc :Func  , reduceFunc :Func  , tkeyFuncOtherArguments :List(type)  , treduceFuncOtherArguments :List(type)  , outputTypes :List(type)  , outputShapes :List(shape)  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("key_func",keyFunc)
-    attr.append("reduce_func",reduceFunc)
-    attr.append("Tkey_func_other_arguments",tkeyFuncOtherArguments)
-    attr.append("Treduce_func_other_arguments",treduceFuncOtherArguments)
-    attr.append("output_types",outputTypes)
-    attr.append("output_shapes",outputShapes)
+    attrs["key_func"] = keyFunc
+    attrs["reduce_func"] = reduceFunc
+    attrs["Tkey_func_other_arguments"] = tkeyFuncOtherArguments
+    attrs["Treduce_func_other_arguments"] = treduceFuncOtherArguments
+    attrs["output_types"] = outputTypes
+    attrs["output_shapes"] = outputShapes
 
     let opspec = OpSpec(
         OpType: "GroupByWindowDataset",
+        Name: "Type",
         Input: [ inputDataset, keyFuncOtherArguments, reduceFuncOtherArguments, windowSize],
         Attrs: attrs
     )
@@ -6799,15 +7288,18 @@ See `rgb_to_hsv` for a description of the HSV encoding.
 
 
 
-func hsvToRGB(scope:Scope,images: Output )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func hsvToRGB(scope:Scope,images: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "HSVToRGB",
+        Name: "Type",
         Input: [ images],
         Attrs: attrs
     )
@@ -6827,20 +7319,22 @@ table will be immutable.
 
 
 
-func hashTable(scope:Scope container :String  , sharedName :String  , useNodeNameSharing :Bool  , keyDtype :Type  , valueDtype :Type  )  ->(tableHandle: Output){
-    if scope.error.error() != nil {
-        return
+
+func hashTable(scope:Scope, container :String  , sharedName :String  , useNodeNameSharing :Bool  , keyDtype :Type  , valueDtype :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("container",container)
-    attr.append("shared_name",sharedName)
-    attr.append("use_node_name_sharing",useNodeNameSharing)
-    attr.append("key_dtype",keyDtype)
-    attr.append("value_dtype",valueDtype)
+    attrs["container"] = container
+    attrs["shared_name"] = sharedName
+    attrs["use_node_name_sharing"] = useNodeNameSharing
+    attrs["key_dtype"] = keyDtype
+    attrs["value_dtype"] = valueDtype
 
     let opspec = OpSpec(
         OpType: "HashTable",
+        Name: "Type",
         Input: [ ],
         Attrs: attrs
     )
@@ -6860,20 +7354,22 @@ table will be immutable.
 
 
 
-func hashTableV2(scope:Scope container :String  , sharedName :String  , useNodeNameSharing :Bool  , keyDtype :Type  , valueDtype :Type  )  ->(tableHandle: Output){
-    if scope.error.error() != nil {
-        return
+
+func hashTableV2(scope:Scope, container :String  , sharedName :String  , useNodeNameSharing :Bool  , keyDtype :Type  , valueDtype :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("container",container)
-    attr.append("shared_name",sharedName)
-    attr.append("use_node_name_sharing",useNodeNameSharing)
-    attr.append("key_dtype",keyDtype)
-    attr.append("value_dtype",valueDtype)
+    attrs["container"] = container
+    attrs["shared_name"] = sharedName
+    attrs["use_node_name_sharing"] = useNodeNameSharing
+    attrs["key_dtype"] = keyDtype
+    attrs["value_dtype"] = valueDtype
 
     let opspec = OpSpec(
         OpType: "HashTableV2",
+        Name: "Type",
         Input: [ ],
         Attrs: attrs
     )
@@ -6894,15 +7390,18 @@ This op reports an `InvalidArgument` error if any value is not finite.
 
 
 
-func histogramSummary(scope:Scope,tag: Output, values: Output )  ->(summary: Output){
-    if scope.error.error() != nil {
-        return
+
+func histogramSummary(scope:Scope,tag: Output, values: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "HistogramSummary",
+        Name: "Type",
         Input: [ tag, values],
         Attrs: attrs
     )
@@ -6921,15 +7420,17 @@ inner-most dimension of `input`.
 
 
 
-func ifft(scope:Scope,input: Output )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func ifft(scope:Scope,input: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "IFFT",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -6948,15 +7449,17 @@ inner-most 2 dimensions of `input`.
 
 
 
-func ifft2D(scope:Scope,input: Output )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func ifft2D(scope:Scope,input: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "IFFT2D",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -6975,15 +7478,17 @@ inner-most 3 dimensions of `input`.
 
 
 
-func ifft3D(scope:Scope,input: Output )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func ifft3D(scope:Scope,input: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "IFFT3D",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -7008,15 +7513,17 @@ properly.
 
 
 
-func irfft(scope:Scope,input: Output, fftLength: Output )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func irfft(scope:Scope,input: Output, fftLength: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "IRFFT",
+        Name: "Type",
         Input: [ input, fftLength],
         Attrs: attrs
     )
@@ -7041,15 +7548,17 @@ properly.
 
 
 
-func irfft2D(scope:Scope,input: Output, fftLength: Output )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func irfft2D(scope:Scope,input: Output, fftLength: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "IRFFT2D",
+        Name: "Type",
         Input: [ input, fftLength],
         Attrs: attrs
     )
@@ -7074,15 +7583,17 @@ properly.
 
 
 
-func irfft3D(scope:Scope,input: Output, fftLength: Output )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func irfft3D(scope:Scope,input: Output, fftLength: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "IRFFT3D",
+        Name: "Type",
         Input: [ input, fftLength],
         Attrs: attrs
     )
@@ -7099,15 +7610,18 @@ Return a tensor with the same shape and contents as the input tensor or value.
 
 
 
-func identity(scope:Scope,input: Output )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func identity(scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Identity",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -7126,17 +7640,19 @@ work string and output (work, work).
 
 
 
-func identityReader(scope:Scope container :String  , sharedName :String  )  ->(readerHandle: Output){
-    if scope.error.error() != nil {
-        return
+
+func identityReader(scope:Scope, container :String  , sharedName :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("container",container)
-    attr.append("shared_name",sharedName)
+    attrs["container"] = container
+    attrs["shared_name"] = sharedName
 
     let opspec = OpSpec(
         OpType: "IdentityReader",
+        Name: "Type",
         Input: [ ],
         Attrs: attrs
     )
@@ -7155,17 +7671,19 @@ work string and output (work, work).
 
 
 
-func identityReaderV2(scope:Scope container :String  , sharedName :String  )  ->(readerHandle: Output){
-    if scope.error.error() != nil {
-        return
+
+func identityReaderV2(scope:Scope, container :String  , sharedName :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("container",container)
-    attr.append("shared_name",sharedName)
+    attrs["container"] = container
+    attrs["shared_name"] = sharedName
 
     let opspec = OpSpec(
         OpType: "IdentityReaderV2",
+        Name: "Type",
         Input: [ ],
         Attrs: attrs
     )
@@ -7189,15 +7707,18 @@ Gamma function.
 
 
 
-func igamma(scope:Scope,a: Output, x: Output )  ->(z: Output){
-    if scope.error.error() != nil {
-        return
+
+func igamma(scope:Scope,a: Output, x: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Igamma",
+        Name: "Type",
         Input: [ a, x],
         Attrs: attrs
     )
@@ -7221,16 +7742,18 @@ Gamma function.
 
 
 
-func igammac(scope:Scope,a: Output, x: Output, t :Type  )  ->(z: Output){
-    if scope.error.error() != nil {
-        return
+
+func igammac(scope:Scope,a: Output, x: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Igammac",
+        Name: "Type",
         Input: [ a, x],
         Attrs: attrs
     )
@@ -7256,16 +7779,19 @@ tf.imag(input) ==> [4.75, 5.75]
 
 
 
-func imag(scope:Scope,input: Output, tout :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func imag(scope:Scope,input: Output, t :Type  , tout :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tout",tout)
+    attrs["T"] = t
+    attrs["Tout"] = tout
 
     let opspec = OpSpec(
         OpType: "Imag",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -7308,18 +7834,20 @@ red.
 
 
 
-func imageSummary(scope:Scope,tag: Output, tensor: Output, maxImages :Int  , t :Type  , badColor :Tensor  )  ->(summary: Output){
-    if scope.error.error() != nil {
-        return
+
+func imageSummary(scope:Scope,tag: Output, tensor: Output, maxImages :Int  , t :Type  , badColor :Tensor  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("max_images",maxImages)
-    attr.append("T",t)
-    attr.append("bad_color",badColor)
+    attrs["max_images"] = maxImages
+    attrs["T"] = t
+    attrs["bad_color"] = badColor
 
     let opspec = OpSpec(
         OpType: "ImageSummary",
+        Name: "Type",
         Input: [ tag, tensor],
         Attrs: attrs
     )
@@ -7337,18 +7865,20 @@ The current implementation memmaps the tensor from a file.
 
 
 
-func immutableConst(scope:Scope dtype :Type  , shape :Shape  , memoryRegionName :String  )  ->(tensor: Output){
-    if scope.error.error() != nil {
-        return
+
+func immutableConst(scope:Scope, dtype :Type  , shape :Shape  , memoryRegionName :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("dtype",dtype)
-    attr.append("shape",shape)
-    attr.append("memory_region_name",memoryRegionName)
+    attrs["dtype"] = dtype
+    attrs["shape"] = shape
+    attrs["memory_region_name"] = memoryRegionName
 
     let opspec = OpSpec(
         OpType: "ImmutableConst",
+        Name: "Type",
         Input: [ ],
         Attrs: attrs
     )
@@ -7376,16 +7906,19 @@ $$out_i = predictions_{i, targets_i} \in TopKIncludingTies(predictions_i)$$
 
 
 
-func inTopK(scope:Scope,predictions: Output, targets: Output, k :UInt8  )  ->(precision: Output){
-    if scope.error.error() != nil {
-        return
+
+func inTopK(scope:Scope,predictions: Output, targets: Output, k :Int  , t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("k",k)
+    attrs["k"] = k
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "InTopK",
+        Name: "Type",
         Input: [ predictions, targets],
         Attrs: attrs
     )
@@ -7402,17 +7935,19 @@ Table initializer that takes two tensors for keys and values respectively.
 
 
 
-func initializeTable(scope:Scope,tableHandle: Output, keys: Output, values: Output, tkey :Type  , tval :Type  )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func initializeTable(scope:Scope,tableHandle: Output, keys: Output, values: Output, tkey :Type  , tval :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tkey",tkey)
-    attr.append("Tval",tval)
+    attrs["Tkey"] = tkey
+    attrs["Tval"] = tval
 
     let opspec = OpSpec(
         OpType: "InitializeTable",
+        Name: "Type",
         Input: [ tableHandle, keys, values],
         Attrs: attrs
     )
@@ -7437,19 +7972,21 @@ Where to extract the key and value from a line is specified by `key_index` and
 
 
 
-func initializeTableFromTextFile(scope:Scope,tableHandle: Output, filename: Output, keyIndex :UInt8  , valueIndex :UInt8  , vocabSize :UInt8  , delimiter :String  )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func initializeTableFromTextFile(scope:Scope,tableHandle: Output, filename: Output, keyIndex :Int  , valueIndex :Int  , vocabSize :Int  , delimiter :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("key_index",keyIndex)
-    attr.append("value_index",valueIndex)
-    attr.append("vocab_size",vocabSize)
-    attr.append("delimiter",delimiter)
+    attrs["key_index"] = keyIndex
+    attrs["value_index"] = valueIndex
+    attrs["vocab_size"] = vocabSize
+    attrs["delimiter"] = delimiter
 
     let opspec = OpSpec(
         OpType: "InitializeTableFromTextFile",
+        Name: "Type",
         Input: [ tableHandle, filename],
         Attrs: attrs
     )
@@ -7474,19 +8011,21 @@ Where to extract the key and value from a line is specified by `key_index` and
 
 
 
-func initializeTableFromTextFileV2(scope:Scope,tableHandle: Output, filename: Output, keyIndex :UInt8  , valueIndex :UInt8  , vocabSize :UInt8  , delimiter :String  )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func initializeTableFromTextFileV2(scope:Scope,tableHandle: Output, filename: Output, keyIndex :Int  , valueIndex :Int  , vocabSize :Int  , delimiter :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("key_index",keyIndex)
-    attr.append("value_index",valueIndex)
-    attr.append("vocab_size",vocabSize)
-    attr.append("delimiter",delimiter)
+    attrs["key_index"] = keyIndex
+    attrs["value_index"] = valueIndex
+    attrs["vocab_size"] = vocabSize
+    attrs["delimiter"] = delimiter
 
     let opspec = OpSpec(
         OpType: "InitializeTableFromTextFileV2",
+        Name: "Type",
         Input: [ tableHandle, filename],
         Attrs: attrs
     )
@@ -7502,17 +8041,19 @@ Table initializer that takes two tensors for keys and values respectively.
 
 
 
-func initializeTableV2(scope:Scope,tableHandle: Output, keys: Output, values: Output, tkey :Type  , tval :Type  )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func initializeTableV2(scope:Scope,tableHandle: Output, keys: Output, values: Output, tkey :Type  , tval :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tkey",tkey)
-    attr.append("Tval",tval)
+    attrs["Tkey"] = tkey
+    attrs["Tval"] = tval
 
     let opspec = OpSpec(
         OpType: "InitializeTableV2",
+        Name: "Type",
         Input: [ tableHandle, keys, values],
         Attrs: attrs
     )
@@ -7529,15 +8070,18 @@ I.e., \\(y = 1 / x\\).
 
 
 
-func inv(scope:Scope,x: Output )  ->(y: Output){
-    if scope.error.error() != nil {
-        return
+
+func inv(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Inv",
+        Name: "Type",
         Input: [ x],
         Attrs: attrs
     )
@@ -7556,16 +8100,18 @@ is the corresponding input gradient.
 
 
 
-func invGrad(scope:Scope,x: Output, y: Output, t :Type  )  ->(z: Output){
-    if scope.error.error() != nil {
-        return
+
+func invGrad(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "InvGrad",
+        Name: "Type",
         Input: [ x, y],
         Attrs: attrs
     )
@@ -7593,15 +8139,18 @@ invert_permutation(x) ==> [2, 4, 3, 0, 1]
 
 
 
-func invertPermutation(scope:Scope,x: Output )  ->(y: Output){
-    if scope.error.error() != nil {
-        return
+
+func invertPermutation(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "InvertPermutation",
+        Name: "Type",
         Input: [ x],
         Attrs: attrs
     )
@@ -7621,16 +8170,18 @@ Equivalent to np.isfinite
 
 
 
-func isFinite(scope:Scope,x: Output, t :Type  )  ->(y: Output){
-    if scope.error.error() != nil {
-        return
+
+func isFinite(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "IsFinite",
+        Name: "Type",
         Input: [ x],
         Attrs: attrs
     )
@@ -7650,15 +8201,18 @@ Equivalent to np.isinf
 
 
 
-func isInf(scope:Scope,x: Output )  ->(y: Output){
-    if scope.error.error() != nil {
-        return
+
+func isInf(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "IsInf",
+        Name: "Type",
         Input: [ x],
         Attrs: attrs
     )
@@ -7678,16 +8232,18 @@ Equivalent to np.isnan
 
 
 
-func isNan(scope:Scope,x: Output, t :Type  )  ->(y: Output){
-    if scope.error.error() != nil {
-        return
+
+func isNan(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "IsNan",
+        Name: "Type",
         Input: [ x],
         Attrs: attrs
     )
@@ -7705,16 +8261,18 @@ Outputs boolean scalar indicating whether the tensor has been initialized.
 
 
 
-func isVariableInitialized(scope:Scope,ref: Output, dtype :Type  )  ->(isInitialized: Output){
-    if scope.error.error() != nil {
-        return
+
+func isVariableInitialized(scope:Scope,ref: Output, dtype :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("dtype",dtype)
+    attrs["dtype"] = dtype
 
     let opspec = OpSpec(
         OpType: "IsVariableInitialized",
+        Name: "Type",
         Input: [ ref],
         Attrs: attrs
     )
@@ -7731,19 +8289,21 @@ A container for an iterator resource.
 
 
 
-func iterator(scope:Scope sharedName :String  , container :String  , outputTypes :List(type)  , outputShapes :[Shape]  )  ->(handle: Output){
-    if scope.error.error() != nil {
-        return
+
+func iterator(scope:Scope, sharedName :String  , container :String  , outputTypes :List(type)  , outputShapes :List(shape)  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("shared_name",sharedName)
-    attr.append("container",container)
-    attr.append("output_types",outputTypes)
-    attr.append("output_shapes",outputShapes)
+    attrs["shared_name"] = sharedName
+    attrs["container"] = container
+    attrs["output_types"] = outputTypes
+    attrs["output_shapes"] = outputShapes
 
     let opspec = OpSpec(
         OpType: "Iterator",
+        Name: "Type",
         Input: [ ],
         Attrs: attrs
     )
@@ -7760,15 +8320,17 @@ Releases any resources used by the given iterator.
 
 
 
-func iteratorDispose(scope:Scope,iterator: Output )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func iteratorDispose(scope:Scope,iterator: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "IteratorDispose",
+        Name: "Type",
         Input: [ iterator],
         Attrs: attrs
     )
@@ -7784,17 +8346,19 @@ Gets the next output from the given iterator.
 
 
 
-func iteratorGetNext(scope:Scope,iterator: Output, outputTypes :List(type)  , outputShapes :[Shape]  )  ->(components: Output){
-    if scope.error.error() != nil {
-        return
+
+func iteratorGetNext(scope:Scope,iterator: Output, outputTypes :List(type)  , outputShapes :List(shape)  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("output_types",outputTypes)
-    attr.append("output_shapes",outputShapes)
+    attrs["output_types"] = outputTypes
+    attrs["output_shapes"] = outputShapes
 
     let opspec = OpSpec(
         OpType: "IteratorGetNext",
+        Name: "Type",
         Input: [ iterator],
         Attrs: attrs
     )
@@ -7813,15 +8377,18 @@ Computes half the L2 norm of a tensor without the `sqrt`:
 
 
 
-func l2Loss(scope:Scope,t: Output )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func l2Loss(scope:Scope,t: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "L2Loss",
+        Name: "Type",
         Input: [ t],
         Attrs: attrs
     )
@@ -7847,20 +8414,22 @@ convolutional neural networks (NIPS 2012)](http://papers.nips.cc/paper/4824-imag
 
 
 
-func lrn(scope:Scope,input: Output, depthRadius :Int  , bias :Float  , alpha :Float  , beta :Float  , t :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func lrn(scope:Scope,input: Output, depthRadius :Int  , bias :Float  , alpha :Float  , beta :Float  , t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("depth_radius",depthRadius)
-    attr.append("bias",bias)
-    attr.append("alpha",alpha)
-    attr.append("beta",beta)
-    attr.append("T",t)
+    attrs["depth_radius"] = depthRadius
+    attrs["bias"] = bias
+    attrs["alpha"] = alpha
+    attrs["beta"] = beta
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "LRN",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -7877,19 +8446,22 @@ Gradients for Local Response Normalization.
 
 
 
-func lrnGrad(scope:Scope,inputGrads: Output, inputImage: Output, outputImage: Output, depthRadius :UInt8  , bias :Float  , alpha :Float  , beta :Float  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func lrnGrad(scope:Scope,inputGrads: Output, inputImage: Output, outputImage: Output, depthRadius :Int  , bias :Float  , alpha :Float  , beta :Float  , t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("depth_radius",depthRadius)
-    attr.append("bias",bias)
-    attr.append("alpha",alpha)
-    attr.append("beta",beta)
+    attrs["depth_radius"] = depthRadius
+    attrs["bias"] = bias
+    attrs["alpha"] = alpha
+    attrs["beta"] = beta
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "LRNGrad",
+        Name: "Type",
         Input: [ inputGrads, inputImage, outputImage],
         Attrs: attrs
     )
@@ -7913,21 +8485,23 @@ true labels.
 
 
 
+
 func learnedUnigramCandidateSampler(scope:Scope,trueClasses: Output, numTrue :Int  , numSampled :Int  , unique :Bool  , rangeMax :Int  , seed :Int  , seed2 :Int  )  ->(sampledCandidates: Output, trueExpectedCount: Output, sampledExpectedCount: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("num_true",numTrue)
-    attr.append("num_sampled",numSampled)
-    attr.append("unique",unique)
-    attr.append("range_max",rangeMax)
-    attr.append("seed",seed)
-    attr.append("seed2",seed2)
+    attrs["num_true"] = numTrue
+    attrs["num_sampled"] = numSampled
+    attrs["unique"] = unique
+    attrs["range_max"] = rangeMax
+    attrs["seed"] = seed
+    attrs["seed2"] = seed2
 
     let opspec = OpSpec(
         OpType: "LearnedUnigramCandidateSampler",
+        Name: "Type",
         Input: [ trueClasses],
         Attrs: attrs
     )
@@ -7946,15 +8520,18 @@ Returns the truth value of (x < y) element-wise.
 
 
 
-func less(scope:Scope,x: Output, y: Output )  ->(z: Output){
-    if scope.error.error() != nil {
-        return
+
+func less(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Less",
+        Name: "Type",
         Input: [ x, y],
         Attrs: attrs
     )
@@ -7973,16 +8550,18 @@ Returns the truth value of (x <= y) element-wise.
 
 
 
-func lessEqual(scope:Scope,x: Output, y: Output, t :Type  )  ->(z: Output){
-    if scope.error.error() != nil {
-        return
+
+func lessEqual(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "LessEqual",
+        Name: "Type",
         Input: [ x, y],
         Attrs: attrs
     )
@@ -7999,15 +8578,18 @@ Computes the log of the absolute value of `Gamma(x)` element-wise.
 
 
 
-func lgamma(scope:Scope,x: Output )  ->(y: Output){
-    if scope.error.error() != nil {
-        return
+
+func lgamma(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Lgamma",
+        Name: "Type",
         Input: [ x],
         Attrs: attrs
     )
@@ -8031,17 +8613,19 @@ tf.linspace(10.0, 12.0, 3, name="linspace") => [ 10.0  11.0  12.0]
 
 
 
-func linSpace(scope:Scope,start: Output, stop: Output, num: Output, t :Type  , tidx :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func linSpace(scope:Scope,start: Output, stop: Output, num: Output, t :Type  , tidx :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("Tidx",tidx)
+    attrs["T"] = t
+    attrs["Tidx"] = tidx
 
     let opspec = OpSpec(
         OpType: "LinSpace",
+        Name: "Type",
         Input: [ start, stop, num],
         Attrs: attrs
     )
@@ -8074,16 +8658,19 @@ idx ==> [1, 3, 5]
 
 
 
-func listDiff(scope:Scope,x: Output, y: Output, outIdx :Type  )  ->(out: Output, idx: Output){
-    if scope.error.error() != nil {
-        return
+
+func listDiff(scope:Scope,x: Output, y: Output, t :Type  , outIdx :Type  )  ->(out: Output, idx: Output){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("out_idx",outIdx)
+    attrs["T"] = t
+    attrs["out_idx"] = outIdx
 
     let opspec = OpSpec(
         OpType: "ListDiff",
+        Name: "Type",
         Input: [ x, y],
         Attrs: attrs
     )
@@ -8101,16 +8688,18 @@ I.e., \\(y = \log_e x\\).
 
 
 
-func log(scope:Scope,x: Output, t :Type  )  ->(y: Output){
-    if scope.error.error() != nil {
-        return
+
+func log(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Log",
+        Name: "Type",
         Input: [ x],
         Attrs: attrs
     )
@@ -8128,15 +8717,18 @@ I.e., \\(y = \log_e (1 + x)\\).
 
 
 
-func log1p(scope:Scope,x: Output )  ->(y: Output){
-    if scope.error.error() != nil {
-        return
+
+func log1p(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Log1p",
+        Name: "Type",
         Input: [ x],
         Attrs: attrs
     )
@@ -8155,16 +8747,18 @@ For each batch `i` and class `j` we have
 
 
 
-func logSoftmax(scope:Scope,logits: Output, t :Type  )  ->(logsoftmax: Output){
-    if scope.error.error() != nil {
-        return
+
+func logSoftmax(scope:Scope,logits: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "LogSoftmax",
+        Name: "Type",
         Input: [ logits],
         Attrs: attrs
     )
@@ -8188,21 +8782,23 @@ true labels.
 
 
 
-func logUniformCandidateSampler(scope:Scope,trueClasses: Output, numTrue :UInt8  , numSampled :UInt8  , unique :Bool  , rangeMax :UInt8  , seed :UInt8  , seed2 :UInt8  )  ->(sampledCandidates: Output, trueExpectedCount: Output, sampledExpectedCount: Output){
-    if scope.error.error() != nil {
-        return
+
+func logUniformCandidateSampler(scope:Scope,trueClasses: Output, numTrue :Int  , numSampled :Int  , unique :Bool  , rangeMax :Int  , seed :Int  , seed2 :Int  )  ->(sampledCandidates: Output, trueExpectedCount: Output, sampledExpectedCount: Output){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("num_true",numTrue)
-    attr.append("num_sampled",numSampled)
-    attr.append("unique",unique)
-    attr.append("range_max",rangeMax)
-    attr.append("seed",seed)
-    attr.append("seed2",seed2)
+    attrs["num_true"] = numTrue
+    attrs["num_sampled"] = numSampled
+    attrs["unique"] = unique
+    attrs["range_max"] = rangeMax
+    attrs["seed"] = seed
+    attrs["seed2"] = seed2
 
     let opspec = OpSpec(
         OpType: "LogUniformCandidateSampler",
+        Name: "Type",
         Input: [ trueClasses],
         Attrs: attrs
     )
@@ -8221,15 +8817,17 @@ Returns the truth value of x AND y element-wise.
 
 
 
-func logicalAnd(scope:Scope,x: Output, y: Output )  ->(z: Output){
-    if scope.error.error() != nil {
-        return
+
+func logicalAnd(scope:Scope,x: Output, y: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "LogicalAnd",
+        Name: "Type",
         Input: [ x, y],
         Attrs: attrs
     )
@@ -8246,15 +8844,17 @@ Returns the truth value of NOT x element-wise.
 
 
 
-func logicalNot(scope:Scope,x: Output )  ->(y: Output){
-    if scope.error.error() != nil {
-        return
+
+func logicalNot(scope:Scope,x: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "LogicalNot",
+        Name: "Type",
         Input: [ x],
         Attrs: attrs
     )
@@ -8273,15 +8873,17 @@ Returns the truth value of x OR y element-wise.
 
 
 
-func logicalOr(scope:Scope,x: Output, y: Output )  ->(z: Output){
-    if scope.error.error() != nil {
-        return
+
+func logicalOr(scope:Scope,x: Output, y: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "LogicalOr",
+        Name: "Type",
         Input: [ x, y],
         Attrs: attrs
     )
@@ -8298,17 +8900,19 @@ Outputs all keys and values in the table.
 
 
 
+
 func lookupTableExport(scope:Scope,tableHandle: Output, tkeys :Type  , tvalues :Type  )  ->(keys: Output, values: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tkeys",tkeys)
-    attr.append("Tvalues",tvalues)
+    attrs["Tkeys"] = tkeys
+    attrs["Tvalues"] = tvalues
 
     let opspec = OpSpec(
         OpType: "LookupTableExport",
+        Name: "Type",
         Input: [ tableHandle],
         Attrs: attrs
     )
@@ -8325,17 +8929,19 @@ Outputs all keys and values in the table.
 
 
 
+
 func lookupTableExportV2(scope:Scope,tableHandle: Output, tkeys :Type  , tvalues :Type  )  ->(keys: Output, values: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tkeys",tkeys)
-    attr.append("Tvalues",tvalues)
+    attrs["Tkeys"] = tkeys
+    attrs["Tvalues"] = tvalues
 
     let opspec = OpSpec(
         OpType: "LookupTableExportV2",
+        Name: "Type",
         Input: [ tableHandle],
         Attrs: attrs
     )
@@ -8356,17 +8962,19 @@ table. It must also be of the same type as the table values.
 
 
 
-func lookupTableFind(scope:Scope,tableHandle: Output, keys: Output, defaultValue: Output, tin :Type  , tout :Type  )  ->(values: Output){
-    if scope.error.error() != nil {
-        return
+
+func lookupTableFind(scope:Scope,tableHandle: Output, keys: Output, defaultValue: Output, tin :Type  , tout :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tin",tin)
-    attr.append("Tout",tout)
+    attrs["Tin"] = tin
+    attrs["Tout"] = tout
 
     let opspec = OpSpec(
         OpType: "LookupTableFind",
+        Name: "Type",
         Input: [ tableHandle, keys, defaultValue],
         Attrs: attrs
     )
@@ -8387,17 +8995,19 @@ table. It must also be of the same type as the table values.
 
 
 
-func lookupTableFindV2(scope:Scope,tableHandle: Output, keys: Output, defaultValue: Output, tin :Type  , tout :Type  )  ->(values: Output){
-    if scope.error.error() != nil {
-        return
+
+func lookupTableFindV2(scope:Scope,tableHandle: Output, keys: Output, defaultValue: Output, tin :Type  , tout :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tin",tin)
-    attr.append("Tout",tout)
+    attrs["Tin"] = tin
+    attrs["Tout"] = tout
 
     let opspec = OpSpec(
         OpType: "LookupTableFindV2",
+        Name: "Type",
         Input: [ tableHandle, keys, defaultValue],
         Attrs: attrs
     )
@@ -8416,17 +9026,19 @@ The tensor `values` must be of the type of the table values.
 
 
 
-func lookupTableImport(scope:Scope,tableHandle: Output, keys: Output, values: Output, tin :Type  , tout :Type  )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func lookupTableImport(scope:Scope,tableHandle: Output, keys: Output, values: Output, tin :Type  , tout :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tin",tin)
-    attr.append("Tout",tout)
+    attrs["Tin"] = tin
+    attrs["Tout"] = tout
 
     let opspec = OpSpec(
         OpType: "LookupTableImport",
+        Name: "Type",
         Input: [ tableHandle, keys, values],
         Attrs: attrs
     )
@@ -8444,17 +9056,19 @@ The tensor `values` must be of the type of the table values.
 
 
 
-func lookupTableImportV2(scope:Scope,tableHandle: Output, keys: Output, values: Output, tin :Type  , tout :Type  )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func lookupTableImportV2(scope:Scope,tableHandle: Output, keys: Output, values: Output, tin :Type  , tout :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tin",tin)
-    attr.append("Tout",tout)
+    attrs["Tin"] = tin
+    attrs["Tout"] = tout
 
     let opspec = OpSpec(
         OpType: "LookupTableImportV2",
+        Name: "Type",
         Input: [ tableHandle, keys, values],
         Attrs: attrs
     )
@@ -8472,17 +9086,19 @@ The tensor `values` must be of the type of the table values.
 
 
 
-func lookupTableInsert(scope:Scope,tableHandle: Output, keys: Output, values: Output, tin :Type  , tout :Type  )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func lookupTableInsert(scope:Scope,tableHandle: Output, keys: Output, values: Output, tin :Type  , tout :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tin",tin)
-    attr.append("Tout",tout)
+    attrs["Tin"] = tin
+    attrs["Tout"] = tout
 
     let opspec = OpSpec(
         OpType: "LookupTableInsert",
+        Name: "Type",
         Input: [ tableHandle, keys, values],
         Attrs: attrs
     )
@@ -8500,17 +9116,19 @@ The tensor `values` must be of the type of the table values.
 
 
 
-func lookupTableInsertV2(scope:Scope,tableHandle: Output, keys: Output, values: Output, tin :Type  , tout :Type  )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func lookupTableInsertV2(scope:Scope,tableHandle: Output, keys: Output, values: Output, tin :Type  , tout :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tin",tin)
-    attr.append("Tout",tout)
+    attrs["Tin"] = tin
+    attrs["Tout"] = tout
 
     let opspec = OpSpec(
         OpType: "LookupTableInsertV2",
+        Name: "Type",
         Input: [ tableHandle, keys, values],
         Attrs: attrs
     )
@@ -8526,15 +9144,17 @@ Computes the number of elements in the given table.
 
 
 
-func lookupTableSize(scope:Scope,tableHandle: Output )  ->(size: Output){
-    if scope.error.error() != nil {
-        return
+
+func lookupTableSize(scope:Scope,tableHandle: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "LookupTableSize",
+        Name: "Type",
         Input: [ tableHandle],
         Attrs: attrs
     )
@@ -8551,15 +9171,17 @@ Computes the number of elements in the given table.
 
 
 
-func lookupTableSizeV2(scope:Scope,tableHandle: Output )  ->(size: Output){
-    if scope.error.error() != nil {
-        return
+
+func lookupTableSizeV2(scope:Scope,tableHandle: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "LookupTableSizeV2",
+        Name: "Type",
         Input: [ tableHandle],
         Attrs: attrs
     )
@@ -8578,15 +9200,17 @@ This operator represents the loop termination condition used by the
 
 
 
-func loopCond(scope:Scope,input: Output )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func loopCond(scope:Scope,input: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "LoopCond",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -8605,15 +9229,17 @@ iterator in `iterator` to the first element of `dataset`.
 
 
 
-func makeIterator(scope:Scope,dataset: Output, iterator: Output )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func makeIterator(scope:Scope,dataset: Output, iterator: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "MakeIterator",
+        Name: "Type",
         Input: [ dataset, iterator],
         Attrs: attrs
     )
@@ -8629,19 +9255,21 @@ Creates a dataset that applies `f` to the outputs of `input_dataset`.
 
 
 
-func mapDataset(scope:Scope,inputDataset: Output, otherArguments: Output, f :Func  , targuments :List(type)  , outputTypes :List(type)  , outputShapes :[Shape]  )  ->(handle: Output){
-    if scope.error.error() != nil {
-        return
+
+func mapDataset(scope:Scope,inputDataset: Output, otherArguments: Output, f :Func  , targuments :List(type)  , outputTypes :List(type)  , outputShapes :List(shape)  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("f",f)
-    attr.append("Targuments",targuments)
-    attr.append("output_types",outputTypes)
-    attr.append("output_shapes",outputShapes)
+    attrs["f"] = f
+    attrs["Targuments"] = targuments
+    attrs["output_types"] = outputTypes
+    attrs["output_shapes"] = outputShapes
 
     let opspec = OpSpec(
         OpType: "MapDataset",
+        Name: "Type",
         Input: [ inputDataset, otherArguments],
         Attrs: attrs
     )
@@ -8664,17 +9292,20 @@ cublas.
 
 
 
-func matMul(scope:Scope,a: Output, b: Output, transposeA :Bool  , transposeB :Bool  )  ->(product: Output){
-    if scope.error.error() != nil {
-        return
+
+func matMul(scope:Scope,a: Output, b: Output, transposeA :Bool  , transposeB :Bool  , t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("transpose_a",transposeA)
-    attr.append("transpose_b",transposeB)
+    attrs["transpose_a"] = transposeA
+    attrs["transpose_b"] = transposeB
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "MatMul",
+        Name: "Type",
         Input: [ a, b],
         Attrs: attrs
     )
@@ -8693,15 +9324,17 @@ basename portion of the pattern, not in the directory portion.
 
 
 
-func matchingFiles(scope:Scope,pattern: Output )  ->(filenames: Output){
-    if scope.error.error() != nil {
-        return
+
+func matchingFiles(scope:Scope,pattern: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "MatchingFiles",
+        Name: "Type",
         Input: [ pattern],
         Attrs: attrs
     )
@@ -8747,15 +9380,18 @@ Useful special cases:
 
 
 
-func matrixBandPart(scope:Scope,input: Output, numLower: Output, numUpper: Output )  ->(band: Output){
-    if scope.error.error() != nil {
-        return
+
+func matrixBandPart(scope:Scope,input: Output, numLower: Output, numUpper: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "MatrixBandPart",
+        Name: "Type",
         Input: [ input, numLower, numUpper],
         Attrs: attrs
     )
@@ -8775,16 +9411,18 @@ for all input submatrices `[..., :, :]`.
 
 
 
-func matrixDeterminant(scope:Scope,input: Output, t :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func matrixDeterminant(scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "MatrixDeterminant",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -8820,15 +9458,18 @@ which has shape (2, 4, 4)
 
 
 
-func matrixDiag(scope:Scope,diagonal: Output )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func matrixDiag(scope:Scope,diagonal: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "MatrixDiag",
+        Name: "Type",
         Input: [ diagonal],
         Attrs: attrs
     )
@@ -8865,16 +9506,18 @@ which has shape (2, 4)
 
 
 
-func matrixDiagPart(scope:Scope,input: Output, t :Type  )  ->(diagonal: Output){
-    if scope.error.error() != nil {
-        return
+
+func matrixDiagPart(scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "MatrixDiagPart",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -8899,16 +9542,19 @@ garbage result.
 
 
 
-func matrixInverse(scope:Scope,input: Output, adjoint :Bool  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func matrixInverse(scope:Scope,input: Output, adjoint :Bool  , t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("adjoint",adjoint)
+    attrs["adjoint"] = adjoint
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "MatrixInverse",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -8934,16 +9580,18 @@ tensor of rank `k+1` with dimensions `[I, J, K, ..., M, N]` where:
 
 
 
-func matrixSetDiag(scope:Scope,input: Output, diagonal: Output, t :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func matrixSetDiag(scope:Scope,input: Output, diagonal: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "MatrixSetDiag",
+        Name: "Type",
         Input: [ input, diagonal],
         Attrs: attrs
     )
@@ -8966,16 +9614,19 @@ If `adjoint` is `True` then each output matrix satisfies
 
 
 
-func matrixSolve(scope:Scope,matrix: Output, rhs: Output, adjoint :Bool  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func matrixSolve(scope:Scope,matrix: Output, rhs: Output, adjoint :Bool  , t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("adjoint",adjoint)
+    attrs["adjoint"] = adjoint
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "MatrixSolve",
+        Name: "Type",
         Input: [ matrix, rhs],
         Attrs: attrs
     )
@@ -9019,17 +9670,19 @@ typically 6-7 times slower than the fast path. If `fast` is `False` then
 
 
 
-func matrixSolveLs(scope:Scope,matrix: Output, rhs: Output, l2Regularizer: Output, t :Type  , fast :Bool  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func matrixSolveLs(scope:Scope,matrix: Output, rhs: Output, l2Regularizer: Output, t :Type  , fast :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("fast",fast)
+    attrs["T"] = t
+    attrs["fast"] = fast
 
     let opspec = OpSpec(
         OpType: "MatrixSolveLs",
+        Name: "Type",
         Input: [ matrix, rhs, l2Regularizer],
         Attrs: attrs
     )
@@ -9059,17 +9712,20 @@ If `adjoint` is `False` then the strictly then the  innermost matrices in
 
 
 
-func matrixTriangularSolve(scope:Scope,matrix: Output, rhs: Output, lower :Bool  , adjoint :Bool  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func matrixTriangularSolve(scope:Scope,matrix: Output, rhs: Output, lower :Bool  , adjoint :Bool  , t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("lower",lower)
-    attr.append("adjoint",adjoint)
+    attrs["lower"] = lower
+    attrs["adjoint"] = adjoint
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "MatrixTriangularSolve",
+        Name: "Type",
         Input: [ matrix, rhs],
         Attrs: attrs
     )
@@ -9090,18 +9746,20 @@ retained with length 1.
 
 
 
-func max(scope:Scope,input: Output, reductionIndices: Output, keepDims :Bool  , t :Type  , tidx :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func max(scope:Scope,input: Output, reductionIndices: Output, keepDims :Bool  , t :Type  , tidx :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("keep_dims",keepDims)
-    attr.append("T",t)
-    attr.append("Tidx",tidx)
+    attrs["keep_dims"] = keepDims
+    attrs["T"] = t
+    attrs["Tidx"] = tidx
 
     let opspec = OpSpec(
         OpType: "Max",
+        Name: "Type",
         Input: [ input, reductionIndices],
         Attrs: attrs
     )
@@ -9118,19 +9776,22 @@ Performs max pooling on the input.
 
 
 
-func maxPool(scope:Scope,input: Output, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func maxPool(scope:Scope,input: Output, t :Type  , ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("ksize",ksize)
-    attr.append("strides",strides)
-    attr.append("padding",padding)
-    attr.append("data_format",dataFormat)
+    attrs["T"] = t
+    attrs["ksize"] = ksize
+    attrs["strides"] = strides
+    attrs["padding"] = padding
+    attrs["data_format"] = dataFormat
 
     let opspec = OpSpec(
         OpType: "MaxPool",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -9147,20 +9808,22 @@ Performs 3D max pooling on the input.
 
 
 
-func maxPool3D(scope:Scope,input: Output, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  , t :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func maxPool3D(scope:Scope,input: Output, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  , t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("ksize",ksize)
-    attr.append("strides",strides)
-    attr.append("padding",padding)
-    attr.append("data_format",dataFormat)
-    attr.append("T",t)
+    attrs["ksize"] = ksize
+    attrs["strides"] = strides
+    attrs["padding"] = padding
+    attrs["data_format"] = dataFormat
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "MaxPool3D",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -9177,20 +9840,23 @@ Computes gradients of max pooling function.
 
 
 
-func maxPool3DGrad(scope:Scope,origInput: Output, origOutput: Output, grad: Output, ksize :[Int64]  , strides :[Int64]  , padding :String  , dataFormat :String  , tInput :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func maxPool3DGrad(scope:Scope,origInput: Output, origOutput: Output, grad: Output, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  , t :Type  , tInput :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("ksize",ksize)
-    attr.append("strides",strides)
-    attr.append("padding",padding)
-    attr.append("data_format",dataFormat)
-    attr.append("TInput",tInput)
+    attrs["ksize"] = ksize
+    attrs["strides"] = strides
+    attrs["padding"] = padding
+    attrs["data_format"] = dataFormat
+    attrs["T"] = t
+    attrs["TInput"] = tInput
 
     let opspec = OpSpec(
         OpType: "MaxPool3DGrad",
+        Name: "Type",
         Input: [ origInput, origOutput, grad],
         Attrs: attrs
     )
@@ -9207,20 +9873,22 @@ Computes second-order gradients of the maxpooling function.
 
 
 
-func maxPool3DGradGrad(scope:Scope,origInput: Output, origOutput: Output, grad: Output, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  , t :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func maxPool3DGradGrad(scope:Scope,origInput: Output, origOutput: Output, grad: Output, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  , t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("ksize",ksize)
-    attr.append("strides",strides)
-    attr.append("padding",padding)
-    attr.append("data_format",dataFormat)
-    attr.append("T",t)
+    attrs["ksize"] = ksize
+    attrs["strides"] = strides
+    attrs["padding"] = padding
+    attrs["data_format"] = dataFormat
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "MaxPool3DGradGrad",
+        Name: "Type",
         Input: [ origInput, origOutput, grad],
         Attrs: attrs
     )
@@ -9237,19 +9905,22 @@ Computes gradients of the maxpooling function.
 
 
 
-func maxPoolGrad(scope:Scope,origInput: Output, origOutput: Output, grad: Output, ksize :[Int64]  , strides :[Int64]  , padding :String  , dataFormat :String  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func maxPoolGrad(scope:Scope,origInput: Output, origOutput: Output, grad: Output, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  , t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("ksize",ksize)
-    attr.append("strides",strides)
-    attr.append("padding",padding)
-    attr.append("data_format",dataFormat)
+    attrs["ksize"] = ksize
+    attrs["strides"] = strides
+    attrs["padding"] = padding
+    attrs["data_format"] = dataFormat
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "MaxPoolGrad",
+        Name: "Type",
         Input: [ origInput, origOutput, grad],
         Attrs: attrs
     )
@@ -9266,20 +9937,22 @@ Computes second-order gradients of the maxpooling function.
 
 
 
-func maxPoolGradGrad(scope:Scope,origInput: Output, origOutput: Output, grad: Output, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  , t :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func maxPoolGradGrad(scope:Scope,origInput: Output, origOutput: Output, grad: Output, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  , t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("ksize",ksize)
-    attr.append("strides",strides)
-    attr.append("padding",padding)
-    attr.append("data_format",dataFormat)
-    attr.append("T",t)
+    attrs["ksize"] = ksize
+    attrs["strides"] = strides
+    attrs["padding"] = padding
+    attrs["data_format"] = dataFormat
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "MaxPoolGradGrad",
+        Name: "Type",
         Input: [ origInput, origOutput, grad],
         Attrs: attrs
     )
@@ -9296,19 +9969,22 @@ Computes second-order gradients of the maxpooling function.
 
 
 
-func maxPoolGradGradWithArgmax(scope:Scope,input: Output, grad: Output, argmax: Output, ksize :[Int64]  , strides :[Int64]  , padding :String  , targmax :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func maxPoolGradGradWithArgmax(scope:Scope,input: Output, grad: Output, argmax: Output, ksize :List(int)  , strides :List(int)  , padding :String  , targmax :Type  , t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("ksize",ksize)
-    attr.append("strides",strides)
-    attr.append("padding",padding)
-    attr.append("Targmax",targmax)
+    attrs["ksize"] = ksize
+    attrs["strides"] = strides
+    attrs["padding"] = padding
+    attrs["Targmax"] = targmax
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "MaxPoolGradGradWithArgmax",
+        Name: "Type",
         Input: [ input, grad, argmax],
         Attrs: attrs
     )
@@ -9325,20 +10001,22 @@ Computes gradients of the maxpooling function.
 
 
 
-func maxPoolGradWithArgmax(scope:Scope,input: Output, grad: Output, argmax: Output, ksize :List(int)  , strides :List(int)  , padding :String  , targmax :Type  , t :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func maxPoolGradWithArgmax(scope:Scope,input: Output, grad: Output, argmax: Output, ksize :List(int)  , strides :List(int)  , padding :String  , targmax :Type  , t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("ksize",ksize)
-    attr.append("strides",strides)
-    attr.append("padding",padding)
-    attr.append("Targmax",targmax)
-    attr.append("T",t)
+    attrs["ksize"] = ksize
+    attrs["strides"] = strides
+    attrs["padding"] = padding
+    attrs["Targmax"] = targmax
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "MaxPoolGradWithArgmax",
+        Name: "Type",
         Input: [ input, grad, argmax],
         Attrs: attrs
     )
@@ -9358,19 +10036,22 @@ The indices in `argmax` are flattened, so that a maximum value at position
 
 
 
-func maxPoolWithArgmax(scope:Scope,input: Output, ksize :[Int64]  , strides :[Int64]  , targmax :Type  , padding :String  )  ->(output: Output, argmax: Output){
-    if scope.error.error() != nil {
-        return
+
+func maxPoolWithArgmax(scope:Scope,input: Output, ksize :List(int)  , strides :List(int)  , targmax :Type  , padding :String  , t :Type  )  ->(output: Output, argmax: Output){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("ksize",ksize)
-    attr.append("strides",strides)
-    attr.append("Targmax",targmax)
-    attr.append("padding",padding)
+    attrs["ksize"] = ksize
+    attrs["strides"] = strides
+    attrs["Targmax"] = targmax
+    attrs["padding"] = padding
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "MaxPoolWithArgmax",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -9389,16 +10070,18 @@ Returns the max of x and y (i.e. x > y ? x : y) element-wise.
 
 
 
-func maximum(scope:Scope,x: Output, y: Output, t :Type  )  ->(z: Output){
-    if scope.error.error() != nil {
-        return
+
+func maximum(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Maximum",
+        Name: "Type",
         Input: [ x, y],
         Attrs: attrs
     )
@@ -9419,17 +10102,20 @@ retained with length 1.
 
 
 
-func mean(scope:Scope,input: Output, reductionIndices: Output, keepDims :Bool  , tidx :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func mean(scope:Scope,input: Output, reductionIndices: Output, keepDims :Bool  , t :Type  , tidx :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("keep_dims",keepDims)
-    attr.append("Tidx",tidx)
+    attrs["keep_dims"] = keepDims
+    attrs["T"] = t
+    attrs["Tidx"] = tidx
 
     let opspec = OpSpec(
         OpType: "Mean",
+        Name: "Type",
         Input: [ input, reductionIndices],
         Attrs: attrs
     )
@@ -9450,17 +10136,19 @@ It is usually combined with `Switch` to implement branching.
 
 
 
+
 func merge(scope:Scope,inputs: Output, t :Type  , n :Int  )  ->(output: Output, valueIndex: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("N",n)
+    attrs["T"] = t
+    attrs["N"] = n
 
     let opspec = OpSpec(
         OpType: "Merge",
+        Name: "Type",
         Input: [ inputs],
         Attrs: attrs
     )
@@ -9483,16 +10171,18 @@ in the summaries to merge use the same tag.
 
 
 
-func mergeSummary(scope:Scope,inputs: Output, n :UInt8  )  ->(summary: Output){
-    if scope.error.error() != nil {
-        return
+
+func mergeSummary(scope:Scope,inputs: Output, n :Int  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("N",n)
+    attrs["N"] = n
 
     let opspec = OpSpec(
         OpType: "MergeSummary",
+        Name: "Type",
         Input: [ inputs],
         Attrs: attrs
     )
@@ -9515,16 +10205,18 @@ user-facing temporary locations.
 
 
 
-func mergeV2Checkpoints(scope:Scope,checkpointPrefixes: Output, destinationPrefix: Output, deleteOldDirs :Bool  )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func mergeV2Checkpoints(scope:Scope,checkpointPrefixes: Output, destinationPrefix: Output, deleteOldDirs :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("delete_old_dirs",deleteOldDirs)
+    attrs["delete_old_dirs"] = deleteOldDirs
 
     let opspec = OpSpec(
         OpType: "MergeV2Checkpoints",
+        Name: "Type",
         Input: [ checkpointPrefixes, destinationPrefix],
         Attrs: attrs
     )
@@ -9546,19 +10238,21 @@ is a good resource to learn more.
 
 
 
-func mfcc(scope:Scope,spectrogram: Output, sampleRate: Output, upperFrequencyLimit :Float  , lowerFrequencyLimit :Float  , filterbankChannelCount :UInt8  , dctCoefficientCount :UInt8  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func mfcc(scope:Scope,spectrogram: Output, sampleRate: Output, upperFrequencyLimit :Float  , lowerFrequencyLimit :Float  , filterbankChannelCount :Int  , dctCoefficientCount :Int  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("upper_frequency_limit",upperFrequencyLimit)
-    attr.append("lower_frequency_limit",lowerFrequencyLimit)
-    attr.append("filterbank_channel_count",filterbankChannelCount)
-    attr.append("dct_coefficient_count",dctCoefficientCount)
+    attrs["upper_frequency_limit"] = upperFrequencyLimit
+    attrs["lower_frequency_limit"] = lowerFrequencyLimit
+    attrs["filterbank_channel_count"] = filterbankChannelCount
+    attrs["dct_coefficient_count"] = dctCoefficientCount
 
     let opspec = OpSpec(
         OpType: "Mfcc",
+        Name: "Type",
         Input: [ spectrogram, sampleRate],
         Attrs: attrs
     )
@@ -9579,17 +10273,20 @@ retained with length 1.
 
 
 
-func min(scope:Scope,input: Output, reductionIndices: Output, keepDims :Bool  , tidx :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func min(scope:Scope,input: Output, reductionIndices: Output, keepDims :Bool  , t :Type  , tidx :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("keep_dims",keepDims)
-    attr.append("Tidx",tidx)
+    attrs["keep_dims"] = keepDims
+    attrs["T"] = t
+    attrs["Tidx"] = tidx
 
     let opspec = OpSpec(
         OpType: "Min",
+        Name: "Type",
         Input: [ input, reductionIndices],
         Attrs: attrs
     )
@@ -9608,16 +10305,18 @@ Returns the min of x and y (i.e. x < y ? x : y) element-wise.
 
 
 
-func minimum(scope:Scope,x: Output, y: Output, t :Type  )  ->(z: Output){
-    if scope.error.error() != nil {
-        return
+
+func minimum(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Minimum",
+        Name: "Type",
         Input: [ x, y],
         Attrs: attrs
     )
@@ -9655,17 +10354,20 @@ pad(t, paddings) ==> [[2, 1, 1, 2, 3, 3, 2]
 
 
 
-func mirrorPad(scope:Scope,input: Output, paddings: Output, tpaddings :Type  , mode :String  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func mirrorPad(scope:Scope,input: Output, paddings: Output, t :Type  , tpaddings :Type  , mode :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tpaddings",tpaddings)
-    attr.append("mode",mode)
+    attrs["T"] = t
+    attrs["Tpaddings"] = tpaddings
+    attrs["mode"] = mode
 
     let opspec = OpSpec(
         OpType: "MirrorPad",
+        Name: "Type",
         Input: [ input, paddings],
         Attrs: attrs
     )
@@ -9696,18 +10398,20 @@ pad(t, paddings) ==> [[ 1,  5]
 
 
 
-func mirrorPadGrad(scope:Scope,input: Output, paddings: Output, t :Type  , tpaddings :Type  , mode :String  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func mirrorPadGrad(scope:Scope,input: Output, paddings: Output, t :Type  , tpaddings :Type  , mode :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("Tpaddings",tpaddings)
-    attr.append("mode",mode)
+    attrs["T"] = t
+    attrs["Tpaddings"] = tpaddings
+    attrs["mode"] = mode
 
     let opspec = OpSpec(
         OpType: "MirrorPadGrad",
+        Name: "Type",
         Input: [ input, paddings],
         Attrs: attrs
     )
@@ -9728,15 +10432,18 @@ y + truncate_mod(x, y) = x`.
 
 
 
-func mod(scope:Scope,x: Output, y: Output )  ->(z: Output){
-    if scope.error.error() != nil {
-        return
+
+func mod(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Mod",
+        Name: "Type",
         Input: [ x, y],
         Attrs: attrs
     )
@@ -9755,16 +10462,18 @@ Returns x * y element-wise.
 
 
 
-func mul(scope:Scope,x: Output, y: Output, t :Type  )  ->(z: Output){
-    if scope.error.error() != nil {
-        return
+
+func mul(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Mul",
+        Name: "Type",
         Input: [ x, y],
         Attrs: attrs
     )
@@ -9781,17 +10490,20 @@ Draws samples from a multinomial distribution.
 
 
 
-func multinomial(scope:Scope,logits: Output, numSamples: Output, seed :UInt8  , seed2 :UInt8  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func multinomial(scope:Scope,logits: Output, numSamples: Output, seed :Int  , seed2 :Int  , t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("seed",seed)
-    attr.append("seed2",seed2)
+    attrs["seed"] = seed
+    attrs["seed2"] = seed2
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Multinomial",
+        Name: "Type",
         Input: [ logits, numSamples],
         Attrs: attrs
     )
@@ -9813,23 +10525,25 @@ the insert operations. It does not support the initialization operation.
 
 
 
-func mutableDenseHashTable(scope:Scope,emptyKey: Output, container :String  , sharedName :String  , useNodeNameSharing :Bool  , keyDtype :Type  , valueDtype :Type  , valueShape :Shape  , initialNumBuckets :Int  , maxLoadFactor :Float  )  ->(tableHandle: Output){
-    if scope.error.error() != nil {
-        return
+
+func mutableDenseHashTable(scope:Scope,emptyKey: Output, container :String  , sharedName :String  , useNodeNameSharing :Bool  , keyDtype :Type  , valueDtype :Type  , valueShape :Shape  , initialNumBuckets :Int  , maxLoadFactor :Float  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("container",container)
-    attr.append("shared_name",sharedName)
-    attr.append("use_node_name_sharing",useNodeNameSharing)
-    attr.append("key_dtype",keyDtype)
-    attr.append("value_dtype",valueDtype)
-    attr.append("value_shape",valueShape)
-    attr.append("initial_num_buckets",initialNumBuckets)
-    attr.append("max_load_factor",maxLoadFactor)
+    attrs["container"] = container
+    attrs["shared_name"] = sharedName
+    attrs["use_node_name_sharing"] = useNodeNameSharing
+    attrs["key_dtype"] = keyDtype
+    attrs["value_dtype"] = valueDtype
+    attrs["value_shape"] = valueShape
+    attrs["initial_num_buckets"] = initialNumBuckets
+    attrs["max_load_factor"] = maxLoadFactor
 
     let opspec = OpSpec(
         OpType: "MutableDenseHashTable",
+        Name: "Type",
         Input: [ emptyKey],
         Attrs: attrs
     )
@@ -9851,23 +10565,25 @@ the insert operations. It does not support the initialization operation.
 
 
 
-func mutableDenseHashTableV2(scope:Scope,emptyKey: Output, container :String  , sharedName :String  , useNodeNameSharing :Bool  , keyDtype :Type  , valueDtype :Type  , valueShape :Shape  , initialNumBuckets :UInt8  , maxLoadFactor :Float  )  ->(tableHandle: Output){
-    if scope.error.error() != nil {
-        return
+
+func mutableDenseHashTableV2(scope:Scope,emptyKey: Output, container :String  , sharedName :String  , useNodeNameSharing :Bool  , keyDtype :Type  , valueDtype :Type  , valueShape :Shape  , initialNumBuckets :Int  , maxLoadFactor :Float  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("container",container)
-    attr.append("shared_name",sharedName)
-    attr.append("use_node_name_sharing",useNodeNameSharing)
-    attr.append("key_dtype",keyDtype)
-    attr.append("value_dtype",valueDtype)
-    attr.append("value_shape",valueShape)
-    attr.append("initial_num_buckets",initialNumBuckets)
-    attr.append("max_load_factor",maxLoadFactor)
+    attrs["container"] = container
+    attrs["shared_name"] = sharedName
+    attrs["use_node_name_sharing"] = useNodeNameSharing
+    attrs["key_dtype"] = keyDtype
+    attrs["value_dtype"] = valueDtype
+    attrs["value_shape"] = valueShape
+    attrs["initial_num_buckets"] = initialNumBuckets
+    attrs["max_load_factor"] = maxLoadFactor
 
     let opspec = OpSpec(
         OpType: "MutableDenseHashTableV2",
+        Name: "Type",
         Input: [ emptyKey],
         Attrs: attrs
     )
@@ -9887,20 +10603,22 @@ the insert operations. It does not support the initialization operation.
 
 
 
-func mutableHashTable(scope:Scope container :String  , sharedName :String  , useNodeNameSharing :Bool  , keyDtype :Type  , valueDtype :Type  )  ->(tableHandle: Output){
-    if scope.error.error() != nil {
-        return
+
+func mutableHashTable(scope:Scope, container :String  , sharedName :String  , useNodeNameSharing :Bool  , keyDtype :Type  , valueDtype :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("container",container)
-    attr.append("shared_name",sharedName)
-    attr.append("use_node_name_sharing",useNodeNameSharing)
-    attr.append("key_dtype",keyDtype)
-    attr.append("value_dtype",valueDtype)
+    attrs["container"] = container
+    attrs["shared_name"] = sharedName
+    attrs["use_node_name_sharing"] = useNodeNameSharing
+    attrs["key_dtype"] = keyDtype
+    attrs["value_dtype"] = valueDtype
 
     let opspec = OpSpec(
         OpType: "MutableHashTable",
+        Name: "Type",
         Input: [ ],
         Attrs: attrs
     )
@@ -9920,21 +10638,23 @@ the insert operations. It does not support the initialization operation.
 
 
 
-func mutableHashTableOfTensors(scope:Scope container :String  , sharedName :String  , useNodeNameSharing :Bool  , keyDtype :Type  , valueDtype :Type  , valueShape :Shape  )  ->(tableHandle: Output){
-    if scope.error.error() != nil {
-        return
+
+func mutableHashTableOfTensors(scope:Scope, container :String  , sharedName :String  , useNodeNameSharing :Bool  , keyDtype :Type  , valueDtype :Type  , valueShape :Shape  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("container",container)
-    attr.append("shared_name",sharedName)
-    attr.append("use_node_name_sharing",useNodeNameSharing)
-    attr.append("key_dtype",keyDtype)
-    attr.append("value_dtype",valueDtype)
-    attr.append("value_shape",valueShape)
+    attrs["container"] = container
+    attrs["shared_name"] = sharedName
+    attrs["use_node_name_sharing"] = useNodeNameSharing
+    attrs["key_dtype"] = keyDtype
+    attrs["value_dtype"] = valueDtype
+    attrs["value_shape"] = valueShape
 
     let opspec = OpSpec(
         OpType: "MutableHashTableOfTensors",
+        Name: "Type",
         Input: [ ],
         Attrs: attrs
     )
@@ -9954,21 +10674,23 @@ the insert operations. It does not support the initialization operation.
 
 
 
-func mutableHashTableOfTensorsV2(scope:Scope container :String  , sharedName :String  , useNodeNameSharing :Bool  , keyDtype :Type  , valueDtype :Type  , valueShape :Shape  )  ->(tableHandle: Output){
-    if scope.error.error() != nil {
-        return
+
+func mutableHashTableOfTensorsV2(scope:Scope, container :String  , sharedName :String  , useNodeNameSharing :Bool  , keyDtype :Type  , valueDtype :Type  , valueShape :Shape  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("container",container)
-    attr.append("shared_name",sharedName)
-    attr.append("use_node_name_sharing",useNodeNameSharing)
-    attr.append("key_dtype",keyDtype)
-    attr.append("value_dtype",valueDtype)
-    attr.append("value_shape",valueShape)
+    attrs["container"] = container
+    attrs["shared_name"] = sharedName
+    attrs["use_node_name_sharing"] = useNodeNameSharing
+    attrs["key_dtype"] = keyDtype
+    attrs["value_dtype"] = valueDtype
+    attrs["value_shape"] = valueShape
 
     let opspec = OpSpec(
         OpType: "MutableHashTableOfTensorsV2",
+        Name: "Type",
         Input: [ ],
         Attrs: attrs
     )
@@ -9988,20 +10710,22 @@ the insert operations. It does not support the initialization operation.
 
 
 
-func mutableHashTableV2(scope:Scope container :String  , sharedName :String  , useNodeNameSharing :Bool  , keyDtype :Type  , valueDtype :Type  )  ->(tableHandle: Output){
-    if scope.error.error() != nil {
-        return
+
+func mutableHashTableV2(scope:Scope, container :String  , sharedName :String  , useNodeNameSharing :Bool  , keyDtype :Type  , valueDtype :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("container",container)
-    attr.append("shared_name",sharedName)
-    attr.append("use_node_name_sharing",useNodeNameSharing)
-    attr.append("key_dtype",keyDtype)
-    attr.append("value_dtype",valueDtype)
+    attrs["container"] = container
+    attrs["shared_name"] = sharedName
+    attrs["use_node_name_sharing"] = useNodeNameSharing
+    attrs["key_dtype"] = keyDtype
+    attrs["value_dtype"] = valueDtype
 
     let opspec = OpSpec(
         OpType: "MutableHashTableV2",
+        Name: "Type",
         Input: [ ],
         Attrs: attrs
     )
@@ -10019,15 +10743,18 @@ I.e., \\(y = -x\\).
 
 
 
-func neg(scope:Scope,x: Output )  ->(y: Output){
-    if scope.error.error() != nil {
-        return
+
+func neg(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Neg",
+        Name: "Type",
         Input: [ x],
         Attrs: attrs
     )
@@ -10044,17 +10771,19 @@ Training via negative sampling.
 
 
 
-func negTrain(scope:Scope,wIn: Output, wOut: Output, examples: Output, labels: Output, lr: Output, vocabCount :List(int)  , numNegativeSamples :Int  )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func negTrain(scope:Scope,wIn: Output, wOut: Output, examples: Output, labels: Output, lr: Output, vocabCount :List(int)  , numNegativeSamples :Int  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("vocab_count",vocabCount)
-    attr.append("num_negative_samples",numNegativeSamples)
+    attrs["vocab_count"] = vocabCount
+    attrs["num_negative_samples"] = numNegativeSamples
 
     let opspec = OpSpec(
         OpType: "NegTrain",
+        Name: "Type",
         Input: [ wIn, wOut, examples, labels, lr],
         Attrs: attrs
     )
@@ -10070,15 +10799,18 @@ Makes its input available to the next iteration.
 
 
 
-func nextIteration(scope:Scope,data: Output )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func nextIteration(scope:Scope,data: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "NextIteration",
+        Name: "Type",
         Input: [ data],
         Attrs: attrs
     )
@@ -10095,15 +10827,17 @@ Does nothing. Only useful as a placeholder for control edges.
 
 
 
-func noOp(scope:Scope )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func noOp(scope:Scope )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "NoOp",
+        Name: "Type",
         Input: [ ],
         Attrs: attrs
     )
@@ -10135,16 +10869,18 @@ using the `tf.gather operation`.  For example:
 
 
 
-func nonMaxSuppression(scope:Scope,boxes: Output, scores: Output, maxOutputSize: Output, iouThreshold :Float  )  ->(selectedIndices: Output){
-    if scope.error.error() != nil {
-        return
+
+func nonMaxSuppression(scope:Scope,boxes: Output, scores: Output, maxOutputSize: Output, iouThreshold :Float  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("iou_threshold",iouThreshold)
+    attrs["iou_threshold"] = iouThreshold
 
     let opspec = OpSpec(
         OpType: "NonMaxSuppression",
+        Name: "Type",
         Input: [ boxes, scores, maxOutputSize],
         Attrs: attrs
     )
@@ -10177,15 +10913,17 @@ using the `tf.gather operation`.  For example:
 
 
 
-func nonMaxSuppressionV2(scope:Scope,boxes: Output, scores: Output, maxOutputSize: Output, iouThreshold: Output )  ->(selectedIndices: Output){
-    if scope.error.error() != nil {
-        return
+
+func nonMaxSuppressionV2(scope:Scope,boxes: Output, scores: Output, maxOutputSize: Output, iouThreshold: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "NonMaxSuppressionV2",
+        Name: "Type",
         Input: [ boxes, scores, maxOutputSize, iouThreshold],
         Attrs: attrs
     )
@@ -10204,15 +10942,18 @@ Returns the truth value of (x != y) element-wise.
 
 
 
-func notEqual(scope:Scope,x: Output, y: Output )  ->(z: Output){
-    if scope.error.error() != nil {
-        return
+
+func notEqual(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "NotEqual",
+        Name: "Type",
         Input: [ x, y],
         Attrs: attrs
     )
@@ -10300,18 +11041,20 @@ Then output is `[2 x 2 x 3]`:
 
 
 
-func oneHot(scope:Scope,indices: Output, depth: Output, onValue: Output, offValue: Output, axis :Int  , t :Type  , ti :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func oneHot(scope:Scope,indices: Output, depth: Output, onValue: Output, offValue: Output, axis :Int  , t :Type  , ti :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("axis",axis)
-    attr.append("T",t)
-    attr.append("TI",ti)
+    attrs["axis"] = axis
+    attrs["T"] = t
+    attrs["TI"] = ti
 
     let opspec = OpSpec(
         OpType: "OneHot",
+        Name: "Type",
         Input: [ indices, depth, onValue, offValue],
         Attrs: attrs
     )
@@ -10342,20 +11085,22 @@ times by rerunning "MakeIterator".
 
 
 
-func oneShotIterator(scope:Scope datasetFactory :Func  , outputTypes :List(type)  , outputShapes :[Shape]  , container :String  , sharedName :String  )  ->(handle: Output){
-    if scope.error.error() != nil {
-        return
+
+func oneShotIterator(scope:Scope, datasetFactory :Func  , outputTypes :List(type)  , outputShapes :List(shape)  , container :String  , sharedName :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("dataset_factory",datasetFactory)
-    attr.append("output_types",outputTypes)
-    attr.append("output_shapes",outputShapes)
-    attr.append("container",container)
-    attr.append("shared_name",sharedName)
+    attrs["dataset_factory"] = datasetFactory
+    attrs["output_types"] = outputTypes
+    attrs["output_shapes"] = outputShapes
+    attrs["container"] = container
+    attrs["shared_name"] = sharedName
 
     let opspec = OpSpec(
         OpType: "OneShotIterator",
+        Name: "Type",
         Input: [ ],
         Attrs: attrs
     )
@@ -10372,15 +11117,18 @@ Returns a tensor of ones with the same shape and type as x.
 
 
 
-func onesLike(scope:Scope,x: Output )  ->(y: Output){
-    if scope.error.error() != nil {
-        return
+
+func onesLike(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "OnesLike",
+        Name: "Type",
         Input: [ x],
         Attrs: attrs
     )
@@ -10412,18 +11160,20 @@ This is the opposite of `unpack`.
 
 
 
-func pack(scope:Scope,values: Output, n :Int  , t :Type  , axis :Int  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func pack(scope:Scope,values: Output, n :Int  , t :Type  , axis :Int  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("N",n)
-    attr.append("T",t)
-    attr.append("axis",axis)
+    attrs["N"] = n
+    attrs["T"] = t
+    attrs["axis"] = axis
 
     let opspec = OpSpec(
         OpType: "Pack",
+        Name: "Type",
         Input: [ values],
         Attrs: attrs
     )
@@ -10458,16 +11208,19 @@ pad(t, paddings) ==> [[0, 0, 0, 0, 0, 0]
 
 
 
-func pad(scope:Scope,input: Output, paddings: Output, tpaddings :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func pad(scope:Scope,input: Output, paddings: Output, t :Type  , tpaddings :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tpaddings",tpaddings)
+    attrs["T"] = t
+    attrs["Tpaddings"] = tpaddings
 
     let opspec = OpSpec(
         OpType: "Pad",
+        Name: "Type",
         Input: [ input, paddings],
         Attrs: attrs
     )
@@ -10484,18 +11237,20 @@ Creates a dataset that batches and pads `batch_size` elements from the input.
 
 
 
-func paddedBatchDataset(scope:Scope,inputDataset: Output, batchSize: Output, paddedShapes: Output, paddingValues: Output, toutputTypes :List(type)  , outputShapes :List(shape)  , n :Int  )  ->(handle: Output){
-    if scope.error.error() != nil {
-        return
+
+func paddedBatchDataset(scope:Scope,inputDataset: Output, batchSize: Output, paddedShapes: Output, paddingValues: Output, toutputTypes :List(type)  , outputShapes :List(shape)  , n :Int  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Toutput_types",toutputTypes)
-    attr.append("output_shapes",outputShapes)
-    attr.append("N",n)
+    attrs["Toutput_types"] = toutputTypes
+    attrs["output_shapes"] = outputShapes
+    attrs["N"] = n
 
     let opspec = OpSpec(
         OpType: "PaddedBatchDataset",
+        Name: "Type",
         Input: [ inputDataset, batchSize, paddedShapes, paddingValues],
         Attrs: attrs
     )
@@ -10515,20 +11270,22 @@ size of any given element in the minibatch.  See below for details.
 
 
 
-func paddingFIFOQueue(scope:Scope componentTypes :List(type)  , shapes :[Shape]  , capacity :UInt8  , container :String  , sharedName :String  )  ->(handle: Output){
-    if scope.error.error() != nil {
-        return
+
+func paddingFIFOQueue(scope:Scope, componentTypes :List(type)  , shapes :List(shape)  , capacity :Int  , container :String  , sharedName :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("component_types",componentTypes)
-    attr.append("shapes",shapes)
-    attr.append("capacity",capacity)
-    attr.append("container",container)
-    attr.append("shared_name",sharedName)
+    attrs["component_types"] = componentTypes
+    attrs["shapes"] = shapes
+    attrs["capacity"] = capacity
+    attrs["container"] = container
+    attrs["shared_name"] = sharedName
 
     let opspec = OpSpec(
         OpType: "PaddingFIFOQueue",
+        Name: "Type",
         Input: [ ],
         Attrs: attrs
     )
@@ -10548,20 +11305,22 @@ size of any given element in the minibatch.  See below for details.
 
 
 
-func paddingFIFOQueueV2(scope:Scope componentTypes :List(type)  , shapes :[Shape]  , capacity :UInt8  , container :String  , sharedName :String  )  ->(handle: Output){
-    if scope.error.error() != nil {
-        return
+
+func paddingFIFOQueueV2(scope:Scope, componentTypes :List(type)  , shapes :List(shape)  , capacity :Int  , container :String  , sharedName :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("component_types",componentTypes)
-    attr.append("shapes",shapes)
-    attr.append("capacity",capacity)
-    attr.append("container",container)
-    attr.append("shared_name",sharedName)
+    attrs["component_types"] = componentTypes
+    attrs["shapes"] = shapes
+    attrs["capacity"] = capacity
+    attrs["container"] = container
+    attrs["shared_name"] = sharedName
 
     let opspec = OpSpec(
         OpType: "PaddingFIFOQueueV2",
+        Name: "Type",
         Input: [ ],
         Attrs: attrs
     )
@@ -10591,17 +11350,20 @@ some situations this can provide a performance benefit.
 
 
 
-func parallelConcat(scope:Scope,values: Output, n :UInt8  , shape :Shape  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func parallelConcat(scope:Scope,values: Output, n :Int  , t :Type  , shape :Shape  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("N",n)
-    attr.append("shape",shape)
+    attrs["N"] = n
+    attrs["T"] = t
+    attrs["shape"] = shape
 
     let opspec = OpSpec(
         OpType: "ParallelConcat",
+        Name: "Type",
         Input: [ values],
         Attrs: attrs
     )
@@ -10621,19 +11383,21 @@ in parallel.
 
 
 
-func parallelMapDataset(scope:Scope,inputDataset: Output, otherArguments: Output, numThreads: Output, outputBufferSize: Output, f :Func  , targuments :List(type)  , outputTypes :List(type)  , outputShapes :List(shape)  )  ->(handle: Output){
-    if scope.error.error() != nil {
-        return
+
+func parallelMapDataset(scope:Scope,inputDataset: Output, otherArguments: Output, numThreads: Output, outputBufferSize: Output, f :Func  , targuments :List(type)  , outputTypes :List(type)  , outputShapes :List(shape)  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("f",f)
-    attr.append("Targuments",targuments)
-    attr.append("output_types",outputTypes)
-    attr.append("output_shapes",outputShapes)
+    attrs["f"] = f
+    attrs["Targuments"] = targuments
+    attrs["output_types"] = outputTypes
+    attrs["output_shapes"] = outputShapes
 
     let opspec = OpSpec(
         OpType: "ParallelMapDataset",
+        Name: "Type",
         Input: [ inputDataset, otherArguments, numThreads, outputBufferSize],
         Attrs: attrs
     )
@@ -10652,18 +11416,21 @@ stores the parameters for each batch.
 
 
 
-func parameterizedTruncatedNormal(scope:Scope,shape: Output, means: Output, stdevs: Output, minvals: Output, maxvals: Output, seed :UInt8  , seed2 :UInt8  , dtype :[Any]  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func parameterizedTruncatedNormal(scope:Scope,shape: Output, means: Output, stdevs: Output, minvals: Output, maxvals: Output, seed :Int  , seed2 :Int  , dtype :Type  , t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("seed",seed)
-    attr.append("seed2",seed2)
-    attr.append("dtype",dtype)
+    attrs["seed"] = seed
+    attrs["seed2"] = seed2
+    attrs["dtype"] = dtype
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "ParameterizedTruncatedNormal",
+        Name: "Type",
         Input: [ shape, means, stdevs, minvals, maxvals],
         Attrs: attrs
     )
@@ -10680,20 +11447,22 @@ Transforms a vector of brain.Example protos (as strings) into typed tensors.
 
 
 
+
 func parseExample(scope:Scope,serialized: Output, names: Output, sparseKeys: Output, denseKeys: Output, denseDefaults: Output, nsparse :Int  , ndense :Int  , sparseTypes :List(type)  , tdense :List(type)  , denseShapes :List(shape)  )  ->(sparseIndices: Output, sparseValues: Output, sparseShapes: Output, denseValues: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Nsparse",nsparse)
-    attr.append("Ndense",ndense)
-    attr.append("sparse_types",sparseTypes)
-    attr.append("Tdense",tdense)
-    attr.append("dense_shapes",denseShapes)
+    attrs["Nsparse"] = nsparse
+    attrs["Ndense"] = ndense
+    attrs["sparse_types"] = sparseTypes
+    attrs["Tdense"] = tdense
+    attrs["dense_shapes"] = denseShapes
 
     let opspec = OpSpec(
         OpType: "ParseExample",
+        Name: "Type",
         Input: [ serialized, names, sparseKeys, denseKeys, denseDefaults],
         Attrs: attrs
     )
@@ -10710,25 +11479,27 @@ Transforms a scalar brain.SequenceExample proto (as strings) into typed tensors.
 
 
 
-func parseSingleSequenceExample(scope:Scope,serialized: Output, featureListDenseMissingAssumedEmpty: Output, contextSparseKeys: Output, contextDenseKeys: Output, featureListSparseKeys: Output, featureListDenseKeys: Output, contextDenseDefaults: Output, debugName: Output, ncontextSparse :UInt8  , ncontextDense :UInt8  , nfeatureListSparse :UInt8  , nfeatureListDense :UInt8  , contextSparseTypes :List(type)  , tcontextDense :List(type)  , featureListDenseTypes :List(type)  , contextDenseShapes :[Shape]  , featureListSparseTypes :List(type)  , featureListDenseShapes :[Shape]  )  ->(contextSparseIndices: Output, contextSparseValues: Output, contextSparseShapes: Output, contextDenseValues: Output, featureListSparseIndices: Output, featureListSparseValues: Output, featureListSparseShapes: Output, featureListDenseValues: Output){
-    if scope.error.error() != nil {
-        return
+
+func parseSingleSequenceExample(scope:Scope,serialized: Output, featureListDenseMissingAssumedEmpty: Output, contextSparseKeys: Output, contextDenseKeys: Output, featureListSparseKeys: Output, featureListDenseKeys: Output, contextDenseDefaults: Output, debugName: Output, ncontextSparse :Int  , ncontextDense :Int  , nfeatureListSparse :Int  , nfeatureListDense :Int  , contextSparseTypes :List(type)  , tcontextDense :List(type)  , featureListDenseTypes :List(type)  , contextDenseShapes :List(shape)  , featureListSparseTypes :List(type)  , featureListDenseShapes :List(shape)  )  ->(contextSparseIndices: Output, contextSparseValues: Output, contextSparseShapes: Output, contextDenseValues: Output, featureListSparseIndices: Output, featureListSparseValues: Output, featureListSparseShapes: Output, featureListDenseValues: Output){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Ncontext_sparse",ncontextSparse)
-    attr.append("Ncontext_dense",ncontextDense)
-    attr.append("Nfeature_list_sparse",nfeatureListSparse)
-    attr.append("Nfeature_list_dense",nfeatureListDense)
-    attr.append("context_sparse_types",contextSparseTypes)
-    attr.append("Tcontext_dense",tcontextDense)
-    attr.append("feature_list_dense_types",featureListDenseTypes)
-    attr.append("context_dense_shapes",contextDenseShapes)
-    attr.append("feature_list_sparse_types",featureListSparseTypes)
-    attr.append("feature_list_dense_shapes",featureListDenseShapes)
+    attrs["Ncontext_sparse"] = ncontextSparse
+    attrs["Ncontext_dense"] = ncontextDense
+    attrs["Nfeature_list_sparse"] = nfeatureListSparse
+    attrs["Nfeature_list_dense"] = nfeatureListDense
+    attrs["context_sparse_types"] = contextSparseTypes
+    attrs["Tcontext_dense"] = tcontextDense
+    attrs["feature_list_dense_types"] = featureListDenseTypes
+    attrs["context_dense_shapes"] = contextDenseShapes
+    attrs["feature_list_sparse_types"] = featureListSparseTypes
+    attrs["feature_list_dense_shapes"] = featureListDenseShapes
 
     let opspec = OpSpec(
         OpType: "ParseSingleSequenceExample",
+        Name: "Type",
         Input: [ serialized, featureListDenseMissingAssumedEmpty, contextSparseKeys, contextDenseKeys, featureListSparseKeys, featureListDenseKeys, contextDenseDefaults, debugName],
         Attrs: attrs
     )
@@ -10745,16 +11516,18 @@ Transforms a serialized tensorflow.TensorProto proto into a Tensor.
 
 
 
-func parseTensor(scope:Scope,serialized: Output, outType :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func parseTensor(scope:Scope,serialized: Output, outType :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("out_type",outType)
+    attrs["out_type"] = outType
 
     let opspec = OpSpec(
         OpType: "ParseTensor",
+        Name: "Type",
         Input: [ serialized],
         Attrs: attrs
     )
@@ -10774,17 +11547,19 @@ provide attrs that enable the fed value to be checked at runtime.
 
 
 
-func placeholder(scope:Scope dtype :Type  , shape :Shape  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func placeholder(scope:Scope, dtype :Type  , shape :Shape  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("dtype",dtype)
-    attr.append("shape",shape)
+    attrs["dtype"] = dtype
+    attrs["shape"] = shape
 
     let opspec = OpSpec(
         OpType: "Placeholder",
+        Name: "Type",
         Input: [ ],
         Attrs: attrs
     )
@@ -10804,17 +11579,19 @@ provide attrs that enable the fed value to be checked at runtime.
 
 
 
-func placeholderV2(scope:Scope dtype :Type  , shape :Shape  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func placeholderV2(scope:Scope, dtype :Type  , shape :Shape  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("dtype",dtype)
-    attr.append("shape",shape)
+    attrs["dtype"] = dtype
+    attrs["shape"] = shape
 
     let opspec = OpSpec(
         OpType: "PlaceholderV2",
+        Name: "Type",
         Input: [ ],
         Attrs: attrs
     )
@@ -10831,17 +11608,19 @@ A placeholder op that passes through `input` when its output is not fed.
 
 
 
-func placeholderWithDefault(scope:Scope,input: Output, dtype :Type  , shape :Shape  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func placeholderWithDefault(scope:Scope,input: Output, dtype :Type  , shape :Shape  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("dtype",dtype)
-    attr.append("shape",shape)
+    attrs["dtype"] = dtype
+    attrs["shape"] = shape
 
     let opspec = OpSpec(
         OpType: "PlaceholderWithDefault",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -10861,15 +11640,18 @@ where \\(\psi(x)\\) is the digamma function.
 
 
 
-func polygamma(scope:Scope,a: Output, x: Output )  ->(z: Output){
-    if scope.error.error() != nil {
-        return
+
+func polygamma(scope:Scope,a: Output, x: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Polygamma",
+        Name: "Type",
         Input: [ a, x],
         Attrs: attrs
     )
@@ -10893,16 +11675,18 @@ tf.pow(x, y) ==> [[256, 65536], [9, 27]]
 
 
 
-func pow(scope:Scope,x: Output, y: Output, t :Type  )  ->(z: Output){
-    if scope.error.error() != nil {
-        return
+
+func pow(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Pow",
+        Name: "Type",
         Input: [ x, y],
         Attrs: attrs
     )
@@ -10925,16 +11709,19 @@ gradients in some corner cases.
 
 
 
-func preventGradient(scope:Scope,input: Output, message :String  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func preventGradient(scope:Scope,input: Output, t :Type  , message :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("message",message)
+    attrs["T"] = t
+    attrs["message"] = message
 
     let opspec = OpSpec(
         OpType: "PreventGradient",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -10952,20 +11739,22 @@ Passes `input` through to `output` and prints `data` when evaluating.
 
 
 
-func print(scope:Scope,input: Output, data: Output, t :Type  , u :List(type)  , message :String  , firstN :Int  , summarize :Int  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func print(scope:Scope,input: Output, data: Output, t :Type  , u :List(type)  , message :String  , firstN :Int  , summarize :Int  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("U",u)
-    attr.append("message",message)
-    attr.append("first_n",firstN)
-    attr.append("summarize",summarize)
+    attrs["T"] = t
+    attrs["U"] = u
+    attrs["message"] = message
+    attrs["first_n"] = firstN
+    attrs["summarize"] = summarize
 
     let opspec = OpSpec(
         OpType: "Print",
+        Name: "Type",
         Input: [ input, data],
         Attrs: attrs
     )
@@ -10987,20 +11776,22 @@ entry in their input (resp. output) lists.
 
 
 
-func priorityQueue(scope:Scope componentTypes :List(type)  , shapes :[Shape]  , capacity :UInt8  , container :String  , sharedName :String  )  ->(handle: Output){
-    if scope.error.error() != nil {
-        return
+
+func priorityQueue(scope:Scope, componentTypes :List(type)  , shapes :List(shape)  , capacity :Int  , container :String  , sharedName :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("component_types",componentTypes)
-    attr.append("shapes",shapes)
-    attr.append("capacity",capacity)
-    attr.append("container",container)
-    attr.append("shared_name",sharedName)
+    attrs["component_types"] = componentTypes
+    attrs["shapes"] = shapes
+    attrs["capacity"] = capacity
+    attrs["container"] = container
+    attrs["shared_name"] = sharedName
 
     let opspec = OpSpec(
         OpType: "PriorityQueue",
+        Name: "Type",
         Input: [ ],
         Attrs: attrs
     )
@@ -11022,20 +11813,22 @@ entry in their input (resp. output) lists.
 
 
 
-func priorityQueueV2(scope:Scope componentTypes :List(type)  , shapes :[Shape]  , capacity :UInt8  , container :String  , sharedName :String  )  ->(handle: Output){
-    if scope.error.error() != nil {
-        return
+
+func priorityQueueV2(scope:Scope, componentTypes :List(type)  , shapes :List(shape)  , capacity :Int  , container :String  , sharedName :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("component_types",componentTypes)
-    attr.append("shapes",shapes)
-    attr.append("capacity",capacity)
-    attr.append("container",container)
-    attr.append("shared_name",sharedName)
+    attrs["component_types"] = componentTypes
+    attrs["shapes"] = shapes
+    attrs["capacity"] = capacity
+    attrs["container"] = container
+    attrs["shared_name"] = sharedName
 
     let opspec = OpSpec(
         OpType: "PriorityQueueV2",
+        Name: "Type",
         Input: [ ],
         Attrs: attrs
     )
@@ -11056,17 +11849,20 @@ retained with length 1.
 
 
 
-func prod(scope:Scope,input: Output, reductionIndices: Output, keepDims :Bool  , tidx :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func prod(scope:Scope,input: Output, reductionIndices: Output, keepDims :Bool  , t :Type  , tidx :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("keep_dims",keepDims)
-    attr.append("Tidx",tidx)
+    attrs["keep_dims"] = keepDims
+    attrs["T"] = t
+    attrs["Tidx"] = tidx
 
     let opspec = OpSpec(
         OpType: "Prod",
+        Name: "Type",
         Input: [ input, reductionIndices],
         Attrs: attrs
     )
@@ -11085,18 +11881,20 @@ PyFuncStateless.
 
 
 
-func pyFunc(scope:Scope,input: Output, token :String  , tin :List(type)  , tout :List(type)  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func pyFunc(scope:Scope,input: Output, token :String  , tin :List(type)  , tout :List(type)  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("token",token)
-    attr.append("Tin",tin)
-    attr.append("Tout",tout)
+    attrs["token"] = token
+    attrs["Tin"] = tin
+    attrs["Tout"] = tout
 
     let opspec = OpSpec(
         OpType: "PyFunc",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -11113,18 +11911,20 @@ A stateless version of PyFunc.
 
 
 
-func pyFuncStateless(scope:Scope,input: Output, token :String  , tin :List(type)  , tout :List(type)  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func pyFuncStateless(scope:Scope,input: Output, token :String  , tin :List(type)  , tout :List(type)  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("token",token)
-    attr.append("Tin",tin)
-    attr.append("Tout",tout)
+    attrs["token"] = token
+    attrs["Tin"] = tin
+    attrs["Tout"] = tout
 
     let opspec = OpSpec(
         OpType: "PyFuncStateless",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -11150,16 +11950,19 @@ q_full, r_full = qr(a, full_matrices=True)
 
 
 
-func qr(scope:Scope,input: Output, fullMatrices :Bool  )  ->(q: Output, r: Output){
-    if scope.error.error() != nil {
-        return
+
+func qr(scope:Scope,input: Output, fullMatrices :Bool  , t :Type  )  ->(q: Output, r: Output){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("full_matrices",fullMatrices)
+    attrs["full_matrices"] = fullMatrices
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Qr",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -11176,21 +11979,23 @@ Use QuantizeAndDequantizeV2 instead.
 
 
 
-func quantizeAndDequantize(scope:Scope,input: Output, signedInput :Bool  , numBits :Int  , rangeGiven :Bool  , inputMin :Float  , inputMax :Float  , t :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func quantizeAndDequantize(scope:Scope,input: Output, signedInput :Bool  , numBits :Int  , rangeGiven :Bool  , inputMin :Float  , inputMax :Float  , t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("signed_input",signedInput)
-    attr.append("num_bits",numBits)
-    attr.append("range_given",rangeGiven)
-    attr.append("input_min",inputMin)
-    attr.append("input_max",inputMax)
-    attr.append("T",t)
+    attrs["signed_input"] = signedInput
+    attrs["num_bits"] = numBits
+    attrs["range_given"] = rangeGiven
+    attrs["input_min"] = inputMin
+    attrs["input_max"] = inputMax
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "QuantizeAndDequantize",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -11240,18 +12045,21 @@ Given the vector {-1, -0.5, 0, 0.3}, this is quantized to
 
 
 
-func quantizeAndDequantizeV2(scope:Scope,input: Output, inputMin: Output, inputMax: Output, signedInput :Bool  , numBits :UInt8  , rangeGiven :Bool  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func quantizeAndDequantizeV2(scope:Scope,input: Output, inputMin: Output, inputMax: Output, signedInput :Bool  , numBits :Int  , rangeGiven :Bool  , t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("signed_input",signedInput)
-    attr.append("num_bits",numBits)
-    attr.append("range_given",rangeGiven)
+    attrs["signed_input"] = signedInput
+    attrs["num_bits"] = numBits
+    attrs["range_given"] = rangeGiven
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "QuantizeAndDequantizeV2",
+        Name: "Type",
         Input: [ input, inputMin, inputMax],
         Attrs: attrs
     )
@@ -11287,17 +12095,19 @@ minimal loss of accuracy.
 
 
 
+
 func quantizeDownAndShrinkRange(scope:Scope,input: Output, inputMin: Output, inputMax: Output, tinput :Type  , outType :Type  )  ->(output: Output, outputMin: Output, outputMax: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tinput",tinput)
-    attr.append("out_type",outType)
+    attrs["Tinput"] = tinput
+    attrs["out_type"] = outType
 
     let opspec = OpSpec(
         OpType: "QuantizeDownAndShrinkRange",
+        Name: "Type",
         Input: [ input, inputMin, inputMax],
         Attrs: attrs
     )
@@ -11354,16 +12164,19 @@ operations that have to perform further calculations on them.
 
 
 
-func quantizeV2(scope:Scope,input: Output, minRange: Output, maxRange: Output, mode :String  )  ->(output: Output, outputMin: Output, outputMax: Output){
-    if scope.error.error() != nil {
-        return
+
+func quantizeV2(scope:Scope,input: Output, minRange: Output, maxRange: Output, t :Type  , mode :String  )  ->(output: Output, outputMin: Output, outputMax: Output){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("mode",mode)
+    attrs["T"] = t
+    attrs["mode"] = mode
 
     let opspec = OpSpec(
         OpType: "QuantizeV2",
+        Name: "Type",
         Input: [ input, minRange, maxRange],
         Attrs: attrs
     )
@@ -11380,18 +12193,20 @@ Returns x + y element-wise, working on quantized buffers.
 
 
 
+
 func quantizedAdd(scope:Scope,x: Output, y: Output, minX: Output, maxX: Output, minY: Output, maxY: Output, t1 :Type  , t2 :Type  , toutput :Type  )  ->(z: Output, minZ: Output, maxZ: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T1",t1)
-    attr.append("T2",t2)
-    attr.append("Toutput",toutput)
+    attrs["T1"] = t1
+    attrs["T2"] = t2
+    attrs["Toutput"] = toutput
 
     let opspec = OpSpec(
         OpType: "QuantizedAdd",
+        Name: "Type",
         Input: [ x, y, minX, maxX, minY, maxY],
         Attrs: attrs
     )
@@ -11408,18 +12223,21 @@ Produces the average pool of the input tensor for quantized types.
 
 
 
-func quantizedAvgPool(scope:Scope,input: Output, minInput: Output, maxInput: Output, ksize :List(int)  , strides :List(int)  , padding :String  )  ->(output: Output, minOutput: Output, maxOutput: Output){
-    if scope.error.error() != nil {
-        return
+
+func quantizedAvgPool(scope:Scope,input: Output, minInput: Output, maxInput: Output, t :Type  , ksize :List(int)  , strides :List(int)  , padding :String  )  ->(output: Output, minOutput: Output, maxOutput: Output){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("ksize",ksize)
-    attr.append("strides",strides)
-    attr.append("padding",padding)
+    attrs["T"] = t
+    attrs["ksize"] = ksize
+    attrs["strides"] = strides
+    attrs["padding"] = padding
 
     let opspec = OpSpec(
         OpType: "QuantizedAvgPool",
+        Name: "Type",
         Input: [ input, minInput, maxInput],
         Attrs: attrs
     )
@@ -11438,19 +12256,21 @@ This op is deprecated and will be removed in the future. Prefer
 
 
 
+
 func quantizedBatchNormWithGlobalNormalization(scope:Scope,t: Output, tMin: Output, tMax: Output, m: Output, mMin: Output, mMax: Output, v: Output, vMin: Output, vMax: Output, beta: Output, betaMin: Output, betaMax: Output, gamma: Output, gammaMin: Output, gammaMax: Output, tinput :Type  , outType :Type  , varianceEpsilon :Float  , scaleAfterNormalization :Bool  )  ->(result: Output, resultMin: Output, resultMax: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tinput",tinput)
-    attr.append("out_type",outType)
-    attr.append("variance_epsilon",varianceEpsilon)
-    attr.append("scale_after_normalization",scaleAfterNormalization)
+    attrs["Tinput"] = tinput
+    attrs["out_type"] = outType
+    attrs["variance_epsilon"] = varianceEpsilon
+    attrs["scale_after_normalization"] = scaleAfterNormalization
 
     let opspec = OpSpec(
         OpType: "QuantizedBatchNormWithGlobalNormalization",
+        Name: "Type",
         Input: [ t, tMin, tMax, m, mMin, mMax, v, vMin, vMax, beta, betaMin, betaMax, gamma, gammaMin, gammaMax],
         Attrs: attrs
     )
@@ -11468,18 +12288,20 @@ Broadcasts the values of bias on dimensions 0..N-2 of 'input'.
 
 
 
+
 func quantizedBiasAdd(scope:Scope,input: Output, bias: Output, minInput: Output, maxInput: Output, minBias: Output, maxBias: Output, t1 :Type  , t2 :Type  , outType :Type  )  ->(output: Output, minOut: Output, maxOut: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T1",t1)
-    attr.append("T2",t2)
-    attr.append("out_type",outType)
+    attrs["T1"] = t1
+    attrs["T2"] = t2
+    attrs["out_type"] = outType
 
     let opspec = OpSpec(
         OpType: "QuantizedBiasAdd",
+        Name: "Type",
         Input: [ input, bias, minInput, maxInput, minBias, maxBias],
         Attrs: attrs
     )
@@ -11496,16 +12318,19 @@ Concatenates quantized tensors along one dimension.
 
 
 
-func quantizedConcat(scope:Scope,concatDim: Output, values: Output, inputMins: Output, inputMaxes: Output, n :UInt8  )  ->(output: Output, outputMin: Output, outputMax: Output){
-    if scope.error.error() != nil {
-        return
+
+func quantizedConcat(scope:Scope,concatDim: Output, values: Output, inputMins: Output, inputMaxes: Output, n :Int  , t :Type  )  ->(output: Output, outputMin: Output, outputMax: Output){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("N",n)
+    attrs["N"] = n
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "QuantizedConcat",
+        Name: "Type",
         Input: [ concatDim, values, inputMins, inputMaxes],
         Attrs: attrs
     )
@@ -11526,20 +12351,22 @@ taking the returned minimum and maximum values into account.
 
 
 
+
 func quantizedConv2D(scope:Scope,input: Output, filter: Output, minInput: Output, maxInput: Output, minFilter: Output, maxFilter: Output, tinput :Type  , tfilter :Type  , outType :Type  , strides :List(int)  , padding :String  )  ->(output: Output, minOutput: Output, maxOutput: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tinput",tinput)
-    attr.append("Tfilter",tfilter)
-    attr.append("out_type",outType)
-    attr.append("strides",strides)
-    attr.append("padding",padding)
+    attrs["Tinput"] = tinput
+    attrs["Tfilter"] = tfilter
+    attrs["out_type"] = outType
+    attrs["strides"] = strides
+    attrs["padding"] = padding
 
     let opspec = OpSpec(
         OpType: "QuantizedConv2D",
+        Name: "Type",
         Input: [ input, filter, minInput, maxInput, minFilter, maxFilter],
         Attrs: attrs
     )
@@ -11556,20 +12383,23 @@ Quantized Instance normalization.
 
 
 
-func quantizedInstanceNorm(scope:Scope,x: Output, xMin: Output, xMax: Output, outputRangeGiven :Bool  , givenYMin :Float  , givenYMax :Float  , varianceEpsilon :Float  , minSeparation :Float  )  ->(y: Output, yMin: Output, yMax: Output){
-    if scope.error.error() != nil {
-        return
+
+func quantizedInstanceNorm(scope:Scope,x: Output, xMin: Output, xMax: Output, t :Type  , outputRangeGiven :Bool  , givenYMin :Float  , givenYMax :Float  , varianceEpsilon :Float  , minSeparation :Float  )  ->(y: Output, yMin: Output, yMax: Output){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("output_range_given",outputRangeGiven)
-    attr.append("given_y_min",givenYMin)
-    attr.append("given_y_max",givenYMax)
-    attr.append("variance_epsilon",varianceEpsilon)
-    attr.append("min_separation",minSeparation)
+    attrs["T"] = t
+    attrs["output_range_given"] = outputRangeGiven
+    attrs["given_y_min"] = givenYMin
+    attrs["given_y_max"] = givenYMax
+    attrs["variance_epsilon"] = varianceEpsilon
+    attrs["min_separation"] = minSeparation
 
     let opspec = OpSpec(
         OpType: "QuantizedInstanceNorm",
+        Name: "Type",
         Input: [ x, xMin, xMax],
         Attrs: attrs
     )
@@ -11590,21 +12420,23 @@ non-zero).
 
 
 
+
 func quantizedMatMul(scope:Scope,a: Output, b: Output, minA: Output, maxA: Output, minB: Output, maxB: Output, t1 :Type  , t2 :Type  , toutput :Type  , transposeA :Bool  , transposeB :Bool  , tactivation :Type  )  ->(out: Output, minOut: Output, maxOut: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T1",t1)
-    attr.append("T2",t2)
-    attr.append("Toutput",toutput)
-    attr.append("transpose_a",transposeA)
-    attr.append("transpose_b",transposeB)
-    attr.append("Tactivation",tactivation)
+    attrs["T1"] = t1
+    attrs["T2"] = t2
+    attrs["Toutput"] = toutput
+    attrs["transpose_a"] = transposeA
+    attrs["transpose_b"] = transposeB
+    attrs["Tactivation"] = tactivation
 
     let opspec = OpSpec(
         OpType: "QuantizedMatMul",
+        Name: "Type",
         Input: [ a, b, minA, maxA, minB, maxB],
         Attrs: attrs
     )
@@ -11621,18 +12453,21 @@ Produces the max pool of the input tensor for quantized types.
 
 
 
-func quantizedMaxPool(scope:Scope,input: Output, minInput: Output, maxInput: Output, ksize :List(int)  , strides :List(int)  , padding :String  )  ->(output: Output, minOutput: Output, maxOutput: Output){
-    if scope.error.error() != nil {
-        return
+
+func quantizedMaxPool(scope:Scope,input: Output, minInput: Output, maxInput: Output, t :Type  , ksize :List(int)  , strides :List(int)  , padding :String  )  ->(output: Output, minOutput: Output, maxOutput: Output){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("ksize",ksize)
-    attr.append("strides",strides)
-    attr.append("padding",padding)
+    attrs["T"] = t
+    attrs["ksize"] = ksize
+    attrs["strides"] = strides
+    attrs["padding"] = padding
 
     let opspec = OpSpec(
         OpType: "QuantizedMaxPool",
+        Name: "Type",
         Input: [ input, minInput, maxInput],
         Attrs: attrs
     )
@@ -11649,18 +12484,20 @@ Returns x * y element-wise, working on quantized buffers.
 
 
 
+
 func quantizedMul(scope:Scope,x: Output, y: Output, minX: Output, maxX: Output, minY: Output, maxY: Output, t1 :Type  , t2 :Type  , toutput :Type  )  ->(z: Output, minZ: Output, maxZ: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T1",t1)
-    attr.append("T2",t2)
-    attr.append("Toutput",toutput)
+    attrs["T1"] = t1
+    attrs["T2"] = t2
+    attrs["Toutput"] = toutput
 
     let opspec = OpSpec(
         OpType: "QuantizedMul",
+        Name: "Type",
         Input: [ x, y, minX, maxX, minY, maxY],
         Attrs: attrs
     )
@@ -11677,17 +12514,19 @@ Computes Quantized Rectified Linear: `max(features, 0)`
 
 
 
+
 func quantizedRelu(scope:Scope,features: Output, minFeatures: Output, maxFeatures: Output, tinput :Type  , outType :Type  )  ->(activations: Output, minActivations: Output, maxActivations: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tinput",tinput)
-    attr.append("out_type",outType)
+    attrs["Tinput"] = tinput
+    attrs["out_type"] = outType
 
     let opspec = OpSpec(
         OpType: "QuantizedRelu",
+        Name: "Type",
         Input: [ features, minFeatures, maxFeatures],
         Attrs: attrs
     )
@@ -11704,17 +12543,19 @@ Computes Quantized Rectified Linear 6: `min(max(features, 0), 6)`
 
 
 
+
 func quantizedRelu6(scope:Scope,features: Output, minFeatures: Output, maxFeatures: Output, tinput :Type  , outType :Type  )  ->(activations: Output, minActivations: Output, maxActivations: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tinput",tinput)
-    attr.append("out_type",outType)
+    attrs["Tinput"] = tinput
+    attrs["out_type"] = outType
 
     let opspec = OpSpec(
         OpType: "QuantizedRelu6",
+        Name: "Type",
         Input: [ features, minFeatures, maxFeatures],
         Attrs: attrs
     )
@@ -11731,17 +12572,19 @@ Computes Quantized Rectified Linear X: `min(max(features, 0), max_value)`
 
 
 
+
 func quantizedReluX(scope:Scope,features: Output, maxValue: Output, minFeatures: Output, maxFeatures: Output, tinput :Type  , outType :Type  )  ->(activations: Output, minActivations: Output, maxActivations: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tinput",tinput)
-    attr.append("out_type",outType)
+    attrs["Tinput"] = tinput
+    attrs["out_type"] = outType
 
     let opspec = OpSpec(
         OpType: "QuantizedReluX",
+        Name: "Type",
         Input: [ features, maxValue, minFeatures, maxFeatures],
         Attrs: attrs
     )
@@ -11759,16 +12602,19 @@ Reshapes a quantized tensor as per the Reshape op.
 
 
 
-func quantizedReshape(scope:Scope,tensor: Output, shape: Output, inputMin: Output, inputMax: Output, tshape :Type  )  ->(output: Output, outputMin: Output, outputMax: Output){
-    if scope.error.error() != nil {
-        return
+
+func quantizedReshape(scope:Scope,tensor: Output, shape: Output, inputMin: Output, inputMax: Output, t :Type  , tshape :Type  )  ->(output: Output, outputMin: Output, outputMax: Output){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tshape",tshape)
+    attrs["T"] = t
+    attrs["Tshape"] = tshape
 
     let opspec = OpSpec(
         OpType: "QuantizedReshape",
+        Name: "Type",
         Input: [ tensor, shape, inputMin, inputMax],
         Attrs: attrs
     )
@@ -11790,16 +12636,18 @@ operations that would block will fail immediately.
 
 
 
-func queueClose(scope:Scope,handle: Output, cancelPendingEnqueues :Bool  )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func queueClose(scope:Scope,handle: Output, cancelPendingEnqueues :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("cancel_pending_enqueues",cancelPendingEnqueues)
+    attrs["cancel_pending_enqueues"] = cancelPendingEnqueues
 
     let opspec = OpSpec(
         OpType: "QueueClose",
+        Name: "Type",
         Input: [ handle],
         Attrs: attrs
     )
@@ -11820,16 +12668,18 @@ operations that would block will fail immediately.
 
 
 
-func queueCloseV2(scope:Scope,handle: Output, cancelPendingEnqueues :Bool  )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func queueCloseV2(scope:Scope,handle: Output, cancelPendingEnqueues :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("cancel_pending_enqueues",cancelPendingEnqueues)
+    attrs["cancel_pending_enqueues"] = cancelPendingEnqueues
 
     let opspec = OpSpec(
         OpType: "QueueCloseV2",
+        Name: "Type",
         Input: [ handle],
         Attrs: attrs
     )
@@ -11850,17 +12700,19 @@ has been dequeued (or 'timeout_ms' elapses, if specified).
 
 
 
-func queueDequeue(scope:Scope,handle: Output, componentTypes :List(type)  , timeoutMs :UInt8  )  ->(components: Output){
-    if scope.error.error() != nil {
-        return
+
+func queueDequeue(scope:Scope,handle: Output, componentTypes :List(type)  , timeoutMs :Int  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("component_types",componentTypes)
-    attr.append("timeout_ms",timeoutMs)
+    attrs["component_types"] = componentTypes
+    attrs["timeout_ms"] = timeoutMs
 
     let opspec = OpSpec(
         OpType: "QueueDequeue",
+        Name: "Type",
         Input: [ handle],
         Attrs: attrs
     )
@@ -11887,17 +12739,19 @@ have been dequeued (or 'timeout_ms' elapses, if specified).
 
 
 
-func queueDequeueMany(scope:Scope,handle: Output, n: Output, componentTypes :List(type)  , timeoutMs :UInt8  )  ->(components: Output){
-    if scope.error.error() != nil {
-        return
+
+func queueDequeueMany(scope:Scope,handle: Output, n: Output, componentTypes :List(type)  , timeoutMs :Int  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("component_types",componentTypes)
-    attr.append("timeout_ms",timeoutMs)
+    attrs["component_types"] = componentTypes
+    attrs["timeout_ms"] = timeoutMs
 
     let opspec = OpSpec(
         OpType: "QueueDequeueMany",
+        Name: "Type",
         Input: [ handle, n],
         Attrs: attrs
     )
@@ -11924,17 +12778,19 @@ have been dequeued (or 'timeout_ms' elapses, if specified).
 
 
 
-func queueDequeueManyV2(scope:Scope,handle: Output, n: Output, componentTypes :List(type)  , timeoutMs :UInt8  )  ->(components: Output){
-    if scope.error.error() != nil {
-        return
+
+func queueDequeueManyV2(scope:Scope,handle: Output, n: Output, componentTypes :List(type)  , timeoutMs :Int  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("component_types",componentTypes)
-    attr.append("timeout_ms",timeoutMs)
+    attrs["component_types"] = componentTypes
+    attrs["timeout_ms"] = timeoutMs
 
     let opspec = OpSpec(
         OpType: "QueueDequeueManyV2",
+        Name: "Type",
         Input: [ handle, n],
         Attrs: attrs
     )
@@ -11965,17 +12821,19 @@ component of the dequeued tuple.
 
 
 
-func queueDequeueUpTo(scope:Scope,handle: Output, n: Output, componentTypes :List(type)  , timeoutMs :UInt8  )  ->(components: Output){
-    if scope.error.error() != nil {
-        return
+
+func queueDequeueUpTo(scope:Scope,handle: Output, n: Output, componentTypes :List(type)  , timeoutMs :Int  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("component_types",componentTypes)
-    attr.append("timeout_ms",timeoutMs)
+    attrs["component_types"] = componentTypes
+    attrs["timeout_ms"] = timeoutMs
 
     let opspec = OpSpec(
         OpType: "QueueDequeueUpTo",
+        Name: "Type",
         Input: [ handle, n],
         Attrs: attrs
     )
@@ -12006,17 +12864,19 @@ component of the dequeued tuple.
 
 
 
-func queueDequeueUpToV2(scope:Scope,handle: Output, n: Output, componentTypes :List(type)  , timeoutMs :UInt8  )  ->(components: Output){
-    if scope.error.error() != nil {
-        return
+
+func queueDequeueUpToV2(scope:Scope,handle: Output, n: Output, componentTypes :List(type)  , timeoutMs :Int  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("component_types",componentTypes)
-    attr.append("timeout_ms",timeoutMs)
+    attrs["component_types"] = componentTypes
+    attrs["timeout_ms"] = timeoutMs
 
     let opspec = OpSpec(
         OpType: "QueueDequeueUpToV2",
+        Name: "Type",
         Input: [ handle, n],
         Attrs: attrs
     )
@@ -12038,17 +12898,19 @@ has been dequeued (or 'timeout_ms' elapses, if specified).
 
 
 
-func queueDequeueV2(scope:Scope,handle: Output, componentTypes :List(type)  , timeoutMs :UInt8  )  ->(components: Output){
-    if scope.error.error() != nil {
-        return
+
+func queueDequeueV2(scope:Scope,handle: Output, componentTypes :List(type)  , timeoutMs :Int  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("component_types",componentTypes)
-    attr.append("timeout_ms",timeoutMs)
+    attrs["component_types"] = componentTypes
+    attrs["timeout_ms"] = timeoutMs
 
     let opspec = OpSpec(
         OpType: "QueueDequeueV2",
+        Name: "Type",
         Input: [ handle],
         Attrs: attrs
     )
@@ -12069,17 +12931,19 @@ element has been enqueued (or 'timeout_ms' elapses, if specified).
 
 
 
-func queueEnqueue(scope:Scope,handle: Output, components: Output, tcomponents :List(type)  , timeoutMs :UInt8  )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func queueEnqueue(scope:Scope,handle: Output, components: Output, tcomponents :List(type)  , timeoutMs :Int  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tcomponents",tcomponents)
-    attr.append("timeout_ms",timeoutMs)
+    attrs["Tcomponents"] = tcomponents
+    attrs["timeout_ms"] = timeoutMs
 
     let opspec = OpSpec(
         OpType: "QueueEnqueue",
+        Name: "Type",
         Input: [ handle, components],
         Attrs: attrs
     )
@@ -12102,17 +12966,19 @@ elements have been enqueued (or 'timeout_ms' elapses, if specified).
 
 
 
-func queueEnqueueMany(scope:Scope,handle: Output, components: Output, tcomponents :List(type)  , timeoutMs :UInt8  )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func queueEnqueueMany(scope:Scope,handle: Output, components: Output, tcomponents :List(type)  , timeoutMs :Int  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tcomponents",tcomponents)
-    attr.append("timeout_ms",timeoutMs)
+    attrs["Tcomponents"] = tcomponents
+    attrs["timeout_ms"] = timeoutMs
 
     let opspec = OpSpec(
         OpType: "QueueEnqueueMany",
+        Name: "Type",
         Input: [ handle, components],
         Attrs: attrs
     )
@@ -12135,17 +13001,19 @@ elements have been enqueued (or 'timeout_ms' elapses, if specified).
 
 
 
-func queueEnqueueManyV2(scope:Scope,handle: Output, components: Output, tcomponents :List(type)  , timeoutMs :UInt8  )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func queueEnqueueManyV2(scope:Scope,handle: Output, components: Output, tcomponents :List(type)  , timeoutMs :Int  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tcomponents",tcomponents)
-    attr.append("timeout_ms",timeoutMs)
+    attrs["Tcomponents"] = tcomponents
+    attrs["timeout_ms"] = timeoutMs
 
     let opspec = OpSpec(
         OpType: "QueueEnqueueManyV2",
+        Name: "Type",
         Input: [ handle, components],
         Attrs: attrs
     )
@@ -12165,17 +13033,19 @@ element has been enqueued (or 'timeout_ms' elapses, if specified).
 
 
 
-func queueEnqueueV2(scope:Scope,handle: Output, components: Output, tcomponents :List(type)  , timeoutMs :UInt8  )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func queueEnqueueV2(scope:Scope,handle: Output, components: Output, tcomponents :List(type)  , timeoutMs :Int  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tcomponents",tcomponents)
-    attr.append("timeout_ms",timeoutMs)
+    attrs["Tcomponents"] = tcomponents
+    attrs["timeout_ms"] = timeoutMs
 
     let opspec = OpSpec(
         OpType: "QueueEnqueueV2",
+        Name: "Type",
         Input: [ handle, components],
         Attrs: attrs
     )
@@ -12191,15 +13061,17 @@ Computes the number of elements in the given queue.
 
 
 
-func queueSize(scope:Scope,handle: Output )  ->(size: Output){
-    if scope.error.error() != nil {
-        return
+
+func queueSize(scope:Scope,handle: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "QueueSize",
+        Name: "Type",
         Input: [ handle],
         Attrs: attrs
     )
@@ -12216,15 +13088,17 @@ Computes the number of elements in the given queue.
 
 
 
-func queueSizeV2(scope:Scope,handle: Output )  ->(size: Output){
-    if scope.error.error() != nil {
-        return
+
+func queueSizeV2(scope:Scope,handle: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "QueueSizeV2",
+        Name: "Type",
         Input: [ handle],
         Attrs: attrs
     )
@@ -12246,15 +13120,17 @@ followed by the `fft_length / 2` positive-frequency terms.
 
 
 
-func rfft(scope:Scope,input: Output, fftLength: Output )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func rfft(scope:Scope,input: Output, fftLength: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "RFFT",
+        Name: "Type",
         Input: [ input, fftLength],
         Attrs: attrs
     )
@@ -12277,15 +13153,17 @@ positive-frequency terms.
 
 
 
-func rfft2D(scope:Scope,input: Output, fftLength: Output )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func rfft2D(scope:Scope,input: Output, fftLength: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "RFFT2D",
+        Name: "Type",
         Input: [ input, fftLength],
         Attrs: attrs
     )
@@ -12308,15 +13186,17 @@ positive-frequency terms.
 
 
 
-func rfft3D(scope:Scope,input: Output, fftLength: Output )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func rfft3D(scope:Scope,input: Output, fftLength: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "RFFT3D",
+        Name: "Type",
         Input: [ input, fftLength],
         Attrs: attrs
     )
@@ -12339,15 +13219,18 @@ corresponds to pure red, hue 1/3 is pure green, and 2/3 is pure blue.
 
 
 
-func rgbToHSV(scope:Scope,images: Output )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func rgbToHSV(scope:Scope,images: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "RGBToHSV",
+        Name: "Type",
         Input: [ images],
         Attrs: attrs
     )
@@ -12369,18 +13252,20 @@ area will fit inside the original image.
 
 
 
-func randomCrop(scope:Scope,image: Output, size: Output, t :Type  , seed :Int  , seed2 :Int  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func randomCrop(scope:Scope,image: Output, size: Output, t :Type  , seed :Int  , seed2 :Int  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("seed",seed)
-    attr.append("seed2",seed2)
+    attrs["T"] = t
+    attrs["seed"] = seed
+    attrs["seed2"] = seed2
 
     let opspec = OpSpec(
         OpType: "RandomCrop",
+        Name: "Type",
         Input: [ image, size],
         Attrs: attrs
     )
@@ -12400,18 +13285,21 @@ See http://dl.acm.org/citation.cfm?id=358414
 
 
 
-func randomGamma(scope:Scope,shape: Output, alpha: Output, seed :UInt8  , seed2 :UInt8  , s :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func randomGamma(scope:Scope,shape: Output, alpha: Output, seed :Int  , seed2 :Int  , s :Type  , t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("seed",seed)
-    attr.append("seed2",seed2)
-    attr.append("S",s)
+    attrs["seed"] = seed
+    attrs["seed2"] = seed2
+    attrs["S"] = s
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "RandomGamma",
+        Name: "Type",
         Input: [ shape, alpha],
         Attrs: attrs
     )
@@ -12436,19 +13324,21 @@ Programming, Volume 2. Addison Wesley
 
 
 
-func randomPoisson(scope:Scope,shape: Output, rate: Output, seed :Int  , seed2 :Int  , s :Type  , dtype :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func randomPoisson(scope:Scope,shape: Output, rate: Output, seed :Int  , seed2 :Int  , s :Type  , dtype :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("seed",seed)
-    attr.append("seed2",seed2)
-    attr.append("S",s)
-    attr.append("dtype",dtype)
+    attrs["seed"] = seed
+    attrs["seed2"] = seed2
+    attrs["S"] = s
+    attrs["dtype"] = dtype
 
     let opspec = OpSpec(
         OpType: "RandomPoisson",
+        Name: "Type",
         Input: [ shape, rate],
         Attrs: attrs
     )
@@ -12473,17 +13363,20 @@ Randomly shuffles a tensor along its first dimension.
 
 
 
-func randomShuffle(scope:Scope,value: Output, seed :UInt8  , seed2 :UInt8  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func randomShuffle(scope:Scope,value: Output, seed :Int  , seed2 :Int  , t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("seed",seed)
-    attr.append("seed2",seed2)
+    attrs["seed"] = seed
+    attrs["seed2"] = seed2
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "RandomShuffle",
+        Name: "Type",
         Input: [ value],
         Attrs: attrs
     )
@@ -12500,23 +13393,25 @@ A queue that randomizes the order of elements.
 
 
 
-func randomShuffleQueue(scope:Scope componentTypes :List(type)  , shapes :List(shape)  , capacity :Int  , minAfterDequeue :Int  , seed :Int  , seed2 :Int  , container :String  , sharedName :String  )  ->(handle: Output){
-    if scope.error.error() != nil {
-        return
+
+func randomShuffleQueue(scope:Scope, componentTypes :List(type)  , shapes :List(shape)  , capacity :Int  , minAfterDequeue :Int  , seed :Int  , seed2 :Int  , container :String  , sharedName :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("component_types",componentTypes)
-    attr.append("shapes",shapes)
-    attr.append("capacity",capacity)
-    attr.append("min_after_dequeue",minAfterDequeue)
-    attr.append("seed",seed)
-    attr.append("seed2",seed2)
-    attr.append("container",container)
-    attr.append("shared_name",sharedName)
+    attrs["component_types"] = componentTypes
+    attrs["shapes"] = shapes
+    attrs["capacity"] = capacity
+    attrs["min_after_dequeue"] = minAfterDequeue
+    attrs["seed"] = seed
+    attrs["seed2"] = seed2
+    attrs["container"] = container
+    attrs["shared_name"] = sharedName
 
     let opspec = OpSpec(
         OpType: "RandomShuffleQueue",
+        Name: "Type",
         Input: [ ],
         Attrs: attrs
     )
@@ -12533,23 +13428,25 @@ A queue that randomizes the order of elements.
 
 
 
-func randomShuffleQueueV2(scope:Scope componentTypes :List(type)  , shapes :[Shape]  , capacity :UInt8  , minAfterDequeue :UInt8  , seed :UInt8  , seed2 :UInt8  , container :String  , sharedName :String  )  ->(handle: Output){
-    if scope.error.error() != nil {
-        return
+
+func randomShuffleQueueV2(scope:Scope, componentTypes :List(type)  , shapes :List(shape)  , capacity :Int  , minAfterDequeue :Int  , seed :Int  , seed2 :Int  , container :String  , sharedName :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("component_types",componentTypes)
-    attr.append("shapes",shapes)
-    attr.append("capacity",capacity)
-    attr.append("min_after_dequeue",minAfterDequeue)
-    attr.append("seed",seed)
-    attr.append("seed2",seed2)
-    attr.append("container",container)
-    attr.append("shared_name",sharedName)
+    attrs["component_types"] = componentTypes
+    attrs["shapes"] = shapes
+    attrs["capacity"] = capacity
+    attrs["min_after_dequeue"] = minAfterDequeue
+    attrs["seed"] = seed
+    attrs["seed2"] = seed2
+    attrs["container"] = container
+    attrs["shared_name"] = sharedName
 
     let opspec = OpSpec(
         OpType: "RandomShuffleQueueV2",
+        Name: "Type",
         Input: [ ],
         Attrs: attrs
     )
@@ -12567,18 +13464,21 @@ The generated values will have mean 0 and standard deviation 1.
 
 
 
-func randomStandardNormal(scope:Scope,shape: Output, seed :UInt8  , seed2 :UInt8  , dtype :[Any]  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func randomStandardNormal(scope:Scope,shape: Output, seed :Int  , seed2 :Int  , dtype :Type  , t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("seed",seed)
-    attr.append("seed2",seed2)
-    attr.append("dtype",dtype)
+    attrs["seed"] = seed
+    attrs["seed2"] = seed2
+    attrs["dtype"] = dtype
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "RandomStandardNormal",
+        Name: "Type",
         Input: [ shape],
         Attrs: attrs
     )
@@ -12597,19 +13497,21 @@ lower bound 0 is included in the range, while the upper bound 1 is excluded.
 
 
 
-func randomUniform(scope:Scope,shape: Output, seed :Int  , seed2 :Int  , dtype :Type  , t :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func randomUniform(scope:Scope,shape: Output, seed :Int  , seed2 :Int  , dtype :Type  , t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("seed",seed)
-    attr.append("seed2",seed2)
-    attr.append("dtype",dtype)
-    attr.append("T",t)
+    attrs["seed"] = seed
+    attrs["seed2"] = seed2
+    attrs["dtype"] = dtype
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "RandomUniform",
+        Name: "Type",
         Input: [ shape],
         Attrs: attrs
     )
@@ -12632,18 +13534,21 @@ smaller than the range of the output (either `2^32` or `2^64`).
 
 
 
-func randomUniformInt(scope:Scope,shape: Output, minval: Output, maxval: Output, seed :UInt8  , seed2 :UInt8  , tout :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func randomUniformInt(scope:Scope,shape: Output, minval: Output, maxval: Output, seed :Int  , seed2 :Int  , tout :Type  , t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("seed",seed)
-    attr.append("seed2",seed2)
-    attr.append("Tout",tout)
+    attrs["seed"] = seed
+    attrs["seed2"] = seed2
+    attrs["Tout"] = tout
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "RandomUniformInt",
+        Name: "Type",
         Input: [ shape, minval, maxval],
         Attrs: attrs
     )
@@ -12669,16 +13574,18 @@ tf.range(start, limit, delta) ==> [3, 6, 9, 12, 15]
 
 
 
-func range(scope:Scope,start: Output, limit: Output, delta: Output, tidx :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func range(scope:Scope,start: Output, limit: Output, delta: Output, tidx :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tidx",tidx)
+    attrs["Tidx"] = tidx
 
     let opspec = OpSpec(
         OpType: "Range",
+        Name: "Type",
         Input: [ start, limit, delta],
         Attrs: attrs
     )
@@ -12695,17 +13602,19 @@ Creates a dataset with a range of values. Corresponds to python's xrange.
 
 
 
-func rangeDataset(scope:Scope,start: Output, stop: Output, step: Output, outputTypes :List(type)  , outputShapes :[Shape]  )  ->(handle: Output){
-    if scope.error.error() != nil {
-        return
+
+func rangeDataset(scope:Scope,start: Output, stop: Output, step: Output, outputTypes :List(type)  , outputShapes :List(shape)  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("output_types",outputTypes)
-    attr.append("output_shapes",outputShapes)
+    attrs["output_types"] = outputTypes
+    attrs["output_shapes"] = outputShapes
 
     let opspec = OpSpec(
         OpType: "RangeDataset",
+        Name: "Type",
         Input: [ start, stop, step],
         Attrs: attrs
     )
@@ -12732,15 +13641,18 @@ of the tensor. Rank is also known as "order", "degree", or "ndims."
 
 
 
-func rank(scope:Scope,input: Output )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func rank(scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Rank",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -12757,15 +13669,17 @@ Reads and outputs the entire contents of the input filename.
 
 
 
-func readFile(scope:Scope,filename: Output )  ->(contents: Output){
-    if scope.error.error() != nil {
-        return
+
+func readFile(scope:Scope,filename: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "ReadFile",
+        Name: "Type",
         Input: [ filename],
         Attrs: attrs
     )
@@ -12784,15 +13698,17 @@ succeeded.
 
 
 
-func readerNumRecordsProduced(scope:Scope,readerHandle: Output )  ->(recordsProduced: Output){
-    if scope.error.error() != nil {
-        return
+
+func readerNumRecordsProduced(scope:Scope,readerHandle: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "ReaderNumRecordsProduced",
+        Name: "Type",
         Input: [ readerHandle],
         Attrs: attrs
     )
@@ -12811,15 +13727,17 @@ succeeded.
 
 
 
-func readerNumRecordsProducedV2(scope:Scope,readerHandle: Output )  ->(recordsProduced: Output){
-    if scope.error.error() != nil {
-        return
+
+func readerNumRecordsProducedV2(scope:Scope,readerHandle: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "ReaderNumRecordsProducedV2",
+        Name: "Type",
         Input: [ readerHandle],
         Attrs: attrs
     )
@@ -12836,15 +13754,17 @@ Returns the number of work units this Reader has finished processing.
 
 
 
-func readerNumWorkUnitsCompleted(scope:Scope,readerHandle: Output )  ->(unitsCompleted: Output){
-    if scope.error.error() != nil {
-        return
+
+func readerNumWorkUnitsCompleted(scope:Scope,readerHandle: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "ReaderNumWorkUnitsCompleted",
+        Name: "Type",
         Input: [ readerHandle],
         Attrs: attrs
     )
@@ -12861,15 +13781,17 @@ Returns the number of work units this Reader has finished processing.
 
 
 
-func readerNumWorkUnitsCompletedV2(scope:Scope,readerHandle: Output )  ->(unitsCompleted: Output){
-    if scope.error.error() != nil {
-        return
+
+func readerNumWorkUnitsCompletedV2(scope:Scope,readerHandle: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "ReaderNumWorkUnitsCompletedV2",
+        Name: "Type",
         Input: [ readerHandle],
         Attrs: attrs
     )
@@ -12889,15 +13811,17 @@ with the previous file).
 
 
 
+
 func readerRead(scope:Scope,readerHandle: Output, queueHandle: Output )  ->(key: Output, value: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "ReaderRead",
+        Name: "Type",
         Input: [ readerHandle, queueHandle],
         Attrs: attrs
     )
@@ -12918,15 +13842,17 @@ It may return less than `num_records` even before the last batch.
 
 
 
+
 func readerReadUpTo(scope:Scope,readerHandle: Output, queueHandle: Output, numRecords: Output )  ->(keys: Output, values: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "ReaderReadUpTo",
+        Name: "Type",
         Input: [ readerHandle, queueHandle, numRecords],
         Attrs: attrs
     )
@@ -12947,15 +13873,17 @@ It may return less than `num_records` even before the last batch.
 
 
 
+
 func readerReadUpToV2(scope:Scope,readerHandle: Output, queueHandle: Output, numRecords: Output )  ->(keys: Output, values: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "ReaderReadUpToV2",
+        Name: "Type",
         Input: [ readerHandle, queueHandle, numRecords],
         Attrs: attrs
     )
@@ -12975,15 +13903,17 @@ with the previous file).
 
 
 
+
 func readerReadV2(scope:Scope,readerHandle: Output, queueHandle: Output )  ->(key: Output, value: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "ReaderReadV2",
+        Name: "Type",
         Input: [ readerHandle, queueHandle],
         Attrs: attrs
     )
@@ -13000,15 +13930,17 @@ Restore a Reader to its initial clean state.
 
 
 
-func readerReset(scope:Scope,readerHandle: Output )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func readerReset(scope:Scope,readerHandle: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "ReaderReset",
+        Name: "Type",
         Input: [ readerHandle],
         Attrs: attrs
     )
@@ -13024,15 +13956,17 @@ Restore a Reader to its initial clean state.
 
 
 
-func readerResetV2(scope:Scope,readerHandle: Output )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func readerResetV2(scope:Scope,readerHandle: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "ReaderResetV2",
+        Name: "Type",
         Input: [ readerHandle],
         Attrs: attrs
     )
@@ -13050,15 +13984,17 @@ Unimplemented error.
 
 
 
-func readerRestoreState(scope:Scope,readerHandle: Output, state: Output )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func readerRestoreState(scope:Scope,readerHandle: Output, state: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "ReaderRestoreState",
+        Name: "Type",
         Input: [ readerHandle, state],
         Attrs: attrs
     )
@@ -13076,15 +14012,17 @@ Unimplemented error.
 
 
 
-func readerRestoreStateV2(scope:Scope,readerHandle: Output, state: Output )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func readerRestoreStateV2(scope:Scope,readerHandle: Output, state: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "ReaderRestoreStateV2",
+        Name: "Type",
         Input: [ readerHandle, state],
         Attrs: attrs
     )
@@ -13102,15 +14040,17 @@ Unimplemented error.
 
 
 
-func readerSerializeState(scope:Scope,readerHandle: Output )  ->(state: Output){
-    if scope.error.error() != nil {
-        return
+
+func readerSerializeState(scope:Scope,readerHandle: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "ReaderSerializeState",
+        Name: "Type",
         Input: [ readerHandle],
         Attrs: attrs
     )
@@ -13129,15 +14069,17 @@ Unimplemented error.
 
 
 
-func readerSerializeStateV2(scope:Scope,readerHandle: Output )  ->(state: Output){
-    if scope.error.error() != nil {
-        return
+
+func readerSerializeStateV2(scope:Scope,readerHandle: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "ReaderSerializeStateV2",
+        Name: "Type",
         Input: [ readerHandle],
         Attrs: attrs
     )
@@ -13163,16 +14105,19 @@ tf.real(input) ==> [-2.25, 3.25]
 
 
 
-func real(scope:Scope,input: Output, tout :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func real(scope:Scope,input: Output, t :Type  , tout :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tout",tout)
+    attrs["T"] = t
+    attrs["Tout"] = tout
 
     let opspec = OpSpec(
         OpType: "Real",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -13192,16 +14137,18 @@ If `x` and `y` are reals, this will return the floating-point division.
 
 
 
-func realDiv(scope:Scope,x: Output, y: Output, t :Type  )  ->(z: Output){
-    if scope.error.error() != nil {
-        return
+
+func realDiv(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "RealDiv",
+        Name: "Type",
         Input: [ x, y],
         Attrs: attrs
     )
@@ -13219,15 +14166,18 @@ I.e., \\(y = 1 / x\\).
 
 
 
-func reciprocal(scope:Scope,x: Output )  ->(y: Output){
-    if scope.error.error() != nil {
-        return
+
+func reciprocal(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Reciprocal",
+        Name: "Type",
         Input: [ x],
         Attrs: attrs
     )
@@ -13246,16 +14196,18 @@ is the corresponding input gradient.
 
 
 
-func reciprocalGrad(scope:Scope,x: Output, y: Output, t :Type  )  ->(z: Output){
-    if scope.error.error() != nil {
-        return
+
+func reciprocalGrad(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "ReciprocalGrad",
+        Name: "Type",
         Input: [ x, y],
         Attrs: attrs
     )
@@ -13272,21 +14224,23 @@ Emits randomized records.
 
 
 
-func recordInput(scope:Scope filePattern :String  , fileRandomSeed :UInt8  , fileShuffleShiftRatio :Float  , fileBufferSize :UInt8  , fileParallelism :UInt8  , batchSize :UInt8  )  ->(records: Output){
-    if scope.error.error() != nil {
-        return
+
+func recordInput(scope:Scope, filePattern :String  , fileRandomSeed :Int  , fileShuffleShiftRatio :Float  , fileBufferSize :Int  , fileParallelism :Int  , batchSize :Int  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("file_pattern",filePattern)
-    attr.append("file_random_seed",fileRandomSeed)
-    attr.append("file_shuffle_shift_ratio",fileShuffleShiftRatio)
-    attr.append("file_buffer_size",fileBufferSize)
-    attr.append("file_parallelism",fileParallelism)
-    attr.append("batch_size",batchSize)
+    attrs["file_pattern"] = filePattern
+    attrs["file_random_seed"] = fileRandomSeed
+    attrs["file_shuffle_shift_ratio"] = fileShuffleShiftRatio
+    attrs["file_buffer_size"] = fileBufferSize
+    attrs["file_parallelism"] = fileParallelism
+    attrs["batch_size"] = batchSize
 
     let opspec = OpSpec(
         OpType: "RecordInput",
+        Name: "Type",
         Input: [ ],
         Attrs: attrs
     )
@@ -13321,17 +14275,19 @@ tf.reduce_join(a, []) ==> ["abcd"]
 
 
 
-func reduceJoin(scope:Scope,inputs: Output, reductionIndices: Output, keepDims :Bool  , separator :String  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func reduceJoin(scope:Scope,inputs: Output, reductionIndices: Output, keepDims :Bool  , separator :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("keep_dims",keepDims)
-    attr.append("separator",separator)
+    attrs["keep_dims"] = keepDims
+    attrs["separator"] = separator
 
     let opspec = OpSpec(
         OpType: "ReduceJoin",
+        Name: "Type",
         Input: [ inputs, reductionIndices],
         Attrs: attrs
     )
@@ -13352,18 +14308,21 @@ are run in parallel in the child frame.
 
 
 
-func refEnter(scope:Scope,data: Output, frameName :String  , isConstant :Bool  , parallelIterations :Int  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func refEnter(scope:Scope,data: Output, t :Type  , frameName :String  , isConstant :Bool  , parallelIterations :Int  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("frame_name",frameName)
-    attr.append("is_constant",isConstant)
-    attr.append("parallel_iterations",parallelIterations)
+    attrs["T"] = t
+    attrs["frame_name"] = frameName
+    attrs["is_constant"] = isConstant
+    attrs["parallel_iterations"] = parallelIterations
 
     let opspec = OpSpec(
         OpType: "RefEnter",
+        Name: "Type",
         Input: [ data],
         Attrs: attrs
     )
@@ -13381,16 +14340,18 @@ Exit makes its input `data` available to the parent frame.
 
 
 
-func refExit(scope:Scope,data: Output, t :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func refExit(scope:Scope,data: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "RefExit",
+        Name: "Type",
         Input: [ data],
         Attrs: attrs
     )
@@ -13407,15 +14368,18 @@ Return the same ref tensor as the input ref tensor.
 
 
 
-func refIdentity(scope:Scope,input: Output )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func refIdentity(scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "RefIdentity",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -13436,17 +14400,19 @@ It is usually combined with `Switch` to implement branching.
 
 
 
+
 func refMerge(scope:Scope,inputs: Output, t :Type  , n :Int  )  ->(output: Output, valueIndex: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("N",n)
+    attrs["T"] = t
+    attrs["N"] = n
 
     let opspec = OpSpec(
         OpType: "RefMerge",
+        Name: "Type",
         Input: [ inputs],
         Attrs: attrs
     )
@@ -13463,15 +14429,18 @@ Makes its input available to the next iteration.
 
 
 
-func refNextIteration(scope:Scope,data: Output )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func refNextIteration(scope:Scope,data: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "RefNextIteration",
+        Name: "Type",
         Input: [ data],
         Attrs: attrs
     )
@@ -13488,17 +14457,19 @@ Forwards the `index`th element of `inputs` to `output`.
 
 
 
-func refSelect(scope:Scope,index: Output, inputs: Output, t :Type  , n :Int  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func refSelect(scope:Scope,index: Output, inputs: Output, t :Type  , n :Int  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("N",n)
+    attrs["T"] = t
+    attrs["N"] = n
 
     let opspec = OpSpec(
         OpType: "RefSelect",
+        Name: "Type",
         Input: [ index, inputs],
         Attrs: attrs
     )
@@ -13518,15 +14489,18 @@ See also `Switch` and `Merge`.
 
 
 
-func refSwitch(scope:Scope,data: Output, pred: Output )  ->(outputFalse: Output, outputTrue: Output){
-    if scope.error.error() != nil {
-        return
+
+func refSwitch(scope:Scope,data: Output, pred: Output, t :Type  )  ->(outputFalse: Output, outputTrue: Output){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "RefSwitch",
+        Name: "Type",
         Input: [ data, pred],
         Attrs: attrs
     )
@@ -13543,16 +14517,18 @@ Computes rectified linear: `max(features, 0)`.
 
 
 
-func relu(scope:Scope,features: Output, t :Type  )  ->(activations: Output){
-    if scope.error.error() != nil {
-        return
+
+func relu(scope:Scope,features: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Relu",
+        Name: "Type",
         Input: [ features],
         Attrs: attrs
     )
@@ -13569,15 +14545,18 @@ Computes rectified linear 6: `min(max(features, 0), 6)`.
 
 
 
-func relu6(scope:Scope,features: Output )  ->(activations: Output){
-    if scope.error.error() != nil {
-        return
+
+func relu6(scope:Scope,features: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Relu6",
+        Name: "Type",
         Input: [ features],
         Attrs: attrs
     )
@@ -13594,16 +14573,18 @@ Computes rectified linear 6 gradients for a Relu6 operation.
 
 
 
-func relu6Grad(scope:Scope,gradients: Output, features: Output, t :Type  )  ->(backprops: Output){
-    if scope.error.error() != nil {
-        return
+
+func relu6Grad(scope:Scope,gradients: Output, features: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Relu6Grad",
+        Name: "Type",
         Input: [ gradients, features],
         Attrs: attrs
     )
@@ -13620,15 +14601,18 @@ Computes rectified linear gradients for a Relu operation.
 
 
 
-func reluGrad(scope:Scope,gradients: Output, features: Output )  ->(backprops: Output){
-    if scope.error.error() != nil {
-        return
+
+func reluGrad(scope:Scope,gradients: Output, features: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "ReluGrad",
+        Name: "Type",
         Input: [ gradients, features],
         Attrs: attrs
     )
@@ -13645,17 +14629,19 @@ Creates a dataset that emits the outputs of `input_dataset` `count` times.
 
 
 
-func repeatDataset(scope:Scope,inputDataset: Output, count: Output, outputTypes :List(type)  , outputShapes :List(shape)  )  ->(handle: Output){
-    if scope.error.error() != nil {
-        return
+
+func repeatDataset(scope:Scope,inputDataset: Output, count: Output, outputTypes :List(type)  , outputShapes :List(shape)  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("output_types",outputTypes)
-    attr.append("output_shapes",outputShapes)
+    attrs["output_types"] = outputTypes
+    attrs["output_shapes"] = outputShapes
 
     let opspec = OpSpec(
         OpType: "RepeatDataset",
+        Name: "Type",
         Input: [ inputDataset, count],
         Attrs: attrs
     )
@@ -13675,16 +14661,18 @@ Requantize.
 
 
 
+
 func requantizationRange(scope:Scope,input: Output, inputMin: Output, inputMax: Output, tinput :Type  )  ->(outputMin: Output, outputMax: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tinput",tinput)
+    attrs["Tinput"] = tinput
 
     let opspec = OpSpec(
         OpType: "RequantizationRange",
+        Name: "Type",
         Input: [ input, inputMin, inputMax],
         Attrs: attrs
     )
@@ -13706,17 +14694,19 @@ value in the 16-bit data should be interpreted as -1.0f, and a 65535 means 1.0f.
 
 
 
+
 func requantize(scope:Scope,input: Output, inputMin: Output, inputMax: Output, requestedOutputMin: Output, requestedOutputMax: Output, tinput :Type  , outType :Type  )  ->(output: Output, outputMin: Output, outputMax: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tinput",tinput)
-    attr.append("out_type",outType)
+    attrs["Tinput"] = tinput
+    attrs["out_type"] = outType
 
     let opspec = OpSpec(
         OpType: "Requantize",
+        Name: "Type",
         Input: [ input, inputMin, inputMax, requestedOutputMin, requestedOutputMax],
         Attrs: attrs
     )
@@ -13780,16 +14770,19 @@ reshape(t, []) ==> 7
 
 
 
-func reshape(scope:Scope,tensor: Output, shape: Output, tshape :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func reshape(scope:Scope,tensor: Output, shape: Output, t :Type  , tshape :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tshape",tshape)
+    attrs["T"] = t
+    attrs["Tshape"] = tshape
 
     let opspec = OpSpec(
         OpType: "Reshape",
+        Name: "Type",
         Input: [ tensor, shape],
         Attrs: attrs
     )
@@ -13807,17 +14800,19 @@ Input images can be of different types but output images are always float.
 
 
 
-func resizeArea(scope:Scope,images: Output, size: Output, t :Type  , alignCorners :Bool  )  ->(resizedImages: Output){
-    if scope.error.error() != nil {
-        return
+
+func resizeArea(scope:Scope,images: Output, size: Output, t :Type  , alignCorners :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("align_corners",alignCorners)
+    attrs["T"] = t
+    attrs["align_corners"] = alignCorners
 
     let opspec = OpSpec(
         OpType: "ResizeArea",
+        Name: "Type",
         Input: [ images, size],
         Attrs: attrs
     )
@@ -13835,16 +14830,19 @@ Input images can be of different types but output images are always float.
 
 
 
-func resizeBicubic(scope:Scope,images: Output, size: Output, alignCorners :Bool  )  ->(resizedImages: Output){
-    if scope.error.error() != nil {
-        return
+
+func resizeBicubic(scope:Scope,images: Output, size: Output, t :Type  , alignCorners :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("align_corners",alignCorners)
+    attrs["T"] = t
+    attrs["align_corners"] = alignCorners
 
     let opspec = OpSpec(
         OpType: "ResizeBicubic",
+        Name: "Type",
         Input: [ images, size],
         Attrs: attrs
     )
@@ -13862,17 +14860,19 @@ Input images can be of different types but output images are always float.
 
 
 
-func resizeBilinear(scope:Scope,images: Output, size: Output, t :Type  , alignCorners :Bool  )  ->(resizedImages: Output){
-    if scope.error.error() != nil {
-        return
+
+func resizeBilinear(scope:Scope,images: Output, size: Output, t :Type  , alignCorners :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("align_corners",alignCorners)
+    attrs["T"] = t
+    attrs["align_corners"] = alignCorners
 
     let opspec = OpSpec(
         OpType: "ResizeBilinear",
+        Name: "Type",
         Input: [ images, size],
         Attrs: attrs
     )
@@ -13889,16 +14889,19 @@ Computes the gradient of bilinear interpolation.
 
 
 
-func resizeBilinearGrad(scope:Scope,grads: Output, originalImage: Output, alignCorners :Bool  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func resizeBilinearGrad(scope:Scope,grads: Output, originalImage: Output, t :Type  , alignCorners :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("align_corners",alignCorners)
+    attrs["T"] = t
+    attrs["align_corners"] = alignCorners
 
     let opspec = OpSpec(
         OpType: "ResizeBilinearGrad",
+        Name: "Type",
         Input: [ grads, originalImage],
         Attrs: attrs
     )
@@ -13915,17 +14918,19 @@ Resize `images` to `size` using nearest neighbor interpolation.
 
 
 
-func resizeNearestNeighbor(scope:Scope,images: Output, size: Output, t :Type  , alignCorners :Bool  )  ->(resizedImages: Output){
-    if scope.error.error() != nil {
-        return
+
+func resizeNearestNeighbor(scope:Scope,images: Output, size: Output, t :Type  , alignCorners :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("align_corners",alignCorners)
+    attrs["T"] = t
+    attrs["align_corners"] = alignCorners
 
     let opspec = OpSpec(
         OpType: "ResizeNearestNeighbor",
+        Name: "Type",
         Input: [ images, size],
         Attrs: attrs
     )
@@ -13942,16 +14947,19 @@ Computes the gradient of nearest neighbor interpolation.
 
 
 
-func resizeNearestNeighborGrad(scope:Scope,grads: Output, size: Output, alignCorners :Bool  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func resizeNearestNeighborGrad(scope:Scope,grads: Output, size: Output, t :Type  , alignCorners :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("align_corners",alignCorners)
+    attrs["T"] = t
+    attrs["align_corners"] = alignCorners
 
     let opspec = OpSpec(
         OpType: "ResizeNearestNeighborGrad",
+        Name: "Type",
         Input: [ grads, size],
         Attrs: attrs
     )
@@ -13972,17 +14980,19 @@ var -= update;
 
 
 
-func resourceApplyAdadelta(scope:Scope,`var`: Output, accum: Output, accumUpdate: Output, lr: Output, rho: Output, epsilon: Output, grad: Output, t :Type  , useLocking :Bool  )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func resourceApplyAdadelta(scope:Scope,`var`: Output, accum: Output, accumUpdate: Output, lr: Output, rho: Output, epsilon: Output, grad: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("use_locking",useLocking)
+    attrs["T"] = t
+    attrs["use_locking"] = useLocking
 
     let opspec = OpSpec(
         OpType: "ResourceApplyAdadelta",
+        Name: "Type",
         Input: [ `var`, accum, accumUpdate, lr, rho, epsilon, grad],
         Attrs: attrs
     )
@@ -14000,16 +15010,19 @@ var -= lr * grad * (1 / sqrt(accum))
 
 
 
-func resourceApplyAdagrad(scope:Scope,`var`: Output, accum: Output, lr: Output, grad: Output, useLocking :Bool  )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func resourceApplyAdagrad(scope:Scope,`var`: Output, accum: Output, lr: Output, grad: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("use_locking",useLocking)
+    attrs["T"] = t
+    attrs["use_locking"] = useLocking
 
     let opspec = OpSpec(
         OpType: "ResourceApplyAdagrad",
+        Name: "Type",
         Input: [ `var`, accum, lr, grad],
         Attrs: attrs
     )
@@ -14025,17 +15038,19 @@ Update '*var' according to the proximal adagrad scheme.
 
 
 
-func resourceApplyAdagradDA(scope:Scope,`var`: Output, gradientAccumulator: Output, gradientSquaredAccumulator: Output, grad: Output, lr: Output, l1: Output, l2: Output, globalStep: Output, t :Type  , useLocking :Bool  )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func resourceApplyAdagradDA(scope:Scope,`var`: Output, gradientAccumulator: Output, gradientSquaredAccumulator: Output, grad: Output, lr: Output, l1: Output, l2: Output, globalStep: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("use_locking",useLocking)
+    attrs["T"] = t
+    attrs["use_locking"] = useLocking
 
     let opspec = OpSpec(
         OpType: "ResourceApplyAdagradDA",
+        Name: "Type",
         Input: [ `var`, gradientAccumulator, gradientSquaredAccumulator, grad, lr, l1, l2, globalStep],
         Attrs: attrs
     )
@@ -14055,17 +15070,20 @@ variable <- variable - lr_t * m_t / (sqrt(v_t) + epsilon)
 
 
 
-func resourceApplyAdam(scope:Scope,`var`: Output, m: Output, v: Output, beta1Power: Output, beta2Power: Output, lr: Output, beta1: Output, beta2: Output, epsilon: Output, grad: Output, useLocking :Bool  , useNesterov :Bool  )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func resourceApplyAdam(scope:Scope,`var`: Output, m: Output, v: Output, beta1Power: Output, beta2Power: Output, lr: Output, beta1: Output, beta2: Output, epsilon: Output, grad: Output, t :Type  , useLocking :Bool  , useNesterov :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("use_locking",useLocking)
-    attr.append("use_nesterov",useNesterov)
+    attrs["T"] = t
+    attrs["use_locking"] = useLocking
+    attrs["use_nesterov"] = useNesterov
 
     let opspec = OpSpec(
         OpType: "ResourceApplyAdam",
+        Name: "Type",
         Input: [ `var`, m, v, beta1Power, beta2Power, lr, beta1, beta2, epsilon, grad],
         Attrs: attrs
     )
@@ -14095,17 +15113,19 @@ var <- var - mom
 
 
 
-func resourceApplyCenteredRMSProp(scope:Scope,`var`: Output, mg: Output, ms: Output, mom: Output, lr: Output, rho: Output, momentum: Output, epsilon: Output, grad: Output, t :Type  , useLocking :Bool  )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func resourceApplyCenteredRMSProp(scope:Scope,`var`: Output, mg: Output, ms: Output, mom: Output, lr: Output, rho: Output, momentum: Output, epsilon: Output, grad: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("use_locking",useLocking)
+    attrs["T"] = t
+    attrs["use_locking"] = useLocking
 
     let opspec = OpSpec(
         OpType: "ResourceApplyCenteredRMSProp",
+        Name: "Type",
         Input: [ `var`, mg, ms, mom, lr, rho, momentum, epsilon, grad],
         Attrs: attrs
     )
@@ -14126,16 +15146,19 @@ accum = accum_new
 
 
 
-func resourceApplyFtrl(scope:Scope,`var`: Output, accum: Output, linear: Output, grad: Output, lr: Output, l1: Output, l2: Output, lrPower: Output, useLocking :Bool  )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func resourceApplyFtrl(scope:Scope,`var`: Output, accum: Output, linear: Output, grad: Output, lr: Output, l1: Output, l2: Output, lrPower: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("use_locking",useLocking)
+    attrs["T"] = t
+    attrs["use_locking"] = useLocking
 
     let opspec = OpSpec(
         OpType: "ResourceApplyFtrl",
+        Name: "Type",
         Input: [ `var`, accum, linear, grad, lr, l1, l2, lrPower],
         Attrs: attrs
     )
@@ -14151,17 +15174,19 @@ Update '*var' by subtracting 'alpha' * 'delta' from it.
 
 
 
-func resourceApplyGradientDescent(scope:Scope,`var`: Output, alpha: Output, delta: Output, t :Type  , useLocking :Bool  )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func resourceApplyGradientDescent(scope:Scope,`var`: Output, alpha: Output, delta: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("use_locking",useLocking)
+    attrs["T"] = t
+    attrs["use_locking"] = useLocking
 
     let opspec = OpSpec(
         OpType: "ResourceApplyGradientDescent",
+        Name: "Type",
         Input: [ `var`, alpha, delta],
         Attrs: attrs
     )
@@ -14180,17 +15205,20 @@ var -= lr * accum
 
 
 
-func resourceApplyMomentum(scope:Scope,`var`: Output, accum: Output, lr: Output, grad: Output, momentum: Output, useLocking :Bool  , useNesterov :Bool  )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func resourceApplyMomentum(scope:Scope,`var`: Output, accum: Output, lr: Output, grad: Output, momentum: Output, t :Type  , useLocking :Bool  , useNesterov :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("use_locking",useLocking)
-    attr.append("use_nesterov",useNesterov)
+    attrs["T"] = t
+    attrs["use_locking"] = useLocking
+    attrs["use_nesterov"] = useNesterov
 
     let opspec = OpSpec(
         OpType: "ResourceApplyMomentum",
+        Name: "Type",
         Input: [ `var`, accum, lr, grad, momentum],
         Attrs: attrs
     )
@@ -14209,17 +15237,19 @@ var = sign(prox_v)/(1+lr*l2) * max{|prox_v|-lr*l1,0}
 
 
 
-func resourceApplyProximalAdagrad(scope:Scope,`var`: Output, accum: Output, lr: Output, l1: Output, l2: Output, grad: Output, t :Type  , useLocking :Bool  )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func resourceApplyProximalAdagrad(scope:Scope,`var`: Output, accum: Output, lr: Output, l1: Output, l2: Output, grad: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("use_locking",useLocking)
+    attrs["T"] = t
+    attrs["use_locking"] = useLocking
 
     let opspec = OpSpec(
         OpType: "ResourceApplyProximalAdagrad",
+        Name: "Type",
         Input: [ `var`, accum, lr, l1, l2, grad],
         Attrs: attrs
     )
@@ -14237,16 +15267,19 @@ var = sign(prox_v)/(1+alpha*l2) * max{|prox_v|-alpha*l1,0}
 
 
 
-func resourceApplyProximalGradientDescent(scope:Scope,`var`: Output, alpha: Output, l1: Output, l2: Output, delta: Output, useLocking :Bool  )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func resourceApplyProximalGradientDescent(scope:Scope,`var`: Output, alpha: Output, l1: Output, l2: Output, delta: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("use_locking",useLocking)
+    attrs["T"] = t
+    attrs["use_locking"] = useLocking
 
     let opspec = OpSpec(
         OpType: "ResourceApplyProximalGradientDescent",
+        Name: "Type",
         Input: [ `var`, alpha, l1, l2, delta],
         Attrs: attrs
     )
@@ -14270,17 +15303,19 @@ var <- var - mom
 
 
 
-func resourceApplyRMSProp(scope:Scope,`var`: Output, ms: Output, mom: Output, lr: Output, rho: Output, momentum: Output, epsilon: Output, grad: Output, t :Type  , useLocking :Bool  )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func resourceApplyRMSProp(scope:Scope,`var`: Output, ms: Output, mom: Output, lr: Output, rho: Output, momentum: Output, epsilon: Output, grad: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("use_locking",useLocking)
+    attrs["T"] = t
+    attrs["use_locking"] = useLocking
 
     let opspec = OpSpec(
         OpType: "ResourceApplyRMSProp",
+        Name: "Type",
         Input: [ `var`, ms, mom, lr, rho, momentum, epsilon, grad],
         Attrs: attrs
     )
@@ -14296,17 +15331,20 @@ var: Should be from a Variable().
 
 
 
-func resourceSparseApplyAdadelta(scope:Scope,`var`: Output, accum: Output, accumUpdate: Output, lr: Output, rho: Output, epsilon: Output, grad: Output, indices: Output, tindices :Type  , useLocking :Bool  )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func resourceSparseApplyAdadelta(scope:Scope,`var`: Output, accum: Output, accumUpdate: Output, lr: Output, rho: Output, epsilon: Output, grad: Output, indices: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tindices",tindices)
-    attr.append("use_locking",useLocking)
+    attrs["T"] = t
+    attrs["Tindices"] = tindices
+    attrs["use_locking"] = useLocking
 
     let opspec = OpSpec(
         OpType: "ResourceSparseApplyAdadelta",
+        Name: "Type",
         Input: [ `var`, accum, accumUpdate, lr, rho, epsilon, grad, indices],
         Attrs: attrs
     )
@@ -14325,18 +15363,20 @@ var -= lr * grad * (1 / sqrt(accum))
 
 
 
-func resourceSparseApplyAdagrad(scope:Scope,`var`: Output, accum: Output, lr: Output, grad: Output, indices: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func resourceSparseApplyAdagrad(scope:Scope,`var`: Output, accum: Output, lr: Output, grad: Output, indices: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("Tindices",tindices)
-    attr.append("use_locking",useLocking)
+    attrs["T"] = t
+    attrs["Tindices"] = tindices
+    attrs["use_locking"] = useLocking
 
     let opspec = OpSpec(
         OpType: "ResourceSparseApplyAdagrad",
+        Name: "Type",
         Input: [ `var`, accum, lr, grad, indices],
         Attrs: attrs
     )
@@ -14352,17 +15392,20 @@ Update entries in '*var' and '*accum' according to the proximal adagrad scheme.
 
 
 
-func resourceSparseApplyAdagradDA(scope:Scope,`var`: Output, gradientAccumulator: Output, gradientSquaredAccumulator: Output, grad: Output, indices: Output, lr: Output, l1: Output, l2: Output, globalStep: Output, tindices :Type  , useLocking :Bool  )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func resourceSparseApplyAdagradDA(scope:Scope,`var`: Output, gradientAccumulator: Output, gradientSquaredAccumulator: Output, grad: Output, indices: Output, lr: Output, l1: Output, l2: Output, globalStep: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tindices",tindices)
-    attr.append("use_locking",useLocking)
+    attrs["T"] = t
+    attrs["Tindices"] = tindices
+    attrs["use_locking"] = useLocking
 
     let opspec = OpSpec(
         OpType: "ResourceSparseApplyAdagradDA",
+        Name: "Type",
         Input: [ `var`, gradientAccumulator, gradientSquaredAccumulator, grad, indices, lr, l1, l2, globalStep],
         Attrs: attrs
     )
@@ -14391,18 +15434,20 @@ var <- var - mom
 
 
 
-func resourceSparseApplyCenteredRMSProp(scope:Scope,`var`: Output, mg: Output, ms: Output, mom: Output, lr: Output, rho: Output, momentum: Output, epsilon: Output, grad: Output, indices: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func resourceSparseApplyCenteredRMSProp(scope:Scope,`var`: Output, mg: Output, ms: Output, mom: Output, lr: Output, rho: Output, momentum: Output, epsilon: Output, grad: Output, indices: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("Tindices",tindices)
-    attr.append("use_locking",useLocking)
+    attrs["T"] = t
+    attrs["Tindices"] = tindices
+    attrs["use_locking"] = useLocking
 
     let opspec = OpSpec(
         OpType: "ResourceSparseApplyCenteredRMSProp",
+        Name: "Type",
         Input: [ `var`, mg, ms, mom, lr, rho, momentum, epsilon, grad, indices],
         Attrs: attrs
     )
@@ -14424,17 +15469,20 @@ accum = accum_new
 
 
 
-func resourceSparseApplyFtrl(scope:Scope,`var`: Output, accum: Output, linear: Output, grad: Output, indices: Output, lr: Output, l1: Output, l2: Output, lrPower: Output, tindices :Type  , useLocking :Bool  )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func resourceSparseApplyFtrl(scope:Scope,`var`: Output, accum: Output, linear: Output, grad: Output, indices: Output, lr: Output, l1: Output, l2: Output, lrPower: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tindices",tindices)
-    attr.append("use_locking",useLocking)
+    attrs["T"] = t
+    attrs["Tindices"] = tindices
+    attrs["use_locking"] = useLocking
 
     let opspec = OpSpec(
         OpType: "ResourceSparseApplyFtrl",
+        Name: "Type",
         Input: [ `var`, accum, linear, grad, indices, lr, l1, l2, lrPower],
         Attrs: attrs
     )
@@ -14454,19 +15502,21 @@ var -= lr * accum
 
 
 
-func resourceSparseApplyMomentum(scope:Scope,`var`: Output, accum: Output, lr: Output, grad: Output, indices: Output, momentum: Output, t :Type  , tindices :Type  , useLocking :Bool  , useNesterov :Bool  )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func resourceSparseApplyMomentum(scope:Scope,`var`: Output, accum: Output, lr: Output, grad: Output, indices: Output, momentum: Output, t :Type  , tindices :Type  , useLocking :Bool  , useNesterov :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("Tindices",tindices)
-    attr.append("use_locking",useLocking)
-    attr.append("use_nesterov",useNesterov)
+    attrs["T"] = t
+    attrs["Tindices"] = tindices
+    attrs["use_locking"] = useLocking
+    attrs["use_nesterov"] = useNesterov
 
     let opspec = OpSpec(
         OpType: "ResourceSparseApplyMomentum",
+        Name: "Type",
         Input: [ `var`, accum, lr, grad, indices, momentum],
         Attrs: attrs
     )
@@ -14487,17 +15537,20 @@ var = sign(prox_v)/(1+lr*l2) * max{|prox_v|-lr*l1,0}
 
 
 
-func resourceSparseApplyProximalAdagrad(scope:Scope,`var`: Output, accum: Output, lr: Output, l1: Output, l2: Output, grad: Output, indices: Output, tindices :Type  , useLocking :Bool  )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func resourceSparseApplyProximalAdagrad(scope:Scope,`var`: Output, accum: Output, lr: Output, l1: Output, l2: Output, grad: Output, indices: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tindices",tindices)
-    attr.append("use_locking",useLocking)
+    attrs["T"] = t
+    attrs["Tindices"] = tindices
+    attrs["use_locking"] = useLocking
 
     let opspec = OpSpec(
         OpType: "ResourceSparseApplyProximalAdagrad",
+        Name: "Type",
         Input: [ `var`, accum, lr, l1, l2, grad, indices],
         Attrs: attrs
     )
@@ -14516,18 +15569,20 @@ var = sign(prox_v)/(1+alpha*l2) * max{|prox_v|-alpha*l1,0}
 
 
 
-func resourceSparseApplyProximalGradientDescent(scope:Scope,`var`: Output, alpha: Output, l1: Output, l2: Output, grad: Output, indices: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func resourceSparseApplyProximalGradientDescent(scope:Scope,`var`: Output, alpha: Output, l1: Output, l2: Output, grad: Output, indices: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("Tindices",tindices)
-    attr.append("use_locking",useLocking)
+    attrs["T"] = t
+    attrs["Tindices"] = tindices
+    attrs["use_locking"] = useLocking
 
     let opspec = OpSpec(
         OpType: "ResourceSparseApplyProximalGradientDescent",
+        Name: "Type",
         Input: [ `var`, alpha, l1, l2, grad, indices],
         Attrs: attrs
     )
@@ -14551,17 +15606,20 @@ var <- var - mom
 
 
 
-func resourceSparseApplyRMSProp(scope:Scope,`var`: Output, ms: Output, mom: Output, lr: Output, rho: Output, momentum: Output, epsilon: Output, grad: Output, indices: Output, tindices :Type  , useLocking :Bool  )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func resourceSparseApplyRMSProp(scope:Scope,`var`: Output, ms: Output, mom: Output, lr: Output, rho: Output, momentum: Output, epsilon: Output, grad: Output, indices: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tindices",tindices)
-    attr.append("use_locking",useLocking)
+    attrs["T"] = t
+    attrs["Tindices"] = tindices
+    attrs["use_locking"] = useLocking
 
     let opspec = OpSpec(
         OpType: "ResourceSparseApplyRMSProp",
+        Name: "Type",
         Input: [ `var`, ms, mom, lr, rho, momentum, epsilon, grad, indices],
         Attrs: attrs
     )
@@ -14582,22 +15640,24 @@ shape must be exactly the shape produced by the slice of `ref`.
 
 
 
-func resourceStridedSliceAssign(scope:Scope,ref: Output, begin: Output, end: Output, strides: Output, value: Output, t :Type  , index :Type  , beginMask :Int  , endMask :Int  , ellipsisMask :Int  , newAxisMask :Int  , shrinkAxisMask :Int  )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func resourceStridedSliceAssign(scope:Scope,ref: Output, begin: Output, end: Output, strides: Output, value: Output, t :Type  , index :Type  , beginMask :Int  , endMask :Int  , ellipsisMask :Int  , newAxisMask :Int  , shrinkAxisMask :Int  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("Index",index)
-    attr.append("begin_mask",beginMask)
-    attr.append("end_mask",endMask)
-    attr.append("ellipsis_mask",ellipsisMask)
-    attr.append("new_axis_mask",newAxisMask)
-    attr.append("shrink_axis_mask",shrinkAxisMask)
+    attrs["T"] = t
+    attrs["Index"] = index
+    attrs["begin_mask"] = beginMask
+    attrs["end_mask"] = endMask
+    attrs["ellipsis_mask"] = ellipsisMask
+    attrs["new_axis_mask"] = newAxisMask
+    attrs["shrink_axis_mask"] = shrinkAxisMask
 
     let opspec = OpSpec(
         OpType: "ResourceStridedSliceAssign",
+        Name: "Type",
         Input: [ ref, begin, end, strides, value],
         Attrs: attrs
     )
@@ -14627,17 +15687,19 @@ See also `RestoreSlice`.
 
 
 
-func restore(scope:Scope,filePattern: Output, tensorName: Output, dt :Type  , preferredShard :UInt8  )  ->(tensor: Output){
-    if scope.error.error() != nil {
-        return
+
+func restore(scope:Scope,filePattern: Output, tensorName: Output, dt :Type  , preferredShard :Int  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("dt",dt)
-    attr.append("preferred_shard",preferredShard)
+    attrs["dt"] = dt
+    attrs["preferred_shard"] = preferredShard
 
     let opspec = OpSpec(
         OpType: "Restore",
+        Name: "Type",
         Input: [ filePattern, tensorName],
         Attrs: attrs
     )
@@ -14659,17 +15721,19 @@ elements of the `shapes_and_slices` input of the `SaveSlices` op.
 
 
 
-func restoreSlice(scope:Scope,filePattern: Output, tensorName: Output, shapeAndSlice: Output, dt :Type  , preferredShard :UInt8  )  ->(tensor: Output){
-    if scope.error.error() != nil {
-        return
+
+func restoreSlice(scope:Scope,filePattern: Output, tensorName: Output, shapeAndSlice: Output, dt :Type  , preferredShard :Int  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("dt",dt)
-    attr.append("preferred_shard",preferredShard)
+    attrs["dt"] = dt
+    attrs["preferred_shard"] = preferredShard
 
     let opspec = OpSpec(
         OpType: "RestoreSlice",
+        Name: "Type",
         Input: [ filePattern, tensorName, shapeAndSlice],
         Attrs: attrs
     )
@@ -14697,16 +15761,18 @@ Callers must ensure all the named tensors are indeed stored in the checkpoint.
 
 
 
-func restoreV2(scope:Scope,`prefix`: Output, tensorNames: Output, shapeAndSlices: Output, dtypes :List(type)  )  ->(tensors: Output){
-    if scope.error.error() != nil {
-        return
+
+func restoreV2(scope:Scope,`prefix`: Output, tensorNames: Output, shapeAndSlices: Output, dtypes :List(type)  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("dtypes",dtypes)
+    attrs["dtypes"] = dtypes
 
     let opspec = OpSpec(
         OpType: "RestoreV2",
+        Name: "Type",
         Input: [ `prefix`, tensorNames, shapeAndSlices],
         Attrs: attrs
     )
@@ -14760,15 +15826,18 @@ reverse(t, dims) ==> [[[[8, 9, 10, 11],
 
 
 
-func reverse(scope:Scope,tensor: Output, dims: Output )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func reverse(scope:Scope,tensor: Output, dims: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Reverse",
+        Name: "Type",
         Input: [ tensor, dims],
         Attrs: attrs
     )
@@ -14829,19 +15898,21 @@ output[2:, :, 3, :, ...] = input[2:, :, 3, :, ...]
 
 
 
-func reverseSequence(scope:Scope,input: Output, seqLengths: Output, seqDim :Int  , batchDim :Int  , t :Type  , tlen :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func reverseSequence(scope:Scope,input: Output, seqLengths: Output, seqDim :Int  , batchDim :Int  , t :Type  , tlen :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("seq_dim",seqDim)
-    attr.append("batch_dim",batchDim)
-    attr.append("T",t)
-    attr.append("Tlen",tlen)
+    attrs["seq_dim"] = seqDim
+    attrs["batch_dim"] = batchDim
+    attrs["T"] = t
+    attrs["Tlen"] = tlen
 
     let opspec = OpSpec(
         OpType: "ReverseSequence",
+        Name: "Type",
         Input: [ input, seqLengths],
         Attrs: attrs
     )
@@ -14897,16 +15968,19 @@ reverse(t, dims) ==> [[[[8, 9, 10, 11],
 
 
 
-func reverseV2(scope:Scope,tensor: Output, axis: Output, tidx :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func reverseV2(scope:Scope,tensor: Output, axis: Output, tidx :Type  , t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tidx",tidx)
+    attrs["Tidx"] = tidx
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "ReverseV2",
+        Name: "Type",
         Input: [ tensor, axis],
         Attrs: attrs
     )
@@ -14931,16 +16005,18 @@ rint([-1.7, -1.5, -0.2, 0.2, 1.5, 1.7, 2.0]) ==> [-2., -2., -0., 0., 2., 2., 2.]
 
 
 
-func rint(scope:Scope,x: Output, t :Type  )  ->(y: Output){
-    if scope.error.error() != nil {
-        return
+
+func rint(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Rint",
+        Name: "Type",
         Input: [ x],
         Attrs: attrs
     )
@@ -14959,15 +16035,18 @@ according to the current system rounding mode use std::cint.
 
 
 
-func round(scope:Scope,x: Output )  ->(y: Output){
-    if scope.error.error() != nil {
-        return
+
+func round(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Round",
+        Name: "Type",
         Input: [ x],
         Attrs: attrs
     )
@@ -14985,16 +16064,18 @@ I.e., \\(y = 1 / \sqrt{x}\\).
 
 
 
-func rsqrt(scope:Scope,x: Output, t :Type  )  ->(y: Output){
-    if scope.error.error() != nil {
-        return
+
+func rsqrt(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Rsqrt",
+        Name: "Type",
         Input: [ x],
         Attrs: attrs
     )
@@ -15013,15 +16094,18 @@ is the corresponding input gradient.
 
 
 
-func rsqrtGrad(scope:Scope,x: Output, y: Output )  ->(z: Output){
-    if scope.error.error() != nil {
-        return
+
+func rsqrtGrad(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "RsqrtGrad",
+        Name: "Type",
         Input: [ x, y],
         Attrs: attrs
     )
@@ -15069,23 +16153,25 @@ false and no bounding boxes are supplied, an error is raised.
 
 
 
+
 func sampleDistortedBoundingBox(scope:Scope,imageSize: Output, boundingBoxes: Output, t :Type  , seed :Int  , seed2 :Int  , minObjectCovered :Float  , aspectRatioRange :List(float)  , areaRange :List(float)  , maxAttempts :Int  , useImageIfNoBoundingBoxes :Bool  )  ->(begin: Output, size: Output, bboxes: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("seed",seed)
-    attr.append("seed2",seed2)
-    attr.append("min_object_covered",minObjectCovered)
-    attr.append("aspect_ratio_range",aspectRatioRange)
-    attr.append("area_range",areaRange)
-    attr.append("max_attempts",maxAttempts)
-    attr.append("use_image_if_no_bounding_boxes",useImageIfNoBoundingBoxes)
+    attrs["T"] = t
+    attrs["seed"] = seed
+    attrs["seed2"] = seed2
+    attrs["min_object_covered"] = minObjectCovered
+    attrs["aspect_ratio_range"] = aspectRatioRange
+    attrs["area_range"] = areaRange
+    attrs["max_attempts"] = maxAttempts
+    attrs["use_image_if_no_bounding_boxes"] = useImageIfNoBoundingBoxes
 
     let opspec = OpSpec(
         OpType: "SampleDistortedBoundingBox",
+        Name: "Type",
         Input: [ imageSize, boundingBoxes],
         Attrs: attrs
     )
@@ -15105,15 +16191,18 @@ See also `SaveSlices`.
 
 
 
-func save(scope:Scope,filename: Output, tensorNames: Output, data: Output )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func save(scope:Scope,filename: Output, tensorNames: Output, data: Output, t :List(type)  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Save",
+        Name: "Type",
         Input: [ filename, tensorNames, data],
         Attrs: attrs
     )
@@ -15145,16 +16234,18 @@ See also `Save`.
 
 
 
-func saveSlices(scope:Scope,filename: Output, tensorNames: Output, shapesAndSlices: Output, data: Output, t :List(type)  )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func saveSlices(scope:Scope,filename: Output, tensorNames: Output, shapesAndSlices: Output, data: Output, t :List(type)  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "SaveSlices",
+        Name: "Type",
         Input: [ filename, tensorNames, shapesAndSlices, data],
         Attrs: attrs
     )
@@ -15173,16 +16264,18 @@ and correspondingly well-formed.
 
 
 
-func saveV2(scope:Scope,`prefix`: Output, tensorNames: Output, shapeAndSlices: Output, tensors: Output, dtypes :List(type)  )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func saveV2(scope:Scope,`prefix`: Output, tensorNames: Output, shapeAndSlices: Output, tensors: Output, dtypes :List(type)  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("dtypes",dtypes)
+    attrs["dtypes"] = dtypes
 
     let opspec = OpSpec(
         OpType: "SaveV2",
+        Name: "Type",
         Input: [ `prefix`, tensorNames, shapeAndSlices, tensors],
         Attrs: attrs
     )
@@ -15200,15 +16293,18 @@ has a summary value for each tag-value pair in `tags` and `values`.
 
 
 
-func scalarSummary(scope:Scope,tags: Output, values: Output )  ->(summary: Output){
-    if scope.error.error() != nil {
-        return
+
+func scalarSummary(scope:Scope,tags: Output, values: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "ScalarSummary",
+        Name: "Type",
         Input: [ tags, values],
         Attrs: attrs
     )
@@ -15240,18 +16336,20 @@ Requires `updates.shape = indices.shape + ref.shape[1:]`.
 
 
 
-func scatterAdd(scope:Scope,ref: Output, indices: Output, updates: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(outputRef: Output){
-    if scope.error.error() != nil {
-        return
+
+func scatterAdd(scope:Scope,ref: Output, indices: Output, updates: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("Tindices",tindices)
-    attr.append("use_locking",useLocking)
+    attrs["T"] = t
+    attrs["Tindices"] = tindices
+    attrs["use_locking"] = useLocking
 
     let opspec = OpSpec(
         OpType: "ScatterAdd",
+        Name: "Type",
         Input: [ ref, indices, updates],
         Attrs: attrs
     )
@@ -15282,17 +16380,20 @@ Requires `updates.shape = indices.shape + ref.shape[1:]`.
 
 
 
-func scatterDiv(scope:Scope,ref: Output, indices: Output, updates: Output, tindices :Type  , useLocking :Bool  )  ->(outputRef: Output){
-    if scope.error.error() != nil {
-        return
+
+func scatterDiv(scope:Scope,ref: Output, indices: Output, updates: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tindices",tindices)
-    attr.append("use_locking",useLocking)
+    attrs["T"] = t
+    attrs["Tindices"] = tindices
+    attrs["use_locking"] = useLocking
 
     let opspec = OpSpec(
         OpType: "ScatterDiv",
+        Name: "Type",
         Input: [ ref, indices, updates],
         Attrs: attrs
     )
@@ -15323,18 +16424,20 @@ Requires `updates.shape = indices.shape + ref.shape[1:]`.
 
 
 
-func scatterMul(scope:Scope,ref: Output, indices: Output, updates: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(outputRef: Output){
-    if scope.error.error() != nil {
-        return
+
+func scatterMul(scope:Scope,ref: Output, indices: Output, updates: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("Tindices",tindices)
-    attr.append("use_locking",useLocking)
+    attrs["T"] = t
+    attrs["Tindices"] = tindices
+    attrs["use_locking"] = useLocking
 
     let opspec = OpSpec(
         OpType: "ScatterMul",
+        Name: "Type",
         Input: [ ref, indices, updates],
         Attrs: attrs
     )
@@ -15405,16 +16508,19 @@ The resulting tensor would look like this:
 
 
 
-func scatterNd(scope:Scope,indices: Output, updates: Output, shape: Output, tindices :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func scatterNd(scope:Scope,indices: Output, updates: Output, shape: Output, t :Type  , tindices :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tindices",tindices)
+    attrs["T"] = t
+    attrs["Tindices"] = tindices
 
     let opspec = OpSpec(
         OpType: "ScatterNd",
+        Name: "Type",
         Input: [ indices, updates, shape],
         Attrs: attrs
     )
@@ -15454,18 +16560,20 @@ slices.
 
 
 
-func scatterNdAdd(scope:Scope,ref: Output, indices: Output, updates: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(outputRef: Output){
-    if scope.error.error() != nil {
-        return
+
+func scatterNdAdd(scope:Scope,ref: Output, indices: Output, updates: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("Tindices",tindices)
-    attr.append("use_locking",useLocking)
+    attrs["T"] = t
+    attrs["Tindices"] = tindices
+    attrs["use_locking"] = useLocking
 
     let opspec = OpSpec(
         OpType: "ScatterNdAdd",
+        Name: "Type",
         Input: [ ref, indices, updates],
         Attrs: attrs
     )
@@ -15505,17 +16613,20 @@ slices.
 
 
 
-func scatterNdSub(scope:Scope,ref: Output, indices: Output, updates: Output, tindices :Type  , useLocking :Bool  )  ->(outputRef: Output){
-    if scope.error.error() != nil {
-        return
+
+func scatterNdSub(scope:Scope,ref: Output, indices: Output, updates: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tindices",tindices)
-    attr.append("use_locking",useLocking)
+    attrs["T"] = t
+    attrs["Tindices"] = tindices
+    attrs["use_locking"] = useLocking
 
     let opspec = OpSpec(
         OpType: "ScatterNdSub",
+        Name: "Type",
         Input: [ ref, indices, updates],
         Attrs: attrs
     )
@@ -15557,18 +16668,20 @@ slices.
 
 
 
-func scatterNdUpdate(scope:Scope,ref: Output, indices: Output, updates: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(outputRef: Output){
-    if scope.error.error() != nil {
-        return
+
+func scatterNdUpdate(scope:Scope,ref: Output, indices: Output, updates: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("Tindices",tindices)
-    attr.append("use_locking",useLocking)
+    attrs["T"] = t
+    attrs["Tindices"] = tindices
+    attrs["use_locking"] = useLocking
 
     let opspec = OpSpec(
         OpType: "ScatterNdUpdate",
+        Name: "Type",
         Input: [ ref, indices, updates],
         Attrs: attrs
     )
@@ -15601,17 +16714,20 @@ Requires `updates.shape = indices.shape + ref.shape[1:]`.
 
 
 
-func scatterSub(scope:Scope,ref: Output, indices: Output, updates: Output, tindices :Type  , useLocking :Bool  )  ->(outputRef: Output){
-    if scope.error.error() != nil {
-        return
+
+func scatterSub(scope:Scope,ref: Output, indices: Output, updates: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tindices",tindices)
-    attr.append("use_locking",useLocking)
+    attrs["T"] = t
+    attrs["Tindices"] = tindices
+    attrs["use_locking"] = useLocking
 
     let opspec = OpSpec(
         OpType: "ScatterSub",
+        Name: "Type",
         Input: [ ref, indices, updates],
         Attrs: attrs
     )
@@ -15646,18 +16762,20 @@ Requires `updates.shape = indices.shape + ref.shape[1:]`.
 
 
 
-func scatterUpdate(scope:Scope,ref: Output, indices: Output, updates: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(outputRef: Output){
-    if scope.error.error() != nil {
-        return
+
+func scatterUpdate(scope:Scope,ref: Output, indices: Output, updates: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("Tindices",tindices)
-    attr.append("use_locking",useLocking)
+    attrs["T"] = t
+    attrs["Tindices"] = tindices
+    attrs["use_locking"] = useLocking
 
     let opspec = OpSpec(
         OpType: "ScatterUpdate",
+        Name: "Type",
         Input: [ ref, indices, updates],
         Attrs: attrs
     )
@@ -15674,15 +16792,17 @@ Computes fingerprints of the input strings.
 
 
 
-func sdcaFprint(scope:Scope,input: Output )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func sdcaFprint(scope:Scope,input: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "SdcaFprint",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -15712,24 +16832,26 @@ Dominik Csiba, Zheng Qu, Peter Richtarik. 2015
 
 
 
-func sdcaOptimizer(scope:Scope,sparseExampleIndices: Output, sparseFeatureIndices: Output, sparseFeatureValues: Output, denseFeatures: Output, exampleWeights: Output, exampleLabels: Output, sparseIndices: Output, sparseWeights: Output, denseWeights: Output, exampleStateData: Output, lossType :String  , adaptative :Bool  , numSparseFeatures :UInt8  , numSparseFeaturesWithValues :UInt8  , numDenseFeatures :UInt8  , l1 :Float  , l2 :Float  , numLossPartitions :UInt8  , numInnerIterations :UInt8  )  ->(outExampleStateData: Output, outDeltaSparseWeights: Output, outDeltaDenseWeights: Output){
-    if scope.error.error() != nil {
-        return
+
+func sdcaOptimizer(scope:Scope,sparseExampleIndices: Output, sparseFeatureIndices: Output, sparseFeatureValues: Output, denseFeatures: Output, exampleWeights: Output, exampleLabels: Output, sparseIndices: Output, sparseWeights: Output, denseWeights: Output, exampleStateData: Output, lossType :String  , adaptative :Bool  , numSparseFeatures :Int  , numSparseFeaturesWithValues :Int  , numDenseFeatures :Int  , l1 :Float  , l2 :Float  , numLossPartitions :Int  , numInnerIterations :Int  )  ->(outExampleStateData: Output, outDeltaSparseWeights: Output, outDeltaDenseWeights: Output){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("loss_type",lossType)
-    attr.append("adaptative",adaptative)
-    attr.append("num_sparse_features",numSparseFeatures)
-    attr.append("num_sparse_features_with_values",numSparseFeaturesWithValues)
-    attr.append("num_dense_features",numDenseFeatures)
-    attr.append("l1",l1)
-    attr.append("l2",l2)
-    attr.append("num_loss_partitions",numLossPartitions)
-    attr.append("num_inner_iterations",numInnerIterations)
+    attrs["loss_type"] = lossType
+    attrs["adaptative"] = adaptative
+    attrs["num_sparse_features"] = numSparseFeatures
+    attrs["num_sparse_features_with_values"] = numSparseFeaturesWithValues
+    attrs["num_dense_features"] = numDenseFeatures
+    attrs["l1"] = l1
+    attrs["l2"] = l2
+    attrs["num_loss_partitions"] = numLossPartitions
+    attrs["num_inner_iterations"] = numInnerIterations
 
     let opspec = OpSpec(
         OpType: "SdcaOptimizer",
+        Name: "Type",
         Input: [ sparseExampleIndices, sparseFeatureIndices, sparseFeatureValues, denseFeatures, exampleWeights, exampleLabels, sparseIndices, sparseWeights, denseWeights, exampleStateData],
         Attrs: attrs
     )
@@ -15746,18 +16868,20 @@ Applies L1 regularization shrink step on the parameters.
 
 
 
-func sdcaShrinkL1(scope:Scope,weights: Output, numFeatures :UInt8  , l1 :Float  , l2 :Float  )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func sdcaShrinkL1(scope:Scope,weights: Output, numFeatures :Int  , l1 :Float  , l2 :Float  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("num_features",numFeatures)
-    attr.append("l1",l1)
-    attr.append("l2",l2)
+    attrs["num_features"] = numFeatures
+    attrs["l1"] = l1
+    attrs["l2"] = l2
 
     let opspec = OpSpec(
         OpType: "SdcaShrinkL1",
+        Name: "Type",
         Input: [ weights],
         Attrs: attrs
     )
@@ -15782,16 +16906,19 @@ If the max is empty for a given segment ID `i`, `output[i] = 0`.
 
 
 
-func segmentMax(scope:Scope,data: Output, segmentIds: Output, tindices :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func segmentMax(scope:Scope,data: Output, segmentIds: Output, t :Type  , tindices :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tindices",tindices)
+    attrs["T"] = t
+    attrs["Tindices"] = tindices
 
     let opspec = OpSpec(
         OpType: "SegmentMax",
+        Name: "Type",
         Input: [ data, segmentIds],
         Attrs: attrs
     )
@@ -15818,17 +16945,19 @@ If the mean is empty for a given segment ID `i`, `output[i] = 0`.
 
 
 
-func segmentMean(scope:Scope,data: Output, segmentIds: Output, t :Type  , tindices :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func segmentMean(scope:Scope,data: Output, segmentIds: Output, t :Type  , tindices :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("Tindices",tindices)
+    attrs["T"] = t
+    attrs["Tindices"] = tindices
 
     let opspec = OpSpec(
         OpType: "SegmentMean",
+        Name: "Type",
         Input: [ data, segmentIds],
         Attrs: attrs
     )
@@ -15854,16 +16983,19 @@ If the min is empty for a given segment ID `i`, `output[i] = 0`.
 
 
 
-func segmentMin(scope:Scope,data: Output, segmentIds: Output, tindices :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func segmentMin(scope:Scope,data: Output, segmentIds: Output, t :Type  , tindices :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tindices",tindices)
+    attrs["T"] = t
+    attrs["Tindices"] = tindices
 
     let opspec = OpSpec(
         OpType: "SegmentMin",
+        Name: "Type",
         Input: [ data, segmentIds],
         Attrs: attrs
     )
@@ -15889,17 +17021,19 @@ If the product is empty for a given segment ID `i`, `output[i] = 1`.
 
 
 
-func segmentProd(scope:Scope,data: Output, segmentIds: Output, t :Type  , tindices :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func segmentProd(scope:Scope,data: Output, segmentIds: Output, t :Type  , tindices :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("Tindices",tindices)
+    attrs["T"] = t
+    attrs["Tindices"] = tindices
 
     let opspec = OpSpec(
         OpType: "SegmentProd",
+        Name: "Type",
         Input: [ data, segmentIds],
         Attrs: attrs
     )
@@ -15925,16 +17059,19 @@ If the sum is empty for a given segment ID `i`, `output[i] = 0`.
 
 
 
-func segmentSum(scope:Scope,data: Output, segmentIds: Output, tindices :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func segmentSum(scope:Scope,data: Output, segmentIds: Output, t :Type  , tindices :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tindices",tindices)
+    attrs["T"] = t
+    attrs["Tindices"] = tindices
 
     let opspec = OpSpec(
         OpType: "SegmentSum",
+        Name: "Type",
         Input: [ data, segmentIds],
         Attrs: attrs
     )
@@ -15981,16 +17118,18 @@ select(condition, t, e) ==> [[1, 2],
 
 
 
-func select(scope:Scope,condition: Output, t: Output, e: Output, t :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func select(scope:Scope,condition: Output, t: Output, e: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Select",
+        Name: "Type",
         Input: [ condition, t, e],
         Attrs: attrs
     )
@@ -16012,15 +17151,18 @@ eigenvalues, and subsequent [...,1:, :] containing the eigenvectors.
 
 
 
-func selfAdjointEig(scope:Scope,input: Output )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func selfAdjointEig(scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "SelfAdjointEig",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -16046,17 +17188,19 @@ e = self_adjoint_eig(a, compute_v=False)
 
 
 
+
 func selfAdjointEigV2(scope:Scope,input: Output, computeV :Bool  , t :Type  )  ->(e: Output, v: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("compute_v",computeV)
-    attr.append("T",t)
+    attrs["compute_v"] = computeV
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "SelfAdjointEigV2",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -16079,15 +17223,18 @@ The minibatch size `N` is extracted from `sparse_shape[0]`.
 
 
 
-func serializeManySparse(scope:Scope,sparseIndices: Output, sparseValues: Output, sparseShape: Output )  ->(serializedSparse: Output){
-    if scope.error.error() != nil {
-        return
+
+func serializeManySparse(scope:Scope,sparseIndices: Output, sparseValues: Output, sparseShape: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "SerializeManySparse",
+        Name: "Type",
         Input: [ sparseIndices, sparseValues, sparseShape],
         Attrs: attrs
     )
@@ -16104,16 +17251,18 @@ Serialize a `SparseTensor` into a string 3-vector (1-D `Tensor`) object.
 
 
 
-func serializeSparse(scope:Scope,sparseIndices: Output, sparseValues: Output, sparseShape: Output, t :Type  )  ->(serializedSparse: Output){
-    if scope.error.error() != nil {
-        return
+
+func serializeSparse(scope:Scope,sparseIndices: Output, sparseValues: Output, sparseShape: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "SerializeSparse",
+        Name: "Type",
         Input: [ sparseIndices, sparseValues, sparseShape],
         Attrs: attrs
     )
@@ -16135,16 +17284,19 @@ indices.
 
 
 
-func setSize(scope:Scope,setIndices: Output, setValues: Output, setShape: Output, validateIndices :Bool  )  ->(size: Output){
-    if scope.error.error() != nil {
-        return
+
+func setSize(scope:Scope,setIndices: Output, setValues: Output, setShape: Output, validateIndices :Bool  , t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("validate_indices",validateIndices)
+    attrs["validate_indices"] = validateIndices
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "SetSize",
+        Name: "Type",
         Input: [ setIndices, setValues, setShape],
         Attrs: attrs
     )
@@ -16167,17 +17319,19 @@ shape(t) ==> [2, 2, 3]
 
 
 
-func shape(scope:Scope,input: Output, t :Type  , outType :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func shape(scope:Scope,input: Output, t :Type  , outType :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("out_type",outType)
+    attrs["T"] = t
+    attrs["out_type"] = outType
 
     let opspec = OpSpec(
         OpType: "Shape",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -16195,17 +17349,20 @@ This operation returns N 1-D integer tensors representing shape of `input[i]s`.
 
 
 
-func shapeN(scope:Scope,input: Output, n :UInt8  , outType :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func shapeN(scope:Scope,input: Output, n :Int  , t :Type  , outType :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("N",n)
-    attr.append("out_type",outType)
+    attrs["N"] = n
+    attrs["T"] = t
+    attrs["out_type"] = outType
 
     let opspec = OpSpec(
         OpType: "ShapeN",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -16223,15 +17380,17 @@ Generate a sharded filename. The filename is printf formatted as
 
 
 
-func shardedFilename(scope:Scope,basename: Output, shard: Output, numShards: Output )  ->(filename: Output){
-    if scope.error.error() != nil {
-        return
+
+func shardedFilename(scope:Scope,basename: Output, shard: Output, numShards: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "ShardedFilename",
+        Name: "Type",
         Input: [ basename, shard, numShards],
         Attrs: attrs
     )
@@ -16248,15 +17407,17 @@ Generate a glob pattern matching all sharded file names.
 
 
 
-func shardedFilespec(scope:Scope,basename: Output, numShards: Output )  ->(filename: Output){
-    if scope.error.error() != nil {
-        return
+
+func shardedFilespec(scope:Scope,basename: Output, numShards: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "ShardedFilespec",
+        Name: "Type",
         Input: [ basename, numShards],
         Attrs: attrs
     )
@@ -16273,17 +17434,19 @@ Creates a dataset that shuffles elements from `input_dataset` pseudorandomly.
 
 
 
-func shuffleDataset(scope:Scope,inputDataset: Output, bufferSize: Output, seed: Output, seed2: Output, outputTypes :List(type)  , outputShapes :[Shape]  )  ->(handle: Output){
-    if scope.error.error() != nil {
-        return
+
+func shuffleDataset(scope:Scope,inputDataset: Output, bufferSize: Output, seed: Output, seed2: Output, outputTypes :List(type)  , outputShapes :List(shape)  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("output_types",outputTypes)
-    attr.append("output_shapes",outputShapes)
+    attrs["output_types"] = outputTypes
+    attrs["output_shapes"] = outputShapes
 
     let opspec = OpSpec(
         OpType: "ShuffleDataset",
+        Name: "Type",
         Input: [ inputDataset, bufferSize, seed, seed2],
         Attrs: attrs
     )
@@ -16301,15 +17464,18 @@ Specifically, `y = 1 / (1 + exp(-x))`.
 
 
 
-func sigmoid(scope:Scope,x: Output )  ->(y: Output){
-    if scope.error.error() != nil {
-        return
+
+func sigmoid(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Sigmoid",
+        Name: "Type",
         Input: [ x],
         Attrs: attrs
     )
@@ -16328,16 +17494,18 @@ Specifically, `grad = dy * y * (1 - y)`, where `y = sigmoid(x)`, and
 
 
 
-func sigmoidGrad(scope:Scope,x: Output, y: Output, t :Type  )  ->(z: Output){
-    if scope.error.error() != nil {
-        return
+
+func sigmoidGrad(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "SigmoidGrad",
+        Name: "Type",
         Input: [ x, y],
         Attrs: attrs
     )
@@ -16356,15 +17524,18 @@ For complex numbers, `y = sign(x) = x / |x|` if `x != 0`, otherwise `y = 0`.
 
 
 
-func sign(scope:Scope,x: Output )  ->(y: Output){
-    if scope.error.error() != nil {
-        return
+
+func sign(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Sign",
+        Name: "Type",
         Input: [ x],
         Attrs: attrs
     )
@@ -16381,16 +17552,18 @@ Computes sin of x element-wise.
 
 
 
-func sin(scope:Scope,x: Output, t :Type  )  ->(y: Output){
-    if scope.error.error() != nil {
-        return
+
+func sin(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Sin",
+        Name: "Type",
         Input: [ x],
         Attrs: attrs
     )
@@ -16414,16 +17587,19 @@ size(t) ==> 12
 
 
 
-func size(scope:Scope,input: Output, outType :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func size(scope:Scope,input: Output, t :Type  , outType :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("out_type",outType)
+    attrs["T"] = t
+    attrs["out_type"] = outType
 
     let opspec = OpSpec(
         OpType: "Size",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -16440,17 +17616,19 @@ Creates a dataset that skips `count` elements from the `input_dataset`.
 
 
 
-func skipDataset(scope:Scope,inputDataset: Output, count: Output, outputTypes :List(type)  , outputShapes :List(shape)  )  ->(handle: Output){
-    if scope.error.error() != nil {
-        return
+
+func skipDataset(scope:Scope,inputDataset: Output, count: Output, outputTypes :List(type)  , outputShapes :List(shape)  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("output_types",outputTypes)
-    attr.append("output_shapes",outputShapes)
+    attrs["output_types"] = outputTypes
+    attrs["output_shapes"] = outputShapes
 
     let opspec = OpSpec(
         OpType: "SkipDataset",
+        Name: "Type",
         Input: [ inputDataset, count],
         Attrs: attrs
     )
@@ -16467,20 +17645,22 @@ Parses a text file and creates a batch of examples.
 
 
 
-func skipgram(scope:Scope filename :String  , batchSize :UInt8  , windowSize :UInt8  , minCount :UInt8  , subsample :Float  )  ->(vocabWord: Output, vocabFreq: Output, wordsPerEpoch: Output, currentEpoch: Output, totalWordsProcessed: Output, examples: Output, labels: Output){
-    if scope.error.error() != nil {
-        return
+
+func skipgram(scope:Scope, filename :String  , batchSize :Int  , windowSize :Int  , minCount :Int  , subsample :Float  )  ->(vocabWord: Output, vocabFreq: Output, wordsPerEpoch: Output, currentEpoch: Output, totalWordsProcessed: Output, examples: Output, labels: Output){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("filename",filename)
-    attr.append("batch_size",batchSize)
-    attr.append("window_size",windowSize)
-    attr.append("min_count",minCount)
-    attr.append("subsample",subsample)
+    attrs["filename"] = filename
+    attrs["batch_size"] = batchSize
+    attrs["window_size"] = windowSize
+    attrs["min_count"] = minCount
+    attrs["subsample"] = subsample
 
     let opspec = OpSpec(
         OpType: "Skipgram",
+        Name: "Type",
         Input: [ ],
         Attrs: attrs
     )
@@ -16502,16 +17682,19 @@ whose values are extracted from 'input' starting at the offsets in
 
 
 
-func slice(scope:Scope,input: Output, begin: Output, size: Output, index :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func slice(scope:Scope,input: Output, begin: Output, size: Output, t :Type  , index :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Index",index)
+    attrs["T"] = t
+    attrs["Index"] = index
 
     let opspec = OpSpec(
         OpType: "Slice",
+        Name: "Type",
         Input: [ input, begin, size],
         Attrs: attrs
     )
@@ -16530,16 +17713,18 @@ For each batch `i` and class `j` we have
 
 
 
-func softmax(scope:Scope,logits: Output, t :Type  )  ->(softmax: Output){
-    if scope.error.error() != nil {
-        return
+
+func softmax(scope:Scope,logits: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Softmax",
+        Name: "Type",
         Input: [ logits],
         Attrs: attrs
     )
@@ -16557,15 +17742,18 @@ Inputs are the logits, not probabilities.
 
 
 
-func softmaxCrossEntropyWithLogits(scope:Scope,features: Output, labels: Output )  ->(loss: Output, backprop: Output){
-    if scope.error.error() != nil {
-        return
+
+func softmaxCrossEntropyWithLogits(scope:Scope,features: Output, labels: Output, t :Type  )  ->(loss: Output, backprop: Output){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "SoftmaxCrossEntropyWithLogits",
+        Name: "Type",
         Input: [ features, labels],
         Attrs: attrs
     )
@@ -16582,16 +17770,18 @@ Computes softplus: `log(exp(features) + 1)`.
 
 
 
-func softplus(scope:Scope,features: Output, t :Type  )  ->(activations: Output){
-    if scope.error.error() != nil {
-        return
+
+func softplus(scope:Scope,features: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Softplus",
+        Name: "Type",
         Input: [ features],
         Attrs: attrs
     )
@@ -16608,15 +17798,18 @@ Computes softplus gradients for a softplus operation.
 
 
 
-func softplusGrad(scope:Scope,gradients: Output, features: Output )  ->(backprops: Output){
-    if scope.error.error() != nil {
-        return
+
+func softplusGrad(scope:Scope,gradients: Output, features: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "SoftplusGrad",
+        Name: "Type",
         Input: [ gradients, features],
         Attrs: attrs
     )
@@ -16633,16 +17826,18 @@ Computes softsign: `features / (abs(features) + 1)`.
 
 
 
-func softsign(scope:Scope,features: Output, t :Type  )  ->(activations: Output){
-    if scope.error.error() != nil {
-        return
+
+func softsign(scope:Scope,features: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Softsign",
+        Name: "Type",
         Input: [ features],
         Attrs: attrs
     )
@@ -16659,15 +17854,18 @@ Computes softsign gradients for a softsign operation.
 
 
 
-func softsignGrad(scope:Scope,gradients: Output, features: Output )  ->(backprops: Output){
-    if scope.error.error() != nil {
-        return
+
+func softsignGrad(scope:Scope,gradients: Output, features: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "SoftsignGrad",
+        Name: "Type",
         Input: [ gradients, features],
         Attrs: attrs
     )
@@ -16690,18 +17888,20 @@ block size.
 
 
 
-func spaceToBatch(scope:Scope,input: Output, paddings: Output, t :Type  , tpaddings :Type  , blockSize :Int  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func spaceToBatch(scope:Scope,input: Output, paddings: Output, t :Type  , tpaddings :Type  , blockSize :Int  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("Tpaddings",tpaddings)
-    attr.append("block_size",blockSize)
+    attrs["T"] = t
+    attrs["Tpaddings"] = tpaddings
+    attrs["block_size"] = blockSize
 
     let opspec = OpSpec(
         OpType: "SpaceToBatch",
+        Name: "Type",
         Input: [ input, paddings],
         Attrs: attrs
     )
@@ -16726,17 +17926,20 @@ precise description.
 
 
 
-func spaceToBatchND(scope:Scope,input: Output, blockShape: Output, paddings: Output, tblockShape :Type  , tpaddings :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func spaceToBatchND(scope:Scope,input: Output, blockShape: Output, paddings: Output, t :Type  , tblockShape :Type  , tpaddings :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tblock_shape",tblockShape)
-    attr.append("Tpaddings",tpaddings)
+    attrs["T"] = t
+    attrs["Tblock_shape"] = tblockShape
+    attrs["Tpaddings"] = tpaddings
 
     let opspec = OpSpec(
         OpType: "SpaceToBatchND",
+        Name: "Type",
         Input: [ input, blockShape, paddings],
         Attrs: attrs
     )
@@ -16807,17 +18010,19 @@ x = [[[[1, 2, 3, 4],
 
 
 
-func spaceToDepth(scope:Scope,input: Output, t :Type  , blockSize :Int  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func spaceToDepth(scope:Scope,input: Output, t :Type  , blockSize :Int  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("block_size",blockSize)
+    attrs["T"] = t
+    attrs["block_size"] = blockSize
 
     let opspec = OpSpec(
         OpType: "SpaceToDepth",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -16836,17 +18041,19 @@ global_step.
 
 
 
-func sparseAccumulatorApplyGradient(scope:Scope,handle: Output, localStep: Output, gradientIndices: Output, gradientValues: Output, gradientShape: Output, dtype :[Any]  , hasKnownShape :Bool  )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func sparseAccumulatorApplyGradient(scope:Scope,handle: Output, localStep: Output, gradientIndices: Output, gradientValues: Output, gradientShape: Output, dtype :Type  , hasKnownShape :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("dtype",dtype)
-    attr.append("has_known_shape",hasKnownShape)
+    attrs["dtype"] = dtype
+    attrs["has_known_shape"] = hasKnownShape
 
     let opspec = OpSpec(
         OpType: "SparseAccumulatorApplyGradient",
+        Name: "Type",
         Input: [ handle, localStep, gradientIndices, gradientValues, gradientShape],
         Attrs: attrs
     )
@@ -16868,16 +18075,18 @@ aggregate to 0.
 
 
 
-func sparseAccumulatorTakeGradient(scope:Scope,handle: Output, numRequired: Output, dtype :[Any]  )  ->(indices: Output, values: Output, shape: Output){
-    if scope.error.error() != nil {
-        return
+
+func sparseAccumulatorTakeGradient(scope:Scope,handle: Output, numRequired: Output, dtype :Type  )  ->(indices: Output, values: Output, shape: Output){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("dtype",dtype)
+    attrs["dtype"] = dtype
 
     let opspec = OpSpec(
         OpType: "SparseAccumulatorTakeGradient",
+        Name: "Type",
         Input: [ handle, numRequired],
         Attrs: attrs
     )
@@ -16905,16 +18114,19 @@ In the following shapes, `nnz` is the count after taking `thresh` into account.
 
 
 
-func sparseAdd(scope:Scope,aIndices: Output, aValues: Output, aShape: Output, bIndices: Output, bValues: Output, bShape: Output, thresh: Output, treal :Type  )  ->(sumIndices: Output, sumValues: Output, sumShape: Output){
-    if scope.error.error() != nil {
-        return
+
+func sparseAdd(scope:Scope,aIndices: Output, aValues: Output, aShape: Output, bIndices: Output, bValues: Output, bShape: Output, thresh: Output, t :Type  , treal :Type  )  ->(sumIndices: Output, sumValues: Output, sumShape: Output){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Treal",treal)
+    attrs["T"] = t
+    attrs["Treal"] = treal
 
     let opspec = OpSpec(
         OpType: "SparseAdd",
+        Name: "Type",
         Input: [ aIndices, aValues, aShape, bIndices, bValues, bShape, thresh],
         Attrs: attrs
     )
@@ -16935,16 +18147,18 @@ values of A and B.
 
 
 
+
 func sparseAddGrad(scope:Scope,backpropValGrad: Output, aIndices: Output, bIndices: Output, sumIndices: Output, t :Type  )  ->(aValGrad: Output, bValGrad: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "SparseAddGrad",
+        Name: "Type",
         Input: [ backpropValGrad, aIndices, bIndices, sumIndices],
         Attrs: attrs
     )
@@ -16961,17 +18175,20 @@ var: Should be from a Variable().
 
 
 
-func sparseApplyAdadelta(scope:Scope,`var`: Output, accum: Output, accumUpdate: Output, lr: Output, rho: Output, epsilon: Output, grad: Output, indices: Output, tindices :Type  , useLocking :Bool  )  ->(out: Output){
-    if scope.error.error() != nil {
-        return
+
+func sparseApplyAdadelta(scope:Scope,`var`: Output, accum: Output, accumUpdate: Output, lr: Output, rho: Output, epsilon: Output, grad: Output, indices: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tindices",tindices)
-    attr.append("use_locking",useLocking)
+    attrs["T"] = t
+    attrs["Tindices"] = tindices
+    attrs["use_locking"] = useLocking
 
     let opspec = OpSpec(
         OpType: "SparseApplyAdadelta",
+        Name: "Type",
         Input: [ `var`, accum, accumUpdate, lr, rho, epsilon, grad, indices],
         Attrs: attrs
     )
@@ -16991,18 +18208,20 @@ var -= lr * grad * (1 / sqrt(accum))
 
 
 
-func sparseApplyAdagrad(scope:Scope,`var`: Output, accum: Output, lr: Output, grad: Output, indices: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(out: Output){
-    if scope.error.error() != nil {
-        return
+
+func sparseApplyAdagrad(scope:Scope,`var`: Output, accum: Output, lr: Output, grad: Output, indices: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("Tindices",tindices)
-    attr.append("use_locking",useLocking)
+    attrs["T"] = t
+    attrs["Tindices"] = tindices
+    attrs["use_locking"] = useLocking
 
     let opspec = OpSpec(
         OpType: "SparseApplyAdagrad",
+        Name: "Type",
         Input: [ `var`, accum, lr, grad, indices],
         Attrs: attrs
     )
@@ -17019,17 +18238,20 @@ Update entries in '*var' and '*accum' according to the proximal adagrad scheme.
 
 
 
-func sparseApplyAdagradDA(scope:Scope,`var`: Output, gradientAccumulator: Output, gradientSquaredAccumulator: Output, grad: Output, indices: Output, lr: Output, l1: Output, l2: Output, globalStep: Output, tindices :Type  , useLocking :Bool  )  ->(out: Output){
-    if scope.error.error() != nil {
-        return
+
+func sparseApplyAdagradDA(scope:Scope,`var`: Output, gradientAccumulator: Output, gradientSquaredAccumulator: Output, grad: Output, indices: Output, lr: Output, l1: Output, l2: Output, globalStep: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tindices",tindices)
-    attr.append("use_locking",useLocking)
+    attrs["T"] = t
+    attrs["Tindices"] = tindices
+    attrs["use_locking"] = useLocking
 
     let opspec = OpSpec(
         OpType: "SparseApplyAdagradDA",
+        Name: "Type",
         Input: [ `var`, gradientAccumulator, gradientSquaredAccumulator, grad, indices, lr, l1, l2, globalStep],
         Attrs: attrs
     )
@@ -17059,18 +18281,20 @@ var <- var - mom
 
 
 
-func sparseApplyCenteredRMSProp(scope:Scope,`var`: Output, mg: Output, ms: Output, mom: Output, lr: Output, rho: Output, momentum: Output, epsilon: Output, grad: Output, indices: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(out: Output){
-    if scope.error.error() != nil {
-        return
+
+func sparseApplyCenteredRMSProp(scope:Scope,`var`: Output, mg: Output, ms: Output, mom: Output, lr: Output, rho: Output, momentum: Output, epsilon: Output, grad: Output, indices: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("Tindices",tindices)
-    attr.append("use_locking",useLocking)
+    attrs["T"] = t
+    attrs["Tindices"] = tindices
+    attrs["use_locking"] = useLocking
 
     let opspec = OpSpec(
         OpType: "SparseApplyCenteredRMSProp",
+        Name: "Type",
         Input: [ `var`, mg, ms, mom, lr, rho, momentum, epsilon, grad, indices],
         Attrs: attrs
     )
@@ -17093,17 +18317,20 @@ accum = accum_new
 
 
 
-func sparseApplyFtrl(scope:Scope,`var`: Output, accum: Output, linear: Output, grad: Output, indices: Output, lr: Output, l1: Output, l2: Output, lrPower: Output, tindices :Type  , useLocking :Bool  )  ->(out: Output){
-    if scope.error.error() != nil {
-        return
+
+func sparseApplyFtrl(scope:Scope,`var`: Output, accum: Output, linear: Output, grad: Output, indices: Output, lr: Output, l1: Output, l2: Output, lrPower: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tindices",tindices)
-    attr.append("use_locking",useLocking)
+    attrs["T"] = t
+    attrs["Tindices"] = tindices
+    attrs["use_locking"] = useLocking
 
     let opspec = OpSpec(
         OpType: "SparseApplyFtrl",
+        Name: "Type",
         Input: [ `var`, accum, linear, grad, indices, lr, l1, l2, lrPower],
         Attrs: attrs
     )
@@ -17124,19 +18351,21 @@ var -= lr * accum
 
 
 
-func sparseApplyMomentum(scope:Scope,`var`: Output, accum: Output, lr: Output, grad: Output, indices: Output, momentum: Output, t :Type  , tindices :Type  , useLocking :Bool  , useNesterov :Bool  )  ->(out: Output){
-    if scope.error.error() != nil {
-        return
+
+func sparseApplyMomentum(scope:Scope,`var`: Output, accum: Output, lr: Output, grad: Output, indices: Output, momentum: Output, t :Type  , tindices :Type  , useLocking :Bool  , useNesterov :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("Tindices",tindices)
-    attr.append("use_locking",useLocking)
-    attr.append("use_nesterov",useNesterov)
+    attrs["T"] = t
+    attrs["Tindices"] = tindices
+    attrs["use_locking"] = useLocking
+    attrs["use_nesterov"] = useNesterov
 
     let opspec = OpSpec(
         OpType: "SparseApplyMomentum",
+        Name: "Type",
         Input: [ `var`, accum, lr, grad, indices, momentum],
         Attrs: attrs
     )
@@ -17158,17 +18387,20 @@ var = sign(prox_v)/(1+lr*l2) * max{|prox_v|-lr*l1,0}
 
 
 
-func sparseApplyProximalAdagrad(scope:Scope,`var`: Output, accum: Output, lr: Output, l1: Output, l2: Output, grad: Output, indices: Output, tindices :Type  , useLocking :Bool  )  ->(out: Output){
-    if scope.error.error() != nil {
-        return
+
+func sparseApplyProximalAdagrad(scope:Scope,`var`: Output, accum: Output, lr: Output, l1: Output, l2: Output, grad: Output, indices: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tindices",tindices)
-    attr.append("use_locking",useLocking)
+    attrs["T"] = t
+    attrs["Tindices"] = tindices
+    attrs["use_locking"] = useLocking
 
     let opspec = OpSpec(
         OpType: "SparseApplyProximalAdagrad",
+        Name: "Type",
         Input: [ `var`, accum, lr, l1, l2, grad, indices],
         Attrs: attrs
     )
@@ -17188,18 +18420,20 @@ var = sign(prox_v)/(1+alpha*l2) * max{|prox_v|-alpha*l1,0}
 
 
 
-func sparseApplyProximalGradientDescent(scope:Scope,`var`: Output, alpha: Output, l1: Output, l2: Output, grad: Output, indices: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(out: Output){
-    if scope.error.error() != nil {
-        return
+
+func sparseApplyProximalGradientDescent(scope:Scope,`var`: Output, alpha: Output, l1: Output, l2: Output, grad: Output, indices: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("Tindices",tindices)
-    attr.append("use_locking",useLocking)
+    attrs["T"] = t
+    attrs["Tindices"] = tindices
+    attrs["use_locking"] = useLocking
 
     let opspec = OpSpec(
         OpType: "SparseApplyProximalGradientDescent",
+        Name: "Type",
         Input: [ `var`, alpha, l1, l2, grad, indices],
         Attrs: attrs
     )
@@ -17224,17 +18458,20 @@ var <- var - mom
 
 
 
-func sparseApplyRMSProp(scope:Scope,`var`: Output, ms: Output, mom: Output, lr: Output, rho: Output, momentum: Output, epsilon: Output, grad: Output, indices: Output, tindices :Type  , useLocking :Bool  )  ->(out: Output){
-    if scope.error.error() != nil {
-        return
+
+func sparseApplyRMSProp(scope:Scope,`var`: Output, ms: Output, mom: Output, lr: Output, rho: Output, momentum: Output, epsilon: Output, grad: Output, indices: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tindices",tindices)
-    attr.append("use_locking",useLocking)
+    attrs["T"] = t
+    attrs["Tindices"] = tindices
+    attrs["use_locking"] = useLocking
 
     let opspec = OpSpec(
         OpType: "SparseApplyRMSProp",
+        Name: "Type",
         Input: [ `var`, ms, mom, lr, rho, momentum, epsilon, grad, indices],
         Attrs: attrs
     )
@@ -17281,18 +18518,20 @@ Graphically this is equivalent to doing
 
 
 
+
 func sparseConcat(scope:Scope,indices: Output, values: Output, shapes: Output, concatDim :Int  , n :Int  , t :Type  )  ->(outputIndices: Output, outputValues: Output, outputShape: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("concat_dim",concatDim)
-    attr.append("N",n)
-    attr.append("T",t)
+    attrs["concat_dim"] = concatDim
+    attrs["N"] = n
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "SparseConcat",
+        Name: "Type",
         Input: [ indices, values, shapes],
         Attrs: attrs
     )
@@ -17315,19 +18554,21 @@ the accumulator.
 
 
 
-func sparseConditionalAccumulator(scope:Scope dtype :[Any]  , shape :Shape  , container :String  , sharedName :String  )  ->(handle: Output){
-    if scope.error.error() != nil {
-        return
+
+func sparseConditionalAccumulator(scope:Scope, dtype :Type  , shape :Shape  , container :String  , sharedName :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("dtype",dtype)
-    attr.append("shape",shape)
-    attr.append("container",container)
-    attr.append("shared_name",sharedName)
+    attrs["dtype"] = dtype
+    attrs["shape"] = shape
+    attrs["container"] = container
+    attrs["shared_name"] = sharedName
 
     let opspec = OpSpec(
         OpType: "SparseConditionalAccumulator",
+        Name: "Type",
         Input: [ ],
         Attrs: attrs
     )
@@ -17372,23 +18613,25 @@ if hashed_output=true then the output will be
 
 
 
-func sparseCross(scope:Scope,indices: Output, values: Output, shapes: Output, denseInputs: Output, n :UInt8  , hashedOutput :Bool  , numBuckets :UInt8  , hashKey :UInt8  , sparseTypes :List(type)  , denseTypes :List(type)  , outType :Type  , internalType :Type  )  ->(outputIndices: Output, outputValues: Output, outputShape: Output){
-    if scope.error.error() != nil {
-        return
+
+func sparseCross(scope:Scope,indices: Output, values: Output, shapes: Output, denseInputs: Output, n :Int  , hashedOutput :Bool  , numBuckets :Int  , hashKey :Int  , sparseTypes :List(type)  , denseTypes :List(type)  , outType :Type  , internalType :Type  )  ->(outputIndices: Output, outputValues: Output, outputShape: Output){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("N",n)
-    attr.append("hashed_output",hashedOutput)
-    attr.append("num_buckets",numBuckets)
-    attr.append("hash_key",hashKey)
-    attr.append("sparse_types",sparseTypes)
-    attr.append("dense_types",denseTypes)
-    attr.append("out_type",outType)
-    attr.append("internal_type",internalType)
+    attrs["N"] = n
+    attrs["hashed_output"] = hashedOutput
+    attrs["num_buckets"] = numBuckets
+    attrs["hash_key"] = hashKey
+    attrs["sparse_types"] = sparseTypes
+    attrs["dense_types"] = denseTypes
+    attrs["out_type"] = outType
+    attrs["internal_type"] = internalType
 
     let opspec = OpSpec(
         OpType: "SparseCross",
+        Name: "Type",
         Input: [ indices, values, shapes, denseInputs],
         Attrs: attrs
     )
@@ -17412,15 +18655,18 @@ this Op is the resultant non-zero values.
 
 
 
-func sparseDenseCwiseAdd(scope:Scope,spIndices: Output, spValues: Output, spShape: Output, dense: Output )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func sparseDenseCwiseAdd(scope:Scope,spIndices: Output, spValues: Output, spShape: Output, dense: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "SparseDenseCwiseAdd",
+        Name: "Type",
         Input: [ spIndices, spValues, spShape, dense],
         Attrs: attrs
     )
@@ -17439,16 +18685,18 @@ the other direction.
 
 
 
-func sparseDenseCwiseDiv(scope:Scope,spIndices: Output, spValues: Output, spShape: Output, dense: Output, t :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func sparseDenseCwiseDiv(scope:Scope,spIndices: Output, spValues: Output, spShape: Output, dense: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "SparseDenseCwiseDiv",
+        Name: "Type",
         Input: [ spIndices, spValues, spShape, dense],
         Attrs: attrs
     )
@@ -17470,15 +18718,18 @@ the other direction.
 
 
 
-func sparseDenseCwiseMul(scope:Scope,spIndices: Output, spValues: Output, spShape: Output, dense: Output )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func sparseDenseCwiseMul(scope:Scope,spIndices: Output, spValues: Output, spShape: Output, dense: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "SparseDenseCwiseMul",
+        Name: "Type",
         Input: [ spIndices, spValues, spShape, dense],
         Attrs: attrs
     )
@@ -17521,16 +18772,18 @@ backpropagation,
 
 
 
+
 func sparseFillEmptyRows(scope:Scope,indices: Output, values: Output, denseShape: Output, defaultValue: Output, t :Type  )  ->(outputIndices: Output, outputValues: Output, emptyRowIndicator: Output, reverseIndexMap: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "SparseFillEmptyRows",
+        Name: "Type",
         Input: [ indices, values, denseShape, defaultValue],
         Attrs: attrs
     )
@@ -17554,15 +18807,18 @@ shaped `[N_full]`, where `N_full >= N` and copies data into either
 
 
 
-func sparseFillEmptyRowsGrad(scope:Scope,reverseIndexMap: Output, gradValues: Output )  ->(dValues: Output, dDefaultValue: Output){
-    if scope.error.error() != nil {
-        return
+
+func sparseFillEmptyRowsGrad(scope:Scope,reverseIndexMap: Output, gradValues: Output, t :Type  )  ->(dValues: Output, dDefaultValue: Output){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "SparseFillEmptyRowsGrad",
+        Name: "Type",
         Input: [ reverseIndexMap, gradValues],
         Attrs: attrs
     )
@@ -17583,21 +18839,23 @@ matrix multiply on one platform was 30% zero values in the sparse matrix.
 
 
 
-func sparseMatMul(scope:Scope,a: Output, b: Output, transposeA :Bool  , transposeB :Bool  , aIsSparse :Bool  , bIsSparse :Bool  , ta :Type  , tb :Type  )  ->(product: Output){
-    if scope.error.error() != nil {
-        return
+
+func sparseMatMul(scope:Scope,a: Output, b: Output, transposeA :Bool  , transposeB :Bool  , aIsSparse :Bool  , bIsSparse :Bool  , ta :Type  , tb :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("transpose_a",transposeA)
-    attr.append("transpose_b",transposeB)
-    attr.append("a_is_sparse",aIsSparse)
-    attr.append("b_is_sparse",bIsSparse)
-    attr.append("Ta",ta)
-    attr.append("Tb",tb)
+    attrs["transpose_a"] = transposeA
+    attrs["transpose_b"] = transposeB
+    attrs["a_is_sparse"] = aIsSparse
+    attrs["b_is_sparse"] = bIsSparse
+    attrs["Ta"] = ta
+    attrs["Tb"] = tb
 
     let opspec = OpSpec(
         OpType: "SparseMatMul",
+        Name: "Type",
         Input: [ a, b],
         Attrs: attrs
     )
@@ -17624,16 +18882,19 @@ which are interpreted according to the indexing rules in Python.
 
 
 
-func sparseReduceSum(scope:Scope,inputIndices: Output, inputValues: Output, inputShape: Output, reductionAxes: Output, keepDims :Bool  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func sparseReduceSum(scope:Scope,inputIndices: Output, inputValues: Output, inputShape: Output, reductionAxes: Output, keepDims :Bool  , t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("keep_dims",keepDims)
+    attrs["keep_dims"] = keepDims
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "SparseReduceSum",
+        Name: "Type",
         Input: [ inputIndices, inputValues, inputShape, reductionAxes],
         Attrs: attrs
     )
@@ -17660,17 +18921,19 @@ which are interpreted according to the indexing rules in Python.
 
 
 
+
 func sparseReduceSumSparse(scope:Scope,inputIndices: Output, inputValues: Output, inputShape: Output, reductionAxes: Output, keepDims :Bool  , t :Type  )  ->(outputIndices: Output, outputValues: Output, outputShape: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("keep_dims",keepDims)
-    attr.append("T",t)
+    attrs["keep_dims"] = keepDims
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "SparseReduceSumSparse",
+        Name: "Type",
         Input: [ inputIndices, inputValues, inputShape, reductionAxes],
         Attrs: attrs
     )
@@ -17693,15 +18956,18 @@ shape `[N, R]`, input_values has length `N`, and input_shape has length `R`.
 
 
 
-func sparseReorder(scope:Scope,inputIndices: Output, inputValues: Output, inputShape: Output )  ->(outputIndices: Output, outputValues: Output){
-    if scope.error.error() != nil {
-        return
+
+func sparseReorder(scope:Scope,inputIndices: Output, inputValues: Output, inputShape: Output, t :Type  )  ->(outputIndices: Output, outputValues: Output){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "SparseReorder",
+        Name: "Type",
         Input: [ inputIndices, inputValues, inputShape],
         Attrs: attrs
     )
@@ -17730,15 +18996,17 @@ has length `R_out`, then `input_indices` has shape `[N, R_in]`,
 
 
 
+
 func sparseReshape(scope:Scope,inputIndices: Output, inputShape: Output, newShape: Output )  ->(outputIndices: Output, outputShape: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "SparseReshape",
+        Name: "Type",
         Input: [ inputIndices, inputShape, newShape],
         Attrs: attrs
     )
@@ -17759,16 +19027,19 @@ dimension, selecting a subset of dimension 0, specified by `indices`.
 
 
 
-func sparseSegmentMean(scope:Scope,data: Output, indices: Output, segmentIds: Output, tidx :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func sparseSegmentMean(scope:Scope,data: Output, indices: Output, segmentIds: Output, t :Type  , tidx :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tidx",tidx)
+    attrs["T"] = t
+    attrs["Tidx"] = tidx
 
     let opspec = OpSpec(
         OpType: "SparseSegmentMean",
+        Name: "Type",
         Input: [ data, indices, segmentIds],
         Attrs: attrs
     )
@@ -17787,17 +19058,19 @@ value is output_dim0.
 
 
 
-func sparseSegmentMeanGrad(scope:Scope,grad: Output, indices: Output, segmentIds: Output, outputDim0: Output, t :Type  , tidx :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func sparseSegmentMeanGrad(scope:Scope,grad: Output, indices: Output, segmentIds: Output, outputDim0: Output, t :Type  , tidx :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("Tidx",tidx)
+    attrs["T"] = t
+    attrs["Tidx"] = tidx
 
     let opspec = OpSpec(
         OpType: "SparseSegmentMeanGrad",
+        Name: "Type",
         Input: [ grad, indices, segmentIds, outputDim0],
         Attrs: attrs
     )
@@ -17817,16 +19090,19 @@ segments.
 
 
 
-func sparseSegmentSqrtN(scope:Scope,data: Output, indices: Output, segmentIds: Output, tidx :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func sparseSegmentSqrtN(scope:Scope,data: Output, indices: Output, segmentIds: Output, t :Type  , tidx :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tidx",tidx)
+    attrs["T"] = t
+    attrs["Tidx"] = tidx
 
     let opspec = OpSpec(
         OpType: "SparseSegmentSqrtN",
+        Name: "Type",
         Input: [ data, indices, segmentIds],
         Attrs: attrs
     )
@@ -17845,17 +19121,19 @@ value is output_dim0.
 
 
 
-func sparseSegmentSqrtNGrad(scope:Scope,grad: Output, indices: Output, segmentIds: Output, outputDim0: Output, t :Type  , tidx :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func sparseSegmentSqrtNGrad(scope:Scope,grad: Output, indices: Output, segmentIds: Output, outputDim0: Output, t :Type  , tidx :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("Tidx",tidx)
+    attrs["T"] = t
+    attrs["Tidx"] = tidx
 
     let opspec = OpSpec(
         OpType: "SparseSegmentSqrtNGrad",
+        Name: "Type",
         Input: [ grad, indices, segmentIds, outputDim0],
         Attrs: attrs
     )
@@ -17893,16 +19171,19 @@ tf.segment_sum(c, tf.constant([0, 0, 1]))
 
 
 
-func sparseSegmentSum(scope:Scope,data: Output, indices: Output, segmentIds: Output, tidx :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func sparseSegmentSum(scope:Scope,data: Output, indices: Output, segmentIds: Output, t :Type  , tidx :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tidx",tidx)
+    attrs["T"] = t
+    attrs["Tidx"] = tidx
 
     let opspec = OpSpec(
         OpType: "SparseSegmentSum",
+        Name: "Type",
         Input: [ data, indices, segmentIds],
         Attrs: attrs
     )
@@ -17931,16 +19212,18 @@ shape.
 
 
 
-func sparseSoftmax(scope:Scope,spIndices: Output, spValues: Output, spShape: Output, t :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func sparseSoftmax(scope:Scope,spIndices: Output, spValues: Output, spShape: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "SparseSoftmax",
+        Name: "Type",
         Input: [ spIndices, spValues, spShape],
         Attrs: attrs
     )
@@ -17962,16 +19245,19 @@ Inputs are the logits, not probabilities.
 
 
 
-func sparseSoftmaxCrossEntropyWithLogits(scope:Scope,features: Output, labels: Output, tlabels :Type  )  ->(loss: Output, backprop: Output){
-    if scope.error.error() != nil {
-        return
+
+func sparseSoftmaxCrossEntropyWithLogits(scope:Scope,features: Output, labels: Output, t :Type  , tlabels :Type  )  ->(loss: Output, backprop: Output){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tlabels",tlabels)
+    attrs["T"] = t
+    attrs["Tlabels"] = tlabels
 
     let opspec = OpSpec(
         OpType: "SparseSoftmaxCrossEntropyWithLogits",
+        Name: "Type",
         Input: [ features, labels],
         Attrs: attrs
     )
@@ -17989,16 +19275,18 @@ Assumes the two SparseTensors have the same shape, i.e., no broadcasting.
 
 
 
+
 func sparseSparseMaximum(scope:Scope,aIndices: Output, aValues: Output, aShape: Output, bIndices: Output, bValues: Output, bShape: Output, t :Type  )  ->(outputIndices: Output, outputValues: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "SparseSparseMaximum",
+        Name: "Type",
         Input: [ aIndices, aValues, aShape, bIndices, bValues, bShape],
         Attrs: attrs
     )
@@ -18016,15 +19304,18 @@ Assumes the two SparseTensors have the same shape, i.e., no broadcasting.
 
 
 
-func sparseSparseMinimum(scope:Scope,aIndices: Output, aValues: Output, aShape: Output, bIndices: Output, bValues: Output, bShape: Output )  ->(outputIndices: Output, outputValues: Output){
-    if scope.error.error() != nil {
-        return
+
+func sparseSparseMinimum(scope:Scope,aIndices: Output, aValues: Output, aShape: Output, bIndices: Output, bValues: Output, bShape: Output, t :Type  )  ->(outputIndices: Output, outputValues: Output){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "SparseSparseMinimum",
+        Name: "Type",
         Input: [ aIndices, aValues, aShape, bIndices, bValues, bShape],
         Attrs: attrs
     )
@@ -18054,17 +19345,19 @@ Graphically the output tensors are:
 
 
 
+
 func sparseSplit(scope:Scope,splitDim: Output, indices: Output, values: Output, shape: Output, numSplit :Int  , t :Type  )  ->(outputIndices: Output, outputValues: Output, outputShape: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("num_split",numSplit)
-    attr.append("T",t)
+    attrs["num_split"] = numSplit
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "SparseSplit",
+        Name: "Type",
         Input: [ splitDim, indices, values, shape],
         Attrs: attrs
     )
@@ -18082,16 +19375,19 @@ This Op does not require `a_indices` be sorted in standard lexicographic order.
 
 
 
-func sparseTensorDenseAdd(scope:Scope,aIndices: Output, aValues: Output, aShape: Output, b: Output, tindices :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func sparseTensorDenseAdd(scope:Scope,aIndices: Output, aValues: Output, aShape: Output, b: Output, t :Type  , tindices :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tindices",tindices)
+    attrs["T"] = t
+    attrs["Tindices"] = tindices
 
     let opspec = OpSpec(
         OpType: "SparseTensorDenseAdd",
+        Name: "Type",
         Input: [ aIndices, aValues, aShape, b],
         Attrs: attrs
     )
@@ -18116,19 +19412,21 @@ if adjoint_a == true:
 
 
 
-func sparseTensorDenseMatMul(scope:Scope,aIndices: Output, aValues: Output, aShape: Output, b: Output, t :Type  , tindices :Type  , adjointA :Bool  , adjointB :Bool  )  ->(product: Output){
-    if scope.error.error() != nil {
-        return
+
+func sparseTensorDenseMatMul(scope:Scope,aIndices: Output, aValues: Output, aShape: Output, b: Output, t :Type  , tindices :Type  , adjointA :Bool  , adjointB :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("Tindices",tindices)
-    attr.append("adjoint_a",adjointA)
-    attr.append("adjoint_b",adjointB)
+    attrs["T"] = t
+    attrs["Tindices"] = tindices
+    attrs["adjoint_a"] = adjointA
+    attrs["adjoint_b"] = adjointB
 
     let opspec = OpSpec(
         OpType: "SparseTensorDenseMatMul",
+        Name: "Type",
         Input: [ aIndices, aValues, aShape, b],
         Attrs: attrs
     )
@@ -18145,16 +19443,18 @@ Creates a dataset that splits a SparseTensor into elements row-wise.
 
 
 
-func sparseTensorSliceDataset(scope:Scope,indices: Output, values: Output, denseShape: Output, tvalues :Type  )  ->(handle: Output){
-    if scope.error.error() != nil {
-        return
+
+func sparseTensorSliceDataset(scope:Scope,indices: Output, values: Output, denseShape: Output, tvalues :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tvalues",tvalues)
+    attrs["Tvalues"] = tvalues
 
     let opspec = OpSpec(
         OpType: "SparseTensorSliceDataset",
+        Name: "Type",
         Input: [ indices, values, denseShape],
         Attrs: attrs
     )
@@ -18185,17 +19485,20 @@ are checked during execution.
 
 
 
-func sparseToDense(scope:Scope,sparseIndices: Output, outputShape: Output, sparseValues: Output, defaultValue: Output, validateIndices :Bool  , tindices :Type  )  ->(dense: Output){
-    if scope.error.error() != nil {
-        return
+
+func sparseToDense(scope:Scope,sparseIndices: Output, outputShape: Output, sparseValues: Output, defaultValue: Output, validateIndices :Bool  , t :Type  , tindices :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("validate_indices",validateIndices)
-    attr.append("Tindices",tindices)
+    attrs["validate_indices"] = validateIndices
+    attrs["T"] = t
+    attrs["Tindices"] = tindices
 
     let opspec = OpSpec(
         OpType: "SparseToDense",
+        Name: "Type",
         Input: [ sparseIndices, outputShape, sparseValues, defaultValue],
         Attrs: attrs
     )
@@ -18230,18 +19533,20 @@ dimension contains the result of `set_operation` applied to the corresponding
 
 
 
+
 func sparseToSparseSetOperation(scope:Scope,set1Indices: Output, set1Values: Output, set1Shape: Output, set2Indices: Output, set2Values: Output, set2Shape: Output, setOperation :String  , validateIndices :Bool  , t :Type  )  ->(resultIndices: Output, resultValues: Output, resultShape: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("set_operation",setOperation)
-    attr.append("validate_indices",validateIndices)
-    attr.append("T",t)
+    attrs["set_operation"] = setOperation
+    attrs["validate_indices"] = validateIndices
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "SparseToSparseSetOperation",
+        Name: "Type",
         Input: [ set1Indices, set1Values, set1Shape, set2Indices, set2Values, set2Shape],
         Attrs: attrs
     )
@@ -18258,16 +19563,19 @@ Splits a tensor into `num_split` tensors along one dimension.
 
 
 
-func split(scope:Scope,splitDim: Output, value: Output, numSplit :UInt8  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func split(scope:Scope,splitDim: Output, value: Output, numSplit :Int  , t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("num_split",numSplit)
+    attrs["num_split"] = numSplit
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Split",
+        Name: "Type",
         Input: [ splitDim, value],
         Attrs: attrs
     )
@@ -18284,18 +19592,20 @@ Splits a tensor into `num_split` tensors along one dimension.
 
 
 
-func splitV(scope:Scope,value: Output, sizeSplits: Output, splitDim: Output, numSplit :Int  , t :Type  , tlen :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func splitV(scope:Scope,value: Output, sizeSplits: Output, splitDim: Output, numSplit :Int  , t :Type  , tlen :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("num_split",numSplit)
-    attr.append("T",t)
-    attr.append("Tlen",tlen)
+    attrs["num_split"] = numSplit
+    attrs["T"] = t
+    attrs["Tlen"] = tlen
 
     let opspec = OpSpec(
         OpType: "SplitV",
+        Name: "Type",
         Input: [ value, sizeSplits, splitDim],
         Attrs: attrs
     )
@@ -18313,15 +19623,18 @@ I.e., \\(y = \sqrt{x} = x^{1/2}\\).
 
 
 
-func sqrt(scope:Scope,x: Output )  ->(y: Output){
-    if scope.error.error() != nil {
-        return
+
+func sqrt(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Sqrt",
+        Name: "Type",
         Input: [ x],
         Attrs: attrs
     )
@@ -18340,16 +19653,18 @@ is the corresponding input gradient.
 
 
 
-func sqrtGrad(scope:Scope,x: Output, y: Output, t :Type  )  ->(z: Output){
-    if scope.error.error() != nil {
-        return
+
+func sqrtGrad(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "SqrtGrad",
+        Name: "Type",
         Input: [ x, y],
         Attrs: attrs
     )
@@ -18367,15 +19682,18 @@ I.e., \\(y = x * x = x^2\\).
 
 
 
-func square(scope:Scope,x: Output )  ->(y: Output){
-    if scope.error.error() != nil {
-        return
+
+func square(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Square",
+        Name: "Type",
         Input: [ x],
         Attrs: attrs
     )
@@ -18394,16 +19712,18 @@ Returns (x - y)(x - y) element-wise.
 
 
 
-func squaredDifference(scope:Scope,x: Output, y: Output, t :Type  )  ->(z: Output){
-    if scope.error.error() != nil {
-        return
+
+func squaredDifference(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "SquaredDifference",
+        Name: "Type",
         Input: [ x, y],
         Attrs: attrs
     )
@@ -18434,16 +19754,19 @@ shape(squeeze(t, [2, 4])) ==> [1, 2, 3, 1]
 
 
 
-func squeeze(scope:Scope,input: Output, squeezeDims :List(int)  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func squeeze(scope:Scope,input: Output, t :Type  , squeezeDims :List(int)  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("squeeze_dims",squeezeDims)
+    attrs["T"] = t
+    attrs["squeeze_dims"] = squeezeDims
 
     let opspec = OpSpec(
         OpType: "Squeeze",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -18460,17 +19783,19 @@ A stack that produces elements in first-in last-out order.
 
 
 
-func stack(scope:Scope elemType :Type  , stackName :String  )  ->(handle: Output){
-    if scope.error.error() != nil {
-        return
+
+func stack(scope:Scope, elemType :Type  , stackName :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("elem_type",elemType)
-    attr.append("stack_name",stackName)
+    attrs["elem_type"] = elemType
+    attrs["stack_name"] = stackName
 
     let opspec = OpSpec(
         OpType: "Stack",
+        Name: "Type",
         Input: [ ],
         Attrs: attrs
     )
@@ -18487,15 +19812,17 @@ Delete the stack from its resource container.
 
 
 
-func stackClose(scope:Scope,handle: Output )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func stackClose(scope:Scope,handle: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "StackClose",
+        Name: "Type",
         Input: [ handle],
         Attrs: attrs
     )
@@ -18511,16 +19838,18 @@ Pop the element at the top of the stack.
 
 
 
-func stackPop(scope:Scope,handle: Output, elemType :Type  )  ->(elem: Output){
-    if scope.error.error() != nil {
-        return
+
+func stackPop(scope:Scope,handle: Output, elemType :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("elem_type",elemType)
+    attrs["elem_type"] = elemType
 
     let opspec = OpSpec(
         OpType: "StackPop",
+        Name: "Type",
         Input: [ handle],
         Attrs: attrs
     )
@@ -18537,16 +19866,19 @@ Push an element onto the stack.
 
 
 
-func stackPush(scope:Scope,handle: Output, elem: Output, swapMemory :Bool  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func stackPush(scope:Scope,handle: Output, elem: Output, t :Type  , swapMemory :Bool  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("swap_memory",swapMemory)
+    attrs["T"] = t
+    attrs["swap_memory"] = swapMemory
 
     let opspec = OpSpec(
         OpType: "StackPush",
+        Name: "Type",
         Input: [ handle, elem],
         Attrs: attrs
     )
@@ -18565,18 +19897,20 @@ fewer capabilities and options.  This Op is optimized for performance.
 
 
 
-func stage(scope:Scope,values: Output, dtypes :List(type)  , container :String  , sharedName :String  )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func stage(scope:Scope,values: Output, dtypes :List(type)  , container :String  , sharedName :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("dtypes",dtypes)
-    attr.append("container",container)
-    attr.append("shared_name",sharedName)
+    attrs["dtypes"] = dtypes
+    attrs["container"] = container
+    attrs["shared_name"] = sharedName
 
     let opspec = OpSpec(
         OpType: "Stage",
+        Name: "Type",
         Input: [ values],
         Attrs: attrs
     )
@@ -18594,16 +19928,19 @@ The outputs are a deterministic function of `shape` and `seed`.
 
 
 
-func statelessRandomNormal(scope:Scope,shape: Output, seed: Output, dtype :[Any]  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func statelessRandomNormal(scope:Scope,shape: Output, seed: Output, dtype :Type  , t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("dtype",dtype)
+    attrs["dtype"] = dtype
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "StatelessRandomNormal",
+        Name: "Type",
         Input: [ shape, seed],
         Attrs: attrs
     )
@@ -18623,17 +19960,19 @@ The outputs are a deterministic function of `shape` and `seed`.
 
 
 
-func statelessRandomUniform(scope:Scope,shape: Output, seed: Output, dtype :Type  , t :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func statelessRandomUniform(scope:Scope,shape: Output, seed: Output, dtype :Type  , t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("dtype",dtype)
-    attr.append("T",t)
+    attrs["dtype"] = dtype
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "StatelessRandomUniform",
+        Name: "Type",
         Input: [ shape, seed],
         Attrs: attrs
     )
@@ -18654,16 +19993,19 @@ The outputs are a deterministic function of `shape` and `seed`.
 
 
 
-func statelessTruncatedNormal(scope:Scope,shape: Output, seed: Output, dtype :[Any]  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func statelessTruncatedNormal(scope:Scope,shape: Output, seed: Output, dtype :Type  , t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("dtype",dtype)
+    attrs["dtype"] = dtype
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "StatelessTruncatedNormal",
+        Name: "Type",
         Input: [ shape, seed],
         Attrs: attrs
     )
@@ -18696,16 +20038,18 @@ to pretend that the value was a constant. Some examples include:
 
 
 
-func stopGradient(scope:Scope,input: Output, t :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func stopGradient(scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "StopGradient",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -18795,21 +20139,24 @@ receive 0, 0, and 1, respectively. The appropriate bits in `begin_mask` and
 
 
 
-func stridedSlice(scope:Scope,input: Output, begin: Output, end: Output, strides: Output, index :Type  , beginMask :Int  , endMask :Int  , ellipsisMask :Int  , newAxisMask :Int  , shrinkAxisMask :Int  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func stridedSlice(scope:Scope,input: Output, begin: Output, end: Output, strides: Output, t :Type  , index :Type  , beginMask :Int  , endMask :Int  , ellipsisMask :Int  , newAxisMask :Int  , shrinkAxisMask :Int  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Index",index)
-    attr.append("begin_mask",beginMask)
-    attr.append("end_mask",endMask)
-    attr.append("ellipsis_mask",ellipsisMask)
-    attr.append("new_axis_mask",newAxisMask)
-    attr.append("shrink_axis_mask",shrinkAxisMask)
+    attrs["T"] = t
+    attrs["Index"] = index
+    attrs["begin_mask"] = beginMask
+    attrs["end_mask"] = endMask
+    attrs["ellipsis_mask"] = ellipsisMask
+    attrs["new_axis_mask"] = newAxisMask
+    attrs["shrink_axis_mask"] = shrinkAxisMask
 
     let opspec = OpSpec(
         OpType: "StridedSlice",
+        Name: "Type",
         Input: [ input, begin, end, strides],
         Attrs: attrs
     )
@@ -18831,22 +20178,24 @@ shape must be exactly the shape produced by the slice of `ref`.
 
 
 
-func stridedSliceAssign(scope:Scope,ref: Output, begin: Output, end: Output, strides: Output, value: Output, t :Type  , index :Type  , beginMask :Int  , endMask :Int  , ellipsisMask :Int  , newAxisMask :Int  , shrinkAxisMask :Int  )  ->(outputRef: Output){
-    if scope.error.error() != nil {
-        return
+
+func stridedSliceAssign(scope:Scope,ref: Output, begin: Output, end: Output, strides: Output, value: Output, t :Type  , index :Type  , beginMask :Int  , endMask :Int  , ellipsisMask :Int  , newAxisMask :Int  , shrinkAxisMask :Int  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("Index",index)
-    attr.append("begin_mask",beginMask)
-    attr.append("end_mask",endMask)
-    attr.append("ellipsis_mask",ellipsisMask)
-    attr.append("new_axis_mask",newAxisMask)
-    attr.append("shrink_axis_mask",shrinkAxisMask)
+    attrs["T"] = t
+    attrs["Index"] = index
+    attrs["begin_mask"] = beginMask
+    attrs["end_mask"] = endMask
+    attrs["ellipsis_mask"] = ellipsisMask
+    attrs["new_axis_mask"] = newAxisMask
+    attrs["shrink_axis_mask"] = shrinkAxisMask
 
     let opspec = OpSpec(
         OpType: "StridedSliceAssign",
+        Name: "Type",
         Input: [ ref, begin, end, strides, value],
         Attrs: attrs
     )
@@ -18870,21 +20219,24 @@ shape of `StridedSlice`'s `input`.
 
 
 
-func stridedSliceGrad(scope:Scope,shape: Output, begin: Output, end: Output, strides: Output, dy: Output, index :Type  , beginMask :Int  , endMask :Int  , ellipsisMask :Int  , newAxisMask :Int  , shrinkAxisMask :Int  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func stridedSliceGrad(scope:Scope,shape: Output, begin: Output, end: Output, strides: Output, dy: Output, t :Type  , index :Type  , beginMask :Int  , endMask :Int  , ellipsisMask :Int  , newAxisMask :Int  , shrinkAxisMask :Int  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Index",index)
-    attr.append("begin_mask",beginMask)
-    attr.append("end_mask",endMask)
-    attr.append("ellipsis_mask",ellipsisMask)
-    attr.append("new_axis_mask",newAxisMask)
-    attr.append("shrink_axis_mask",shrinkAxisMask)
+    attrs["T"] = t
+    attrs["Index"] = index
+    attrs["begin_mask"] = beginMask
+    attrs["end_mask"] = endMask
+    attrs["ellipsis_mask"] = ellipsisMask
+    attrs["new_axis_mask"] = newAxisMask
+    attrs["shrink_axis_mask"] = shrinkAxisMask
 
     let opspec = OpSpec(
         OpType: "StridedSliceGrad",
+        Name: "Type",
         Input: [ shape, begin, end, strides, dy],
         Attrs: attrs
     )
@@ -18902,17 +20254,19 @@ with the given separator (default is an empty separator).
 
 
 
-func stringJoin(scope:Scope,inputs: Output, n :Int  , separator :String  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func stringJoin(scope:Scope,inputs: Output, n :Int  , separator :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("N",n)
-    attr.append("separator",separator)
+    attrs["N"] = n
+    attrs["separator"] = separator
 
     let opspec = OpSpec(
         OpType: "StringJoin",
+        Name: "Type",
         Input: [ inputs],
         Attrs: attrs
     )
@@ -18946,15 +20300,17 @@ For example:
 
 
 
+
 func stringSplit(scope:Scope,input: Output, delimiter: Output )  ->(indices: Output, values: Output, shape: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "StringSplit",
+        Name: "Type",
         Input: [ input, delimiter],
         Attrs: attrs
     )
@@ -18976,16 +20332,18 @@ This functionality will be deprecated and it's recommended to use
 
 
 
-func stringToHashBucket(scope:Scope,stringTensor: Output, numBuckets :UInt8  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func stringToHashBucket(scope:Scope,stringTensor: Output, numBuckets :Int  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("num_buckets",numBuckets)
+    attrs["num_buckets"] = numBuckets
 
     let opspec = OpSpec(
         OpType: "StringToHashBucket",
+        Name: "Type",
         Input: [ stringTensor],
         Attrs: attrs
     )
@@ -19008,16 +20366,18 @@ to the same bucket. To prevent this problem, use a strong hash function with
 
 
 
-func stringToHashBucketFast(scope:Scope,input: Output, numBuckets :UInt8  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func stringToHashBucketFast(scope:Scope,input: Output, numBuckets :Int  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("num_buckets",numBuckets)
+    attrs["num_buckets"] = numBuckets
 
     let opspec = OpSpec(
         OpType: "StringToHashBucketFast",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -19043,17 +20403,19 @@ time than `tf.string_to_hash_bucket_fast`.
 
 
 
-func stringToHashBucketStrong(scope:Scope,input: Output, numBuckets :UInt8  , key :[Int64]  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func stringToHashBucketStrong(scope:Scope,input: Output, numBuckets :Int  , key :List(int)  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("num_buckets",numBuckets)
-    attr.append("key",key)
+    attrs["num_buckets"] = numBuckets
+    attrs["key"] = key
 
     let opspec = OpSpec(
         OpType: "StringToHashBucketStrong",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -19072,16 +20434,18 @@ results in a rounded value.)
 
 
 
-func stringToNumber(scope:Scope,stringTensor: Output, outType :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func stringToNumber(scope:Scope,stringTensor: Output, outType :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("out_type",outType)
+    attrs["out_type"] = outType
 
     let opspec = OpSpec(
         OpType: "StringToNumber",
+        Name: "Type",
         Input: [ stringTensor],
         Attrs: attrs
     )
@@ -19100,15 +20464,18 @@ Returns x - y element-wise.
 
 
 
-func sub(scope:Scope,x: Output, y: Output )  ->(z: Output){
-    if scope.error.error() != nil {
-        return
+
+func sub(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Sub",
+        Name: "Type",
         Input: [ x, y],
         Attrs: attrs
     )
@@ -19180,16 +20547,18 @@ output = [b'hir', b'ee', b'n"]
 
 
 
-func substr(scope:Scope,input: Output, pos: Output, len: Output, t :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func substr(scope:Scope,input: Output, pos: Output, len: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Substr",
+        Name: "Type",
         Input: [ input, pos, len],
         Attrs: attrs
     )
@@ -19210,17 +20579,20 @@ retained with length 1.
 
 
 
-func sum(scope:Scope,input: Output, reductionIndices: Output, keepDims :Bool  , tidx :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func sum(scope:Scope,input: Output, reductionIndices: Output, keepDims :Bool  , t :Type  , tidx :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("keep_dims",keepDims)
-    attr.append("Tidx",tidx)
+    attrs["keep_dims"] = keepDims
+    attrs["T"] = t
+    attrs["Tidx"] = tidx
 
     let opspec = OpSpec(
         OpType: "Sum",
+        Name: "Type",
         Input: [ input, reductionIndices],
         Attrs: attrs
     )
@@ -19247,18 +20619,20 @@ s, _, _ = svd(a, compute_uv=False)
 
 
 
+
 func svd(scope:Scope,input: Output, computeUv :Bool  , fullMatrices :Bool  , t :Type  )  ->(s: Output, u: Output, v: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("compute_uv",computeUv)
-    attr.append("full_matrices",fullMatrices)
-    attr.append("T",t)
+    attrs["compute_uv"] = computeUv
+    attrs["full_matrices"] = fullMatrices
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Svd",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -19278,15 +20652,18 @@ See also `RefSwitch` and `Merge`.
 
 
 
-func switch(scope:Scope,data: Output, pred: Output )  ->(outputFalse: Output, outputTrue: Output){
-    if scope.error.error() != nil {
-        return
+
+func switch(scope:Scope,data: Output, pred: Output, t :Type  )  ->(outputFalse: Output, outputTrue: Output){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Switch",
+        Name: "Type",
         Input: [ data, pred],
         Attrs: attrs
     )
@@ -19303,18 +20680,20 @@ Computes the gradient function for function f via backpropagation.
 
 
 
-func symbolicGradient(scope:Scope,input: Output, tin :List(type)  , tout :List(type)  , f :Func  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func symbolicGradient(scope:Scope,input: Output, tin :List(type)  , tout :List(type)  , f :Func  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tin",tin)
-    attr.append("Tout",tout)
-    attr.append("f",f)
+    attrs["Tin"] = tin
+    attrs["Tout"] = tout
+    attrs["f"] = f
 
     let opspec = OpSpec(
         OpType: "SymbolicGradient",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -19331,15 +20710,17 @@ Creates a dataset that emits the records from one or more TFRecord files.
 
 
 
-func tfRecordDataset(scope:Scope,filenames: Output, compressionType: Output )  ->(handle: Output){
-    if scope.error.error() != nil {
-        return
+
+func tfRecordDataset(scope:Scope,filenames: Output, compressionType: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "TFRecordDataset",
+        Name: "Type",
         Input: [ filenames, compressionType],
         Attrs: attrs
     )
@@ -19356,18 +20737,20 @@ A Reader that outputs the records from a TensorFlow Records file.
 
 
 
-func tfRecordReader(scope:Scope container :String  , sharedName :String  , compressionType :String  )  ->(readerHandle: Output){
-    if scope.error.error() != nil {
-        return
+
+func tfRecordReader(scope:Scope, container :String  , sharedName :String  , compressionType :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("container",container)
-    attr.append("shared_name",sharedName)
-    attr.append("compression_type",compressionType)
+    attrs["container"] = container
+    attrs["shared_name"] = sharedName
+    attrs["compression_type"] = compressionType
 
     let opspec = OpSpec(
         OpType: "TFRecordReader",
+        Name: "Type",
         Input: [ ],
         Attrs: attrs
     )
@@ -19384,18 +20767,20 @@ A Reader that outputs the records from a TensorFlow Records file.
 
 
 
-func tfRecordReaderV2(scope:Scope container :String  , sharedName :String  , compressionType :String  )  ->(readerHandle: Output){
-    if scope.error.error() != nil {
-        return
+
+func tfRecordReaderV2(scope:Scope, container :String  , sharedName :String  , compressionType :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("container",container)
-    attr.append("shared_name",sharedName)
-    attr.append("compression_type",compressionType)
+    attrs["container"] = container
+    attrs["shared_name"] = sharedName
+    attrs["compression_type"] = compressionType
 
     let opspec = OpSpec(
         OpType: "TFRecordReaderV2",
+        Name: "Type",
         Input: [ ],
         Attrs: attrs
     )
@@ -19412,17 +20797,19 @@ Creates a dataset that contains `count` elements from the `input_dataset`.
 
 
 
-func takeDataset(scope:Scope,inputDataset: Output, count: Output, outputTypes :List(type)  , outputShapes :[Shape]  )  ->(handle: Output){
-    if scope.error.error() != nil {
-        return
+
+func takeDataset(scope:Scope,inputDataset: Output, count: Output, outputTypes :List(type)  , outputShapes :List(shape)  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("output_types",outputTypes)
-    attr.append("output_shapes",outputShapes)
+    attrs["output_types"] = outputTypes
+    attrs["output_shapes"] = outputShapes
 
     let opspec = OpSpec(
         OpType: "TakeDataset",
+        Name: "Type",
         Input: [ inputDataset, count],
         Attrs: attrs
     )
@@ -19479,18 +20866,20 @@ then the final `SparseTensor` will be:
 
 
 
+
 func takeManySparseFromTensorsMap(scope:Scope,sparseHandles: Output, dtype :Type  , container :String  , sharedName :String  )  ->(sparseIndices: Output, sparseValues: Output, sparseShape: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("dtype",dtype)
-    attr.append("container",container)
-    attr.append("shared_name",sharedName)
+    attrs["dtype"] = dtype
+    attrs["container"] = container
+    attrs["shared_name"] = sharedName
 
     let opspec = OpSpec(
         OpType: "TakeManySparseFromTensorsMap",
+        Name: "Type",
         Input: [ sparseHandles],
         Attrs: attrs
     )
@@ -19507,15 +20896,18 @@ Computes tan of x element-wise.
 
 
 
-func tan(scope:Scope,x: Output )  ->(y: Output){
-    if scope.error.error() != nil {
-        return
+
+func tan(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Tan",
+        Name: "Type",
         Input: [ x],
         Attrs: attrs
     )
@@ -19532,16 +20924,18 @@ Computes hyperbolic tangent of `x` element-wise.
 
 
 
-func tanh(scope:Scope,x: Output, t :Type  )  ->(y: Output){
-    if scope.error.error() != nil {
-        return
+
+func tanh(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Tanh",
+        Name: "Type",
         Input: [ x],
         Attrs: attrs
     )
@@ -19560,15 +20954,18 @@ is the corresponding input gradient.
 
 
 
-func tanhGrad(scope:Scope,x: Output, y: Output )  ->(z: Output){
-    if scope.error.error() != nil {
-        return
+
+func tanhGrad(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "TanhGrad",
+        Name: "Type",
         Input: [ x, y],
         Attrs: attrs
     )
@@ -19596,18 +20993,20 @@ Outputs a ref to the tensor state so it may be read or modified.
 
 
 
-func temporaryVariable(scope:Scope shape :Shape  , dtype :Type  , varName :String  )  ->(ref: Output){
-    if scope.error.error() != nil {
-        return
+
+func temporaryVariable(scope:Scope, shape :Shape  , dtype :Type  , varName :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("shape",shape)
-    attr.append("dtype",dtype)
-    attr.append("var_name",varName)
+    attrs["shape"] = shape
+    attrs["dtype"] = dtype
+    attrs["var_name"] = varName
 
     let opspec = OpSpec(
         OpType: "TemporaryVariable",
+        Name: "Type",
         Input: [ ],
         Attrs: attrs
     )
@@ -19623,20 +21022,22 @@ func temporaryVariable(scope:Scope shape :Shape  , dtype :Type  , varName :Strin
 
 
 
-func tensorArray(scope:Scope,size: Output, dtype :Type  , dynamicSize :Bool  , clearAfterRead :Bool  , tensorArrayName :String  , elementShape :Shape  )  ->(handle: Output){
-    if scope.error.error() != nil {
-        return
+
+func tensorArray(scope:Scope,size: Output, dtype :Type  , dynamicSize :Bool  , clearAfterRead :Bool  , tensorArrayName :String  , elementShape :Shape  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("dtype",dtype)
-    attr.append("dynamic_size",dynamicSize)
-    attr.append("clear_after_read",clearAfterRead)
-    attr.append("tensor_array_name",tensorArrayName)
-    attr.append("element_shape",elementShape)
+    attrs["dtype"] = dtype
+    attrs["dynamic_size"] = dynamicSize
+    attrs["clear_after_read"] = clearAfterRead
+    attrs["tensor_array_name"] = tensorArrayName
+    attrs["element_shape"] = elementShape
 
     let opspec = OpSpec(
         OpType: "TensorArray",
+        Name: "Type",
         Input: [ size],
         Attrs: attrs
     )
@@ -19652,15 +21053,17 @@ func tensorArray(scope:Scope,size: Output, dtype :Type  , dynamicSize :Bool  , c
 
 
 
-func tensorArrayClose(scope:Scope,handle: Output )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func tensorArrayClose(scope:Scope,handle: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "TensorArrayClose",
+        Name: "Type",
         Input: [ handle],
         Attrs: attrs
     )
@@ -19676,15 +21079,17 @@ Deprecated. Use TensorArrayCloseV3
 
 
 
-func tensorArrayCloseV2(scope:Scope,handle: Output )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func tensorArrayCloseV2(scope:Scope,handle: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "TensorArrayCloseV2",
+        Name: "Type",
         Input: [ handle],
         Attrs: attrs
     )
@@ -19702,15 +21107,17 @@ of a step/run.
 
 
 
-func tensorArrayCloseV3(scope:Scope,handle: Output )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func tensorArrayCloseV3(scope:Scope,handle: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "TensorArrayCloseV3",
+        Name: "Type",
         Input: [ handle],
         Attrs: attrs
     )
@@ -19725,17 +21132,19 @@ func tensorArrayCloseV3(scope:Scope,handle: Output )  ->(o:GoOperation){
 
 
 
+
 func tensorArrayConcat(scope:Scope,handle: Output, flowIn: Output, dtype :Type  , elementShapeExcept0 :Shape  )  ->(value: Output, lengths: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("dtype",dtype)
-    attr.append("element_shape_except0",elementShapeExcept0)
+    attrs["dtype"] = dtype
+    attrs["element_shape_except0"] = elementShapeExcept0
 
     let opspec = OpSpec(
         OpType: "TensorArrayConcat",
+        Name: "Type",
         Input: [ handle, flowIn],
         Attrs: attrs
     )
@@ -19752,17 +21161,19 @@ Deprecated. Use TensorArrayConcatV3
 
 
 
+
 func tensorArrayConcatV2(scope:Scope,handle: Output, flowIn: Output, dtype :Type  , elementShapeExcept0 :Shape  )  ->(value: Output, lengths: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("dtype",dtype)
-    attr.append("element_shape_except0",elementShapeExcept0)
+    attrs["dtype"] = dtype
+    attrs["element_shape_except0"] = elementShapeExcept0
 
     let opspec = OpSpec(
         OpType: "TensorArrayConcatV2",
+        Name: "Type",
         Input: [ handle, flowIn],
         Attrs: attrs
     )
@@ -19786,17 +21197,19 @@ All elements must have the same shape (excepting the first dimension).
 
 
 
+
 func tensorArrayConcatV3(scope:Scope,handle: Output, flowIn: Output, dtype :Type  , elementShapeExcept0 :Shape  )  ->(value: Output, lengths: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("dtype",dtype)
-    attr.append("element_shape_except0",elementShapeExcept0)
+    attrs["dtype"] = dtype
+    attrs["element_shape_except0"] = elementShapeExcept0
 
     let opspec = OpSpec(
         OpType: "TensorArrayConcatV3",
+        Name: "Type",
         Input: [ handle, flowIn],
         Attrs: attrs
     )
@@ -19812,17 +21225,19 @@ func tensorArrayConcatV3(scope:Scope,handle: Output, flowIn: Output, dtype :Type
 
 
 
-func tensorArrayGather(scope:Scope,handle: Output, indices: Output, flowIn: Output, dtype :Type  , elementShape :Shape  )  ->(value: Output){
-    if scope.error.error() != nil {
-        return
+
+func tensorArrayGather(scope:Scope,handle: Output, indices: Output, flowIn: Output, dtype :Type  , elementShape :Shape  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("dtype",dtype)
-    attr.append("element_shape",elementShape)
+    attrs["dtype"] = dtype
+    attrs["element_shape"] = elementShape
 
     let opspec = OpSpec(
         OpType: "TensorArrayGather",
+        Name: "Type",
         Input: [ handle, indices, flowIn],
         Attrs: attrs
     )
@@ -19839,17 +21254,19 @@ Deprecated. Use TensorArrayGatherV3
 
 
 
-func tensorArrayGatherV2(scope:Scope,handle: Output, indices: Output, flowIn: Output, dtype :Type  , elementShape :Shape  )  ->(value: Output){
-    if scope.error.error() != nil {
-        return
+
+func tensorArrayGatherV2(scope:Scope,handle: Output, indices: Output, flowIn: Output, dtype :Type  , elementShape :Shape  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("dtype",dtype)
-    attr.append("element_shape",elementShape)
+    attrs["dtype"] = dtype
+    attrs["element_shape"] = elementShape
 
     let opspec = OpSpec(
         OpType: "TensorArrayGatherV2",
+        Name: "Type",
         Input: [ handle, indices, flowIn],
         Attrs: attrs
     )
@@ -19867,17 +21284,19 @@ All elements selected by `indices` must have the same shape.
 
 
 
-func tensorArrayGatherV3(scope:Scope,handle: Output, indices: Output, flowIn: Output, dtype :Type  , elementShape :Shape  )  ->(value: Output){
-    if scope.error.error() != nil {
-        return
+
+func tensorArrayGatherV3(scope:Scope,handle: Output, indices: Output, flowIn: Output, dtype :Type  , elementShape :Shape  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("dtype",dtype)
-    attr.append("element_shape",elementShape)
+    attrs["dtype"] = dtype
+    attrs["element_shape"] = elementShape
 
     let opspec = OpSpec(
         OpType: "TensorArrayGatherV3",
+        Name: "Type",
         Input: [ handle, indices, flowIn],
         Attrs: attrs
     )
@@ -19893,16 +21312,18 @@ func tensorArrayGatherV3(scope:Scope,handle: Output, indices: Output, flowIn: Ou
 
 
 
-func tensorArrayGrad(scope:Scope,handle: Output, flowIn: Output, source :String  )  ->(gradHandle: Output){
-    if scope.error.error() != nil {
-        return
+
+func tensorArrayGrad(scope:Scope,handle: Output, flowIn: Output, source :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("source",source)
+    attrs["source"] = source
 
     let opspec = OpSpec(
         OpType: "TensorArrayGrad",
+        Name: "Type",
         Input: [ handle, flowIn],
         Attrs: attrs
     )
@@ -19919,16 +21340,18 @@ Deprecated. Use TensorArrayGradV3
 
 
 
-func tensorArrayGradV2(scope:Scope,handle: Output, flowIn: Output, source :String  )  ->(gradHandle: Output){
-    if scope.error.error() != nil {
-        return
+
+func tensorArrayGradV2(scope:Scope,handle: Output, flowIn: Output, source :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("source",source)
+    attrs["source"] = source
 
     let opspec = OpSpec(
         OpType: "TensorArrayGradV2",
+        Name: "Type",
         Input: [ handle, flowIn],
         Attrs: attrs
     )
@@ -19973,16 +21396,18 @@ calculation gets its own TensorArray accumulator.
 
 
 
+
 func tensorArrayGradV3(scope:Scope,handle: Output, flowIn: Output, source :String  )  ->(gradHandle: Output, flowOut: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("source",source)
+    attrs["source"] = source
 
     let opspec = OpSpec(
         OpType: "TensorArrayGradV3",
+        Name: "Type",
         Input: [ handle, flowIn],
         Attrs: attrs
     )
@@ -19998,17 +21423,19 @@ func tensorArrayGradV3(scope:Scope,handle: Output, flowIn: Output, source :Strin
 
 
 
-func tensorArrayPack(scope:Scope,handle: Output, flowIn: Output, dtype :Type  , elementShape :Shape  )  ->(value: Output){
-    if scope.error.error() != nil {
-        return
+
+func tensorArrayPack(scope:Scope,handle: Output, flowIn: Output, dtype :Type  , elementShape :Shape  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("dtype",dtype)
-    attr.append("element_shape",elementShape)
+    attrs["dtype"] = dtype
+    attrs["element_shape"] = elementShape
 
     let opspec = OpSpec(
         OpType: "TensorArrayPack",
+        Name: "Type",
         Input: [ handle, flowIn],
         Attrs: attrs
     )
@@ -20024,16 +21451,18 @@ func tensorArrayPack(scope:Scope,handle: Output, flowIn: Output, dtype :Type  , 
 
 
 
-func tensorArrayRead(scope:Scope,handle: Output, index: Output, flowIn: Output, dtype :Type  )  ->(value: Output){
-    if scope.error.error() != nil {
-        return
+
+func tensorArrayRead(scope:Scope,handle: Output, index: Output, flowIn: Output, dtype :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("dtype",dtype)
+    attrs["dtype"] = dtype
 
     let opspec = OpSpec(
         OpType: "TensorArrayRead",
+        Name: "Type",
         Input: [ handle, index, flowIn],
         Attrs: attrs
     )
@@ -20050,16 +21479,18 @@ Deprecated. Use TensorArrayReadV3
 
 
 
-func tensorArrayReadV2(scope:Scope,handle: Output, index: Output, flowIn: Output, dtype :Type  )  ->(value: Output){
-    if scope.error.error() != nil {
-        return
+
+func tensorArrayReadV2(scope:Scope,handle: Output, index: Output, flowIn: Output, dtype :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("dtype",dtype)
+    attrs["dtype"] = dtype
 
     let opspec = OpSpec(
         OpType: "TensorArrayReadV2",
+        Name: "Type",
         Input: [ handle, index, flowIn],
         Attrs: attrs
     )
@@ -20076,16 +21507,18 @@ Read an element from the TensorArray into output `value`.
 
 
 
-func tensorArrayReadV3(scope:Scope,handle: Output, index: Output, flowIn: Output, dtype :Type  )  ->(value: Output){
-    if scope.error.error() != nil {
-        return
+
+func tensorArrayReadV3(scope:Scope,handle: Output, index: Output, flowIn: Output, dtype :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("dtype",dtype)
+    attrs["dtype"] = dtype
 
     let opspec = OpSpec(
         OpType: "TensorArrayReadV3",
+        Name: "Type",
         Input: [ handle, index, flowIn],
         Attrs: attrs
     )
@@ -20101,15 +21534,18 @@ func tensorArrayReadV3(scope:Scope,handle: Output, index: Output, flowIn: Output
 
 
 
-func tensorArrayScatter(scope:Scope,handle: Output, indices: Output, value: Output, flowIn: Output )  ->(flowOut: Output){
-    if scope.error.error() != nil {
-        return
+
+func tensorArrayScatter(scope:Scope,handle: Output, indices: Output, value: Output, flowIn: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "TensorArrayScatter",
+        Name: "Type",
         Input: [ handle, indices, value, flowIn],
         Attrs: attrs
     )
@@ -20126,16 +21562,18 @@ Deprecated. Use TensorArrayScatterV3
 
 
 
-func tensorArrayScatterV2(scope:Scope,handle: Output, indices: Output, value: Output, flowIn: Output, t :Type  )  ->(flowOut: Output){
-    if scope.error.error() != nil {
-        return
+
+func tensorArrayScatterV2(scope:Scope,handle: Output, indices: Output, value: Output, flowIn: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "TensorArrayScatterV2",
+        Name: "Type",
         Input: [ handle, indices, value, flowIn],
         Attrs: attrs
     )
@@ -20153,15 +21591,18 @@ Scatter the data from the input value into specific TensorArray elements.
 
 
 
-func tensorArrayScatterV3(scope:Scope,handle: Output, indices: Output, value: Output, flowIn: Output )  ->(flowOut: Output){
-    if scope.error.error() != nil {
-        return
+
+func tensorArrayScatterV3(scope:Scope,handle: Output, indices: Output, value: Output, flowIn: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "TensorArrayScatterV3",
+        Name: "Type",
         Input: [ handle, indices, value, flowIn],
         Attrs: attrs
     )
@@ -20177,15 +21618,17 @@ func tensorArrayScatterV3(scope:Scope,handle: Output, indices: Output, value: Ou
 
 
 
-func tensorArraySize(scope:Scope,handle: Output, flowIn: Output )  ->(size: Output){
-    if scope.error.error() != nil {
-        return
+
+func tensorArraySize(scope:Scope,handle: Output, flowIn: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "TensorArraySize",
+        Name: "Type",
         Input: [ handle, flowIn],
         Attrs: attrs
     )
@@ -20202,15 +21645,17 @@ Deprecated. Use TensorArraySizeV3
 
 
 
-func tensorArraySizeV2(scope:Scope,handle: Output, flowIn: Output )  ->(size: Output){
-    if scope.error.error() != nil {
-        return
+
+func tensorArraySizeV2(scope:Scope,handle: Output, flowIn: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "TensorArraySizeV2",
+        Name: "Type",
         Input: [ handle, flowIn],
         Attrs: attrs
     )
@@ -20227,15 +21672,17 @@ Get the current size of the TensorArray.
 
 
 
-func tensorArraySizeV3(scope:Scope,handle: Output, flowIn: Output )  ->(size: Output){
-    if scope.error.error() != nil {
-        return
+
+func tensorArraySizeV3(scope:Scope,handle: Output, flowIn: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "TensorArraySizeV3",
+        Name: "Type",
         Input: [ handle, flowIn],
         Attrs: attrs
     )
@@ -20251,15 +21698,18 @@ func tensorArraySizeV3(scope:Scope,handle: Output, flowIn: Output )  ->(size: Ou
 
 
 
-func tensorArraySplit(scope:Scope,handle: Output, value: Output, lengths: Output, flowIn: Output )  ->(flowOut: Output){
-    if scope.error.error() != nil {
-        return
+
+func tensorArraySplit(scope:Scope,handle: Output, value: Output, lengths: Output, flowIn: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "TensorArraySplit",
+        Name: "Type",
         Input: [ handle, value, lengths, flowIn],
         Attrs: attrs
     )
@@ -20276,16 +21726,18 @@ Deprecated. Use TensorArraySplitV3
 
 
 
-func tensorArraySplitV2(scope:Scope,handle: Output, value: Output, lengths: Output, flowIn: Output, t :Type  )  ->(flowOut: Output){
-    if scope.error.error() != nil {
-        return
+
+func tensorArraySplitV2(scope:Scope,handle: Output, value: Output, lengths: Output, flowIn: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "TensorArraySplitV2",
+        Name: "Type",
         Input: [ handle, value, lengths, flowIn],
         Attrs: attrs
     )
@@ -20311,15 +21763,18 @@ and having size
 
 
 
-func tensorArraySplitV3(scope:Scope,handle: Output, value: Output, lengths: Output, flowIn: Output )  ->(flowOut: Output){
-    if scope.error.error() != nil {
-        return
+
+func tensorArraySplitV3(scope:Scope,handle: Output, value: Output, lengths: Output, flowIn: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "TensorArraySplitV3",
+        Name: "Type",
         Input: [ handle, value, lengths, flowIn],
         Attrs: attrs
     )
@@ -20335,16 +21790,18 @@ func tensorArraySplitV3(scope:Scope,handle: Output, value: Output, lengths: Outp
 
 
 
-func tensorArrayUnpack(scope:Scope,handle: Output, value: Output, flowIn: Output, t :Type  )  ->(flowOut: Output){
-    if scope.error.error() != nil {
-        return
+
+func tensorArrayUnpack(scope:Scope,handle: Output, value: Output, flowIn: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "TensorArrayUnpack",
+        Name: "Type",
         Input: [ handle, value, flowIn],
         Attrs: attrs
     )
@@ -20361,20 +21818,22 @@ Deprecated. Use TensorArrayV3
 
 
 
-func tensorArrayV2(scope:Scope,size: Output, dtype :Type  , elementShape :Shape  , dynamicSize :Bool  , clearAfterRead :Bool  , tensorArrayName :String  )  ->(handle: Output){
-    if scope.error.error() != nil {
-        return
+
+func tensorArrayV2(scope:Scope,size: Output, dtype :Type  , elementShape :Shape  , dynamicSize :Bool  , clearAfterRead :Bool  , tensorArrayName :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("dtype",dtype)
-    attr.append("element_shape",elementShape)
-    attr.append("dynamic_size",dynamicSize)
-    attr.append("clear_after_read",clearAfterRead)
-    attr.append("tensor_array_name",tensorArrayName)
+    attrs["dtype"] = dtype
+    attrs["element_shape"] = elementShape
+    attrs["dynamic_size"] = dynamicSize
+    attrs["clear_after_read"] = clearAfterRead
+    attrs["tensor_array_name"] = tensorArrayName
 
     let opspec = OpSpec(
         OpType: "TensorArrayV2",
+        Name: "Type",
         Input: [ size],
         Attrs: attrs
     )
@@ -20392,20 +21851,22 @@ Write data via Write and read via Read or Pack.
 
 
 
+
 func tensorArrayV3(scope:Scope,size: Output, dtype :Type  , elementShape :Shape  , dynamicSize :Bool  , clearAfterRead :Bool  , tensorArrayName :String  )  ->(handle: Output, flow: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("dtype",dtype)
-    attr.append("element_shape",elementShape)
-    attr.append("dynamic_size",dynamicSize)
-    attr.append("clear_after_read",clearAfterRead)
-    attr.append("tensor_array_name",tensorArrayName)
+    attrs["dtype"] = dtype
+    attrs["element_shape"] = elementShape
+    attrs["dynamic_size"] = dynamicSize
+    attrs["clear_after_read"] = clearAfterRead
+    attrs["tensor_array_name"] = tensorArrayName
 
     let opspec = OpSpec(
         OpType: "TensorArrayV3",
+        Name: "Type",
         Input: [ size],
         Attrs: attrs
     )
@@ -20421,15 +21882,18 @@ func tensorArrayV3(scope:Scope,size: Output, dtype :Type  , elementShape :Shape 
 
 
 
-func tensorArrayWrite(scope:Scope,handle: Output, index: Output, value: Output, flowIn: Output )  ->(flowOut: Output){
-    if scope.error.error() != nil {
-        return
+
+func tensorArrayWrite(scope:Scope,handle: Output, index: Output, value: Output, flowIn: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "TensorArrayWrite",
+        Name: "Type",
         Input: [ handle, index, value, flowIn],
         Attrs: attrs
     )
@@ -20446,16 +21910,18 @@ Deprecated. Use TensorArrayGradV3
 
 
 
-func tensorArrayWriteV2(scope:Scope,handle: Output, index: Output, value: Output, flowIn: Output, t :Type  )  ->(flowOut: Output){
-    if scope.error.error() != nil {
-        return
+
+func tensorArrayWriteV2(scope:Scope,handle: Output, index: Output, value: Output, flowIn: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "TensorArrayWriteV2",
+        Name: "Type",
         Input: [ handle, index, value, flowIn],
         Attrs: attrs
     )
@@ -20472,15 +21938,18 @@ Push an element onto the tensor_array.
 
 
 
-func tensorArrayWriteV3(scope:Scope,handle: Output, index: Output, value: Output, flowIn: Output )  ->(flowOut: Output){
-    if scope.error.error() != nil {
-        return
+
+func tensorArrayWriteV3(scope:Scope,handle: Output, index: Output, value: Output, flowIn: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "TensorArrayWriteV3",
+        Name: "Type",
         Input: [ handle, index, value, flowIn],
         Attrs: attrs
     )
@@ -20497,17 +21966,19 @@ Creates a dataset that emits `components` as a tuple of tensors once.
 
 
 
-func tensorDataset(scope:Scope,components: Output, toutputTypes :List(type)  , outputShapes :List(shape)  )  ->(handle: Output){
-    if scope.error.error() != nil {
-        return
+
+func tensorDataset(scope:Scope,components: Output, toutputTypes :List(type)  , outputShapes :List(shape)  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Toutput_types",toutputTypes)
-    attr.append("output_shapes",outputShapes)
+    attrs["Toutput_types"] = toutputTypes
+    attrs["output_shapes"] = outputShapes
 
     let opspec = OpSpec(
         OpType: "TensorDataset",
+        Name: "Type",
         Input: [ components],
         Attrs: attrs
     )
@@ -20524,17 +21995,19 @@ Creates a dataset that emits each dim-0 slice of `components` once.
 
 
 
-func tensorSliceDataset(scope:Scope,components: Output, toutputTypes :List(type)  , outputShapes :[Shape]  )  ->(handle: Output){
-    if scope.error.error() != nil {
-        return
+
+func tensorSliceDataset(scope:Scope,components: Output, toutputTypes :List(type)  , outputShapes :List(shape)  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Toutput_types",toutputTypes)
-    attr.append("output_shapes",outputShapes)
+    attrs["Toutput_types"] = toutputTypes
+    attrs["output_shapes"] = outputShapes
 
     let opspec = OpSpec(
         OpType: "TensorSliceDataset",
+        Name: "Type",
         Input: [ components],
         Attrs: attrs
     )
@@ -20551,18 +22024,21 @@ Outputs a `Summary` protocol buffer with a tensor.
 
 
 
-func tensorSummary(scope:Scope,tensor: Output, description :String  , labels :List(string)  , displayName :String  )  ->(summary: Output){
-    if scope.error.error() != nil {
-        return
+
+func tensorSummary(scope:Scope,tensor: Output, t :Type  , description :String  , labels :List(string)  , displayName :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("description",description)
-    attr.append("labels",labels)
-    attr.append("display_name",displayName)
+    attrs["T"] = t
+    attrs["description"] = description
+    attrs["labels"] = labels
+    attrs["display_name"] = displayName
 
     let opspec = OpSpec(
         OpType: "TensorSummary",
+        Name: "Type",
         Input: [ tensor],
         Attrs: attrs
     )
@@ -20579,15 +22055,17 @@ Creates a dataset that emits the lines of one or more text files.
 
 
 
-func textLineDataset(scope:Scope,filenames: Output )  ->(handle: Output){
-    if scope.error.error() != nil {
-        return
+
+func textLineDataset(scope:Scope,filenames: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "TextLineDataset",
+        Name: "Type",
         Input: [ filenames],
         Attrs: attrs
     )
@@ -20604,18 +22082,20 @@ A Reader that outputs the lines of a file delimited by '\n'.
 
 
 
-func textLineReader(scope:Scope skipHeaderLines :UInt8  , container :String  , sharedName :String  )  ->(readerHandle: Output){
-    if scope.error.error() != nil {
-        return
+
+func textLineReader(scope:Scope, skipHeaderLines :Int  , container :String  , sharedName :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("skip_header_lines",skipHeaderLines)
-    attr.append("container",container)
-    attr.append("shared_name",sharedName)
+    attrs["skip_header_lines"] = skipHeaderLines
+    attrs["container"] = container
+    attrs["shared_name"] = sharedName
 
     let opspec = OpSpec(
         OpType: "TextLineReader",
+        Name: "Type",
         Input: [ ],
         Attrs: attrs
     )
@@ -20632,18 +22112,20 @@ A Reader that outputs the lines of a file delimited by '\n'.
 
 
 
-func textLineReaderV2(scope:Scope skipHeaderLines :UInt8  , container :String  , sharedName :String  )  ->(readerHandle: Output){
-    if scope.error.error() != nil {
-        return
+
+func textLineReaderV2(scope:Scope, skipHeaderLines :Int  , container :String  , sharedName :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("skip_header_lines",skipHeaderLines)
-    attr.append("container",container)
-    attr.append("shared_name",sharedName)
+    attrs["skip_header_lines"] = skipHeaderLines
+    attrs["container"] = container
+    attrs["shared_name"] = sharedName
 
     let opspec = OpSpec(
         OpType: "TextLineReaderV2",
+        Name: "Type",
         Input: [ ],
         Attrs: attrs
     )
@@ -20667,21 +22149,23 @@ true labels.
 
 
 
-func threadUnsafeUnigramCandidateSampler(scope:Scope,trueClasses: Output, numTrue :UInt8  , numSampled :UInt8  , unique :Bool  , rangeMax :UInt8  , seed :UInt8  , seed2 :UInt8  )  ->(sampledCandidates: Output, trueExpectedCount: Output, sampledExpectedCount: Output){
-    if scope.error.error() != nil {
-        return
+
+func threadUnsafeUnigramCandidateSampler(scope:Scope,trueClasses: Output, numTrue :Int  , numSampled :Int  , unique :Bool  , rangeMax :Int  , seed :Int  , seed2 :Int  )  ->(sampledCandidates: Output, trueExpectedCount: Output, sampledExpectedCount: Output){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("num_true",numTrue)
-    attr.append("num_sampled",numSampled)
-    attr.append("unique",unique)
-    attr.append("range_max",rangeMax)
-    attr.append("seed",seed)
-    attr.append("seed2",seed2)
+    attrs["num_true"] = numTrue
+    attrs["num_sampled"] = numSampled
+    attrs["unique"] = unique
+    attrs["range_max"] = rangeMax
+    attrs["seed"] = seed
+    attrs["seed2"] = seed2
 
     let opspec = OpSpec(
         OpType: "ThreadUnsafeUnigramCandidateSampler",
+        Name: "Type",
         Input: [ trueClasses],
         Attrs: attrs
     )
@@ -20703,16 +22187,19 @@ dimension. For example, tiling `[a b c d]` by `[2]` produces
 
 
 
-func tile(scope:Scope,input: Output, multiples: Output, tmultiples :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func tile(scope:Scope,input: Output, multiples: Output, t :Type  , tmultiples :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tmultiples",tmultiples)
+    attrs["T"] = t
+    attrs["Tmultiples"] = tmultiples
 
     let opspec = OpSpec(
         OpType: "Tile",
+        Name: "Type",
         Input: [ input, multiples],
         Attrs: attrs
     )
@@ -20732,16 +22219,18 @@ each repeated tile of `input` into `output`.
 
 
 
-func tileGrad(scope:Scope,input: Output, multiples: Output, t :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func tileGrad(scope:Scope,input: Output, multiples: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "TileGrad",
+        Name: "Type",
         Input: [ input, multiples],
         Attrs: attrs
     )
@@ -20766,17 +22255,20 @@ If `k` varies dynamically, use `TopKV2` below.
 
 
 
-func topK(scope:Scope,input: Output, k :UInt8  , sorted :Bool  )  ->(values: Output, indices: Output){
-    if scope.error.error() != nil {
-        return
+
+func topK(scope:Scope,input: Output, k :Int  , sorted :Bool  , t :Type  )  ->(values: Output, indices: Output){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("k",k)
-    attr.append("sorted",sorted)
+    attrs["k"] = k
+    attrs["sorted"] = sorted
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "TopK",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -20800,17 +22292,19 @@ If two elements are equal, the lower-index element appears first.
 
 
 
+
 func topKV2(scope:Scope,input: Output, k: Output, sorted :Bool  , t :Type  )  ->(values: Output, indices: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("sorted",sorted)
-    attr.append("T",t)
+    attrs["sorted"] = sorted
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "TopKV2",
+        Name: "Type",
         Input: [ input, k],
         Attrs: attrs
     )
@@ -20829,16 +22323,19 @@ The output `y` has the same rank as `x`. The shapes of `x` and `y` satisfy:
 
 
 
-func transpose(scope:Scope,x: Output, perm: Output, tperm :Type  )  ->(y: Output){
-    if scope.error.error() != nil {
-        return
+
+func transpose(scope:Scope,x: Output, perm: Output, t :Type  , tperm :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tperm",tperm)
+    attrs["T"] = t
+    attrs["Tperm"] = tperm
 
     let opspec = OpSpec(
         OpType: "Transpose",
+        Name: "Type",
         Input: [ x, perm],
         Attrs: attrs
     )
@@ -20861,16 +22358,18 @@ Python Semantics.
 
 
 
-func truncateDiv(scope:Scope,x: Output, y: Output, t :Type  )  ->(z: Output){
-    if scope.error.error() != nil {
-        return
+
+func truncateDiv(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "TruncateDiv",
+        Name: "Type",
         Input: [ x, y],
         Attrs: attrs
     )
@@ -20891,15 +22390,18 @@ y + truncate_mod(x, y) = x`.
 
 
 
-func truncateMod(scope:Scope,x: Output, y: Output )  ->(z: Output){
-    if scope.error.error() != nil {
-        return
+
+func truncateMod(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "TruncateMod",
+        Name: "Type",
         Input: [ x, y],
         Attrs: attrs
     )
@@ -20919,19 +22421,21 @@ deviations from the mean are dropped and re-picked.
 
 
 
-func truncatedNormal(scope:Scope,shape: Output, seed :Int  , seed2 :Int  , dtype :Type  , t :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func truncatedNormal(scope:Scope,shape: Output, seed :Int  , seed2 :Int  , dtype :Type  , t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("seed",seed)
-    attr.append("seed2",seed2)
-    attr.append("dtype",dtype)
-    attr.append("T",t)
+    attrs["seed"] = seed
+    attrs["seed2"] = seed2
+    attrs["dtype"] = dtype
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "TruncatedNormal",
+        Name: "Type",
         Input: [ shape],
         Attrs: attrs
     )
@@ -20955,21 +22459,23 @@ true labels.
 
 
 
-func uniformCandidateSampler(scope:Scope,trueClasses: Output, numTrue :UInt8  , numSampled :UInt8  , unique :Bool  , rangeMax :UInt8  , seed :UInt8  , seed2 :UInt8  )  ->(sampledCandidates: Output, trueExpectedCount: Output, sampledExpectedCount: Output){
-    if scope.error.error() != nil {
-        return
+
+func uniformCandidateSampler(scope:Scope,trueClasses: Output, numTrue :Int  , numSampled :Int  , unique :Bool  , rangeMax :Int  , seed :Int  , seed2 :Int  )  ->(sampledCandidates: Output, trueExpectedCount: Output, sampledExpectedCount: Output){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("num_true",numTrue)
-    attr.append("num_sampled",numSampled)
-    attr.append("unique",unique)
-    attr.append("range_max",rangeMax)
-    attr.append("seed",seed)
-    attr.append("seed2",seed2)
+    attrs["num_true"] = numTrue
+    attrs["num_sampled"] = numSampled
+    attrs["unique"] = unique
+    attrs["range_max"] = rangeMax
+    attrs["seed"] = seed
+    attrs["seed2"] = seed2
 
     let opspec = OpSpec(
         OpType: "UniformCandidateSampler",
+        Name: "Type",
         Input: [ trueClasses],
         Attrs: attrs
     )
@@ -20998,16 +22504,19 @@ idx ==> [0, 0, 1, 2, 2, 2, 3, 4, 4]
 
 
 
-func unique(scope:Scope,x: Output, outIdx :Type  )  ->(y: Output, idx: Output){
-    if scope.error.error() != nil {
-        return
+
+func unique(scope:Scope,x: Output, t :Type  , outIdx :Type  )  ->(y: Output, idx: Output){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("out_idx",outIdx)
+    attrs["T"] = t
+    attrs["out_idx"] = outIdx
 
     let opspec = OpSpec(
         OpType: "Unique",
+        Name: "Type",
         Input: [ x],
         Attrs: attrs
     )
@@ -21038,17 +22547,19 @@ count ==> [2, 1, 3, 1, 2]
 
 
 
+
 func uniqueWithCounts(scope:Scope,x: Output, t :Type  , outIdx :Type  )  ->(y: Output, idx: Output, count: Output){
-    if scope.error.error() != nil {
-        return
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("out_idx",outIdx)
+    attrs["T"] = t
+    attrs["out_idx"] = outIdx
 
     let opspec = OpSpec(
         OpType: "UniqueWithCounts",
+        Name: "Type",
         Input: [ x],
         Attrs: attrs
     )
@@ -21074,17 +22585,20 @@ This is the opposite of `pack`.
 
 
 
-func unpack(scope:Scope,value: Output, num :UInt8  , axis :Int  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func unpack(scope:Scope,value: Output, num :Int  , t :Type  , axis :Int  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("num",num)
-    attr.append("axis",axis)
+    attrs["num"] = num
+    attrs["T"] = t
+    attrs["axis"] = axis
 
     let opspec = OpSpec(
         OpType: "Unpack",
+        Name: "Type",
         Input: [ value],
         Attrs: attrs
     )
@@ -21113,17 +22627,19 @@ If the maximum is empty for a given segment ID `i`, it outputs the smallest poss
 
 
 
-func unsortedSegmentMax(scope:Scope,data: Output, segmentIds: Output, numSegments: Output, t :Type  , tindices :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func unsortedSegmentMax(scope:Scope,data: Output, segmentIds: Output, numSegments: Output, t :Type  , tindices :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
-    attr.append("Tindices",tindices)
+    attrs["T"] = t
+    attrs["Tindices"] = tindices
 
     let opspec = OpSpec(
         OpType: "UnsortedSegmentMax",
+        Name: "Type",
         Input: [ data, segmentIds, numSegments],
         Attrs: attrs
     )
@@ -21152,16 +22668,19 @@ If the sum is empty for a given segment ID `i`, `output[i] = 0`.
 
 
 
-func unsortedSegmentSum(scope:Scope,data: Output, segmentIds: Output, numSegments: Output, tindices :Type  )  ->(output: Output){
-    if scope.error.error() != nil {
-        return
+
+func unsortedSegmentSum(scope:Scope,data: Output, segmentIds: Output, numSegments: Output, t :Type  , tindices :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("Tindices",tindices)
+    attrs["T"] = t
+    attrs["Tindices"] = tindices
 
     let opspec = OpSpec(
         OpType: "UnsortedSegmentSum",
+        Name: "Type",
         Input: [ data, segmentIds, numSegments],
         Attrs: attrs
     )
@@ -21180,18 +22699,20 @@ capabilities and options.  This Op is optimized for performance.
 
 
 
-func unstage(scope:Scope dtypes :List(type)  , container :String  , sharedName :String  )  ->(values: Output){
-    if scope.error.error() != nil {
-        return
+
+func unstage(scope:Scope, dtypes :List(type)  , container :String  , sharedName :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("dtypes",dtypes)
-    attr.append("container",container)
-    attr.append("shared_name",sharedName)
+    attrs["dtypes"] = dtypes
+    attrs["container"] = container
+    attrs["shared_name"] = sharedName
 
     let opspec = OpSpec(
         OpType: "Unstage",
+        Name: "Type",
         Input: [ ],
         Attrs: attrs
     )
@@ -21208,19 +22729,21 @@ Use VariableV2 instead.
 
 
 
-func variable(scope:Scope shape :Shape  , dtype :Type  , container :String  , sharedName :String  )  ->(ref: Output){
-    if scope.error.error() != nil {
-        return
+
+func variable(scope:Scope, shape :Shape  , dtype :Type  , container :String  , sharedName :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("shape",shape)
-    attr.append("dtype",dtype)
-    attr.append("container",container)
-    attr.append("shared_name",sharedName)
+    attrs["shape"] = shape
+    attrs["dtype"] = dtype
+    attrs["container"] = container
+    attrs["shared_name"] = sharedName
 
     let opspec = OpSpec(
         OpType: "Variable",
+        Name: "Type",
         Input: [ ],
         Attrs: attrs
     )
@@ -21240,19 +22763,21 @@ about sharing states in tensorflow.
 
 
 
-func variableV2(scope:Scope shape :Shape  , dtype :Type  , container :String  , sharedName :String  )  ->(ref: Output){
-    if scope.error.error() != nil {
-        return
+
+func variableV2(scope:Scope, shape :Shape  , dtype :Type  , container :String  , sharedName :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("shape",shape)
-    attr.append("dtype",dtype)
-    attr.append("container",container)
-    attr.append("shared_name",sharedName)
+    attrs["shape"] = shape
+    attrs["dtype"] = dtype
+    attrs["container"] = container
+    attrs["shared_name"] = sharedName
 
     let opspec = OpSpec(
         OpType: "VariableV2",
+        Name: "Type",
         Input: [ ],
         Attrs: attrs
     )
@@ -21297,15 +22822,17 @@ where(input) ==> [[0, 0, 0],
 
 
 
-func where(scope:Scope,input: Output )  ->(index: Output){
-    if scope.error.error() != nil {
-        return
+
+func where(scope:Scope,input: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "Where",
+        Name: "Type",
         Input: [ input],
         Attrs: attrs
     )
@@ -21324,17 +22851,19 @@ be a filename (key) and the contents of that file (value).
 
 
 
-func wholeFileReader(scope:Scope container :String  , sharedName :String  )  ->(readerHandle: Output){
-    if scope.error.error() != nil {
-        return
+
+func wholeFileReader(scope:Scope, container :String  , sharedName :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("container",container)
-    attr.append("shared_name",sharedName)
+    attrs["container"] = container
+    attrs["shared_name"] = sharedName
 
     let opspec = OpSpec(
         OpType: "WholeFileReader",
+        Name: "Type",
         Input: [ ],
         Attrs: attrs
     )
@@ -21353,17 +22882,19 @@ be a filename (key) and the contents of that file (value).
 
 
 
-func wholeFileReaderV2(scope:Scope container :String  , sharedName :String  )  ->(readerHandle: Output){
-    if scope.error.error() != nil {
-        return
+
+func wholeFileReaderV2(scope:Scope, container :String  , sharedName :String  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("container",container)
-    attr.append("shared_name",sharedName)
+    attrs["container"] = container
+    attrs["shared_name"] = sharedName
 
     let opspec = OpSpec(
         OpType: "WholeFileReaderV2",
+        Name: "Type",
         Input: [ ],
         Attrs: attrs
     )
@@ -21380,15 +22911,17 @@ Writes contents to the file at input filename. Creates file if not existing.
 
 
 
-func writeFile(scope:Scope,filename: Output, contents: Output )  ->(o:GoOperation){
-    if scope.error.error() != nil {
-        return
+
+func writeFile(scope:Scope,filename: Output, contents: Output )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
 
     let opspec = OpSpec(
         OpType: "WriteFile",
+        Name: "Type",
         Input: [ filename, contents],
         Attrs: attrs
     )
@@ -21404,15 +22937,18 @@ Returns a tensor of zeros with the same shape and type as x.
 
 
 
-func zerosLike(scope:Scope,x: Output )  ->(y: Output){
-    if scope.error.error() != nil {
-        return
+
+func zerosLike(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "ZerosLike",
+        Name: "Type",
         Input: [ x],
         Attrs: attrs
     )
@@ -21431,16 +22967,18 @@ The Hurwitz zeta function is defined as:
 
 
 
-func zeta(scope:Scope,x: Output, q: Output, t :Type  )  ->(z: Output){
-    if scope.error.error() != nil {
-        return
+
+func zeta(scope:Scope,x: Output, q: Output, t :Type  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("T",t)
+    attrs["T"] = t
 
     let opspec = OpSpec(
         OpType: "Zeta",
+        Name: "Type",
         Input: [ x, q],
         Attrs: attrs
     )
@@ -21457,18 +22995,20 @@ Creates a dataset that zips together `input_datasets`.
 
 
 
-func zipDataset(scope:Scope,inputDatasets: Output, outputTypes :List(type)  , outputShapes :[Shape]  , n :UInt8  )  ->(handle: Output){
-    if scope.error.error() != nil {
-        return
+
+func zipDataset(scope:Scope,inputDatasets: Output, outputTypes :List(type)  , outputShapes :List(shape)  , n :Int  )  ->(GoOperation?){
+    if scope.error.error != nil {
+        return nil
     }
 
     var attrs:Dictionary<String,Any> = [:]
-    attr.append("output_types",outputTypes)
-    attr.append("output_shapes",outputShapes)
-    attr.append("N",n)
+    attrs["output_types"] = outputTypes
+    attrs["output_shapes"] = outputShapes
+    attrs["N"] = n
 
     let opspec = OpSpec(
         OpType: "ZipDataset",
+        Name: "Type",
         Input: [ inputDatasets],
         Attrs: attrs
     )

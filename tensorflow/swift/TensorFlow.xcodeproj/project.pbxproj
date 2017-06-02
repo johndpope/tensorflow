@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17961FF11EE1DDBA00C4FFE2 /* AssociatedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17961FF01EE1DDBA00C4FFE2 /* AssociatedObject.swift */; };
 		OBJ_325 /* conformance.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_186 /* conformance.pb.swift */; };
 		OBJ_326 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_187 /* main.swift */; };
 		OBJ_327 /* test_messages_proto3.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_188 /* test_messages_proto3.pb.swift */; };
@@ -565,6 +566,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		17961FF01EE1DDBA00C4FFE2 /* AssociatedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssociatedObject.swift; sourceTree = "<group>"; };
 		OBJ_10 /* GenerateOps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateOps.swift; sourceTree = "<group>"; };
 		OBJ_100 /* saved_tensor_slice.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = saved_tensor_slice.pb.swift; sourceTree = "<group>"; };
 		OBJ_101 /* saver.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = saver.pb.swift; sourceTree = "<group>"; };
@@ -1468,6 +1470,7 @@
 		OBJ_9 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				17961FF01EE1DDBA00C4FFE2 /* AssociatedObject.swift */,
 				OBJ_10 /* GenerateOps.swift */,
 				OBJ_11 /* GoGraph.swift */,
 				OBJ_12 /* GoOperation.swift */,
@@ -2174,6 +2177,7 @@
 				OBJ_694 /* TF_Graph.swift in Sources */,
 				OBJ_695 /* TF_Library.swift in Sources */,
 				OBJ_696 /* TF_Session.swift in Sources */,
+				17961FF11EE1DDBA00C4FFE2 /* AssociatedObject.swift in Sources */,
 				OBJ_697 /* TF_Status.swift in Sources */,
 				OBJ_698 /* TF_String.swift in Sources */,
 				OBJ_699 /* TF_Tensor.swift in Sources */,

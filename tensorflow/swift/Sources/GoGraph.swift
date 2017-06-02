@@ -145,7 +145,7 @@ struct OpSpec  {
     
     // Name by which the added operation will be referred to in the Graph.
     // If omitted, defaults to Type.
-    var Name:String
+    var Name:String = "Type"
     
     // Inputs to this operation, which in turn must be outputs
     // of other operations already added to the Graph.
@@ -157,11 +157,13 @@ struct OpSpec  {
     // concatenate and (2) a list of tensors to concatenate. Thus, for
     // Concat, len(Input) must be 2, with the first element being an Output
     // and the second being an OutputList.
-    var Input:[TF_Input]
+    //private outputList =
+    var Input:[Any]
+    
     
     // Map from attribute name to its value that will be attached to this
     // operation.
-    var Attrs: Dictionary<String,Tensorflow_AttrValue> = [:]
+    var Attrs: Dictionary<String,Tensorflow_AttrValue.OneOf_Value> = [:]
     
     // Other possible fields: Device, ColocateWith, ControlInputs.
 }
@@ -223,15 +225,15 @@ extension Graph{
  
 // TODO - review Tensorflow_AttrValue in proto library to simplify this.
  // https://github.com/tensorflow/tensorflow/blob/master/tensorflow/go/graph.go#L195
-func setAttr(_ cDesc:TF_OperationDescription?,_ status:TF_Status,_ name:String,_ value:Tensorflow_AttrValue) ->  NSError? {
+func setAttr(_ cDesc:TF_OperationDescription?,_ status:TF_Status,_ name:String,_ value:Tensorflow_AttrValue.OneOf_Value) ->  NSError? {
     
-    switch value.type {
-        case .dtBfloat16:
-        print("test")
-        
-        default:
-        print("default")
-    }
+//    switch value.type {
+//        case .dtBfloat16:
+//        print("test")
+//        
+//        default:
+//        print("default")
+//    }
     
     /*switch value = value.(type) {
         case string:
