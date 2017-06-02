@@ -26,14 +26,14 @@ import protoTensorFlow
 {% macro functionAttributesBlock types %}{% for type in types %}{{type.name|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}} :{{type.type|snakeToCamelCase}}  {% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
 {% macro hasInputArgumentsAndAttribtues %}{% if op.inputArg.count %}{% if op.attr.count %},{% endif %}{% endif %} {%endmacro%}
 
-{% macro returnBlock types %}{% for type in types %}op.Output({{forloop.counter}} - 1){% if not forloop.last %},{% endif %}{% endfor %}{% endmacro %}
+{% macro returnBlock types %}{% for type in types %}op.output({{forloop.counter}} - 1){% if not forloop.last %},{% endif %}{% endfor %}{% endmacro %}
 
 {% macro trimmedInputArgs types %}{% for type in types %}{{type.name|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}{% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
 
 {% macro injectAttributes types %}{% for type in types %}attrs["{{type.name}}"] = {{type.name|snakeToCamelCase|lowerFirstWord|escapeReservedKeywords}}
     {% endfor %}{% endmacro %}
 
-func {{ op.name|lowerFirstWord}}({% if op.hasAttributeOrInputArgs %}scope:Scope,{% else %}scope:Scope{% endif %}{% call functionArgumentBlock op.inputArg %}{% call hasInputArgumentsAndAttribtues %}{% call functionAttributesBlock op.attr %})  {% call returnFunctionBlock op.outputArg %}{
+func {{ op.name|lowerFirstWord}}({% if op.hasAttributeOrInputArgs %} scope:Scope,{% else %} scope:Scope{% endif %}{% call functionArgumentBlock op.inputArg %}{% call hasInputArgumentsAndAttribtues %}{% call functionAttributesBlock op.attr %})  {% call returnFunctionBlock op.outputArg %}{
     if scope.error.error != nil {
         return nil
     }
@@ -51,7 +51,8 @@ func {{ op.name|lowerFirstWord}}({% if op.hasAttributeOrInputArgs %}scope:Scope,
     let op = scope.AddOperation(opspec)
     return ({% call returnBlock op.outputArg %})
     {%else%}
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
     {% endif %}
 }
 {% endfor %}

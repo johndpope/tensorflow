@@ -25,7 +25,7 @@ Returns nothing but an exception.
 
 
 
-func abort(scope:Scope, errorMsg :String  , exitWithoutError :Bool  )  ->(GoOperation?){
+func abort( scope:Scope, errorMsg :String  , exitWithoutError :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -40,7 +40,8 @@ func abort(scope:Scope, errorMsg :String  , exitWithoutError :Bool  )  ->(GoOper
         Input: [ ],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -56,7 +57,7 @@ an output element, this operation computes \\(y = |x|\\).
 
 
 
-func abs(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+func abs( scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -71,7 +72,7 @@ func abs(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -85,7 +86,7 @@ Does not add if local_step is lesser than the accumulator's global_step.
 
 
 
-func accumulatorApplyGradient(scope:Scope,handle: Output, localStep: Output, gradient: Output, dtype :Type  )  ->(GoOperation?){
+func accumulatorApplyGradient( scope:Scope,handle: Output, localStep: Output, gradient: Output, dtype :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -99,7 +100,8 @@ func accumulatorApplyGradient(scope:Scope,handle: Output, localStep: Output, gra
         Input: [ handle, localStep, gradient],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -112,7 +114,7 @@ Returns the number of gradients aggregated in the given accumulators.
 
 
 
-func accumulatorNumAccumulated(scope:Scope,handle: Output )  ->(GoOperation?){
+func accumulatorNumAccumulated( scope:Scope,handle: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -126,7 +128,7 @@ func accumulatorNumAccumulated(scope:Scope,handle: Output )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -141,7 +143,7 @@ new_global_step.
 
 
 
-func accumulatorSetGlobalStep(scope:Scope,handle: Output, newGlobalStep: Output )  ->(GoOperation?){
+func accumulatorSetGlobalStep( scope:Scope,handle: Output, newGlobalStep: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -154,7 +156,8 @@ func accumulatorSetGlobalStep(scope:Scope,handle: Output, newGlobalStep: Output 
         Input: [ handle, newGlobalStep],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -172,7 +175,7 @@ global_step in the accumulator by 1, and resets the aggregate to 0.
 
 
 
-func accumulatorTakeGradient(scope:Scope,handle: Output, numRequired: Output, dtype :Type  )  ->(GoOperation?){
+func accumulatorTakeGradient( scope:Scope,handle: Output, numRequired: Output, dtype :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -187,7 +190,7 @@ func accumulatorTakeGradient(scope:Scope,handle: Output, numRequired: Output, dt
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -200,7 +203,7 @@ Computes acos of x element-wise.
 
 
 
-func acos(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+func acos( scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -215,7 +218,7 @@ func acos(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -230,7 +233,7 @@ Returns x + y element-wise.
 
 
 
-func add(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+func add( scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -245,7 +248,7 @@ func add(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -276,7 +279,7 @@ is provided here, instead use the *name* of the Operation created by calling
 
 
 
-func addManySparseToTensorsMap(scope:Scope,sparseIndices: Output, sparseValues: Output, sparseShape: Output, t :Type  , container :String  , sharedName :String  )  ->(GoOperation?){
+func addManySparseToTensorsMap( scope:Scope,sparseIndices: Output, sparseValues: Output, sparseShape: Output, t :Type  , container :String  , sharedName :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -293,7 +296,7 @@ func addManySparseToTensorsMap(scope:Scope,sparseIndices: Output, sparseValues: 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -306,7 +309,7 @@ Add all input tensors element wise.
 
 
 
-func addN(scope:Scope,inputs: Output, n :Int  , t :Type  )  ->(GoOperation?){
+func addN( scope:Scope,inputs: Output, n :Int  , t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -322,7 +325,7 @@ func addN(scope:Scope,inputs: Output, n :Int  , t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -347,7 +350,7 @@ is provided here, instead use the *name* of the Operation created by calling
 
 
 
-func addSparseToTensorsMap(scope:Scope,sparseIndices: Output, sparseValues: Output, sparseShape: Output, t :Type  , container :String  , sharedName :String  )  ->(GoOperation?){
+func addSparseToTensorsMap( scope:Scope,sparseIndices: Output, sparseValues: Output, sparseShape: Output, t :Type  , container :String  , sharedName :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -364,7 +367,7 @@ func addSparseToTensorsMap(scope:Scope,sparseIndices: Output, sparseValues: Outp
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -377,7 +380,7 @@ Deprecated. Disallowed in GraphDef version >= 2.
 
 
 
-func adjustContrast(scope:Scope,images: Output, contrastFactor: Output, minValue: Output, maxValue: Output, t :Type  )  ->(GoOperation?){
+func adjustContrast( scope:Scope,images: Output, contrastFactor: Output, minValue: Output, maxValue: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -392,7 +395,7 @@ func adjustContrast(scope:Scope,images: Output, contrastFactor: Output, minValue
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -412,7 +415,7 @@ channel and then adjusts each component of each pixel to
 
 
 
-func adjustContrastv2(scope:Scope,images: Output, contrastFactor: Output )  ->(GoOperation?){
+func adjustContrastv2( scope:Scope,images: Output, contrastFactor: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -426,7 +429,7 @@ func adjustContrastv2(scope:Scope,images: Output, contrastFactor: Output )  ->(G
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -444,7 +447,7 @@ and then remapped back to RGB colorspace.
 
 
 
-func adjustHue(scope:Scope,images: Output, delta: Output )  ->(GoOperation?){
+func adjustHue( scope:Scope,images: Output, delta: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -458,7 +461,7 @@ func adjustHue(scope:Scope,images: Output, delta: Output )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -476,7 +479,7 @@ values, and then remapped back to RGB colorspace.
 
 
 
-func adjustSaturation(scope:Scope,images: Output, scale: Output )  ->(GoOperation?){
+func adjustSaturation( scope:Scope,images: Output, scale: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -490,7 +493,7 @@ func adjustSaturation(scope:Scope,images: Output, scale: Output )  ->(GoOperatio
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -507,7 +510,7 @@ retained with length 1.
 
 
 
-func all(scope:Scope,input: Output, reductionIndices: Output, keepDims :Bool  , tidx :Type  )  ->(GoOperation?){
+func all( scope:Scope,input: Output, reductionIndices: Output, keepDims :Bool  , tidx :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -523,7 +526,7 @@ func all(scope:Scope,input: Output, reductionIndices: Output, keepDims :Bool  , 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -543,7 +546,7 @@ true labels.
 
 
 
-func allCandidateSampler(scope:Scope,trueClasses: Output, numTrue :Int  , numSampled :Int  , unique :Bool  , seed :Int  , seed2 :Int  )  ->(sampledCandidates: Output, trueExpectedCount: Output, sampledExpectedCount: Output){
+func allCandidateSampler( scope:Scope,trueClasses: Output, numTrue :Int  , numSampled :Int  , unique :Bool  , seed :Int  , seed2 :Int  )  ->(sampledCandidates: Output, trueExpectedCount: Output, sampledExpectedCount: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -562,7 +565,7 @@ func allCandidateSampler(scope:Scope,trueClasses: Output, numTrue :Int  , numSam
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1))
 }
 
 /*
@@ -579,7 +582,7 @@ retained with length 1.
 
 
 
-func any(scope:Scope,input: Output, reductionIndices: Output, keepDims :Bool  , tidx :Type  )  ->(GoOperation?){
+func any( scope:Scope,input: Output, reductionIndices: Output, keepDims :Bool  , tidx :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -595,7 +598,7 @@ func any(scope:Scope,input: Output, reductionIndices: Output, keepDims :Bool  , 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -612,7 +615,7 @@ var -= update;
 
 
 
-func applyAdadelta(scope:Scope,`var`: Output, accum: Output, accumUpdate: Output, lr: Output, rho: Output, epsilon: Output, grad: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
+func applyAdadelta( scope:Scope,`var`: Output, accum: Output, accumUpdate: Output, lr: Output, rho: Output, epsilon: Output, grad: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -628,7 +631,7 @@ func applyAdadelta(scope:Scope,`var`: Output, accum: Output, accumUpdate: Output
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -643,7 +646,7 @@ var -= lr * grad * (1 / sqrt(accum))
 
 
 
-func applyAdagrad(scope:Scope,`var`: Output, accum: Output, lr: Output, grad: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
+func applyAdagrad( scope:Scope,`var`: Output, accum: Output, lr: Output, grad: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -659,7 +662,7 @@ func applyAdagrad(scope:Scope,`var`: Output, accum: Output, lr: Output, grad: Ou
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -672,7 +675,7 @@ Update '*var' according to the proximal adagrad scheme.
 
 
 
-func applyAdagradDA(scope:Scope,`var`: Output, gradientAccumulator: Output, gradientSquaredAccumulator: Output, grad: Output, lr: Output, l1: Output, l2: Output, globalStep: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
+func applyAdagradDA( scope:Scope,`var`: Output, gradientAccumulator: Output, gradientSquaredAccumulator: Output, grad: Output, lr: Output, l1: Output, l2: Output, globalStep: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -688,7 +691,7 @@ func applyAdagradDA(scope:Scope,`var`: Output, gradientAccumulator: Output, grad
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -705,7 +708,7 @@ variable <- variable - lr_t * m_t / (sqrt(v_t) + epsilon)
 
 
 
-func applyAdam(scope:Scope,`var`: Output, m: Output, v: Output, beta1Power: Output, beta2Power: Output, lr: Output, beta1: Output, beta2: Output, epsilon: Output, grad: Output, t :Type  , useLocking :Bool  , useNesterov :Bool  )  ->(GoOperation?){
+func applyAdam( scope:Scope,`var`: Output, m: Output, v: Output, beta1Power: Output, beta2Power: Output, lr: Output, beta1: Output, beta2: Output, epsilon: Output, grad: Output, t :Type  , useLocking :Bool  , useNesterov :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -722,7 +725,7 @@ func applyAdam(scope:Scope,`var`: Output, m: Output, v: Output, beta1Power: Outp
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -749,7 +752,7 @@ var <- var - mom
 
 
 
-func applyCenteredRMSProp(scope:Scope,`var`: Output, mg: Output, ms: Output, mom: Output, lr: Output, rho: Output, momentum: Output, epsilon: Output, grad: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
+func applyCenteredRMSProp( scope:Scope,`var`: Output, mg: Output, ms: Output, mom: Output, lr: Output, rho: Output, momentum: Output, epsilon: Output, grad: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -765,7 +768,7 @@ func applyCenteredRMSProp(scope:Scope,`var`: Output, mg: Output, ms: Output, mom
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -783,7 +786,7 @@ accum = accum_new
 
 
 
-func applyFtrl(scope:Scope,`var`: Output, accum: Output, linear: Output, grad: Output, lr: Output, l1: Output, l2: Output, lrPower: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
+func applyFtrl( scope:Scope,`var`: Output, accum: Output, linear: Output, grad: Output, lr: Output, l1: Output, l2: Output, lrPower: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -799,7 +802,7 @@ func applyFtrl(scope:Scope,`var`: Output, accum: Output, linear: Output, grad: O
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -812,7 +815,7 @@ Update '*var' by subtracting 'alpha' * 'delta' from it.
 
 
 
-func applyGradientDescent(scope:Scope,`var`: Output, alpha: Output, delta: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
+func applyGradientDescent( scope:Scope,`var`: Output, alpha: Output, delta: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -828,7 +831,7 @@ func applyGradientDescent(scope:Scope,`var`: Output, alpha: Output, delta: Outpu
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -844,7 +847,7 @@ var -= lr * accum
 
 
 
-func applyMomentum(scope:Scope,`var`: Output, accum: Output, lr: Output, grad: Output, momentum: Output, t :Type  , useLocking :Bool  , useNesterov :Bool  )  ->(GoOperation?){
+func applyMomentum( scope:Scope,`var`: Output, accum: Output, lr: Output, grad: Output, momentum: Output, t :Type  , useLocking :Bool  , useNesterov :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -861,7 +864,7 @@ func applyMomentum(scope:Scope,`var`: Output, accum: Output, lr: Output, grad: O
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -877,7 +880,7 @@ var = sign(prox_v)/(1+lr*l2) * max{|prox_v|-lr*l1,0}
 
 
 
-func applyProximalAdagrad(scope:Scope,`var`: Output, accum: Output, lr: Output, l1: Output, l2: Output, grad: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
+func applyProximalAdagrad( scope:Scope,`var`: Output, accum: Output, lr: Output, l1: Output, l2: Output, grad: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -893,7 +896,7 @@ func applyProximalAdagrad(scope:Scope,`var`: Output, accum: Output, lr: Output, 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -908,7 +911,7 @@ var = sign(prox_v)/(1+alpha*l2) * max{|prox_v|-alpha*l1,0}
 
 
 
-func applyProximalGradientDescent(scope:Scope,`var`: Output, alpha: Output, l1: Output, l2: Output, delta: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
+func applyProximalGradientDescent( scope:Scope,`var`: Output, alpha: Output, l1: Output, l2: Output, delta: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -924,7 +927,7 @@ func applyProximalGradientDescent(scope:Scope,`var`: Output, alpha: Output, l1: 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -945,7 +948,7 @@ var <- var - mom
 
 
 
-func applyRMSProp(scope:Scope,`var`: Output, ms: Output, mom: Output, lr: Output, rho: Output, momentum: Output, epsilon: Output, grad: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
+func applyRMSProp( scope:Scope,`var`: Output, ms: Output, mom: Output, lr: Output, rho: Output, momentum: Output, epsilon: Output, grad: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -961,7 +964,7 @@ func applyRMSProp(scope:Scope,`var`: Output, ms: Output, mom: Output, lr: Output
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -974,7 +977,7 @@ Returns the truth value of abs(x-y) < tolerance element-wise.
 
 
 
-func approximateEqual(scope:Scope,x: Output, y: Output, t :Type  , tolerance :Float  )  ->(GoOperation?){
+func approximateEqual( scope:Scope,x: Output, y: Output, t :Type  , tolerance :Float  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -990,7 +993,7 @@ func approximateEqual(scope:Scope,x: Output, y: Output, t :Type  , tolerance :Fl
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -1004,7 +1007,7 @@ Note that in case of ties the identity of the return value is not guaranteed.
 
 
 
-func argMax(scope:Scope,input: Output, dimension: Output, t :Type  , tidx :Type  )  ->(GoOperation?){
+func argMax( scope:Scope,input: Output, dimension: Output, t :Type  , tidx :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -1020,7 +1023,7 @@ func argMax(scope:Scope,input: Output, dimension: Output, t :Type  , tidx :Type 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -1034,7 +1037,7 @@ Note that in case of ties the identity of the return value is not guaranteed.
 
 
 
-func argMin(scope:Scope,input: Output, dimension: Output, t :Type  , tidx :Type  )  ->(GoOperation?){
+func argMin( scope:Scope,input: Output, dimension: Output, t :Type  , tidx :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -1050,7 +1053,7 @@ func argMin(scope:Scope,input: Output, dimension: Output, t :Type  , tidx :Type 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -1064,7 +1067,7 @@ types and boolean.
 
 
 
-func asString(scope:Scope,input: Output, t :Type  , precision :Int  , scientific :Bool  , shortest :Bool  , width :Int  , fill :String  )  ->(GoOperation?){
+func asString( scope:Scope,input: Output, t :Type  , precision :Int  , scientific :Bool  , shortest :Bool  , width :Int  , fill :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -1084,7 +1087,7 @@ func asString(scope:Scope,input: Output, t :Type  , precision :Int  , scientific
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -1097,7 +1100,7 @@ Computes asin of x element-wise.
 
 
 
-func asin(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+func asin( scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -1112,7 +1115,7 @@ func asin(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -1127,7 +1130,7 @@ If `condition` evaluates to false, print the list of tensors in `data`.
 
 
 
-func assert(scope:Scope,condition: Output, data: Output, t :List(type)  , summarize :Int  )  ->(GoOperation?){
+func assert( scope:Scope,condition: Output, data: Output, t :List(type)  , summarize :Int  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -1142,7 +1145,8 @@ func assert(scope:Scope,condition: Output, data: Output, t :List(type)  , summar
         Input: [ condition, data],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -1157,7 +1161,7 @@ This makes it easier to chain operations that need to use the reset value.
 
 
 
-func assign(scope:Scope,ref: Output, value: Output, t :Type  , validateShape :Bool  , useLocking :Bool  )  ->(GoOperation?){
+func assign( scope:Scope,ref: Output, value: Output, t :Type  , validateShape :Bool  , useLocking :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -1174,7 +1178,7 @@ func assign(scope:Scope,ref: Output, value: Output, t :Type  , validateShape :Bo
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -1189,7 +1193,7 @@ This makes it easier to chain operations that need to use the reset value.
 
 
 
-func assignAdd(scope:Scope,ref: Output, value: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
+func assignAdd( scope:Scope,ref: Output, value: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -1205,7 +1209,7 @@ func assignAdd(scope:Scope,ref: Output, value: Output, t :Type  , useLocking :Bo
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -1220,7 +1224,7 @@ This makes it easier to chain operations that need to use the reset value.
 
 
 
-func assignSub(scope:Scope,ref: Output, value: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
+func assignSub( scope:Scope,ref: Output, value: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -1236,7 +1240,7 @@ func assignSub(scope:Scope,ref: Output, value: Output, t :Type  , useLocking :Bo
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -1249,7 +1253,7 @@ Computes atan of x element-wise.
 
 
 
-func atan(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+func atan( scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -1264,7 +1268,7 @@ func atan(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -1282,7 +1286,7 @@ where \(r = \sqrt(x^2 + y^2) \).
 
 
 
-func atan2(scope:Scope,y: Output, x: Output, t :Type  )  ->(GoOperation?){
+func atan2( scope:Scope,y: Output, x: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -1297,7 +1301,7 @@ func atan2(scope:Scope,y: Output, x: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -1331,7 +1335,7 @@ resulting spectrogram as a PNG image.
 
 
 
-func audioSpectrogram(scope:Scope,input: Output, windowSize :Int  , stride :Int  , magnitudeSquared :Bool  )  ->(GoOperation?){
+func audioSpectrogram( scope:Scope,input: Output, windowSize :Int  , stride :Int  , magnitudeSquared :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -1348,7 +1352,7 @@ func audioSpectrogram(scope:Scope,input: Output, windowSize :Int  , stride :Int 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -1370,7 +1374,7 @@ build the `tag` of the summary values:
 
 
 
-func audioSummary(scope:Scope,tag: Output, tensor: Output, sampleRate :Float  , maxOutputs :Int  )  ->(GoOperation?){
+func audioSummary( scope:Scope,tag: Output, tensor: Output, sampleRate :Float  , maxOutputs :Int  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -1386,7 +1390,7 @@ func audioSummary(scope:Scope,tag: Output, tensor: Output, sampleRate :Float  , 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -1408,7 +1412,7 @@ build the `tag` of the summary values:
 
 
 
-func audioSummaryV2(scope:Scope,tag: Output, tensor: Output, sampleRate: Output, maxOutputs :Int  )  ->(GoOperation?){
+func audioSummaryV2( scope:Scope,tag: Output, tensor: Output, sampleRate: Output, maxOutputs :Int  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -1423,7 +1427,7 @@ func audioSummaryV2(scope:Scope,tag: Output, tensor: Output, sampleRate: Output,
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -1438,7 +1442,7 @@ window in `value`.
 
 
 
-func avgPool(scope:Scope,value: Output, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  , t :Type  )  ->(GoOperation?){
+func avgPool( scope:Scope,value: Output, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  , t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -1457,7 +1461,7 @@ func avgPool(scope:Scope,value: Output, ksize :List(int)  , strides :List(int)  
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -1470,7 +1474,7 @@ Performs 3D average pooling on the input.
 
 
 
-func avgPool3D(scope:Scope,input: Output, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  , t :Type  )  ->(GoOperation?){
+func avgPool3D( scope:Scope,input: Output, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  , t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -1489,7 +1493,7 @@ func avgPool3D(scope:Scope,input: Output, ksize :List(int)  , strides :List(int)
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -1502,7 +1506,7 @@ Computes gradients of average pooling function.
 
 
 
-func avgPool3DGrad(scope:Scope,origInputShape: Output, grad: Output, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  , t :Type  )  ->(GoOperation?){
+func avgPool3DGrad( scope:Scope,origInputShape: Output, grad: Output, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  , t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -1521,7 +1525,7 @@ func avgPool3DGrad(scope:Scope,origInputShape: Output, grad: Output, ksize :List
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -1534,7 +1538,7 @@ Computes gradients of the average pooling function.
 
 
 
-func avgPoolGrad(scope:Scope,origInputShape: Output, grad: Output, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  , t :Type  )  ->(GoOperation?){
+func avgPoolGrad( scope:Scope,origInputShape: Output, grad: Output, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  , t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -1553,7 +1557,7 @@ func avgPoolGrad(scope:Scope,origInputShape: Output, grad: Output, ksize :List(i
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -1573,7 +1577,7 @@ and may be updated using BarrierInsertMany.
 
 
 
-func barrier(scope:Scope, componentTypes :List(type)  , shapes :List(shape)  , capacity :Int  , container :String  , sharedName :String  )  ->(GoOperation?){
+func barrier( scope:Scope, componentTypes :List(type)  , shapes :List(shape)  , capacity :Int  , container :String  , sharedName :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -1592,7 +1596,7 @@ func barrier(scope:Scope, componentTypes :List(type)  , shapes :List(shape)  , c
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -1611,7 +1615,7 @@ Subsequent TakeMany operations that would block will fail immediately.
 
 
 
-func barrierClose(scope:Scope,handle: Output, cancelPendingEnqueues :Bool  )  ->(GoOperation?){
+func barrierClose( scope:Scope,handle: Output, cancelPendingEnqueues :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -1625,7 +1629,8 @@ func barrierClose(scope:Scope,handle: Output, cancelPendingEnqueues :Bool  )  ->
         Input: [ handle],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -1638,7 +1643,7 @@ Computes the number of incomplete elements in the given barrier.
 
 
 
-func barrierIncompleteSize(scope:Scope,handle: Output )  ->(GoOperation?){
+func barrierIncompleteSize( scope:Scope,handle: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -1652,7 +1657,7 @@ func barrierIncompleteSize(scope:Scope,handle: Output )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -1669,7 +1674,7 @@ INVALID_ARGUMENT, and leave the barrier in an undefined state.
 
 
 
-func barrierInsertMany(scope:Scope,handle: Output, keys: Output, values: Output, t :Type  , componentIndex :Int  )  ->(GoOperation?){
+func barrierInsertMany( scope:Scope,handle: Output, keys: Output, values: Output, t :Type  , componentIndex :Int  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -1684,7 +1689,8 @@ func barrierInsertMany(scope:Scope,handle: Output, keys: Output, values: Output,
         Input: [ handle, keys, values],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -1697,7 +1703,7 @@ Computes the number of complete elements in the given barrier.
 
 
 
-func barrierReadySize(scope:Scope,handle: Output )  ->(GoOperation?){
+func barrierReadySize( scope:Scope,handle: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -1711,7 +1717,7 @@ func barrierReadySize(scope:Scope,handle: Output )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -1730,7 +1736,7 @@ into the barrier.
 
 
 
-func barrierTakeMany(scope:Scope,handle: Output, numElements: Output, componentTypes :List(type)  , allowSmallBatch :Bool  , waitForIncomplete :Bool  , timeoutMs :Int  )  ->(indices: Output, keys: Output, values: Output){
+func barrierTakeMany( scope:Scope,handle: Output, numElements: Output, componentTypes :List(type)  , allowSmallBatch :Bool  , waitForIncomplete :Bool  , timeoutMs :Int  )  ->(indices: Output, keys: Output, values: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -1748,7 +1754,7 @@ func barrierTakeMany(scope:Scope,handle: Output, numElements: Output, componentT
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1))
 }
 
 /*
@@ -1760,7 +1766,7 @@ func barrierTakeMany(scope:Scope,handle: Output, numElements: Output, componentT
 
 
 
-func batchCholesky(scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
+func batchCholesky( scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -1775,7 +1781,7 @@ func batchCholesky(scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -1787,7 +1793,7 @@ func batchCholesky(scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
 
 
 
-func batchCholeskyGrad(scope:Scope,l: Output, grad: Output, t :Type  )  ->(GoOperation?){
+func batchCholeskyGrad( scope:Scope,l: Output, grad: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -1802,7 +1808,7 @@ func batchCholeskyGrad(scope:Scope,l: Output, grad: Output, t :Type  )  ->(GoOpe
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -1815,7 +1821,7 @@ Creates a dataset that batches `batch_size` elements from `input_dataset`.
 
 
 
-func batchDataset(scope:Scope,inputDataset: Output, batchSize: Output, outputTypes :List(type)  , outputShapes :List(shape)  )  ->(GoOperation?){
+func batchDataset( scope:Scope,inputDataset: Output, batchSize: Output, outputTypes :List(type)  , outputShapes :List(shape)  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -1831,7 +1837,7 @@ func batchDataset(scope:Scope,inputDataset: Output, batchSize: Output, outputTyp
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -1843,7 +1849,7 @@ func batchDataset(scope:Scope,inputDataset: Output, batchSize: Output, outputTyp
 
 
 
-func batchFFT(scope:Scope,input: Output )  ->(GoOperation?){
+func batchFFT( scope:Scope,input: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -1857,7 +1863,7 @@ func batchFFT(scope:Scope,input: Output )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -1869,7 +1875,7 @@ func batchFFT(scope:Scope,input: Output )  ->(GoOperation?){
 
 
 
-func batchFFT2D(scope:Scope,input: Output )  ->(GoOperation?){
+func batchFFT2D( scope:Scope,input: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -1883,7 +1889,7 @@ func batchFFT2D(scope:Scope,input: Output )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -1895,7 +1901,7 @@ func batchFFT2D(scope:Scope,input: Output )  ->(GoOperation?){
 
 
 
-func batchFFT3D(scope:Scope,input: Output )  ->(GoOperation?){
+func batchFFT3D( scope:Scope,input: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -1909,7 +1915,7 @@ func batchFFT3D(scope:Scope,input: Output )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -1921,7 +1927,7 @@ func batchFFT3D(scope:Scope,input: Output )  ->(GoOperation?){
 
 
 
-func batchIFFT(scope:Scope,input: Output )  ->(GoOperation?){
+func batchIFFT( scope:Scope,input: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -1935,7 +1941,7 @@ func batchIFFT(scope:Scope,input: Output )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -1947,7 +1953,7 @@ func batchIFFT(scope:Scope,input: Output )  ->(GoOperation?){
 
 
 
-func batchIFFT2D(scope:Scope,input: Output )  ->(GoOperation?){
+func batchIFFT2D( scope:Scope,input: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -1961,7 +1967,7 @@ func batchIFFT2D(scope:Scope,input: Output )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -1973,7 +1979,7 @@ func batchIFFT2D(scope:Scope,input: Output )  ->(GoOperation?){
 
 
 
-func batchIFFT3D(scope:Scope,input: Output )  ->(GoOperation?){
+func batchIFFT3D( scope:Scope,input: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -1987,7 +1993,7 @@ func batchIFFT3D(scope:Scope,input: Output )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -2013,7 +2019,7 @@ It is computed as:
 
 
 
-func batchMatMul(scope:Scope,x: Output, y: Output, t :Type  , adjX :Bool  , adjY :Bool  )  ->(GoOperation?){
+func batchMatMul( scope:Scope,x: Output, y: Output, t :Type  , adjX :Bool  , adjY :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -2030,7 +2036,7 @@ func batchMatMul(scope:Scope,x: Output, y: Output, t :Type  , adjX :Bool  , adjY
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -2042,7 +2048,7 @@ func batchMatMul(scope:Scope,x: Output, y: Output, t :Type  , adjX :Bool  , adjY
 
 
 
-func batchMatrixBandPart(scope:Scope,input: Output, numLower: Output, numUpper: Output, t :Type  )  ->(GoOperation?){
+func batchMatrixBandPart( scope:Scope,input: Output, numLower: Output, numUpper: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -2057,7 +2063,7 @@ func batchMatrixBandPart(scope:Scope,input: Output, numLower: Output, numUpper: 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -2069,7 +2075,7 @@ func batchMatrixBandPart(scope:Scope,input: Output, numLower: Output, numUpper: 
 
 
 
-func batchMatrixDeterminant(scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
+func batchMatrixDeterminant( scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -2084,7 +2090,7 @@ func batchMatrixDeterminant(scope:Scope,input: Output, t :Type  )  ->(GoOperatio
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -2096,7 +2102,7 @@ func batchMatrixDeterminant(scope:Scope,input: Output, t :Type  )  ->(GoOperatio
 
 
 
-func batchMatrixDiag(scope:Scope,diagonal: Output, t :Type  )  ->(GoOperation?){
+func batchMatrixDiag( scope:Scope,diagonal: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -2111,7 +2117,7 @@ func batchMatrixDiag(scope:Scope,diagonal: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -2123,7 +2129,7 @@ func batchMatrixDiag(scope:Scope,diagonal: Output, t :Type  )  ->(GoOperation?){
 
 
 
-func batchMatrixDiagPart(scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
+func batchMatrixDiagPart( scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -2138,7 +2144,7 @@ func batchMatrixDiagPart(scope:Scope,input: Output, t :Type  )  ->(GoOperation?)
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -2150,7 +2156,7 @@ func batchMatrixDiagPart(scope:Scope,input: Output, t :Type  )  ->(GoOperation?)
 
 
 
-func batchMatrixInverse(scope:Scope,input: Output, adjoint :Bool  , t :Type  )  ->(GoOperation?){
+func batchMatrixInverse( scope:Scope,input: Output, adjoint :Bool  , t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -2166,7 +2172,7 @@ func batchMatrixInverse(scope:Scope,input: Output, adjoint :Bool  , t :Type  )  
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -2178,7 +2184,7 @@ func batchMatrixInverse(scope:Scope,input: Output, adjoint :Bool  , t :Type  )  
 
 
 
-func batchMatrixSetDiag(scope:Scope,input: Output, diagonal: Output, t :Type  )  ->(GoOperation?){
+func batchMatrixSetDiag( scope:Scope,input: Output, diagonal: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -2193,7 +2199,7 @@ func batchMatrixSetDiag(scope:Scope,input: Output, diagonal: Output, t :Type  ) 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -2205,7 +2211,7 @@ func batchMatrixSetDiag(scope:Scope,input: Output, diagonal: Output, t :Type  ) 
 
 
 
-func batchMatrixSolve(scope:Scope,matrix: Output, rhs: Output, adjoint :Bool  , t :Type  )  ->(GoOperation?){
+func batchMatrixSolve( scope:Scope,matrix: Output, rhs: Output, adjoint :Bool  , t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -2221,7 +2227,7 @@ func batchMatrixSolve(scope:Scope,matrix: Output, rhs: Output, adjoint :Bool  , 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -2233,7 +2239,7 @@ func batchMatrixSolve(scope:Scope,matrix: Output, rhs: Output, adjoint :Bool  , 
 
 
 
-func batchMatrixSolveLs(scope:Scope,matrix: Output, rhs: Output, l2Regularizer: Output, t :Type  , fast :Bool  )  ->(GoOperation?){
+func batchMatrixSolveLs( scope:Scope,matrix: Output, rhs: Output, l2Regularizer: Output, t :Type  , fast :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -2249,7 +2255,7 @@ func batchMatrixSolveLs(scope:Scope,matrix: Output, rhs: Output, l2Regularizer: 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -2261,7 +2267,7 @@ func batchMatrixSolveLs(scope:Scope,matrix: Output, rhs: Output, l2Regularizer: 
 
 
 
-func batchMatrixTriangularSolve(scope:Scope,matrix: Output, rhs: Output, lower :Bool  , adjoint :Bool  , t :Type  )  ->(GoOperation?){
+func batchMatrixTriangularSolve( scope:Scope,matrix: Output, rhs: Output, lower :Bool  , adjoint :Bool  , t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -2278,7 +2284,7 @@ func batchMatrixTriangularSolve(scope:Scope,matrix: Output, rhs: Output, lower :
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -2292,7 +2298,7 @@ This op is deprecated. Prefer `tf.nn.batch_normalization`.
 
 
 
-func batchNormWithGlobalNormalization(scope:Scope,t: Output, m: Output, v: Output, beta: Output, gamma: Output, t :Type  , varianceEpsilon :Float  , scaleAfterNormalization :Bool  )  ->(GoOperation?){
+func batchNormWithGlobalNormalization( scope:Scope,t: Output, m: Output, v: Output, beta: Output, gamma: Output, t :Type  , varianceEpsilon :Float  , scaleAfterNormalization :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -2309,7 +2315,7 @@ func batchNormWithGlobalNormalization(scope:Scope,t: Output, m: Output, v: Outpu
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -2323,7 +2329,7 @@ This op is deprecated. See `tf.nn.batch_normalization`.
 
 
 
-func batchNormWithGlobalNormalizationGrad(scope:Scope,t: Output, m: Output, v: Output, gamma: Output, backprop: Output, t :Type  , varianceEpsilon :Float  , scaleAfterNormalization :Bool  )  ->(dx: Output, dm: Output, dv: Output, db: Output, dg: Output){
+func batchNormWithGlobalNormalizationGrad( scope:Scope,t: Output, m: Output, v: Output, gamma: Output, backprop: Output, t :Type  , varianceEpsilon :Float  , scaleAfterNormalization :Bool  )  ->(dx: Output, dm: Output, dv: Output, db: Output, dg: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -2340,7 +2346,7 @@ func batchNormWithGlobalNormalizationGrad(scope:Scope,t: Output, m: Output, v: O
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1),op.Output(4 - 1),op.Output(5 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1),op.output(4 - 1),op.output(5 - 1))
 }
 
 /*
@@ -2352,7 +2358,7 @@ func batchNormWithGlobalNormalizationGrad(scope:Scope,t: Output, m: Output, v: O
 
 
 
-func batchSelfAdjointEig(scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
+func batchSelfAdjointEig( scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -2367,7 +2373,7 @@ func batchSelfAdjointEig(scope:Scope,input: Output, t :Type  )  ->(GoOperation?)
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -2379,7 +2385,7 @@ func batchSelfAdjointEig(scope:Scope,input: Output, t :Type  )  ->(GoOperation?)
 
 
 
-func batchSelfAdjointEigV2(scope:Scope,input: Output, computeV :Bool  , t :Type  )  ->(e: Output, v: Output){
+func batchSelfAdjointEigV2( scope:Scope,input: Output, computeV :Bool  , t :Type  )  ->(e: Output, v: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -2395,7 +2401,7 @@ func batchSelfAdjointEigV2(scope:Scope,input: Output, computeV :Bool  , t :Type 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1))
+    return (op.output(1 - 1),op.output(2 - 1))
 }
 
 /*
@@ -2407,7 +2413,7 @@ func batchSelfAdjointEigV2(scope:Scope,input: Output, computeV :Bool  , t :Type 
 
 
 
-func batchSvd(scope:Scope,input: Output, computeUv :Bool  , fullMatrices :Bool  , t :Type  )  ->(s: Output, u: Output, v: Output){
+func batchSvd( scope:Scope,input: Output, computeUv :Bool  , fullMatrices :Bool  , t :Type  )  ->(s: Output, u: Output, v: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -2424,7 +2430,7 @@ func batchSvd(scope:Scope,input: Output, computeUv :Bool  , fullMatrices :Bool  
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1))
 }
 
 /*
@@ -2443,7 +2449,7 @@ followed by cropping along the `height` and `width` dimensions.
 
 
 
-func batchToSpace(scope:Scope,input: Output, crops: Output, t :Type  , blockSize :Int  , tidx :Type  )  ->(GoOperation?){
+func batchToSpace( scope:Scope,input: Output, crops: Output, t :Type  , blockSize :Int  , tidx :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -2460,7 +2466,7 @@ func batchToSpace(scope:Scope,input: Output, crops: Output, t :Type  , blockSize
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -2479,7 +2485,7 @@ reverse of SpaceToBatch.  See below for a precise description.
 
 
 
-func batchToSpaceND(scope:Scope,input: Output, blockShape: Output, crops: Output, t :Type  , tblockShape :Type  , tcrops :Type  )  ->(GoOperation?){
+func batchToSpaceND( scope:Scope,input: Output, blockShape: Output, crops: Output, t :Type  , tblockShape :Type  , tcrops :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -2496,7 +2502,7 @@ func batchToSpaceND(scope:Scope,input: Output, blockShape: Output, crops: Output
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -2515,7 +2521,7 @@ beta function.
 
 
 
-func betainc(scope:Scope,a: Output, b: Output, x: Output, t :Type  )  ->(GoOperation?){
+func betainc( scope:Scope,a: Output, b: Output, x: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -2530,7 +2536,7 @@ func betainc(scope:Scope,a: Output, b: Output, x: Output, t :Type  )  ->(GoOpera
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -2545,7 +2551,7 @@ Broadcasting is supported, so `value` may have any number of dimensions.
 
 
 
-func biasAdd(scope:Scope,value: Output, bias: Output, t :Type  , dataFormat :String  )  ->(GoOperation?){
+func biasAdd( scope:Scope,value: Output, bias: Output, t :Type  , dataFormat :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -2561,7 +2567,7 @@ func biasAdd(scope:Scope,value: Output, bias: Output, t :Type  , dataFormat :Str
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -2577,7 +2583,7 @@ the feature dimension is the third-to-last.
 
 
 
-func biasAddGrad(scope:Scope,outBackprop: Output, t :Type  , dataFormat :String  )  ->(GoOperation?){
+func biasAddGrad( scope:Scope,outBackprop: Output, t :Type  , dataFormat :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -2593,7 +2599,7 @@ func biasAddGrad(scope:Scope,outBackprop: Output, t :Type  , dataFormat :String 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -2609,7 +2615,7 @@ Broadcasting is supported, so `value` may have any number of dimensions.
 
 
 
-func biasAddV1(scope:Scope,value: Output, bias: Output, t :Type  )  ->(GoOperation?){
+func biasAddV1( scope:Scope,value: Output, bias: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -2624,7 +2630,7 @@ func biasAddV1(scope:Scope,value: Output, bias: Output, t :Type  )  ->(GoOperati
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -2643,7 +2649,7 @@ Values in `arr` outside of the range [0, size) are ignored.
 
 
 
-func bincount(scope:Scope,arr: Output, size: Output, weights: Output, t :Type  )  ->(GoOperation?){
+func bincount( scope:Scope,arr: Output, size: Output, weights: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -2658,7 +2664,7 @@ func bincount(scope:Scope,arr: Output, size: Output, weights: Output, t :Type  )
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -2680,7 +2686,7 @@ endian orderings will give different results.
 
 
 
-func bitcast(scope:Scope,input: Output, t :Type  , type :Type  )  ->(GoOperation?){
+func bitcast( scope:Scope,input: Output, t :Type  , type :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -2696,7 +2702,7 @@ func bitcast(scope:Scope,input: Output, t :Type  , type :Type  )  ->(GoOperation
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -2711,7 +2717,7 @@ broadcasted shape. `s0`, `s1` and `r0` are all integer vectors.
 
 
 
-func broadcastArgs(scope:Scope,s0: Output, s1: Output, t :Type  )  ->(GoOperation?){
+func broadcastArgs( scope:Scope,s0: Output, s1: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -2726,7 +2732,7 @@ func broadcastArgs(scope:Scope,s0: Output, s1: Output, t :Type  )  ->(GoOperatio
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -2740,7 +2746,7 @@ This is typically used by gradient computations for a broadcasting operation.
 
 
 
-func broadcastGradientArgs(scope:Scope,s0: Output, s1: Output, t :Type  )  ->(r0: Output, r1: Output){
+func broadcastGradientArgs( scope:Scope,s0: Output, s1: Output, t :Type  )  ->(r0: Output, r1: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -2755,7 +2761,7 @@ func broadcastGradientArgs(scope:Scope,s0: Output, s1: Output, t :Type  )  ->(r0
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1))
+    return (op.output(1 - 1),op.output(2 - 1))
 }
 
 /*
@@ -2777,7 +2783,7 @@ then the output will be
 
 
 
-func bucketize(scope:Scope,input: Output, t :Type  , boundaries :List(float)  )  ->(GoOperation?){
+func bucketize( scope:Scope,input: Output, t :Type  , boundaries :List(float)  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -2793,7 +2799,7 @@ func bucketize(scope:Scope,input: Output, t :Type  , boundaries :List(float)  ) 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -2811,7 +2817,7 @@ returned if merge_repeated = False.
 
 
 
-func ctcBeamSearchDecoder(scope:Scope,inputs: Output, sequenceLength: Output, beamWidth :Int  , topPaths :Int  , mergeRepeated :Bool  )  ->(decodedIndices: Output, decodedValues: Output, decodedShape: Output, logProbability: Output){
+func ctcBeamSearchDecoder( scope:Scope,inputs: Output, sequenceLength: Output, beamWidth :Int  , topPaths :Int  , mergeRepeated :Bool  )  ->(decodedIndices: Output, decodedValues: Output, decodedShape: Output, logProbability: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -2828,7 +2834,7 @@ func ctcBeamSearchDecoder(scope:Scope,inputs: Output, sequenceLength: Output, be
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1),op.Output(4 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1),op.output(4 - 1))
 }
 
 /*
@@ -2849,7 +2855,7 @@ element is emitted.
 
 
 
-func ctcGreedyDecoder(scope:Scope,inputs: Output, sequenceLength: Output, mergeRepeated :Bool  )  ->(decodedIndices: Output, decodedValues: Output, decodedShape: Output, logProbability: Output){
+func ctcGreedyDecoder( scope:Scope,inputs: Output, sequenceLength: Output, mergeRepeated :Bool  )  ->(decodedIndices: Output, decodedValues: Output, decodedShape: Output, logProbability: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -2864,7 +2870,7 @@ func ctcGreedyDecoder(scope:Scope,inputs: Output, sequenceLength: Output, mergeR
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1),op.Output(4 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1),op.output(4 - 1))
 }
 
 /*
@@ -2879,7 +2885,7 @@ should be e.g. linear projections of outputs by an LSTM.
 
 
 
-func ctcLoss(scope:Scope,inputs: Output, labelsIndices: Output, labelsValues: Output, sequenceLength: Output, preprocessCollapseRepeated :Bool  , ctcMergeRepeated :Bool  , ignoreLongerOutputsThanInputs :Bool  )  ->(loss: Output, gradient: Output){
+func ctcLoss( scope:Scope,inputs: Output, labelsIndices: Output, labelsValues: Output, sequenceLength: Output, preprocessCollapseRepeated :Bool  , ctcMergeRepeated :Bool  , ignoreLongerOutputsThanInputs :Bool  )  ->(loss: Output, gradient: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -2896,7 +2902,7 @@ func ctcLoss(scope:Scope,inputs: Output, labelsIndices: Output, labelsValues: Ou
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1))
+    return (op.output(1 - 1),op.output(2 - 1))
 }
 
 /*
@@ -2909,7 +2915,7 @@ Cast x of type SrcT to y of DstT.
 
 
 
-func cast(scope:Scope,x: Output, srcT :Type  , dstT :Type  )  ->(GoOperation?){
+func cast( scope:Scope,x: Output, srcT :Type  , dstT :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -2925,7 +2931,7 @@ func cast(scope:Scope,x: Output, srcT :Type  , dstT :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -2938,7 +2944,7 @@ Returns element-wise smallest integer in not less than x.
 
 
 
-func ceil(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+func ceil( scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -2953,7 +2959,7 @@ func ceil(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -2968,7 +2974,7 @@ that are not a number (NaN) or infinity (Inf). Otherwise, passes `tensor` as-is.
 
 
 
-func checkNumerics(scope:Scope,tensor: Output, t :Type  , message :String  )  ->(GoOperation?){
+func checkNumerics( scope:Scope,tensor: Output, t :Type  , message :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -2984,7 +2990,7 @@ func checkNumerics(scope:Scope,tensor: Output, t :Type  , message :String  )  ->
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -3001,7 +3007,7 @@ containing the Cholesky decompositions for all input submatrices `[..., :, :]`.
 
 
 
-func cholesky(scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
+func cholesky( scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -3016,7 +3022,7 @@ func cholesky(scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -3031,7 +3037,7 @@ Iain Murray http://arxiv.org/abs/1602.07527.
 
 
 
-func choleskyGrad(scope:Scope,l: Output, grad: Output, t :Type  )  ->(GoOperation?){
+func choleskyGrad( scope:Scope,l: Output, grad: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -3046,7 +3052,7 @@ func choleskyGrad(scope:Scope,l: Output, grad: Output, t :Type  )  ->(GoOperatio
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -3070,7 +3076,7 @@ tf.complex(real, imag) ==> [[2.25 + 4.75j], [3.25 + 5.75j]]
 
 
 
-func complex(scope:Scope,real: Output, imag: Output, t :Type  , tout :Type  )  ->(GoOperation?){
+func complex( scope:Scope,real: Output, imag: Output, t :Type  , tout :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -3086,7 +3092,7 @@ func complex(scope:Scope,real: Output, imag: Output, t :Type  , tout :Type  )  -
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -3103,7 +3109,7 @@ value is computed as \\( \sqrt{a^2 + b^2}\\).
 
 
 
-func complexAbs(scope:Scope,x: Output, t :Type  , tout :Type  )  ->(GoOperation?){
+func complexAbs( scope:Scope,x: Output, t :Type  , tout :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -3119,7 +3125,7 @@ func complexAbs(scope:Scope,x: Output, t :Type  , tout :Type  )  ->(GoOperation?
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -3136,7 +3142,7 @@ making the classifier sure that they are sampled labels.
 
 
 
-func computeAccidentalHits(scope:Scope,trueClasses: Output, sampledCandidates: Output, numTrue :Int  , seed :Int  , seed2 :Int  )  ->(indices: Output, ids: Output, weights: Output){
+func computeAccidentalHits( scope:Scope,trueClasses: Output, sampledCandidates: Output, numTrue :Int  , seed :Int  , seed2 :Int  )  ->(indices: Output, ids: Output, weights: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -3153,7 +3159,7 @@ func computeAccidentalHits(scope:Scope,trueClasses: Output, sampledCandidates: O
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1))
 }
 
 /*
@@ -3166,7 +3172,7 @@ Concatenates tensors along one dimension.
 
 
 
-func concat(scope:Scope,concatDim: Output, values: Output, n :Int  , t :Type  )  ->(GoOperation?){
+func concat( scope:Scope,concatDim: Output, values: Output, n :Int  , t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -3182,7 +3188,7 @@ func concat(scope:Scope,concatDim: Output, values: Output, n :Int  , t :Type  ) 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -3203,7 +3209,7 @@ This is typically used by gradient computations for a concat operation.
 
 
 
-func concatOffset(scope:Scope,concatDim: Output, shape: Output, n :Int  )  ->(GoOperation?){
+func concatOffset( scope:Scope,concatDim: Output, shape: Output, n :Int  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -3218,7 +3224,7 @@ func concatOffset(scope:Scope,concatDim: Output, shape: Output, n :Int  )  ->(Go
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -3231,7 +3237,7 @@ Concatenates tensors along one dimension.
 
 
 
-func concatV2(scope:Scope,values: Output, axis: Output, n :Int  , t :Type  , tidx :Type  )  ->(GoOperation?){
+func concatV2( scope:Scope,values: Output, axis: Output, n :Int  , t :Type  , tidx :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -3248,7 +3254,7 @@ func concatV2(scope:Scope,values: Output, axis: Output, n :Int  , t :Type  , tid
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -3267,7 +3273,7 @@ the accumulator.
 
 
 
-func conditionalAccumulator(scope:Scope, dtype :Type  , shape :Shape  , container :String  , sharedName :String  )  ->(GoOperation?){
+func conditionalAccumulator( scope:Scope, dtype :Type  , shape :Shape  , container :String  , sharedName :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -3285,7 +3291,7 @@ func conditionalAccumulator(scope:Scope, dtype :Type  , shape :Shape  , containe
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -3308,7 +3314,7 @@ tf.conj(input) ==> [-2.25 - 4.75j, 3.25 - 5.75j]
 
 
 
-func conj(scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
+func conj( scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -3323,7 +3329,7 @@ func conj(scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -3336,7 +3342,7 @@ Returns a constant tensor.
 
 
 
-func const(scope:Scope, value :Tensor  , dtype :Type  )  ->(GoOperation?){
+func const( scope:Scope, value :Tensor  , dtype :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -3352,7 +3358,7 @@ func const(scope:Scope, value :Tensor  , dtype :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -3366,7 +3372,7 @@ Only useful as a placeholder for control edges.
 
 
 
-func controlTrigger(scope:Scope )  ->(GoOperation?){
+func controlTrigger( scope:Scope )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -3379,7 +3385,8 @@ func controlTrigger(scope:Scope )  ->(GoOperation?){
         Input: [ ],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -3409,7 +3416,7 @@ horizontal and vertices strides, `strides = [1, stride, stride, 1]`.
 
 
 
-func conv2D(scope:Scope,input: Output, filter: Output, t :Type  , strides :List(int)  , useCudnnOnGpu :Bool  , padding :String  , dataFormat :String  )  ->(GoOperation?){
+func conv2D( scope:Scope,input: Output, filter: Output, t :Type  , strides :List(int)  , useCudnnOnGpu :Bool  , padding :String  , dataFormat :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -3428,7 +3435,7 @@ func conv2D(scope:Scope,input: Output, filter: Output, t :Type  , strides :List(
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -3441,7 +3448,7 @@ Computes the gradients of convolution with respect to the filter.
 
 
 
-func conv2DBackpropFilter(scope:Scope,input: Output, filterSizes: Output, outBackprop: Output, t :Type  , strides :List(int)  , useCudnnOnGpu :Bool  , padding :String  , dataFormat :String  )  ->(GoOperation?){
+func conv2DBackpropFilter( scope:Scope,input: Output, filterSizes: Output, outBackprop: Output, t :Type  , strides :List(int)  , useCudnnOnGpu :Bool  , padding :String  , dataFormat :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -3460,7 +3467,7 @@ func conv2DBackpropFilter(scope:Scope,input: Output, filterSizes: Output, outBac
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -3473,7 +3480,7 @@ Computes the gradients of convolution with respect to the input.
 
 
 
-func conv2DBackpropInput(scope:Scope,inputSizes: Output, filter: Output, outBackprop: Output, t :Type  , strides :List(int)  , useCudnnOnGpu :Bool  , padding :String  , dataFormat :String  )  ->(GoOperation?){
+func conv2DBackpropInput( scope:Scope,inputSizes: Output, filter: Output, outBackprop: Output, t :Type  , strides :List(int)  , useCudnnOnGpu :Bool  , padding :String  , dataFormat :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -3492,7 +3499,7 @@ func conv2DBackpropInput(scope:Scope,inputSizes: Output, filter: Output, outBack
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -3509,7 +3516,7 @@ Our Conv3D implements a form of cross-correlation.
 
 
 
-func conv3D(scope:Scope,input: Output, filter: Output, t :Type  , strides :List(int)  , padding :String  , dataFormat :String  )  ->(GoOperation?){
+func conv3D( scope:Scope,input: Output, filter: Output, t :Type  , strides :List(int)  , padding :String  , dataFormat :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -3527,7 +3534,7 @@ func conv3D(scope:Scope,input: Output, filter: Output, t :Type  , strides :List(
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -3540,7 +3547,7 @@ Computes the gradients of 3-D convolution with respect to the filter.
 
 
 
-func conv3DBackpropFilter(scope:Scope,input: Output, filter: Output, outBackprop: Output, t :Type  , strides :List(int)  , padding :String  )  ->(GoOperation?){
+func conv3DBackpropFilter( scope:Scope,input: Output, filter: Output, outBackprop: Output, t :Type  , strides :List(int)  , padding :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -3557,7 +3564,7 @@ func conv3DBackpropFilter(scope:Scope,input: Output, filter: Output, outBackprop
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -3570,7 +3577,7 @@ Computes the gradients of 3-D convolution with respect to the filter.
 
 
 
-func conv3DBackpropFilterV2(scope:Scope,input: Output, filterSizes: Output, outBackprop: Output, t :Type  , strides :List(int)  , padding :String  , dataFormat :String  )  ->(GoOperation?){
+func conv3DBackpropFilterV2( scope:Scope,input: Output, filterSizes: Output, outBackprop: Output, t :Type  , strides :List(int)  , padding :String  , dataFormat :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -3588,7 +3595,7 @@ func conv3DBackpropFilterV2(scope:Scope,input: Output, filterSizes: Output, outB
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -3601,7 +3608,7 @@ Computes the gradients of 3-D convolution with respect to the input.
 
 
 
-func conv3DBackpropInput(scope:Scope,input: Output, filter: Output, outBackprop: Output, t :Type  , strides :List(int)  , padding :String  )  ->(GoOperation?){
+func conv3DBackpropInput( scope:Scope,input: Output, filter: Output, outBackprop: Output, t :Type  , strides :List(int)  , padding :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -3618,7 +3625,7 @@ func conv3DBackpropInput(scope:Scope,input: Output, filter: Output, outBackprop:
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -3631,7 +3638,7 @@ Computes the gradients of 3-D convolution with respect to the input.
 
 
 
-func conv3DBackpropInputV2(scope:Scope,inputSizes: Output, filter: Output, outBackprop: Output, t :Type  , strides :List(int)  , padding :String  , dataFormat :String  )  ->(GoOperation?){
+func conv3DBackpropInputV2( scope:Scope,inputSizes: Output, filter: Output, outBackprop: Output, t :Type  , strides :List(int)  , padding :String  , dataFormat :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -3649,7 +3656,7 @@ func conv3DBackpropInputV2(scope:Scope,inputSizes: Output, filter: Output, outBa
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -3669,7 +3676,7 @@ input or output.
 
 
 
-func copy(scope:Scope,input: Output, t :Type  , tensorName :String  , debugOpsSpec :List(string)  )  ->(GoOperation?){
+func copy( scope:Scope,input: Output, t :Type  , tensorName :String  , debugOpsSpec :List(string)  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -3686,7 +3693,7 @@ func copy(scope:Scope,input: Output, t :Type  , tensorName :String  , debugOpsSp
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -3704,7 +3711,7 @@ Unlike the Copy Op, this op has HostMemory constraint on its input or output.
 
 
 
-func copyHost(scope:Scope,input: Output, t :Type  , tensorName :String  , debugOpsSpec :List(string)  )  ->(GoOperation?){
+func copyHost( scope:Scope,input: Output, t :Type  , tensorName :String  , debugOpsSpec :List(string)  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -3721,7 +3728,7 @@ func copyHost(scope:Scope,input: Output, t :Type  , tensorName :String  , debugO
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -3734,7 +3741,7 @@ Computes cos of x element-wise.
 
 
 
-func cos(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+func cos( scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -3749,7 +3756,7 @@ func cos(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -3762,7 +3769,7 @@ Increments 'ref' until it reaches 'limit'.
 
 
 
-func countUpTo(scope:Scope,ref: Output, limit :Int  , t :Type  )  ->(GoOperation?){
+func countUpTo( scope:Scope,ref: Output, limit :Int  , t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -3778,7 +3785,7 @@ func countUpTo(scope:Scope,ref: Output, limit :Int  , t :Type  )  ->(GoOperation
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -3798,7 +3805,7 @@ result is a 4-D tensor `[num_boxes, crop_height, crop_width, depth]`.
 
 
 
-func cropAndResize(scope:Scope,image: Output, boxes: Output, boxInd: Output, cropSize: Output, t :Type  , method :String  , extrapolationValue :Float  )  ->(GoOperation?){
+func cropAndResize( scope:Scope,image: Output, boxes: Output, boxInd: Output, cropSize: Output, t :Type  , method :String  , extrapolationValue :Float  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -3815,7 +3822,7 @@ func cropAndResize(scope:Scope,image: Output, boxes: Output, boxInd: Output, cro
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -3828,7 +3835,7 @@ Computes the gradient of the crop_and_resize op wrt the input boxes tensor.
 
 
 
-func cropAndResizeGradBoxes(scope:Scope,grads: Output, image: Output, boxes: Output, boxInd: Output, t :Type  , method :String  )  ->(GoOperation?){
+func cropAndResizeGradBoxes( scope:Scope,grads: Output, image: Output, boxes: Output, boxInd: Output, t :Type  , method :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -3844,7 +3851,7 @@ func cropAndResizeGradBoxes(scope:Scope,grads: Output, image: Output, boxes: Out
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -3857,7 +3864,7 @@ Computes the gradient of the crop_and_resize op wrt the input image tensor.
 
 
 
-func cropAndResizeGradImage(scope:Scope,grads: Output, boxes: Output, boxInd: Output, imageSize: Output, t :Type  , method :String  )  ->(GoOperation?){
+func cropAndResizeGradImage( scope:Scope,grads: Output, boxes: Output, boxInd: Output, imageSize: Output, t :Type  , method :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -3873,7 +3880,7 @@ func cropAndResizeGradImage(scope:Scope,grads: Output, boxes: Output, boxInd: Ou
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -3889,7 +3896,7 @@ of corresponding 3-element vectors is cross-multiplied independently.
 
 
 
-func cross(scope:Scope,a: Output, b: Output, t :Type  )  ->(GoOperation?){
+func cross( scope:Scope,a: Output, b: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -3904,7 +3911,7 @@ func cross(scope:Scope,a: Output, b: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -3937,7 +3944,7 @@ tf.cumprod([a, b, c], exclusive=True, reverse=True)  # => [b * c, c, 1]
 
 
 
-func cumprod(scope:Scope,x: Output, axis: Output, exclusive :Bool  , reverse :Bool  , t :Type  , tidx :Type  )  ->(GoOperation?){
+func cumprod( scope:Scope,x: Output, axis: Output, exclusive :Bool  , reverse :Bool  , t :Type  , tidx :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -3955,7 +3962,7 @@ func cumprod(scope:Scope,x: Output, axis: Output, exclusive :Bool  , reverse :Bo
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -3988,7 +3995,7 @@ tf.cumsum([a, b, c], exclusive=True, reverse=True)  # => [b + c, c, 0]
 
 
 
-func cumsum(scope:Scope,x: Output, axis: Output, exclusive :Bool  , reverse :Bool  , t :Type  , tidx :Type  )  ->(GoOperation?){
+func cumsum( scope:Scope,x: Output, axis: Output, exclusive :Bool  , reverse :Bool  , t :Type  , tidx :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -4006,7 +4013,7 @@ func cumsum(scope:Scope,x: Output, axis: Output, exclusive :Bool  , reverse :Boo
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -4020,7 +4027,7 @@ Provides an identity mapping of the non-Ref type input tensor for debugging.
 
 
 
-func debugIdentity(scope:Scope,input: Output, t :Type  , deviceName :String  , tensorName :String  , debugUrls :List(string)  , gatedGrpc :Bool  )  ->(GoOperation?){
+func debugIdentity( scope:Scope,input: Output, t :Type  , deviceName :String  , tensorName :String  , debugUrls :List(string)  , gatedGrpc :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -4039,7 +4046,7 @@ func debugIdentity(scope:Scope,input: Output, t :Type  , deviceName :String  , t
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -4053,7 +4060,7 @@ Counts number of NaNs in the input tensor, for debugging.
 
 
 
-func debugNanCount(scope:Scope,input: Output, t :Type  , deviceName :String  , tensorName :String  , debugUrls :List(string)  , gatedGrpc :Bool  )  ->(GoOperation?){
+func debugNanCount( scope:Scope,input: Output, t :Type  , deviceName :String  , tensorName :String  , debugUrls :List(string)  , gatedGrpc :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -4072,7 +4079,7 @@ func debugNanCount(scope:Scope,input: Output, t :Type  , deviceName :String  , t
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -4086,7 +4093,7 @@ Provide a basic summary of numeric value types, range and distribution.
 
 
 
-func debugNumericSummary(scope:Scope,input: Output, t :Type  , deviceName :String  , tensorName :String  , debugUrls :List(string)  , lowerBound :Float  , upperBound :Float  , muteIfHealthy :Bool  , gatedGrpc :Bool  )  ->(GoOperation?){
+func debugNumericSummary( scope:Scope,input: Output, t :Type  , deviceName :String  , tensorName :String  , debugUrls :List(string)  , lowerBound :Float  , upperBound :Float  , muteIfHealthy :Bool  , gatedGrpc :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -4108,7 +4115,7 @@ func debugNumericSummary(scope:Scope,input: Output, t :Type  , deviceName :Strin
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -4123,7 +4130,7 @@ Web-safe means that input must use - and _ instead of + and /.
 
 
 
-func decodeBase64(scope:Scope,input: Output )  ->(GoOperation?){
+func decodeBase64( scope:Scope,input: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -4137,7 +4144,7 @@ func decodeBase64(scope:Scope,input: Output )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -4156,7 +4163,7 @@ Accepted values are:
 
 
 
-func decodeBmp(scope:Scope,contents: Output, channels :Int  )  ->(GoOperation?){
+func decodeBmp( scope:Scope,contents: Output, channels :Int  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -4171,7 +4178,7 @@ func decodeBmp(scope:Scope,contents: Output, channels :Int  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -4187,7 +4194,7 @@ Note that we allow leading and trailing spaces with int or float field.
 
 
 
-func decodeCSV(scope:Scope,records: Output, recordDefaults: Output, outType :List(type)  , fieldDelim :String  , useQuoteDelim :Bool  )  ->(GoOperation?){
+func decodeCSV( scope:Scope,records: Output, recordDefaults: Output, outType :List(type)  , fieldDelim :String  , useQuoteDelim :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -4204,7 +4211,7 @@ func decodeCSV(scope:Scope,records: Output, recordDefaults: Output, outType :Lis
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -4222,7 +4229,7 @@ This op also supports decoding JPEGs and PNGs, though it is cleaner to use
 
 
 
-func decodeGif(scope:Scope,contents: Output )  ->(GoOperation?){
+func decodeGif( scope:Scope,contents: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -4236,7 +4243,7 @@ func decodeGif(scope:Scope,contents: Output )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -4255,7 +4262,7 @@ Example-parsing ops.
 
 
 
-func decodeJSONExample(scope:Scope,jsonExamples: Output )  ->(GoOperation?){
+func decodeJSONExample( scope:Scope,jsonExamples: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -4269,7 +4276,7 @@ func decodeJSONExample(scope:Scope,jsonExamples: Output )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -4295,7 +4302,7 @@ the same, though it is cleaner to use `tf.image.decode_image`.
 
 
 
-func decodeJpeg(scope:Scope,contents: Output, channels :Int  , ratio :Int  , fancyUpscaling :Bool  , tryRecoverTruncated :Bool  , acceptableFraction :Float  , dctMethod :String  )  ->(GoOperation?){
+func decodeJpeg( scope:Scope,contents: Output, channels :Int  , ratio :Int  , fancyUpscaling :Bool  , tryRecoverTruncated :Bool  , acceptableFraction :Float  , dctMethod :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -4315,7 +4322,7 @@ func decodeJpeg(scope:Scope,contents: Output, channels :Int  , ratio :Int  , fan
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -4339,7 +4346,7 @@ is the same, though it is cleaner to use `tf.image.decode_image`.
 
 
 
-func decodePng(scope:Scope,contents: Output, channels :Int  , dtype :Type  )  ->(GoOperation?){
+func decodePng( scope:Scope,contents: Output, channels :Int  , dtype :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -4355,7 +4362,7 @@ func decodePng(scope:Scope,contents: Output, channels :Int  , dtype :Type  )  ->
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -4368,7 +4375,7 @@ Reinterpret the bytes of a string as a vector of numbers.
 
 
 
-func decodeRaw(scope:Scope,bytes: Output, outType :Type  , littleEndian :Bool  )  ->(GoOperation?){
+func decodeRaw( scope:Scope,bytes: Output, outType :Type  , littleEndian :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -4384,7 +4391,7 @@ func decodeRaw(scope:Scope,bytes: Output, outType :Type  , littleEndian :Bool  )
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -4408,7 +4415,7 @@ output shape of [10, 2].
 
 
 
-func decodeWav(scope:Scope,contents: Output, desiredChannels :Int  , desiredSamples :Int  )  ->(audio: Output, sampleRate: Output){
+func decodeWav( scope:Scope,contents: Output, desiredChannels :Int  , desiredSamples :Int  )  ->(audio: Output, sampleRate: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -4424,7 +4431,7 @@ func decodeWav(scope:Scope,contents: Output, desiredChannels :Int  , desiredSamp
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1))
+    return (op.output(1 - 1),op.output(2 - 1))
 }
 
 /*
@@ -4437,7 +4444,7 @@ Delete the tensor specified by its handle in the session.
 
 
 
-func deleteSessionTensor(scope:Scope,handle: Output )  ->(GoOperation?){
+func deleteSessionTensor( scope:Scope,handle: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -4450,7 +4457,8 @@ func deleteSessionTensor(scope:Scope,handle: Output )  ->(GoOperation?){
         Input: [ handle],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -4469,7 +4477,7 @@ dimension contains the result of `set_operation` applied to the corresponding
 
 
 
-func denseToDenseSetOperation(scope:Scope,set1: Output, set2: Output, setOperation :String  , validateIndices :Bool  , t :Type  )  ->(resultIndices: Output, resultValues: Output, resultShape: Output){
+func denseToDenseSetOperation( scope:Scope,set1: Output, set2: Output, setOperation :String  , validateIndices :Bool  , t :Type  )  ->(resultIndices: Output, resultValues: Output, resultShape: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -4486,7 +4494,7 @@ func denseToDenseSetOperation(scope:Scope,set1: Output, set2: Output, setOperati
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1))
 }
 
 /*
@@ -4499,7 +4507,7 @@ Creates a dataset that yields a SparseTensor for each element of the input.
 
 
 
-func denseToSparseBatchDataset(scope:Scope,inputDataset: Output, batchSize: Output, rowShape: Output, outputTypes :List(type)  , outputShapes :List(shape)  )  ->(GoOperation?){
+func denseToSparseBatchDataset( scope:Scope,inputDataset: Output, batchSize: Output, rowShape: Output, outputTypes :List(type)  , outputShapes :List(shape)  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -4515,7 +4523,7 @@ func denseToSparseBatchDataset(scope:Scope,inputDataset: Output, batchSize: Outp
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -4540,7 +4548,7 @@ dimension contains the result of `set_operation` applied to the corresponding
 
 
 
-func denseToSparseSetOperation(scope:Scope,set1: Output, set2Indices: Output, set2Values: Output, set2Shape: Output, setOperation :String  , validateIndices :Bool  , t :Type  )  ->(resultIndices: Output, resultValues: Output, resultShape: Output){
+func denseToSparseSetOperation( scope:Scope,set1: Output, set2Indices: Output, set2Values: Output, set2Shape: Output, setOperation :String  , validateIndices :Bool  , t :Type  )  ->(resultIndices: Output, resultValues: Output, resultShape: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -4557,7 +4565,7 @@ func denseToSparseSetOperation(scope:Scope,set1: Output, set2Indices: Output, se
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1))
 }
 
 /*
@@ -4628,7 +4636,7 @@ x = [[ [1],   [2],  [5],  [6]],
 
 
 
-func depthToSpace(scope:Scope,input: Output, t :Type  , blockSize :Int  )  ->(GoOperation?){
+func depthToSpace( scope:Scope,input: Output, t :Type  , blockSize :Int  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -4644,7 +4652,7 @@ func depthToSpace(scope:Scope,input: Output, t :Type  , blockSize :Int  )  ->(Go
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -4671,7 +4679,7 @@ horizontal and vertices strides, `strides = [1, stride, stride, 1]`.
 
 
 
-func depthwiseConv2dNative(scope:Scope,input: Output, filter: Output, t :Type  , strides :List(int)  , padding :String  , dataFormat :String  )  ->(GoOperation?){
+func depthwiseConv2dNative( scope:Scope,input: Output, filter: Output, t :Type  , strides :List(int)  , padding :String  , dataFormat :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -4689,7 +4697,7 @@ func depthwiseConv2dNative(scope:Scope,input: Output, filter: Output, t :Type  ,
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -4702,7 +4710,7 @@ Computes the gradients of depthwise convolution with respect to the filter.
 
 
 
-func depthwiseConv2dNativeBackpropFilter(scope:Scope,input: Output, filterSizes: Output, outBackprop: Output, t :Type  , strides :List(int)  , padding :String  , dataFormat :String  )  ->(GoOperation?){
+func depthwiseConv2dNativeBackpropFilter( scope:Scope,input: Output, filterSizes: Output, outBackprop: Output, t :Type  , strides :List(int)  , padding :String  , dataFormat :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -4720,7 +4728,7 @@ func depthwiseConv2dNativeBackpropFilter(scope:Scope,input: Output, filterSizes:
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -4733,7 +4741,7 @@ Computes the gradients of depthwise convolution with respect to the input.
 
 
 
-func depthwiseConv2dNativeBackpropInput(scope:Scope,inputSizes: Output, filter: Output, outBackprop: Output, t :Type  , strides :List(int)  , padding :String  , dataFormat :String  )  ->(GoOperation?){
+func depthwiseConv2dNativeBackpropInput( scope:Scope,inputSizes: Output, filter: Output, outBackprop: Output, t :Type  , strides :List(int)  , padding :String  , dataFormat :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -4751,7 +4759,7 @@ func depthwiseConv2dNativeBackpropInput(scope:Scope,inputSizes: Output, filter: 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -4790,7 +4798,7 @@ result = range_min + ((input - numeric_limits<T>::min()) * range_scale)
 
 
 
-func dequantize(scope:Scope,input: Output, minRange: Output, maxRange: Output, t :Type  , mode :String  )  ->(GoOperation?){
+func dequantize( scope:Scope,input: Output, minRange: Output, maxRange: Output, t :Type  , mode :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -4806,7 +4814,7 @@ func dequantize(scope:Scope,input: Output, minRange: Output, maxRange: Output, t
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -4852,7 +4860,7 @@ then the final deserialized `SparseTensor` will be:
 
 
 
-func deserializeManySparse(scope:Scope,serializedSparse: Output, dtype :Type  )  ->(sparseIndices: Output, sparseValues: Output, sparseShape: Output){
+func deserializeManySparse( scope:Scope,serializedSparse: Output, dtype :Type  )  ->(sparseIndices: Output, sparseValues: Output, sparseShape: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -4867,7 +4875,7 @@ func deserializeManySparse(scope:Scope,serializedSparse: Output, dtype :Type  ) 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1))
 }
 
 /*
@@ -4886,7 +4894,7 @@ Outputs the final value of the tensor pointed to by 'ref'.
 
 
 
-func destroyTemporaryVariable(scope:Scope,ref: Output, t :Type  , varName :String  )  ->(GoOperation?){
+func destroyTemporaryVariable( scope:Scope,ref: Output, t :Type  , varName :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -4902,7 +4910,7 @@ func destroyTemporaryVariable(scope:Scope,ref: Output, t :Type  , varName :Strin
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -4928,7 +4936,7 @@ tf.diag(diagonal) ==> [[1, 0, 0, 0]
 
 
 
-func diag(scope:Scope,diagonal: Output, t :Type  )  ->(GoOperation?){
+func diag( scope:Scope,diagonal: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -4943,7 +4951,7 @@ func diag(scope:Scope,diagonal: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -4969,7 +4977,7 @@ tf.diag_part(input) ==> [1, 2, 3, 4]
 
 
 
-func diagPart(scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
+func diagPart( scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -4984,7 +4992,7 @@ func diagPart(scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -4998,7 +5006,7 @@ Computes Psi, the derivative of Lgamma (the log of the absolute value of
 
 
 
-func digamma(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+func digamma( scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -5013,7 +5021,7 @@ func digamma(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -5045,7 +5053,7 @@ negation of the erosion of `-input` by the reflected `filter`.
 
 
 
-func dilation2D(scope:Scope,input: Output, filter: Output, t :Type  , strides :List(int)  , rates :List(int)  , padding :String  )  ->(GoOperation?){
+func dilation2D( scope:Scope,input: Output, filter: Output, t :Type  , strides :List(int)  , rates :List(int)  , padding :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -5063,7 +5071,7 @@ func dilation2D(scope:Scope,input: Output, filter: Output, t :Type  , strides :L
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -5076,7 +5084,7 @@ Computes the gradient of morphological 2-D dilation with respect to the filter.
 
 
 
-func dilation2DBackpropFilter(scope:Scope,input: Output, filter: Output, outBackprop: Output, t :Type  , strides :List(int)  , rates :List(int)  , padding :String  )  ->(GoOperation?){
+func dilation2DBackpropFilter( scope:Scope,input: Output, filter: Output, outBackprop: Output, t :Type  , strides :List(int)  , rates :List(int)  , padding :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -5094,7 +5102,7 @@ func dilation2DBackpropFilter(scope:Scope,input: Output, filter: Output, outBack
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -5107,7 +5115,7 @@ Computes the gradient of morphological 2-D dilation with respect to the input.
 
 
 
-func dilation2DBackpropInput(scope:Scope,input: Output, filter: Output, outBackprop: Output, t :Type  , strides :List(int)  , rates :List(int)  , padding :String  )  ->(GoOperation?){
+func dilation2DBackpropInput( scope:Scope,input: Output, filter: Output, outBackprop: Output, t :Type  , strides :List(int)  , rates :List(int)  , padding :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -5125,7 +5133,7 @@ func dilation2DBackpropInput(scope:Scope,input: Output, filter: Output, outBackp
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -5140,7 +5148,7 @@ Returns x / y element-wise.
 
 
 
-func div(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+func div( scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -5155,7 +5163,7 @@ func div(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -5177,7 +5185,7 @@ Parts of the bounding box may fall outside the image.
 
 
 
-func drawBoundingBoxes(scope:Scope,images: Output, boxes: Output, t :Type  )  ->(GoOperation?){
+func drawBoundingBoxes( scope:Scope,images: Output, boxes: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -5192,7 +5200,7 @@ func drawBoundingBoxes(scope:Scope,images: Output, boxes: Output, t :Type  )  ->
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -5234,7 +5242,7 @@ See `dynamic_stitch` for an example on how to merge partitions back.
 
 
 
-func dynamicPartition(scope:Scope,data: Output, partitions: Output, numPartitions :Int  , t :Type  )  ->(GoOperation?){
+func dynamicPartition( scope:Scope,data: Output, partitions: Output, numPartitions :Int  , t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -5250,7 +5258,7 @@ func dynamicPartition(scope:Scope,data: Output, partitions: Output, numPartition
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -5312,7 +5320,7 @@ as illustrated on the following example:
 
 
 
-func dynamicStitch(scope:Scope,indices: Output, data: Output, n :Int  , t :Type  )  ->(GoOperation?){
+func dynamicStitch( scope:Scope,indices: Output, data: Output, n :Int  , t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -5328,7 +5336,7 @@ func dynamicStitch(scope:Scope,indices: Output, data: Output, n :Int  , t :Type 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -5346,7 +5354,7 @@ The inputs are:
 
 
 
-func editDistance(scope:Scope,hypothesisIndices: Output, hypothesisValues: Output, hypothesisShape: Output, truthIndices: Output, truthValues: Output, truthShape: Output, normalize :Bool  , t :Type  )  ->(GoOperation?){
+func editDistance( scope:Scope,hypothesisIndices: Output, hypothesisValues: Output, hypothesisShape: Output, truthIndices: Output, truthValues: Output, truthShape: Output, normalize :Bool  , t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -5362,7 +5370,7 @@ func editDistance(scope:Scope,hypothesisIndices: Output, hypothesisValues: Outpu
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -5377,7 +5385,7 @@ See [Fast and Accurate Deep Network Learning by Exponential Linear Units (ELUs)
 
 
 
-func elu(scope:Scope,features: Output, t :Type  )  ->(GoOperation?){
+func elu( scope:Scope,features: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -5392,7 +5400,7 @@ func elu(scope:Scope,features: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -5405,7 +5413,7 @@ Computes gradients for the exponential linear (Elu) operation.
 
 
 
-func eluGrad(scope:Scope,gradients: Output, outputs: Output, t :Type  )  ->(GoOperation?){
+func eluGrad( scope:Scope,gradients: Output, outputs: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -5420,7 +5428,7 @@ func eluGrad(scope:Scope,gradients: Output, outputs: Output, t :Type  )  ->(GoOp
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -5438,7 +5446,7 @@ Web-safe means that the encoder uses - and _ instead of + and /.
 
 
 
-func encodeBase64(scope:Scope,input: Output, pad :Bool  )  ->(GoOperation?){
+func encodeBase64( scope:Scope,input: Output, pad :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -5453,7 +5461,7 @@ func encodeBase64(scope:Scope,input: Output, pad :Bool  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -5478,7 +5486,7 @@ in function of the number of channels in `image`:
 
 
 
-func encodeJpeg(scope:Scope,image: Output, format :String  , quality :Int  , progressive :Bool  , optimizeSize :Bool  , chromaDownsampling :Bool  , densityUnit :String  , xDensity :Int  , yDensity :Int  , xmpMetadata :String  )  ->(GoOperation?){
+func encodeJpeg( scope:Scope,image: Output, format :String  , quality :Int  , progressive :Bool  , optimizeSize :Bool  , chromaDownsampling :Bool  , densityUnit :String  , xDensity :Int  , yDensity :Int  , xmpMetadata :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -5501,7 +5509,7 @@ func encodeJpeg(scope:Scope,image: Output, format :String  , quality :Int  , pro
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -5523,7 +5531,7 @@ the smallest output, but is slower.
 
 
 
-func encodePng(scope:Scope,image: Output, compression :Int  , t :Type  )  ->(GoOperation?){
+func encodePng( scope:Scope,image: Output, compression :Int  , t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -5539,7 +5547,7 @@ func encodePng(scope:Scope,image: Output, compression :Int  , t :Type  )  ->(GoO
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -5558,7 +5566,7 @@ that range.
 
 
 
-func encodeWav(scope:Scope,audio: Output, sampleRate: Output )  ->(GoOperation?){
+func encodeWav( scope:Scope,audio: Output, sampleRate: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -5572,7 +5580,7 @@ func encodeWav(scope:Scope,audio: Output, sampleRate: Output )  ->(GoOperation?)
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -5590,7 +5598,7 @@ are run in parallel in the child frame.
 
 
 
-func enter(scope:Scope,data: Output, t :Type  , frameName :String  , isConstant :Bool  , parallelIterations :Int  )  ->(GoOperation?){
+func enter( scope:Scope,data: Output, t :Type  , frameName :String  , isConstant :Bool  , parallelIterations :Int  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -5608,7 +5616,7 @@ func enter(scope:Scope,data: Output, t :Type  , frameName :String  , isConstant 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -5623,7 +5631,7 @@ Returns the truth value of (x == y) element-wise.
 
 
 
-func equal(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+func equal( scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -5638,7 +5646,7 @@ func equal(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -5651,7 +5659,7 @@ Computes the Gauss error function of `x` element-wise.
 
 
 
-func erf(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+func erf( scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -5666,7 +5674,7 @@ func erf(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -5679,7 +5687,7 @@ Computes the complementary error function of `x` element-wise.
 
 
 
-func erfc(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+func erfc( scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -5694,7 +5702,7 @@ func erfc(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -5708,7 +5716,7 @@ Exit makes its input `data` available to the parent frame.
 
 
 
-func exit(scope:Scope,data: Output, t :Type  )  ->(GoOperation?){
+func exit( scope:Scope,data: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -5723,7 +5731,7 @@ func exit(scope:Scope,data: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -5736,7 +5744,7 @@ Computes exponential of x element-wise.  \\(y = e^x\\).
 
 
 
-func exp(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+func exp( scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -5751,7 +5759,7 @@ func exp(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -5787,7 +5795,7 @@ size 1.
 
 
 
-func expandDims(scope:Scope,input: Output, dim: Output, t :Type  , tdim :Type  )  ->(GoOperation?){
+func expandDims( scope:Scope,input: Output, dim: Output, t :Type  , tdim :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -5803,7 +5811,7 @@ func expandDims(scope:Scope,input: Output, dim: Output, t :Type  , tdim :Type  )
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -5817,7 +5825,7 @@ I.e., \\(y = (\exp x) - 1\\).
 
 
 
-func expm1(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+func expm1( scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -5832,7 +5840,7 @@ func expm1(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -5863,7 +5871,7 @@ The argument `normalized` and `centered` controls how the windows are built:
 
 
 
-func extractGlimpse(scope:Scope,input: Output, size: Output, offsets: Output, centered :Bool  , normalized :Bool  , uniformNoise :Bool  )  ->(GoOperation?){
+func extractGlimpse( scope:Scope,input: Output, size: Output, offsets: Output, centered :Bool  , normalized :Bool  , uniformNoise :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -5880,7 +5888,7 @@ func extractGlimpse(scope:Scope,input: Output, size: Output, offsets: Output, ce
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -5893,7 +5901,7 @@ Extract `patches` from `images` and put them in the "depth" output dimension.
 
 
 
-func extractImagePatches(scope:Scope,images: Output, ksizes :List(int)  , strides :List(int)  , rates :List(int)  , t :Type  , padding :String  )  ->(GoOperation?){
+func extractImagePatches( scope:Scope,images: Output, ksizes :List(int)  , strides :List(int)  , rates :List(int)  , t :Type  , padding :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -5912,7 +5920,7 @@ func extractImagePatches(scope:Scope,images: Output, ksizes :List(int)  , stride
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -5927,7 +5935,7 @@ dimension of `input`.
 
 
 
-func fft(scope:Scope,input: Output )  ->(GoOperation?){
+func fft( scope:Scope,input: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -5941,7 +5949,7 @@ func fft(scope:Scope,input: Output )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -5956,7 +5964,7 @@ Computes the 2-dimensional discrete Fourier transform over the inner-most
 
 
 
-func fft2D(scope:Scope,input: Output )  ->(GoOperation?){
+func fft2D( scope:Scope,input: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -5970,7 +5978,7 @@ func fft2D(scope:Scope,input: Output )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -5985,7 +5993,7 @@ dimensions of `input`.
 
 
 
-func fft3D(scope:Scope,input: Output )  ->(GoOperation?){
+func fft3D( scope:Scope,input: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -5999,7 +6007,7 @@ func fft3D(scope:Scope,input: Output )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -6012,7 +6020,7 @@ A queue that produces elements in first-in first-out order.
 
 
 
-func fifoQueue(scope:Scope, componentTypes :List(type)  , shapes :List(shape)  , capacity :Int  , container :String  , sharedName :String  )  ->(GoOperation?){
+func fifoQueue( scope:Scope, componentTypes :List(type)  , shapes :List(shape)  , capacity :Int  , container :String  , sharedName :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -6031,7 +6039,7 @@ func fifoQueue(scope:Scope, componentTypes :List(type)  , shapes :List(shape)  ,
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -6044,7 +6052,7 @@ A queue that produces elements in first-in first-out order.
 
 
 
-func fifoQueueV2(scope:Scope, componentTypes :List(type)  , shapes :List(shape)  , capacity :Int  , container :String  , sharedName :String  )  ->(GoOperation?){
+func fifoQueueV2( scope:Scope, componentTypes :List(type)  , shapes :List(shape)  , capacity :Int  , container :String  , sharedName :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -6063,7 +6071,7 @@ func fifoQueueV2(scope:Scope, componentTypes :List(type)  , shapes :List(shape) 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -6076,7 +6084,7 @@ Output a fact about factorials.
 
 
 
-func fact(scope:Scope )  ->(GoOperation?){
+func fact( scope:Scope )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -6090,7 +6098,7 @@ func fact(scope:Scope )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -6108,7 +6116,7 @@ Quantization is called fake since the output is still in floating point.
 
 
 
-func fakeQuantWithMinMaxArgs(scope:Scope,inputs: Output, min :Float  , max :Float  , numBits :Int  )  ->(GoOperation?){
+func fakeQuantWithMinMaxArgs( scope:Scope,inputs: Output, min :Float  , max :Float  , numBits :Int  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -6125,7 +6133,7 @@ func fakeQuantWithMinMaxArgs(scope:Scope,inputs: Output, min :Float  , max :Floa
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -6138,7 +6146,7 @@ Compute gradients for a FakeQuantWithMinMaxArgs operation.
 
 
 
-func fakeQuantWithMinMaxArgsGradient(scope:Scope,gradients: Output, inputs: Output, min :Float  , max :Float  , numBits :Int  )  ->(GoOperation?){
+func fakeQuantWithMinMaxArgsGradient( scope:Scope,gradients: Output, inputs: Output, min :Float  , max :Float  , numBits :Int  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -6155,7 +6163,7 @@ func fakeQuantWithMinMaxArgsGradient(scope:Scope,gradients: Output, inputs: Outp
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -6174,7 +6182,7 @@ This operation has a gradient and thus allows for training `min` and `max` value
 
 
 
-func fakeQuantWithMinMaxVars(scope:Scope,inputs: Output, min: Output, max: Output, numBits :Int  )  ->(GoOperation?){
+func fakeQuantWithMinMaxVars( scope:Scope,inputs: Output, min: Output, max: Output, numBits :Int  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -6189,7 +6197,7 @@ func fakeQuantWithMinMaxVars(scope:Scope,inputs: Output, min: Output, max: Outpu
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -6202,7 +6210,7 @@ Compute gradients for a FakeQuantWithMinMaxVars operation.
 
 
 
-func fakeQuantWithMinMaxVarsGradient(scope:Scope,gradients: Output, inputs: Output, min: Output, max: Output, numBits :Int  )  ->(backpropsWrtInput: Output, backpropWrtMin: Output, backpropWrtMax: Output){
+func fakeQuantWithMinMaxVarsGradient( scope:Scope,gradients: Output, inputs: Output, min: Output, max: Output, numBits :Int  )  ->(backpropsWrtInput: Output, backpropWrtMin: Output, backpropWrtMax: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -6217,7 +6225,7 @@ func fakeQuantWithMinMaxVarsGradient(scope:Scope,gradients: Output, inputs: Outp
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1))
 }
 
 /*
@@ -6237,7 +6245,7 @@ This operation has a gradient and thus allows for training `min` and `max` value
 
 
 
-func fakeQuantWithMinMaxVarsPerChannel(scope:Scope,inputs: Output, min: Output, max: Output, numBits :Int  )  ->(GoOperation?){
+func fakeQuantWithMinMaxVarsPerChannel( scope:Scope,inputs: Output, min: Output, max: Output, numBits :Int  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -6252,7 +6260,7 @@ func fakeQuantWithMinMaxVarsPerChannel(scope:Scope,inputs: Output, min: Output, 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -6265,7 +6273,7 @@ Compute gradients for a FakeQuantWithMinMaxVarsPerChannel operation.
 
 
 
-func fakeQuantWithMinMaxVarsPerChannelGradient(scope:Scope,gradients: Output, inputs: Output, min: Output, max: Output, numBits :Int  )  ->(backpropsWrtInput: Output, backpropWrtMin: Output, backpropWrtMax: Output){
+func fakeQuantWithMinMaxVarsPerChannelGradient( scope:Scope,gradients: Output, inputs: Output, min: Output, max: Output, numBits :Int  )  ->(backpropsWrtInput: Output, backpropWrtMin: Output, backpropWrtMax: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -6280,7 +6288,7 @@ func fakeQuantWithMinMaxVarsPerChannelGradient(scope:Scope,gradients: Output, in
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1))
 }
 
 /*
@@ -6293,7 +6301,7 @@ Deprecated. Do not use.
 
 
 
-func fakeQueue(scope:Scope,resource: Output )  ->(GoOperation?){
+func fakeQueue( scope:Scope,resource: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -6307,7 +6315,7 @@ func fakeQueue(scope:Scope,resource: Output )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -6327,7 +6335,7 @@ fill([2, 3], 9) ==> [[9, 9, 9]
 
 
 
-func fill(scope:Scope,dims: Output, value: Output, t :Type  )  ->(GoOperation?){
+func fill( scope:Scope,dims: Output, value: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -6342,7 +6350,7 @@ func fill(scope:Scope,dims: Output, value: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -6359,7 +6367,7 @@ following arguments:
 
 
 
-func filterDataset(scope:Scope,inputDataset: Output, otherArguments: Output, predicate :Func  , targuments :List(type)  , outputTypes :List(type)  , outputShapes :List(shape)  )  ->(GoOperation?){
+func filterDataset( scope:Scope,inputDataset: Output, otherArguments: Output, predicate :Func  , targuments :List(type)  , outputTypes :List(type)  , outputShapes :List(shape)  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -6377,7 +6385,7 @@ func filterDataset(scope:Scope,inputDataset: Output, otherArguments: Output, pre
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -6390,7 +6398,7 @@ Creates a dataset that emits the records from one or more binary files.
 
 
 
-func fixedLengthRecordDataset(scope:Scope,filenames: Output, headerBytes: Output, recordBytes: Output, footerBytes: Output )  ->(GoOperation?){
+func fixedLengthRecordDataset( scope:Scope,filenames: Output, headerBytes: Output, recordBytes: Output, footerBytes: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -6404,7 +6412,7 @@ func fixedLengthRecordDataset(scope:Scope,filenames: Output, headerBytes: Output
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -6417,7 +6425,7 @@ A Reader that outputs fixed-length records from a file.
 
 
 
-func fixedLengthRecordReader(scope:Scope, headerBytes :Int  , recordBytes :Int  , footerBytes :Int  , hopBytes :Int  , container :String  , sharedName :String  )  ->(GoOperation?){
+func fixedLengthRecordReader( scope:Scope, headerBytes :Int  , recordBytes :Int  , footerBytes :Int  , hopBytes :Int  , container :String  , sharedName :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -6437,7 +6445,7 @@ func fixedLengthRecordReader(scope:Scope, headerBytes :Int  , recordBytes :Int  
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -6450,7 +6458,7 @@ A Reader that outputs fixed-length records from a file.
 
 
 
-func fixedLengthRecordReaderV2(scope:Scope, headerBytes :Int  , recordBytes :Int  , footerBytes :Int  , hopBytes :Int  , container :String  , sharedName :String  )  ->(GoOperation?){
+func fixedLengthRecordReaderV2( scope:Scope, headerBytes :Int  , recordBytes :Int  , footerBytes :Int  , hopBytes :Int  , container :String  , sharedName :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -6470,7 +6478,7 @@ func fixedLengthRecordReaderV2(scope:Scope, headerBytes :Int  , recordBytes :Int
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -6494,7 +6502,7 @@ true labels.
 
 
 
-func fixedUnigramCandidateSampler(scope:Scope,trueClasses: Output, numTrue :Int  , numSampled :Int  , unique :Bool  , rangeMax :Int  , vocabFile :String  , distortion :Float  , numReservedIds :Int  , numShards :Int  , shard :Int  , unigrams :List(float)  , seed :Int  , seed2 :Int  )  ->(sampledCandidates: Output, trueExpectedCount: Output, sampledExpectedCount: Output){
+func fixedUnigramCandidateSampler( scope:Scope,trueClasses: Output, numTrue :Int  , numSampled :Int  , unique :Bool  , rangeMax :Int  , vocabFile :String  , distortion :Float  , numReservedIds :Int  , numShards :Int  , shard :Int  , unigrams :List(float)  , seed :Int  , seed2 :Int  )  ->(sampledCandidates: Output, trueExpectedCount: Output, sampledExpectedCount: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -6520,7 +6528,7 @@ func fixedUnigramCandidateSampler(scope:Scope,trueClasses: Output, numTrue :Int 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1))
 }
 
 /*
@@ -6536,7 +6544,7 @@ into a single Dataset.
 
 
 
-func flatMapDataset(scope:Scope,inputDataset: Output, otherArguments: Output, f :Func  , targuments :List(type)  , outputTypes :List(type)  , outputShapes :List(shape)  )  ->(GoOperation?){
+func flatMapDataset( scope:Scope,inputDataset: Output, otherArguments: Output, f :Func  , targuments :List(type)  , outputTypes :List(type)  , outputShapes :List(shape)  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -6554,7 +6562,7 @@ func flatMapDataset(scope:Scope,inputDataset: Output, otherArguments: Output, f 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -6567,7 +6575,7 @@ Returns element-wise largest integer not greater than x.
 
 
 
-func floor(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+func floor( scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -6582,7 +6590,7 @@ func floor(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -6597,7 +6605,7 @@ Returns x // y element-wise.
 
 
 
-func floorDiv(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+func floorDiv( scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -6612,7 +6620,7 @@ func floorDiv(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -6629,7 +6637,7 @@ with a flooring divide. E.g. `floor(x / y) * y + mod(x, y) = x`.
 
 
 
-func floorMod(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+func floorMod( scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -6644,7 +6652,7 @@ func floorMod(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -6661,7 +6669,7 @@ pooling region.
 
 
 
-func fractionalAvgPool(scope:Scope,value: Output, poolingRatio :List(float)  , pseudoRandom :Bool  , overlapping :Bool  , deterministic :Bool  , seed :Int  , seed2 :Int  , t :Type  )  ->(output: Output, rowPoolingSequence: Output, colPoolingSequence: Output){
+func fractionalAvgPool( scope:Scope,value: Output, poolingRatio :List(float)  , pseudoRandom :Bool  , overlapping :Bool  , deterministic :Bool  , seed :Int  , seed2 :Int  , t :Type  )  ->(output: Output, rowPoolingSequence: Output, colPoolingSequence: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -6682,7 +6690,7 @@ func fractionalAvgPool(scope:Scope,value: Output, poolingRatio :List(float)  , p
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1))
 }
 
 /*
@@ -6700,7 +6708,7 @@ tensor.
 
 
 
-func fractionalAvgPoolGrad(scope:Scope,origInputTensorShape: Output, outBackprop: Output, rowPoolingSequence: Output, colPoolingSequence: Output, overlapping :Bool  , t :Type  )  ->(GoOperation?){
+func fractionalAvgPoolGrad( scope:Scope,origInputTensorShape: Output, outBackprop: Output, rowPoolingSequence: Output, colPoolingSequence: Output, overlapping :Bool  , t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -6716,7 +6724,7 @@ func fractionalAvgPoolGrad(scope:Scope,origInputTensorShape: Output, outBackprop
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -6751,7 +6759,7 @@ For more details on fractional max pooling, see this paper:
 
 
 
-func fractionalMaxPool(scope:Scope,value: Output, poolingRatio :List(float)  , pseudoRandom :Bool  , overlapping :Bool  , deterministic :Bool  , seed :Int  , seed2 :Int  , t :Type  )  ->(output: Output, rowPoolingSequence: Output, colPoolingSequence: Output){
+func fractionalMaxPool( scope:Scope,value: Output, poolingRatio :List(float)  , pseudoRandom :Bool  , overlapping :Bool  , deterministic :Bool  , seed :Int  , seed2 :Int  , t :Type  )  ->(output: Output, rowPoolingSequence: Output, colPoolingSequence: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -6772,7 +6780,7 @@ func fractionalMaxPool(scope:Scope,value: Output, poolingRatio :List(float)  , p
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1))
 }
 
 /*
@@ -6785,7 +6793,7 @@ Computes gradient of the FractionalMaxPool function.
 
 
 
-func fractionalMaxPoolGrad(scope:Scope,origInput: Output, origOutput: Output, outBackprop: Output, rowPoolingSequence: Output, colPoolingSequence: Output, overlapping :Bool  , t :Type  )  ->(GoOperation?){
+func fractionalMaxPoolGrad( scope:Scope,origInput: Output, origOutput: Output, outBackprop: Output, rowPoolingSequence: Output, colPoolingSequence: Output, overlapping :Bool  , t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -6801,7 +6809,7 @@ func fractionalMaxPoolGrad(scope:Scope,origInput: Output, origOutput: Output, ou
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -6816,7 +6824,7 @@ The size of 1D Tensors matches the dimension C of the 4D Tensors.
 
 
 
-func fusedBatchNorm(scope:Scope,x: Output, scale: Output, offset: Output, mean: Output, variance: Output, t :Type  , epsilon :Float  , dataFormat :String  , isTraining :Bool  )  ->(y: Output, batchMean: Output, batchVariance: Output, reserveSpace1: Output, reserveSpace2: Output){
+func fusedBatchNorm( scope:Scope,x: Output, scale: Output, offset: Output, mean: Output, variance: Output, t :Type  , epsilon :Float  , dataFormat :String  , isTraining :Bool  )  ->(y: Output, batchMean: Output, batchVariance: Output, reserveSpace1: Output, reserveSpace2: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -6834,7 +6842,7 @@ func fusedBatchNorm(scope:Scope,x: Output, scale: Output, offset: Output, mean: 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1),op.Output(4 - 1),op.Output(5 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1),op.output(4 - 1),op.output(5 - 1))
 }
 
 /*
@@ -6849,7 +6857,7 @@ The size of 1D Tensors matches the dimension C of the 4D Tensors.
 
 
 
-func fusedBatchNormGrad(scope:Scope,yBackprop: Output, x: Output, scale: Output, reserveSpace1: Output, reserveSpace2: Output, t :Type  , epsilon :Float  , dataFormat :String  , isTraining :Bool  )  ->(xBackprop: Output, scaleBackprop: Output, offsetBackprop: Output, reserveSpace3: Output, reserveSpace4: Output){
+func fusedBatchNormGrad( scope:Scope,yBackprop: Output, x: Output, scale: Output, reserveSpace1: Output, reserveSpace2: Output, t :Type  , epsilon :Float  , dataFormat :String  , isTraining :Bool  )  ->(xBackprop: Output, scaleBackprop: Output, offsetBackprop: Output, reserveSpace3: Output, reserveSpace4: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -6867,7 +6875,7 @@ func fusedBatchNormGrad(scope:Scope,yBackprop: Output, x: Output, scale: Output,
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1),op.Output(4 - 1),op.Output(5 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1),op.output(4 - 1),op.output(5 - 1))
 }
 
 /*
@@ -6891,7 +6899,7 @@ operator is primarily an optimization to minimize memory usage.
 
 
 
-func fusedPadConv2D(scope:Scope,input: Output, paddings: Output, filter: Output, t :Type  , mode :String  , strides :List(int)  , padding :String  )  ->(GoOperation?){
+func fusedPadConv2D( scope:Scope,input: Output, paddings: Output, filter: Output, t :Type  , mode :String  , strides :List(int)  , padding :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -6909,7 +6917,7 @@ func fusedPadConv2D(scope:Scope,input: Output, paddings: Output, filter: Output,
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -6932,7 +6940,7 @@ operator is primarily an optimization to minimize memory usage.
 
 
 
-func fusedResizeAndPadConv2D(scope:Scope,input: Output, size: Output, paddings: Output, filter: Output, t :Type  , resizeAlignCorners :Bool  , mode :String  , strides :List(int)  , padding :String  )  ->(GoOperation?){
+func fusedResizeAndPadConv2D( scope:Scope,input: Output, size: Output, paddings: Output, filter: Output, t :Type  , resizeAlignCorners :Bool  , mode :String  , strides :List(int)  , padding :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -6951,7 +6959,7 @@ func fusedResizeAndPadConv2D(scope:Scope,input: Output, size: Output, paddings: 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -6983,7 +6991,7 @@ raising an error.
 
 
 
-func gather(scope:Scope,params: Output, indices: Output, validateIndices :Bool  , tparams :Type  , tindices :Type  )  ->(GoOperation?){
+func gather( scope:Scope,params: Output, indices: Output, validateIndices :Bool  , tparams :Type  , tindices :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -7000,7 +7008,7 @@ func gather(scope:Scope,params: Output, indices: Output, validateIndices :Bool  
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -7078,7 +7086,7 @@ Batched indexing into a 3-tensor:
 
 
 
-func gatherNd(scope:Scope,params: Output, indices: Output, tparams :Type  , tindices :Type  )  ->(GoOperation?){
+func gatherNd( scope:Scope,params: Output, indices: Output, tparams :Type  , tindices :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -7094,7 +7102,7 @@ func gatherNd(scope:Scope,params: Output, indices: Output, tparams :Type  , tind
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -7107,7 +7115,7 @@ Store the input tensor in the state of the current session.
 
 
 
-func getSessionHandle(scope:Scope,value: Output, t :Type  )  ->(GoOperation?){
+func getSessionHandle( scope:Scope,value: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -7122,7 +7130,7 @@ func getSessionHandle(scope:Scope,value: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -7135,7 +7143,7 @@ Store the input tensor in the state of the current session.
 
 
 
-func getSessionHandleV2(scope:Scope,value: Output, t :Type  )  ->(GoOperation?){
+func getSessionHandleV2( scope:Scope,value: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -7150,7 +7158,7 @@ func getSessionHandleV2(scope:Scope,value: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -7163,7 +7171,7 @@ Get the value of the tensor specified by its handle.
 
 
 
-func getSessionTensor(scope:Scope,handle: Output, dtype :Type  )  ->(GoOperation?){
+func getSessionTensor( scope:Scope,handle: Output, dtype :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -7178,7 +7186,7 @@ func getSessionTensor(scope:Scope,handle: Output, dtype :Type  )  ->(GoOperation
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -7193,7 +7201,7 @@ Returns the truth value of (x > y) element-wise.
 
 
 
-func greater(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+func greater( scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -7208,7 +7216,7 @@ func greater(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -7223,7 +7231,7 @@ Returns the truth value of (x >= y) element-wise.
 
 
 
-func greaterEqual(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+func greaterEqual( scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -7238,7 +7246,7 @@ func greaterEqual(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?)
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -7252,7 +7260,7 @@ Creates a dataset that computes a windowed group-by on `input_dataset`.
 
 
 
-func groupByWindowDataset(scope:Scope,inputDataset: Output, keyFuncOtherArguments: Output, reduceFuncOtherArguments: Output, windowSize: Output, keyFunc :Func  , reduceFunc :Func  , tkeyFuncOtherArguments :List(type)  , treduceFuncOtherArguments :List(type)  , outputTypes :List(type)  , outputShapes :List(shape)  )  ->(GoOperation?){
+func groupByWindowDataset( scope:Scope,inputDataset: Output, keyFuncOtherArguments: Output, reduceFuncOtherArguments: Output, windowSize: Output, keyFunc :Func  , reduceFunc :Func  , tkeyFuncOtherArguments :List(type)  , treduceFuncOtherArguments :List(type)  , outputTypes :List(type)  , outputShapes :List(shape)  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -7272,7 +7280,7 @@ func groupByWindowDataset(scope:Scope,inputDataset: Output, keyFuncOtherArgument
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -7289,7 +7297,7 @@ See `rgb_to_hsv` for a description of the HSV encoding.
 
 
 
-func hsvToRGB(scope:Scope,images: Output, t :Type  )  ->(GoOperation?){
+func hsvToRGB( scope:Scope,images: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -7304,7 +7312,7 @@ func hsvToRGB(scope:Scope,images: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -7320,7 +7328,7 @@ table will be immutable.
 
 
 
-func hashTable(scope:Scope, container :String  , sharedName :String  , useNodeNameSharing :Bool  , keyDtype :Type  , valueDtype :Type  )  ->(GoOperation?){
+func hashTable( scope:Scope, container :String  , sharedName :String  , useNodeNameSharing :Bool  , keyDtype :Type  , valueDtype :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -7339,7 +7347,7 @@ func hashTable(scope:Scope, container :String  , sharedName :String  , useNodeNa
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -7355,7 +7363,7 @@ table will be immutable.
 
 
 
-func hashTableV2(scope:Scope, container :String  , sharedName :String  , useNodeNameSharing :Bool  , keyDtype :Type  , valueDtype :Type  )  ->(GoOperation?){
+func hashTableV2( scope:Scope, container :String  , sharedName :String  , useNodeNameSharing :Bool  , keyDtype :Type  , valueDtype :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -7374,7 +7382,7 @@ func hashTableV2(scope:Scope, container :String  , sharedName :String  , useNode
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -7391,7 +7399,7 @@ This op reports an `InvalidArgument` error if any value is not finite.
 
 
 
-func histogramSummary(scope:Scope,tag: Output, values: Output, t :Type  )  ->(GoOperation?){
+func histogramSummary( scope:Scope,tag: Output, values: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -7406,7 +7414,7 @@ func histogramSummary(scope:Scope,tag: Output, values: Output, t :Type  )  ->(Go
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -7421,7 +7429,7 @@ inner-most dimension of `input`.
 
 
 
-func ifft(scope:Scope,input: Output )  ->(GoOperation?){
+func ifft( scope:Scope,input: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -7435,7 +7443,7 @@ func ifft(scope:Scope,input: Output )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -7450,7 +7458,7 @@ inner-most 2 dimensions of `input`.
 
 
 
-func ifft2D(scope:Scope,input: Output )  ->(GoOperation?){
+func ifft2D( scope:Scope,input: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -7464,7 +7472,7 @@ func ifft2D(scope:Scope,input: Output )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -7479,7 +7487,7 @@ inner-most 3 dimensions of `input`.
 
 
 
-func ifft3D(scope:Scope,input: Output )  ->(GoOperation?){
+func ifft3D( scope:Scope,input: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -7493,7 +7501,7 @@ func ifft3D(scope:Scope,input: Output )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -7514,7 +7522,7 @@ properly.
 
 
 
-func irfft(scope:Scope,input: Output, fftLength: Output )  ->(GoOperation?){
+func irfft( scope:Scope,input: Output, fftLength: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -7528,7 +7536,7 @@ func irfft(scope:Scope,input: Output, fftLength: Output )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -7549,7 +7557,7 @@ properly.
 
 
 
-func irfft2D(scope:Scope,input: Output, fftLength: Output )  ->(GoOperation?){
+func irfft2D( scope:Scope,input: Output, fftLength: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -7563,7 +7571,7 @@ func irfft2D(scope:Scope,input: Output, fftLength: Output )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -7584,7 +7592,7 @@ properly.
 
 
 
-func irfft3D(scope:Scope,input: Output, fftLength: Output )  ->(GoOperation?){
+func irfft3D( scope:Scope,input: Output, fftLength: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -7598,7 +7606,7 @@ func irfft3D(scope:Scope,input: Output, fftLength: Output )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -7611,7 +7619,7 @@ Return a tensor with the same shape and contents as the input tensor or value.
 
 
 
-func identity(scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
+func identity( scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -7626,7 +7634,7 @@ func identity(scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -7641,7 +7649,7 @@ work string and output (work, work).
 
 
 
-func identityReader(scope:Scope, container :String  , sharedName :String  )  ->(GoOperation?){
+func identityReader( scope:Scope, container :String  , sharedName :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -7657,7 +7665,7 @@ func identityReader(scope:Scope, container :String  , sharedName :String  )  ->(
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -7672,7 +7680,7 @@ work string and output (work, work).
 
 
 
-func identityReaderV2(scope:Scope, container :String  , sharedName :String  )  ->(GoOperation?){
+func identityReaderV2( scope:Scope, container :String  , sharedName :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -7688,7 +7696,7 @@ func identityReaderV2(scope:Scope, container :String  , sharedName :String  )  -
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -7708,7 +7716,7 @@ Gamma function.
 
 
 
-func igamma(scope:Scope,a: Output, x: Output, t :Type  )  ->(GoOperation?){
+func igamma( scope:Scope,a: Output, x: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -7723,7 +7731,7 @@ func igamma(scope:Scope,a: Output, x: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -7743,7 +7751,7 @@ Gamma function.
 
 
 
-func igammac(scope:Scope,a: Output, x: Output, t :Type  )  ->(GoOperation?){
+func igammac( scope:Scope,a: Output, x: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -7758,7 +7766,7 @@ func igammac(scope:Scope,a: Output, x: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -7780,7 +7788,7 @@ tf.imag(input) ==> [4.75, 5.75]
 
 
 
-func imag(scope:Scope,input: Output, t :Type  , tout :Type  )  ->(GoOperation?){
+func imag( scope:Scope,input: Output, t :Type  , tout :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -7796,7 +7804,7 @@ func imag(scope:Scope,input: Output, t :Type  , tout :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -7835,7 +7843,7 @@ red.
 
 
 
-func imageSummary(scope:Scope,tag: Output, tensor: Output, maxImages :Int  , t :Type  , badColor :Tensor  )  ->(GoOperation?){
+func imageSummary( scope:Scope,tag: Output, tensor: Output, maxImages :Int  , t :Type  , badColor :Tensor  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -7852,7 +7860,7 @@ func imageSummary(scope:Scope,tag: Output, tensor: Output, maxImages :Int  , t :
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -7866,7 +7874,7 @@ The current implementation memmaps the tensor from a file.
 
 
 
-func immutableConst(scope:Scope, dtype :Type  , shape :Shape  , memoryRegionName :String  )  ->(GoOperation?){
+func immutableConst( scope:Scope, dtype :Type  , shape :Shape  , memoryRegionName :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -7883,7 +7891,7 @@ func immutableConst(scope:Scope, dtype :Type  , shape :Shape  , memoryRegionName
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -7907,7 +7915,7 @@ $$out_i = predictions_{i, targets_i} \in TopKIncludingTies(predictions_i)$$
 
 
 
-func inTopK(scope:Scope,predictions: Output, targets: Output, k :Int  , t :Type  )  ->(GoOperation?){
+func inTopK( scope:Scope,predictions: Output, targets: Output, k :Int  , t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -7923,7 +7931,7 @@ func inTopK(scope:Scope,predictions: Output, targets: Output, k :Int  , t :Type 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -7936,7 +7944,7 @@ Table initializer that takes two tensors for keys and values respectively.
 
 
 
-func initializeTable(scope:Scope,tableHandle: Output, keys: Output, values: Output, tkey :Type  , tval :Type  )  ->(GoOperation?){
+func initializeTable( scope:Scope,tableHandle: Output, keys: Output, values: Output, tkey :Type  , tval :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -7951,7 +7959,8 @@ func initializeTable(scope:Scope,tableHandle: Output, keys: Output, values: Outp
         Input: [ tableHandle, keys, values],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -7973,7 +7982,7 @@ Where to extract the key and value from a line is specified by `key_index` and
 
 
 
-func initializeTableFromTextFile(scope:Scope,tableHandle: Output, filename: Output, keyIndex :Int  , valueIndex :Int  , vocabSize :Int  , delimiter :String  )  ->(GoOperation?){
+func initializeTableFromTextFile( scope:Scope,tableHandle: Output, filename: Output, keyIndex :Int  , valueIndex :Int  , vocabSize :Int  , delimiter :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -7990,7 +7999,8 @@ func initializeTableFromTextFile(scope:Scope,tableHandle: Output, filename: Outp
         Input: [ tableHandle, filename],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -8012,7 +8022,7 @@ Where to extract the key and value from a line is specified by `key_index` and
 
 
 
-func initializeTableFromTextFileV2(scope:Scope,tableHandle: Output, filename: Output, keyIndex :Int  , valueIndex :Int  , vocabSize :Int  , delimiter :String  )  ->(GoOperation?){
+func initializeTableFromTextFileV2( scope:Scope,tableHandle: Output, filename: Output, keyIndex :Int  , valueIndex :Int  , vocabSize :Int  , delimiter :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -8029,7 +8039,8 @@ func initializeTableFromTextFileV2(scope:Scope,tableHandle: Output, filename: Ou
         Input: [ tableHandle, filename],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -8042,7 +8053,7 @@ Table initializer that takes two tensors for keys and values respectively.
 
 
 
-func initializeTableV2(scope:Scope,tableHandle: Output, keys: Output, values: Output, tkey :Type  , tval :Type  )  ->(GoOperation?){
+func initializeTableV2( scope:Scope,tableHandle: Output, keys: Output, values: Output, tkey :Type  , tval :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -8057,7 +8068,8 @@ func initializeTableV2(scope:Scope,tableHandle: Output, keys: Output, values: Ou
         Input: [ tableHandle, keys, values],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -8071,7 +8083,7 @@ I.e., \\(y = 1 / x\\).
 
 
 
-func inv(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+func inv( scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -8086,7 +8098,7 @@ func inv(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -8101,7 +8113,7 @@ is the corresponding input gradient.
 
 
 
-func invGrad(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+func invGrad( scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -8116,7 +8128,7 @@ func invGrad(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -8140,7 +8152,7 @@ invert_permutation(x) ==> [2, 4, 3, 0, 1]
 
 
 
-func invertPermutation(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+func invertPermutation( scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -8155,7 +8167,7 @@ func invertPermutation(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -8171,7 +8183,7 @@ Equivalent to np.isfinite
 
 
 
-func isFinite(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+func isFinite( scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -8186,7 +8198,7 @@ func isFinite(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -8202,7 +8214,7 @@ Equivalent to np.isinf
 
 
 
-func isInf(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+func isInf( scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -8217,7 +8229,7 @@ func isInf(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -8233,7 +8245,7 @@ Equivalent to np.isnan
 
 
 
-func isNan(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+func isNan( scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -8248,7 +8260,7 @@ func isNan(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -8262,7 +8274,7 @@ Outputs boolean scalar indicating whether the tensor has been initialized.
 
 
 
-func isVariableInitialized(scope:Scope,ref: Output, dtype :Type  )  ->(GoOperation?){
+func isVariableInitialized( scope:Scope,ref: Output, dtype :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -8277,7 +8289,7 @@ func isVariableInitialized(scope:Scope,ref: Output, dtype :Type  )  ->(GoOperati
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -8290,7 +8302,7 @@ A container for an iterator resource.
 
 
 
-func iterator(scope:Scope, sharedName :String  , container :String  , outputTypes :List(type)  , outputShapes :List(shape)  )  ->(GoOperation?){
+func iterator( scope:Scope, sharedName :String  , container :String  , outputTypes :List(type)  , outputShapes :List(shape)  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -8308,7 +8320,7 @@ func iterator(scope:Scope, sharedName :String  , container :String  , outputType
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -8321,7 +8333,7 @@ Releases any resources used by the given iterator.
 
 
 
-func iteratorDispose(scope:Scope,iterator: Output )  ->(GoOperation?){
+func iteratorDispose( scope:Scope,iterator: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -8334,7 +8346,8 @@ func iteratorDispose(scope:Scope,iterator: Output )  ->(GoOperation?){
         Input: [ iterator],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -8347,7 +8360,7 @@ Gets the next output from the given iterator.
 
 
 
-func iteratorGetNext(scope:Scope,iterator: Output, outputTypes :List(type)  , outputShapes :List(shape)  )  ->(GoOperation?){
+func iteratorGetNext( scope:Scope,iterator: Output, outputTypes :List(type)  , outputShapes :List(shape)  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -8363,7 +8376,7 @@ func iteratorGetNext(scope:Scope,iterator: Output, outputTypes :List(type)  , ou
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -8378,7 +8391,7 @@ Computes half the L2 norm of a tensor without the `sqrt`:
 
 
 
-func l2Loss(scope:Scope,t: Output, t :Type  )  ->(GoOperation?){
+func l2Loss( scope:Scope,t: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -8393,7 +8406,7 @@ func l2Loss(scope:Scope,t: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -8415,7 +8428,7 @@ convolutional neural networks (NIPS 2012)](http://papers.nips.cc/paper/4824-imag
 
 
 
-func lrn(scope:Scope,input: Output, depthRadius :Int  , bias :Float  , alpha :Float  , beta :Float  , t :Type  )  ->(GoOperation?){
+func lrn( scope:Scope,input: Output, depthRadius :Int  , bias :Float  , alpha :Float  , beta :Float  , t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -8434,7 +8447,7 @@ func lrn(scope:Scope,input: Output, depthRadius :Int  , bias :Float  , alpha :Fl
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -8447,7 +8460,7 @@ Gradients for Local Response Normalization.
 
 
 
-func lrnGrad(scope:Scope,inputGrads: Output, inputImage: Output, outputImage: Output, depthRadius :Int  , bias :Float  , alpha :Float  , beta :Float  , t :Type  )  ->(GoOperation?){
+func lrnGrad( scope:Scope,inputGrads: Output, inputImage: Output, outputImage: Output, depthRadius :Int  , bias :Float  , alpha :Float  , beta :Float  , t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -8466,7 +8479,7 @@ func lrnGrad(scope:Scope,inputGrads: Output, inputImage: Output, outputImage: Ou
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -8486,7 +8499,7 @@ true labels.
 
 
 
-func learnedUnigramCandidateSampler(scope:Scope,trueClasses: Output, numTrue :Int  , numSampled :Int  , unique :Bool  , rangeMax :Int  , seed :Int  , seed2 :Int  )  ->(sampledCandidates: Output, trueExpectedCount: Output, sampledExpectedCount: Output){
+func learnedUnigramCandidateSampler( scope:Scope,trueClasses: Output, numTrue :Int  , numSampled :Int  , unique :Bool  , rangeMax :Int  , seed :Int  , seed2 :Int  )  ->(sampledCandidates: Output, trueExpectedCount: Output, sampledExpectedCount: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -8506,7 +8519,7 @@ func learnedUnigramCandidateSampler(scope:Scope,trueClasses: Output, numTrue :In
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1))
 }
 
 /*
@@ -8521,7 +8534,7 @@ Returns the truth value of (x < y) element-wise.
 
 
 
-func less(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+func less( scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -8536,7 +8549,7 @@ func less(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -8551,7 +8564,7 @@ Returns the truth value of (x <= y) element-wise.
 
 
 
-func lessEqual(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+func lessEqual( scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -8566,7 +8579,7 @@ func lessEqual(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -8579,7 +8592,7 @@ Computes the log of the absolute value of `Gamma(x)` element-wise.
 
 
 
-func lgamma(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+func lgamma( scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -8594,7 +8607,7 @@ func lgamma(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -8614,7 +8627,7 @@ tf.linspace(10.0, 12.0, 3, name="linspace") => [ 10.0  11.0  12.0]
 
 
 
-func linSpace(scope:Scope,start: Output, stop: Output, num: Output, t :Type  , tidx :Type  )  ->(GoOperation?){
+func linSpace( scope:Scope,start: Output, stop: Output, num: Output, t :Type  , tidx :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -8630,7 +8643,7 @@ func linSpace(scope:Scope,start: Output, stop: Output, num: Output, t :Type  , t
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -8659,7 +8672,7 @@ idx ==> [1, 3, 5]
 
 
 
-func listDiff(scope:Scope,x: Output, y: Output, t :Type  , outIdx :Type  )  ->(out: Output, idx: Output){
+func listDiff( scope:Scope,x: Output, y: Output, t :Type  , outIdx :Type  )  ->(out: Output, idx: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -8675,7 +8688,7 @@ func listDiff(scope:Scope,x: Output, y: Output, t :Type  , outIdx :Type  )  ->(o
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1))
+    return (op.output(1 - 1),op.output(2 - 1))
 }
 
 /*
@@ -8689,7 +8702,7 @@ I.e., \\(y = \log_e x\\).
 
 
 
-func log(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+func log( scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -8704,7 +8717,7 @@ func log(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -8718,7 +8731,7 @@ I.e., \\(y = \log_e (1 + x)\\).
 
 
 
-func log1p(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+func log1p( scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -8733,7 +8746,7 @@ func log1p(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -8748,7 +8761,7 @@ For each batch `i` and class `j` we have
 
 
 
-func logSoftmax(scope:Scope,logits: Output, t :Type  )  ->(GoOperation?){
+func logSoftmax( scope:Scope,logits: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -8763,7 +8776,7 @@ func logSoftmax(scope:Scope,logits: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -8783,7 +8796,7 @@ true labels.
 
 
 
-func logUniformCandidateSampler(scope:Scope,trueClasses: Output, numTrue :Int  , numSampled :Int  , unique :Bool  , rangeMax :Int  , seed :Int  , seed2 :Int  )  ->(sampledCandidates: Output, trueExpectedCount: Output, sampledExpectedCount: Output){
+func logUniformCandidateSampler( scope:Scope,trueClasses: Output, numTrue :Int  , numSampled :Int  , unique :Bool  , rangeMax :Int  , seed :Int  , seed2 :Int  )  ->(sampledCandidates: Output, trueExpectedCount: Output, sampledExpectedCount: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -8803,7 +8816,7 @@ func logUniformCandidateSampler(scope:Scope,trueClasses: Output, numTrue :Int  ,
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1))
 }
 
 /*
@@ -8818,7 +8831,7 @@ Returns the truth value of x AND y element-wise.
 
 
 
-func logicalAnd(scope:Scope,x: Output, y: Output )  ->(GoOperation?){
+func logicalAnd( scope:Scope,x: Output, y: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -8832,7 +8845,7 @@ func logicalAnd(scope:Scope,x: Output, y: Output )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -8845,7 +8858,7 @@ Returns the truth value of NOT x element-wise.
 
 
 
-func logicalNot(scope:Scope,x: Output )  ->(GoOperation?){
+func logicalNot( scope:Scope,x: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -8859,7 +8872,7 @@ func logicalNot(scope:Scope,x: Output )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -8874,7 +8887,7 @@ Returns the truth value of x OR y element-wise.
 
 
 
-func logicalOr(scope:Scope,x: Output, y: Output )  ->(GoOperation?){
+func logicalOr( scope:Scope,x: Output, y: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -8888,7 +8901,7 @@ func logicalOr(scope:Scope,x: Output, y: Output )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -8901,7 +8914,7 @@ Outputs all keys and values in the table.
 
 
 
-func lookupTableExport(scope:Scope,tableHandle: Output, tkeys :Type  , tvalues :Type  )  ->(keys: Output, values: Output){
+func lookupTableExport( scope:Scope,tableHandle: Output, tkeys :Type  , tvalues :Type  )  ->(keys: Output, values: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -8917,7 +8930,7 @@ func lookupTableExport(scope:Scope,tableHandle: Output, tkeys :Type  , tvalues :
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1))
+    return (op.output(1 - 1),op.output(2 - 1))
 }
 
 /*
@@ -8930,7 +8943,7 @@ Outputs all keys and values in the table.
 
 
 
-func lookupTableExportV2(scope:Scope,tableHandle: Output, tkeys :Type  , tvalues :Type  )  ->(keys: Output, values: Output){
+func lookupTableExportV2( scope:Scope,tableHandle: Output, tkeys :Type  , tvalues :Type  )  ->(keys: Output, values: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -8946,7 +8959,7 @@ func lookupTableExportV2(scope:Scope,tableHandle: Output, tkeys :Type  , tvalues
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1))
+    return (op.output(1 - 1),op.output(2 - 1))
 }
 
 /*
@@ -8963,7 +8976,7 @@ table. It must also be of the same type as the table values.
 
 
 
-func lookupTableFind(scope:Scope,tableHandle: Output, keys: Output, defaultValue: Output, tin :Type  , tout :Type  )  ->(GoOperation?){
+func lookupTableFind( scope:Scope,tableHandle: Output, keys: Output, defaultValue: Output, tin :Type  , tout :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -8979,7 +8992,7 @@ func lookupTableFind(scope:Scope,tableHandle: Output, keys: Output, defaultValue
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -8996,7 +9009,7 @@ table. It must also be of the same type as the table values.
 
 
 
-func lookupTableFindV2(scope:Scope,tableHandle: Output, keys: Output, defaultValue: Output, tin :Type  , tout :Type  )  ->(GoOperation?){
+func lookupTableFindV2( scope:Scope,tableHandle: Output, keys: Output, defaultValue: Output, tin :Type  , tout :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -9012,7 +9025,7 @@ func lookupTableFindV2(scope:Scope,tableHandle: Output, keys: Output, defaultVal
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -9027,7 +9040,7 @@ The tensor `values` must be of the type of the table values.
 
 
 
-func lookupTableImport(scope:Scope,tableHandle: Output, keys: Output, values: Output, tin :Type  , tout :Type  )  ->(GoOperation?){
+func lookupTableImport( scope:Scope,tableHandle: Output, keys: Output, values: Output, tin :Type  , tout :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -9042,7 +9055,8 @@ func lookupTableImport(scope:Scope,tableHandle: Output, keys: Output, values: Ou
         Input: [ tableHandle, keys, values],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -9057,7 +9071,7 @@ The tensor `values` must be of the type of the table values.
 
 
 
-func lookupTableImportV2(scope:Scope,tableHandle: Output, keys: Output, values: Output, tin :Type  , tout :Type  )  ->(GoOperation?){
+func lookupTableImportV2( scope:Scope,tableHandle: Output, keys: Output, values: Output, tin :Type  , tout :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -9072,7 +9086,8 @@ func lookupTableImportV2(scope:Scope,tableHandle: Output, keys: Output, values: 
         Input: [ tableHandle, keys, values],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -9087,7 +9102,7 @@ The tensor `values` must be of the type of the table values.
 
 
 
-func lookupTableInsert(scope:Scope,tableHandle: Output, keys: Output, values: Output, tin :Type  , tout :Type  )  ->(GoOperation?){
+func lookupTableInsert( scope:Scope,tableHandle: Output, keys: Output, values: Output, tin :Type  , tout :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -9102,7 +9117,8 @@ func lookupTableInsert(scope:Scope,tableHandle: Output, keys: Output, values: Ou
         Input: [ tableHandle, keys, values],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -9117,7 +9133,7 @@ The tensor `values` must be of the type of the table values.
 
 
 
-func lookupTableInsertV2(scope:Scope,tableHandle: Output, keys: Output, values: Output, tin :Type  , tout :Type  )  ->(GoOperation?){
+func lookupTableInsertV2( scope:Scope,tableHandle: Output, keys: Output, values: Output, tin :Type  , tout :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -9132,7 +9148,8 @@ func lookupTableInsertV2(scope:Scope,tableHandle: Output, keys: Output, values: 
         Input: [ tableHandle, keys, values],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -9145,7 +9162,7 @@ Computes the number of elements in the given table.
 
 
 
-func lookupTableSize(scope:Scope,tableHandle: Output )  ->(GoOperation?){
+func lookupTableSize( scope:Scope,tableHandle: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -9159,7 +9176,7 @@ func lookupTableSize(scope:Scope,tableHandle: Output )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -9172,7 +9189,7 @@ Computes the number of elements in the given table.
 
 
 
-func lookupTableSizeV2(scope:Scope,tableHandle: Output )  ->(GoOperation?){
+func lookupTableSizeV2( scope:Scope,tableHandle: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -9186,7 +9203,7 @@ func lookupTableSizeV2(scope:Scope,tableHandle: Output )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -9201,7 +9218,7 @@ This operator represents the loop termination condition used by the
 
 
 
-func loopCond(scope:Scope,input: Output )  ->(GoOperation?){
+func loopCond( scope:Scope,input: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -9215,7 +9232,7 @@ func loopCond(scope:Scope,input: Output )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -9230,7 +9247,7 @@ iterator in `iterator` to the first element of `dataset`.
 
 
 
-func makeIterator(scope:Scope,dataset: Output, iterator: Output )  ->(GoOperation?){
+func makeIterator( scope:Scope,dataset: Output, iterator: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -9243,7 +9260,8 @@ func makeIterator(scope:Scope,dataset: Output, iterator: Output )  ->(GoOperatio
         Input: [ dataset, iterator],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -9256,7 +9274,7 @@ Creates a dataset that applies `f` to the outputs of `input_dataset`.
 
 
 
-func mapDataset(scope:Scope,inputDataset: Output, otherArguments: Output, f :Func  , targuments :List(type)  , outputTypes :List(type)  , outputShapes :List(shape)  )  ->(GoOperation?){
+func mapDataset( scope:Scope,inputDataset: Output, otherArguments: Output, f :Func  , targuments :List(type)  , outputTypes :List(type)  , outputShapes :List(shape)  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -9274,7 +9292,7 @@ func mapDataset(scope:Scope,inputDataset: Output, otherArguments: Output, f :Fun
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -9293,7 +9311,7 @@ cublas.
 
 
 
-func matMul(scope:Scope,a: Output, b: Output, transposeA :Bool  , transposeB :Bool  , t :Type  )  ->(GoOperation?){
+func matMul( scope:Scope,a: Output, b: Output, transposeA :Bool  , transposeB :Bool  , t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -9310,7 +9328,7 @@ func matMul(scope:Scope,a: Output, b: Output, transposeA :Bool  , transposeB :Bo
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -9325,7 +9343,7 @@ basename portion of the pattern, not in the directory portion.
 
 
 
-func matchingFiles(scope:Scope,pattern: Output )  ->(GoOperation?){
+func matchingFiles( scope:Scope,pattern: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -9339,7 +9357,7 @@ func matchingFiles(scope:Scope,pattern: Output )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -9381,7 +9399,7 @@ Useful special cases:
 
 
 
-func matrixBandPart(scope:Scope,input: Output, numLower: Output, numUpper: Output, t :Type  )  ->(GoOperation?){
+func matrixBandPart( scope:Scope,input: Output, numLower: Output, numUpper: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -9396,7 +9414,7 @@ func matrixBandPart(scope:Scope,input: Output, numLower: Output, numUpper: Outpu
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -9412,7 +9430,7 @@ for all input submatrices `[..., :, :]`.
 
 
 
-func matrixDeterminant(scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
+func matrixDeterminant( scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -9427,7 +9445,7 @@ func matrixDeterminant(scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -9459,7 +9477,7 @@ which has shape (2, 4, 4)
 
 
 
-func matrixDiag(scope:Scope,diagonal: Output, t :Type  )  ->(GoOperation?){
+func matrixDiag( scope:Scope,diagonal: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -9474,7 +9492,7 @@ func matrixDiag(scope:Scope,diagonal: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -9507,7 +9525,7 @@ which has shape (2, 4)
 
 
 
-func matrixDiagPart(scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
+func matrixDiagPart( scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -9522,7 +9540,7 @@ func matrixDiagPart(scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -9543,7 +9561,7 @@ garbage result.
 
 
 
-func matrixInverse(scope:Scope,input: Output, adjoint :Bool  , t :Type  )  ->(GoOperation?){
+func matrixInverse( scope:Scope,input: Output, adjoint :Bool  , t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -9559,7 +9577,7 @@ func matrixInverse(scope:Scope,input: Output, adjoint :Bool  , t :Type  )  ->(Go
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -9581,7 +9599,7 @@ tensor of rank `k+1` with dimensions `[I, J, K, ..., M, N]` where:
 
 
 
-func matrixSetDiag(scope:Scope,input: Output, diagonal: Output, t :Type  )  ->(GoOperation?){
+func matrixSetDiag( scope:Scope,input: Output, diagonal: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -9596,7 +9614,7 @@ func matrixSetDiag(scope:Scope,input: Output, diagonal: Output, t :Type  )  ->(G
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -9615,7 +9633,7 @@ If `adjoint` is `True` then each output matrix satisfies
 
 
 
-func matrixSolve(scope:Scope,matrix: Output, rhs: Output, adjoint :Bool  , t :Type  )  ->(GoOperation?){
+func matrixSolve( scope:Scope,matrix: Output, rhs: Output, adjoint :Bool  , t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -9631,7 +9649,7 @@ func matrixSolve(scope:Scope,matrix: Output, rhs: Output, adjoint :Bool  , t :Ty
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -9671,7 +9689,7 @@ typically 6-7 times slower than the fast path. If `fast` is `False` then
 
 
 
-func matrixSolveLs(scope:Scope,matrix: Output, rhs: Output, l2Regularizer: Output, t :Type  , fast :Bool  )  ->(GoOperation?){
+func matrixSolveLs( scope:Scope,matrix: Output, rhs: Output, l2Regularizer: Output, t :Type  , fast :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -9687,7 +9705,7 @@ func matrixSolveLs(scope:Scope,matrix: Output, rhs: Output, l2Regularizer: Outpu
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -9713,7 +9731,7 @@ If `adjoint` is `False` then the strictly then the  innermost matrices in
 
 
 
-func matrixTriangularSolve(scope:Scope,matrix: Output, rhs: Output, lower :Bool  , adjoint :Bool  , t :Type  )  ->(GoOperation?){
+func matrixTriangularSolve( scope:Scope,matrix: Output, rhs: Output, lower :Bool  , adjoint :Bool  , t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -9730,7 +9748,7 @@ func matrixTriangularSolve(scope:Scope,matrix: Output, rhs: Output, lower :Bool 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -9747,7 +9765,7 @@ retained with length 1.
 
 
 
-func max(scope:Scope,input: Output, reductionIndices: Output, keepDims :Bool  , t :Type  , tidx :Type  )  ->(GoOperation?){
+func max( scope:Scope,input: Output, reductionIndices: Output, keepDims :Bool  , t :Type  , tidx :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -9764,7 +9782,7 @@ func max(scope:Scope,input: Output, reductionIndices: Output, keepDims :Bool  , 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -9777,7 +9795,7 @@ Performs max pooling on the input.
 
 
 
-func maxPool(scope:Scope,input: Output, t :Type  , ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  )  ->(GoOperation?){
+func maxPool( scope:Scope,input: Output, t :Type  , ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -9796,7 +9814,7 @@ func maxPool(scope:Scope,input: Output, t :Type  , ksize :List(int)  , strides :
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -9809,7 +9827,7 @@ Performs 3D max pooling on the input.
 
 
 
-func maxPool3D(scope:Scope,input: Output, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  , t :Type  )  ->(GoOperation?){
+func maxPool3D( scope:Scope,input: Output, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  , t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -9828,7 +9846,7 @@ func maxPool3D(scope:Scope,input: Output, ksize :List(int)  , strides :List(int)
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -9841,7 +9859,7 @@ Computes gradients of max pooling function.
 
 
 
-func maxPool3DGrad(scope:Scope,origInput: Output, origOutput: Output, grad: Output, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  , t :Type  , tInput :Type  )  ->(GoOperation?){
+func maxPool3DGrad( scope:Scope,origInput: Output, origOutput: Output, grad: Output, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  , t :Type  , tInput :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -9861,7 +9879,7 @@ func maxPool3DGrad(scope:Scope,origInput: Output, origOutput: Output, grad: Outp
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -9874,7 +9892,7 @@ Computes second-order gradients of the maxpooling function.
 
 
 
-func maxPool3DGradGrad(scope:Scope,origInput: Output, origOutput: Output, grad: Output, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  , t :Type  )  ->(GoOperation?){
+func maxPool3DGradGrad( scope:Scope,origInput: Output, origOutput: Output, grad: Output, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  , t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -9893,7 +9911,7 @@ func maxPool3DGradGrad(scope:Scope,origInput: Output, origOutput: Output, grad: 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -9906,7 +9924,7 @@ Computes gradients of the maxpooling function.
 
 
 
-func maxPoolGrad(scope:Scope,origInput: Output, origOutput: Output, grad: Output, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  , t :Type  )  ->(GoOperation?){
+func maxPoolGrad( scope:Scope,origInput: Output, origOutput: Output, grad: Output, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  , t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -9925,7 +9943,7 @@ func maxPoolGrad(scope:Scope,origInput: Output, origOutput: Output, grad: Output
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -9938,7 +9956,7 @@ Computes second-order gradients of the maxpooling function.
 
 
 
-func maxPoolGradGrad(scope:Scope,origInput: Output, origOutput: Output, grad: Output, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  , t :Type  )  ->(GoOperation?){
+func maxPoolGradGrad( scope:Scope,origInput: Output, origOutput: Output, grad: Output, ksize :List(int)  , strides :List(int)  , padding :String  , dataFormat :String  , t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -9957,7 +9975,7 @@ func maxPoolGradGrad(scope:Scope,origInput: Output, origOutput: Output, grad: Ou
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -9970,7 +9988,7 @@ Computes second-order gradients of the maxpooling function.
 
 
 
-func maxPoolGradGradWithArgmax(scope:Scope,input: Output, grad: Output, argmax: Output, ksize :List(int)  , strides :List(int)  , padding :String  , targmax :Type  , t :Type  )  ->(GoOperation?){
+func maxPoolGradGradWithArgmax( scope:Scope,input: Output, grad: Output, argmax: Output, ksize :List(int)  , strides :List(int)  , padding :String  , targmax :Type  , t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -9989,7 +10007,7 @@ func maxPoolGradGradWithArgmax(scope:Scope,input: Output, grad: Output, argmax: 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -10002,7 +10020,7 @@ Computes gradients of the maxpooling function.
 
 
 
-func maxPoolGradWithArgmax(scope:Scope,input: Output, grad: Output, argmax: Output, ksize :List(int)  , strides :List(int)  , padding :String  , targmax :Type  , t :Type  )  ->(GoOperation?){
+func maxPoolGradWithArgmax( scope:Scope,input: Output, grad: Output, argmax: Output, ksize :List(int)  , strides :List(int)  , padding :String  , targmax :Type  , t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -10021,7 +10039,7 @@ func maxPoolGradWithArgmax(scope:Scope,input: Output, grad: Output, argmax: Outp
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -10037,7 +10055,7 @@ The indices in `argmax` are flattened, so that a maximum value at position
 
 
 
-func maxPoolWithArgmax(scope:Scope,input: Output, ksize :List(int)  , strides :List(int)  , targmax :Type  , padding :String  , t :Type  )  ->(output: Output, argmax: Output){
+func maxPoolWithArgmax( scope:Scope,input: Output, ksize :List(int)  , strides :List(int)  , targmax :Type  , padding :String  , t :Type  )  ->(output: Output, argmax: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -10056,7 +10074,7 @@ func maxPoolWithArgmax(scope:Scope,input: Output, ksize :List(int)  , strides :L
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1))
+    return (op.output(1 - 1),op.output(2 - 1))
 }
 
 /*
@@ -10071,7 +10089,7 @@ Returns the max of x and y (i.e. x > y ? x : y) element-wise.
 
 
 
-func maximum(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+func maximum( scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -10086,7 +10104,7 @@ func maximum(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -10103,7 +10121,7 @@ retained with length 1.
 
 
 
-func mean(scope:Scope,input: Output, reductionIndices: Output, keepDims :Bool  , t :Type  , tidx :Type  )  ->(GoOperation?){
+func mean( scope:Scope,input: Output, reductionIndices: Output, keepDims :Bool  , t :Type  , tidx :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -10120,7 +10138,7 @@ func mean(scope:Scope,input: Output, reductionIndices: Output, keepDims :Bool  ,
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -10137,7 +10155,7 @@ It is usually combined with `Switch` to implement branching.
 
 
 
-func merge(scope:Scope,inputs: Output, t :Type  , n :Int  )  ->(output: Output, valueIndex: Output){
+func merge( scope:Scope,inputs: Output, t :Type  , n :Int  )  ->(output: Output, valueIndex: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -10153,7 +10171,7 @@ func merge(scope:Scope,inputs: Output, t :Type  , n :Int  )  ->(output: Output, 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1))
+    return (op.output(1 - 1),op.output(2 - 1))
 }
 
 /*
@@ -10172,7 +10190,7 @@ in the summaries to merge use the same tag.
 
 
 
-func mergeSummary(scope:Scope,inputs: Output, n :Int  )  ->(GoOperation?){
+func mergeSummary( scope:Scope,inputs: Output, n :Int  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -10187,7 +10205,7 @@ func mergeSummary(scope:Scope,inputs: Output, n :Int  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -10206,7 +10224,7 @@ user-facing temporary locations.
 
 
 
-func mergeV2Checkpoints(scope:Scope,checkpointPrefixes: Output, destinationPrefix: Output, deleteOldDirs :Bool  )  ->(GoOperation?){
+func mergeV2Checkpoints( scope:Scope,checkpointPrefixes: Output, destinationPrefix: Output, deleteOldDirs :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -10220,7 +10238,8 @@ func mergeV2Checkpoints(scope:Scope,checkpointPrefixes: Output, destinationPrefi
         Input: [ checkpointPrefixes, destinationPrefix],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -10239,7 +10258,7 @@ is a good resource to learn more.
 
 
 
-func mfcc(scope:Scope,spectrogram: Output, sampleRate: Output, upperFrequencyLimit :Float  , lowerFrequencyLimit :Float  , filterbankChannelCount :Int  , dctCoefficientCount :Int  )  ->(GoOperation?){
+func mfcc( scope:Scope,spectrogram: Output, sampleRate: Output, upperFrequencyLimit :Float  , lowerFrequencyLimit :Float  , filterbankChannelCount :Int  , dctCoefficientCount :Int  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -10257,7 +10276,7 @@ func mfcc(scope:Scope,spectrogram: Output, sampleRate: Output, upperFrequencyLim
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -10274,7 +10293,7 @@ retained with length 1.
 
 
 
-func min(scope:Scope,input: Output, reductionIndices: Output, keepDims :Bool  , t :Type  , tidx :Type  )  ->(GoOperation?){
+func min( scope:Scope,input: Output, reductionIndices: Output, keepDims :Bool  , t :Type  , tidx :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -10291,7 +10310,7 @@ func min(scope:Scope,input: Output, reductionIndices: Output, keepDims :Bool  , 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -10306,7 +10325,7 @@ Returns the min of x and y (i.e. x < y ? x : y) element-wise.
 
 
 
-func minimum(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+func minimum( scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -10321,7 +10340,7 @@ func minimum(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -10355,7 +10374,7 @@ pad(t, paddings) ==> [[2, 1, 1, 2, 3, 3, 2]
 
 
 
-func mirrorPad(scope:Scope,input: Output, paddings: Output, t :Type  , tpaddings :Type  , mode :String  )  ->(GoOperation?){
+func mirrorPad( scope:Scope,input: Output, paddings: Output, t :Type  , tpaddings :Type  , mode :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -10372,7 +10391,7 @@ func mirrorPad(scope:Scope,input: Output, paddings: Output, t :Type  , tpaddings
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -10399,7 +10418,7 @@ pad(t, paddings) ==> [[ 1,  5]
 
 
 
-func mirrorPadGrad(scope:Scope,input: Output, paddings: Output, t :Type  , tpaddings :Type  , mode :String  )  ->(GoOperation?){
+func mirrorPadGrad( scope:Scope,input: Output, paddings: Output, t :Type  , tpaddings :Type  , mode :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -10416,7 +10435,7 @@ func mirrorPadGrad(scope:Scope,input: Output, paddings: Output, t :Type  , tpadd
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -10433,7 +10452,7 @@ y + truncate_mod(x, y) = x`.
 
 
 
-func mod(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+func mod( scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -10448,7 +10467,7 @@ func mod(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -10463,7 +10482,7 @@ Returns x * y element-wise.
 
 
 
-func mul(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+func mul( scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -10478,7 +10497,7 @@ func mul(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -10491,7 +10510,7 @@ Draws samples from a multinomial distribution.
 
 
 
-func multinomial(scope:Scope,logits: Output, numSamples: Output, seed :Int  , seed2 :Int  , t :Type  )  ->(GoOperation?){
+func multinomial( scope:Scope,logits: Output, numSamples: Output, seed :Int  , seed2 :Int  , t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -10508,7 +10527,7 @@ func multinomial(scope:Scope,logits: Output, numSamples: Output, seed :Int  , se
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -10526,7 +10545,7 @@ the insert operations. It does not support the initialization operation.
 
 
 
-func mutableDenseHashTable(scope:Scope,emptyKey: Output, container :String  , sharedName :String  , useNodeNameSharing :Bool  , keyDtype :Type  , valueDtype :Type  , valueShape :Shape  , initialNumBuckets :Int  , maxLoadFactor :Float  )  ->(GoOperation?){
+func mutableDenseHashTable( scope:Scope,emptyKey: Output, container :String  , sharedName :String  , useNodeNameSharing :Bool  , keyDtype :Type  , valueDtype :Type  , valueShape :Shape  , initialNumBuckets :Int  , maxLoadFactor :Float  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -10548,7 +10567,7 @@ func mutableDenseHashTable(scope:Scope,emptyKey: Output, container :String  , sh
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -10566,7 +10585,7 @@ the insert operations. It does not support the initialization operation.
 
 
 
-func mutableDenseHashTableV2(scope:Scope,emptyKey: Output, container :String  , sharedName :String  , useNodeNameSharing :Bool  , keyDtype :Type  , valueDtype :Type  , valueShape :Shape  , initialNumBuckets :Int  , maxLoadFactor :Float  )  ->(GoOperation?){
+func mutableDenseHashTableV2( scope:Scope,emptyKey: Output, container :String  , sharedName :String  , useNodeNameSharing :Bool  , keyDtype :Type  , valueDtype :Type  , valueShape :Shape  , initialNumBuckets :Int  , maxLoadFactor :Float  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -10588,7 +10607,7 @@ func mutableDenseHashTableV2(scope:Scope,emptyKey: Output, container :String  , 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -10604,7 +10623,7 @@ the insert operations. It does not support the initialization operation.
 
 
 
-func mutableHashTable(scope:Scope, container :String  , sharedName :String  , useNodeNameSharing :Bool  , keyDtype :Type  , valueDtype :Type  )  ->(GoOperation?){
+func mutableHashTable( scope:Scope, container :String  , sharedName :String  , useNodeNameSharing :Bool  , keyDtype :Type  , valueDtype :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -10623,7 +10642,7 @@ func mutableHashTable(scope:Scope, container :String  , sharedName :String  , us
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -10639,7 +10658,7 @@ the insert operations. It does not support the initialization operation.
 
 
 
-func mutableHashTableOfTensors(scope:Scope, container :String  , sharedName :String  , useNodeNameSharing :Bool  , keyDtype :Type  , valueDtype :Type  , valueShape :Shape  )  ->(GoOperation?){
+func mutableHashTableOfTensors( scope:Scope, container :String  , sharedName :String  , useNodeNameSharing :Bool  , keyDtype :Type  , valueDtype :Type  , valueShape :Shape  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -10659,7 +10678,7 @@ func mutableHashTableOfTensors(scope:Scope, container :String  , sharedName :Str
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -10675,7 +10694,7 @@ the insert operations. It does not support the initialization operation.
 
 
 
-func mutableHashTableOfTensorsV2(scope:Scope, container :String  , sharedName :String  , useNodeNameSharing :Bool  , keyDtype :Type  , valueDtype :Type  , valueShape :Shape  )  ->(GoOperation?){
+func mutableHashTableOfTensorsV2( scope:Scope, container :String  , sharedName :String  , useNodeNameSharing :Bool  , keyDtype :Type  , valueDtype :Type  , valueShape :Shape  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -10695,7 +10714,7 @@ func mutableHashTableOfTensorsV2(scope:Scope, container :String  , sharedName :S
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -10711,7 +10730,7 @@ the insert operations. It does not support the initialization operation.
 
 
 
-func mutableHashTableV2(scope:Scope, container :String  , sharedName :String  , useNodeNameSharing :Bool  , keyDtype :Type  , valueDtype :Type  )  ->(GoOperation?){
+func mutableHashTableV2( scope:Scope, container :String  , sharedName :String  , useNodeNameSharing :Bool  , keyDtype :Type  , valueDtype :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -10730,7 +10749,7 @@ func mutableHashTableV2(scope:Scope, container :String  , sharedName :String  , 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -10744,7 +10763,7 @@ I.e., \\(y = -x\\).
 
 
 
-func neg(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+func neg( scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -10759,7 +10778,7 @@ func neg(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -10772,7 +10791,7 @@ Training via negative sampling.
 
 
 
-func negTrain(scope:Scope,wIn: Output, wOut: Output, examples: Output, labels: Output, lr: Output, vocabCount :List(int)  , numNegativeSamples :Int  )  ->(GoOperation?){
+func negTrain( scope:Scope,wIn: Output, wOut: Output, examples: Output, labels: Output, lr: Output, vocabCount :List(int)  , numNegativeSamples :Int  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -10787,7 +10806,8 @@ func negTrain(scope:Scope,wIn: Output, wOut: Output, examples: Output, labels: O
         Input: [ wIn, wOut, examples, labels, lr],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -10800,7 +10820,7 @@ Makes its input available to the next iteration.
 
 
 
-func nextIteration(scope:Scope,data: Output, t :Type  )  ->(GoOperation?){
+func nextIteration( scope:Scope,data: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -10815,7 +10835,7 @@ func nextIteration(scope:Scope,data: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -10828,7 +10848,7 @@ Does nothing. Only useful as a placeholder for control edges.
 
 
 
-func noOp(scope:Scope )  ->(GoOperation?){
+func noOp( scope:Scope )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -10841,7 +10861,8 @@ func noOp(scope:Scope )  ->(GoOperation?){
         Input: [ ],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -10870,7 +10891,7 @@ using the `tf.gather operation`.  For example:
 
 
 
-func nonMaxSuppression(scope:Scope,boxes: Output, scores: Output, maxOutputSize: Output, iouThreshold :Float  )  ->(GoOperation?){
+func nonMaxSuppression( scope:Scope,boxes: Output, scores: Output, maxOutputSize: Output, iouThreshold :Float  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -10885,7 +10906,7 @@ func nonMaxSuppression(scope:Scope,boxes: Output, scores: Output, maxOutputSize:
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -10914,7 +10935,7 @@ using the `tf.gather operation`.  For example:
 
 
 
-func nonMaxSuppressionV2(scope:Scope,boxes: Output, scores: Output, maxOutputSize: Output, iouThreshold: Output )  ->(GoOperation?){
+func nonMaxSuppressionV2( scope:Scope,boxes: Output, scores: Output, maxOutputSize: Output, iouThreshold: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -10928,7 +10949,7 @@ func nonMaxSuppressionV2(scope:Scope,boxes: Output, scores: Output, maxOutputSiz
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -10943,7 +10964,7 @@ Returns the truth value of (x != y) element-wise.
 
 
 
-func notEqual(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+func notEqual( scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -10958,7 +10979,7 @@ func notEqual(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -11042,7 +11063,7 @@ Then output is `[2 x 2 x 3]`:
 
 
 
-func oneHot(scope:Scope,indices: Output, depth: Output, onValue: Output, offValue: Output, axis :Int  , t :Type  , ti :Type  )  ->(GoOperation?){
+func oneHot( scope:Scope,indices: Output, depth: Output, onValue: Output, offValue: Output, axis :Int  , t :Type  , ti :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -11059,7 +11080,7 @@ func oneHot(scope:Scope,indices: Output, depth: Output, onValue: Output, offValu
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -11086,7 +11107,7 @@ times by rerunning "MakeIterator".
 
 
 
-func oneShotIterator(scope:Scope, datasetFactory :Func  , outputTypes :List(type)  , outputShapes :List(shape)  , container :String  , sharedName :String  )  ->(GoOperation?){
+func oneShotIterator( scope:Scope, datasetFactory :Func  , outputTypes :List(type)  , outputShapes :List(shape)  , container :String  , sharedName :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -11105,7 +11126,7 @@ func oneShotIterator(scope:Scope, datasetFactory :Func  , outputTypes :List(type
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -11118,7 +11139,7 @@ Returns a tensor of ones with the same shape and type as x.
 
 
 
-func onesLike(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+func onesLike( scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -11133,7 +11154,7 @@ func onesLike(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -11161,7 +11182,7 @@ This is the opposite of `unpack`.
 
 
 
-func pack(scope:Scope,values: Output, n :Int  , t :Type  , axis :Int  )  ->(GoOperation?){
+func pack( scope:Scope,values: Output, n :Int  , t :Type  , axis :Int  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -11178,7 +11199,7 @@ func pack(scope:Scope,values: Output, n :Int  , t :Type  , axis :Int  )  ->(GoOp
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -11209,7 +11230,7 @@ pad(t, paddings) ==> [[0, 0, 0, 0, 0, 0]
 
 
 
-func pad(scope:Scope,input: Output, paddings: Output, t :Type  , tpaddings :Type  )  ->(GoOperation?){
+func pad( scope:Scope,input: Output, paddings: Output, t :Type  , tpaddings :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -11225,7 +11246,7 @@ func pad(scope:Scope,input: Output, paddings: Output, t :Type  , tpaddings :Type
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -11238,7 +11259,7 @@ Creates a dataset that batches and pads `batch_size` elements from the input.
 
 
 
-func paddedBatchDataset(scope:Scope,inputDataset: Output, batchSize: Output, paddedShapes: Output, paddingValues: Output, toutputTypes :List(type)  , outputShapes :List(shape)  , n :Int  )  ->(GoOperation?){
+func paddedBatchDataset( scope:Scope,inputDataset: Output, batchSize: Output, paddedShapes: Output, paddingValues: Output, toutputTypes :List(type)  , outputShapes :List(shape)  , n :Int  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -11255,7 +11276,7 @@ func paddedBatchDataset(scope:Scope,inputDataset: Output, batchSize: Output, pad
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -11271,7 +11292,7 @@ size of any given element in the minibatch.  See below for details.
 
 
 
-func paddingFIFOQueue(scope:Scope, componentTypes :List(type)  , shapes :List(shape)  , capacity :Int  , container :String  , sharedName :String  )  ->(GoOperation?){
+func paddingFIFOQueue( scope:Scope, componentTypes :List(type)  , shapes :List(shape)  , capacity :Int  , container :String  , sharedName :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -11290,7 +11311,7 @@ func paddingFIFOQueue(scope:Scope, componentTypes :List(type)  , shapes :List(sh
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -11306,7 +11327,7 @@ size of any given element in the minibatch.  See below for details.
 
 
 
-func paddingFIFOQueueV2(scope:Scope, componentTypes :List(type)  , shapes :List(shape)  , capacity :Int  , container :String  , sharedName :String  )  ->(GoOperation?){
+func paddingFIFOQueueV2( scope:Scope, componentTypes :List(type)  , shapes :List(shape)  , capacity :Int  , container :String  , sharedName :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -11325,7 +11346,7 @@ func paddingFIFOQueueV2(scope:Scope, componentTypes :List(type)  , shapes :List(
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -11351,7 +11372,7 @@ some situations this can provide a performance benefit.
 
 
 
-func parallelConcat(scope:Scope,values: Output, n :Int  , t :Type  , shape :Shape  )  ->(GoOperation?){
+func parallelConcat( scope:Scope,values: Output, n :Int  , t :Type  , shape :Shape  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -11368,7 +11389,7 @@ func parallelConcat(scope:Scope,values: Output, n :Int  , t :Type  , shape :Shap
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -11384,7 +11405,7 @@ in parallel.
 
 
 
-func parallelMapDataset(scope:Scope,inputDataset: Output, otherArguments: Output, numThreads: Output, outputBufferSize: Output, f :Func  , targuments :List(type)  , outputTypes :List(type)  , outputShapes :List(shape)  )  ->(GoOperation?){
+func parallelMapDataset( scope:Scope,inputDataset: Output, otherArguments: Output, numThreads: Output, outputBufferSize: Output, f :Func  , targuments :List(type)  , outputTypes :List(type)  , outputShapes :List(shape)  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -11402,7 +11423,7 @@ func parallelMapDataset(scope:Scope,inputDataset: Output, otherArguments: Output
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -11417,7 +11438,7 @@ stores the parameters for each batch.
 
 
 
-func parameterizedTruncatedNormal(scope:Scope,shape: Output, means: Output, stdevs: Output, minvals: Output, maxvals: Output, seed :Int  , seed2 :Int  , dtype :Type  , t :Type  )  ->(GoOperation?){
+func parameterizedTruncatedNormal( scope:Scope,shape: Output, means: Output, stdevs: Output, minvals: Output, maxvals: Output, seed :Int  , seed2 :Int  , dtype :Type  , t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -11435,7 +11456,7 @@ func parameterizedTruncatedNormal(scope:Scope,shape: Output, means: Output, stde
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -11448,7 +11469,7 @@ Transforms a vector of brain.Example protos (as strings) into typed tensors.
 
 
 
-func parseExample(scope:Scope,serialized: Output, names: Output, sparseKeys: Output, denseKeys: Output, denseDefaults: Output, nsparse :Int  , ndense :Int  , sparseTypes :List(type)  , tdense :List(type)  , denseShapes :List(shape)  )  ->(sparseIndices: Output, sparseValues: Output, sparseShapes: Output, denseValues: Output){
+func parseExample( scope:Scope,serialized: Output, names: Output, sparseKeys: Output, denseKeys: Output, denseDefaults: Output, nsparse :Int  , ndense :Int  , sparseTypes :List(type)  , tdense :List(type)  , denseShapes :List(shape)  )  ->(sparseIndices: Output, sparseValues: Output, sparseShapes: Output, denseValues: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -11467,7 +11488,7 @@ func parseExample(scope:Scope,serialized: Output, names: Output, sparseKeys: Out
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1),op.Output(4 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1),op.output(4 - 1))
 }
 
 /*
@@ -11480,7 +11501,7 @@ Transforms a scalar brain.SequenceExample proto (as strings) into typed tensors.
 
 
 
-func parseSingleSequenceExample(scope:Scope,serialized: Output, featureListDenseMissingAssumedEmpty: Output, contextSparseKeys: Output, contextDenseKeys: Output, featureListSparseKeys: Output, featureListDenseKeys: Output, contextDenseDefaults: Output, debugName: Output, ncontextSparse :Int  , ncontextDense :Int  , nfeatureListSparse :Int  , nfeatureListDense :Int  , contextSparseTypes :List(type)  , tcontextDense :List(type)  , featureListDenseTypes :List(type)  , contextDenseShapes :List(shape)  , featureListSparseTypes :List(type)  , featureListDenseShapes :List(shape)  )  ->(contextSparseIndices: Output, contextSparseValues: Output, contextSparseShapes: Output, contextDenseValues: Output, featureListSparseIndices: Output, featureListSparseValues: Output, featureListSparseShapes: Output, featureListDenseValues: Output){
+func parseSingleSequenceExample( scope:Scope,serialized: Output, featureListDenseMissingAssumedEmpty: Output, contextSparseKeys: Output, contextDenseKeys: Output, featureListSparseKeys: Output, featureListDenseKeys: Output, contextDenseDefaults: Output, debugName: Output, ncontextSparse :Int  , ncontextDense :Int  , nfeatureListSparse :Int  , nfeatureListDense :Int  , contextSparseTypes :List(type)  , tcontextDense :List(type)  , featureListDenseTypes :List(type)  , contextDenseShapes :List(shape)  , featureListSparseTypes :List(type)  , featureListDenseShapes :List(shape)  )  ->(contextSparseIndices: Output, contextSparseValues: Output, contextSparseShapes: Output, contextDenseValues: Output, featureListSparseIndices: Output, featureListSparseValues: Output, featureListSparseShapes: Output, featureListDenseValues: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -11504,7 +11525,7 @@ func parseSingleSequenceExample(scope:Scope,serialized: Output, featureListDense
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1),op.Output(4 - 1),op.Output(5 - 1),op.Output(6 - 1),op.Output(7 - 1),op.Output(8 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1),op.output(4 - 1),op.output(5 - 1),op.output(6 - 1),op.output(7 - 1),op.output(8 - 1))
 }
 
 /*
@@ -11517,7 +11538,7 @@ Transforms a serialized tensorflow.TensorProto proto into a Tensor.
 
 
 
-func parseTensor(scope:Scope,serialized: Output, outType :Type  )  ->(GoOperation?){
+func parseTensor( scope:Scope,serialized: Output, outType :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -11532,7 +11553,7 @@ func parseTensor(scope:Scope,serialized: Output, outType :Type  )  ->(GoOperatio
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -11548,7 +11569,7 @@ provide attrs that enable the fed value to be checked at runtime.
 
 
 
-func placeholder(scope:Scope, dtype :Type  , shape :Shape  )  ->(GoOperation?){
+func placeholder( scope:Scope, dtype :Type  , shape :Shape  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -11564,7 +11585,7 @@ func placeholder(scope:Scope, dtype :Type  , shape :Shape  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -11580,7 +11601,7 @@ provide attrs that enable the fed value to be checked at runtime.
 
 
 
-func placeholderV2(scope:Scope, dtype :Type  , shape :Shape  )  ->(GoOperation?){
+func placeholderV2( scope:Scope, dtype :Type  , shape :Shape  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -11596,7 +11617,7 @@ func placeholderV2(scope:Scope, dtype :Type  , shape :Shape  )  ->(GoOperation?)
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -11609,7 +11630,7 @@ A placeholder op that passes through `input` when its output is not fed.
 
 
 
-func placeholderWithDefault(scope:Scope,input: Output, dtype :Type  , shape :Shape  )  ->(GoOperation?){
+func placeholderWithDefault( scope:Scope,input: Output, dtype :Type  , shape :Shape  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -11625,7 +11646,7 @@ func placeholderWithDefault(scope:Scope,input: Output, dtype :Type  , shape :Sha
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -11641,7 +11662,7 @@ where \\(\psi(x)\\) is the digamma function.
 
 
 
-func polygamma(scope:Scope,a: Output, x: Output, t :Type  )  ->(GoOperation?){
+func polygamma( scope:Scope,a: Output, x: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -11656,7 +11677,7 @@ func polygamma(scope:Scope,a: Output, x: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -11676,7 +11697,7 @@ tf.pow(x, y) ==> [[256, 65536], [9, 27]]
 
 
 
-func pow(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+func pow( scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -11691,7 +11712,7 @@ func pow(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -11710,7 +11731,7 @@ gradients in some corner cases.
 
 
 
-func preventGradient(scope:Scope,input: Output, t :Type  , message :String  )  ->(GoOperation?){
+func preventGradient( scope:Scope,input: Output, t :Type  , message :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -11726,7 +11747,7 @@ func preventGradient(scope:Scope,input: Output, t :Type  , message :String  )  -
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -11740,7 +11761,7 @@ Passes `input` through to `output` and prints `data` when evaluating.
 
 
 
-func print(scope:Scope,input: Output, data: Output, t :Type  , u :List(type)  , message :String  , firstN :Int  , summarize :Int  )  ->(GoOperation?){
+func print( scope:Scope,input: Output, data: Output, t :Type  , u :List(type)  , message :String  , firstN :Int  , summarize :Int  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -11759,7 +11780,7 @@ func print(scope:Scope,input: Output, data: Output, t :Type  , u :List(type)  , 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -11777,7 +11798,7 @@ entry in their input (resp. output) lists.
 
 
 
-func priorityQueue(scope:Scope, componentTypes :List(type)  , shapes :List(shape)  , capacity :Int  , container :String  , sharedName :String  )  ->(GoOperation?){
+func priorityQueue( scope:Scope, componentTypes :List(type)  , shapes :List(shape)  , capacity :Int  , container :String  , sharedName :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -11796,7 +11817,7 @@ func priorityQueue(scope:Scope, componentTypes :List(type)  , shapes :List(shape
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -11814,7 +11835,7 @@ entry in their input (resp. output) lists.
 
 
 
-func priorityQueueV2(scope:Scope, componentTypes :List(type)  , shapes :List(shape)  , capacity :Int  , container :String  , sharedName :String  )  ->(GoOperation?){
+func priorityQueueV2( scope:Scope, componentTypes :List(type)  , shapes :List(shape)  , capacity :Int  , container :String  , sharedName :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -11833,7 +11854,7 @@ func priorityQueueV2(scope:Scope, componentTypes :List(type)  , shapes :List(sha
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -11850,7 +11871,7 @@ retained with length 1.
 
 
 
-func prod(scope:Scope,input: Output, reductionIndices: Output, keepDims :Bool  , t :Type  , tidx :Type  )  ->(GoOperation?){
+func prod( scope:Scope,input: Output, reductionIndices: Output, keepDims :Bool  , t :Type  , tidx :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -11867,7 +11888,7 @@ func prod(scope:Scope,input: Output, reductionIndices: Output, keepDims :Bool  ,
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -11882,7 +11903,7 @@ PyFuncStateless.
 
 
 
-func pyFunc(scope:Scope,input: Output, token :String  , tin :List(type)  , tout :List(type)  )  ->(GoOperation?){
+func pyFunc( scope:Scope,input: Output, token :String  , tin :List(type)  , tout :List(type)  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -11899,7 +11920,7 @@ func pyFunc(scope:Scope,input: Output, token :String  , tin :List(type)  , tout 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -11912,7 +11933,7 @@ A stateless version of PyFunc.
 
 
 
-func pyFuncStateless(scope:Scope,input: Output, token :String  , tin :List(type)  , tout :List(type)  )  ->(GoOperation?){
+func pyFuncStateless( scope:Scope,input: Output, token :String  , tin :List(type)  , tout :List(type)  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -11929,7 +11950,7 @@ func pyFuncStateless(scope:Scope,input: Output, token :String  , tin :List(type)
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -11951,7 +11972,7 @@ q_full, r_full = qr(a, full_matrices=True)
 
 
 
-func qr(scope:Scope,input: Output, fullMatrices :Bool  , t :Type  )  ->(q: Output, r: Output){
+func qr( scope:Scope,input: Output, fullMatrices :Bool  , t :Type  )  ->(q: Output, r: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -11967,7 +11988,7 @@ func qr(scope:Scope,input: Output, fullMatrices :Bool  , t :Type  )  ->(q: Outpu
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1))
+    return (op.output(1 - 1),op.output(2 - 1))
 }
 
 /*
@@ -11980,7 +12001,7 @@ Use QuantizeAndDequantizeV2 instead.
 
 
 
-func quantizeAndDequantize(scope:Scope,input: Output, signedInput :Bool  , numBits :Int  , rangeGiven :Bool  , inputMin :Float  , inputMax :Float  , t :Type  )  ->(GoOperation?){
+func quantizeAndDequantize( scope:Scope,input: Output, signedInput :Bool  , numBits :Int  , rangeGiven :Bool  , inputMin :Float  , inputMax :Float  , t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -12000,7 +12021,7 @@ func quantizeAndDequantize(scope:Scope,input: Output, signedInput :Bool  , numBi
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -12046,7 +12067,7 @@ Given the vector {-1, -0.5, 0, 0.3}, this is quantized to
 
 
 
-func quantizeAndDequantizeV2(scope:Scope,input: Output, inputMin: Output, inputMax: Output, signedInput :Bool  , numBits :Int  , rangeGiven :Bool  , t :Type  )  ->(GoOperation?){
+func quantizeAndDequantizeV2( scope:Scope,input: Output, inputMin: Output, inputMax: Output, signedInput :Bool  , numBits :Int  , rangeGiven :Bool  , t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -12064,7 +12085,7 @@ func quantizeAndDequantizeV2(scope:Scope,input: Output, inputMin: Output, inputM
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -12096,7 +12117,7 @@ minimal loss of accuracy.
 
 
 
-func quantizeDownAndShrinkRange(scope:Scope,input: Output, inputMin: Output, inputMax: Output, tinput :Type  , outType :Type  )  ->(output: Output, outputMin: Output, outputMax: Output){
+func quantizeDownAndShrinkRange( scope:Scope,input: Output, inputMin: Output, inputMax: Output, tinput :Type  , outType :Type  )  ->(output: Output, outputMin: Output, outputMax: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -12112,7 +12133,7 @@ func quantizeDownAndShrinkRange(scope:Scope,input: Output, inputMin: Output, inp
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1))
 }
 
 /*
@@ -12165,7 +12186,7 @@ operations that have to perform further calculations on them.
 
 
 
-func quantizeV2(scope:Scope,input: Output, minRange: Output, maxRange: Output, t :Type  , mode :String  )  ->(output: Output, outputMin: Output, outputMax: Output){
+func quantizeV2( scope:Scope,input: Output, minRange: Output, maxRange: Output, t :Type  , mode :String  )  ->(output: Output, outputMin: Output, outputMax: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -12181,7 +12202,7 @@ func quantizeV2(scope:Scope,input: Output, minRange: Output, maxRange: Output, t
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1))
 }
 
 /*
@@ -12194,7 +12215,7 @@ Returns x + y element-wise, working on quantized buffers.
 
 
 
-func quantizedAdd(scope:Scope,x: Output, y: Output, minX: Output, maxX: Output, minY: Output, maxY: Output, t1 :Type  , t2 :Type  , toutput :Type  )  ->(z: Output, minZ: Output, maxZ: Output){
+func quantizedAdd( scope:Scope,x: Output, y: Output, minX: Output, maxX: Output, minY: Output, maxY: Output, t1 :Type  , t2 :Type  , toutput :Type  )  ->(z: Output, minZ: Output, maxZ: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -12211,7 +12232,7 @@ func quantizedAdd(scope:Scope,x: Output, y: Output, minX: Output, maxX: Output, 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1))
 }
 
 /*
@@ -12224,7 +12245,7 @@ Produces the average pool of the input tensor for quantized types.
 
 
 
-func quantizedAvgPool(scope:Scope,input: Output, minInput: Output, maxInput: Output, t :Type  , ksize :List(int)  , strides :List(int)  , padding :String  )  ->(output: Output, minOutput: Output, maxOutput: Output){
+func quantizedAvgPool( scope:Scope,input: Output, minInput: Output, maxInput: Output, t :Type  , ksize :List(int)  , strides :List(int)  , padding :String  )  ->(output: Output, minOutput: Output, maxOutput: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -12242,7 +12263,7 @@ func quantizedAvgPool(scope:Scope,input: Output, minInput: Output, maxInput: Out
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1))
 }
 
 /*
@@ -12257,7 +12278,7 @@ This op is deprecated and will be removed in the future. Prefer
 
 
 
-func quantizedBatchNormWithGlobalNormalization(scope:Scope,t: Output, tMin: Output, tMax: Output, m: Output, mMin: Output, mMax: Output, v: Output, vMin: Output, vMax: Output, beta: Output, betaMin: Output, betaMax: Output, gamma: Output, gammaMin: Output, gammaMax: Output, tinput :Type  , outType :Type  , varianceEpsilon :Float  , scaleAfterNormalization :Bool  )  ->(result: Output, resultMin: Output, resultMax: Output){
+func quantizedBatchNormWithGlobalNormalization( scope:Scope,t: Output, tMin: Output, tMax: Output, m: Output, mMin: Output, mMax: Output, v: Output, vMin: Output, vMax: Output, beta: Output, betaMin: Output, betaMax: Output, gamma: Output, gammaMin: Output, gammaMax: Output, tinput :Type  , outType :Type  , varianceEpsilon :Float  , scaleAfterNormalization :Bool  )  ->(result: Output, resultMin: Output, resultMax: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -12275,7 +12296,7 @@ func quantizedBatchNormWithGlobalNormalization(scope:Scope,t: Output, tMin: Outp
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1))
 }
 
 /*
@@ -12289,7 +12310,7 @@ Broadcasts the values of bias on dimensions 0..N-2 of 'input'.
 
 
 
-func quantizedBiasAdd(scope:Scope,input: Output, bias: Output, minInput: Output, maxInput: Output, minBias: Output, maxBias: Output, t1 :Type  , t2 :Type  , outType :Type  )  ->(output: Output, minOut: Output, maxOut: Output){
+func quantizedBiasAdd( scope:Scope,input: Output, bias: Output, minInput: Output, maxInput: Output, minBias: Output, maxBias: Output, t1 :Type  , t2 :Type  , outType :Type  )  ->(output: Output, minOut: Output, maxOut: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -12306,7 +12327,7 @@ func quantizedBiasAdd(scope:Scope,input: Output, bias: Output, minInput: Output,
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1))
 }
 
 /*
@@ -12319,7 +12340,7 @@ Concatenates quantized tensors along one dimension.
 
 
 
-func quantizedConcat(scope:Scope,concatDim: Output, values: Output, inputMins: Output, inputMaxes: Output, n :Int  , t :Type  )  ->(output: Output, outputMin: Output, outputMax: Output){
+func quantizedConcat( scope:Scope,concatDim: Output, values: Output, inputMins: Output, inputMaxes: Output, n :Int  , t :Type  )  ->(output: Output, outputMin: Output, outputMax: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -12335,7 +12356,7 @@ func quantizedConcat(scope:Scope,concatDim: Output, values: Output, inputMins: O
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1))
 }
 
 /*
@@ -12352,7 +12373,7 @@ taking the returned minimum and maximum values into account.
 
 
 
-func quantizedConv2D(scope:Scope,input: Output, filter: Output, minInput: Output, maxInput: Output, minFilter: Output, maxFilter: Output, tinput :Type  , tfilter :Type  , outType :Type  , strides :List(int)  , padding :String  )  ->(output: Output, minOutput: Output, maxOutput: Output){
+func quantizedConv2D( scope:Scope,input: Output, filter: Output, minInput: Output, maxInput: Output, minFilter: Output, maxFilter: Output, tinput :Type  , tfilter :Type  , outType :Type  , strides :List(int)  , padding :String  )  ->(output: Output, minOutput: Output, maxOutput: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -12371,7 +12392,7 @@ func quantizedConv2D(scope:Scope,input: Output, filter: Output, minInput: Output
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1))
 }
 
 /*
@@ -12384,7 +12405,7 @@ Quantized Instance normalization.
 
 
 
-func quantizedInstanceNorm(scope:Scope,x: Output, xMin: Output, xMax: Output, t :Type  , outputRangeGiven :Bool  , givenYMin :Float  , givenYMax :Float  , varianceEpsilon :Float  , minSeparation :Float  )  ->(y: Output, yMin: Output, yMax: Output){
+func quantizedInstanceNorm( scope:Scope,x: Output, xMin: Output, xMax: Output, t :Type  , outputRangeGiven :Bool  , givenYMin :Float  , givenYMax :Float  , varianceEpsilon :Float  , minSeparation :Float  )  ->(y: Output, yMin: Output, yMax: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -12404,7 +12425,7 @@ func quantizedInstanceNorm(scope:Scope,x: Output, xMin: Output, xMax: Output, t 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1))
 }
 
 /*
@@ -12421,7 +12442,7 @@ non-zero).
 
 
 
-func quantizedMatMul(scope:Scope,a: Output, b: Output, minA: Output, maxA: Output, minB: Output, maxB: Output, t1 :Type  , t2 :Type  , toutput :Type  , transposeA :Bool  , transposeB :Bool  , tactivation :Type  )  ->(out: Output, minOut: Output, maxOut: Output){
+func quantizedMatMul( scope:Scope,a: Output, b: Output, minA: Output, maxA: Output, minB: Output, maxB: Output, t1 :Type  , t2 :Type  , toutput :Type  , transposeA :Bool  , transposeB :Bool  , tactivation :Type  )  ->(out: Output, minOut: Output, maxOut: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -12441,7 +12462,7 @@ func quantizedMatMul(scope:Scope,a: Output, b: Output, minA: Output, maxA: Outpu
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1))
 }
 
 /*
@@ -12454,7 +12475,7 @@ Produces the max pool of the input tensor for quantized types.
 
 
 
-func quantizedMaxPool(scope:Scope,input: Output, minInput: Output, maxInput: Output, t :Type  , ksize :List(int)  , strides :List(int)  , padding :String  )  ->(output: Output, minOutput: Output, maxOutput: Output){
+func quantizedMaxPool( scope:Scope,input: Output, minInput: Output, maxInput: Output, t :Type  , ksize :List(int)  , strides :List(int)  , padding :String  )  ->(output: Output, minOutput: Output, maxOutput: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -12472,7 +12493,7 @@ func quantizedMaxPool(scope:Scope,input: Output, minInput: Output, maxInput: Out
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1))
 }
 
 /*
@@ -12485,7 +12506,7 @@ Returns x * y element-wise, working on quantized buffers.
 
 
 
-func quantizedMul(scope:Scope,x: Output, y: Output, minX: Output, maxX: Output, minY: Output, maxY: Output, t1 :Type  , t2 :Type  , toutput :Type  )  ->(z: Output, minZ: Output, maxZ: Output){
+func quantizedMul( scope:Scope,x: Output, y: Output, minX: Output, maxX: Output, minY: Output, maxY: Output, t1 :Type  , t2 :Type  , toutput :Type  )  ->(z: Output, minZ: Output, maxZ: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -12502,7 +12523,7 @@ func quantizedMul(scope:Scope,x: Output, y: Output, minX: Output, maxX: Output, 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1))
 }
 
 /*
@@ -12515,7 +12536,7 @@ Computes Quantized Rectified Linear: `max(features, 0)`
 
 
 
-func quantizedRelu(scope:Scope,features: Output, minFeatures: Output, maxFeatures: Output, tinput :Type  , outType :Type  )  ->(activations: Output, minActivations: Output, maxActivations: Output){
+func quantizedRelu( scope:Scope,features: Output, minFeatures: Output, maxFeatures: Output, tinput :Type  , outType :Type  )  ->(activations: Output, minActivations: Output, maxActivations: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -12531,7 +12552,7 @@ func quantizedRelu(scope:Scope,features: Output, minFeatures: Output, maxFeature
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1))
 }
 
 /*
@@ -12544,7 +12565,7 @@ Computes Quantized Rectified Linear 6: `min(max(features, 0), 6)`
 
 
 
-func quantizedRelu6(scope:Scope,features: Output, minFeatures: Output, maxFeatures: Output, tinput :Type  , outType :Type  )  ->(activations: Output, minActivations: Output, maxActivations: Output){
+func quantizedRelu6( scope:Scope,features: Output, minFeatures: Output, maxFeatures: Output, tinput :Type  , outType :Type  )  ->(activations: Output, minActivations: Output, maxActivations: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -12560,7 +12581,7 @@ func quantizedRelu6(scope:Scope,features: Output, minFeatures: Output, maxFeatur
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1))
 }
 
 /*
@@ -12573,7 +12594,7 @@ Computes Quantized Rectified Linear X: `min(max(features, 0), max_value)`
 
 
 
-func quantizedReluX(scope:Scope,features: Output, maxValue: Output, minFeatures: Output, maxFeatures: Output, tinput :Type  , outType :Type  )  ->(activations: Output, minActivations: Output, maxActivations: Output){
+func quantizedReluX( scope:Scope,features: Output, maxValue: Output, minFeatures: Output, maxFeatures: Output, tinput :Type  , outType :Type  )  ->(activations: Output, minActivations: Output, maxActivations: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -12589,7 +12610,7 @@ func quantizedReluX(scope:Scope,features: Output, maxValue: Output, minFeatures:
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1))
 }
 
 /*
@@ -12603,7 +12624,7 @@ Reshapes a quantized tensor as per the Reshape op.
 
 
 
-func quantizedReshape(scope:Scope,tensor: Output, shape: Output, inputMin: Output, inputMax: Output, t :Type  , tshape :Type  )  ->(output: Output, outputMin: Output, outputMax: Output){
+func quantizedReshape( scope:Scope,tensor: Output, shape: Output, inputMin: Output, inputMax: Output, t :Type  , tshape :Type  )  ->(output: Output, outputMin: Output, outputMax: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -12619,7 +12640,7 @@ func quantizedReshape(scope:Scope,tensor: Output, shape: Output, inputMin: Outpu
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1))
 }
 
 /*
@@ -12637,7 +12658,7 @@ operations that would block will fail immediately.
 
 
 
-func queueClose(scope:Scope,handle: Output, cancelPendingEnqueues :Bool  )  ->(GoOperation?){
+func queueClose( scope:Scope,handle: Output, cancelPendingEnqueues :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -12651,7 +12672,8 @@ func queueClose(scope:Scope,handle: Output, cancelPendingEnqueues :Bool  )  ->(G
         Input: [ handle],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -12669,7 +12691,7 @@ operations that would block will fail immediately.
 
 
 
-func queueCloseV2(scope:Scope,handle: Output, cancelPendingEnqueues :Bool  )  ->(GoOperation?){
+func queueCloseV2( scope:Scope,handle: Output, cancelPendingEnqueues :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -12683,7 +12705,8 @@ func queueCloseV2(scope:Scope,handle: Output, cancelPendingEnqueues :Bool  )  ->
         Input: [ handle],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -12701,7 +12724,7 @@ has been dequeued (or 'timeout_ms' elapses, if specified).
 
 
 
-func queueDequeue(scope:Scope,handle: Output, componentTypes :List(type)  , timeoutMs :Int  )  ->(GoOperation?){
+func queueDequeue( scope:Scope,handle: Output, componentTypes :List(type)  , timeoutMs :Int  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -12717,7 +12740,7 @@ func queueDequeue(scope:Scope,handle: Output, componentTypes :List(type)  , time
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -12740,7 +12763,7 @@ have been dequeued (or 'timeout_ms' elapses, if specified).
 
 
 
-func queueDequeueMany(scope:Scope,handle: Output, n: Output, componentTypes :List(type)  , timeoutMs :Int  )  ->(GoOperation?){
+func queueDequeueMany( scope:Scope,handle: Output, n: Output, componentTypes :List(type)  , timeoutMs :Int  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -12756,7 +12779,7 @@ func queueDequeueMany(scope:Scope,handle: Output, n: Output, componentTypes :Lis
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -12779,7 +12802,7 @@ have been dequeued (or 'timeout_ms' elapses, if specified).
 
 
 
-func queueDequeueManyV2(scope:Scope,handle: Output, n: Output, componentTypes :List(type)  , timeoutMs :Int  )  ->(GoOperation?){
+func queueDequeueManyV2( scope:Scope,handle: Output, n: Output, componentTypes :List(type)  , timeoutMs :Int  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -12795,7 +12818,7 @@ func queueDequeueManyV2(scope:Scope,handle: Output, n: Output, componentTypes :L
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -12822,7 +12845,7 @@ component of the dequeued tuple.
 
 
 
-func queueDequeueUpTo(scope:Scope,handle: Output, n: Output, componentTypes :List(type)  , timeoutMs :Int  )  ->(GoOperation?){
+func queueDequeueUpTo( scope:Scope,handle: Output, n: Output, componentTypes :List(type)  , timeoutMs :Int  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -12838,7 +12861,7 @@ func queueDequeueUpTo(scope:Scope,handle: Output, n: Output, componentTypes :Lis
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -12865,7 +12888,7 @@ component of the dequeued tuple.
 
 
 
-func queueDequeueUpToV2(scope:Scope,handle: Output, n: Output, componentTypes :List(type)  , timeoutMs :Int  )  ->(GoOperation?){
+func queueDequeueUpToV2( scope:Scope,handle: Output, n: Output, componentTypes :List(type)  , timeoutMs :Int  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -12881,7 +12904,7 @@ func queueDequeueUpToV2(scope:Scope,handle: Output, n: Output, componentTypes :L
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -12899,7 +12922,7 @@ has been dequeued (or 'timeout_ms' elapses, if specified).
 
 
 
-func queueDequeueV2(scope:Scope,handle: Output, componentTypes :List(type)  , timeoutMs :Int  )  ->(GoOperation?){
+func queueDequeueV2( scope:Scope,handle: Output, componentTypes :List(type)  , timeoutMs :Int  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -12915,7 +12938,7 @@ func queueDequeueV2(scope:Scope,handle: Output, componentTypes :List(type)  , ti
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -12932,7 +12955,7 @@ element has been enqueued (or 'timeout_ms' elapses, if specified).
 
 
 
-func queueEnqueue(scope:Scope,handle: Output, components: Output, tcomponents :List(type)  , timeoutMs :Int  )  ->(GoOperation?){
+func queueEnqueue( scope:Scope,handle: Output, components: Output, tcomponents :List(type)  , timeoutMs :Int  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -12947,7 +12970,8 @@ func queueEnqueue(scope:Scope,handle: Output, components: Output, tcomponents :L
         Input: [ handle, components],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -12967,7 +12991,7 @@ elements have been enqueued (or 'timeout_ms' elapses, if specified).
 
 
 
-func queueEnqueueMany(scope:Scope,handle: Output, components: Output, tcomponents :List(type)  , timeoutMs :Int  )  ->(GoOperation?){
+func queueEnqueueMany( scope:Scope,handle: Output, components: Output, tcomponents :List(type)  , timeoutMs :Int  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -12982,7 +13006,8 @@ func queueEnqueueMany(scope:Scope,handle: Output, components: Output, tcomponent
         Input: [ handle, components],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -13002,7 +13027,7 @@ elements have been enqueued (or 'timeout_ms' elapses, if specified).
 
 
 
-func queueEnqueueManyV2(scope:Scope,handle: Output, components: Output, tcomponents :List(type)  , timeoutMs :Int  )  ->(GoOperation?){
+func queueEnqueueManyV2( scope:Scope,handle: Output, components: Output, tcomponents :List(type)  , timeoutMs :Int  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -13017,7 +13042,8 @@ func queueEnqueueManyV2(scope:Scope,handle: Output, components: Output, tcompone
         Input: [ handle, components],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -13034,7 +13060,7 @@ element has been enqueued (or 'timeout_ms' elapses, if specified).
 
 
 
-func queueEnqueueV2(scope:Scope,handle: Output, components: Output, tcomponents :List(type)  , timeoutMs :Int  )  ->(GoOperation?){
+func queueEnqueueV2( scope:Scope,handle: Output, components: Output, tcomponents :List(type)  , timeoutMs :Int  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -13049,7 +13075,8 @@ func queueEnqueueV2(scope:Scope,handle: Output, components: Output, tcomponents 
         Input: [ handle, components],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -13062,7 +13089,7 @@ Computes the number of elements in the given queue.
 
 
 
-func queueSize(scope:Scope,handle: Output )  ->(GoOperation?){
+func queueSize( scope:Scope,handle: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -13076,7 +13103,7 @@ func queueSize(scope:Scope,handle: Output )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -13089,7 +13116,7 @@ Computes the number of elements in the given queue.
 
 
 
-func queueSizeV2(scope:Scope,handle: Output )  ->(GoOperation?){
+func queueSizeV2( scope:Scope,handle: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -13103,7 +13130,7 @@ func queueSizeV2(scope:Scope,handle: Output )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -13121,7 +13148,7 @@ followed by the `fft_length / 2` positive-frequency terms.
 
 
 
-func rfft(scope:Scope,input: Output, fftLength: Output )  ->(GoOperation?){
+func rfft( scope:Scope,input: Output, fftLength: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -13135,7 +13162,7 @@ func rfft(scope:Scope,input: Output, fftLength: Output )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -13154,7 +13181,7 @@ positive-frequency terms.
 
 
 
-func rfft2D(scope:Scope,input: Output, fftLength: Output )  ->(GoOperation?){
+func rfft2D( scope:Scope,input: Output, fftLength: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -13168,7 +13195,7 @@ func rfft2D(scope:Scope,input: Output, fftLength: Output )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -13187,7 +13214,7 @@ positive-frequency terms.
 
 
 
-func rfft3D(scope:Scope,input: Output, fftLength: Output )  ->(GoOperation?){
+func rfft3D( scope:Scope,input: Output, fftLength: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -13201,7 +13228,7 @@ func rfft3D(scope:Scope,input: Output, fftLength: Output )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -13220,7 +13247,7 @@ corresponds to pure red, hue 1/3 is pure green, and 2/3 is pure blue.
 
 
 
-func rgbToHSV(scope:Scope,images: Output, t :Type  )  ->(GoOperation?){
+func rgbToHSV( scope:Scope,images: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -13235,7 +13262,7 @@ func rgbToHSV(scope:Scope,images: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -13253,7 +13280,7 @@ area will fit inside the original image.
 
 
 
-func randomCrop(scope:Scope,image: Output, size: Output, t :Type  , seed :Int  , seed2 :Int  )  ->(GoOperation?){
+func randomCrop( scope:Scope,image: Output, size: Output, t :Type  , seed :Int  , seed2 :Int  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -13270,7 +13297,7 @@ func randomCrop(scope:Scope,image: Output, size: Output, t :Type  , seed :Int  ,
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -13286,7 +13313,7 @@ See http://dl.acm.org/citation.cfm?id=358414
 
 
 
-func randomGamma(scope:Scope,shape: Output, alpha: Output, seed :Int  , seed2 :Int  , s :Type  , t :Type  )  ->(GoOperation?){
+func randomGamma( scope:Scope,shape: Output, alpha: Output, seed :Int  , seed2 :Int  , s :Type  , t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -13304,7 +13331,7 @@ func randomGamma(scope:Scope,shape: Output, alpha: Output, seed :Int  , seed2 :I
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -13325,7 +13352,7 @@ Programming, Volume 2. Addison Wesley
 
 
 
-func randomPoisson(scope:Scope,shape: Output, rate: Output, seed :Int  , seed2 :Int  , s :Type  , dtype :Type  )  ->(GoOperation?){
+func randomPoisson( scope:Scope,shape: Output, rate: Output, seed :Int  , seed2 :Int  , s :Type  , dtype :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -13343,7 +13370,7 @@ func randomPoisson(scope:Scope,shape: Output, rate: Output, seed :Int  , seed2 :
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -13364,7 +13391,7 @@ Randomly shuffles a tensor along its first dimension.
 
 
 
-func randomShuffle(scope:Scope,value: Output, seed :Int  , seed2 :Int  , t :Type  )  ->(GoOperation?){
+func randomShuffle( scope:Scope,value: Output, seed :Int  , seed2 :Int  , t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -13381,7 +13408,7 @@ func randomShuffle(scope:Scope,value: Output, seed :Int  , seed2 :Int  , t :Type
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -13394,7 +13421,7 @@ A queue that randomizes the order of elements.
 
 
 
-func randomShuffleQueue(scope:Scope, componentTypes :List(type)  , shapes :List(shape)  , capacity :Int  , minAfterDequeue :Int  , seed :Int  , seed2 :Int  , container :String  , sharedName :String  )  ->(GoOperation?){
+func randomShuffleQueue( scope:Scope, componentTypes :List(type)  , shapes :List(shape)  , capacity :Int  , minAfterDequeue :Int  , seed :Int  , seed2 :Int  , container :String  , sharedName :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -13416,7 +13443,7 @@ func randomShuffleQueue(scope:Scope, componentTypes :List(type)  , shapes :List(
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -13429,7 +13456,7 @@ A queue that randomizes the order of elements.
 
 
 
-func randomShuffleQueueV2(scope:Scope, componentTypes :List(type)  , shapes :List(shape)  , capacity :Int  , minAfterDequeue :Int  , seed :Int  , seed2 :Int  , container :String  , sharedName :String  )  ->(GoOperation?){
+func randomShuffleQueueV2( scope:Scope, componentTypes :List(type)  , shapes :List(shape)  , capacity :Int  , minAfterDequeue :Int  , seed :Int  , seed2 :Int  , container :String  , sharedName :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -13451,7 +13478,7 @@ func randomShuffleQueueV2(scope:Scope, componentTypes :List(type)  , shapes :Lis
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -13465,7 +13492,7 @@ The generated values will have mean 0 and standard deviation 1.
 
 
 
-func randomStandardNormal(scope:Scope,shape: Output, seed :Int  , seed2 :Int  , dtype :Type  , t :Type  )  ->(GoOperation?){
+func randomStandardNormal( scope:Scope,shape: Output, seed :Int  , seed2 :Int  , dtype :Type  , t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -13483,7 +13510,7 @@ func randomStandardNormal(scope:Scope,shape: Output, seed :Int  , seed2 :Int  , 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -13498,7 +13525,7 @@ lower bound 0 is included in the range, while the upper bound 1 is excluded.
 
 
 
-func randomUniform(scope:Scope,shape: Output, seed :Int  , seed2 :Int  , dtype :Type  , t :Type  )  ->(GoOperation?){
+func randomUniform( scope:Scope,shape: Output, seed :Int  , seed2 :Int  , dtype :Type  , t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -13516,7 +13543,7 @@ func randomUniform(scope:Scope,shape: Output, seed :Int  , seed2 :Int  , dtype :
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -13535,7 +13562,7 @@ smaller than the range of the output (either `2^32` or `2^64`).
 
 
 
-func randomUniformInt(scope:Scope,shape: Output, minval: Output, maxval: Output, seed :Int  , seed2 :Int  , tout :Type  , t :Type  )  ->(GoOperation?){
+func randomUniformInt( scope:Scope,shape: Output, minval: Output, maxval: Output, seed :Int  , seed2 :Int  , tout :Type  , t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -13553,7 +13580,7 @@ func randomUniformInt(scope:Scope,shape: Output, minval: Output, maxval: Output,
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -13575,7 +13602,7 @@ tf.range(start, limit, delta) ==> [3, 6, 9, 12, 15]
 
 
 
-func range(scope:Scope,start: Output, limit: Output, delta: Output, tidx :Type  )  ->(GoOperation?){
+func range( scope:Scope,start: Output, limit: Output, delta: Output, tidx :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -13590,7 +13617,7 @@ func range(scope:Scope,start: Output, limit: Output, delta: Output, tidx :Type  
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -13603,7 +13630,7 @@ Creates a dataset with a range of values. Corresponds to python's xrange.
 
 
 
-func rangeDataset(scope:Scope,start: Output, stop: Output, step: Output, outputTypes :List(type)  , outputShapes :List(shape)  )  ->(GoOperation?){
+func rangeDataset( scope:Scope,start: Output, stop: Output, step: Output, outputTypes :List(type)  , outputShapes :List(shape)  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -13619,7 +13646,7 @@ func rangeDataset(scope:Scope,start: Output, stop: Output, step: Output, outputT
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -13642,7 +13669,7 @@ of the tensor. Rank is also known as "order", "degree", or "ndims."
 
 
 
-func rank(scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
+func rank( scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -13657,7 +13684,7 @@ func rank(scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -13670,7 +13697,7 @@ Reads and outputs the entire contents of the input filename.
 
 
 
-func readFile(scope:Scope,filename: Output )  ->(GoOperation?){
+func readFile( scope:Scope,filename: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -13684,7 +13711,7 @@ func readFile(scope:Scope,filename: Output )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -13699,7 +13726,7 @@ succeeded.
 
 
 
-func readerNumRecordsProduced(scope:Scope,readerHandle: Output )  ->(GoOperation?){
+func readerNumRecordsProduced( scope:Scope,readerHandle: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -13713,7 +13740,7 @@ func readerNumRecordsProduced(scope:Scope,readerHandle: Output )  ->(GoOperation
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -13728,7 +13755,7 @@ succeeded.
 
 
 
-func readerNumRecordsProducedV2(scope:Scope,readerHandle: Output )  ->(GoOperation?){
+func readerNumRecordsProducedV2( scope:Scope,readerHandle: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -13742,7 +13769,7 @@ func readerNumRecordsProducedV2(scope:Scope,readerHandle: Output )  ->(GoOperati
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -13755,7 +13782,7 @@ Returns the number of work units this Reader has finished processing.
 
 
 
-func readerNumWorkUnitsCompleted(scope:Scope,readerHandle: Output )  ->(GoOperation?){
+func readerNumWorkUnitsCompleted( scope:Scope,readerHandle: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -13769,7 +13796,7 @@ func readerNumWorkUnitsCompleted(scope:Scope,readerHandle: Output )  ->(GoOperat
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -13782,7 +13809,7 @@ Returns the number of work units this Reader has finished processing.
 
 
 
-func readerNumWorkUnitsCompletedV2(scope:Scope,readerHandle: Output )  ->(GoOperation?){
+func readerNumWorkUnitsCompletedV2( scope:Scope,readerHandle: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -13796,7 +13823,7 @@ func readerNumWorkUnitsCompletedV2(scope:Scope,readerHandle: Output )  ->(GoOper
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -13812,7 +13839,7 @@ with the previous file).
 
 
 
-func readerRead(scope:Scope,readerHandle: Output, queueHandle: Output )  ->(key: Output, value: Output){
+func readerRead( scope:Scope,readerHandle: Output, queueHandle: Output )  ->(key: Output, value: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -13826,7 +13853,7 @@ func readerRead(scope:Scope,readerHandle: Output, queueHandle: Output )  ->(key:
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1))
+    return (op.output(1 - 1),op.output(2 - 1))
 }
 
 /*
@@ -13843,7 +13870,7 @@ It may return less than `num_records` even before the last batch.
 
 
 
-func readerReadUpTo(scope:Scope,readerHandle: Output, queueHandle: Output, numRecords: Output )  ->(keys: Output, values: Output){
+func readerReadUpTo( scope:Scope,readerHandle: Output, queueHandle: Output, numRecords: Output )  ->(keys: Output, values: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -13857,7 +13884,7 @@ func readerReadUpTo(scope:Scope,readerHandle: Output, queueHandle: Output, numRe
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1))
+    return (op.output(1 - 1),op.output(2 - 1))
 }
 
 /*
@@ -13874,7 +13901,7 @@ It may return less than `num_records` even before the last batch.
 
 
 
-func readerReadUpToV2(scope:Scope,readerHandle: Output, queueHandle: Output, numRecords: Output )  ->(keys: Output, values: Output){
+func readerReadUpToV2( scope:Scope,readerHandle: Output, queueHandle: Output, numRecords: Output )  ->(keys: Output, values: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -13888,7 +13915,7 @@ func readerReadUpToV2(scope:Scope,readerHandle: Output, queueHandle: Output, num
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1))
+    return (op.output(1 - 1),op.output(2 - 1))
 }
 
 /*
@@ -13904,7 +13931,7 @@ with the previous file).
 
 
 
-func readerReadV2(scope:Scope,readerHandle: Output, queueHandle: Output )  ->(key: Output, value: Output){
+func readerReadV2( scope:Scope,readerHandle: Output, queueHandle: Output )  ->(key: Output, value: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -13918,7 +13945,7 @@ func readerReadV2(scope:Scope,readerHandle: Output, queueHandle: Output )  ->(ke
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1))
+    return (op.output(1 - 1),op.output(2 - 1))
 }
 
 /*
@@ -13931,7 +13958,7 @@ Restore a Reader to its initial clean state.
 
 
 
-func readerReset(scope:Scope,readerHandle: Output )  ->(GoOperation?){
+func readerReset( scope:Scope,readerHandle: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -13944,7 +13971,8 @@ func readerReset(scope:Scope,readerHandle: Output )  ->(GoOperation?){
         Input: [ readerHandle],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -13957,7 +13985,7 @@ Restore a Reader to its initial clean state.
 
 
 
-func readerResetV2(scope:Scope,readerHandle: Output )  ->(GoOperation?){
+func readerResetV2( scope:Scope,readerHandle: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -13970,7 +13998,8 @@ func readerResetV2(scope:Scope,readerHandle: Output )  ->(GoOperation?){
         Input: [ readerHandle],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -13985,7 +14014,7 @@ Unimplemented error.
 
 
 
-func readerRestoreState(scope:Scope,readerHandle: Output, state: Output )  ->(GoOperation?){
+func readerRestoreState( scope:Scope,readerHandle: Output, state: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -13998,7 +14027,8 @@ func readerRestoreState(scope:Scope,readerHandle: Output, state: Output )  ->(Go
         Input: [ readerHandle, state],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -14013,7 +14043,7 @@ Unimplemented error.
 
 
 
-func readerRestoreStateV2(scope:Scope,readerHandle: Output, state: Output )  ->(GoOperation?){
+func readerRestoreStateV2( scope:Scope,readerHandle: Output, state: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -14026,7 +14056,8 @@ func readerRestoreStateV2(scope:Scope,readerHandle: Output, state: Output )  ->(
         Input: [ readerHandle, state],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -14041,7 +14072,7 @@ Unimplemented error.
 
 
 
-func readerSerializeState(scope:Scope,readerHandle: Output )  ->(GoOperation?){
+func readerSerializeState( scope:Scope,readerHandle: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -14055,7 +14086,7 @@ func readerSerializeState(scope:Scope,readerHandle: Output )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -14070,7 +14101,7 @@ Unimplemented error.
 
 
 
-func readerSerializeStateV2(scope:Scope,readerHandle: Output )  ->(GoOperation?){
+func readerSerializeStateV2( scope:Scope,readerHandle: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -14084,7 +14115,7 @@ func readerSerializeStateV2(scope:Scope,readerHandle: Output )  ->(GoOperation?)
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -14106,7 +14137,7 @@ tf.real(input) ==> [-2.25, 3.25]
 
 
 
-func real(scope:Scope,input: Output, t :Type  , tout :Type  )  ->(GoOperation?){
+func real( scope:Scope,input: Output, t :Type  , tout :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -14122,7 +14153,7 @@ func real(scope:Scope,input: Output, t :Type  , tout :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -14138,7 +14169,7 @@ If `x` and `y` are reals, this will return the floating-point division.
 
 
 
-func realDiv(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+func realDiv( scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -14153,7 +14184,7 @@ func realDiv(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -14167,7 +14198,7 @@ I.e., \\(y = 1 / x\\).
 
 
 
-func reciprocal(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+func reciprocal( scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -14182,7 +14213,7 @@ func reciprocal(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -14197,7 +14228,7 @@ is the corresponding input gradient.
 
 
 
-func reciprocalGrad(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+func reciprocalGrad( scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -14212,7 +14243,7 @@ func reciprocalGrad(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -14225,7 +14256,7 @@ Emits randomized records.
 
 
 
-func recordInput(scope:Scope, filePattern :String  , fileRandomSeed :Int  , fileShuffleShiftRatio :Float  , fileBufferSize :Int  , fileParallelism :Int  , batchSize :Int  )  ->(GoOperation?){
+func recordInput( scope:Scope, filePattern :String  , fileRandomSeed :Int  , fileShuffleShiftRatio :Float  , fileBufferSize :Int  , fileParallelism :Int  , batchSize :Int  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -14245,7 +14276,7 @@ func recordInput(scope:Scope, filePattern :String  , fileRandomSeed :Int  , file
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -14276,7 +14307,7 @@ tf.reduce_join(a, []) ==> ["abcd"]
 
 
 
-func reduceJoin(scope:Scope,inputs: Output, reductionIndices: Output, keepDims :Bool  , separator :String  )  ->(GoOperation?){
+func reduceJoin( scope:Scope,inputs: Output, reductionIndices: Output, keepDims :Bool  , separator :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -14292,7 +14323,7 @@ func reduceJoin(scope:Scope,inputs: Output, reductionIndices: Output, keepDims :
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -14309,7 +14340,7 @@ are run in parallel in the child frame.
 
 
 
-func refEnter(scope:Scope,data: Output, t :Type  , frameName :String  , isConstant :Bool  , parallelIterations :Int  )  ->(GoOperation?){
+func refEnter( scope:Scope,data: Output, t :Type  , frameName :String  , isConstant :Bool  , parallelIterations :Int  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -14327,7 +14358,7 @@ func refEnter(scope:Scope,data: Output, t :Type  , frameName :String  , isConsta
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -14341,7 +14372,7 @@ Exit makes its input `data` available to the parent frame.
 
 
 
-func refExit(scope:Scope,data: Output, t :Type  )  ->(GoOperation?){
+func refExit( scope:Scope,data: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -14356,7 +14387,7 @@ func refExit(scope:Scope,data: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -14369,7 +14400,7 @@ Return the same ref tensor as the input ref tensor.
 
 
 
-func refIdentity(scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
+func refIdentity( scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -14384,7 +14415,7 @@ func refIdentity(scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -14401,7 +14432,7 @@ It is usually combined with `Switch` to implement branching.
 
 
 
-func refMerge(scope:Scope,inputs: Output, t :Type  , n :Int  )  ->(output: Output, valueIndex: Output){
+func refMerge( scope:Scope,inputs: Output, t :Type  , n :Int  )  ->(output: Output, valueIndex: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -14417,7 +14448,7 @@ func refMerge(scope:Scope,inputs: Output, t :Type  , n :Int  )  ->(output: Outpu
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1))
+    return (op.output(1 - 1),op.output(2 - 1))
 }
 
 /*
@@ -14430,7 +14461,7 @@ Makes its input available to the next iteration.
 
 
 
-func refNextIteration(scope:Scope,data: Output, t :Type  )  ->(GoOperation?){
+func refNextIteration( scope:Scope,data: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -14445,7 +14476,7 @@ func refNextIteration(scope:Scope,data: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -14458,7 +14489,7 @@ Forwards the `index`th element of `inputs` to `output`.
 
 
 
-func refSelect(scope:Scope,index: Output, inputs: Output, t :Type  , n :Int  )  ->(GoOperation?){
+func refSelect( scope:Scope,index: Output, inputs: Output, t :Type  , n :Int  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -14474,7 +14505,7 @@ func refSelect(scope:Scope,index: Output, inputs: Output, t :Type  , n :Int  )  
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -14490,7 +14521,7 @@ See also `Switch` and `Merge`.
 
 
 
-func refSwitch(scope:Scope,data: Output, pred: Output, t :Type  )  ->(outputFalse: Output, outputTrue: Output){
+func refSwitch( scope:Scope,data: Output, pred: Output, t :Type  )  ->(outputFalse: Output, outputTrue: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -14505,7 +14536,7 @@ func refSwitch(scope:Scope,data: Output, pred: Output, t :Type  )  ->(outputFals
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1))
+    return (op.output(1 - 1),op.output(2 - 1))
 }
 
 /*
@@ -14518,7 +14549,7 @@ Computes rectified linear: `max(features, 0)`.
 
 
 
-func relu(scope:Scope,features: Output, t :Type  )  ->(GoOperation?){
+func relu( scope:Scope,features: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -14533,7 +14564,7 @@ func relu(scope:Scope,features: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -14546,7 +14577,7 @@ Computes rectified linear 6: `min(max(features, 0), 6)`.
 
 
 
-func relu6(scope:Scope,features: Output, t :Type  )  ->(GoOperation?){
+func relu6( scope:Scope,features: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -14561,7 +14592,7 @@ func relu6(scope:Scope,features: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -14574,7 +14605,7 @@ Computes rectified linear 6 gradients for a Relu6 operation.
 
 
 
-func relu6Grad(scope:Scope,gradients: Output, features: Output, t :Type  )  ->(GoOperation?){
+func relu6Grad( scope:Scope,gradients: Output, features: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -14589,7 +14620,7 @@ func relu6Grad(scope:Scope,gradients: Output, features: Output, t :Type  )  ->(G
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -14602,7 +14633,7 @@ Computes rectified linear gradients for a Relu operation.
 
 
 
-func reluGrad(scope:Scope,gradients: Output, features: Output, t :Type  )  ->(GoOperation?){
+func reluGrad( scope:Scope,gradients: Output, features: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -14617,7 +14648,7 @@ func reluGrad(scope:Scope,gradients: Output, features: Output, t :Type  )  ->(Go
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -14630,7 +14661,7 @@ Creates a dataset that emits the outputs of `input_dataset` `count` times.
 
 
 
-func repeatDataset(scope:Scope,inputDataset: Output, count: Output, outputTypes :List(type)  , outputShapes :List(shape)  )  ->(GoOperation?){
+func repeatDataset( scope:Scope,inputDataset: Output, count: Output, outputTypes :List(type)  , outputShapes :List(shape)  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -14646,7 +14677,7 @@ func repeatDataset(scope:Scope,inputDataset: Output, count: Output, outputTypes 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -14662,7 +14693,7 @@ Requantize.
 
 
 
-func requantizationRange(scope:Scope,input: Output, inputMin: Output, inputMax: Output, tinput :Type  )  ->(outputMin: Output, outputMax: Output){
+func requantizationRange( scope:Scope,input: Output, inputMin: Output, inputMax: Output, tinput :Type  )  ->(outputMin: Output, outputMax: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -14677,7 +14708,7 @@ func requantizationRange(scope:Scope,input: Output, inputMin: Output, inputMax: 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1))
+    return (op.output(1 - 1),op.output(2 - 1))
 }
 
 /*
@@ -14695,7 +14726,7 @@ value in the 16-bit data should be interpreted as -1.0f, and a 65535 means 1.0f.
 
 
 
-func requantize(scope:Scope,input: Output, inputMin: Output, inputMax: Output, requestedOutputMin: Output, requestedOutputMax: Output, tinput :Type  , outType :Type  )  ->(output: Output, outputMin: Output, outputMax: Output){
+func requantize( scope:Scope,input: Output, inputMin: Output, inputMax: Output, requestedOutputMin: Output, requestedOutputMax: Output, tinput :Type  , outType :Type  )  ->(output: Output, outputMin: Output, outputMax: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -14711,7 +14742,7 @@ func requantize(scope:Scope,input: Output, inputMin: Output, inputMax: Output, r
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1))
 }
 
 /*
@@ -14771,7 +14802,7 @@ reshape(t, []) ==> 7
 
 
 
-func reshape(scope:Scope,tensor: Output, shape: Output, t :Type  , tshape :Type  )  ->(GoOperation?){
+func reshape( scope:Scope,tensor: Output, shape: Output, t :Type  , tshape :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -14787,7 +14818,7 @@ func reshape(scope:Scope,tensor: Output, shape: Output, t :Type  , tshape :Type 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -14801,7 +14832,7 @@ Input images can be of different types but output images are always float.
 
 
 
-func resizeArea(scope:Scope,images: Output, size: Output, t :Type  , alignCorners :Bool  )  ->(GoOperation?){
+func resizeArea( scope:Scope,images: Output, size: Output, t :Type  , alignCorners :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -14817,7 +14848,7 @@ func resizeArea(scope:Scope,images: Output, size: Output, t :Type  , alignCorner
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -14831,7 +14862,7 @@ Input images can be of different types but output images are always float.
 
 
 
-func resizeBicubic(scope:Scope,images: Output, size: Output, t :Type  , alignCorners :Bool  )  ->(GoOperation?){
+func resizeBicubic( scope:Scope,images: Output, size: Output, t :Type  , alignCorners :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -14847,7 +14878,7 @@ func resizeBicubic(scope:Scope,images: Output, size: Output, t :Type  , alignCor
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -14861,7 +14892,7 @@ Input images can be of different types but output images are always float.
 
 
 
-func resizeBilinear(scope:Scope,images: Output, size: Output, t :Type  , alignCorners :Bool  )  ->(GoOperation?){
+func resizeBilinear( scope:Scope,images: Output, size: Output, t :Type  , alignCorners :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -14877,7 +14908,7 @@ func resizeBilinear(scope:Scope,images: Output, size: Output, t :Type  , alignCo
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -14890,7 +14921,7 @@ Computes the gradient of bilinear interpolation.
 
 
 
-func resizeBilinearGrad(scope:Scope,grads: Output, originalImage: Output, t :Type  , alignCorners :Bool  )  ->(GoOperation?){
+func resizeBilinearGrad( scope:Scope,grads: Output, originalImage: Output, t :Type  , alignCorners :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -14906,7 +14937,7 @@ func resizeBilinearGrad(scope:Scope,grads: Output, originalImage: Output, t :Typ
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -14919,7 +14950,7 @@ Resize `images` to `size` using nearest neighbor interpolation.
 
 
 
-func resizeNearestNeighbor(scope:Scope,images: Output, size: Output, t :Type  , alignCorners :Bool  )  ->(GoOperation?){
+func resizeNearestNeighbor( scope:Scope,images: Output, size: Output, t :Type  , alignCorners :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -14935,7 +14966,7 @@ func resizeNearestNeighbor(scope:Scope,images: Output, size: Output, t :Type  , 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -14948,7 +14979,7 @@ Computes the gradient of nearest neighbor interpolation.
 
 
 
-func resizeNearestNeighborGrad(scope:Scope,grads: Output, size: Output, t :Type  , alignCorners :Bool  )  ->(GoOperation?){
+func resizeNearestNeighborGrad( scope:Scope,grads: Output, size: Output, t :Type  , alignCorners :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -14964,7 +14995,7 @@ func resizeNearestNeighborGrad(scope:Scope,grads: Output, size: Output, t :Type 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -14981,7 +15012,7 @@ var -= update;
 
 
 
-func resourceApplyAdadelta(scope:Scope,`var`: Output, accum: Output, accumUpdate: Output, lr: Output, rho: Output, epsilon: Output, grad: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
+func resourceApplyAdadelta( scope:Scope,`var`: Output, accum: Output, accumUpdate: Output, lr: Output, rho: Output, epsilon: Output, grad: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -14996,7 +15027,8 @@ func resourceApplyAdadelta(scope:Scope,`var`: Output, accum: Output, accumUpdate
         Input: [ `var`, accum, accumUpdate, lr, rho, epsilon, grad],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -15011,7 +15043,7 @@ var -= lr * grad * (1 / sqrt(accum))
 
 
 
-func resourceApplyAdagrad(scope:Scope,`var`: Output, accum: Output, lr: Output, grad: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
+func resourceApplyAdagrad( scope:Scope,`var`: Output, accum: Output, lr: Output, grad: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -15026,7 +15058,8 @@ func resourceApplyAdagrad(scope:Scope,`var`: Output, accum: Output, lr: Output, 
         Input: [ `var`, accum, lr, grad],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -15039,7 +15072,7 @@ Update '*var' according to the proximal adagrad scheme.
 
 
 
-func resourceApplyAdagradDA(scope:Scope,`var`: Output, gradientAccumulator: Output, gradientSquaredAccumulator: Output, grad: Output, lr: Output, l1: Output, l2: Output, globalStep: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
+func resourceApplyAdagradDA( scope:Scope,`var`: Output, gradientAccumulator: Output, gradientSquaredAccumulator: Output, grad: Output, lr: Output, l1: Output, l2: Output, globalStep: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -15054,7 +15087,8 @@ func resourceApplyAdagradDA(scope:Scope,`var`: Output, gradientAccumulator: Outp
         Input: [ `var`, gradientAccumulator, gradientSquaredAccumulator, grad, lr, l1, l2, globalStep],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -15071,7 +15105,7 @@ variable <- variable - lr_t * m_t / (sqrt(v_t) + epsilon)
 
 
 
-func resourceApplyAdam(scope:Scope,`var`: Output, m: Output, v: Output, beta1Power: Output, beta2Power: Output, lr: Output, beta1: Output, beta2: Output, epsilon: Output, grad: Output, t :Type  , useLocking :Bool  , useNesterov :Bool  )  ->(GoOperation?){
+func resourceApplyAdam( scope:Scope,`var`: Output, m: Output, v: Output, beta1Power: Output, beta2Power: Output, lr: Output, beta1: Output, beta2: Output, epsilon: Output, grad: Output, t :Type  , useLocking :Bool  , useNesterov :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -15087,7 +15121,8 @@ func resourceApplyAdam(scope:Scope,`var`: Output, m: Output, v: Output, beta1Pow
         Input: [ `var`, m, v, beta1Power, beta2Power, lr, beta1, beta2, epsilon, grad],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -15114,7 +15149,7 @@ var <- var - mom
 
 
 
-func resourceApplyCenteredRMSProp(scope:Scope,`var`: Output, mg: Output, ms: Output, mom: Output, lr: Output, rho: Output, momentum: Output, epsilon: Output, grad: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
+func resourceApplyCenteredRMSProp( scope:Scope,`var`: Output, mg: Output, ms: Output, mom: Output, lr: Output, rho: Output, momentum: Output, epsilon: Output, grad: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -15129,7 +15164,8 @@ func resourceApplyCenteredRMSProp(scope:Scope,`var`: Output, mg: Output, ms: Out
         Input: [ `var`, mg, ms, mom, lr, rho, momentum, epsilon, grad],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -15147,7 +15183,7 @@ accum = accum_new
 
 
 
-func resourceApplyFtrl(scope:Scope,`var`: Output, accum: Output, linear: Output, grad: Output, lr: Output, l1: Output, l2: Output, lrPower: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
+func resourceApplyFtrl( scope:Scope,`var`: Output, accum: Output, linear: Output, grad: Output, lr: Output, l1: Output, l2: Output, lrPower: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -15162,7 +15198,8 @@ func resourceApplyFtrl(scope:Scope,`var`: Output, accum: Output, linear: Output,
         Input: [ `var`, accum, linear, grad, lr, l1, l2, lrPower],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -15175,7 +15212,7 @@ Update '*var' by subtracting 'alpha' * 'delta' from it.
 
 
 
-func resourceApplyGradientDescent(scope:Scope,`var`: Output, alpha: Output, delta: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
+func resourceApplyGradientDescent( scope:Scope,`var`: Output, alpha: Output, delta: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -15190,7 +15227,8 @@ func resourceApplyGradientDescent(scope:Scope,`var`: Output, alpha: Output, delt
         Input: [ `var`, alpha, delta],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -15206,7 +15244,7 @@ var -= lr * accum
 
 
 
-func resourceApplyMomentum(scope:Scope,`var`: Output, accum: Output, lr: Output, grad: Output, momentum: Output, t :Type  , useLocking :Bool  , useNesterov :Bool  )  ->(GoOperation?){
+func resourceApplyMomentum( scope:Scope,`var`: Output, accum: Output, lr: Output, grad: Output, momentum: Output, t :Type  , useLocking :Bool  , useNesterov :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -15222,7 +15260,8 @@ func resourceApplyMomentum(scope:Scope,`var`: Output, accum: Output, lr: Output,
         Input: [ `var`, accum, lr, grad, momentum],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -15238,7 +15277,7 @@ var = sign(prox_v)/(1+lr*l2) * max{|prox_v|-lr*l1,0}
 
 
 
-func resourceApplyProximalAdagrad(scope:Scope,`var`: Output, accum: Output, lr: Output, l1: Output, l2: Output, grad: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
+func resourceApplyProximalAdagrad( scope:Scope,`var`: Output, accum: Output, lr: Output, l1: Output, l2: Output, grad: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -15253,7 +15292,8 @@ func resourceApplyProximalAdagrad(scope:Scope,`var`: Output, accum: Output, lr: 
         Input: [ `var`, accum, lr, l1, l2, grad],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -15268,7 +15308,7 @@ var = sign(prox_v)/(1+alpha*l2) * max{|prox_v|-alpha*l1,0}
 
 
 
-func resourceApplyProximalGradientDescent(scope:Scope,`var`: Output, alpha: Output, l1: Output, l2: Output, delta: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
+func resourceApplyProximalGradientDescent( scope:Scope,`var`: Output, alpha: Output, l1: Output, l2: Output, delta: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -15283,7 +15323,8 @@ func resourceApplyProximalGradientDescent(scope:Scope,`var`: Output, alpha: Outp
         Input: [ `var`, alpha, l1, l2, delta],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -15304,7 +15345,7 @@ var <- var - mom
 
 
 
-func resourceApplyRMSProp(scope:Scope,`var`: Output, ms: Output, mom: Output, lr: Output, rho: Output, momentum: Output, epsilon: Output, grad: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
+func resourceApplyRMSProp( scope:Scope,`var`: Output, ms: Output, mom: Output, lr: Output, rho: Output, momentum: Output, epsilon: Output, grad: Output, t :Type  , useLocking :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -15319,7 +15360,8 @@ func resourceApplyRMSProp(scope:Scope,`var`: Output, ms: Output, mom: Output, lr
         Input: [ `var`, ms, mom, lr, rho, momentum, epsilon, grad],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -15332,7 +15374,7 @@ var: Should be from a Variable().
 
 
 
-func resourceSparseApplyAdadelta(scope:Scope,`var`: Output, accum: Output, accumUpdate: Output, lr: Output, rho: Output, epsilon: Output, grad: Output, indices: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
+func resourceSparseApplyAdadelta( scope:Scope,`var`: Output, accum: Output, accumUpdate: Output, lr: Output, rho: Output, epsilon: Output, grad: Output, indices: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -15348,7 +15390,8 @@ func resourceSparseApplyAdadelta(scope:Scope,`var`: Output, accum: Output, accum
         Input: [ `var`, accum, accumUpdate, lr, rho, epsilon, grad, indices],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -15364,7 +15407,7 @@ var -= lr * grad * (1 / sqrt(accum))
 
 
 
-func resourceSparseApplyAdagrad(scope:Scope,`var`: Output, accum: Output, lr: Output, grad: Output, indices: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
+func resourceSparseApplyAdagrad( scope:Scope,`var`: Output, accum: Output, lr: Output, grad: Output, indices: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -15380,7 +15423,8 @@ func resourceSparseApplyAdagrad(scope:Scope,`var`: Output, accum: Output, lr: Ou
         Input: [ `var`, accum, lr, grad, indices],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -15393,7 +15437,7 @@ Update entries in '*var' and '*accum' according to the proximal adagrad scheme.
 
 
 
-func resourceSparseApplyAdagradDA(scope:Scope,`var`: Output, gradientAccumulator: Output, gradientSquaredAccumulator: Output, grad: Output, indices: Output, lr: Output, l1: Output, l2: Output, globalStep: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
+func resourceSparseApplyAdagradDA( scope:Scope,`var`: Output, gradientAccumulator: Output, gradientSquaredAccumulator: Output, grad: Output, indices: Output, lr: Output, l1: Output, l2: Output, globalStep: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -15409,7 +15453,8 @@ func resourceSparseApplyAdagradDA(scope:Scope,`var`: Output, gradientAccumulator
         Input: [ `var`, gradientAccumulator, gradientSquaredAccumulator, grad, indices, lr, l1, l2, globalStep],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -15435,7 +15480,7 @@ var <- var - mom
 
 
 
-func resourceSparseApplyCenteredRMSProp(scope:Scope,`var`: Output, mg: Output, ms: Output, mom: Output, lr: Output, rho: Output, momentum: Output, epsilon: Output, grad: Output, indices: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
+func resourceSparseApplyCenteredRMSProp( scope:Scope,`var`: Output, mg: Output, ms: Output, mom: Output, lr: Output, rho: Output, momentum: Output, epsilon: Output, grad: Output, indices: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -15451,7 +15496,8 @@ func resourceSparseApplyCenteredRMSProp(scope:Scope,`var`: Output, mg: Output, m
         Input: [ `var`, mg, ms, mom, lr, rho, momentum, epsilon, grad, indices],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -15470,7 +15516,7 @@ accum = accum_new
 
 
 
-func resourceSparseApplyFtrl(scope:Scope,`var`: Output, accum: Output, linear: Output, grad: Output, indices: Output, lr: Output, l1: Output, l2: Output, lrPower: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
+func resourceSparseApplyFtrl( scope:Scope,`var`: Output, accum: Output, linear: Output, grad: Output, indices: Output, lr: Output, l1: Output, l2: Output, lrPower: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -15486,7 +15532,8 @@ func resourceSparseApplyFtrl(scope:Scope,`var`: Output, accum: Output, linear: O
         Input: [ `var`, accum, linear, grad, indices, lr, l1, l2, lrPower],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -15503,7 +15550,7 @@ var -= lr * accum
 
 
 
-func resourceSparseApplyMomentum(scope:Scope,`var`: Output, accum: Output, lr: Output, grad: Output, indices: Output, momentum: Output, t :Type  , tindices :Type  , useLocking :Bool  , useNesterov :Bool  )  ->(GoOperation?){
+func resourceSparseApplyMomentum( scope:Scope,`var`: Output, accum: Output, lr: Output, grad: Output, indices: Output, momentum: Output, t :Type  , tindices :Type  , useLocking :Bool  , useNesterov :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -15520,7 +15567,8 @@ func resourceSparseApplyMomentum(scope:Scope,`var`: Output, accum: Output, lr: O
         Input: [ `var`, accum, lr, grad, indices, momentum],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -15538,7 +15586,7 @@ var = sign(prox_v)/(1+lr*l2) * max{|prox_v|-lr*l1,0}
 
 
 
-func resourceSparseApplyProximalAdagrad(scope:Scope,`var`: Output, accum: Output, lr: Output, l1: Output, l2: Output, grad: Output, indices: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
+func resourceSparseApplyProximalAdagrad( scope:Scope,`var`: Output, accum: Output, lr: Output, l1: Output, l2: Output, grad: Output, indices: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -15554,7 +15602,8 @@ func resourceSparseApplyProximalAdagrad(scope:Scope,`var`: Output, accum: Output
         Input: [ `var`, accum, lr, l1, l2, grad, indices],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -15570,7 +15619,7 @@ var = sign(prox_v)/(1+alpha*l2) * max{|prox_v|-alpha*l1,0}
 
 
 
-func resourceSparseApplyProximalGradientDescent(scope:Scope,`var`: Output, alpha: Output, l1: Output, l2: Output, grad: Output, indices: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
+func resourceSparseApplyProximalGradientDescent( scope:Scope,`var`: Output, alpha: Output, l1: Output, l2: Output, grad: Output, indices: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -15586,7 +15635,8 @@ func resourceSparseApplyProximalGradientDescent(scope:Scope,`var`: Output, alpha
         Input: [ `var`, alpha, l1, l2, grad, indices],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -15607,7 +15657,7 @@ var <- var - mom
 
 
 
-func resourceSparseApplyRMSProp(scope:Scope,`var`: Output, ms: Output, mom: Output, lr: Output, rho: Output, momentum: Output, epsilon: Output, grad: Output, indices: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
+func resourceSparseApplyRMSProp( scope:Scope,`var`: Output, ms: Output, mom: Output, lr: Output, rho: Output, momentum: Output, epsilon: Output, grad: Output, indices: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -15623,7 +15673,8 @@ func resourceSparseApplyRMSProp(scope:Scope,`var`: Output, ms: Output, mom: Outp
         Input: [ `var`, ms, mom, lr, rho, momentum, epsilon, grad, indices],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -15641,7 +15692,7 @@ shape must be exactly the shape produced by the slice of `ref`.
 
 
 
-func resourceStridedSliceAssign(scope:Scope,ref: Output, begin: Output, end: Output, strides: Output, value: Output, t :Type  , index :Type  , beginMask :Int  , endMask :Int  , ellipsisMask :Int  , newAxisMask :Int  , shrinkAxisMask :Int  )  ->(GoOperation?){
+func resourceStridedSliceAssign( scope:Scope,ref: Output, begin: Output, end: Output, strides: Output, value: Output, t :Type  , index :Type  , beginMask :Int  , endMask :Int  , ellipsisMask :Int  , newAxisMask :Int  , shrinkAxisMask :Int  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -15661,7 +15712,8 @@ func resourceStridedSliceAssign(scope:Scope,ref: Output, begin: Output, end: Out
         Input: [ ref, begin, end, strides, value],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -15688,7 +15740,7 @@ See also `RestoreSlice`.
 
 
 
-func restore(scope:Scope,filePattern: Output, tensorName: Output, dt :Type  , preferredShard :Int  )  ->(GoOperation?){
+func restore( scope:Scope,filePattern: Output, tensorName: Output, dt :Type  , preferredShard :Int  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -15704,7 +15756,7 @@ func restore(scope:Scope,filePattern: Output, tensorName: Output, dt :Type  , pr
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -15722,7 +15774,7 @@ elements of the `shapes_and_slices` input of the `SaveSlices` op.
 
 
 
-func restoreSlice(scope:Scope,filePattern: Output, tensorName: Output, shapeAndSlice: Output, dt :Type  , preferredShard :Int  )  ->(GoOperation?){
+func restoreSlice( scope:Scope,filePattern: Output, tensorName: Output, shapeAndSlice: Output, dt :Type  , preferredShard :Int  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -15738,7 +15790,7 @@ func restoreSlice(scope:Scope,filePattern: Output, tensorName: Output, shapeAndS
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -15762,7 +15814,7 @@ Callers must ensure all the named tensors are indeed stored in the checkpoint.
 
 
 
-func restoreV2(scope:Scope,`prefix`: Output, tensorNames: Output, shapeAndSlices: Output, dtypes :List(type)  )  ->(GoOperation?){
+func restoreV2( scope:Scope,`prefix`: Output, tensorNames: Output, shapeAndSlices: Output, dtypes :List(type)  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -15777,7 +15829,7 @@ func restoreV2(scope:Scope,`prefix`: Output, tensorNames: Output, shapeAndSlices
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -15827,7 +15879,7 @@ reverse(t, dims) ==> [[[[8, 9, 10, 11],
 
 
 
-func reverse(scope:Scope,tensor: Output, dims: Output, t :Type  )  ->(GoOperation?){
+func reverse( scope:Scope,tensor: Output, dims: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -15842,7 +15894,7 @@ func reverse(scope:Scope,tensor: Output, dims: Output, t :Type  )  ->(GoOperatio
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -15899,7 +15951,7 @@ output[2:, :, 3, :, ...] = input[2:, :, 3, :, ...]
 
 
 
-func reverseSequence(scope:Scope,input: Output, seqLengths: Output, seqDim :Int  , batchDim :Int  , t :Type  , tlen :Type  )  ->(GoOperation?){
+func reverseSequence( scope:Scope,input: Output, seqLengths: Output, seqDim :Int  , batchDim :Int  , t :Type  , tlen :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -15917,7 +15969,7 @@ func reverseSequence(scope:Scope,input: Output, seqLengths: Output, seqDim :Int 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -15969,7 +16021,7 @@ reverse(t, dims) ==> [[[[8, 9, 10, 11],
 
 
 
-func reverseV2(scope:Scope,tensor: Output, axis: Output, tidx :Type  , t :Type  )  ->(GoOperation?){
+func reverseV2( scope:Scope,tensor: Output, axis: Output, tidx :Type  , t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -15985,7 +16037,7 @@ func reverseV2(scope:Scope,tensor: Output, axis: Output, tidx :Type  , t :Type  
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -16006,7 +16058,7 @@ rint([-1.7, -1.5, -0.2, 0.2, 1.5, 1.7, 2.0]) ==> [-2., -2., -0., 0., 2., 2., 2.]
 
 
 
-func rint(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+func rint( scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -16021,7 +16073,7 @@ func rint(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -16036,7 +16088,7 @@ according to the current system rounding mode use std::cint.
 
 
 
-func round(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+func round( scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -16051,7 +16103,7 @@ func round(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -16065,7 +16117,7 @@ I.e., \\(y = 1 / \sqrt{x}\\).
 
 
 
-func rsqrt(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+func rsqrt( scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -16080,7 +16132,7 @@ func rsqrt(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -16095,7 +16147,7 @@ is the corresponding input gradient.
 
 
 
-func rsqrtGrad(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+func rsqrtGrad( scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -16110,7 +16162,7 @@ func rsqrtGrad(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -16154,7 +16206,7 @@ false and no bounding boxes are supplied, an error is raised.
 
 
 
-func sampleDistortedBoundingBox(scope:Scope,imageSize: Output, boundingBoxes: Output, t :Type  , seed :Int  , seed2 :Int  , minObjectCovered :Float  , aspectRatioRange :List(float)  , areaRange :List(float)  , maxAttempts :Int  , useImageIfNoBoundingBoxes :Bool  )  ->(begin: Output, size: Output, bboxes: Output){
+func sampleDistortedBoundingBox( scope:Scope,imageSize: Output, boundingBoxes: Output, t :Type  , seed :Int  , seed2 :Int  , minObjectCovered :Float  , aspectRatioRange :List(float)  , areaRange :List(float)  , maxAttempts :Int  , useImageIfNoBoundingBoxes :Bool  )  ->(begin: Output, size: Output, bboxes: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -16176,7 +16228,7 @@ func sampleDistortedBoundingBox(scope:Scope,imageSize: Output, boundingBoxes: Ou
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1))
 }
 
 /*
@@ -16192,7 +16244,7 @@ See also `SaveSlices`.
 
 
 
-func save(scope:Scope,filename: Output, tensorNames: Output, data: Output, t :List(type)  )  ->(GoOperation?){
+func save( scope:Scope,filename: Output, tensorNames: Output, data: Output, t :List(type)  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -16206,7 +16258,8 @@ func save(scope:Scope,filename: Output, tensorNames: Output, data: Output, t :Li
         Input: [ filename, tensorNames, data],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -16235,7 +16288,7 @@ See also `Save`.
 
 
 
-func saveSlices(scope:Scope,filename: Output, tensorNames: Output, shapesAndSlices: Output, data: Output, t :List(type)  )  ->(GoOperation?){
+func saveSlices( scope:Scope,filename: Output, tensorNames: Output, shapesAndSlices: Output, data: Output, t :List(type)  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -16249,7 +16302,8 @@ func saveSlices(scope:Scope,filename: Output, tensorNames: Output, shapesAndSlic
         Input: [ filename, tensorNames, shapesAndSlices, data],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -16265,7 +16319,7 @@ and correspondingly well-formed.
 
 
 
-func saveV2(scope:Scope,`prefix`: Output, tensorNames: Output, shapeAndSlices: Output, tensors: Output, dtypes :List(type)  )  ->(GoOperation?){
+func saveV2( scope:Scope,`prefix`: Output, tensorNames: Output, shapeAndSlices: Output, tensors: Output, dtypes :List(type)  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -16279,7 +16333,8 @@ func saveV2(scope:Scope,`prefix`: Output, tensorNames: Output, shapeAndSlices: O
         Input: [ `prefix`, tensorNames, shapeAndSlices, tensors],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -16294,7 +16349,7 @@ has a summary value for each tag-value pair in `tags` and `values`.
 
 
 
-func scalarSummary(scope:Scope,tags: Output, values: Output, t :Type  )  ->(GoOperation?){
+func scalarSummary( scope:Scope,tags: Output, values: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -16309,7 +16364,7 @@ func scalarSummary(scope:Scope,tags: Output, values: Output, t :Type  )  ->(GoOp
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -16337,7 +16392,7 @@ Requires `updates.shape = indices.shape + ref.shape[1:]`.
 
 
 
-func scatterAdd(scope:Scope,ref: Output, indices: Output, updates: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
+func scatterAdd( scope:Scope,ref: Output, indices: Output, updates: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -16354,7 +16409,7 @@ func scatterAdd(scope:Scope,ref: Output, indices: Output, updates: Output, t :Ty
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -16381,7 +16436,7 @@ Requires `updates.shape = indices.shape + ref.shape[1:]`.
 
 
 
-func scatterDiv(scope:Scope,ref: Output, indices: Output, updates: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
+func scatterDiv( scope:Scope,ref: Output, indices: Output, updates: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -16398,7 +16453,7 @@ func scatterDiv(scope:Scope,ref: Output, indices: Output, updates: Output, t :Ty
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -16425,7 +16480,7 @@ Requires `updates.shape = indices.shape + ref.shape[1:]`.
 
 
 
-func scatterMul(scope:Scope,ref: Output, indices: Output, updates: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
+func scatterMul( scope:Scope,ref: Output, indices: Output, updates: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -16442,7 +16497,7 @@ func scatterMul(scope:Scope,ref: Output, indices: Output, updates: Output, t :Ty
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -16509,7 +16564,7 @@ The resulting tensor would look like this:
 
 
 
-func scatterNd(scope:Scope,indices: Output, updates: Output, shape: Output, t :Type  , tindices :Type  )  ->(GoOperation?){
+func scatterNd( scope:Scope,indices: Output, updates: Output, shape: Output, t :Type  , tindices :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -16525,7 +16580,7 @@ func scatterNd(scope:Scope,indices: Output, updates: Output, shape: Output, t :T
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -16561,7 +16616,7 @@ slices.
 
 
 
-func scatterNdAdd(scope:Scope,ref: Output, indices: Output, updates: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
+func scatterNdAdd( scope:Scope,ref: Output, indices: Output, updates: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -16578,7 +16633,7 @@ func scatterNdAdd(scope:Scope,ref: Output, indices: Output, updates: Output, t :
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -16614,7 +16669,7 @@ slices.
 
 
 
-func scatterNdSub(scope:Scope,ref: Output, indices: Output, updates: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
+func scatterNdSub( scope:Scope,ref: Output, indices: Output, updates: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -16631,7 +16686,7 @@ func scatterNdSub(scope:Scope,ref: Output, indices: Output, updates: Output, t :
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -16669,7 +16724,7 @@ slices.
 
 
 
-func scatterNdUpdate(scope:Scope,ref: Output, indices: Output, updates: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
+func scatterNdUpdate( scope:Scope,ref: Output, indices: Output, updates: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -16686,7 +16741,7 @@ func scatterNdUpdate(scope:Scope,ref: Output, indices: Output, updates: Output, 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -16715,7 +16770,7 @@ Requires `updates.shape = indices.shape + ref.shape[1:]`.
 
 
 
-func scatterSub(scope:Scope,ref: Output, indices: Output, updates: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
+func scatterSub( scope:Scope,ref: Output, indices: Output, updates: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -16732,7 +16787,7 @@ func scatterSub(scope:Scope,ref: Output, indices: Output, updates: Output, t :Ty
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -16763,7 +16818,7 @@ Requires `updates.shape = indices.shape + ref.shape[1:]`.
 
 
 
-func scatterUpdate(scope:Scope,ref: Output, indices: Output, updates: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
+func scatterUpdate( scope:Scope,ref: Output, indices: Output, updates: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -16780,7 +16835,7 @@ func scatterUpdate(scope:Scope,ref: Output, indices: Output, updates: Output, t 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -16793,7 +16848,7 @@ Computes fingerprints of the input strings.
 
 
 
-func sdcaFprint(scope:Scope,input: Output )  ->(GoOperation?){
+func sdcaFprint( scope:Scope,input: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -16807,7 +16862,7 @@ func sdcaFprint(scope:Scope,input: Output )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -16833,7 +16888,7 @@ Dominik Csiba, Zheng Qu, Peter Richtarik. 2015
 
 
 
-func sdcaOptimizer(scope:Scope,sparseExampleIndices: Output, sparseFeatureIndices: Output, sparseFeatureValues: Output, denseFeatures: Output, exampleWeights: Output, exampleLabels: Output, sparseIndices: Output, sparseWeights: Output, denseWeights: Output, exampleStateData: Output, lossType :String  , adaptative :Bool  , numSparseFeatures :Int  , numSparseFeaturesWithValues :Int  , numDenseFeatures :Int  , l1 :Float  , l2 :Float  , numLossPartitions :Int  , numInnerIterations :Int  )  ->(outExampleStateData: Output, outDeltaSparseWeights: Output, outDeltaDenseWeights: Output){
+func sdcaOptimizer( scope:Scope,sparseExampleIndices: Output, sparseFeatureIndices: Output, sparseFeatureValues: Output, denseFeatures: Output, exampleWeights: Output, exampleLabels: Output, sparseIndices: Output, sparseWeights: Output, denseWeights: Output, exampleStateData: Output, lossType :String  , adaptative :Bool  , numSparseFeatures :Int  , numSparseFeaturesWithValues :Int  , numDenseFeatures :Int  , l1 :Float  , l2 :Float  , numLossPartitions :Int  , numInnerIterations :Int  )  ->(outExampleStateData: Output, outDeltaSparseWeights: Output, outDeltaDenseWeights: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -16856,7 +16911,7 @@ func sdcaOptimizer(scope:Scope,sparseExampleIndices: Output, sparseFeatureIndice
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1))
 }
 
 /*
@@ -16869,7 +16924,7 @@ Applies L1 regularization shrink step on the parameters.
 
 
 
-func sdcaShrinkL1(scope:Scope,weights: Output, numFeatures :Int  , l1 :Float  , l2 :Float  )  ->(GoOperation?){
+func sdcaShrinkL1( scope:Scope,weights: Output, numFeatures :Int  , l1 :Float  , l2 :Float  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -16885,7 +16940,8 @@ func sdcaShrinkL1(scope:Scope,weights: Output, numFeatures :Int  , l1 :Float  , 
         Input: [ weights],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -16907,7 +16963,7 @@ If the max is empty for a given segment ID `i`, `output[i] = 0`.
 
 
 
-func segmentMax(scope:Scope,data: Output, segmentIds: Output, t :Type  , tindices :Type  )  ->(GoOperation?){
+func segmentMax( scope:Scope,data: Output, segmentIds: Output, t :Type  , tindices :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -16923,7 +16979,7 @@ func segmentMax(scope:Scope,data: Output, segmentIds: Output, t :Type  , tindice
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -16946,7 +17002,7 @@ If the mean is empty for a given segment ID `i`, `output[i] = 0`.
 
 
 
-func segmentMean(scope:Scope,data: Output, segmentIds: Output, t :Type  , tindices :Type  )  ->(GoOperation?){
+func segmentMean( scope:Scope,data: Output, segmentIds: Output, t :Type  , tindices :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -16962,7 +17018,7 @@ func segmentMean(scope:Scope,data: Output, segmentIds: Output, t :Type  , tindic
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -16984,7 +17040,7 @@ If the min is empty for a given segment ID `i`, `output[i] = 0`.
 
 
 
-func segmentMin(scope:Scope,data: Output, segmentIds: Output, t :Type  , tindices :Type  )  ->(GoOperation?){
+func segmentMin( scope:Scope,data: Output, segmentIds: Output, t :Type  , tindices :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -17000,7 +17056,7 @@ func segmentMin(scope:Scope,data: Output, segmentIds: Output, t :Type  , tindice
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -17022,7 +17078,7 @@ If the product is empty for a given segment ID `i`, `output[i] = 1`.
 
 
 
-func segmentProd(scope:Scope,data: Output, segmentIds: Output, t :Type  , tindices :Type  )  ->(GoOperation?){
+func segmentProd( scope:Scope,data: Output, segmentIds: Output, t :Type  , tindices :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -17038,7 +17094,7 @@ func segmentProd(scope:Scope,data: Output, segmentIds: Output, t :Type  , tindic
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -17060,7 +17116,7 @@ If the sum is empty for a given segment ID `i`, `output[i] = 0`.
 
 
 
-func segmentSum(scope:Scope,data: Output, segmentIds: Output, t :Type  , tindices :Type  )  ->(GoOperation?){
+func segmentSum( scope:Scope,data: Output, segmentIds: Output, t :Type  , tindices :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -17076,7 +17132,7 @@ func segmentSum(scope:Scope,data: Output, segmentIds: Output, t :Type  , tindice
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -17119,7 +17175,7 @@ select(condition, t, e) ==> [[1, 2],
 
 
 
-func select(scope:Scope,condition: Output, t: Output, e: Output, t :Type  )  ->(GoOperation?){
+func select( scope:Scope,condition: Output, t: Output, e: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -17134,7 +17190,7 @@ func select(scope:Scope,condition: Output, t: Output, e: Output, t :Type  )  ->(
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -17152,7 +17208,7 @@ eigenvalues, and subsequent [...,1:, :] containing the eigenvectors.
 
 
 
-func selfAdjointEig(scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
+func selfAdjointEig( scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -17167,7 +17223,7 @@ func selfAdjointEig(scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -17189,7 +17245,7 @@ e = self_adjoint_eig(a, compute_v=False)
 
 
 
-func selfAdjointEigV2(scope:Scope,input: Output, computeV :Bool  , t :Type  )  ->(e: Output, v: Output){
+func selfAdjointEigV2( scope:Scope,input: Output, computeV :Bool  , t :Type  )  ->(e: Output, v: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -17205,7 +17261,7 @@ func selfAdjointEigV2(scope:Scope,input: Output, computeV :Bool  , t :Type  )  -
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1))
+    return (op.output(1 - 1),op.output(2 - 1))
 }
 
 /*
@@ -17224,7 +17280,7 @@ The minibatch size `N` is extracted from `sparse_shape[0]`.
 
 
 
-func serializeManySparse(scope:Scope,sparseIndices: Output, sparseValues: Output, sparseShape: Output, t :Type  )  ->(GoOperation?){
+func serializeManySparse( scope:Scope,sparseIndices: Output, sparseValues: Output, sparseShape: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -17239,7 +17295,7 @@ func serializeManySparse(scope:Scope,sparseIndices: Output, sparseValues: Output
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -17252,7 +17308,7 @@ Serialize a `SparseTensor` into a string 3-vector (1-D `Tensor`) object.
 
 
 
-func serializeSparse(scope:Scope,sparseIndices: Output, sparseValues: Output, sparseShape: Output, t :Type  )  ->(GoOperation?){
+func serializeSparse( scope:Scope,sparseIndices: Output, sparseValues: Output, sparseShape: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -17267,7 +17323,7 @@ func serializeSparse(scope:Scope,sparseIndices: Output, sparseValues: Output, sp
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -17285,7 +17341,7 @@ indices.
 
 
 
-func setSize(scope:Scope,setIndices: Output, setValues: Output, setShape: Output, validateIndices :Bool  , t :Type  )  ->(GoOperation?){
+func setSize( scope:Scope,setIndices: Output, setValues: Output, setShape: Output, validateIndices :Bool  , t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -17301,7 +17357,7 @@ func setSize(scope:Scope,setIndices: Output, setValues: Output, setShape: Output
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -17320,7 +17376,7 @@ shape(t) ==> [2, 2, 3]
 
 
 
-func shape(scope:Scope,input: Output, t :Type  , outType :Type  )  ->(GoOperation?){
+func shape( scope:Scope,input: Output, t :Type  , outType :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -17336,7 +17392,7 @@ func shape(scope:Scope,input: Output, t :Type  , outType :Type  )  ->(GoOperatio
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -17350,7 +17406,7 @@ This operation returns N 1-D integer tensors representing shape of `input[i]s`.
 
 
 
-func shapeN(scope:Scope,input: Output, n :Int  , t :Type  , outType :Type  )  ->(GoOperation?){
+func shapeN( scope:Scope,input: Output, n :Int  , t :Type  , outType :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -17367,7 +17423,7 @@ func shapeN(scope:Scope,input: Output, n :Int  , t :Type  , outType :Type  )  ->
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -17381,7 +17437,7 @@ Generate a sharded filename. The filename is printf formatted as
 
 
 
-func shardedFilename(scope:Scope,basename: Output, shard: Output, numShards: Output )  ->(GoOperation?){
+func shardedFilename( scope:Scope,basename: Output, shard: Output, numShards: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -17395,7 +17451,7 @@ func shardedFilename(scope:Scope,basename: Output, shard: Output, numShards: Out
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -17408,7 +17464,7 @@ Generate a glob pattern matching all sharded file names.
 
 
 
-func shardedFilespec(scope:Scope,basename: Output, numShards: Output )  ->(GoOperation?){
+func shardedFilespec( scope:Scope,basename: Output, numShards: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -17422,7 +17478,7 @@ func shardedFilespec(scope:Scope,basename: Output, numShards: Output )  ->(GoOpe
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -17435,7 +17491,7 @@ Creates a dataset that shuffles elements from `input_dataset` pseudorandomly.
 
 
 
-func shuffleDataset(scope:Scope,inputDataset: Output, bufferSize: Output, seed: Output, seed2: Output, outputTypes :List(type)  , outputShapes :List(shape)  )  ->(GoOperation?){
+func shuffleDataset( scope:Scope,inputDataset: Output, bufferSize: Output, seed: Output, seed2: Output, outputTypes :List(type)  , outputShapes :List(shape)  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -17451,7 +17507,7 @@ func shuffleDataset(scope:Scope,inputDataset: Output, bufferSize: Output, seed: 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -17465,7 +17521,7 @@ Specifically, `y = 1 / (1 + exp(-x))`.
 
 
 
-func sigmoid(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+func sigmoid( scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -17480,7 +17536,7 @@ func sigmoid(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -17495,7 +17551,7 @@ Specifically, `grad = dy * y * (1 - y)`, where `y = sigmoid(x)`, and
 
 
 
-func sigmoidGrad(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+func sigmoidGrad( scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -17510,7 +17566,7 @@ func sigmoidGrad(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -17525,7 +17581,7 @@ For complex numbers, `y = sign(x) = x / |x|` if `x != 0`, otherwise `y = 0`.
 
 
 
-func sign(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+func sign( scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -17540,7 +17596,7 @@ func sign(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -17553,7 +17609,7 @@ Computes sin of x element-wise.
 
 
 
-func sin(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+func sin( scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -17568,7 +17624,7 @@ func sin(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -17588,7 +17644,7 @@ size(t) ==> 12
 
 
 
-func size(scope:Scope,input: Output, t :Type  , outType :Type  )  ->(GoOperation?){
+func size( scope:Scope,input: Output, t :Type  , outType :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -17604,7 +17660,7 @@ func size(scope:Scope,input: Output, t :Type  , outType :Type  )  ->(GoOperation
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -17617,7 +17673,7 @@ Creates a dataset that skips `count` elements from the `input_dataset`.
 
 
 
-func skipDataset(scope:Scope,inputDataset: Output, count: Output, outputTypes :List(type)  , outputShapes :List(shape)  )  ->(GoOperation?){
+func skipDataset( scope:Scope,inputDataset: Output, count: Output, outputTypes :List(type)  , outputShapes :List(shape)  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -17633,7 +17689,7 @@ func skipDataset(scope:Scope,inputDataset: Output, count: Output, outputTypes :L
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -17646,7 +17702,7 @@ Parses a text file and creates a batch of examples.
 
 
 
-func skipgram(scope:Scope, filename :String  , batchSize :Int  , windowSize :Int  , minCount :Int  , subsample :Float  )  ->(vocabWord: Output, vocabFreq: Output, wordsPerEpoch: Output, currentEpoch: Output, totalWordsProcessed: Output, examples: Output, labels: Output){
+func skipgram( scope:Scope, filename :String  , batchSize :Int  , windowSize :Int  , minCount :Int  , subsample :Float  )  ->(vocabWord: Output, vocabFreq: Output, wordsPerEpoch: Output, currentEpoch: Output, totalWordsProcessed: Output, examples: Output, labels: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -17665,7 +17721,7 @@ func skipgram(scope:Scope, filename :String  , batchSize :Int  , windowSize :Int
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1),op.Output(4 - 1),op.Output(5 - 1),op.Output(6 - 1),op.Output(7 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1),op.output(4 - 1),op.output(5 - 1),op.output(6 - 1),op.output(7 - 1))
 }
 
 /*
@@ -17683,7 +17739,7 @@ whose values are extracted from 'input' starting at the offsets in
 
 
 
-func slice(scope:Scope,input: Output, begin: Output, size: Output, t :Type  , index :Type  )  ->(GoOperation?){
+func slice( scope:Scope,input: Output, begin: Output, size: Output, t :Type  , index :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -17699,7 +17755,7 @@ func slice(scope:Scope,input: Output, begin: Output, size: Output, t :Type  , in
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -17714,7 +17770,7 @@ For each batch `i` and class `j` we have
 
 
 
-func softmax(scope:Scope,logits: Output, t :Type  )  ->(GoOperation?){
+func softmax( scope:Scope,logits: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -17729,7 +17785,7 @@ func softmax(scope:Scope,logits: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -17743,7 +17799,7 @@ Inputs are the logits, not probabilities.
 
 
 
-func softmaxCrossEntropyWithLogits(scope:Scope,features: Output, labels: Output, t :Type  )  ->(loss: Output, backprop: Output){
+func softmaxCrossEntropyWithLogits( scope:Scope,features: Output, labels: Output, t :Type  )  ->(loss: Output, backprop: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -17758,7 +17814,7 @@ func softmaxCrossEntropyWithLogits(scope:Scope,features: Output, labels: Output,
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1))
+    return (op.output(1 - 1),op.output(2 - 1))
 }
 
 /*
@@ -17771,7 +17827,7 @@ Computes softplus: `log(exp(features) + 1)`.
 
 
 
-func softplus(scope:Scope,features: Output, t :Type  )  ->(GoOperation?){
+func softplus( scope:Scope,features: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -17786,7 +17842,7 @@ func softplus(scope:Scope,features: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -17799,7 +17855,7 @@ Computes softplus gradients for a softplus operation.
 
 
 
-func softplusGrad(scope:Scope,gradients: Output, features: Output, t :Type  )  ->(GoOperation?){
+func softplusGrad( scope:Scope,gradients: Output, features: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -17814,7 +17870,7 @@ func softplusGrad(scope:Scope,gradients: Output, features: Output, t :Type  )  -
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -17827,7 +17883,7 @@ Computes softsign: `features / (abs(features) + 1)`.
 
 
 
-func softsign(scope:Scope,features: Output, t :Type  )  ->(GoOperation?){
+func softsign( scope:Scope,features: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -17842,7 +17898,7 @@ func softsign(scope:Scope,features: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -17855,7 +17911,7 @@ Computes softsign gradients for a softsign operation.
 
 
 
-func softsignGrad(scope:Scope,gradients: Output, features: Output, t :Type  )  ->(GoOperation?){
+func softsignGrad( scope:Scope,gradients: Output, features: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -17870,7 +17926,7 @@ func softsignGrad(scope:Scope,gradients: Output, features: Output, t :Type  )  -
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -17889,7 +17945,7 @@ block size.
 
 
 
-func spaceToBatch(scope:Scope,input: Output, paddings: Output, t :Type  , tpaddings :Type  , blockSize :Int  )  ->(GoOperation?){
+func spaceToBatch( scope:Scope,input: Output, paddings: Output, t :Type  , tpaddings :Type  , blockSize :Int  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -17906,7 +17962,7 @@ func spaceToBatch(scope:Scope,input: Output, paddings: Output, t :Type  , tpaddi
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -17927,7 +17983,7 @@ precise description.
 
 
 
-func spaceToBatchND(scope:Scope,input: Output, blockShape: Output, paddings: Output, t :Type  , tblockShape :Type  , tpaddings :Type  )  ->(GoOperation?){
+func spaceToBatchND( scope:Scope,input: Output, blockShape: Output, paddings: Output, t :Type  , tblockShape :Type  , tpaddings :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -17944,7 +18000,7 @@ func spaceToBatchND(scope:Scope,input: Output, blockShape: Output, paddings: Out
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -18011,7 +18067,7 @@ x = [[[[1, 2, 3, 4],
 
 
 
-func spaceToDepth(scope:Scope,input: Output, t :Type  , blockSize :Int  )  ->(GoOperation?){
+func spaceToDepth( scope:Scope,input: Output, t :Type  , blockSize :Int  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -18027,7 +18083,7 @@ func spaceToDepth(scope:Scope,input: Output, t :Type  , blockSize :Int  )  ->(Go
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -18042,7 +18098,7 @@ global_step.
 
 
 
-func sparseAccumulatorApplyGradient(scope:Scope,handle: Output, localStep: Output, gradientIndices: Output, gradientValues: Output, gradientShape: Output, dtype :Type  , hasKnownShape :Bool  )  ->(GoOperation?){
+func sparseAccumulatorApplyGradient( scope:Scope,handle: Output, localStep: Output, gradientIndices: Output, gradientValues: Output, gradientShape: Output, dtype :Type  , hasKnownShape :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -18057,7 +18113,8 @@ func sparseAccumulatorApplyGradient(scope:Scope,handle: Output, localStep: Outpu
         Input: [ handle, localStep, gradientIndices, gradientValues, gradientShape],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -18076,7 +18133,7 @@ aggregate to 0.
 
 
 
-func sparseAccumulatorTakeGradient(scope:Scope,handle: Output, numRequired: Output, dtype :Type  )  ->(indices: Output, values: Output, shape: Output){
+func sparseAccumulatorTakeGradient( scope:Scope,handle: Output, numRequired: Output, dtype :Type  )  ->(indices: Output, values: Output, shape: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -18091,7 +18148,7 @@ func sparseAccumulatorTakeGradient(scope:Scope,handle: Output, numRequired: Outp
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1))
 }
 
 /*
@@ -18115,7 +18172,7 @@ In the following shapes, `nnz` is the count after taking `thresh` into account.
 
 
 
-func sparseAdd(scope:Scope,aIndices: Output, aValues: Output, aShape: Output, bIndices: Output, bValues: Output, bShape: Output, thresh: Output, t :Type  , treal :Type  )  ->(sumIndices: Output, sumValues: Output, sumShape: Output){
+func sparseAdd( scope:Scope,aIndices: Output, aValues: Output, aShape: Output, bIndices: Output, bValues: Output, bShape: Output, thresh: Output, t :Type  , treal :Type  )  ->(sumIndices: Output, sumValues: Output, sumShape: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -18131,7 +18188,7 @@ func sparseAdd(scope:Scope,aIndices: Output, aValues: Output, aShape: Output, bI
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1))
 }
 
 /*
@@ -18148,7 +18205,7 @@ values of A and B.
 
 
 
-func sparseAddGrad(scope:Scope,backpropValGrad: Output, aIndices: Output, bIndices: Output, sumIndices: Output, t :Type  )  ->(aValGrad: Output, bValGrad: Output){
+func sparseAddGrad( scope:Scope,backpropValGrad: Output, aIndices: Output, bIndices: Output, sumIndices: Output, t :Type  )  ->(aValGrad: Output, bValGrad: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -18163,7 +18220,7 @@ func sparseAddGrad(scope:Scope,backpropValGrad: Output, aIndices: Output, bIndic
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1))
+    return (op.output(1 - 1),op.output(2 - 1))
 }
 
 /*
@@ -18176,7 +18233,7 @@ var: Should be from a Variable().
 
 
 
-func sparseApplyAdadelta(scope:Scope,`var`: Output, accum: Output, accumUpdate: Output, lr: Output, rho: Output, epsilon: Output, grad: Output, indices: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
+func sparseApplyAdadelta( scope:Scope,`var`: Output, accum: Output, accumUpdate: Output, lr: Output, rho: Output, epsilon: Output, grad: Output, indices: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -18193,7 +18250,7 @@ func sparseApplyAdadelta(scope:Scope,`var`: Output, accum: Output, accumUpdate: 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -18209,7 +18266,7 @@ var -= lr * grad * (1 / sqrt(accum))
 
 
 
-func sparseApplyAdagrad(scope:Scope,`var`: Output, accum: Output, lr: Output, grad: Output, indices: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
+func sparseApplyAdagrad( scope:Scope,`var`: Output, accum: Output, lr: Output, grad: Output, indices: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -18226,7 +18283,7 @@ func sparseApplyAdagrad(scope:Scope,`var`: Output, accum: Output, lr: Output, gr
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -18239,7 +18296,7 @@ Update entries in '*var' and '*accum' according to the proximal adagrad scheme.
 
 
 
-func sparseApplyAdagradDA(scope:Scope,`var`: Output, gradientAccumulator: Output, gradientSquaredAccumulator: Output, grad: Output, indices: Output, lr: Output, l1: Output, l2: Output, globalStep: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
+func sparseApplyAdagradDA( scope:Scope,`var`: Output, gradientAccumulator: Output, gradientSquaredAccumulator: Output, grad: Output, indices: Output, lr: Output, l1: Output, l2: Output, globalStep: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -18256,7 +18313,7 @@ func sparseApplyAdagradDA(scope:Scope,`var`: Output, gradientAccumulator: Output
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -18282,7 +18339,7 @@ var <- var - mom
 
 
 
-func sparseApplyCenteredRMSProp(scope:Scope,`var`: Output, mg: Output, ms: Output, mom: Output, lr: Output, rho: Output, momentum: Output, epsilon: Output, grad: Output, indices: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
+func sparseApplyCenteredRMSProp( scope:Scope,`var`: Output, mg: Output, ms: Output, mom: Output, lr: Output, rho: Output, momentum: Output, epsilon: Output, grad: Output, indices: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -18299,7 +18356,7 @@ func sparseApplyCenteredRMSProp(scope:Scope,`var`: Output, mg: Output, ms: Outpu
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -18318,7 +18375,7 @@ accum = accum_new
 
 
 
-func sparseApplyFtrl(scope:Scope,`var`: Output, accum: Output, linear: Output, grad: Output, indices: Output, lr: Output, l1: Output, l2: Output, lrPower: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
+func sparseApplyFtrl( scope:Scope,`var`: Output, accum: Output, linear: Output, grad: Output, indices: Output, lr: Output, l1: Output, l2: Output, lrPower: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -18335,7 +18392,7 @@ func sparseApplyFtrl(scope:Scope,`var`: Output, accum: Output, linear: Output, g
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -18352,7 +18409,7 @@ var -= lr * accum
 
 
 
-func sparseApplyMomentum(scope:Scope,`var`: Output, accum: Output, lr: Output, grad: Output, indices: Output, momentum: Output, t :Type  , tindices :Type  , useLocking :Bool  , useNesterov :Bool  )  ->(GoOperation?){
+func sparseApplyMomentum( scope:Scope,`var`: Output, accum: Output, lr: Output, grad: Output, indices: Output, momentum: Output, t :Type  , tindices :Type  , useLocking :Bool  , useNesterov :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -18370,7 +18427,7 @@ func sparseApplyMomentum(scope:Scope,`var`: Output, accum: Output, lr: Output, g
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -18388,7 +18445,7 @@ var = sign(prox_v)/(1+lr*l2) * max{|prox_v|-lr*l1,0}
 
 
 
-func sparseApplyProximalAdagrad(scope:Scope,`var`: Output, accum: Output, lr: Output, l1: Output, l2: Output, grad: Output, indices: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
+func sparseApplyProximalAdagrad( scope:Scope,`var`: Output, accum: Output, lr: Output, l1: Output, l2: Output, grad: Output, indices: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -18405,7 +18462,7 @@ func sparseApplyProximalAdagrad(scope:Scope,`var`: Output, accum: Output, lr: Ou
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -18421,7 +18478,7 @@ var = sign(prox_v)/(1+alpha*l2) * max{|prox_v|-alpha*l1,0}
 
 
 
-func sparseApplyProximalGradientDescent(scope:Scope,`var`: Output, alpha: Output, l1: Output, l2: Output, grad: Output, indices: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
+func sparseApplyProximalGradientDescent( scope:Scope,`var`: Output, alpha: Output, l1: Output, l2: Output, grad: Output, indices: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -18438,7 +18495,7 @@ func sparseApplyProximalGradientDescent(scope:Scope,`var`: Output, alpha: Output
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -18459,7 +18516,7 @@ var <- var - mom
 
 
 
-func sparseApplyRMSProp(scope:Scope,`var`: Output, ms: Output, mom: Output, lr: Output, rho: Output, momentum: Output, epsilon: Output, grad: Output, indices: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
+func sparseApplyRMSProp( scope:Scope,`var`: Output, ms: Output, mom: Output, lr: Output, rho: Output, momentum: Output, epsilon: Output, grad: Output, indices: Output, t :Type  , tindices :Type  , useLocking :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -18476,7 +18533,7 @@ func sparseApplyRMSProp(scope:Scope,`var`: Output, ms: Output, mom: Output, lr: 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -18519,7 +18576,7 @@ Graphically this is equivalent to doing
 
 
 
-func sparseConcat(scope:Scope,indices: Output, values: Output, shapes: Output, concatDim :Int  , n :Int  , t :Type  )  ->(outputIndices: Output, outputValues: Output, outputShape: Output){
+func sparseConcat( scope:Scope,indices: Output, values: Output, shapes: Output, concatDim :Int  , n :Int  , t :Type  )  ->(outputIndices: Output, outputValues: Output, outputShape: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -18536,7 +18593,7 @@ func sparseConcat(scope:Scope,indices: Output, values: Output, shapes: Output, c
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1))
 }
 
 /*
@@ -18555,7 +18612,7 @@ the accumulator.
 
 
 
-func sparseConditionalAccumulator(scope:Scope, dtype :Type  , shape :Shape  , container :String  , sharedName :String  )  ->(GoOperation?){
+func sparseConditionalAccumulator( scope:Scope, dtype :Type  , shape :Shape  , container :String  , sharedName :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -18573,7 +18630,7 @@ func sparseConditionalAccumulator(scope:Scope, dtype :Type  , shape :Shape  , co
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -18614,7 +18671,7 @@ if hashed_output=true then the output will be
 
 
 
-func sparseCross(scope:Scope,indices: Output, values: Output, shapes: Output, denseInputs: Output, n :Int  , hashedOutput :Bool  , numBuckets :Int  , hashKey :Int  , sparseTypes :List(type)  , denseTypes :List(type)  , outType :Type  , internalType :Type  )  ->(outputIndices: Output, outputValues: Output, outputShape: Output){
+func sparseCross( scope:Scope,indices: Output, values: Output, shapes: Output, denseInputs: Output, n :Int  , hashedOutput :Bool  , numBuckets :Int  , hashKey :Int  , sparseTypes :List(type)  , denseTypes :List(type)  , outType :Type  , internalType :Type  )  ->(outputIndices: Output, outputValues: Output, outputShape: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -18636,7 +18693,7 @@ func sparseCross(scope:Scope,indices: Output, values: Output, shapes: Output, de
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1))
 }
 
 /*
@@ -18656,7 +18713,7 @@ this Op is the resultant non-zero values.
 
 
 
-func sparseDenseCwiseAdd(scope:Scope,spIndices: Output, spValues: Output, spShape: Output, dense: Output, t :Type  )  ->(GoOperation?){
+func sparseDenseCwiseAdd( scope:Scope,spIndices: Output, spValues: Output, spShape: Output, dense: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -18671,7 +18728,7 @@ func sparseDenseCwiseAdd(scope:Scope,spIndices: Output, spValues: Output, spShap
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -18686,7 +18743,7 @@ the other direction.
 
 
 
-func sparseDenseCwiseDiv(scope:Scope,spIndices: Output, spValues: Output, spShape: Output, dense: Output, t :Type  )  ->(GoOperation?){
+func sparseDenseCwiseDiv( scope:Scope,spIndices: Output, spValues: Output, spShape: Output, dense: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -18701,7 +18758,7 @@ func sparseDenseCwiseDiv(scope:Scope,spIndices: Output, spValues: Output, spShap
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -18719,7 +18776,7 @@ the other direction.
 
 
 
-func sparseDenseCwiseMul(scope:Scope,spIndices: Output, spValues: Output, spShape: Output, dense: Output, t :Type  )  ->(GoOperation?){
+func sparseDenseCwiseMul( scope:Scope,spIndices: Output, spValues: Output, spShape: Output, dense: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -18734,7 +18791,7 @@ func sparseDenseCwiseMul(scope:Scope,spIndices: Output, spValues: Output, spShap
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -18773,7 +18830,7 @@ backpropagation,
 
 
 
-func sparseFillEmptyRows(scope:Scope,indices: Output, values: Output, denseShape: Output, defaultValue: Output, t :Type  )  ->(outputIndices: Output, outputValues: Output, emptyRowIndicator: Output, reverseIndexMap: Output){
+func sparseFillEmptyRows( scope:Scope,indices: Output, values: Output, denseShape: Output, defaultValue: Output, t :Type  )  ->(outputIndices: Output, outputValues: Output, emptyRowIndicator: Output, reverseIndexMap: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -18788,7 +18845,7 @@ func sparseFillEmptyRows(scope:Scope,indices: Output, values: Output, denseShape
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1),op.Output(4 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1),op.output(4 - 1))
 }
 
 /*
@@ -18808,7 +18865,7 @@ shaped `[N_full]`, where `N_full >= N` and copies data into either
 
 
 
-func sparseFillEmptyRowsGrad(scope:Scope,reverseIndexMap: Output, gradValues: Output, t :Type  )  ->(dValues: Output, dDefaultValue: Output){
+func sparseFillEmptyRowsGrad( scope:Scope,reverseIndexMap: Output, gradValues: Output, t :Type  )  ->(dValues: Output, dDefaultValue: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -18823,7 +18880,7 @@ func sparseFillEmptyRowsGrad(scope:Scope,reverseIndexMap: Output, gradValues: Ou
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1))
+    return (op.output(1 - 1),op.output(2 - 1))
 }
 
 /*
@@ -18840,7 +18897,7 @@ matrix multiply on one platform was 30% zero values in the sparse matrix.
 
 
 
-func sparseMatMul(scope:Scope,a: Output, b: Output, transposeA :Bool  , transposeB :Bool  , aIsSparse :Bool  , bIsSparse :Bool  , ta :Type  , tb :Type  )  ->(GoOperation?){
+func sparseMatMul( scope:Scope,a: Output, b: Output, transposeA :Bool  , transposeB :Bool  , aIsSparse :Bool  , bIsSparse :Bool  , ta :Type  , tb :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -18860,7 +18917,7 @@ func sparseMatMul(scope:Scope,a: Output, b: Output, transposeA :Bool  , transpos
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -18883,7 +18940,7 @@ which are interpreted according to the indexing rules in Python.
 
 
 
-func sparseReduceSum(scope:Scope,inputIndices: Output, inputValues: Output, inputShape: Output, reductionAxes: Output, keepDims :Bool  , t :Type  )  ->(GoOperation?){
+func sparseReduceSum( scope:Scope,inputIndices: Output, inputValues: Output, inputShape: Output, reductionAxes: Output, keepDims :Bool  , t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -18899,7 +18956,7 @@ func sparseReduceSum(scope:Scope,inputIndices: Output, inputValues: Output, inpu
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -18922,7 +18979,7 @@ which are interpreted according to the indexing rules in Python.
 
 
 
-func sparseReduceSumSparse(scope:Scope,inputIndices: Output, inputValues: Output, inputShape: Output, reductionAxes: Output, keepDims :Bool  , t :Type  )  ->(outputIndices: Output, outputValues: Output, outputShape: Output){
+func sparseReduceSumSparse( scope:Scope,inputIndices: Output, inputValues: Output, inputShape: Output, reductionAxes: Output, keepDims :Bool  , t :Type  )  ->(outputIndices: Output, outputValues: Output, outputShape: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -18938,7 +18995,7 @@ func sparseReduceSumSparse(scope:Scope,inputIndices: Output, inputValues: Output
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1))
 }
 
 /*
@@ -18957,7 +19014,7 @@ shape `[N, R]`, input_values has length `N`, and input_shape has length `R`.
 
 
 
-func sparseReorder(scope:Scope,inputIndices: Output, inputValues: Output, inputShape: Output, t :Type  )  ->(outputIndices: Output, outputValues: Output){
+func sparseReorder( scope:Scope,inputIndices: Output, inputValues: Output, inputShape: Output, t :Type  )  ->(outputIndices: Output, outputValues: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -18972,7 +19029,7 @@ func sparseReorder(scope:Scope,inputIndices: Output, inputValues: Output, inputS
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1))
+    return (op.output(1 - 1),op.output(2 - 1))
 }
 
 /*
@@ -18997,7 +19054,7 @@ has length `R_out`, then `input_indices` has shape `[N, R_in]`,
 
 
 
-func sparseReshape(scope:Scope,inputIndices: Output, inputShape: Output, newShape: Output )  ->(outputIndices: Output, outputShape: Output){
+func sparseReshape( scope:Scope,inputIndices: Output, inputShape: Output, newShape: Output )  ->(outputIndices: Output, outputShape: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -19011,7 +19068,7 @@ func sparseReshape(scope:Scope,inputIndices: Output, inputShape: Output, newShap
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1))
+    return (op.output(1 - 1),op.output(2 - 1))
 }
 
 /*
@@ -19028,7 +19085,7 @@ dimension, selecting a subset of dimension 0, specified by `indices`.
 
 
 
-func sparseSegmentMean(scope:Scope,data: Output, indices: Output, segmentIds: Output, t :Type  , tidx :Type  )  ->(GoOperation?){
+func sparseSegmentMean( scope:Scope,data: Output, indices: Output, segmentIds: Output, t :Type  , tidx :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -19044,7 +19101,7 @@ func sparseSegmentMean(scope:Scope,data: Output, indices: Output, segmentIds: Ou
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -19059,7 +19116,7 @@ value is output_dim0.
 
 
 
-func sparseSegmentMeanGrad(scope:Scope,grad: Output, indices: Output, segmentIds: Output, outputDim0: Output, t :Type  , tidx :Type  )  ->(GoOperation?){
+func sparseSegmentMeanGrad( scope:Scope,grad: Output, indices: Output, segmentIds: Output, outputDim0: Output, t :Type  , tidx :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -19075,7 +19132,7 @@ func sparseSegmentMeanGrad(scope:Scope,grad: Output, indices: Output, segmentIds
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -19091,7 +19148,7 @@ segments.
 
 
 
-func sparseSegmentSqrtN(scope:Scope,data: Output, indices: Output, segmentIds: Output, t :Type  , tidx :Type  )  ->(GoOperation?){
+func sparseSegmentSqrtN( scope:Scope,data: Output, indices: Output, segmentIds: Output, t :Type  , tidx :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -19107,7 +19164,7 @@ func sparseSegmentSqrtN(scope:Scope,data: Output, indices: Output, segmentIds: O
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -19122,7 +19179,7 @@ value is output_dim0.
 
 
 
-func sparseSegmentSqrtNGrad(scope:Scope,grad: Output, indices: Output, segmentIds: Output, outputDim0: Output, t :Type  , tidx :Type  )  ->(GoOperation?){
+func sparseSegmentSqrtNGrad( scope:Scope,grad: Output, indices: Output, segmentIds: Output, outputDim0: Output, t :Type  , tidx :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -19138,7 +19195,7 @@ func sparseSegmentSqrtNGrad(scope:Scope,grad: Output, indices: Output, segmentId
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -19172,7 +19229,7 @@ tf.segment_sum(c, tf.constant([0, 0, 1]))
 
 
 
-func sparseSegmentSum(scope:Scope,data: Output, indices: Output, segmentIds: Output, t :Type  , tidx :Type  )  ->(GoOperation?){
+func sparseSegmentSum( scope:Scope,data: Output, indices: Output, segmentIds: Output, t :Type  , tidx :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -19188,7 +19245,7 @@ func sparseSegmentSum(scope:Scope,data: Output, indices: Output, segmentIds: Out
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -19213,7 +19270,7 @@ shape.
 
 
 
-func sparseSoftmax(scope:Scope,spIndices: Output, spValues: Output, spShape: Output, t :Type  )  ->(GoOperation?){
+func sparseSoftmax( scope:Scope,spIndices: Output, spValues: Output, spShape: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -19228,7 +19285,7 @@ func sparseSoftmax(scope:Scope,spIndices: Output, spValues: Output, spShape: Out
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -19246,7 +19303,7 @@ Inputs are the logits, not probabilities.
 
 
 
-func sparseSoftmaxCrossEntropyWithLogits(scope:Scope,features: Output, labels: Output, t :Type  , tlabels :Type  )  ->(loss: Output, backprop: Output){
+func sparseSoftmaxCrossEntropyWithLogits( scope:Scope,features: Output, labels: Output, t :Type  , tlabels :Type  )  ->(loss: Output, backprop: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -19262,7 +19319,7 @@ func sparseSoftmaxCrossEntropyWithLogits(scope:Scope,features: Output, labels: O
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1))
+    return (op.output(1 - 1),op.output(2 - 1))
 }
 
 /*
@@ -19276,7 +19333,7 @@ Assumes the two SparseTensors have the same shape, i.e., no broadcasting.
 
 
 
-func sparseSparseMaximum(scope:Scope,aIndices: Output, aValues: Output, aShape: Output, bIndices: Output, bValues: Output, bShape: Output, t :Type  )  ->(outputIndices: Output, outputValues: Output){
+func sparseSparseMaximum( scope:Scope,aIndices: Output, aValues: Output, aShape: Output, bIndices: Output, bValues: Output, bShape: Output, t :Type  )  ->(outputIndices: Output, outputValues: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -19291,7 +19348,7 @@ func sparseSparseMaximum(scope:Scope,aIndices: Output, aValues: Output, aShape: 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1))
+    return (op.output(1 - 1),op.output(2 - 1))
 }
 
 /*
@@ -19305,7 +19362,7 @@ Assumes the two SparseTensors have the same shape, i.e., no broadcasting.
 
 
 
-func sparseSparseMinimum(scope:Scope,aIndices: Output, aValues: Output, aShape: Output, bIndices: Output, bValues: Output, bShape: Output, t :Type  )  ->(outputIndices: Output, outputValues: Output){
+func sparseSparseMinimum( scope:Scope,aIndices: Output, aValues: Output, aShape: Output, bIndices: Output, bValues: Output, bShape: Output, t :Type  )  ->(outputIndices: Output, outputValues: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -19320,7 +19377,7 @@ func sparseSparseMinimum(scope:Scope,aIndices: Output, aValues: Output, aShape: 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1))
+    return (op.output(1 - 1),op.output(2 - 1))
 }
 
 /*
@@ -19346,7 +19403,7 @@ Graphically the output tensors are:
 
 
 
-func sparseSplit(scope:Scope,splitDim: Output, indices: Output, values: Output, shape: Output, numSplit :Int  , t :Type  )  ->(outputIndices: Output, outputValues: Output, outputShape: Output){
+func sparseSplit( scope:Scope,splitDim: Output, indices: Output, values: Output, shape: Output, numSplit :Int  , t :Type  )  ->(outputIndices: Output, outputValues: Output, outputShape: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -19362,7 +19419,7 @@ func sparseSplit(scope:Scope,splitDim: Output, indices: Output, values: Output, 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1))
 }
 
 /*
@@ -19376,7 +19433,7 @@ This Op does not require `a_indices` be sorted in standard lexicographic order.
 
 
 
-func sparseTensorDenseAdd(scope:Scope,aIndices: Output, aValues: Output, aShape: Output, b: Output, t :Type  , tindices :Type  )  ->(GoOperation?){
+func sparseTensorDenseAdd( scope:Scope,aIndices: Output, aValues: Output, aShape: Output, b: Output, t :Type  , tindices :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -19392,7 +19449,7 @@ func sparseTensorDenseAdd(scope:Scope,aIndices: Output, aValues: Output, aShape:
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -19413,7 +19470,7 @@ if adjoint_a == true:
 
 
 
-func sparseTensorDenseMatMul(scope:Scope,aIndices: Output, aValues: Output, aShape: Output, b: Output, t :Type  , tindices :Type  , adjointA :Bool  , adjointB :Bool  )  ->(GoOperation?){
+func sparseTensorDenseMatMul( scope:Scope,aIndices: Output, aValues: Output, aShape: Output, b: Output, t :Type  , tindices :Type  , adjointA :Bool  , adjointB :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -19431,7 +19488,7 @@ func sparseTensorDenseMatMul(scope:Scope,aIndices: Output, aValues: Output, aSha
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -19444,7 +19501,7 @@ Creates a dataset that splits a SparseTensor into elements row-wise.
 
 
 
-func sparseTensorSliceDataset(scope:Scope,indices: Output, values: Output, denseShape: Output, tvalues :Type  )  ->(GoOperation?){
+func sparseTensorSliceDataset( scope:Scope,indices: Output, values: Output, denseShape: Output, tvalues :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -19459,7 +19516,7 @@ func sparseTensorSliceDataset(scope:Scope,indices: Output, values: Output, dense
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -19486,7 +19543,7 @@ are checked during execution.
 
 
 
-func sparseToDense(scope:Scope,sparseIndices: Output, outputShape: Output, sparseValues: Output, defaultValue: Output, validateIndices :Bool  , t :Type  , tindices :Type  )  ->(GoOperation?){
+func sparseToDense( scope:Scope,sparseIndices: Output, outputShape: Output, sparseValues: Output, defaultValue: Output, validateIndices :Bool  , t :Type  , tindices :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -19503,7 +19560,7 @@ func sparseToDense(scope:Scope,sparseIndices: Output, outputShape: Output, spars
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -19534,7 +19591,7 @@ dimension contains the result of `set_operation` applied to the corresponding
 
 
 
-func sparseToSparseSetOperation(scope:Scope,set1Indices: Output, set1Values: Output, set1Shape: Output, set2Indices: Output, set2Values: Output, set2Shape: Output, setOperation :String  , validateIndices :Bool  , t :Type  )  ->(resultIndices: Output, resultValues: Output, resultShape: Output){
+func sparseToSparseSetOperation( scope:Scope,set1Indices: Output, set1Values: Output, set1Shape: Output, set2Indices: Output, set2Values: Output, set2Shape: Output, setOperation :String  , validateIndices :Bool  , t :Type  )  ->(resultIndices: Output, resultValues: Output, resultShape: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -19551,7 +19608,7 @@ func sparseToSparseSetOperation(scope:Scope,set1Indices: Output, set1Values: Out
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1))
 }
 
 /*
@@ -19564,7 +19621,7 @@ Splits a tensor into `num_split` tensors along one dimension.
 
 
 
-func split(scope:Scope,splitDim: Output, value: Output, numSplit :Int  , t :Type  )  ->(GoOperation?){
+func split( scope:Scope,splitDim: Output, value: Output, numSplit :Int  , t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -19580,7 +19637,7 @@ func split(scope:Scope,splitDim: Output, value: Output, numSplit :Int  , t :Type
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -19593,7 +19650,7 @@ Splits a tensor into `num_split` tensors along one dimension.
 
 
 
-func splitV(scope:Scope,value: Output, sizeSplits: Output, splitDim: Output, numSplit :Int  , t :Type  , tlen :Type  )  ->(GoOperation?){
+func splitV( scope:Scope,value: Output, sizeSplits: Output, splitDim: Output, numSplit :Int  , t :Type  , tlen :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -19610,7 +19667,7 @@ func splitV(scope:Scope,value: Output, sizeSplits: Output, splitDim: Output, num
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -19624,7 +19681,7 @@ I.e., \\(y = \sqrt{x} = x^{1/2}\\).
 
 
 
-func sqrt(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+func sqrt( scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -19639,7 +19696,7 @@ func sqrt(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -19654,7 +19711,7 @@ is the corresponding input gradient.
 
 
 
-func sqrtGrad(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+func sqrtGrad( scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -19669,7 +19726,7 @@ func sqrtGrad(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -19683,7 +19740,7 @@ I.e., \\(y = x * x = x^2\\).
 
 
 
-func square(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+func square( scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -19698,7 +19755,7 @@ func square(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -19713,7 +19770,7 @@ Returns (x - y)(x - y) element-wise.
 
 
 
-func squaredDifference(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+func squaredDifference( scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -19728,7 +19785,7 @@ func squaredDifference(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperat
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -19755,7 +19812,7 @@ shape(squeeze(t, [2, 4])) ==> [1, 2, 3, 1]
 
 
 
-func squeeze(scope:Scope,input: Output, t :Type  , squeezeDims :List(int)  )  ->(GoOperation?){
+func squeeze( scope:Scope,input: Output, t :Type  , squeezeDims :List(int)  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -19771,7 +19828,7 @@ func squeeze(scope:Scope,input: Output, t :Type  , squeezeDims :List(int)  )  ->
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -19784,7 +19841,7 @@ A stack that produces elements in first-in last-out order.
 
 
 
-func stack(scope:Scope, elemType :Type  , stackName :String  )  ->(GoOperation?){
+func stack( scope:Scope, elemType :Type  , stackName :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -19800,7 +19857,7 @@ func stack(scope:Scope, elemType :Type  , stackName :String  )  ->(GoOperation?)
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -19813,7 +19870,7 @@ Delete the stack from its resource container.
 
 
 
-func stackClose(scope:Scope,handle: Output )  ->(GoOperation?){
+func stackClose( scope:Scope,handle: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -19826,7 +19883,8 @@ func stackClose(scope:Scope,handle: Output )  ->(GoOperation?){
         Input: [ handle],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -19839,7 +19897,7 @@ Pop the element at the top of the stack.
 
 
 
-func stackPop(scope:Scope,handle: Output, elemType :Type  )  ->(GoOperation?){
+func stackPop( scope:Scope,handle: Output, elemType :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -19854,7 +19912,7 @@ func stackPop(scope:Scope,handle: Output, elemType :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -19867,7 +19925,7 @@ Push an element onto the stack.
 
 
 
-func stackPush(scope:Scope,handle: Output, elem: Output, t :Type  , swapMemory :Bool  )  ->(GoOperation?){
+func stackPush( scope:Scope,handle: Output, elem: Output, t :Type  , swapMemory :Bool  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -19883,7 +19941,7 @@ func stackPush(scope:Scope,handle: Output, elem: Output, t :Type  , swapMemory :
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -19898,7 +19956,7 @@ fewer capabilities and options.  This Op is optimized for performance.
 
 
 
-func stage(scope:Scope,values: Output, dtypes :List(type)  , container :String  , sharedName :String  )  ->(GoOperation?){
+func stage( scope:Scope,values: Output, dtypes :List(type)  , container :String  , sharedName :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -19914,7 +19972,8 @@ func stage(scope:Scope,values: Output, dtypes :List(type)  , container :String  
         Input: [ values],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -19929,7 +19988,7 @@ The outputs are a deterministic function of `shape` and `seed`.
 
 
 
-func statelessRandomNormal(scope:Scope,shape: Output, seed: Output, dtype :Type  , t :Type  )  ->(GoOperation?){
+func statelessRandomNormal( scope:Scope,shape: Output, seed: Output, dtype :Type  , t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -19945,7 +20004,7 @@ func statelessRandomNormal(scope:Scope,shape: Output, seed: Output, dtype :Type 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -19961,7 +20020,7 @@ The outputs are a deterministic function of `shape` and `seed`.
 
 
 
-func statelessRandomUniform(scope:Scope,shape: Output, seed: Output, dtype :Type  , t :Type  )  ->(GoOperation?){
+func statelessRandomUniform( scope:Scope,shape: Output, seed: Output, dtype :Type  , t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -19977,7 +20036,7 @@ func statelessRandomUniform(scope:Scope,shape: Output, seed: Output, dtype :Type
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -19994,7 +20053,7 @@ The outputs are a deterministic function of `shape` and `seed`.
 
 
 
-func statelessTruncatedNormal(scope:Scope,shape: Output, seed: Output, dtype :Type  , t :Type  )  ->(GoOperation?){
+func statelessTruncatedNormal( scope:Scope,shape: Output, seed: Output, dtype :Type  , t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -20010,7 +20069,7 @@ func statelessTruncatedNormal(scope:Scope,shape: Output, seed: Output, dtype :Ty
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -20039,7 +20098,7 @@ to pretend that the value was a constant. Some examples include:
 
 
 
-func stopGradient(scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
+func stopGradient( scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -20054,7 +20113,7 @@ func stopGradient(scope:Scope,input: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -20140,7 +20199,7 @@ receive 0, 0, and 1, respectively. The appropriate bits in `begin_mask` and
 
 
 
-func stridedSlice(scope:Scope,input: Output, begin: Output, end: Output, strides: Output, t :Type  , index :Type  , beginMask :Int  , endMask :Int  , ellipsisMask :Int  , newAxisMask :Int  , shrinkAxisMask :Int  )  ->(GoOperation?){
+func stridedSlice( scope:Scope,input: Output, begin: Output, end: Output, strides: Output, t :Type  , index :Type  , beginMask :Int  , endMask :Int  , ellipsisMask :Int  , newAxisMask :Int  , shrinkAxisMask :Int  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -20161,7 +20220,7 @@ func stridedSlice(scope:Scope,input: Output, begin: Output, end: Output, strides
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -20179,7 +20238,7 @@ shape must be exactly the shape produced by the slice of `ref`.
 
 
 
-func stridedSliceAssign(scope:Scope,ref: Output, begin: Output, end: Output, strides: Output, value: Output, t :Type  , index :Type  , beginMask :Int  , endMask :Int  , ellipsisMask :Int  , newAxisMask :Int  , shrinkAxisMask :Int  )  ->(GoOperation?){
+func stridedSliceAssign( scope:Scope,ref: Output, begin: Output, end: Output, strides: Output, value: Output, t :Type  , index :Type  , beginMask :Int  , endMask :Int  , ellipsisMask :Int  , newAxisMask :Int  , shrinkAxisMask :Int  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -20200,7 +20259,7 @@ func stridedSliceAssign(scope:Scope,ref: Output, begin: Output, end: Output, str
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -20220,7 +20279,7 @@ shape of `StridedSlice`'s `input`.
 
 
 
-func stridedSliceGrad(scope:Scope,shape: Output, begin: Output, end: Output, strides: Output, dy: Output, t :Type  , index :Type  , beginMask :Int  , endMask :Int  , ellipsisMask :Int  , newAxisMask :Int  , shrinkAxisMask :Int  )  ->(GoOperation?){
+func stridedSliceGrad( scope:Scope,shape: Output, begin: Output, end: Output, strides: Output, dy: Output, t :Type  , index :Type  , beginMask :Int  , endMask :Int  , ellipsisMask :Int  , newAxisMask :Int  , shrinkAxisMask :Int  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -20241,7 +20300,7 @@ func stridedSliceGrad(scope:Scope,shape: Output, begin: Output, end: Output, str
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -20255,7 +20314,7 @@ with the given separator (default is an empty separator).
 
 
 
-func stringJoin(scope:Scope,inputs: Output, n :Int  , separator :String  )  ->(GoOperation?){
+func stringJoin( scope:Scope,inputs: Output, n :Int  , separator :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -20271,7 +20330,7 @@ func stringJoin(scope:Scope,inputs: Output, n :Int  , separator :String  )  ->(G
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -20301,7 +20360,7 @@ For example:
 
 
 
-func stringSplit(scope:Scope,input: Output, delimiter: Output )  ->(indices: Output, values: Output, shape: Output){
+func stringSplit( scope:Scope,input: Output, delimiter: Output )  ->(indices: Output, values: Output, shape: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -20315,7 +20374,7 @@ func stringSplit(scope:Scope,input: Output, delimiter: Output )  ->(indices: Out
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1))
 }
 
 /*
@@ -20333,7 +20392,7 @@ This functionality will be deprecated and it's recommended to use
 
 
 
-func stringToHashBucket(scope:Scope,stringTensor: Output, numBuckets :Int  )  ->(GoOperation?){
+func stringToHashBucket( scope:Scope,stringTensor: Output, numBuckets :Int  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -20348,7 +20407,7 @@ func stringToHashBucket(scope:Scope,stringTensor: Output, numBuckets :Int  )  ->
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -20367,7 +20426,7 @@ to the same bucket. To prevent this problem, use a strong hash function with
 
 
 
-func stringToHashBucketFast(scope:Scope,input: Output, numBuckets :Int  )  ->(GoOperation?){
+func stringToHashBucketFast( scope:Scope,input: Output, numBuckets :Int  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -20382,7 +20441,7 @@ func stringToHashBucketFast(scope:Scope,input: Output, numBuckets :Int  )  ->(Go
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -20404,7 +20463,7 @@ time than `tf.string_to_hash_bucket_fast`.
 
 
 
-func stringToHashBucketStrong(scope:Scope,input: Output, numBuckets :Int  , key :List(int)  )  ->(GoOperation?){
+func stringToHashBucketStrong( scope:Scope,input: Output, numBuckets :Int  , key :List(int)  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -20420,7 +20479,7 @@ func stringToHashBucketStrong(scope:Scope,input: Output, numBuckets :Int  , key 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -20435,7 +20494,7 @@ results in a rounded value.)
 
 
 
-func stringToNumber(scope:Scope,stringTensor: Output, outType :Type  )  ->(GoOperation?){
+func stringToNumber( scope:Scope,stringTensor: Output, outType :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -20450,7 +20509,7 @@ func stringToNumber(scope:Scope,stringTensor: Output, outType :Type  )  ->(GoOpe
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -20465,7 +20524,7 @@ Returns x - y element-wise.
 
 
 
-func sub(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+func sub( scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -20480,7 +20539,7 @@ func sub(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -20548,7 +20607,7 @@ output = [b'hir', b'ee', b'n"]
 
 
 
-func substr(scope:Scope,input: Output, pos: Output, len: Output, t :Type  )  ->(GoOperation?){
+func substr( scope:Scope,input: Output, pos: Output, len: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -20563,7 +20622,7 @@ func substr(scope:Scope,input: Output, pos: Output, len: Output, t :Type  )  ->(
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -20580,7 +20639,7 @@ retained with length 1.
 
 
 
-func sum(scope:Scope,input: Output, reductionIndices: Output, keepDims :Bool  , t :Type  , tidx :Type  )  ->(GoOperation?){
+func sum( scope:Scope,input: Output, reductionIndices: Output, keepDims :Bool  , t :Type  , tidx :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -20597,7 +20656,7 @@ func sum(scope:Scope,input: Output, reductionIndices: Output, keepDims :Bool  , 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -20620,7 +20679,7 @@ s, _, _ = svd(a, compute_uv=False)
 
 
 
-func svd(scope:Scope,input: Output, computeUv :Bool  , fullMatrices :Bool  , t :Type  )  ->(s: Output, u: Output, v: Output){
+func svd( scope:Scope,input: Output, computeUv :Bool  , fullMatrices :Bool  , t :Type  )  ->(s: Output, u: Output, v: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -20637,7 +20696,7 @@ func svd(scope:Scope,input: Output, computeUv :Bool  , fullMatrices :Bool  , t :
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1))
 }
 
 /*
@@ -20653,7 +20712,7 @@ See also `RefSwitch` and `Merge`.
 
 
 
-func switch(scope:Scope,data: Output, pred: Output, t :Type  )  ->(outputFalse: Output, outputTrue: Output){
+func switch( scope:Scope,data: Output, pred: Output, t :Type  )  ->(outputFalse: Output, outputTrue: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -20668,7 +20727,7 @@ func switch(scope:Scope,data: Output, pred: Output, t :Type  )  ->(outputFalse: 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1))
+    return (op.output(1 - 1),op.output(2 - 1))
 }
 
 /*
@@ -20681,7 +20740,7 @@ Computes the gradient function for function f via backpropagation.
 
 
 
-func symbolicGradient(scope:Scope,input: Output, tin :List(type)  , tout :List(type)  , f :Func  )  ->(GoOperation?){
+func symbolicGradient( scope:Scope,input: Output, tin :List(type)  , tout :List(type)  , f :Func  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -20698,7 +20757,7 @@ func symbolicGradient(scope:Scope,input: Output, tin :List(type)  , tout :List(t
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -20711,7 +20770,7 @@ Creates a dataset that emits the records from one or more TFRecord files.
 
 
 
-func tfRecordDataset(scope:Scope,filenames: Output, compressionType: Output )  ->(GoOperation?){
+func tfRecordDataset( scope:Scope,filenames: Output, compressionType: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -20725,7 +20784,7 @@ func tfRecordDataset(scope:Scope,filenames: Output, compressionType: Output )  -
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -20738,7 +20797,7 @@ A Reader that outputs the records from a TensorFlow Records file.
 
 
 
-func tfRecordReader(scope:Scope, container :String  , sharedName :String  , compressionType :String  )  ->(GoOperation?){
+func tfRecordReader( scope:Scope, container :String  , sharedName :String  , compressionType :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -20755,7 +20814,7 @@ func tfRecordReader(scope:Scope, container :String  , sharedName :String  , comp
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -20768,7 +20827,7 @@ A Reader that outputs the records from a TensorFlow Records file.
 
 
 
-func tfRecordReaderV2(scope:Scope, container :String  , sharedName :String  , compressionType :String  )  ->(GoOperation?){
+func tfRecordReaderV2( scope:Scope, container :String  , sharedName :String  , compressionType :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -20785,7 +20844,7 @@ func tfRecordReaderV2(scope:Scope, container :String  , sharedName :String  , co
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -20798,7 +20857,7 @@ Creates a dataset that contains `count` elements from the `input_dataset`.
 
 
 
-func takeDataset(scope:Scope,inputDataset: Output, count: Output, outputTypes :List(type)  , outputShapes :List(shape)  )  ->(GoOperation?){
+func takeDataset( scope:Scope,inputDataset: Output, count: Output, outputTypes :List(type)  , outputShapes :List(shape)  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -20814,7 +20873,7 @@ func takeDataset(scope:Scope,inputDataset: Output, count: Output, outputTypes :L
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -20867,7 +20926,7 @@ then the final `SparseTensor` will be:
 
 
 
-func takeManySparseFromTensorsMap(scope:Scope,sparseHandles: Output, dtype :Type  , container :String  , sharedName :String  )  ->(sparseIndices: Output, sparseValues: Output, sparseShape: Output){
+func takeManySparseFromTensorsMap( scope:Scope,sparseHandles: Output, dtype :Type  , container :String  , sharedName :String  )  ->(sparseIndices: Output, sparseValues: Output, sparseShape: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -20884,7 +20943,7 @@ func takeManySparseFromTensorsMap(scope:Scope,sparseHandles: Output, dtype :Type
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1))
 }
 
 /*
@@ -20897,7 +20956,7 @@ Computes tan of x element-wise.
 
 
 
-func tan(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+func tan( scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -20912,7 +20971,7 @@ func tan(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -20925,7 +20984,7 @@ Computes hyperbolic tangent of `x` element-wise.
 
 
 
-func tanh(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+func tanh( scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -20940,7 +20999,7 @@ func tanh(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -20955,7 +21014,7 @@ is the corresponding input gradient.
 
 
 
-func tanhGrad(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+func tanhGrad( scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -20970,7 +21029,7 @@ func tanhGrad(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -20994,7 +21053,7 @@ Outputs a ref to the tensor state so it may be read or modified.
 
 
 
-func temporaryVariable(scope:Scope, shape :Shape  , dtype :Type  , varName :String  )  ->(GoOperation?){
+func temporaryVariable( scope:Scope, shape :Shape  , dtype :Type  , varName :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -21011,7 +21070,7 @@ func temporaryVariable(scope:Scope, shape :Shape  , dtype :Type  , varName :Stri
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -21023,7 +21082,7 @@ func temporaryVariable(scope:Scope, shape :Shape  , dtype :Type  , varName :Stri
 
 
 
-func tensorArray(scope:Scope,size: Output, dtype :Type  , dynamicSize :Bool  , clearAfterRead :Bool  , tensorArrayName :String  , elementShape :Shape  )  ->(GoOperation?){
+func tensorArray( scope:Scope,size: Output, dtype :Type  , dynamicSize :Bool  , clearAfterRead :Bool  , tensorArrayName :String  , elementShape :Shape  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -21042,7 +21101,7 @@ func tensorArray(scope:Scope,size: Output, dtype :Type  , dynamicSize :Bool  , c
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -21054,7 +21113,7 @@ func tensorArray(scope:Scope,size: Output, dtype :Type  , dynamicSize :Bool  , c
 
 
 
-func tensorArrayClose(scope:Scope,handle: Output )  ->(GoOperation?){
+func tensorArrayClose( scope:Scope,handle: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -21067,7 +21126,8 @@ func tensorArrayClose(scope:Scope,handle: Output )  ->(GoOperation?){
         Input: [ handle],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -21080,7 +21140,7 @@ Deprecated. Use TensorArrayCloseV3
 
 
 
-func tensorArrayCloseV2(scope:Scope,handle: Output )  ->(GoOperation?){
+func tensorArrayCloseV2( scope:Scope,handle: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -21093,7 +21153,8 @@ func tensorArrayCloseV2(scope:Scope,handle: Output )  ->(GoOperation?){
         Input: [ handle],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -21108,7 +21169,7 @@ of a step/run.
 
 
 
-func tensorArrayCloseV3(scope:Scope,handle: Output )  ->(GoOperation?){
+func tensorArrayCloseV3( scope:Scope,handle: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -21121,7 +21182,8 @@ func tensorArrayCloseV3(scope:Scope,handle: Output )  ->(GoOperation?){
         Input: [ handle],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -21133,7 +21195,7 @@ func tensorArrayCloseV3(scope:Scope,handle: Output )  ->(GoOperation?){
 
 
 
-func tensorArrayConcat(scope:Scope,handle: Output, flowIn: Output, dtype :Type  , elementShapeExcept0 :Shape  )  ->(value: Output, lengths: Output){
+func tensorArrayConcat( scope:Scope,handle: Output, flowIn: Output, dtype :Type  , elementShapeExcept0 :Shape  )  ->(value: Output, lengths: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -21149,7 +21211,7 @@ func tensorArrayConcat(scope:Scope,handle: Output, flowIn: Output, dtype :Type  
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1))
+    return (op.output(1 - 1),op.output(2 - 1))
 }
 
 /*
@@ -21162,7 +21224,7 @@ Deprecated. Use TensorArrayConcatV3
 
 
 
-func tensorArrayConcatV2(scope:Scope,handle: Output, flowIn: Output, dtype :Type  , elementShapeExcept0 :Shape  )  ->(value: Output, lengths: Output){
+func tensorArrayConcatV2( scope:Scope,handle: Output, flowIn: Output, dtype :Type  , elementShapeExcept0 :Shape  )  ->(value: Output, lengths: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -21178,7 +21240,7 @@ func tensorArrayConcatV2(scope:Scope,handle: Output, flowIn: Output, dtype :Type
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1))
+    return (op.output(1 - 1),op.output(2 - 1))
 }
 
 /*
@@ -21198,7 +21260,7 @@ All elements must have the same shape (excepting the first dimension).
 
 
 
-func tensorArrayConcatV3(scope:Scope,handle: Output, flowIn: Output, dtype :Type  , elementShapeExcept0 :Shape  )  ->(value: Output, lengths: Output){
+func tensorArrayConcatV3( scope:Scope,handle: Output, flowIn: Output, dtype :Type  , elementShapeExcept0 :Shape  )  ->(value: Output, lengths: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -21214,7 +21276,7 @@ func tensorArrayConcatV3(scope:Scope,handle: Output, flowIn: Output, dtype :Type
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1))
+    return (op.output(1 - 1),op.output(2 - 1))
 }
 
 /*
@@ -21226,7 +21288,7 @@ func tensorArrayConcatV3(scope:Scope,handle: Output, flowIn: Output, dtype :Type
 
 
 
-func tensorArrayGather(scope:Scope,handle: Output, indices: Output, flowIn: Output, dtype :Type  , elementShape :Shape  )  ->(GoOperation?){
+func tensorArrayGather( scope:Scope,handle: Output, indices: Output, flowIn: Output, dtype :Type  , elementShape :Shape  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -21242,7 +21304,7 @@ func tensorArrayGather(scope:Scope,handle: Output, indices: Output, flowIn: Outp
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -21255,7 +21317,7 @@ Deprecated. Use TensorArrayGatherV3
 
 
 
-func tensorArrayGatherV2(scope:Scope,handle: Output, indices: Output, flowIn: Output, dtype :Type  , elementShape :Shape  )  ->(GoOperation?){
+func tensorArrayGatherV2( scope:Scope,handle: Output, indices: Output, flowIn: Output, dtype :Type  , elementShape :Shape  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -21271,7 +21333,7 @@ func tensorArrayGatherV2(scope:Scope,handle: Output, indices: Output, flowIn: Ou
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -21285,7 +21347,7 @@ All elements selected by `indices` must have the same shape.
 
 
 
-func tensorArrayGatherV3(scope:Scope,handle: Output, indices: Output, flowIn: Output, dtype :Type  , elementShape :Shape  )  ->(GoOperation?){
+func tensorArrayGatherV3( scope:Scope,handle: Output, indices: Output, flowIn: Output, dtype :Type  , elementShape :Shape  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -21301,7 +21363,7 @@ func tensorArrayGatherV3(scope:Scope,handle: Output, indices: Output, flowIn: Ou
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -21313,7 +21375,7 @@ func tensorArrayGatherV3(scope:Scope,handle: Output, indices: Output, flowIn: Ou
 
 
 
-func tensorArrayGrad(scope:Scope,handle: Output, flowIn: Output, source :String  )  ->(GoOperation?){
+func tensorArrayGrad( scope:Scope,handle: Output, flowIn: Output, source :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -21328,7 +21390,7 @@ func tensorArrayGrad(scope:Scope,handle: Output, flowIn: Output, source :String 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -21341,7 +21403,7 @@ Deprecated. Use TensorArrayGradV3
 
 
 
-func tensorArrayGradV2(scope:Scope,handle: Output, flowIn: Output, source :String  )  ->(GoOperation?){
+func tensorArrayGradV2( scope:Scope,handle: Output, flowIn: Output, source :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -21356,7 +21418,7 @@ func tensorArrayGradV2(scope:Scope,handle: Output, flowIn: Output, source :Strin
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -21397,7 +21459,7 @@ calculation gets its own TensorArray accumulator.
 
 
 
-func tensorArrayGradV3(scope:Scope,handle: Output, flowIn: Output, source :String  )  ->(gradHandle: Output, flowOut: Output){
+func tensorArrayGradV3( scope:Scope,handle: Output, flowIn: Output, source :String  )  ->(gradHandle: Output, flowOut: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -21412,7 +21474,7 @@ func tensorArrayGradV3(scope:Scope,handle: Output, flowIn: Output, source :Strin
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1))
+    return (op.output(1 - 1),op.output(2 - 1))
 }
 
 /*
@@ -21424,7 +21486,7 @@ func tensorArrayGradV3(scope:Scope,handle: Output, flowIn: Output, source :Strin
 
 
 
-func tensorArrayPack(scope:Scope,handle: Output, flowIn: Output, dtype :Type  , elementShape :Shape  )  ->(GoOperation?){
+func tensorArrayPack( scope:Scope,handle: Output, flowIn: Output, dtype :Type  , elementShape :Shape  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -21440,7 +21502,7 @@ func tensorArrayPack(scope:Scope,handle: Output, flowIn: Output, dtype :Type  , 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -21452,7 +21514,7 @@ func tensorArrayPack(scope:Scope,handle: Output, flowIn: Output, dtype :Type  , 
 
 
 
-func tensorArrayRead(scope:Scope,handle: Output, index: Output, flowIn: Output, dtype :Type  )  ->(GoOperation?){
+func tensorArrayRead( scope:Scope,handle: Output, index: Output, flowIn: Output, dtype :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -21467,7 +21529,7 @@ func tensorArrayRead(scope:Scope,handle: Output, index: Output, flowIn: Output, 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -21480,7 +21542,7 @@ Deprecated. Use TensorArrayReadV3
 
 
 
-func tensorArrayReadV2(scope:Scope,handle: Output, index: Output, flowIn: Output, dtype :Type  )  ->(GoOperation?){
+func tensorArrayReadV2( scope:Scope,handle: Output, index: Output, flowIn: Output, dtype :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -21495,7 +21557,7 @@ func tensorArrayReadV2(scope:Scope,handle: Output, index: Output, flowIn: Output
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -21508,7 +21570,7 @@ Read an element from the TensorArray into output `value`.
 
 
 
-func tensorArrayReadV3(scope:Scope,handle: Output, index: Output, flowIn: Output, dtype :Type  )  ->(GoOperation?){
+func tensorArrayReadV3( scope:Scope,handle: Output, index: Output, flowIn: Output, dtype :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -21523,7 +21585,7 @@ func tensorArrayReadV3(scope:Scope,handle: Output, index: Output, flowIn: Output
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -21535,7 +21597,7 @@ func tensorArrayReadV3(scope:Scope,handle: Output, index: Output, flowIn: Output
 
 
 
-func tensorArrayScatter(scope:Scope,handle: Output, indices: Output, value: Output, flowIn: Output, t :Type  )  ->(GoOperation?){
+func tensorArrayScatter( scope:Scope,handle: Output, indices: Output, value: Output, flowIn: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -21550,7 +21612,7 @@ func tensorArrayScatter(scope:Scope,handle: Output, indices: Output, value: Outp
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -21563,7 +21625,7 @@ Deprecated. Use TensorArrayScatterV3
 
 
 
-func tensorArrayScatterV2(scope:Scope,handle: Output, indices: Output, value: Output, flowIn: Output, t :Type  )  ->(GoOperation?){
+func tensorArrayScatterV2( scope:Scope,handle: Output, indices: Output, value: Output, flowIn: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -21578,7 +21640,7 @@ func tensorArrayScatterV2(scope:Scope,handle: Output, indices: Output, value: Ou
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -21592,7 +21654,7 @@ Scatter the data from the input value into specific TensorArray elements.
 
 
 
-func tensorArrayScatterV3(scope:Scope,handle: Output, indices: Output, value: Output, flowIn: Output, t :Type  )  ->(GoOperation?){
+func tensorArrayScatterV3( scope:Scope,handle: Output, indices: Output, value: Output, flowIn: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -21607,7 +21669,7 @@ func tensorArrayScatterV3(scope:Scope,handle: Output, indices: Output, value: Ou
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -21619,7 +21681,7 @@ func tensorArrayScatterV3(scope:Scope,handle: Output, indices: Output, value: Ou
 
 
 
-func tensorArraySize(scope:Scope,handle: Output, flowIn: Output )  ->(GoOperation?){
+func tensorArraySize( scope:Scope,handle: Output, flowIn: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -21633,7 +21695,7 @@ func tensorArraySize(scope:Scope,handle: Output, flowIn: Output )  ->(GoOperatio
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -21646,7 +21708,7 @@ Deprecated. Use TensorArraySizeV3
 
 
 
-func tensorArraySizeV2(scope:Scope,handle: Output, flowIn: Output )  ->(GoOperation?){
+func tensorArraySizeV2( scope:Scope,handle: Output, flowIn: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -21660,7 +21722,7 @@ func tensorArraySizeV2(scope:Scope,handle: Output, flowIn: Output )  ->(GoOperat
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -21673,7 +21735,7 @@ Get the current size of the TensorArray.
 
 
 
-func tensorArraySizeV3(scope:Scope,handle: Output, flowIn: Output )  ->(GoOperation?){
+func tensorArraySizeV3( scope:Scope,handle: Output, flowIn: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -21687,7 +21749,7 @@ func tensorArraySizeV3(scope:Scope,handle: Output, flowIn: Output )  ->(GoOperat
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -21699,7 +21761,7 @@ func tensorArraySizeV3(scope:Scope,handle: Output, flowIn: Output )  ->(GoOperat
 
 
 
-func tensorArraySplit(scope:Scope,handle: Output, value: Output, lengths: Output, flowIn: Output, t :Type  )  ->(GoOperation?){
+func tensorArraySplit( scope:Scope,handle: Output, value: Output, lengths: Output, flowIn: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -21714,7 +21776,7 @@ func tensorArraySplit(scope:Scope,handle: Output, value: Output, lengths: Output
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -21727,7 +21789,7 @@ Deprecated. Use TensorArraySplitV3
 
 
 
-func tensorArraySplitV2(scope:Scope,handle: Output, value: Output, lengths: Output, flowIn: Output, t :Type  )  ->(GoOperation?){
+func tensorArraySplitV2( scope:Scope,handle: Output, value: Output, lengths: Output, flowIn: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -21742,7 +21804,7 @@ func tensorArraySplitV2(scope:Scope,handle: Output, value: Output, lengths: Outp
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -21764,7 +21826,7 @@ and having size
 
 
 
-func tensorArraySplitV3(scope:Scope,handle: Output, value: Output, lengths: Output, flowIn: Output, t :Type  )  ->(GoOperation?){
+func tensorArraySplitV3( scope:Scope,handle: Output, value: Output, lengths: Output, flowIn: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -21779,7 +21841,7 @@ func tensorArraySplitV3(scope:Scope,handle: Output, value: Output, lengths: Outp
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -21791,7 +21853,7 @@ func tensorArraySplitV3(scope:Scope,handle: Output, value: Output, lengths: Outp
 
 
 
-func tensorArrayUnpack(scope:Scope,handle: Output, value: Output, flowIn: Output, t :Type  )  ->(GoOperation?){
+func tensorArrayUnpack( scope:Scope,handle: Output, value: Output, flowIn: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -21806,7 +21868,7 @@ func tensorArrayUnpack(scope:Scope,handle: Output, value: Output, flowIn: Output
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -21819,7 +21881,7 @@ Deprecated. Use TensorArrayV3
 
 
 
-func tensorArrayV2(scope:Scope,size: Output, dtype :Type  , elementShape :Shape  , dynamicSize :Bool  , clearAfterRead :Bool  , tensorArrayName :String  )  ->(GoOperation?){
+func tensorArrayV2( scope:Scope,size: Output, dtype :Type  , elementShape :Shape  , dynamicSize :Bool  , clearAfterRead :Bool  , tensorArrayName :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -21838,7 +21900,7 @@ func tensorArrayV2(scope:Scope,size: Output, dtype :Type  , elementShape :Shape 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -21852,7 +21914,7 @@ Write data via Write and read via Read or Pack.
 
 
 
-func tensorArrayV3(scope:Scope,size: Output, dtype :Type  , elementShape :Shape  , dynamicSize :Bool  , clearAfterRead :Bool  , tensorArrayName :String  )  ->(handle: Output, flow: Output){
+func tensorArrayV3( scope:Scope,size: Output, dtype :Type  , elementShape :Shape  , dynamicSize :Bool  , clearAfterRead :Bool  , tensorArrayName :String  )  ->(handle: Output, flow: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -21871,7 +21933,7 @@ func tensorArrayV3(scope:Scope,size: Output, dtype :Type  , elementShape :Shape 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1))
+    return (op.output(1 - 1),op.output(2 - 1))
 }
 
 /*
@@ -21883,7 +21945,7 @@ func tensorArrayV3(scope:Scope,size: Output, dtype :Type  , elementShape :Shape 
 
 
 
-func tensorArrayWrite(scope:Scope,handle: Output, index: Output, value: Output, flowIn: Output, t :Type  )  ->(GoOperation?){
+func tensorArrayWrite( scope:Scope,handle: Output, index: Output, value: Output, flowIn: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -21898,7 +21960,7 @@ func tensorArrayWrite(scope:Scope,handle: Output, index: Output, value: Output, 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -21911,7 +21973,7 @@ Deprecated. Use TensorArrayGradV3
 
 
 
-func tensorArrayWriteV2(scope:Scope,handle: Output, index: Output, value: Output, flowIn: Output, t :Type  )  ->(GoOperation?){
+func tensorArrayWriteV2( scope:Scope,handle: Output, index: Output, value: Output, flowIn: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -21926,7 +21988,7 @@ func tensorArrayWriteV2(scope:Scope,handle: Output, index: Output, value: Output
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -21939,7 +22001,7 @@ Push an element onto the tensor_array.
 
 
 
-func tensorArrayWriteV3(scope:Scope,handle: Output, index: Output, value: Output, flowIn: Output, t :Type  )  ->(GoOperation?){
+func tensorArrayWriteV3( scope:Scope,handle: Output, index: Output, value: Output, flowIn: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -21954,7 +22016,7 @@ func tensorArrayWriteV3(scope:Scope,handle: Output, index: Output, value: Output
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -21967,7 +22029,7 @@ Creates a dataset that emits `components` as a tuple of tensors once.
 
 
 
-func tensorDataset(scope:Scope,components: Output, toutputTypes :List(type)  , outputShapes :List(shape)  )  ->(GoOperation?){
+func tensorDataset( scope:Scope,components: Output, toutputTypes :List(type)  , outputShapes :List(shape)  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -21983,7 +22045,7 @@ func tensorDataset(scope:Scope,components: Output, toutputTypes :List(type)  , o
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -21996,7 +22058,7 @@ Creates a dataset that emits each dim-0 slice of `components` once.
 
 
 
-func tensorSliceDataset(scope:Scope,components: Output, toutputTypes :List(type)  , outputShapes :List(shape)  )  ->(GoOperation?){
+func tensorSliceDataset( scope:Scope,components: Output, toutputTypes :List(type)  , outputShapes :List(shape)  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -22012,7 +22074,7 @@ func tensorSliceDataset(scope:Scope,components: Output, toutputTypes :List(type)
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -22025,7 +22087,7 @@ Outputs a `Summary` protocol buffer with a tensor.
 
 
 
-func tensorSummary(scope:Scope,tensor: Output, t :Type  , description :String  , labels :List(string)  , displayName :String  )  ->(GoOperation?){
+func tensorSummary( scope:Scope,tensor: Output, t :Type  , description :String  , labels :List(string)  , displayName :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -22043,7 +22105,7 @@ func tensorSummary(scope:Scope,tensor: Output, t :Type  , description :String  ,
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -22056,7 +22118,7 @@ Creates a dataset that emits the lines of one or more text files.
 
 
 
-func textLineDataset(scope:Scope,filenames: Output )  ->(GoOperation?){
+func textLineDataset( scope:Scope,filenames: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -22070,7 +22132,7 @@ func textLineDataset(scope:Scope,filenames: Output )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -22083,7 +22145,7 @@ A Reader that outputs the lines of a file delimited by '\n'.
 
 
 
-func textLineReader(scope:Scope, skipHeaderLines :Int  , container :String  , sharedName :String  )  ->(GoOperation?){
+func textLineReader( scope:Scope, skipHeaderLines :Int  , container :String  , sharedName :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -22100,7 +22162,7 @@ func textLineReader(scope:Scope, skipHeaderLines :Int  , container :String  , sh
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -22113,7 +22175,7 @@ A Reader that outputs the lines of a file delimited by '\n'.
 
 
 
-func textLineReaderV2(scope:Scope, skipHeaderLines :Int  , container :String  , sharedName :String  )  ->(GoOperation?){
+func textLineReaderV2( scope:Scope, skipHeaderLines :Int  , container :String  , sharedName :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -22130,7 +22192,7 @@ func textLineReaderV2(scope:Scope, skipHeaderLines :Int  , container :String  , 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -22150,7 +22212,7 @@ true labels.
 
 
 
-func threadUnsafeUnigramCandidateSampler(scope:Scope,trueClasses: Output, numTrue :Int  , numSampled :Int  , unique :Bool  , rangeMax :Int  , seed :Int  , seed2 :Int  )  ->(sampledCandidates: Output, trueExpectedCount: Output, sampledExpectedCount: Output){
+func threadUnsafeUnigramCandidateSampler( scope:Scope,trueClasses: Output, numTrue :Int  , numSampled :Int  , unique :Bool  , rangeMax :Int  , seed :Int  , seed2 :Int  )  ->(sampledCandidates: Output, trueExpectedCount: Output, sampledExpectedCount: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -22170,7 +22232,7 @@ func threadUnsafeUnigramCandidateSampler(scope:Scope,trueClasses: Output, numTru
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1))
 }
 
 /*
@@ -22188,7 +22250,7 @@ dimension. For example, tiling `[a b c d]` by `[2]` produces
 
 
 
-func tile(scope:Scope,input: Output, multiples: Output, t :Type  , tmultiples :Type  )  ->(GoOperation?){
+func tile( scope:Scope,input: Output, multiples: Output, t :Type  , tmultiples :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -22204,7 +22266,7 @@ func tile(scope:Scope,input: Output, multiples: Output, t :Type  , tmultiples :T
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -22220,7 +22282,7 @@ each repeated tile of `input` into `output`.
 
 
 
-func tileGrad(scope:Scope,input: Output, multiples: Output, t :Type  )  ->(GoOperation?){
+func tileGrad( scope:Scope,input: Output, multiples: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -22235,7 +22297,7 @@ func tileGrad(scope:Scope,input: Output, multiples: Output, t :Type  )  ->(GoOpe
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -22256,7 +22318,7 @@ If `k` varies dynamically, use `TopKV2` below.
 
 
 
-func topK(scope:Scope,input: Output, k :Int  , sorted :Bool  , t :Type  )  ->(values: Output, indices: Output){
+func topK( scope:Scope,input: Output, k :Int  , sorted :Bool  , t :Type  )  ->(values: Output, indices: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -22273,7 +22335,7 @@ func topK(scope:Scope,input: Output, k :Int  , sorted :Bool  , t :Type  )  ->(va
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1))
+    return (op.output(1 - 1),op.output(2 - 1))
 }
 
 /*
@@ -22293,7 +22355,7 @@ If two elements are equal, the lower-index element appears first.
 
 
 
-func topKV2(scope:Scope,input: Output, k: Output, sorted :Bool  , t :Type  )  ->(values: Output, indices: Output){
+func topKV2( scope:Scope,input: Output, k: Output, sorted :Bool  , t :Type  )  ->(values: Output, indices: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -22309,7 +22371,7 @@ func topKV2(scope:Scope,input: Output, k: Output, sorted :Bool  , t :Type  )  ->
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1))
+    return (op.output(1 - 1),op.output(2 - 1))
 }
 
 /*
@@ -22324,7 +22386,7 @@ The output `y` has the same rank as `x`. The shapes of `x` and `y` satisfy:
 
 
 
-func transpose(scope:Scope,x: Output, perm: Output, t :Type  , tperm :Type  )  ->(GoOperation?){
+func transpose( scope:Scope,x: Output, perm: Output, t :Type  , tperm :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -22340,7 +22402,7 @@ func transpose(scope:Scope,x: Output, perm: Output, t :Type  , tperm :Type  )  -
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -22359,7 +22421,7 @@ Python Semantics.
 
 
 
-func truncateDiv(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+func truncateDiv( scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -22374,7 +22436,7 @@ func truncateDiv(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -22391,7 +22453,7 @@ y + truncate_mod(x, y) = x`.
 
 
 
-func truncateMod(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
+func truncateMod( scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -22406,7 +22468,7 @@ func truncateMod(scope:Scope,x: Output, y: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -22422,7 +22484,7 @@ deviations from the mean are dropped and re-picked.
 
 
 
-func truncatedNormal(scope:Scope,shape: Output, seed :Int  , seed2 :Int  , dtype :Type  , t :Type  )  ->(GoOperation?){
+func truncatedNormal( scope:Scope,shape: Output, seed :Int  , seed2 :Int  , dtype :Type  , t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -22440,7 +22502,7 @@ func truncatedNormal(scope:Scope,shape: Output, seed :Int  , seed2 :Int  , dtype
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -22460,7 +22522,7 @@ true labels.
 
 
 
-func uniformCandidateSampler(scope:Scope,trueClasses: Output, numTrue :Int  , numSampled :Int  , unique :Bool  , rangeMax :Int  , seed :Int  , seed2 :Int  )  ->(sampledCandidates: Output, trueExpectedCount: Output, sampledExpectedCount: Output){
+func uniformCandidateSampler( scope:Scope,trueClasses: Output, numTrue :Int  , numSampled :Int  , unique :Bool  , rangeMax :Int  , seed :Int  , seed2 :Int  )  ->(sampledCandidates: Output, trueExpectedCount: Output, sampledExpectedCount: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -22480,7 +22542,7 @@ func uniformCandidateSampler(scope:Scope,trueClasses: Output, numTrue :Int  , nu
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1))
 }
 
 /*
@@ -22505,7 +22567,7 @@ idx ==> [0, 0, 1, 2, 2, 2, 3, 4, 4]
 
 
 
-func unique(scope:Scope,x: Output, t :Type  , outIdx :Type  )  ->(y: Output, idx: Output){
+func unique( scope:Scope,x: Output, t :Type  , outIdx :Type  )  ->(y: Output, idx: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -22521,7 +22583,7 @@ func unique(scope:Scope,x: Output, t :Type  , outIdx :Type  )  ->(y: Output, idx
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1))
+    return (op.output(1 - 1),op.output(2 - 1))
 }
 
 /*
@@ -22548,7 +22610,7 @@ count ==> [2, 1, 3, 1, 2]
 
 
 
-func uniqueWithCounts(scope:Scope,x: Output, t :Type  , outIdx :Type  )  ->(y: Output, idx: Output, count: Output){
+func uniqueWithCounts( scope:Scope,x: Output, t :Type  , outIdx :Type  )  ->(y: Output, idx: Output, count: Output){
     if scope.error.error != nil {
         return nil
     }
@@ -22564,7 +22626,7 @@ func uniqueWithCounts(scope:Scope,x: Output, t :Type  , outIdx :Type  )  ->(y: O
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1),op.Output(2 - 1),op.Output(3 - 1))
+    return (op.output(1 - 1),op.output(2 - 1),op.output(3 - 1))
 }
 
 /*
@@ -22586,7 +22648,7 @@ This is the opposite of `pack`.
 
 
 
-func unpack(scope:Scope,value: Output, num :Int  , t :Type  , axis :Int  )  ->(GoOperation?){
+func unpack( scope:Scope,value: Output, num :Int  , t :Type  , axis :Int  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -22603,7 +22665,7 @@ func unpack(scope:Scope,value: Output, num :Int  , t :Type  , axis :Int  )  ->(G
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -22628,7 +22690,7 @@ If the maximum is empty for a given segment ID `i`, it outputs the smallest poss
 
 
 
-func unsortedSegmentMax(scope:Scope,data: Output, segmentIds: Output, numSegments: Output, t :Type  , tindices :Type  )  ->(GoOperation?){
+func unsortedSegmentMax( scope:Scope,data: Output, segmentIds: Output, numSegments: Output, t :Type  , tindices :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -22644,7 +22706,7 @@ func unsortedSegmentMax(scope:Scope,data: Output, segmentIds: Output, numSegment
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -22669,7 +22731,7 @@ If the sum is empty for a given segment ID `i`, `output[i] = 0`.
 
 
 
-func unsortedSegmentSum(scope:Scope,data: Output, segmentIds: Output, numSegments: Output, t :Type  , tindices :Type  )  ->(GoOperation?){
+func unsortedSegmentSum( scope:Scope,data: Output, segmentIds: Output, numSegments: Output, t :Type  , tindices :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -22685,7 +22747,7 @@ func unsortedSegmentSum(scope:Scope,data: Output, segmentIds: Output, numSegment
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -22700,7 +22762,7 @@ capabilities and options.  This Op is optimized for performance.
 
 
 
-func unstage(scope:Scope, dtypes :List(type)  , container :String  , sharedName :String  )  ->(GoOperation?){
+func unstage( scope:Scope, dtypes :List(type)  , container :String  , sharedName :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -22717,7 +22779,7 @@ func unstage(scope:Scope, dtypes :List(type)  , container :String  , sharedName 
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -22730,7 +22792,7 @@ Use VariableV2 instead.
 
 
 
-func variable(scope:Scope, shape :Shape  , dtype :Type  , container :String  , sharedName :String  )  ->(GoOperation?){
+func variable( scope:Scope, shape :Shape  , dtype :Type  , container :String  , sharedName :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -22748,7 +22810,7 @@ func variable(scope:Scope, shape :Shape  , dtype :Type  , container :String  , s
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -22764,7 +22826,7 @@ about sharing states in tensorflow.
 
 
 
-func variableV2(scope:Scope, shape :Shape  , dtype :Type  , container :String  , sharedName :String  )  ->(GoOperation?){
+func variableV2( scope:Scope, shape :Shape  , dtype :Type  , container :String  , sharedName :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -22782,7 +22844,7 @@ func variableV2(scope:Scope, shape :Shape  , dtype :Type  , container :String  ,
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -22823,7 +22885,7 @@ where(input) ==> [[0, 0, 0],
 
 
 
-func where(scope:Scope,input: Output )  ->(GoOperation?){
+func where( scope:Scope,input: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -22837,7 +22899,7 @@ func where(scope:Scope,input: Output )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -22852,7 +22914,7 @@ be a filename (key) and the contents of that file (value).
 
 
 
-func wholeFileReader(scope:Scope, container :String  , sharedName :String  )  ->(GoOperation?){
+func wholeFileReader( scope:Scope, container :String  , sharedName :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -22868,7 +22930,7 @@ func wholeFileReader(scope:Scope, container :String  , sharedName :String  )  ->
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -22883,7 +22945,7 @@ be a filename (key) and the contents of that file (value).
 
 
 
-func wholeFileReaderV2(scope:Scope, container :String  , sharedName :String  )  ->(GoOperation?){
+func wholeFileReaderV2( scope:Scope, container :String  , sharedName :String  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -22899,7 +22961,7 @@ func wholeFileReaderV2(scope:Scope, container :String  , sharedName :String  )  
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -22912,7 +22974,7 @@ Writes contents to the file at input filename. Creates file if not existing.
 
 
 
-func writeFile(scope:Scope,filename: Output, contents: Output )  ->(GoOperation?){
+func writeFile( scope:Scope,filename: Output, contents: Output )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -22925,7 +22987,8 @@ func writeFile(scope:Scope,filename: Output, contents: Output )  ->(GoOperation?
         Input: [ filename, contents],
         Attrs: attrs
     )
-    return scope.AddOperation(opspec)
+    let op = scope.AddOperation(opspec)
+    return op
 }
 
 /*
@@ -22938,7 +23001,7 @@ Returns a tensor of zeros with the same shape and type as x.
 
 
 
-func zerosLike(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
+func zerosLike( scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -22953,7 +23016,7 @@ func zerosLike(scope:Scope,x: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -22968,7 +23031,7 @@ The Hurwitz zeta function is defined as:
 
 
 
-func zeta(scope:Scope,x: Output, q: Output, t :Type  )  ->(GoOperation?){
+func zeta( scope:Scope,x: Output, q: Output, t :Type  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -22983,7 +23046,7 @@ func zeta(scope:Scope,x: Output, q: Output, t :Type  )  ->(GoOperation?){
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 
 /*
@@ -22996,7 +23059,7 @@ Creates a dataset that zips together `input_datasets`.
 
 
 
-func zipDataset(scope:Scope,inputDatasets: Output, outputTypes :List(type)  , outputShapes :List(shape)  , n :Int  )  ->(GoOperation?){
+func zipDataset( scope:Scope,inputDatasets: Output, outputTypes :List(type)  , outputShapes :List(shape)  , n :Int  )  ->(GoOperation?){
     if scope.error.error != nil {
         return nil
     }
@@ -23013,6 +23076,6 @@ func zipDataset(scope:Scope,inputDatasets: Output, outputTypes :List(type)  , ou
         Attrs: attrs
     )
     let op = scope.AddOperation(opspec)
-    return (op.Output(1 - 1))
+    return (op.output(1 - 1))
 }
 

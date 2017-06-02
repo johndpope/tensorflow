@@ -75,7 +75,7 @@ extension Scope{
 // of the operation being added. See also Graph.AddOperation.
 extension Scope{
     
-    mutating func  AddOperation(args:OpSpec) -> GoOperation? {
+     func  AddOperation(_ args:OpSpec) -> GoOperation? {
         
         var args = args
         
@@ -95,7 +95,7 @@ extension Scope{
         let error:NSError?
         
         
-        (op, error) = self.graph.AddOperation(args:args)
+        (op, error) = self.graph.AddOperation(args)
         if let error = error {
             self.UpdateError(op: args.OpType, error: error)
         }
@@ -136,10 +136,11 @@ extension Scope{
 // UpdateErr is used to notify Scope of any graph construction errors
 // while creating the operation op.
 extension Scope{
-    mutating func  UpdateError(op:String, error: NSError) {
+    func  UpdateError(op:String, error: NSError) {
         if self.error.error == nil {
             let msg = "failed to add operation \(op.description): \(error) (Stacktrace: ))" //\(debug.Stack()
-            self.error.error = NSError.newIoError(msg, code: 111)
+            print(msg)
+           // self.error.error = NSError.newIoError(msg, code: 111)
             
         }
     }

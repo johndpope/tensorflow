@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		17961FF11EE1DDBA00C4FFE2 /* AssociatedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17961FF01EE1DDBA00C4FFE2 /* AssociatedObject.swift */; };
+		E81041B41EE2170A0096A87F /* GoOpWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* GoOpWrapper.swift */; };
 		OBJ_325 /* conformance.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_186 /* conformance.pb.swift */; };
 		OBJ_326 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_187 /* main.swift */; };
 		OBJ_327 /* test_messages_proto3.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_188 /* test_messages_proto3.pb.swift */; };
@@ -1445,7 +1446,7 @@
 			path = ".build/checkouts/swift-grpc-tensorflow.git--5994516077474897617/Sources";
 			sourceTree = SOURCE_ROOT;
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -1456,7 +1457,6 @@
 				OBJ_34 /* Dependencies */,
 				OBJ_304 /* Products */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_7 /* Configs */ = {
@@ -1788,7 +1788,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_304 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -2172,6 +2172,7 @@
 				OBJ_689 /* GoTensor.swift in Sources */,
 				OBJ_690 /* main.swift in Sources */,
 				OBJ_691 /* TensorFlow.swift in Sources */,
+				E81041B41EE2170A0096A87F /* GoOpWrapper.swift in Sources */,
 				OBJ_692 /* TF_Buffer.swift in Sources */,
 				OBJ_693 /* TF_Extensions.swift in Sources */,
 				OBJ_694 /* TF_Graph.swift in Sources */,
