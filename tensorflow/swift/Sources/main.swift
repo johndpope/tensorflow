@@ -51,7 +51,7 @@ do {
 		   curl -L https://storage.googleapis.com/download.tensorflow.org/models/inception5h.zip -o misc/inception5h.zip
 		   unzip misc/inception5h.zip -d /misc
      */
-    let projectDir = "/Users/jp/Documents/tensorflowWorkspace/tensorflow/tensorflow/swift/misc"
+    let projectDir = "/Users/jpope/Documents/tensorflowWorkspace/tensorflow/tensorflow/swift/misc"
     let modelFile  = "tensorflow_inception_graph.pb"
     let imagefile = "grace_hopper.jpg"
 
@@ -153,14 +153,14 @@ do {
     probabilities = output[0].Value().([][]float32)[0]
     printBestLabel(probabilities, labelsfile)
 
-    
+    */
 }catch {
 
     
     print("error: \(error)")
     exit(1)
 }
-*/
+
 
 
 // Convert the image in filename to a Tensor suitable as input to the Inception model.
@@ -237,8 +237,6 @@ func makeTensorFromImage(filename :String)-> (TF_Tensor?, NSError?) {
     return graph, input, output, err*/
 
 //}
-
-}
 
 
 /*
