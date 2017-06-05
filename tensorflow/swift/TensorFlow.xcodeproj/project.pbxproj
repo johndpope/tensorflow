@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E81041BF1EE224E00096A87F /* GoOpWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* GoOpWrapper.swift */; };
+		E81041C21EE3A5FD0096A87F /* GoAddOp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81041C11EE3A5FD0096A87F /* GoAddOp.swift */; };
 		OBJ_325 /* conformance.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_186 /* conformance.pb.swift */; };
 		OBJ_326 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_187 /* main.swift */; };
 		OBJ_327 /* test_messages_proto3.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_188 /* test_messages_proto3.pb.swift */; };
@@ -566,6 +566,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E81041C11EE3A5FD0096A87F /* GoAddOp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoAddOp.swift; sourceTree = "<group>"; };
 		OBJ_10 /* GenerateOps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateOps.swift; sourceTree = "<group>"; };
 		OBJ_100 /* saved_tensor_slice.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = saved_tensor_slice.pb.swift; sourceTree = "<group>"; };
 		OBJ_101 /* saver.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = saver.pb.swift; sourceTree = "<group>"; };
@@ -1488,6 +1489,7 @@
 				OBJ_27 /* TF_Status.swift */,
 				OBJ_28 /* TF_String.swift */,
 				OBJ_29 /* TF_Tensor.swift */,
+				E81041C11EE3A5FD0096A87F /* GoAddOp.swift */,
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -1816,6 +1818,7 @@
 			files = (
 				OBJ_325 /* conformance.pb.swift in Sources */,
 				OBJ_326 /* main.swift in Sources */,
+				E81041C21EE3A5FD0096A87F /* GoAddOp.swift in Sources */,
 				OBJ_327 /* test_messages_proto3.pb.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2176,7 +2179,6 @@
 				OBJ_696 /* TF_Session.swift in Sources */,
 				OBJ_697 /* TF_Status.swift in Sources */,
 				OBJ_698 /* TF_String.swift in Sources */,
-				E81041BF1EE224E00096A87F /* GoOpWrapper.swift in Sources */,
 				OBJ_699 /* TF_Tensor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

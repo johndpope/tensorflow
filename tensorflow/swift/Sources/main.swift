@@ -73,6 +73,7 @@ do {
     
     // Construct an in-memory graph from the serialized form.
     let graph = newGraph()
+    
     if let error = graph.Import(def:model.cBytes(),prefix: "OK"){
         print(error)
     }
@@ -82,6 +83,7 @@ do {
     var config = Tensorflow_ConfigProto()
     config.operationTimeoutInMs = 2
     opts.ConfigProto = config
+    
     
     // Tensor
     var tensor = Tensorflow_TensorProto()

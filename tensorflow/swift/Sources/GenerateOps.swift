@@ -10,10 +10,16 @@ import Files
 
 // hack to allow stencil to correctly generate func types
 public typealias TensorflowNameAttrList = Tensorflow_NameAttrList
+public typealias TensorflowDataType = Tensorflow_DataType
+public typealias TensorflowTensorShapeProto = Tensorflow_TensorShapeProto
+public typealias TensorflowTensorProto = Tensorflow_TensorProto
+
+
 
 // WHY THESE ADDITIONAL Structs? 
 // Needed to store properties for convenience with stencil kit template
 struct MutableAttrDef{
+
 
     var name: String
     var type: String
@@ -79,8 +85,11 @@ struct MutableTensorflow_OpDef{
     
     
     init(op:Tensorflow_OpDef) {
-        self.jsonString = try?  op.jsonString()
 
+        self.jsonString =  op.debugDescription
+       
+      
+        
         self.name = op.name
         
         var inputArrayArgs = Array<MutableArgDef>()
@@ -102,16 +111,29 @@ struct MutableTensorflow_OpDef{
         
         var attArray = Array<MutableAttrDef>()
         for att in op.attr{
-            let mAttr = MutableAttrDef.init(att:att )
-
-            
-            if(att.type == "type"){
-                print("SKIPPING ->>>> ",att.allowedValues.list)
-            }else if(att.type == "list(type)"){
-                print("SKIPPING list ->>>> ",att.allowedValues.list)
-            }else{
-              attArray.append(mAttr)  
+            var mAttr = MutableAttrDef.init(att:att )
+            if(att.name == "t"){
+                mAttr.name = "dataType"
             }
+            
+            if(att.type == "list(string)"){
+                mAttr.type = "[Data]"
+            }else if(att.type == "list(int)"){
+                mAttr.type = "[Int64]"
+            }else if(att.type == "list(float)"){
+                mAttr.type = "[Float]"
+            }else if(att.type == "list(bool)"){
+                mAttr.type = "[Bool]"
+            }else if(att.type == "list(type)"){
+                mAttr.type = "[Tensorflow_DataType]"
+            }else if(att.type == "list(shape)"){
+                mAttr.type = "[Tensorflow_TensorShapeProto]"
+            }else if(att.type == "list(tensor)"){
+                mAttr.type = "[Tensorflow_TensorProto]"
+            }else if(att.type == "list(attr)"){
+                mAttr.type = "[Tensorflow_NameAttrList]"
+            }
+            attArray.append(mAttr)
             
             
         }
@@ -228,43 +250,53 @@ class OperationsStencil{
                 continue;
             }
             
-            for (_,arg) in op.inputArg.enumerated(){
-               print("arg:",arg)
+            var allowedTypes:Tensorflow_AttrValue = Tensorflow_AttrValue()
+            for (idx,arg) in op.inputArg.enumerated(){
                 
+                // DETERMINE THE ALLOWED TYPES
+                 for (indexB,att) in op.attr.enumerated(){
+                    if (att.name == "T"){
+                        if(att.type == "type"){
+                            allowedTypes = att.allowedValues
+                        }
+                    }
+                }
+
+                 print("allowedValues:",allowedTypes)
+               print("arg:",arg)
+                if (arg.type == Tensorflow_DataType.dtInvalid){
+                    print("ok")
+                    if (arg.typeAttr ==  "T"){
+                        OperationsStencil.ops[idx].inputArg[idx].type = .dtFloat
+                    }
+                }
+
             }
             
             for (indexA,att) in op.attr.enumerated(){
                 print("attr:",att)
              
+
+                if let v = att.defaultValue.value{
+                    OperationsStencil.ops[index].attr[indexA].type = "\(OperationsStencil.ops[index].attr[indexA].type) =\(v)"
+                }
                 if (att.name == "T"){
                     if (att.type == "type"){
                         OperationsStencil.ops[index].attr[indexA].type = "Tensorflow_DataType"
                     }
-//                    OperationsStencil.ops[index].attr.remove(at: indexA)
                     bShouldBreak = true
                     break;
-                }
-                
-                if (att.name == "dtype"){
+                }else if (att.name == "dtype"){
                     if (att.type == "type"){
                         OperationsStencil.ops[index].attr[indexA].type = "Tensorflow_DataType"
                     }else if(att.allowedValues.list.type.count > 0){
                       OperationsStencil.ops[index].attr[indexA].type = "[Any]"
                     }
-                    
-                }
-               
-                if (att.type == "func"){
+                }else if (att.type == "func"){
                     OperationsStencil.ops[index].attr[indexA].type = "Tensorflow_NameAttrList"
-                    
-                }
-                
-                if (att.name == "type"){
+                }else if (att.name == "type"){
                     OperationsStencil.ops[index].attr[indexA].type = "Tensorflow_DataType"
-                    
-                }
-                
-                if (att.type == "int"){
+                }else  if (att.type == "int"){
                     OperationsStencil.ops[index].attr[indexA].type = "UInt8"
                 }else if (att.type == "bool"){
                     OperationsStencil.ops[index].attr[indexA].type = "Bool"
@@ -287,12 +319,11 @@ class OperationsStencil{
                 }else if(att.type == "list(shape)"){
                     OperationsStencil.ops[index].attr[indexA].type = "[Shape]"
                 }
-                
-                
             }
-            print("op:",OperationsStencil.ops[index].attr)
+           
 
         }
+         print("ops:",OperationsStencil.ops)
     }
     
    

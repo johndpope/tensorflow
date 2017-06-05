@@ -69,7 +69,8 @@ extension GoOperation{
 // DataType (and eventually a Shape).  May be passed as an input argument to a
 // function for adding operations to a graph, or to a Session's Run() method to
 // fetch that output as a tensor.
-struct Output  {
+//https://github.com/tensorflow/tensorflow/blob/master/tensorflow/go/operation.go#L72
+public struct Output  {
     
     init( Op:GoOperation, Index:Int) {
         self.Op = Op
@@ -82,14 +83,19 @@ struct Output  {
     // Index specifies the index of the output within the Operation.
     var Index:Int
     
+}
+
+extension Output{
     // DataType returns the type of elements in the tensor produced by p.
     func DataType()-> TF_DataType {
         
         return   TF_OperationOutputType(self.c())
     }
-    
-    // Shape returns the (possibly incomplete) shape of the tensor produced p.*/
-    
+}
+
+// Shape returns the (possibly incomplete) shape of the tensor produced p.*/
+extension Output{
+
     func  Shape()-> Shape {
         let status = newStatus()
         let port = self.c()
@@ -121,7 +127,10 @@ struct Output  {
         //    }
         return ret
     }
-    
+}
+
+//https://github.com/tensorflow/tensorflow/blob/master/tensorflow/go/operation.go#L115
+extension Output{
     func c() -> TF_Output {
         return TF_Output(oper: self.Op.c, index: CInt(self.Index))
     }
@@ -149,10 +158,18 @@ extension GoOperation{
  // Unexported to preclude implementations outside this package.
  canBeAnInput()
  }
- 
+  */
  // OutputList represents a list of Outputs that can be provided as input to
  // another operation.
- type OutputList []Output
- 
- func (l OutputList) canBeAnInput() {}
- */
+// https://github.com/tensorflow/tensorflow/blob/master/tensorflow/go/operation.go#L142
+public typealias OutputList = [Output]
+
+//https://github.com/tensorflow/tensorflow/blob/master/tensorflow/go/operation.go#L144
+//extension OutputList{
+//     func  canBeAnInput() {}
+//}
+
+
+
+
+

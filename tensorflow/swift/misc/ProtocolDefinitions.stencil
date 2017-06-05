@@ -1,0 +1,28 @@
+//[DT_HALF, DT_FLOAT, DT_DOUBLE, DT_UINT8, DT_INT8, DT_INT16, DT_INT32, DT_INT64, DT_COMPLEX64, DT_COMPLEX128, DT_STRING]
+
+
+protocol Numeric1 { }
+
+extension Int32: Numeric1 {} /// DT_HALF
+extension Float: Numeric1 {} /// DT_FLOAT
+extension Double: Numeric1 {} //DT_DOUBLE
+extension Int32: Numeric1 {} /// DT_INT32, DT_INT16, DT_INT8, DT_UINT8.
+extension Data: Numeric1 {} /// DT_STRING
+extension Float: Numeric1 {} /// DT_COMPLEX64
+extension Int64: Numeric1 {} /// DT_INT64
+extension Bool: Numeric1 {} /// DT_BOOL
+extension Double: Numeric1 {} /// DT_COMPLEX128
+extension Tensorflow_ResourceHandle: Numeric1 {} //DT_RESOURCE
+
+
+
+
+
+{% for op in operations %}
+/*
+{{op.jsonString}}
+*/
+
+{% endfor %}
+
+
