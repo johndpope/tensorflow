@@ -38,13 +38,9 @@ import Files
 // - Creates an executes a Session to obtain a Tensor in this normalized form.*/
 
 public typealias ShapeProto = Tensorflow_TensorShapeProto
-
-
 print("Hello from TensorFlow C library version ",  tf.Version())
 
-
 do {
-
     // The two files are extracted from a zip archive as so:
     /*
 		   curl -L https://storage.googleapis.com/download.tensorflow.org/models/inception5h.zip -o misc/inception5h.zip
@@ -54,8 +50,6 @@ do {
     let modelFile  = "tensorflow_inception_graph.pb"
     let imagefile = "grace_hopper.jpg"
 
-    
-    
     // flatten out rnn.mag file
     let magUrl = URL(fileURLWithPath: projectDir + "/attention_rnn.mag")
     let magModel = try? Data(contentsOf:magUrl)
@@ -69,7 +63,6 @@ do {
         print("bundle:",myGraphProto.bundleDetails)
         print("generator:",myGraphProto.generatorDetails)
    
-        
         if var graph1 = try? Tensorflow_MetaGraphDef.init(serializedData:metaGraphData){
             print("metaInfoDef:",graph1.metaInfoDef)
             for node in graph1.graphDef.node{
@@ -81,7 +74,6 @@ do {
             print("signatureDef:",graph1.signatureDef)
             print("assetFileDef:",graph1.assetFileDef)
     
-            
             // Save out checkpoint file
             let checkpointData = myGraphProto.checkpointFile[0]
             let generatedCheckPointFile = "attention_rnn.chkpt"
@@ -94,28 +86,14 @@ do {
             let generatedCheckMetaFile = "attention_rnn.chkpt.meta"
             
             graph1.graphDef.clearLibrary()
-            
-            
+
             if let generated = try? graph1.textFormatString(){
                 let graphUrl = URL(fileURLWithPath: projectDir + "/" + generatedCheckMetaFile)
                 try generated.data(using: .utf8)?.write(to: graphUrl)
 
             }
-            
-            
-            
-            
-            
-            
         }
     }
-    
-    
-    
-    
-    
-
-        
     
     
     OperationsStencil.generateClasses()
