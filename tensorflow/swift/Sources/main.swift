@@ -1,5 +1,5 @@
 import CTensorFlow
-import protoTensorFlow
+import gRPCTensorFlow
 import Foundation
 import IOSwift
 import ByteTools
@@ -54,6 +54,69 @@ do {
     let modelFile  = "tensorflow_inception_graph.pb"
     let imagefile = "grace_hopper.jpg"
 
+    
+    
+    // flatten out rnn.mag file
+    let magUrl = URL(fileURLWithPath: projectDir + "/attention_rnn.mag")
+    let magModel = try? Data(contentsOf:magUrl)
+    
+    // pull apart mag generator model.
+    // https://github.com/tensorflow/magenta/tree/master/magenta/models/melody_rnn#creating-a-bundle-file
+    
+    if let myGraphProto = try? Tensorflow_Magenta_GeneratorBundle.init(serializedData:magModel!){
+        let metaGraphData = myGraphProto.metagraphFile
+        
+        print("bundle:",myGraphProto.bundleDetails)
+        print("generator:",myGraphProto.generatorDetails)
+   
+        
+        if var graph1 = try? Tensorflow_MetaGraphDef.init(serializedData:metaGraphData){
+            print("metaInfoDef:",graph1.metaInfoDef)
+            for node in graph1.graphDef.node{
+                print("node:",node)
+            }
+            print("graphDef:",graph1.graphDef)
+            print("saverDef:",graph1.saverDef)
+            print("collectionDef:",graph1.collectionDef)
+            print("signatureDef:",graph1.signatureDef)
+            print("assetFileDef:",graph1.assetFileDef)
+    
+            
+            // Save out checkpoint file
+            let checkpointData = myGraphProto.checkpointFile[0]
+            let generatedCheckPointFile = "attention_rnn.chkpt"
+            let newURL = URL(fileURLWithPath: projectDir + "/" + generatedCheckPointFile)
+            if let error = try? checkpointData.write(to: newURL){
+                print("error:",error)
+            }
+            
+            // save out the graph file
+            let generatedCheckMetaFile = "attention_rnn.chkpt.meta"
+            
+            graph1.graphDef.clearLibrary()
+            
+            
+            if let generated = try? graph1.textFormatString(){
+                let graphUrl = URL(fileURLWithPath: projectDir + "/" + generatedCheckMetaFile)
+                try generated.data(using: .utf8)?.write(to: graphUrl)
+
+            }
+            
+            
+            
+            
+            
+            
+        }
+    }
+    
+    
+    
+    
+    
+
+        
+    
     
     OperationsStencil.generateClasses()
     

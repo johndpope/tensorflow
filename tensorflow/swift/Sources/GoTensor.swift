@@ -17,7 +17,7 @@ limitations under the License.
 
 
 import CTensorFlow
-import protoTensorFlow
+import gRPCTensorFlow
 import Foundation
 
 

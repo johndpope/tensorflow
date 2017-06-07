@@ -15,7 +15,7 @@
 /// ==============================================================================
 import Foundation
 import CTensorFlow
-import protoTensorFlow
+import gRPCTensorFlow
 
 
 // Session drives a TensorFlow graph computation.
@@ -140,9 +140,7 @@ extension SessionOptions{
 //https://github.com/johndpope/tensorflow-1/blob/master/tensorflow.go#L33
 extension SessionOptions{
     
-    func getConfig()->Tensorflow_ConfigProto{
-        
-    }
+
     func setConfig(config:Tensorflow_ConfigProto){
         let status = newStatus()
         

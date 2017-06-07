@@ -24,7 +24,7 @@ import func Darwin.C.stdlib.free
 import func Darwin.C.string.memset
 import func Darwin.C.string.memcpy
 import func Darwin.malloc.malloc_size
-import protoTensorFlow
+import gRPCTensorFlow
 
 typealias Byte = UInt8
 
@@ -163,7 +163,7 @@ struct OpSpec  {
     
     // Map from attribute name to its value that will be attached to this
     // operation.
-    var Attrs: Dictionary<String,Any> = [:]
+    var Attrs: Dictionary<String,Tensorflow_AttrValue.OneOf_Value> = [:]
     
     // Other possible fields: Device, ColocateWith, ControlInputs.
 }
@@ -171,7 +171,7 @@ struct OpSpec  {
 // AddOperation adds an operation to g.
 // https://github.com/tensorflow/tensorflow/blob/master/tensorflow/go/graph.go#L147
 extension Graph{
-    func AddOperation (_ args:OpSpec)-> (GoOperation?, NSError?) {
+    func AddOperation ( args:OpSpec)-> (GoOperation?, NSError?) {
         
         print("TODO - flesh out implementation")
         
@@ -198,17 +198,17 @@ extension Graph{
         var status = newStatus()
         for (name, value) in args.Attrs {
             
-//            if let err = setAttr(cOperationDesc, status.c, name, value) {
-//                // Memory leak here as the TF_OperationDescription
-//                // object will not be cleaned up. At the time of this
-//                // writing, this was next to impossible since it
-//                // required value to be a string tensor with
-//                // incorrectly encoded strings. Given this rarity, live
-//                // with the memory leak.  If it becomes a real problem,
-//                // consider adding a TF_DeleteOperationDescription
-//                // function to the C API.
-//                return (nil, NSError.newIoError(" (memory will be leaked)", code: 444))
-//            }
+            if let err = setAttr(cOperationDesc, status.c, name, value) {
+                // Memory leak here as the TF_OperationDescription
+                // object will not be cleaned up. At the time of this
+                // writing, this was next to impossible since it
+                // required value to be a string tensor with
+                // incorrectly encoded strings. Given this rarity, live
+                // with the memory leak.  If it becomes a real problem,
+                // consider adding a TF_DeleteOperationDescription
+                // function to the C API.
+                return (nil, NSError.newIoError(" (memory will be leaked)", code: 444))
+            }
         }
         let op = GoOperation(
              tf.FinishOperation(cOperationDesc, status.c),

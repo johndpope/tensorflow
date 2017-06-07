@@ -1,25 +1,18 @@
 import CTensorFlow
-import protoTensorFlow
+import gRPCTensorFlow
 import Foundation
 import IOSwift
 import ByteTools
-import protoTensorFlow
+import gRPCTensorFlow
 import StencilSwiftKit
 import Stencil
 import Files
-
-// hack to allow stencil to correctly generate func types
-public typealias TensorflowNameAttrList = Tensorflow_NameAttrList
-public typealias TensorflowDataType = Tensorflow_DataType
-public typealias TensorflowTensorShapeProto = Tensorflow_TensorShapeProto
-public typealias TensorflowTensorProto = Tensorflow_TensorProto
 
 
 
 // WHY THESE ADDITIONAL Structs? 
 // Needed to store properties for convenience with stencil kit template
 struct MutableAttrDef{
-
 
     var name: String
     var type: String
@@ -30,7 +23,6 @@ struct MutableAttrDef{
     var minimum: Int64
     var allowedValues: Tensorflow_AttrValue
 
-    
     init(att:Tensorflow_OpDef.AttrDef) {
         self.name = att.name
         self.type = att.type
@@ -85,13 +77,9 @@ struct MutableTensorflow_OpDef{
     
     
     init(op:Tensorflow_OpDef) {
-
-        self.jsonString =  op.debugDescription
-       
-      
+        self.jsonString = try?  op.jsonString()
         
         self.name = op.name
-        
         var inputArrayArgs = Array<MutableArgDef>()
         
         for arg in op.inputArg{
@@ -111,31 +99,8 @@ struct MutableTensorflow_OpDef{
         
         var attArray = Array<MutableAttrDef>()
         for att in op.attr{
-            var mAttr = MutableAttrDef.init(att:att )
-            if(att.name == "t"){
-                mAttr.name = "dataType"
-            }
-            
-            if(att.type == "list(string)"){
-                mAttr.type = "[Data]"
-            }else if(att.type == "list(int)"){
-                mAttr.type = "[Int64]"
-            }else if(att.type == "list(float)"){
-                mAttr.type = "[Float]"
-            }else if(att.type == "list(bool)"){
-                mAttr.type = "[Bool]"
-            }else if(att.type == "list(type)"){
-                mAttr.type = "[Tensorflow_DataType]"
-            }else if(att.type == "list(shape)"){
-                mAttr.type = "[Tensorflow_TensorShapeProto]"
-            }else if(att.type == "list(tensor)"){
-                mAttr.type = "[Tensorflow_TensorProto]"
-            }else if(att.type == "list(attr)"){
-                mAttr.type = "[Tensorflow_NameAttrList]"
-            }
+            let mAttr = MutableAttrDef.init(att:att )
             attArray.append(mAttr)
-            
-            
         }
         self.attr = attArray
         
@@ -172,9 +137,13 @@ struct MutableTensorflow_OpDef{
 
 class OperationsStencil{
     
-    //static var ops: [Tensorflow_OpDef] = []
-    static var ops: [MutableTensorflow_OpDef] = []
+    static var ops: [Tensorflow_OpDef] = []
+    static var mops: [MutableTensorflow_OpDef] = []
 
+    
+    
+    
+    
     class func generateClasses(){
         
         let projectDir = "\(Folder.home.path)/Documents/tensorflowWorkspace/tensorflow/tensorflow/swift"
@@ -207,14 +176,14 @@ class OperationsStencil{
                 let template = StencilSwiftTemplate(templateString:stencilString,environment:stencilSwiftEnvironment())
                 
                 if let operations = opList?.op{
-
+                     OperationsStencil.ops = operations
                     for op in operations{
                         let mOp = MutableTensorflow_OpDef(op: op)
-                         OperationsStencil.ops.append(mOp)
+                         OperationsStencil.mops.append(mOp)
                     }
                     updateOps()
 
-                    let generated = try template.render(["operations": OperationsStencil.ops])
+                    let generated = try template.render(["operations": OperationsStencil.mops])
                     let newURL = URL(fileURLWithPath: projectDir + "/" + generatedFile)
                     try generated.data(using: .utf8)?.write(to: newURL)
                 }
@@ -237,66 +206,44 @@ class OperationsStencil{
             str = str.replacingOccurrences(of: "^", with: "// ^")
             OperationsStencil.ops[index].description_p = str
  
-           
-            if (op.name.lowercased() == "where") {
-               OperationsStencil.ops[index].name = "where_p"
-            }else  if (op.name.lowercased() == "switch") {
-               OperationsStencil.ops[index].name =  "switch_p"
-            }
-            
             
             if (bShouldBreak){
                 bShouldBreak = false
                 continue;
             }
             
-            var allowedTypes:Tensorflow_AttrValue = Tensorflow_AttrValue()
-            for (idx,arg) in op.inputArg.enumerated(){
-                
-                // DETERMINE THE ALLOWED TYPES
-                 for (indexB,att) in op.attr.enumerated(){
-                    if (att.name == "T"){
-                        if(att.type == "type"){
-                            allowedTypes = att.allowedValues
-                        }
-                    }
-                }
-
-                 print("allowedValues:",allowedTypes)
+            for (indexB,arg) in op.inputArg.enumerated(){
                print("arg:",arg)
-                if (arg.type == Tensorflow_DataType.dtInvalid){
-                    print("ok")
-                    if (arg.typeAttr ==  "T"){
-                        OperationsStencil.ops[idx].inputArg[idx].type = .dtFloat
-                    }
-                }
-
+                
             }
-            
+            print("op:",op)
             for (indexA,att) in op.attr.enumerated(){
-                print("attr:",att)
-             
-
-                if let v = att.defaultValue.value{
-                    OperationsStencil.ops[index].attr[indexA].type = "\(OperationsStencil.ops[index].attr[indexA].type) =\(v)"
-                }
+                print(">",att.type)
+               
                 if (att.name == "T"){
                     if (att.type == "type"){
                         OperationsStencil.ops[index].attr[indexA].type = "Tensorflow_DataType"
                     }
+//                    OperationsStencil.ops[index].attr.remove(at: indexA)
                     bShouldBreak = true
                     break;
-                }else if (att.name == "dtype"){
+                }
+                
+                if (att.name == "dtype"){
                     if (att.type == "type"){
                         OperationsStencil.ops[index].attr[indexA].type = "Tensorflow_DataType"
                     }else if(att.allowedValues.list.type.count > 0){
                       OperationsStencil.ops[index].attr[indexA].type = "[Any]"
                     }
-                }else if (att.type == "func"){
-                    OperationsStencil.ops[index].attr[indexA].type = "Tensorflow_NameAttrList"
-                }else if (att.name == "type"){
+                    
+                }
+               
+                if (att.name == "type"){
                     OperationsStencil.ops[index].attr[indexA].type = "Tensorflow_DataType"
-                }else  if (att.type == "int"){
+                    
+                }
+                
+                if (att.type == "int"){
                     OperationsStencil.ops[index].attr[indexA].type = "UInt8"
                 }else if (att.type == "bool"){
                     OperationsStencil.ops[index].attr[indexA].type = "Bool"
@@ -319,11 +266,12 @@ class OperationsStencil{
                 }else if(att.type == "list(shape)"){
                     OperationsStencil.ops[index].attr[indexA].type = "[Shape]"
                 }
+                
+                
             }
-           
+            print("op:",OperationsStencil.ops[index].attr)
 
         }
-         print("ops:",OperationsStencil.ops)
     }
     
    

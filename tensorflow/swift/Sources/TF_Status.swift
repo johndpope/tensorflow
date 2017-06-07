@@ -17,7 +17,7 @@
 import Darwin.C.stddef
 import Darwin.C.stdint
 import CTensorFlow
-import protoTensorFlow
+import gRPCTensorFlow
 
 extension tf{
     

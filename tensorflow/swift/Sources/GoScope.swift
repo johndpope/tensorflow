@@ -95,7 +95,7 @@ extension Scope{
         let error:NSError?
         
         
-        (op, error) = self.graph.AddOperation(args)
+        (op, error) = self.graph.AddOperation(args:args)
         if let error = error {
             self.UpdateError(op: args.OpType, error: error)
         }

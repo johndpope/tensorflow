@@ -17,7 +17,7 @@
 import Darwin.C.stddef
 import Darwin.C.stdint
 import CTensorFlow
-import protoTensorFlow
+import gRPCTensorFlow
 // --------------------------------------------------------------------------
 // C API for TensorFlow.
 //

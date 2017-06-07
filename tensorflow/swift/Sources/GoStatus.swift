@@ -16,7 +16,7 @@ limitations under the License.
 */
 
 import CTensorFlow
-import protoTensorFlow
+import gRPCTensorFlow
 import IOSwift
 import Foundation
 
